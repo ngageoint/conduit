@@ -4,16 +4,27 @@ Describe the application
 
 ## Dependenceis
 *Angular
+
 *Angular Animate
+
 *Angular Click Outside
+
 *Angular Loading Bar
+
 *Angular UI Bootstrap
+
 *Angular xeditable
+
 *Bootstrap
+
 *Docxtemplater
+
 *Docxtemplater image module
+
 *Jszip
+
 *Ng-infinite-scroll
+
 *Nya-bootstrap-select
 
 ## Origin
