@@ -1,0 +1,20 @@
+<div>
+	<div class="all-comments-wrapper">
+        <div ng-repeat="comment in articles[currentIndex].comments track by comment.dateTime" class="ncomments-wrapper">
+            <div class="info-wrapper" ng-class="{'self': comment.user == username}">
+                <div class="name">{{comment.user}}</div>
+                <div class="time-stamp">{{comment.dateTime}}</div>
+            </div>
+            <div class="well well-sm" ng-class="{'self': comment.user == username}">{{comment.text}}</div>	
+        </div>
+    </div>
+    <form>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Type comment..." ng-model="newComment">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="post(newComment); newComment = ''">Post</button>
+                </span>
+            </input>
+        </div>
+    </form>
+</div>

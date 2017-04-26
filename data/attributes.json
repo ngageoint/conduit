@@ -1,0 +1,37 @@
+[{
+	"name":"Removed",
+	"alt":"Article has been removed from the stream",
+	"glyphicon":"trash",
+	"compare":"removed",
+	"filter":false,
+	"action":true,
+	"bookAction":false,
+	"checked":false
+},{
+	"name":"image",
+	"alt":"Article has an associated image",
+	"glyphicon":"picture",
+	"compare":"images",
+	"filter":true,
+	"action":false,
+	"bookAction":false,
+	"checked":false
+},{
+	"name":"In Book",
+	"alt":"Article is in a book",
+	"glyphicon":"book",
+	"compare":"books",
+	"filter":false,
+	"action":true,
+	"bookAction":false,
+	"checked":false
+},{
+	"name":"Has Comments",
+	"alt":"Article has comments",
+	"glyphicon":"comment",
+	"compare":"comments",
+	"filter":false,
+	"action":true,
+	"bookAction":true,
+	"checked":false
+}]

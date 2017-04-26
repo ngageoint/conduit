@@ -1,0 +1,24 @@
+[{
+	"tag":"Example",
+	"name":"Example Source",
+	"src":"www.example.com",
+	"operator":"or",
+	"checked":true,
+	"filter":[{
+		"name":"Topic",
+		"binding": {
+			"property":"topics"
+		},
+		"values":[],
+		"checked":false
+	},{
+		"name":"Region",
+		"binding": {
+			"property":"region",
+			"data":"abrv",
+			"name":"name"
+		},
+		"values":[],
+		"checked":false
+	}]
+}]

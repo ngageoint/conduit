@@ -2,7 +2,7 @@
 
 Describe the application
 
-### Dependenceis
+### Dependenceis (included under their original licenses)
 * Angular
 * Angular Animate
 * Angular Click Outside
