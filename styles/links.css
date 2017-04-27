@@ -1,0 +1,37 @@
+/*Links*/
+/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+a:link {
+  text-decoration: none;
+}
+
+/* line 7, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+a:hover {
+  text-decoration: underline;
+}
+
+/* line 11, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+a:active {
+  outline: 0;
+  outline: none;
+}
+
+/* line 16, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+a:visited {
+  outline: 0;
+  outline: none;
+}
+
+/* line 21, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+a:visited {
+  outline: 0;
+  outline: none;
+}
+
+/* line 26, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+a:focus {
+  outline: 0;
+  outline: none;
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=../styles/links.map */

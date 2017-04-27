@@ -1,0 +1,125 @@
+/*Layout*/
+
+@import "colors-light.scss";
+
+$leftWidth: 25vw;
+$rightWidth: 20vw;
+$centerWidth: (100vw - ($leftWidth + $rightWidth));
+
+$headerHeight: 50px;
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+	font-size: 100% !important;
+	font-family: 'SourceSansPro', sans-serif !important;
+}
+
+body {
+	min-width: 750px;      	/* 2x (LC fullwidth +
+                          		CC padding) + RC fullwidth */
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: 0px;
+	width: 100vw;
+	height: 100vh;
+	
+    font-size: 100%;
+	font-family: 'SourceSansPro', sans-serif;
+
+  background-color: darken($colorBackground, 2%);
+}		
+		
+#container {
+	position: fixed;	
+	padding-left: $leftWidth;   	/* LC fullwidth */
+	padding-right: $rightWidth;  	/* RC fullwidth + CC padding */
+    height: auto;
+	bottom: 0px;
+	top: $headerHeight;
+	background: transparent;
+}
+
+#container .column {
+	position: relative;
+	float: left;
+	height: 100%;
+	background: inherit;
+}
+
+#center {
+	padding: 0;    	/* CC padding */
+	width: $centerWidth;
+	background: $colorBackground;
+	float:left;
+}
+
+#left {
+	width: $leftWidth;          /* LC width */
+	padding: 0;   /* LC padding */
+	right: $leftWidth;          /* LC fullwidth + CC padding */
+	margin-left: -100%;
+	
+	max-height: 100%;		
+	background: $colorBackground;
+	display: inline-block;
+}
+	
+#right {
+	width: $rightWidth;          /* RC width */
+	padding: 0;    /* RC padding */
+	margin-right: -($rightWidth);  /* RC fullwidth + CC padding */
+	background: $colorBackground;
+	float: left;
+	margin-left: 0px;
+	max-height: 100%;
+}
+
+#header {
+	/*DISPLAY*/
+	float: left;
+	width: 100%;
+	height: $headerHeight;
+	padding: 5px;
+			
+	/*COLORS*/
+	background: ($colorPrimary);
+	color: ($colorPrimaryContrast);
+	
+	/*FONTS*/
+	font-size: 1.5em;
+	font-family: 'Montserrat', sans-serif;													
+}
+
+    #header-content-wrapper:before {
+  	    content: '';
+		display: inline-block;
+		vertical-align: middle;
+		height: 100%;
+		margin-right: -0.25em;
+    }
+
+    #header-content-wrapper {
+	    display: inline-block;
+	    vertical-align: middle;
+	    height: 100%;
+	    width: 100%;
+	    text-align: center;
+    }
+
+	#header-content {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		/*** IE Fix ***/
+		* html #left {
+			left: 390px;           /* RC fullwidth */
+		}

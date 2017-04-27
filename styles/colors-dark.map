@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "../sass/colors-dark.css",
+	"sources": [
+		"../sass/colors-dark.scss"
+	],
+	"sourcesContent": [
+		"\t\t\r\n/*Colors Light*/\r\n\r\n\t$colorPrimary: \t\t\t\t#aaa;\r\n\t$colorPrimaryContrast: \t\t#444;\r\n\t\t\t\r\n\t$colorSecondary:\t\t\t#aaa;\r\n\t$colorSecondaryContrast:\t#444;\r\n\t\r\n\t$colorFont:\t\t\t\t\t#aaa;\r\n\t$colorGrey: \t\t\t\t#777;\r\n\t$colorBackground:\t\t\t#666;"
+	],
+	"mappings": "AACA,gBAAgB",
+	"names": []
+}
