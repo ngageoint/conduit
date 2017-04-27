@@ -1,8 +1,8 @@
 ### About
 
-Describe the application
+Conduit is a public domain content curation tool that allows anyone to collect articles of interest from multiple feeds, make formatting changes and comments on articles on the fly, and then group selected items into "books" to target particular readers. The tool is set up to be a lightweight workflow tool that can support smart curation technology in order to begin to tailor suggested content.
 
-### Dependenceis (included under their original licenses)
+### Dependencies (included under their original licenses)
 * Angular
 * Angular Animate
 * Angular Click Outside

@@ -478,7 +478,7 @@ body {
 
 	position: relative;
 	left: 10px;
-	right 10px;
+	right: 10px;
 	padding: 1.6em 1.6em 0 0;
 }
 
@@ -494,7 +494,7 @@ body {
 	width: 50vw;
 	position: relative;
 	left: 0px;
-	right 0px;
+	right: 0px;
 	line-height: 1.25em;
 	height: 6em;
 	vertical-align: middle;
@@ -813,5 +813,4 @@ body {
 
 .stream-action .btn {
   height: 100%;	
-}
 }
