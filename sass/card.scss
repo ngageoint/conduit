@@ -2,10 +2,12 @@
 
 @import "colors-light.scss";
 
+$cardHeight: 6.5em;
+
 .article-card {
-	min-height: 6.5em;
-	max-height: 6.5em;
-	height: 6.5em;
+	min-height: $cardHeight;
+	max-height: $cardHeight;
+	height: $cardHeight;
 			
 	padding: 5px 0px 5px 10px;
 	margin: 0;
