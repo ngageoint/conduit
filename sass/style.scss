@@ -1,11 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
 
-@import "fonts.scss";
-@import "colors-light.scss";
-@import "links.scss";
-@import "layout.scss";
-@import "card.scss";
+@import "fonts";
+@import "colors";
+@import "links";
+@import "layout";
+@import "card";
+@import "bootstrap-customization";
 		
 /*Article View*/
 
@@ -26,20 +27,10 @@
 }
 
 .btn-edit  {
-	display: inline-block;
 	visibility: visible;
-	border-radius: .2em;
-	border: none;
-	padding: 5px 10px;
-			
+	color: $colorFont;	
 	background-color: $colorBackground;
-			
-	text-align: left;
-	font-size: 1em;
 	font-family: 'SourceSansPro', sans-serif;
-			
-	cursor: pointer;
-		
 	clear: both;
 }
 .btn-edit:hover {
@@ -47,11 +38,8 @@
 }
 
 .article-view #title-wrapper {
-
 	position: relative;
-	left: 10px;
-	right: 10px;
-	padding: 1.6em 1.6em 0 0;
+	padding: 1.6em 0 0 0;
 }
 
 
@@ -61,17 +49,21 @@
 			font-family: 'Montserrat', sans-serif;	
 		}
 
-.article-view #title-wrapper .title-edit {
-	padding: 0;
+.article-view .edit-field {
+	padding: 0 1vw;
 	width: 50vw;
-	position: relative;
-	left: 0px;
-	right: 0px;
+}
+
+.article-view #title-wrapper .edit-field {
 	line-height: 1.25em;
 	height: 6em;
-	vertical-align: middle;
-	clear: right;
 }
+
+.article-view .text.edit-field {
+	padding: 0 1vw;
+	height: 50vh;
+}
+
 
 .article-view #image-wrapper {
 			display: inline-block;
@@ -93,26 +85,17 @@
 			margin-right: -0.25em;
 		}
 		
-		.article-view #image-wrapper #nav-before{
-			display: inline-block;
-			vertical-align: middle;
-			max-width: 10%;
-			height: auto;
-		}
-		
-			.article-view #image-wrapper #nav-before:hover{
-				cursor: pointer;	
-			}
-		
 		.article-view #image-wrapper .nav-arrow{
 			display: inline-block;
 			vertical-align: middle;
 			max-width: 10%;
 			font-size: 5vw;
 			height: auto;
+			color: $colorFont;
 		}
 			.article-view #image-wrapper .nav-arrow:hover{
 				cursor: pointer;
+				color: darken($colorFont, 10%);	
 			}
 
 .article-view #image-wrapper .greyout {
@@ -147,13 +130,7 @@
 			white-space: pre-line;
 		}
 
-   .article-view .text-edit {
-		 margin: 1.5vh 0 75px 0;	
-		 padding: 0 1vw;
-		  width: 50vw;
-		 height: 50vh;
-		}
-
+   
 .article-view  .editable-buttons {
 	float: right;
 	margin: 5px 0 75px 0;
@@ -293,7 +270,7 @@
 		bottom: 70px;
 		right: -10px;
 		left: 10px;
-		background-color: lighten($colorGrey, 11%);
+		background-color: darken($colorBackground, 5%);
 		padding: 5px 0 0 10px;
 		border-radius: 0 0 4px 4px;
 		border: 1px solid $colorGrey;
@@ -343,4 +320,48 @@
 
 .stream-action .btn {
   height: 100%;	
+}
+
+.ico-text-1 {
+	display: inline;
+}
+.ico-text-2 {
+	display: inline;
+}
+.ico-text-3 {
+	display: inline;
+}
+
+@media screen and (max-width: 1200px)
+{
+	.ico-text-1 {
+		display: none;
+		visibility: hidden;
+	}
+}
+
+@media screen and (max-width: 1000px)
+{
+	.ico-text-2 {
+		display: none;
+		visibility: hidden;
+	}
+}
+
+@media screen and (max-width: 800px)
+{
+	.ico-text-3 {
+		display: none;
+		visibility: hidden;
+	}
+	.toolbox-books {
+		width: 50px;
+		.special-title {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	.panel-title {
+		text-align: center;
+	}
 }

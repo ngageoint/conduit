@@ -1,15 +1,13 @@
 /*Article Card*/
 
-@import "colors-light.scss";
-
-$cardHeight: 6.5em;
+@import "colors.scss";
 
 .article-card {
-	min-height: $cardHeight;
-	max-height: $cardHeight;
-	height: $cardHeight;
+	min-height: 6.5em;
+	max-height: 6.5em;
+	height: 6.5em;
 			
-	padding: 5px 0px 5px 10px;
+	padding: 5px 10px 5px 10px;
 	margin: 0;
 			
 	width: 100%;
@@ -29,7 +27,6 @@ $cardHeight: 6.5em;
         }		
 		
 	.article-card .title{					
-		margin: 0px 15px 0px 0px;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -42,8 +39,6 @@ $cardHeight: 6.5em;
 		min-height: 2.5em;
 		height: 2.5em;
 			
-		padding: 0px 0px 10px 0xp;
-		margin: 0px 15px 0px 0px;
 		overflow: hidden;
 		white-space: normal;
 			
@@ -148,11 +143,12 @@ $cardHeight: 6.5em;
 	height: 100%;
 	text-align: center;	
 	color: darken($colorGrey, 10%);
-	white-space: normal;
 	width: inherit;
 	font-size: 1em;
 	cursor: default;
 	overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 		
     #end-of-stream:hover {
@@ -171,7 +167,6 @@ $cardHeight: 6.5em;
         height: 100%;
         display: inline-block;
         vertical-align: middle;
-        margin: 0px 35px 0px 0px;
         width: 100%;
     }
             
@@ -180,5 +175,5 @@ $cardHeight: 6.5em;
         vertical-align: middle;
         white-space: normal;
         line-height: 140%;
-        width: 95%;
+        width: 90%;
     }

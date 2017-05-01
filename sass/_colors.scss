@@ -1,0 +1,28 @@
+		
+$dark: false;
+
+/*Light 036*/
+
+    $colorPrimary: 				darken(#b6c4a2, 5%)   !default;
+    $colorPrimaryContrast: 		lighten(#dce2bd, 50%)   !default;
+            
+    $colorSecondary:			#c2714f   !default;
+    $colorSecondaryContrast:	#fff   !default;
+
+    $colorFont:					#444   !default;
+    $colorGrey: 				lighten(#8e9b90, 15%)   !default;
+    $colorBackground:			lighten(#dce2bd, 20%)   !default;
+
+		
+/*Dark*/
+@if $dark == true {
+	$colorPrimary: 				#999;
+	$colorPrimaryContrast: 		#444;
+			
+	$colorSecondary:			#aaa;
+	$colorSecondaryContrast:	#444;
+	
+	$colorFont:					#aaa;
+	$colorGrey: 				#888;
+	$colorBackground:			#222;
+}
