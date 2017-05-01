@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<html data-ng-app="conduit" xmlns="http://www.w3.org/1999/xhtml">
+<head>
     <meta http-equiv="Content-Type" content="application/json; charset=utf-8" />
     <title>Conduit Beta</title>
     
@@ -11,38 +12,67 @@
     <link rel="stylesheet" type="text/css" href="./packages/angular-loading-bar/loading-bar.min.css" />
     <link rel="stylesheet" type="text/css" href="./styles/style.css" />    
   
-	<script src="https://code.angularjs.org/1.6.2/angular.min.js"></script>
+    <!-- vendor -->
+	<script src="https://code.angularjs.org/1.6.2/angular.js"></script>
     <script src="https://code.angularjs.org/1.6.2/angular-animate.min.js"></script>
     <script src="./packages/ui-bootstrap/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script src="./packages/angular-xeditable/xeditable.min.js"></script>
     <script src="./packages/nya-bs-select/nya-bs-select.min.js"></script>
     <script src="./packages/docxtemplater/docxtemplater.min.js"></script> 
     <script src="./packages/docxtemplater/docxtemplater-image-module.min.js"></script> 
-    <script src="./packages/jszip/jszip.min.js"></script><!--
-    <script src="./packages/jszip-2.0.0/package/jszip.js"></script>
-    <script src="./packages/jszip-2.0.0/package/jszip-inflate.js"></script>
-    <script src="./packages/jszip-2.0.0/package/jszip-deflate.js"></script>
-    <script src="./packages/jszip-2.0.0/package/jszip-load.js"></script>-->
+    <script src="./packages/jszip/jszip.min.js"></script>
     <script src="./packages/filesaver/FileSaver.min.js"></script>
     <script src="./packages/jszip-utils/jszip-utils.min.js"></script>
     <script src="./packages/angular-loading-bar/loading-bar.min.js"></script>
     <script src="./packages/ng-infinite-scroll/ng-infinite-scroll.min.js"></script>
     <script src="./packages/angular-click-outside/angular-click-outside.js"></script>
 
+    <!-- app bootstrapping -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/app.js"></script>
+
+    <!-- modules -->
+    <script src="scripts/modules/controllers.module.js"></script>
+    <script src="scripts/modules/directives.module.js"></script>
+    <script src="scripts/modules/services.module.js"></script>
+    <script src="scripts/modules/tools.module.js"></script>
+
+    <!-- controllers -->
+    <script src="scripts/controllers/beta.controller.js"></script>
+    <script src="scripts/controllers/book.controller.js"></script>
+    <script src="scripts/controllers/export.controller.js"></script>
+    <script src="scripts/controllers/feed.controller.js"></script>
+    <script src="scripts/controllers/page.controller.js"></script>
+    <script src="scripts/controllers/username-modal.controller.js"></script>
+    <script src="scripts/controllers/viewer.controller.js"></script>
     
-    <script src="config.js"></script>      
-    <script src="source.js"></script>
-    
-    <!--[if IE]
-        <script src="./packages/docxtemplater-2.1.3/package/vendor/jszip-utils-ie.min.js"></script>
-    <!--[endif]-->   
+
+    <!-- directives -->
+    <script src="scripts/directives/card.directive.js"></script>
+    <script src="scripts/directives/feFluid.directive.js"></script>
+    <script src="scripts/directives/feStateful.directive.js"></script>
+    <script src="scripts/directives/fileOnChange.directive.js"></script>
+    <script src="scripts/directives/scrollToTop.directive.js"></script>
+    <script src="scripts/directives/tags.directive.js"></script>
+
+    <!-- services -->
+    <script src="scripts/services/articles.service.js"></script>
+    <script src="scripts/services/attributes.service.js"></script>
+    <script src="scripts/services/books.service.js"></script>
+    <script src="scripts/services/data-source.service.js"></script>
+
+    <!-- tools -->
+    <script src="scripts/tools/array.tools.js"></script>
+    <script src="scripts/tools/complex-property.tools.js"></script>
+    <script src="scripts/tools/date.tools.js"></script>
+    <script src="scripts/tools/xml.tools.js"></script>  
     
 </head>
 
 <body>
 
-	<div id="wrapper" ng-app="pageApp">        
-        <div id="header" ng-controller="betaCtrl">
+	<div id="wrapper">        
+        <div id="header" ng-controller="BetaCtrl">
         	<div id="header-content-wrapper">
             	<div id="header-content">
                 	Conduit Beta
@@ -63,10 +93,10 @@
             </div>
         </div>
     
-	<div ng-controller="cardsCtrl">
-    	<div ng-controller="usernameModalCtrl as $ctrl" ng-init="$ctrl.open()"></div>
+	<div ng-controller="PageCtrl">
+    	<div ng-controller="UsernameModalCtrl as $ctrl" ng-init="$ctrl.open()"></div>
         <div id="container">
-        	<div id="center" class="column" ng-controller="displayCtrl" ng-cloak>
+        	<div id="center" class="column" ng-controller="ViewerCtrl" ng-cloak>
             	<div class="article-view"  ng-model="article" data-scroll-to-top="articles[currentIndex]">
                     <div id="title-wrapper">
                         <div 	class="title"
@@ -142,7 +172,7 @@
                                             Info
                              </button>
 							</form>
-                            <div ng-controller="exportCtrl">
+                            <div ng-controller="ExportCtrl">
 							<form class="nav navbar-form navbar-right" >
                             	
 								<button class="btn btn-primary" ng-click="export(articles[currentIndex])">
@@ -177,7 +207,7 @@
    				</nav>              
             </div>
             
-            <div id="left" class="column" ng-controller="feedCtrl" >
+            <div id="left" class="column" ng-controller="FeedCtrl" >
                 	<div class="fluid-container">
                         <fe-stateful class="accordion-wrapper">
                             <uib-accordion close-others="true">
@@ -254,7 +284,7 @@
                 <fe-fluid 	id="article-stream"
                 			class="stream">
                     <div infinite-scroll="buildMoreCards()" infinite-scroll-parent="true" infinite-scroll-distance=".75">                         
-                	<article-card	class="article-card"
+                	<card	class="article-card"
                     				ng-repeat="article in articles track by article.id"
                                     ng-if="article.display"
                                     ng-show="article.inFeed"
@@ -265,7 +295,7 @@
                                     ng-click="activateCard('Feed', article.id)" 
                                     ng-init="isStream = true"
                                     ng-cloak>
-                    </article-card>
+                    </card>
 </div>
                     <div id="end-of-stream" class="article-card">
                     	<div id="wrapper">
@@ -300,7 +330,7 @@
                  </div>
             </div>
             
-            <div id="right" class="column" ng-controller="bookCtrl">
+            <div id="right" class="column" ng-controller="BookCtrl">
 				<ol class="nya-bs-select dropdown form-control"
                 	ng-model="selectedBook"
                     title="Choose a book...">
@@ -313,14 +343,14 @@
 					</li>
 				</ol>             
                 <div id="article-book" class="stream book">
-                    <article-card	class="article-card"
+                    <card	class="article-card"
                                     ng-repeat="article in articles track by article.id"
                                     ng-if="article.inBook"
                                     ng-class="{	'article-card-extended-hover': hovering,
                                                 'active': article.active && article.activeInBook }"
                                     ng-click="activateCard('Book', article.id)"
                                     ng-init="isStream = false">
-                    </article-card>
+                    </card>
                         
                     <div id="end-of-stream" class="article-card">
                         <div id="wrapper">
@@ -328,7 +358,7 @@
                         </div>
                     </div>
                	</div>
-                <div ng-controller="exportCtrl">
+                <div ng-controller="ExportCtrl">
                     <button	type="button"
                             class="btn btn-primary stream-action"
                             ng-click="exportBook()">
