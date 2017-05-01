@@ -1,0 +1,53 @@
+/* line 1, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+.ico-text-1 {
+  display: inline;
+}
+
+/* line 4, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+.ico-text-2 {
+  display: inline;
+}
+
+/* line 7, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+.ico-text-3 {
+  display: inline;
+}
+
+@media screen and (max-width: 1300px) {
+  /* line 13, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .ico-text-1 {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  /* line 21, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .ico-text-2 {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  /* line 29, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .ico-text-3 {
+    display: none;
+    visibility: hidden;
+  }
+  /* line 33, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .toolbox-books {
+    width: 50px;
+  }
+  /* line 35, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .toolbox-books .special-title {
+    display: none;
+    visibility: hidden;
+  }
+  /* line 40, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .panel-title {
+    text-align: center;
+  }
+}
+
+/*# sourceMappingURL=../styles/media.map */

@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "../sass/filter.css",
+	"sources": [
+		"../sass/filter.scss",
+		"../sass/_colors.scss"
+	],
+	"sourcesContent": [
+		"@import \"colors\";\r\n\r\n.category-wrapper {\r\n\tdisplay: inline-block;\r\n\twidth: 100%;\r\n\toverflow: show;\r\n\tclear: both;\r\n}\r\n\t\r\n.category-wrapper .dropdown {\r\n\twidth: 45% !important;\r\n\tmin-width: 200px !important;\r\n\tmargin: 0 10px 10px 0 !important;\r\n\tclear: none !important;\r\n\tfloat: left !important;\r\n}\r\n\r\n.accordion-wrapper {\r\n\tposition: absolute;\r\n\tz-index: 100;\r\n    width: 100%;\r\n}",
+		"\t\t\r\n$dark: false;\r\n\r\n/*Light*/\r\n\r\n    $colorPrimary: \t\t\t\tlighten(#036, 10%)  !default;\r\n    $colorPrimaryContrast: \t\t#fff                !default;\r\n            \r\n    $colorSecondary:\t\t\t#c2714f             !default;\r\n    $colorSecondaryContrast:\t#fff                !default;\r\n\r\n    $colorFont:\t\t\t\t\t#444                !default;\r\n    $colorGrey: \t\t\t\t#ddd                !default;\r\n    $colorBackground:\t\t\t#fff                !default;\r\n\r\n\t\t\r\n/*Dark*/\r\n@if $dark == true {\r\n\t$colorPrimary: \t\t\t\t#999;\r\n\t$colorPrimaryContrast: \t\t#444;\r\n\t\t\t\r\n\t$colorSecondary:\t\t\t#aaa;\r\n\t$colorSecondaryContrast:\t#444;\r\n\t\r\n\t$colorFont:\t\t\t\t\t#aaa;\r\n\t$colorGrey: \t\t\t\t#888;\r\n\t$colorBackground:\t\t\t#222;\r\n}"
+	],
+	"mappings": "ACGA,SAAS;AAaT,QAAQ;;ADdR,AAAA,iBAAiB,CAAC;EACjB,OAAO,EAAE,YAAa;EACtB,KAAK,EAAE,IAAK;EACZ,QAAQ,EAAE,IAAK;EACf,KAAK,EAAE,IAAK;CACZ;;;AAED,AAAkB,iBAAD,CAAC,SAAS,CAAC;EAC3B,KAAK,EAAE,cAAe;EACtB,SAAS,EAAE,gBAAiB;EAC5B,MAAM,EAAE,wBAAyB;EACjC,KAAK,EAAE,eAAgB;EACvB,KAAK,EAAE,eAAgB;CACvB;;;AAED,AAAA,kBAAkB,CAAC;EAClB,QAAQ,EAAE,QAAS;EACnB,OAAO,EAAE,GAAI;EACV,KAAK,EAAE,IAAK;CACf",
+	"names": []
+}

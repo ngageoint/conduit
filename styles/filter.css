@@ -1,0 +1,27 @@
+/*Light*/
+/*Dark*/
+/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/filter.scss */
+.category-wrapper {
+  display: inline-block;
+  width: 100%;
+  overflow: show;
+  clear: both;
+}
+
+/* line 10, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/filter.scss */
+.category-wrapper .dropdown {
+  width: 45% !important;
+  min-width: 200px !important;
+  margin: 0 10px 10px 0 !important;
+  clear: none !important;
+  float: left !important;
+}
+
+/* line 18, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/filter.scss */
+.accordion-wrapper {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+}
+
+/*# sourceMappingURL=../styles/filter.map */

@@ -1,0 +1,155 @@
+/*Article View*/
+/*Light*/
+/*Dark*/
+/* line 5, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  bottom: 70px;
+  max-height: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 15px 0 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+/* line 21, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.btn-edit {
+  visibility: visible;
+  color: #444;
+  background-color: #fff;
+  font-family: 'SourceSansPro', sans-serif;
+  clear: both;
+}
+
+/* line 28, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.btn-edit:hover {
+  background-color: #f1f1f1;
+}
+
+/* line 31, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .edit-field {
+  padding: 0 1vw;
+  width: 50vw;
+}
+
+/* line 36, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #title-wrapper .edit-field {
+  line-height: 1.25em;
+  height: 6em;
+}
+
+/* line 41, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .text.edit-field {
+  padding: 0 1vw;
+  height: 50vh;
+}
+
+/* line 47, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #title-wrapper {
+  position: relative;
+  padding: 1.6em 0 0 0;
+}
+
+/* line 53, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .title {
+  padding: 0;
+  font-size: 2.15em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* line 60, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #image-wrapper {
+  display: inline-block;
+  padding: 2vh 0px 3vh 0px;
+  max-width: 100%;
+  max-height: 75vh;
+  display: block;
+  margin: 0px 0px 0px 0px;
+  justify-content: center;
+  text-align: center;
+  clear: both;
+}
+
+/* line 72, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #image-wrapper::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+/* line 80, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #image-wrapper .nav-arrow {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 10%;
+  font-size: 5vw;
+  height: auto;
+  color: #444;
+}
+
+/* line 88, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #image-wrapper .nav-arrow:hover {
+  cursor: pointer;
+  color: #2b2b2b;
+}
+
+/* line 93, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #image-wrapper .greyout {
+  visibility: hidden;
+}
+
+/* line 97, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .article-image {
+  display: inline-block;
+  max-width: 75%;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+/* line 105, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .article-image .image {
+  max-width: 100%;
+  max-height: 75vh;
+  vertical-align: middle;
+}
+
+/* line 112, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .text-wrapper {
+  display: inline-block;
+  width: 100%;
+}
+
+/* line 117, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .text {
+  padding: 1.5vh 0 75px 0;
+  display: block;
+  font-size: 1.15em;
+  line-height: 1.75em;
+  clear: both;
+  white-space: pre-line;
+}
+
+/* line 127, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .editable-buttons {
+  float: right;
+  margin: 5px 0 75px 0;
+}
+
+/* line 132, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.toolbox {
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  right: 20px;
+  height: 50px;
+}
+
+/*# sourceMappingURL=../styles/viewer.map */

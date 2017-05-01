@@ -1,0 +1,434 @@
+/*Light*/
+/*Dark*/
+/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+/* line 8, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default:focus,
+.btn-default.focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+
+/* line 14, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+/* line 19, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+/* line 26, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default:active:hover,
+.btn-default.active:hover,
+.open > .dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.open > .dropdown-toggle.btn-default:focus,
+.btn-default:active.focus,
+.btn-default.active.focus,
+.open > .dropdown-toggle.btn-default.focus {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+
+/* line 39, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  background-image: none;
+}
+
+/* line 44, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus {
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+/* line 56, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default .badge {
+  color: #fff;
+  background-color: #333;
+}
+
+/*Primary buttons*/
+/* line 63, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary {
+  color: #fff;
+  background-color: #004d99;
+  border-color: #004080;
+}
+
+/* line 68, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #004080;
+  border-color: #003366;
+}
+
+/* line 74, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary:hover {
+  color: #fff;
+  background-color: #004080;
+  border-color: #003366;
+}
+
+/* line 79, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #003366;
+  border-color: #00264d;
+}
+
+/* line 86, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: #00264d;
+  border-color: #001a33;
+}
+
+/* line 99, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+
+/* line 104, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus {
+  background-color: #0066cc;
+  border-color: #0059b3;
+}
+
+/* line 116, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary .badge {
+  color: #004d99;
+  background-color: #fff;
+}
+
+/*Navbar*/
+/* line 123, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default {
+  background-color: #f2f2f2;
+  border-color: #ddd;
+}
+
+/* line 127, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-brand {
+  color: #777;
+}
+
+/* line 130, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+
+/* line 135, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-text {
+  color: #444;
+}
+
+/* line 138, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-nav > li > a {
+  color: #777;
+}
+
+/* line 141, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #333;
+  background-color: transparent;
+}
+
+/* line 146, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #444;
+  background-color: #f2f2f2;
+}
+
+/* line 152, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-nav > .disabled > a,
+.navbar-default .navbar-nav > .disabled > a:hover,
+.navbar-default .navbar-nav > .disabled > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+
+/* line 158, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-toggle {
+  border-color: #ddd;
+}
+
+/* line 161, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #ddd;
+}
+
+/* line 165, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+
+/* line 168, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #e7e7e7;
+}
+
+/* line 172, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: #e7e7e7;
+  color: #555;
+}
+
+@media (max-width: 767px) {
+  /* line 179, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+  /* line 182, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+    background-color: transparent;
+  }
+  /* line 187, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+  }
+  /* line 193, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+  }
+}
+
+/* line 200, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-link {
+  color: #777;
+}
+
+/* line 203, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-link:hover {
+  color: #333;
+}
+
+/* line 206, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .btn-link {
+  color: #777;
+}
+
+/* line 209, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .btn-link:hover,
+.navbar-default .btn-link:focus {
+  color: #333;
+}
+
+/* line 213, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-default .btn-link:hover,
+.navbar-default .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-default .btn-link:focus {
+  color: #ccc;
+}
+
+/* Panels */
+/* line 222, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+}
+
+/* line 226, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel a {
+  color: #444;
+}
+
+/* line 230, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-body {
+  background-color: #fff;
+}
+
+/* line 233, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-heading {
+  border-bottom: 1px solid transparent;
+}
+
+/* line 236, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-heading > .dropdown .dropdown-toggle {
+  color: #444;
+}
+
+/* line 239, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-title {
+  color: #444;
+}
+
+/* line 242, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-footer {
+  background-color: #f2f2f2;
+  border-top: 1px solid #ddd;
+}
+
+/* line 246, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel > .panel-body + .table,
+.panel > .panel-body + .table-responsive,
+.panel > .table + .panel-body,
+.panel > .table-responsive + .panel-body {
+  border-top: 1px solid #ddd;
+}
+
+/* line 252, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-group .panel-heading + .panel-collapse > .panel-body,
+.panel-group .panel-heading + .panel-collapse > .list-group {
+  border-top: 1px solid #ddd;
+}
+
+/* line 256, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-group .panel-footer {
+  border-top: 0;
+}
+
+/* line 259, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-group .panel-footer + .panel-collapse .panel-body {
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 262, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-default {
+  color: #444;
+  border-color: #ddd;
+}
+
+/* line 266, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-default > .panel-heading {
+  color: #444;
+  background-color: #f2f2f2;
+  border-color: #ddd;
+}
+
+/* line 271, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ddd;
+}
+
+/* line 274, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-default > .panel-heading .badge {
+  color: #f5f5f5;
+  background-color: #333333;
+}
+
+/* line 278, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-default > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ddd;
+}
+
+/*FOcus color*/
+/* line 283, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+a:focus {
+  outline: 5px auto #c2714f;
+  outline-offset: -2px;
+}
+
+/* line 288, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: 5px auto #c2714f;
+  outline-offset: -2px;
+}
+
+/* line 295, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: 5px auto #c2714f;
+  outline-offset: -2px;
+}
+
+/* line 305, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.form-control:focus {
+  border-color: #c2714f;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(194, 113, 79, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(194, 113, 79, 0.6);
+}
+
+/* Loading Bar*/
+/* line 313, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+#loading-bar .bar {
+  background: #c2714f;
+}
+
+/* Fancy blur effect */
+/* line 318, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+#loading-bar .peg {
+  -moz-box-shadow: #c2714f 1px 0 6px 1px;
+  -ms-box-shadow: #c2714f 1px 0 6px 1px;
+  -webkit-box-shadow: #c2714f 1px 0 6px 1px;
+  box-shadow: #c2714f 1px 0 6px 1px;
+}
+
+/* line 325, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+#loading-bar-spinner .spinner-icon {
+  border-top-color: #c2714f;
+  border-left-color: #c2714f;
+}
+
+/*# sourceMappingURL=../styles/bootstrap-customization.map */

@@ -1,17 +1,17 @@
 		
 $dark: false;
 
-/*Light 036*/
+/*Light*/
 
-    $colorPrimary: 				darken(#b6c4a2, 5%)   !default;
-    $colorPrimaryContrast: 		lighten(#dce2bd, 50%)   !default;
+    $colorPrimary: 				lighten(#036, 10%)  !default;
+    $colorPrimaryContrast: 		#fff                !default;
             
-    $colorSecondary:			#c2714f   !default;
-    $colorSecondaryContrast:	#fff   !default;
+    $colorSecondary:			#c2714f             !default;
+    $colorSecondaryContrast:	#fff                !default;
 
-    $colorFont:					#444   !default;
-    $colorGrey: 				lighten(#8e9b90, 15%)   !default;
-    $colorBackground:			lighten(#dce2bd, 20%)   !default;
+    $colorFont:					#444                !default;
+    $colorGrey: 				#ddd                !default;
+    $colorBackground:			#fff                !default;
 
 		
 /*Dark*/

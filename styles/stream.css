@@ -1,0 +1,97 @@
+/*Light*/
+/*Dark*/
+/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+.stream {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: auto;
+  max-height: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+/*Buttons at bottom of a stream*/
+/* line 21, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+.stream-action {
+  width: 100%;
+  position: absolute;
+  height: 50px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+}
+
+/* line 30, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+.stream-action .btn {
+  height: 100%;
+}
+
+/*Feed*/
+/* line 36, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+.fluid-container {
+  width: 25vw;
+  position: absolute;
+  top: 10px;
+  bottom: 104px;
+  left: 10px;
+  right: 10px;
+  padding: 0;
+  max-height: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: inline-block;
+}
+
+/*Allows for clean connection to stream footer*/
+/* line 51, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+#article-stream {
+  border-radius: 4px 4px 0 0;
+  border-bottom: none;
+}
+
+/* line 56, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+#stream-footer {
+  position: absolute;
+  bottom: 70px;
+  right: -10px;
+  left: 10px;
+  background-color: #f2f2f2;
+  padding: 5px 0 0 10px;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid #ddd;
+  height: 35px;
+}
+
+/*Book*/
+/* line 69, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+.book {
+  width: 20vw;
+  top: 55px;
+  bottom: 70px;
+  left: -10px;
+  float: right;
+}
+
+/* line 77, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+#right .nya-bs-select {
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  right: 10px;
+}
+
+/* line 85, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+#right .stream-action {
+  left: -10px;
+  right: -10px;
+}
+
+/*# sourceMappingURL=../styles/stream.map */

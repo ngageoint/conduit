@@ -20,33 +20,34 @@
   src: local("SourceSerifPro-Regular.ttf") url("../resources/fonts/sourceserifpro/SourceSerifPro-Regular.ttf") format("truetype");
 }
 
+/*Light*/
+/*Dark*/
 /*Links*/
-/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+/*Light*/
+/*Dark*/
+/* line 5, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
 a:link {
   text-decoration: none;
+  color: #c2714f;
 }
 
-/* line 7, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+/* line 10, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
 a:hover {
   text-decoration: underline;
+  color: #a55939;
 }
 
-/* line 11, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+/* line 15, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
 a:active {
   outline: 0;
   outline: none;
 }
 
-/* line 16, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+/* line 20, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
 a:visited {
   outline: 0;
   outline: none;
-}
-
-/* line 21, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
-a:visited {
-  outline: 0;
-  outline: none;
+  color: #004d99;
 }
 
 /* line 26, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
@@ -57,6 +58,8 @@ a:focus {
 }
 
 /*Layout*/
+/*Light*/
+/*Dark*/
 /* line 11, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/layout.scss */
 * {
   -webkit-box-sizing: border-box;
@@ -154,7 +157,7 @@ body {
   height: 50px;
   padding: 5px;
   /*COLORS*/
-  background: #036;
+  background: #004d99;
   color: #fff;
   /*FONTS*/
   font-size: 1.5em;
@@ -192,465 +195,9 @@ body {
   /* RC fullwidth */
 }
 
-/*Article Card*/
-/* line 7, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card {
-  min-height: 6.5em;
-  max-height: 6.5em;
-  height: 6.5em;
-  padding: 5px 0px 5px 10px;
-  margin: 0;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
-  overflow: hidden;
-  position: relative;
-  background: #fff;
-}
-
-/* line 22, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card:hover {
-  background: #f1f1f1;
-  cursor: pointer;
-}
-
-/* line 27, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card:hover .card-btn {
-  visibility: visible;
-}
-
-/* line 31, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card .title {
-  margin: 0px 15px 0px 0px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 1.25em;
-  line-height: 1.15em;
-}
-
-/* line 41, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card .text {
-  min-height: 2.5em;
-  height: 2.5em;
-  padding: 0px 0px 10px 0xp;
-  margin: 0px 15px 0px 0px;
-  overflow: hidden;
-  white-space: normal;
-  font-size: 1em;
-  line-height: 1.25em;
-}
-
-/* line 54, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card .tag {
-  font-size: .80em;
-}
-
-/* line 58, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card #tag-wrapper {
-  width: 70%;
-  height: auto;
-  white-space: nowrap;
-  overflow: show;
-  float: left;
-}
-
-/* line 66, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card .attributes-wrapper {
-  background: inherit;
-}
-
-/* line 70, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card #tag-wrapper-action {
-  display: inline-block;
-  width: 30%;
-  position: absolute;
-  right: 5px;
-  bottom: 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  background: inherit;
-}
-
-/* line 81, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card #tag-wrapper-action .action {
-  background: none;
-  border: none;
-  float: right;
-  margin-right: 5px;
-  clear: none;
-  color: #036;
-}
-
-/* line 90, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card #icon {
-  float: left;
-}
-
-/* line 94, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card .card-btn {
-  visibility: hidden;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1em;
-  opacity: 0.4;
-  filter: alpha(opacity=40);
-  /* For IE8 and earlier */
-}
-
-/* line 105, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.article-card .card-btn:hover {
-  opacity: 1;
-  filter: alpha(opacity=100);
-  /* For IE8 and earlier */
-  transition: opacity .2s ease-in-out;
-}
-
-/* line 111, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.active {
-  background: #c4c4c4;
-}
-
-/* line 115, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.active:hover {
-  background: #afafaf;
-}
-
-/* line 120, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.read .title {
-  color: #afafaf;
-}
-
-/* line 123, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.read .text {
-  color: #c4c4c4;
-}
-
-/* line 126, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.read .tag {
-  background: transparent;
-  border: 1px solid #c4c4c4;
-  color: #c4c4c4;
-}
-
-/* line 134, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.active-read .title {
-  color: #6f6f6f;
-}
-
-/* line 137, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.active-read .text {
-  color: #848484;
-}
-
-/* line 140, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-.active-read .tag {
-  background: transparent;
-  border: 1px solid #848484;
-  color: #848484;
-}
-
-/* line 147, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-#end-of-stream {
-  height: 100%;
-  text-align: center;
-  color: #c4c4c4;
-  white-space: normal;
-  width: inherit;
-  font-size: 1em;
-  cursor: default;
-  overflow: hidden;
-}
-
-/* line 158, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-#end-of-stream:hover {
-  background: #fff;
-}
-
-/* line 162, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-#end-of-stream #wrapper:before {
-  content: '';
-  height: 100%;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* line 169, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-#end-of-stream #wrapper {
-  position: relative;
-  height: 100%;
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0px 35px 0px 0px;
-  width: 100%;
-}
-
-/* line 178, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
-#end-of-stream #wrapper div {
-  display: inline-block;
-  vertical-align: middle;
-  white-space: normal;
-  line-height: 140%;
-  width: 95%;
-}
-
-/*Article View*/
-/* line 12, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  right: 20px;
-  bottom: 70px;
-  max-height: inherit;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0 15px 0 15px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  background: #fff;
-}
-
-/* line 28, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.btn-edit {
-  display: inline-block;
-  visibility: visible;
-  border-radius: .2em;
-  border: none;
-  padding: 5px 10px;
-  background-color: #fff;
-  text-align: left;
-  font-size: 1em;
-  font-family: 'SourceSansPro', sans-serif;
-  cursor: pointer;
-  clear: both;
-}
-
-/* line 45, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.btn-edit:hover {
-  background-color: #f1f1f1;
-}
-
-/* line 49, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view #title-wrapper {
-  position: relative;
-  left: 10px;
-  right: 10px;
-  padding: 1.6em 1.6em 0 0;
-}
-
-/* line 58, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view .title {
-  padding: 0;
-  font-size: 2.15em;
-  font-family: 'Montserrat', sans-serif;
-}
-
-/* line 64, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view #title-wrapper .title-edit {
-  padding: 0;
-  width: 50vw;
-  position: relative;
-  left: 0px;
-  right: 0px;
-  line-height: 1.25em;
-  height: 6em;
-  vertical-align: middle;
-  clear: right;
-}
-
-/* line 76, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view #image-wrapper {
-  display: inline-block;
-  padding: 2vh 0px 3vh 0px;
-  max-width: 100%;
-  max-height: 75vh;
-  display: block;
-  margin: 0px 0px 0px 0px;
-  justify-content: center;
-  text-align: center;
-  clear: both;
-}
-
-/* line 88, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view #image-wrapper::before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -0.25em;
-}
-
-/* line 96, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view #image-wrapper #nav-before {
-  display: inline-block;
-  vertical-align: middle;
-  max-width: 10%;
-  height: auto;
-}
-
-/* line 103, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view #image-wrapper #nav-before:hover {
-  cursor: pointer;
-}
-
-/* line 107, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view #image-wrapper .nav-arrow {
-  display: inline-block;
-  vertical-align: middle;
-  max-width: 10%;
-  font-size: 5vw;
-  height: auto;
-}
-
-/* line 114, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view #image-wrapper .nav-arrow:hover {
-  cursor: pointer;
-}
-
-/* line 118, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view #image-wrapper .greyout {
-  visibility: hidden;
-}
-
-/* line 122, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view .article-image {
-  display: inline-block;
-  max-width: 75%;
-  margin: auto;
-  justify-content: center;
-  text-align: center;
-}
-
-/* line 130, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view .article-image .image {
-  max-width: 100%;
-  max-height: 75vh;
-  vertical-align: middle;
-}
-
-/* line 136, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view .text-wrapper {
-  display: inline-block;
-  width: 100%;
-}
-
-/* line 141, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view .text {
-  padding: 1.5vh 0 75px 0;
-  display: block;
-  font-size: 1.15em;
-  line-height: 1.75em;
-  clear: both;
-  white-space: pre-line;
-}
-
-/* line 150, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view .text-edit {
-  margin: 1.5vh 0 75px 0;
-  padding: 0 1vw;
-  width: 50vw;
-  height: 50vh;
-}
-
-/* line 157, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.article-view .editable-buttons {
-  float: right;
-  margin: 5px 0 75px 0;
-}
-
-/* line 162, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.all-comments-wrapper {
-  max-height: 30vh;
-  overflow-y: auto;
-  margin-bottom: 10px;
-}
-
-/* line 167, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.ncomments-wrapper {
-  margin: 0 0 -10px 0;
-}
-
-/* line 171, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.ncomments-wrapper .self {
-  margin-right: 5px;
-  text-align: right;
-}
-
-/* line 176, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.ncomments-wrapper .info-wrapper .name {
-  font-size: 1em;
-}
-
-/* line 181, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.ncomments-wrapper .info-wrapper .time-stamp {
-  font-size: .75em;
-  color: #afafaf;
-}
-
-/* line 186, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.toolbox {
-  position: absolute;
-  bottom: -10px;
-  left: 20px;
-  right: 20px;
-  height: 50px;
-}
-
-/*Style*/
-/* line 196, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.title {
-  /*COLORS*/
-  color: #036;
-}
-
-/* line 201, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.text {
-  /*COLORS*/
-  color: #444;
-}
-
-/* line 206, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.label {
-  font-size: .75em;
-  font-family: 'Montserrat', sans-serif;
-  display: inline-block;
-  padding: 0 0.5em;
-  margin-right: 5px;
-  margin-top: 0.3em;
-  height: 1.8em;
-  line-height: 1.8em;
-  vertical-align: middle;
-}
-
-/* line 219, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.tag {
-  font-size: 1em;
-  font-family: 'Montserrat', sans-serif;
-  height: 1.8em;
-  line-height: 1.8em;
-  display: inline-block;
-  width: auto;
-  padding: 0 0.5em;
-  margin-right: 5px;
-  margin-top: 0.3em;
-  background: #036;
-  color: #fff;
-  border-radius: 5px;
-}
-
-/* line 236, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-#action {
-  float: left;
-  padding-top: .1em;
-}
-
-/* line 241, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.pointer-on-hover:hover {
-  cursor: pointer;
-}
-
-/* line 245, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+/*Light*/
+/*Dark*/
+/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
 .stream {
   width: 100%;
   position: absolute;
@@ -668,7 +215,24 @@ body {
   background: #fff;
 }
 
-/* line 262, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+/*Buttons at bottom of a stream*/
+/* line 21, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+.stream-action {
+  width: 100%;
+  position: absolute;
+  height: 50px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+}
+
+/* line 30, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+.stream-action .btn {
+  height: 100%;
+}
+
+/*Feed*/
+/* line 36, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
 .fluid-container {
   width: 25vw;
   position: absolute;
@@ -683,43 +247,28 @@ body {
   display: inline-block;
 }
 
-/* line 276, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.category-wrapper {
-  display: inline-block;
-  width: 100%;
-  overflow: show;
-  clear: both;
+/*Allows for clean connection to stream footer*/
+/* line 51, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+#article-stream {
+  border-radius: 4px 4px 0 0;
+  border-bottom: none;
 }
 
-/* line 283, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.category-wrapper .dropdown {
-  width: 45% !important;
-  min-width: 200px !important;
-  margin: 0 10px 10px 0 !important;
-  clear: none !important;
-  float: left !important;
-}
-
-/* line 291, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+/* line 56, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
 #stream-footer {
   position: absolute;
   bottom: 70px;
   right: -10px;
   left: 10px;
-  background-color: #f9f9f9;
+  background-color: #f2f2f2;
   padding: 5px 0 0 10px;
   border-radius: 0 0 4px 4px;
   border: 1px solid #ddd;
   height: 35px;
 }
 
-/* line 303, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-#article-stream {
-  border-radius: 4px 4px 0 0;
-  border-bottom: none;
-}
-
-/* line 308, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+/*Book*/
+/* line 69, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
 .book {
   width: 20vw;
   top: 55px;
@@ -728,7 +277,7 @@ body {
   float: right;
 }
 
-/* line 316, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+/* line 77, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
 #right .nya-bs-select {
   position: absolute;
   top: 10px;
@@ -736,32 +285,918 @@ body {
   right: 10px;
 }
 
-/* line 324, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.accordion-wrapper {
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-}
-
-/* line 330, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.stream-action {
-  width: 100%;
-  position: absolute;
-  height: 50px;
-  left: 10px;
-  bottom: 10px;
-  right: 10px;
-}
-
-/* line 339, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+/* line 85, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
 #right .stream-action {
   left: -10px;
   right: -10px;
 }
 
-/* line 344, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
-.stream-action .btn {
+/*Article Card*/
+/*Light*/
+/*Dark*/
+/* line 5, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card {
+  min-height: 6.5em;
+  max-height: 6.5em;
+  height: 6.5em;
+  padding: 5px 10px 5px 10px;
+  margin: 0;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+}
+
+/* line 20, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card:hover {
+  background: #f1f1f1;
+  cursor: pointer;
+}
+
+/* line 25, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card:hover .card-btn {
+  visibility: visible;
+}
+
+/* line 29, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card .title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1.25em;
+  line-height: 1.15em;
+}
+
+/* line 38, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card .text {
+  min-height: 2.5em;
+  height: 2.5em;
+  overflow: hidden;
+  white-space: normal;
+  font-size: 1em;
+  line-height: 1.25em;
+}
+
+/* line 49, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card .tag {
+  font-size: .80em;
+}
+
+/* line 53, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card #tag-wrapper {
+  width: 70%;
+  height: auto;
+  white-space: nowrap;
+  overflow: show;
+  float: left;
+}
+
+/* line 61, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card .attributes-wrapper {
+  background: inherit;
+}
+
+/* line 65, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card #tag-wrapper-action {
+  display: inline-block;
+  width: 30%;
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  background: inherit;
+}
+
+/* line 76, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card #tag-wrapper-action .action {
+  background: none;
+  border: none;
+  float: right;
+  margin-right: 5px;
+  clear: none;
+  color: #c2714f;
+}
+
+/* line 85, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card #icon {
+  float: left;
+}
+
+/* line 89, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card .card-btn {
+  visibility: hidden;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1em;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  /* For IE8 and earlier */
+}
+
+/* line 100, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.article-card .card-btn:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  /* For IE8 and earlier */
+  transition: opacity .2s ease-in-out;
+}
+
+/* line 106, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.active {
+  background: #c4c4c4;
+}
+
+/* line 110, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.active:hover {
+  background: #afafaf;
+}
+
+/* line 115, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.read .title {
+  color: #afafaf;
+}
+
+/* line 118, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.read .text {
+  color: #c4c4c4;
+}
+
+/* line 121, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.read .tag {
+  background: transparent;
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+}
+
+/* line 129, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.active-read .title {
+  color: #6f6f6f;
+}
+
+/* line 132, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.active-read .text {
+  color: #848484;
+}
+
+/* line 135, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+.active-read .tag {
+  background: transparent;
+  border: 1px solid #848484;
+  color: #848484;
+}
+
+/* line 142, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+#end-of-stream {
   height: 100%;
+  text-align: center;
+  color: #c4c4c4;
+  width: inherit;
+  font-size: 1em;
+  cursor: default;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 154, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+#end-of-stream:hover {
+  background: #fff;
+}
+
+/* line 158, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+#end-of-stream #wrapper:before {
+  content: '';
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 165, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+#end-of-stream #wrapper {
+  position: relative;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* line 173, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/card.scss */
+#end-of-stream #wrapper div {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: normal;
+  line-height: 140%;
+  width: 90%;
+}
+
+/*Article View*/
+/*Light*/
+/*Dark*/
+/* line 5, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  bottom: 70px;
+  max-height: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 15px 0 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+/* line 21, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.btn-edit {
+  visibility: visible;
+  color: #444;
+  background-color: #fff;
+  font-family: 'SourceSansPro', sans-serif;
+  clear: both;
+}
+
+/* line 28, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.btn-edit:hover {
+  background-color: #f1f1f1;
+}
+
+/* line 31, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .edit-field {
+  padding: 0 1vw;
+  width: 50vw;
+}
+
+/* line 36, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #title-wrapper .edit-field {
+  line-height: 1.25em;
+  height: 6em;
+}
+
+/* line 41, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .text.edit-field {
+  padding: 0 1vw;
+  height: 50vh;
+}
+
+/* line 47, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #title-wrapper {
+  position: relative;
+  padding: 1.6em 0 0 0;
+}
+
+/* line 53, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .title {
+  padding: 0;
+  font-size: 2.15em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* line 60, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #image-wrapper {
+  display: inline-block;
+  padding: 2vh 0px 3vh 0px;
+  max-width: 100%;
+  max-height: 75vh;
+  display: block;
+  margin: 0px 0px 0px 0px;
+  justify-content: center;
+  text-align: center;
+  clear: both;
+}
+
+/* line 72, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #image-wrapper::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+/* line 80, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #image-wrapper .nav-arrow {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 10%;
+  font-size: 5vw;
+  height: auto;
+  color: #444;
+}
+
+/* line 88, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #image-wrapper .nav-arrow:hover {
+  cursor: pointer;
+  color: #2b2b2b;
+}
+
+/* line 93, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view #image-wrapper .greyout {
+  visibility: hidden;
+}
+
+/* line 97, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .article-image {
+  display: inline-block;
+  max-width: 75%;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+/* line 105, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .article-image .image {
+  max-width: 100%;
+  max-height: 75vh;
+  vertical-align: middle;
+}
+
+/* line 112, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .text-wrapper {
+  display: inline-block;
+  width: 100%;
+}
+
+/* line 117, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .text {
+  padding: 1.5vh 0 75px 0;
+  display: block;
+  font-size: 1.15em;
+  line-height: 1.75em;
+  clear: both;
+  white-space: pre-line;
+}
+
+/* line 127, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.article-view .editable-buttons {
+  float: right;
+  margin: 5px 0 75px 0;
+}
+
+/* line 132, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.toolbox {
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  right: 20px;
+  height: 50px;
+}
+
+/*Light*/
+/*Dark*/
+/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/comments.scss */
+.all-comments-wrapper {
+  max-height: 30vh;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+/* line 8, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/comments.scss */
+.comments-wrapper {
+  margin: 0 0 -10px 0;
+}
+
+/* line 12, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/comments.scss */
+.comments-wrapper .self {
+  margin-right: 5px;
+  text-align: right;
+}
+
+/* line 17, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/comments.scss */
+.comments-wrapper .info-wrapper .name {
+  font-size: 1em;
+}
+
+/* line 22, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/comments.scss */
+.comments-wrapper .info-wrapper .time-stamp {
+  font-size: .75em;
+  color: #afafaf;
+}
+
+/*Light*/
+/*Dark*/
+/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+/* line 8, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default:focus,
+.btn-default.focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+
+/* line 14, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+/* line 19, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+/* line 26, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default:active:hover,
+.btn-default.active:hover,
+.open > .dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.open > .dropdown-toggle.btn-default:focus,
+.btn-default:active.focus,
+.btn-default.active.focus,
+.open > .dropdown-toggle.btn-default.focus {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+
+/* line 39, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  background-image: none;
+}
+
+/* line 44, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus {
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+/* line 56, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-default .badge {
+  color: #fff;
+  background-color: #333;
+}
+
+/*Primary buttons*/
+/* line 63, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary {
+  color: #fff;
+  background-color: #004d99;
+  border-color: #004080;
+}
+
+/* line 68, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #004080;
+  border-color: #003366;
+}
+
+/* line 74, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary:hover {
+  color: #fff;
+  background-color: #004080;
+  border-color: #003366;
+}
+
+/* line 79, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #003366;
+  border-color: #00264d;
+}
+
+/* line 86, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: #00264d;
+  border-color: #001a33;
+}
+
+/* line 99, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+
+/* line 104, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus {
+  background-color: #0066cc;
+  border-color: #0059b3;
+}
+
+/* line 116, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn-primary .badge {
+  color: #004d99;
+  background-color: #fff;
+}
+
+/*Navbar*/
+/* line 123, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default {
+  background-color: #f2f2f2;
+  border-color: #ddd;
+}
+
+/* line 127, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-brand {
+  color: #777;
+}
+
+/* line 130, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+
+/* line 135, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-text {
+  color: #444;
+}
+
+/* line 138, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-nav > li > a {
+  color: #777;
+}
+
+/* line 141, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #333;
+  background-color: transparent;
+}
+
+/* line 146, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #444;
+  background-color: #f2f2f2;
+}
+
+/* line 152, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-nav > .disabled > a,
+.navbar-default .navbar-nav > .disabled > a:hover,
+.navbar-default .navbar-nav > .disabled > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+
+/* line 158, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-toggle {
+  border-color: #ddd;
+}
+
+/* line 161, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #ddd;
+}
+
+/* line 165, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+
+/* line 168, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #e7e7e7;
+}
+
+/* line 172, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: #e7e7e7;
+  color: #555;
+}
+
+@media (max-width: 767px) {
+  /* line 179, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+  /* line 182, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+    background-color: transparent;
+  }
+  /* line 187, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+  }
+  /* line 193, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+  }
+}
+
+/* line 200, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-link {
+  color: #777;
+}
+
+/* line 203, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .navbar-link:hover {
+  color: #333;
+}
+
+/* line 206, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .btn-link {
+  color: #777;
+}
+
+/* line 209, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .btn-link:hover,
+.navbar-default .btn-link:focus {
+  color: #333;
+}
+
+/* line 213, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.navbar-default .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-default .btn-link:hover,
+.navbar-default .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-default .btn-link:focus {
+  color: #ccc;
+}
+
+/* Panels */
+/* line 222, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+}
+
+/* line 226, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel a {
+  color: #444;
+}
+
+/* line 230, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-body {
+  background-color: #fff;
+}
+
+/* line 233, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-heading {
+  border-bottom: 1px solid transparent;
+}
+
+/* line 236, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-heading > .dropdown .dropdown-toggle {
+  color: #444;
+}
+
+/* line 239, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-title {
+  color: #444;
+}
+
+/* line 242, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-footer {
+  background-color: #f2f2f2;
+  border-top: 1px solid #ddd;
+}
+
+/* line 246, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel > .panel-body + .table,
+.panel > .panel-body + .table-responsive,
+.panel > .table + .panel-body,
+.panel > .table-responsive + .panel-body {
+  border-top: 1px solid #ddd;
+}
+
+/* line 252, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-group .panel-heading + .panel-collapse > .panel-body,
+.panel-group .panel-heading + .panel-collapse > .list-group {
+  border-top: 1px solid #ddd;
+}
+
+/* line 256, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-group .panel-footer {
+  border-top: 0;
+}
+
+/* line 259, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-group .panel-footer + .panel-collapse .panel-body {
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 262, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-default {
+  color: #444;
+  border-color: #ddd;
+}
+
+/* line 266, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-default > .panel-heading {
+  color: #444;
+  background-color: #f2f2f2;
+  border-color: #ddd;
+}
+
+/* line 271, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ddd;
+}
+
+/* line 274, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-default > .panel-heading .badge {
+  color: #f5f5f5;
+  background-color: #333333;
+}
+
+/* line 278, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.panel-default > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ddd;
+}
+
+/*FOcus color*/
+/* line 283, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+a:focus {
+  outline: 5px auto #c2714f;
+  outline-offset: -2px;
+}
+
+/* line 288, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: 5px auto #c2714f;
+  outline-offset: -2px;
+}
+
+/* line 295, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: 5px auto #c2714f;
+  outline-offset: -2px;
+}
+
+/* line 305, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+.form-control:focus {
+  border-color: #c2714f;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(194, 113, 79, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(194, 113, 79, 0.6);
+}
+
+/* Loading Bar*/
+/* line 313, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+#loading-bar .bar {
+  background: #c2714f;
+}
+
+/* Fancy blur effect */
+/* line 318, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+#loading-bar .peg {
+  -moz-box-shadow: #c2714f 1px 0 6px 1px;
+  -ms-box-shadow: #c2714f 1px 0 6px 1px;
+  -webkit-box-shadow: #c2714f 1px 0 6px 1px;
+  box-shadow: #c2714f 1px 0 6px 1px;
+}
+
+/* line 325, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/bootstrap-customization.scss */
+#loading-bar-spinner .spinner-icon {
+  border-top-color: #c2714f;
+  border-left-color: #c2714f;
+}
+
+/* line 1, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+.ico-text-1 {
+  display: inline;
+}
+
+/* line 4, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+.ico-text-2 {
+  display: inline;
+}
+
+/* line 7, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+.ico-text-3 {
+  display: inline;
+}
+
+@media screen and (max-width: 1300px) {
+  /* line 13, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .ico-text-1 {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  /* line 21, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .ico-text-2 {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  /* line 29, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .ico-text-3 {
+    display: none;
+    visibility: hidden;
+  }
+  /* line 33, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .toolbox-books {
+    width: 50px;
+  }
+  /* line 35, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .toolbox-books .special-title {
+    display: none;
+    visibility: hidden;
+  }
+  /* line 40, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .panel-title {
+    text-align: center;
+  }
+}
+
+/* line 15, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+.title {
+  color: #004d99;
+}
+
+/* line 19, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+.text {
+  color: #444;
+}
+
+/* line 23, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+.tag {
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+  height: 1.8em;
+  line-height: 1.8em;
+  display: inline-block;
+  width: auto;
+  padding: 0 0.5em;
+  margin-right: 5px;
+  margin-top: 0.3em;
+  background: #c2714f;
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* line 40, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+#action {
+  float: left;
+  padding-top: .1em;
+}
+
+/* line 45, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/style.scss */
+.pointer-on-hover:hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=../styles/style.map */

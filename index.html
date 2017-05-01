@@ -2,6 +2,7 @@
 <html data-ng-app="conduit" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="application/json; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conduit Beta</title>
     
     <meta http-equiv="X-UA-Compatible" content="IE=11" />
@@ -82,11 +83,11 @@
                 </div>
                 <button class="btn btn-default pull-right" ng-click="saveState()">
                 	<span class="glyphicon glyphicon-floppy-disk"></span> 
-                    &nbsp;Save
+                   <div class="ico-text-2">&nbsp;Save</div>
                 </button>
                 <label class="btn btn-default pull-right btn-file" style="margin-right: 10px">
                 	<span class="glyphicon glyphicon-folder-open"></span>
-                    &nbsp;Load
+                     <div class="ico-text-2">&nbsp;Load</div>
                 	<input type="file" file-on-change="loadState" style="display:none" hidden>
                     <!--  -->
                 </label>
@@ -100,7 +101,7 @@
             	<div class="article-view"  ng-model="article" data-scroll-to-top="articles[currentIndex]">
                     <div id="title-wrapper">
                         <div 	class="title"
-                        		e-class="title title-edit"
+                        		e-class="title edit-field"
                             	e-form="titleEdit"
                            	 	editable-textarea="articles[currentIndex].title"
                             	blur="submit">
@@ -108,7 +109,7 @@
                         </div>
                         <button id="btn-title" class="btn btn-edit" ng-click="titleEdit.$show()" ng-hide="titleEdit.$visible">
                             <span class="glyphicon glyphicon-pencil"></span>
-                            Edit
+                            <div class="ico-text-2">Edit</div>
                         </button>
                     </div>
                 	<div id="image-wrapper" ng-if="!articles[currentIndex].images.length == 0">
@@ -142,13 +143,13 @@
                     
                     <div class="text-wrapper">
                         <div 	class="text" 
-                        		e-class="text text-edit"
+                        		e-class="text edit-field"
                                 e-form="textEdit"
                                 editable-textarea="articles[currentIndex].text"
                                 blur="submit">
                             <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
                                 <span class="glyphicon glyphicon-pencil"></span>
-                                Edit
+                                <div class="ico-text-2">Edit</div>
                             </button>
                             {{articles[currentIndex].text}}
                         </div>
@@ -167,32 +168,39 @@
                                             popover-title="Article Info"
                                             type="button"
                                             class="btn btn-default"
-                                            popover-trigger="'outsideClick'">
+                                            popover-trigger="'outsideClick'"
+                                            title="Article Info">
                                             <span class="glyphicon glyphicon-info-sign"></span> 
-                                            Info
+                                            <div class="ico-text-1">Info</div>
                              </button>
 							</form>
                             <div ng-controller="ExportCtrl">
 							<form class="nav navbar-form navbar-right" >
                             	
-								<button class="btn btn-primary" ng-click="export(articles[currentIndex])">
+								<button class="btn btn-primary"
+                                        ng-click="export(articles[currentIndex])"
+                                        title="Export this article">
                                 	<span class="glyphicon glyphicon-save-file"></span> 
-                                    &nbsp;Export this article
+                                    <div class="ico-text-1">&nbsp;Export this article</div>
                              	</button>
                                 
                                     <button uib-popover-template="'templates/comments-popover.html'"
                                             popover-title="Comments"
                                             type="button"
                                             class="btn btn-primary"
-                                            popover-trigger="'outsideClick'">
+                                            popover-trigger="'outsideClick'"
+                                            title="Comments">
                                             <span class="glyphicon glyphicon-comment"></span> 
-                                            &nbsp;Comments&nbsp;<span ng-if="articles[currentIndex].comments.length > 0" class="badge">{{articles[currentIndex].comments.length}}</span>
+                                            <div class="ico-text-1">
+                                                &nbsp;Comments&nbsp;<span ng-if="articles[currentIndex].comments.length > 0" class="badge">{{articles[currentIndex].comments.length}}</span>
+                                            </div>
                                     </button>
-                                <ol class="nya-bs-select dropup"
-                                  	multiple
+                                <ol class="btn nya-bs-select dropup col-xl-4"
+                                  	id="toolbox-books"
+                                    multiple
                                     data-selected-text-format="count>2"
                                     ng-model="articles[currentIndex].books"
-                                    title="Add to book(s)...">
+                                    ng-attr-title="Add to book(s)...">
                                   	<li nya-bs-option="book in ::books">
                                    		<a>
                                            	{{::book.name}}
@@ -216,10 +224,12 @@
                                         is-open="status.open"
                                         
                                         >
-                                    <uib-accordion-heading ng-click="status.open = !status.open" class="pointer-on-hover">
+                                    <uib-accordion-heading  ng-click="status.open = !status.open"
+                                                            class="pointer-on-hover"
+                                                            title="Filter options">
                                         <div>
                                             <span class="glyphicon glyphicon-filter"></span>
-                                            &nbsp;Filter Options:
+                                            <div class="ico-text-3">&nbsp;Filter Options:</div>
                                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
                                         </div>
                                     </uib-accordion-heading>
@@ -315,17 +325,20 @@
                                 class="btn btn-primary"
                                 ng-model="cbxTrash"
                                 uib-btn-radio="0"
-                                ng-click="refreshFilter()">
-                         Feed
+                                ng-click="refreshFilter()"
+                                title="Feed">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        <div class="ico-text-2">&nbsp;Feed</div>
                      </button>
                     <button 	type="button"
                     			style="width: 50%;"
                                 class="btn btn-primary"
                                 ng-model="cbxTrash"
                                 uib-btn-radio="1"
-                                ng-click="refreshFilter()">
+                                ng-click="refreshFilter()"
+                                title="Deleted items">
                         <span class="glyphicon glyphicon-trash"></span>
-                         Deleted Items
+                        <div class="ico-text-2">&nbsp;Deleted Items</div>
                      </button>
                  </div>
             </div>
@@ -361,9 +374,10 @@
                 <div ng-controller="ExportCtrl">
                     <button	type="button"
                             class="btn btn-primary stream-action"
-                            ng-click="exportBook()">
+                            ng-click="exportBook()"
+                            title="Export book">
                             <span class="glyphicon glyphicon-save-file"></span> 
-                            &nbsp;Export book
+                            <div class="ico-text-3">&nbsp;Export book</div>
                     </button>
             	</div>
             </div>

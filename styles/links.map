@@ -2,11 +2,13 @@
 	"version": 3,
 	"file": "../sass/links.css",
 	"sources": [
-		"../sass/links.scss"
+		"../sass/links.scss",
+		"../sass/_colors.scss"
 	],
 	"sourcesContent": [
-		"/*Links*/\r\n\r\na:link {\r\n\ttext-decoration: none;\r\n}\r\n\t\t\r\na:hover {\r\n\ttext-decoration: underline;\r\n}\r\n\t\t\r\na:active {\r\n\toutline: 0;\r\n\toutline: none;\r\n}\r\n\t\t\r\na:visited {\r\n\toutline: 0;\r\n\toutline: none;\r\n}\r\n\t\t\r\na:visited {\r\n\toutline: 0;\r\n\toutline: none;\r\n}\t\r\n\t\t\r\na:focus {\r\n\toutline: 0;\r\n\toutline: none;\r\n\ttext-decoration: underline;\t\r\n}"
+		"/*Links*/\r\n\r\n@import \"colors.scss\";\r\n\r\na:link {\r\n\ttext-decoration: none;\r\n\tcolor: $colorSecondary;\r\n}\r\n\t\t\r\na:hover {\r\n\ttext-decoration: underline;\r\n\tcolor: darken($colorSecondary, 10%);\r\n}\r\n\t\t\r\na:active {\r\n\toutline: 0;\r\n\toutline: none;\r\n}\r\n\t\t\r\na:visited {\r\n\toutline: 0;\r\n\toutline: none;\r\n\tcolor: $colorPrimary;\r\n}\r\n\t\t\r\na:focus {\r\n\toutline: 0;\r\n\toutline: none;\r\n\ttext-decoration: underline;\t\r\n}",
+		"\t\t\r\n$dark: false;\r\n\r\n/*Light*/\r\n\r\n    $colorPrimary: \t\t\t\tlighten(#036, 10%)  !default;\r\n    $colorPrimaryContrast: \t\t#fff                !default;\r\n            \r\n    $colorSecondary:\t\t\t#c2714f             !default;\r\n    $colorSecondaryContrast:\t#fff                !default;\r\n\r\n    $colorFont:\t\t\t\t\t#444                !default;\r\n    $colorGrey: \t\t\t\t#ddd                !default;\r\n    $colorBackground:\t\t\t#fff                !default;\r\n\r\n\t\t\r\n/*Dark*/\r\n@if $dark == true {\r\n\t$colorPrimary: \t\t\t\t#999;\r\n\t$colorPrimaryContrast: \t\t#444;\r\n\t\t\t\r\n\t$colorSecondary:\t\t\t#aaa;\r\n\t$colorSecondaryContrast:\t#444;\r\n\t\r\n\t$colorFont:\t\t\t\t\t#aaa;\r\n\t$colorGrey: \t\t\t\t#888;\r\n\t$colorBackground:\t\t\t#222;\r\n}"
 	],
-	"mappings": "AAAA,SAAS;;AAET,AAAC,CAAA,AAAA,KAAK,CAAC;EACN,eAAe,EAAE,IAAK;CACtB;;;AAED,AAAC,CAAA,AAAA,MAAM,CAAC;EACP,eAAe,EAAE,SAAU;CAC3B;;;AAED,AAAC,CAAA,AAAA,OAAO,CAAC;EACR,OAAO,EAAE,CAAE;EACX,OAAO,EAAE,IAAK;CACd;;;AAED,AAAC,CAAA,AAAA,QAAQ,CAAC;EACT,OAAO,EAAE,CAAE;EACX,OAAO,EAAE,IAAK;CACd;;;AAED,AAAC,CAAA,AAAA,QAAQ,CAAC;EACT,OAAO,EAAE,CAAE;EACX,OAAO,EAAE,IAAK;CACd;;;AAED,AAAC,CAAA,AAAA,MAAM,CAAC;EACP,OAAO,EAAE,CAAE;EACX,OAAO,EAAE,IAAK;EACd,eAAe,EAAE,SAAU;CAC3B",
+	"mappings": "AAAA,SAAS;ACGT,SAAS;AAaT,QAAQ;;ADZR,AAAC,CAAA,AAAA,KAAK,CAAC;EACN,eAAe,EAAE,IAAK;EACtB,KAAK,ECEiB,OAAO;CDD7B;;;AAED,AAAC,CAAA,AAAA,MAAM,CAAC;EACP,eAAe,EAAE,SAAU;EAC3B,KAAK,EAAE,OAAM;CACb;;;AAED,AAAC,CAAA,AAAA,OAAO,CAAC;EACR,OAAO,EAAE,CAAE;EACX,OAAO,EAAE,IAAK;CACd;;;AAED,AAAC,CAAA,AAAA,QAAQ,CAAC;EACT,OAAO,EAAE,CAAE;EACX,OAAO,EAAE,IAAK;EACd,KAAK,ECjBiB,OAAO;CDkB7B;;;AAED,AAAC,CAAA,AAAA,MAAM,CAAC;EACP,OAAO,EAAE,CAAE;EACX,OAAO,EAAE,IAAK;EACd,eAAe,EAAE,SAAU;CAC3B",
 	"names": []
 }

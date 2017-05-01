@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "../sass/media.css",
+	"sources": [
+		"../sass/media.scss"
+	],
+	"sourcesContent": [
+		".ico-text-1 {\r\n\tdisplay: inline;\r\n}\r\n.ico-text-2 {\r\n\tdisplay: inline;\r\n}\r\n.ico-text-3 {\r\n\tdisplay: inline;\r\n}\r\n\r\n@media screen and (max-width: 1300px)\r\n{\r\n\t.ico-text-1 {\r\n\t\tdisplay: none;\r\n\t\tvisibility: hidden;\r\n\t}\r\n}\r\n\r\n@media screen and (max-width: 1100px)\r\n{\r\n\t.ico-text-2 {\r\n\t\tdisplay: none;\r\n\t\tvisibility: hidden;\r\n\t}\r\n}\r\n\r\n@media screen and (max-width: 900px)\r\n{\r\n\t.ico-text-3 {\r\n\t\tdisplay: none;\r\n\t\tvisibility: hidden;\r\n\t}\r\n\t.toolbox-books {\r\n\t\twidth: 50px;\r\n\t\t.special-title {\r\n\t\t\tdisplay: none;\r\n\t\t\tvisibility: hidden;\r\n\t\t}\r\n\t}\r\n\t.panel-title {\r\n\t\ttext-align: center;\r\n\t}\r\n}"
+	],
+	"mappings": ";AAAA,AAAA,WAAW,CAAC;EACX,OAAO,EAAE,MAAO;CAChB;;;AACD,AAAA,WAAW,CAAC;EACX,OAAO,EAAE,MAAO;CAChB;;;AACD,AAAA,WAAW,CAAC;EACX,OAAO,EAAE,MAAO;CAChB;;AAED,MAAM,CAAN,MAAM,MAAM,SAAS,EAAE,MAAM;;EAE5B,AAAA,WAAW,CAAC;IACX,OAAO,EAAE,IAAK;IACd,UAAU,EAAE,MAAO;GACnB;;;AAGF,MAAM,CAAN,MAAM,MAAM,SAAS,EAAE,MAAM;;EAE5B,AAAA,WAAW,CAAC;IACX,OAAO,EAAE,IAAK;IACd,UAAU,EAAE,MAAO;GACnB;;;AAGF,MAAM,CAAN,MAAM,MAAM,SAAS,EAAE,KAAK;;EAE3B,AAAA,WAAW,CAAC;IACX,OAAO,EAAE,IAAK;IACd,UAAU,EAAE,MAAO;GACnB;;EACD,AAAA,cAAc,CAAC;IACd,KAAK,EAAE,IAAK;GAKZ;;EAND,AAEC,cAFa,CAEb,cAAc,CAAC;IACd,OAAO,EAAE,IAAK;IACd,UAAU,EAAE,MAAO;GACnB;;EAEF,AAAA,YAAY,CAAC;IACZ,UAAU,EAAE,MAAO;GACnB",
+	"names": []
+}

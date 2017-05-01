@@ -1,4 +1,6 @@
 /*Layout*/
+/*Light*/
+/*Dark*/
 /* line 11, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/layout.scss */
 * {
   -webkit-box-sizing: border-box;
@@ -96,7 +98,7 @@ body {
   height: 50px;
   padding: 5px;
   /*COLORS*/
-  background: #036;
+  background: #004d99;
   color: #fff;
   /*FONTS*/
   font-size: 1.5em;

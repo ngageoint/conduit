@@ -1,0 +1,22 @@
+@import "colors";
+
+.category-wrapper {
+	display: inline-block;
+	width: 100%;
+	overflow: show;
+	clear: both;
+}
+	
+.category-wrapper .dropdown {
+	width: 45% !important;
+	min-width: 200px !important;
+	margin: 0 10px 10px 0 !important;
+	clear: none !important;
+	float: left !important;
+}
+
+.accordion-wrapper {
+	position: absolute;
+	z-index: 100;
+    width: 100%;
+}

@@ -1,0 +1,138 @@
+/*Article View*/
+
+@import "colors.scss";
+
+.article-view {
+			
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	right: 20px;
+	bottom: 70px;
+	max-height: inherit;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 0 15px 0 15px;
+	border-radius: 4px;
+	border: 1px solid $colorGrey;
+	background: $colorBackground;
+}
+
+.btn-edit  {
+	visibility: visible;
+	color: $colorFont;	
+	background-color: $colorBackground;
+	font-family: 'SourceSansPro', sans-serif;
+	clear: both;
+}
+.btn-edit:hover {
+	background-color: lighten($colorGrey, 8%);
+}
+.article-view .edit-field {
+	padding: 0 1vw;
+	width: 50vw;
+}
+
+.article-view #title-wrapper .edit-field {
+	line-height: 1.25em;
+	height: 6em;
+}
+
+.article-view .text.edit-field {
+	padding: 0 1vw;
+	height: 50vh;
+}
+
+
+.article-view #title-wrapper {
+	position: relative;
+	padding: 1.6em 0 0 0;
+}
+
+
+.article-view .title {
+	padding: 0;
+	font-size: 2.15em;
+	font-family: 'Montserrat', sans-serif;	
+}
+
+
+.article-view #image-wrapper {
+	display: inline-block;
+	padding: 2vh 0px 3vh 0px;
+	max-width: 100%;
+	max-height: 75vh;
+	display: block;
+	margin: 0px 0px 0px 0px;
+	justify-content: center;
+	text-align: center;
+	clear: both;
+}
+		
+    .article-view #image-wrapper::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.25em;
+    }
+		
+.article-view #image-wrapper .nav-arrow{
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 10%;
+	font-size: 5vw;
+	height: auto;
+	color: $colorFont;
+}
+	.article-view #image-wrapper .nav-arrow:hover{
+		cursor: pointer;
+		color: darken($colorFont, 10%);	
+	}
+
+.article-view #image-wrapper .greyout {
+	visibility: hidden;
+}
+		
+.article-view .article-image {
+	display: inline-block;
+	max-width: 75%;
+	margin: auto;
+	justify-content: center;
+	text-align: center;
+}
+		
+.article-view .article-image .image{
+	max-width: 100%;
+	max-height: 75vh;
+	vertical-align: middle;
+}
+		
+
+.article-view .text-wrapper {
+    display: inline-block;
+	width: 100%;
+}
+
+.article-view .text {
+	padding: 1.5vh 0 75px 0;
+	display: block;
+	font-size: 1.15em;
+	line-height: 1.75em;
+	clear: both;
+	white-space: pre-line;
+}
+
+   
+.article-view  .editable-buttons {
+	float: right;
+	margin: 5px 0 75px 0;
+}
+
+.toolbox {
+	position: absolute;
+	bottom: -10px;
+	left: 20px;
+	right: 20px;
+	height: 50px;
+}

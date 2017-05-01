@@ -5,363 +5,43 @@
 @import "colors";
 @import "links";
 @import "layout";
+@import "stream";
 @import "card";
+@import "viewer";
+@import "comments";
 @import "bootstrap-customization";
-		
-/*Article View*/
+@import "media.scss";
 
-.article-view {
-			
-	position: absolute;
-	top: 10px;
-	left: 20px;
-	right: 20px;
-	bottom: 70px;
-	max-height: inherit;
-	overflow-y: auto;
-	overflow-x: hidden;
-	padding: 0 15px 0 15px;
-	border-radius: 4px;
-	border: 1px solid $colorGrey;
-	background: $colorBackground;
-}
-
-.btn-edit  {
-	visibility: visible;
-	color: $colorFont;	
-	background-color: $colorBackground;
-	font-family: 'SourceSansPro', sans-serif;
-	clear: both;
-}
-.btn-edit:hover {
-	background-color: lighten($colorGrey, 8%);
-}
-
-.article-view #title-wrapper {
-	position: relative;
-	padding: 1.6em 0 0 0;
-}
-
-
-		.article-view .title {
-			padding: 0;
-			font-size: 2.15em;
-			font-family: 'Montserrat', sans-serif;	
-		}
-
-.article-view .edit-field {
-	padding: 0 1vw;
-	width: 50vw;
-}
-
-.article-view #title-wrapper .edit-field {
-	line-height: 1.25em;
-	height: 6em;
-}
-
-.article-view .text.edit-field {
-	padding: 0 1vw;
-	height: 50vh;
-}
-
-
-.article-view #image-wrapper {
-			display: inline-block;
-			padding: 2vh 0px 3vh 0px;
-			max-width: 100%;
-			max-height: 75vh;
-			display: block;
-			margin: 0px 0px 0px 0px;
-			justify-content: center;
-			text-align: center;
-			clear: both;
-		}
-		
-		.article-view #image-wrapper::before {
-			content: '';
-			display: inline-block;
-			height: 100%;
-			vertical-align: middle;
-			margin-right: -0.25em;
-		}
-		
-		.article-view #image-wrapper .nav-arrow{
-			display: inline-block;
-			vertical-align: middle;
-			max-width: 10%;
-			font-size: 5vw;
-			height: auto;
-			color: $colorFont;
-		}
-			.article-view #image-wrapper .nav-arrow:hover{
-				cursor: pointer;
-				color: darken($colorFont, 10%);	
-			}
-
-.article-view #image-wrapper .greyout {
-	visibility: hidden;
+.title {
+	color: $colorPrimary;
 }
 		
-		.article-view .article-image {
-			display: inline-block;
-			max-width: 75%;
-			margin: auto;
-			justify-content: center;
-			text-align: center;
-		}
-		
-		.article-view .article-image .image{
-			max-width: 100%;
-			max-height: 75vh;
-			vertical-align: middle;
-		}
-		
-   .article-view .text-wrapper {
-   display: inline-block;
-		 width: 100%;
-}
-
-		.article-view .text {
-			padding: 1.5vh 0 75px 0;
-			display: block;
-			font-size: 1.15em;
-			line-height: 1.75em;
-			clear: both;
-			white-space: pre-line;
-		}
-
-   
-.article-view  .editable-buttons {
-	float: right;
-	margin: 5px 0 75px 0;
-}
-
-.all-comments-wrapper {
-	max-height: 30vh;
-	overflow-y: auto;
-	margin-bottom: 10px;
-}
-.ncomments-wrapper {
-	margin: 0 0 -10px 0;
-}
-
-.ncomments-wrapper .self{
-  margin-right: 5px;
-	text-align: right;
-}
-
-.ncomments-wrapper .info-wrapper .name {
-	font-size: 1em;
-	
-}
-
-.ncomments-wrapper .info-wrapper .time-stamp {
-	font-size: .75em;
-	color: darken($colorGrey, 18%);
-}
-
-.toolbox {
-	position: absolute;
-	bottom: -10px;
-	left: 20px;
-	right: 20px;
-	height: 50px;
-}
-
-/*Style*/
-
-		.title {
-			/*COLORS*/
-			color: $colorPrimary;
-		}
-		
-		.text {
-			/*COLORS*/
-			color: $colorFont;
-		}
-
-.label {
-	font-size: 	.75em;
-	font-family: 'Montserrat', sans-serif;
-
-	display: inline-block;
-	padding: 0 0.5em;
-	margin-right: 5px;
-	margin-top: 0.3em;
-	height: 1.8em;
-	line-height: 1.8em;
-  vertical-align: middle;
+.text {
+	color: $colorFont;
 }
 
 .tag {
-			font-size: 	1em;
-			font-family: 'Montserrat', sans-serif;
-			
-			height: 1.8em;
-			line-height: 1.8em;
-			
-			display: inline-block;
-			width: auto;
-			padding: 0 0.5em;
-			margin-right: 5px;
-			margin-top: 0.3em;
-			background: $colorSecondary;
-			color: $colorSecondaryContrast;
-			border-radius: 5px;
-		}
-		 
-#action {
-		float: left;
-	    padding-top: .1em;
+	font-size: 	1em;
+	font-family: 'Montserrat', sans-serif;
+	
+	height: 1.8em;
+	line-height: 1.8em;
+	
+	display: inline-block;
+	width: auto;
+	padding: 0 0.5em;
+	margin-right: 5px;
+	margin-top: 0.3em;
+	background: $colorSecondary;
+	color: $colorSecondaryContrast;
+	border-radius: 5px;
 }
+		 
+	#action {
+			float: left;
+			padding-top: .1em;
+	}
 
 .pointer-on-hover:hover {
 	cursor: pointer;
-}
-
-.stream {
-	width: 100%;
-	position: absolute;
-	bottom: 0px;
-	right: 0;
-	left: 0;
-	top: 0;
-	height: auto;
-	max-height: inherit;
-	overflow-y: auto;
-	overflow-x: hidden;
-	display: inline-block;
-	border-radius: 4px;
-	border: 1px solid $colorGrey;
-	background: $colorBackground;
-}
-
-.fluid-container {
-	width: 25vw;
-	position: absolute;
-	top: 10px;
-	bottom: 104px;
-	left: 10px;
-	right: 10px;
-	padding: 0;
-	max-height: inherit;
-	overflow-y: auto;
-	overflow-x: hidden;
-	display: inline-block;
-}
-	
-	.category-wrapper {
-		display: inline-block;
-		width: 100%;
-		overflow: show;
-		clear: both;
-	}
-	
-	.category-wrapper .dropdown {
-		width: 45% !important;
-		min-width: 200px !important;
-		margin: 0 10px 10px 0 !important;
-		clear: none !important;
-		float: left !important;
-	}
-	
-	#stream-footer {
-		position: absolute;
-		bottom: 70px;
-		right: -10px;
-		left: 10px;
-		background-color: darken($colorBackground, 5%);
-		padding: 5px 0 0 10px;
-		border-radius: 0 0 4px 4px;
-		border: 1px solid $colorGrey;
-		height: 35px;
-	}
-	
-		#article-stream {
-			border-radius: 4px 4px 0 0;
-			border-bottom: none;
-		}
-
-     	.book {
-			width: 20vw;
-			 top: 55px;
-			 bottom: 70px;
-			 left: -10px;			
-			float: right;
-		}
-
-#right .nya-bs-select
-{
-	position: absolute;
-	top: 10px;
-	left: -10px;
-	right: 10px;
-}
-
-.accordion-wrapper {
-	position: absolute;
-	z-index: 100;
-	width: 100%;
-}
-	
-.stream-action {
-	width: 100%;
-	position: absolute;
-	height: 50px;
-	left: 10px;
-	bottom: 10px;
-	right: 10px;
-}
-
-#right .stream-action {
-	left: -10px;
-	right: -10px;
-}
-
-.stream-action .btn {
-  height: 100%;	
-}
-
-.ico-text-1 {
-	display: inline;
-}
-.ico-text-2 {
-	display: inline;
-}
-.ico-text-3 {
-	display: inline;
-}
-
-@media screen and (max-width: 1200px)
-{
-	.ico-text-1 {
-		display: none;
-		visibility: hidden;
-	}
-}
-
-@media screen and (max-width: 1000px)
-{
-	.ico-text-2 {
-		display: none;
-		visibility: hidden;
-	}
-}
-
-@media screen and (max-width: 800px)
-{
-	.ico-text-3 {
-		display: none;
-		visibility: hidden;
-	}
-	.toolbox-books {
-		width: 50px;
-		.special-title {
-			display: none;
-			visibility: hidden;
-		}
-	}
-	.panel-title {
-		text-align: center;
-	}
 }

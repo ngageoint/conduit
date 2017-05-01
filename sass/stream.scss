@@ -1,0 +1,89 @@
+@import "colors";
+
+.stream {
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	right: 0;
+	left: 0;
+	top: 0;
+	height: auto;
+	max-height: inherit;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: inline-block;
+	border-radius: 4px;
+	border: 1px solid $colorGrey;
+	background: $colorBackground;
+}
+
+/*Buttons at bottom of a stream*/
+.stream-action {
+	width: 100%;
+	position: absolute;
+	height: 50px;
+	left: 10px;
+	bottom: 10px;
+	right: 10px;
+}
+
+.stream-action .btn {
+  height: 100%;	
+}
+
+
+/*Feed*/
+    .fluid-container {
+        width: 25vw;
+        position: absolute;
+        top: 10px;
+        bottom: 104px;
+        left: 10px;
+        right: 10px;
+        padding: 0;
+        max-height: inherit;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: inline-block;
+    }
+
+    /*Allows for clean connection to stream footer*/
+	#article-stream {
+		border-radius: 4px 4px 0 0;
+		border-bottom: none;
+	}
+
+	#stream-footer {
+		position: absolute;
+		bottom: 70px;
+		right: -10px;
+		left: 10px;
+		background-color: darken($colorBackground, 5%);
+		padding: 5px 0 0 10px;
+		border-radius: 0 0 4px 4px;
+		border: 1px solid $colorGrey;
+		height: 35px;
+	}
+
+/*Book*/
+    .book {
+		width: 20vw;
+		top: 55px;
+		bottom: 70px;
+		left: -10px;			
+		float: right;
+	}
+
+    #right .nya-bs-select
+    {
+        position: absolute;
+        top: 10px;
+        left: -10px;
+        right: 10px;
+    }
+	
+    #right .stream-action {
+        left: -10px;
+        right: -10px;
+    }
+
