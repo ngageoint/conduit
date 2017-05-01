@@ -1,4 +1,4 @@
-angular.module('conduit.controllers').controller('BetaCtrl', function ($scope, $rootScope, $http, ArticlesService, cfpLoadingBar) {
+angular.module('conduit.controllers').controller('BetaCtrl', function ($scope, $rootScope, $http, ArticlesService, cfpLoadingBar, DateTools) {
 	
 	$scope.loadState = function(files) {
 		
@@ -68,7 +68,7 @@ angular.module('conduit.controllers').controller('BetaCtrl', function ($scope, $
 			
 		var jsonStr = JSON.stringify($scope.articles)
 		var blob = new Blob([jsonStr], {type:"text"});
-		var saveName = ($scope.user.name || "Saved State") + " " + $scope.formatDate(new Date()) + ".json";
+		var saveName = ($scope.user.name || "Saved State") + " " + DateTools.formatDate(new Date()) + ".json";
 		saveAs(blob, saveName);
 	}
 });

@@ -1,4 +1,4 @@
-angular.module('conduit.tools').factory('DateTools', function($q, $http, __config) { 
+angular.module('conduit.tools').factory('DateTools', function($q, $http, $filter, __config) { 
 	return {
         isNewerThan: function(pubDate, numDays)
 		{
@@ -11,6 +11,11 @@ angular.module('conduit.tools').factory('DateTools', function($q, $http, __confi
 			var d = new Date();
 			
 			return (pubDate >= (d.setDate(d.getDate() - numDays)));
+		},
+		formatDate: function(date) {
+			if(typeof date === 'string')
+				date = new Date(date);
+			return $filter('date')(date, 'dd MMMM yyyy')	
 		}
     };		
 });

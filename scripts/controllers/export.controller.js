@@ -1,58 +1,31 @@
-angular.module('conduit.controllers').controller('ExportCtrl', function($q, $scope) {
+angular.module('conduit.controllers').controller('ExportCtrl', function($q, $scope, DateTools,XMLTools) {
 		
 	/*Retruns a promise of a docx file*/
 	var createFile = function(article) {			
-		return new Promise(function(resolve, reject){
-			
-			function loadImg(src, callback) {
-				myimg = new Image();
-				myimg.onload = callback;
-				myimg.src = src;
+		return new Promise(function(resolve, reject){			
+
+			var loadFile=function(url,callback){
+				JSZipUtils.getBinaryContent(url,callback);
 			}
-			
-			loadImg('example.jpg', function() {
-				createDoc();
-			});
+			loadFile("templates/export-tplt.docx",function(err,content){
+				if (err) { throw e};
+				doc=new Docxgen(content);
+				doc.setData( {
+					"title":article.title,
+					"text":XMLTools.ooxmlP(article.text),
+					"date": DateTools.formatDate(new Date()),
+					"image":"example.jpg"
+				}); //set the templateVariables
+				doc.render() //apply them
+				out=doc.getZip().generate({type:"blob"}) //Output the document using Data-URI
 				
-			createDoc = function() {
-			
-				var opts = {}
-				opts.centered = false;
-				opts.getImage=function(tagValue, tagName) {
-					return getBase64Image(myimg);
-				}
-			
-				opts.getSize=function(img,tagValue, tagName) {  
-					return [200,200];
-				}
-			
-				var imageModule=new window.ImageModule(opts);
+				if(out)
+					resolve(out);
+				else
+					reject();
 				
-				var loadFile=function(url,callback){
-					JSZipUtils.getBinaryContent(url,callback);
-				}
-				loadFile("templates/export-tplt.docx",function(err,content){
-					if (err) { throw e};
-					doc=new Docxgen(content);
-					
-					doc.attachModule(imageModule);
-					doc.setData( {
-						"title":article.title,
-						"text":ooxmlP(article.text),
-						"date": $scope.formatDate(new Date()),
-						"image":"example.jpg"
-					}); //set the templateVariables
-					doc.render() //apply them
-					out=doc.getZip().generate({type:"blob"}) //Output the document using Data-URI
-					
-					if(out)
-						resolve(out);
-					else
-						reject();
-					
-					return Promise.resolve(doc);
-				})
-			}
+				return Promise.resolve(doc);
+			})
 		})
 	}
 	
@@ -79,7 +52,7 @@ angular.module('conduit.controllers').controller('ExportCtrl', function($q, $sco
 		var createZip = function(zip) {
 			if(JSZip.support.blob)
 				zip.generateAsync({type : "blob"}).then(function(blob) {
-					saveFile($scope.selectedBook.name + ' ' + $scope.formatDate(new Date()), blob, '.zip')
+					saveFile($scope.selectedBook.name + ' ' + DateTools.formatDate(new Date()), blob, '.zip')
 				});
 		}
 					

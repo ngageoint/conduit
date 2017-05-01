@@ -31,14 +31,6 @@ angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $
 			
 	});
 	
-	$scope.formatDate = function(date) {
-		
-		if(typeof date === 'string')
-			date = new Date(date);
-		
-		return $filter('date')(date, 'dd MMMM yyyy')	
-	}
-	
 	$scope.user = {
 			name: '',
 		};
