@@ -13,7 +13,7 @@
   display: inline;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1200px) {
   /* line 13, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
   .ico-text-1 {
     display: none;
@@ -29,24 +29,50 @@
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
   /* line 29, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
   .ico-text-3 {
     display: none;
     visibility: hidden;
   }
-  /* line 33, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
-  .toolbox-books {
-    width: 50px;
+  /* line 34, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .panel-title {
+    text-align: center;
   }
-  /* line 35, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
-  .toolbox-books .special-title {
+  /* line 39, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .toolbox .nya-bs-select {
+    width: 42px;
+  }
+  /* line 41, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .toolbox .nya-bs-select .dropdown-toggle {
+    height: 36px;
+  }
+  /* line 44, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .toolbox .nya-bs-select .caret {
     display: none;
     visibility: hidden;
   }
-  /* line 40, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
-  .panel-title {
+  /* line 51, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .nya-bs-select {
     text-align: center;
+  }
+  /* line 53, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .nya-bs-select .dropdown-toggle {
+    padding-right: 0px;
+  }
+  /* line 56, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .nya-bs-select .special-title, .nya-bs-select .filter-option {
+    display: none;
+    visibility: hidden;
+  }
+  /* line 62, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/media.scss */
+  .special-title:before, .filter-option:before {
+    visibility: visible;
+    display: inline;
+    left: 0;
+    right: 0;
+    font-family: 'Glyphicons-Halflings-Regular';
+    content: "\e043";
   }
 }
 

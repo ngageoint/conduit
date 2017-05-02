@@ -52,7 +52,7 @@
 
 /*Allows for clean connection to stream footer*/
 /* line 51, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
-#article-stream {
+#left .stream {
   border-radius: 4px 4px 0 0;
   border-bottom: none;
 }

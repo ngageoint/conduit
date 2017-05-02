@@ -164,20 +164,19 @@
 							<ul class="nav navbar-nav">                               
 							</ul>
 							<form class="nav navbar-form navbar-left">
-                             <button uib-popover-template="'templates/info-popover.html'"
-                                            popover-title="Article Info"
-                                            type="button"
-                                            class="btn btn-default"
-                                            popover-trigger="'outsideClick'"
-                                            title="Article Info">
-                                            <span class="glyphicon glyphicon-info-sign"></span> 
-                                            <div class="ico-text-1">Info</div>
-                             </button>
+                                <button uib-popover-template="'templates/info-popover.html'"
+                                        popover-title="Article Info"
+                                        type="button"
+                                        class="btn btn-default"
+                                        popover-trigger="'outsideClick'"
+                                        title="Article Info">
+                                        <span class="glyphicon glyphicon-info-sign"></span> 
+                                        <div class="ico-text-1">Info</div>
+                                </button>
 							</form>
-                            <div ng-controller="ExportCtrl">
 							<form class="nav navbar-form navbar-right" >
-                            	
-								<button class="btn btn-primary"
+								<button ng-controller="ExportCtrl"
+                                        class="btn btn-primary"
                                         ng-click="export(articles[currentIndex])"
                                         title="Export this article">
                                 	<span class="glyphicon glyphicon-save-file"></span> 
@@ -209,7 +208,6 @@
                                     </li>
                                 </ol>
        						</form>
-                           </div>
        					</div>
    					</div>
    				</nav>              
@@ -294,11 +292,11 @@
                 <fe-fluid 	id="article-stream"
                 			class="stream">
                     <div infinite-scroll="buildMoreCards()" infinite-scroll-parent="true" infinite-scroll-distance=".75">                         
-                	<card	class="article-card"
+                	<card	class="card"
                     				ng-repeat="article in articles track by article.id"
                                     ng-if="article.display"
                                     ng-show="article.inFeed"
-                                    ng-class="{	'article-card-extended-hover': hovering,
+                                    ng-class="{	'card-extended-hover': hovering,
                                     			'active-read': article.active && !article.activeInBook && article.read,
                                                 'active': article.active && !article.activeInBook,
                                                 'read': article.read }"
@@ -307,7 +305,7 @@
                                     ng-cloak>
                     </card>
 </div>
-                    <div id="end-of-stream" class="article-card">
+                    <div id="end-of-stream" class="card">
                     	<div id="wrapper">
                         	<div>No more articles to show.</div>
                         </div>
@@ -356,16 +354,16 @@
 					</li>
 				</ol>             
                 <div id="article-book" class="stream book">
-                    <card	class="article-card"
+                    <card	class="card"
                                     ng-repeat="article in articles track by article.id"
                                     ng-if="article.inBook"
-                                    ng-class="{	'article-card-extended-hover': hovering,
+                                    ng-class="{	'card-extended-hover': hovering,
                                                 'active': article.active && article.activeInBook }"
                                     ng-click="activateCard('Book', article.id)"
                                     ng-init="isStream = false">
                     </card>
                         
-                    <div id="end-of-stream" class="article-card">
+                    <div id="end-of-stream" class="card">
                         <div id="wrapper">
                             <div>No more articles to show.</div>
                         </div>
