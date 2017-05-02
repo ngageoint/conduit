@@ -152,4 +152,19 @@
   height: 50px;
 }
 
+/* line 139, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.toolbox .container-fluid {
+  padding: 0;
+}
+
+/* line 142, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.toolbox .container-fluid .navbar-info {
+  padding: 0;
+}
+
+/* line 145, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+.toolbox .container-fluid .navbar-right {
+  margin-right: 0;
+}
+
 /*# sourceMappingURL=../styles/viewer.map */

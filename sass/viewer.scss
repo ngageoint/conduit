@@ -135,4 +135,15 @@
 	left: 20px;
 	right: 20px;
 	height: 50px;
+
+	.container-fluid {
+		padding: 0;
+
+		.navbar-info {
+			padding: 0;
+		}
+		.navbar-right {
+			margin-right: 0;
+		}
+	}
 }

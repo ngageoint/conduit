@@ -8,7 +8,7 @@
 	display: inline;
 }
 
-@media screen and (max-width: 1300px)
+@media screen and (max-width: 1200px)
 {
 	.ico-text-1 {
 		display: none;
@@ -24,20 +24,47 @@
 	}
 }
 
-@media screen and (max-width: 900px)
+@media screen and (max-width: 800px)
 {
 	.ico-text-3 {
 		display: none;
 		visibility: hidden;
 	}
-	.toolbox-books {
-		width: 50px;
-		.special-title {
+
+	.panel-title {
+		text-align: center;
+	}
+
+	.toolbox {
+		.nya-bs-select {
+			width: 42px;
+			.dropdown-toggle {
+				height: 36px;
+			}
+			.caret {
+				display: none;
+				visibility: hidden;
+			}
+		}
+	}
+
+	.nya-bs-select {
+		text-align: center;
+		.dropdown-toggle {
+			padding-right: 0px;
+		}
+		.special-title, .filter-option {
 			display: none;
 			visibility: hidden;
 		}
 	}
-	.panel-title {
-		text-align: center;
+
+	.special-title:before, .filter-option:before {
+		visibility: visible;
+		display: inline;
+		left: 0;
+		right: 0;
+		font-family: 'Glyphicons-Halflings-Regular';
+		content: "\e043";
 	}
 }

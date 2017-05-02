@@ -2,7 +2,7 @@
 
 @import "colors.scss";
 
-.article-card {
+.card {
 	min-height: 6.5em;
 	max-height: 6.5em;
 	height: 6.5em;
@@ -17,16 +17,16 @@
 	background: $colorBackground;
 }
 		
-    .article-card:hover {
+    .card:hover {
 	    background: lighten($colorGrey, 8%);
 		cursor: pointer;
 	}			
 		
-        .article-card:hover .card-btn {
+        .card:hover .card-btn {
             visibility: visible;
         }		
 		
-	.article-card .title{					
+	.card .title{					
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -35,7 +35,7 @@
 		line-height: 1.15em;
 	}
 		
-	.article-card .text{	
+	.card .text{	
 		min-height: 2.5em;
 		height: 2.5em;
 			
@@ -45,12 +45,8 @@
 		font-size: 	1em;
 		line-height: 1.25em;
 	}
-
-    .article-card .tag {
-		font-size: 	.80em;
-	}
 		
-        .article-card #tag-wrapper {
+        .card #tag-wrapper {
             width: 70%;
             height: auto;
             white-space: nowrap;
@@ -58,11 +54,11 @@
             float: left;
         }
 
-        .article-card .attributes-wrapper {
+        .card .attributes-wrapper {
             background: inherit;
         }
 
-        .article-card #tag-wrapper-action {
+        .card #tag-wrapper-action {
             display: inline-block;
             width: 30%;
             position: absolute;
@@ -73,7 +69,7 @@
             background: inherit;
         }
 
-            .article-card #tag-wrapper-action .action {
+            .card #tag-wrapper-action .action {
                 background: none;
                 border: none;
                 float: right;
@@ -82,11 +78,11 @@
                 color: ($colorSecondary);
             }    
             
-        .article-card #icon {
+        .card #icon {
             float: left;
         }		
 		
-	.article-card .card-btn{
+	.card .card-btn{
 		visibility: hidden;
 		position: absolute;
 		top: 10px;
@@ -97,7 +93,7 @@
         filter: alpha(opacity=40); /* For IE8 and earlier */
 	}
 
-        .article-card .card-btn:hover{
+        .card .card-btn:hover{
             opacity: 1;
             filter: alpha(opacity=100); /* For IE8 and earlier */
             transition: opacity .2s ease-in-out;
