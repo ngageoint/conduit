@@ -61,6 +61,7 @@
     <script src="scripts/services/attributes.service.js"></script>
     <script src="scripts/services/books.service.js"></script>
     <script src="scripts/services/data-source.service.js"></script>
+    <script src="scripts/services/filter.service.js"></script>
 
     <!-- tools -->
     <script src="scripts/tools/array.tools.js"></script>
@@ -232,11 +233,11 @@
                                         </div>
                                     </uib-accordion-heading>
                                     
-                                    <div ng-click="refreshFilter()">
+                                    <div ng-click="refreshFeed()">
                                        
                                         <label>Days back (up to {{filter.MAX_DAYS_BACK}})</label>
                                             <div class="input-group col-md-5">
-                                                <input class="form-control" type="text" ng-model="filter.daysBack" ng-change="refreshFilter()"/>
+                                                <input class="form-control" type="text" ng-model="filter.daysBack" ng-change="refreshFeed()"/>
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-default" type="button" title="Reduce by 1" ng-click="filter.daysBack = filter.daysBack - 1">
                                                         <span class="glyphicon glyphicon-chevron-down"></span>
@@ -275,9 +276,9 @@
                                             </div>  
                                         </div>
                                     
-                                        <div id="tag-wrapper" ng-click="refreshFilter()">
+                                        <div id="tag-wrapper" ng-click="refreshFeed()">
                                             <div ng-if="::attr.filter" ng-repeat="attr in ::attributes" ng-show="true" class="cbx-wrapper" id="attrs">
-                                                <input type="checkbox" id="{{::'cbx-'+attr.name}}" ng-model="attr.checked" ng-checked="attr.checked" ng-disabled="showAll" ng-click="refreshFilter()"/>
+                                                <input type="checkbox" id="{{::'cbx-'+attr.name}}" ng-model="attr.checked" ng-checked="attr.checked" ng-disabled="showAll" ng-click="refreshFeed()"/>
                                                 <label class="checkbox-label" for="{{::'cbx-'+attr.name}}">                                        
                                                     <div alt="{{::attr.alt}}" title="{{::attr.alt}}">
                                                         <span ng-if="::attr.glyphicon" class="glyphicon glyphicon-{{::attr.glyphicon}}"></span>
@@ -323,7 +324,7 @@
                                 class="btn btn-primary"
                                 ng-model="cbxTrash"
                                 uib-btn-radio="0"
-                                ng-click="refreshFilter()"
+                                ng-click="refreshFeed()"
                                 title="Feed">
                         <span class="glyphicon glyphicon-th-list"></span>
                         <div class="ico-text-2">&nbsp;Feed</div>
@@ -333,7 +334,7 @@
                                 class="btn btn-primary"
                                 ng-model="cbxTrash"
                                 uib-btn-radio="1"
-                                ng-click="refreshFilter()"
+                                ng-click="refreshFeed()"
                                 title="Deleted items">
                         <span class="glyphicon glyphicon-trash"></span>
                         <div class="ico-text-2">&nbsp;Deleted Items</div>
