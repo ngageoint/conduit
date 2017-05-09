@@ -1,5 +1,5 @@
 /* The ArticleBookService makes all of the articles in the article book available in a global, editable promise. */
-angular.module('conduit.services').factory('FilterService', function(DateTools, ComplexPropertyTools) { 
+angular.module('conduit.services').factory('FilterService', function(DateTools, ComplexPropertyTools, __config) { 
 
     /*
     filter
@@ -8,19 +8,19 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
     updateOptions: sources, source, articles, filter, attributes)
     */
 
-    var filter = {
-        count: 0,
-        MAX_DAYS_BACK: 0,
-        DEFAULT_DAYS_BACK: 0,
-        daysBack: 0,
-        trash: false
-    };
+    //var filter = ;
 
     return {
-        filter: filter,
+        filter: {
+            count: 0,
+            MAX_DAYS_BACK: __config.MAX_DAYS_BACK,
+            DEFAULT_DAYS_BACK: __config.DEFAULT_DAYS_BACK,
+            daysBack: __config.DEFAULT_DAYS_BACK,
+            trash: false
+        },
         build: function (sources, articles){
             
-            filter.count = articles.length;
+            this.filter.count = articles.length;
                 
             //Populate our data sources filter attributes with values found in the articles
             for(var i = 0; i < articles.length; i++)
@@ -100,15 +100,15 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
             if(!sources)
                 return true;
             
-            if(!DateTools.isNewerThan(article.date, filter.daysBack))
+            if(!DateTools.isNewerThan(article.date, this.filter.daysBack))
                 return false;
                     
             //Filter trash first because it is the cheapest calculation
-            if(!filter.trash && article.removed)
+            if(!this.filter.trash && article.removed)
                 return false;
-            if(filter.trash && !article.removed)
+            if(this.filter.trash && !article.removed)
                 return false;
-            if(filter.trash && article.removed)
+            if(this.filter.trash && article.removed)
                 return true;
                         
             //Filter by source second because it can cheaply eliminate many articles

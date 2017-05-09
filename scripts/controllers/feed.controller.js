@@ -2,11 +2,8 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 	$scope, $timeout, __config, ArticlesService, DataSourceService, ComplexPropertyTools,
 	ArrayTools, DateTools, FilterService) {
 					
+	FilterService.filter.trash = $scope.cbxTrash;
 	$scope.filter = FilterService.filter;
-	$scope.filter.MAX_DAYS_BACK = __config.MAX_DAYS_BACK;
-	$scope.filter.DEFAULT_DAYS_BACK = __config.DEFAULT_DAYS_BACK;
-	$scope.filter.daysBack = __config.DEFAULT_DAYS_BACK;
-	$scope.filter.trash = $scope.cbxTrash;
 
 	//Setup Filter
 	//The filter needs the articles loaded to be built, so we wait from articles to load; no data is passed since we inherit articles
@@ -48,10 +45,10 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 		if(!$scope.articles)
 			return;
 			
-		if($scope.filter.daysBack < 1)
-			$scope.filter.daysBack = 1;
-		if($scope.filter.daysBack > __config.MAX_DAYS_BACK)
-			$scope.filter.daysBack = __config.MAX_DAYS_BACK;
+		if(FilterService.filter.daysBack < 1)
+			FilterService.filter.daysBack = 1;
+		if(FilterService.filter.daysBack > __config.MAX_DAYS_BACK)
+			FilterService.filter.daysBack = __config.MAX_DAYS_BACK;
 			
 		$scope.filter.count = 0;
 		for(var i = 0; i < $scope.articles.length; i++)
