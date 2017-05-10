@@ -1,9 +1,12 @@
 angular.module('conduit.controllers').controller('FeedCtrl', function(
 	$scope, $timeout, __config, ArticlesService, DataSourceService, ComplexPropertyTools,
-	ArrayTools, DateTools, FilterService) {
+	ArrayTools, DateTools, FilterService, RssLiteService) {
 					
 	FilterService.filter.trash = $scope.cbxTrash;
 	$scope.filter = FilterService.filter;
+
+	//RssLiteService.readUrl('https://alerts.weather.gov/cap/wa.php?x=1');
+	RssLiteService.readUrl('https://feeds.feedburner.com/nfpanewsreleases');
 
 	//Setup Filter
 	//The filter needs the articles loaded to be built, so we wait from articles to load; no data is passed since we inherit articles

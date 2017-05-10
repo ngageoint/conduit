@@ -1,0 +1,50 @@
+/*Very simple RSS reader, supporting Atom 1.0 and RSS 2.0 only*/
+angular.module('conduit.services').factory('RssLiteService', function($http) { 
+	var readUrl = function(url) {
+		return new Promise(function(resolve, reject) {
+
+            var feedObj = $http.get(url).then(function(response) {
+                var parser = new DOMParser();
+                var xml;
+                xml = parser.parseFromString(response.data,"text/xml");
+                console.log(xml);
+
+                //Atom 1.0 support
+                var feed = xml.getElementsByTagName("feed")[0];
+                var entries;
+                if(feed)
+                    entries = feed.getElementsByTagName("entry");
+                //RSS 2.0 support
+                else
+                {
+                    feed = xml.getElementsByTagName("channel")[0];
+                    entries = feed.getElementsByTagName("item");
+                }
+                
+                var parsed = [];
+                for(var i = 0; i < entries.length; i++)
+                {
+                    var temp = {};
+                    for(var j = 0; j < entries[i].childNodes.length; j++)
+                        if(entries[i].childNodes[j].tagName && entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0] && entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0].childNodes[0])                            
+                            temp[entries[i].childNodes[j].tagName] = 
+                                entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0].childNodes[0].nodeValue;     
+                    parsed.push(temp);
+                }               
+
+                console.log(parsed);
+                return parsed;
+            });
+
+            if(feedObj)
+                return Promise.resolve(feedObj);
+            else
+                return Promise.reject();
+
+        })
+	};
+	
+	return {
+	  readUrl: readUrl
+    };
+});

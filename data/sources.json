@@ -2,7 +2,6 @@
 	"tag":"Example",
 	"name":"Example Source",
 	"src":"www.example.com",
-	"operator":"or",
 	"checked":true,
 	"filter":[{
 		"name":"Topic",
@@ -21,4 +20,28 @@
 		"values":[],
 		"checked":false
 	}]
-}]
+},{
+	"tag":"NWS",
+	"name":"National Weather Service Alerts",
+	"src":"https://alerts.weather.gov/cap/wa.php?x=1",
+	"checked":true,
+	"filter":[{
+		"name":"Topic",
+		"binding": {
+			"property":"topics"
+		},
+		"values":[],
+		"checked":false
+	},{
+		"name":"Region",
+		"binding": {
+			"property":"region",
+			"data":"abrv",
+			"name":"name"
+		},
+		"values":[],
+		"checked":false
+	}]
+}
+
+]
