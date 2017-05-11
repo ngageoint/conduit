@@ -3,16 +3,17 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 	ArrayTools, DateTools, FilterService, RssLiteService) {
 					
 	FilterService.filter.trash = $scope.cbxTrash;
-	$scope.filter = FilterService.filter;
-
-	RssLiteService.readUrl('https://alerts.weather.gov/cap/wa.php?x=1');
-	//RssLiteService.readUrl('https://feeds.feedburner.com/nfpanewsreleases');
+	$scope.filter = FilterService.filter;	
 
 	//Setup Filter
 	//The filter needs the articles loaded to be built, so we wait from articles to load; no data is passed since we inherit articles
 	ArticlesService.getArticles().then(function() {
 		DataSourceService.getSources().then( function(sourceData) {
 			$scope.sources = FilterService.build(sourceData, $scope.articles);
+			
+			RssLiteService.readUrl('https://alerts.weather.gov/cap/wa.php?x=1').then(function(feed) {
+				//console.log(ArticlesService.formatRss(feed, sourceData[1]));
+			});
 		}).catch( function(err) {
 			console.log(err);
 		});

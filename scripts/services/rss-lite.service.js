@@ -2,8 +2,12 @@
 angular.module('conduit.services').factory('RssLiteService', function($http) { 
 	var readUrl = function(url) {
 		return new Promise(function(resolve, reject) {
-
-            var feedObj = $http.get(url).then(function(response) {
+            
+            var loadFeed = function(url, callback) {
+                    $http.get(url).then(callback)
+            }
+                        
+            loadFeed(url, function(response) {
                 var parser = new DOMParser();
                 var xml;
                 xml = parser.parseFromString(response.data,"text/xml");
@@ -47,16 +51,19 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                     }                
                                  
                     parsed.push(temp);
-                }               
+                }
+
+                if(parsed)
+                    resolve(parsed);
+                else
+                    reject();
 
                 console.log(parsed);
-                return parsed;
+
+                return Promise.resolve(parsed);
             });
 
-            if(feedObj)
-                return Promise.resolve(feedObj);
-            else
-                return Promise.reject();
+           
 
         })
 	};
