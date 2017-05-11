@@ -7,7 +7,6 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                 var parser = new DOMParser();
                 var xml;
                 xml = parser.parseFromString(response.data,"text/xml");
-                console.log(xml);
 
                 //Atom 1.0 support
                 var feed = xml.getElementsByTagName("feed")[0];
@@ -26,9 +25,27 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                 {
                     var temp = {};
                     for(var j = 0; j < entries[i].childNodes.length; j++)
-                        if(entries[i].childNodes[j].tagName && entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0] && entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0].childNodes[0])                            
-                            temp[entries[i].childNodes[j].tagName] = 
-                                entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0].childNodes[0].nodeValue;     
+                    {
+                        //if the entity child has a tag name, move to the child and work from there
+                        if(entries[i].childNodes[j].tagName)
+                        {
+                            if(entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0])
+                            {
+                                if(entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0].childNodes[0])
+                                    temp[entries[i].childNodes[j].tagName] = 
+                                        entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0].childNodes[0].nodeValue;
+                                else
+                                    temp[entries[i].childNodes[j].tagName] = 
+                                        entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0].textContent;
+                            }
+                            else
+                            {
+                                temp[entries[i].childNodes[j].tagName] = 
+                                    entries[i].childNodes[j].textContent;
+                            }
+                        }    
+                    }                
+                                 
                     parsed.push(temp);
                 }               
 
