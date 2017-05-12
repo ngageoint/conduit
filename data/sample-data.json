@@ -1,6 +1,6 @@
 [{
 	"date":"28 Apr 2017 13:46:34",
-    "productLink":"www.example.com/article12345.html",
+    "link":"www.example.com/article12345.html",
     "id":"12345",
     "title":"Article One",
     "text":"The text associated with article one",
@@ -16,7 +16,7 @@
 	"source":"Example Source"
 },{
 	"date":"25 Apr 2017 09:23:86",
-    "productLink":"www.example.com/article8675309.html",
+    "link":"www.example.com/article8675309.html",
     "id":"8675309",
     "title":"Article Two",
     "text":"The text associated with article two",

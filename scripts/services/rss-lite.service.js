@@ -24,6 +24,8 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                     entries = feed.getElementsByTagName("item");
                 }
                 
+console.log(entries);
+
                 var parsed = [];
                 for(var i = 0; i < entries.length; i++)
                 {
@@ -33,6 +35,13 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                         //if the entity child has a tag name, move to the child and work from there
                         if(entries[i].childNodes[j].tagName)
                         {
+                            if(entries[i].childNodes[j].tagName === "link")
+                            {
+                                temp[entries[i].childNodes[j].tagName] = 
+                                    entries[i].childNodes[j].attributes[0].nodeValue;
+                                continue;
+                            }
+
                             if(entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0])
                             {
                                 if(entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0].childNodes[0])

@@ -30,11 +30,8 @@
 			"local":"date",
 			"source":"published"
 		},{
-			"local":"productLink",
+			"local":"link",
 			"source":"link"
-		},{
-			"local":"id",
-			"source":"id"
 		},{
 			"local":"title",
 			"source":"title"
@@ -68,6 +65,13 @@
 		"name":"Urgency",
 		"binding": {
 			"property":"cap:urgency"
+		},
+		"values":[],
+		"checked":false
+	},{
+		"name":"Severity",
+		"binding": {
+			"property":"cap:severity"
 		},
 		"values":[],
 		"checked":false

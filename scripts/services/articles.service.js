@@ -59,21 +59,21 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 			article.comments = [];
 
 		//Set fields required by conduit
-		if(typeof article.date == "undefined")
+		if(typeof article.date === "undefined")
 			article.date = new Date();
-		if(typeof article.id == "undefined")
+		if(!article.id || article.id === "")
 			article.id = generateUUID();
-		if(typeof article.title == "undefined")
+		if(typeof article.title === "undefined")
 			article.title = "";
-		if(typeof article.text == "undefined")
+		if(typeof article.text === "undefined")
 			article.text = "";
-		if(typeof article.images == "undefined")
+		if(typeof article.images === "undefined")
 			article.images = [];
-		if(typeof article.selectedImage == "undefined")
+		if(typeof article.selectedImage === "undefined")
 			article.selectedImage = 0;
-		if(typeof article.tags == "undefined")
+		if(typeof article.tags === "undefined")
 			article.tags = [];
-		if(typeof article.source == "undefined")
+		if(typeof article.source === "undefined")
 			article.source = "";
 
 		return article;
@@ -81,7 +81,7 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 
 	//RFC4122 version 4 compliant; the chance of a collision is less than 1 in 2.71 quintillion
 	var generateUUID = function() {
-		'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
 				var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
 				return v.toString(16);
 		});
