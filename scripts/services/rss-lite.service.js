@@ -67,8 +67,7 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                                     entries[i].childNodes[j].textContent;
                             }
                         }    
-                    }                
-                                 
+                    }                     
                     parsed.push(temp);
                 }
 

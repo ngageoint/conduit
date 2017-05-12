@@ -2,20 +2,42 @@
 angular.module('conduit.services').factory('ArticlesService', function($q, $http, DataSourceService, RssLiteService, ComplexPropertyTools, __config) { 
 
 	var articles = 	DataSourceService.getSources().then(function(sources) {
-		return $q.all([
-			$http.get(__config.articlesUrl)
+		
+		var queries = [];
+
+		//Create the static query Promise for our sample data
+		queries.push($http.get(__config.articlesUrl)
 				.then(function(response) {
 					return response.data;
-				}),
-			RssLiteService.readUrl('https://alerts.weather.gov/cap/us.php?x=1')
-				.then(function(feed) {
-					return formatRss(feed, sources[1]);
-			})
-		]).then(function(results) {
-			var fullRes = [];
+				}))
+
+		//Run through all of the sources
+		for(var i = 0; i < sources.length; i++)
+		{
+			//Id the rss sources, defer the promsies, and added them to our query array
+			if(sources[i].type && ~sources[i].type.indexOf("rss"))
+			{
+				var deferred = $q.defer();
+    			queries[i] = deferred.promise;
+				makeRssCall(deferred, i);
+			}
+		}
+			//The code that $q will call when attempting to fill the promises
+			function makeRssCall(deferred, i) {
+				(function(source) {
+					RssLiteService.readUrl(sources[i].link)
+						.then(function(feed) {
+							deferred.resolve(formatRss(feed, source));
+						})
+					})(sources[i])//Make sure to pass the source on to the callback so that it can be properly formatted
+			};
+
+		//Request all promises from our queries array, concat them, and return
+		return $q.all(queries).then(function(results) {
+			var fullResponse = [];
 			for(var i = 0; i < results.length; i++)
-				fullRes = fullRes.concat(results[i]);
-			return fullRes;
+				fullResponse = fullResponse.concat(results[i]);
+			return fullResponse;
 		});			
 	});
 	
@@ -23,6 +45,7 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 		return articles;
 	};
 
+	//Format rss sources into the accepted Conduit JSON format
 	var formatRss = function(feed, source)
 	{
 		var articles = [];
@@ -36,23 +59,28 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 		}
 
 		for(var i = 0; i < articles.length; i++)
+		{
+			articles[i].tags.push(source.tag);
 			for(var j = 0; j < source.tags.length; j++)
-				articles[i].tags.push(ComplexPropertyTools.getComplexProperty(articles[i], source.tags[j]));
+				if(source.tags[j])
+					articles[i].tags.push(ComplexPropertyTools.getComplexProperty(articles[i], source.tags[j]));
+		}
+
+		console.log(articles);
 
 		return articles;
 	}
 
-//req date, id, title, text, images, selectedImage, tags, books, comments, wasRead, inFeed, source
-
 //Force the article to have the minimum fields and set defaults if none given
 	var forceArticleCompliance = function(article) {
+		
 		//Set booleans
 		if(typeof article.wasRead == "undefined")
 			article.wasRead = false;
 		if(typeof article.inFeed == "undefined")
 			article.inFeed = true;
-		if(typeof article.inFeed == "undefined")
-			article.inFeed = false;
+		if(typeof article.inBook == "undefined")
+			article.inBook = false;
 
 		//Set fields created by conduit
 		if(typeof article.books == "undefined")

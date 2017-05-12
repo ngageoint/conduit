@@ -36,7 +36,7 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
             }
 
             this.filter.count = articles.length;
-                
+
             //Populate our data sources filter attributes with values found in the articles
             for(var i = 0; i < articles.length; i++)
             {						

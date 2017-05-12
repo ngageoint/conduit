@@ -1,4 +1,4 @@
-![Conduit logo](/resources/logo.png?raw=true "Optional Title")
+![Conduit logo](/resources/logo.png?raw=true "Conduit Logo")
 
 ### About
 
