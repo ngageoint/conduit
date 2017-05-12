@@ -47,9 +47,15 @@
 		},{
 			"local":"cap:urgency",
 			"source":"cap:urgency"
+		},{
+			"local":"cap:severity",
+			"source":"cap:severity"
+		},{
+			"local":"cap:certainty",
+			"source":"cap:certainty"
 		}
 	],
-	"tags":["cap:event","cap:urgency"],
+	"tags":["cap:event","cap:urgency","cap:severity","cap:certainty"],
 	"checked":true,
 	"filter":[{
 		"name":"Event",

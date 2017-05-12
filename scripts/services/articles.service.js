@@ -1,5 +1,5 @@
 /* The ArticlesService makes all of the articles available in a global, editable promise. */
-angular.module('conduit.services').factory('ArticlesService', function($q, $http, DataSourceService, RssLiteService, __config) { 
+angular.module('conduit.services').factory('ArticlesService', function($q, $http, DataSourceService, RssLiteService, ComplexPropertyTools, __config) { 
 
 	var articles = 	DataSourceService.getSources().then(function(sources) {
 		return $q.all([
@@ -33,7 +33,11 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 				temp[source.binding[j].local] = feed[i][source.binding[j].source];
 			temp.source = source.name
 			articles.push(forceArticleCompliance(temp));
-		}	
+		}
+
+		for(var i = 0; i < articles.length; i++)
+			for(var j = 0; j < source.tags.length; j++)
+				articles[i].tags.push(ComplexPropertyTools.getComplexProperty(articles[i], source.tags[j]));
 
 		return articles;
 	}
