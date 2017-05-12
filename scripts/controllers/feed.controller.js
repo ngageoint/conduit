@@ -111,7 +111,7 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 					for(var k = 0; k < $scope.articles.length; k++)
 						if(!$scope.articles[k].display)
 						{
-							$scope.articles = swap($scope.articles, j, k);
+							$scope.articles = ArrayTools.swap($scope.articles, j, k);
 							break;
 						}
 				}

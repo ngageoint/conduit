@@ -7,7 +7,7 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 				.then(function(response) {
 					return response.data;
 				}),
-			RssLiteService.readUrl('https://alerts.weather.gov/cap/wa.php?x=1')
+			RssLiteService.readUrl('https://alerts.weather.gov/cap/us.php?x=1')
 				.then(function(feed) {
 					return formatRss(feed, sources[1]);
 			})
@@ -51,6 +51,8 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 			article.wasRead = false;
 		if(typeof article.inFeed == "undefined")
 			article.inFeed = true;
+		if(typeof article.inFeed == "undefined")
+			article.inFeed = false;
 
 		//Set fields created by conduit
 		if(typeof article.books == "undefined")
@@ -59,21 +61,21 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 			article.comments = [];
 
 		//Set fields required by conduit
-		if(typeof article.date === "undefined")
+		if(typeof article.date == "undefined")
 			article.date = new Date();
 		if(!article.id || article.id === "")
 			article.id = generateUUID();
-		if(typeof article.title === "undefined")
+		if(typeof article.title == "undefined")
 			article.title = "";
-		if(typeof article.text === "undefined")
+		if(typeof article.text == "undefined")
 			article.text = "";
-		if(typeof article.images === "undefined")
+		if(typeof article.images == "undefined")
 			article.images = [];
-		if(typeof article.selectedImage === "undefined")
+		if(typeof article.selectedImage == "undefined")
 			article.selectedImage = 0;
-		if(typeof article.tags === "undefined")
+		if(typeof article.tags == "undefined")
 			article.tags = [];
-		if(typeof article.source === "undefined")
+		if(typeof article.source == "undefined")
 			article.source = "";
 
 		return article;

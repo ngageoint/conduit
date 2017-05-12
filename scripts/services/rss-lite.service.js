@@ -23,8 +23,6 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                     feed = xml.getElementsByTagName("channel")[0];
                     entries = feed.getElementsByTagName("item");
                 }
-                
-console.log(entries);
 
                 var parsed = [];
                 for(var i = 0; i < entries.length; i++)
@@ -37,9 +35,21 @@ console.log(entries);
                         {
                             if(entries[i].childNodes[j].tagName === "link")
                             {
-                                temp[entries[i].childNodes[j].tagName] = 
-                                    entries[i].childNodes[j].attributes[0].nodeValue;
-                                continue;
+                                if(typeof entries[i].childNodes[j].attributes === "string")
+                                {
+                                    temp[entries[i].childNodes[j].tagName] = 
+                                            entries[i].childNodes[j].attributes[k].nodeValue;
+                                        continue;
+                                }
+                                for(var k = 0; k < entries[i].childNodes[j].attributes.length; k++)
+                                    if(entries[i].childNodes[j].attributes[k].name === "href")
+                                    {
+                                        temp[entries[i].childNodes[j].tagName] = 
+                                            entries[i].childNodes[j].attributes[k].nodeValue;
+                                        break;
+                                    }
+                                if(temp[entries[i].childNodes[j].tagName])
+                                    continue;
                             }
 
                             if(entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0])
