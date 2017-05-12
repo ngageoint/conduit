@@ -58,8 +58,6 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                 else
                     reject();
 
-                console.log(parsed);
-
                 return Promise.resolve(parsed);
             });
 

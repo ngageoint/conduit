@@ -9,13 +9,13 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 				}),
 			RssLiteService.readUrl('https://alerts.weather.gov/cap/wa.php?x=1')
 				.then(function(feed) {
-					console.log(feed);
 					return formatRss(feed, sources[1]);
 			})
 		]).then(function(results) {
+			var fullRes = [];
 			for(var i = 0; i < results.length; i++)
-				console.log(results[i]);
-			return results[0].concat(results[1]);
+				fullRes = fullRes.concat(results[i]);
+			return fullRes;
 		});			
 	});
 	
@@ -31,6 +31,7 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 			var temp = {};
 			for(var j = 0; j < source.binding.length; j++)
 				temp[source.binding[j].local] = feed[i][source.binding[j].source];
+			temp.source = source.name
 			articles.push(forceArticleCompliance(temp));
 		}	
 
@@ -45,7 +46,7 @@ angular.module('conduit.services').factory('ArticlesService', function($q, $http
 		if(typeof article.wasRead == "undefined")
 			article.wasRead = false;
 		if(typeof article.inFeed == "undefined")
-			article.inFeed = false;
+			article.inFeed = true;
 
 		//Set fields created by conduit
 		if(typeof article.books == "undefined")

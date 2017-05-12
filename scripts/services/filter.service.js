@@ -20,6 +20,21 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
         },
         build: function (sources, articles){
             
+            var buildValue = function(value) {
+                //Values in the filter are JSON objects with the topic name and a field to track whether or not it is checked; this is bound to the dropdowns.
+                value.checked = false;
+                value.show = true;
+                return value;
+            }
+
+            var newValue = function(value) {
+                //Determine if the topic has already been included; if not, add it.;
+                for(var m = 0; m < sources[j].filter[k].values.length; m++)
+                    if(~sources[j].filter[k].values[m].data.indexOf(value['data']))
+                        return false;
+                return true;
+            }
+
             this.filter.count = articles.length;
                 
             //Populate our data sources filter attributes with values found in the articles
@@ -27,64 +42,62 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
             {						
                 for(var j = 0; j < sources.length; j++)
                 {
-                    if(~articles[i].tags.indexOf(sources[j].tag))
+                    if(~articles[i].source.indexOf(sources[j].name))
                         for(var k = 0; k < sources[j].filter.length; k++)
                             if(sources[j].filter[k].binding.property)
                             {
                                 var boundProp = ComplexPropertyTools.getComplexProperty(articles[i], sources[j].filter[k].binding.property)
                                 if(boundProp)
                                 {
-                                    for(var l = 0; l < boundProp.length; l++)
+                                    if(typeof boundProp === "string")
                                     {
-                                        var value = {};
-                                        if(sources[j].filter[k].binding.data)
+                                        value = {
+                                            data: boundProp,
+                                            name: boundProp
+                                        };
+                                        value = buildValue(value)        
+                                            if(newValue(value))
+                                                sources[j].filter[k].values.push(value);
+                                    }
+                                    else
+                                    {
+                                        for(var l = 0; l < boundProp.length; l++)
                                         {
-                                            var boundData = ComplexPropertyTools.getComplexProperty(boundProp[l], sources[j].filter[k].binding.data)
-                                            
-                                            if(boundData)
-                                                value.data = boundData.trim();
-                                            else
-                                                value.data = boundProp[l].trim();
-                                        }
-                                        else
-                                            value.data = boundProp[l].trim();
-                                        
-                                        if(sources[j].filter[k].binding.name)
-                                        {
-                                            var boundName = ComplexPropertyTools.getComplexProperty(boundProp[l], sources[j].filter[k].binding.name)
-                                            
-                                            if(boundName)
-                                                value.name = boundName.trim();
-                                            else
-                                                value.name = value.data;
-                                        }
-                                        else
-                                            value.name = value.data;
-                                        //Values in the filter are JSON objects with the topic name and a field to track whether or not it is checked; this is bound to the dropdowns.
-                                        value.checked = false;
-                                        value.show = true;
-                                        
-                                        //Determine if the topic has already been included; if not, add it.
-                                        var newValue = true;
-                                        for(var m = 0; m < sources[j].filter[k].values.length; m++)
-                                        {
-                                            if(~sources[j].filter[k].values[m].data.indexOf(value['data']))
+                                            var value = {};
+                                            if(sources[j].filter[k].binding.data)
                                             {
-                                                newValue = false;
-                                                break;
+                                                var boundData = ComplexPropertyTools.getComplexProperty(boundProp[l], sources[j].filter[k].binding.data)
+                                                
+                                                if(boundData)
+                                                    value.data = boundData.trim();
+                                                else
+                                                    value.data = boundProp[l].trim();
                                             }
                                             else
-                                                newValue = true;
+                                                value.data = boundProp[l].trim();
+                                            
+                                            if(sources[j].filter[k].binding.name)
+                                            {
+                                                var boundName = ComplexPropertyTools.getComplexProperty(boundProp[l], sources[j].filter[k].binding.name)
+                                                
+                                                if(boundName)
+                                                    value.name = boundName.trim();
+                                                else
+                                                    value.name = value.data;
+                                            }
+                                            else
+                                                value.name = value.data;
+
+                                            value = buildValue(value)        
+                                            if(newValue(value))
+                                                sources[j].filter[k].values.push(value);
                                         }
-                                                        
-                                        if(newValue)
-                                            sources[j].filter[k].values.push(value);
-                                        }
+                                    }
                                 }
                             }
                 }
             }
-                    
+      
             //Sort and cleanup
             for(var i = 0; i < sources.length; i++)
                 for(var j = 0; j < sources[i].filter.length; j++)
