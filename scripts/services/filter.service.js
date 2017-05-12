@@ -186,15 +186,24 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
                     //For all of the article binding elements, as long as we haven't found a match yet
                     var boundProp = ComplexPropertyTools.getComplexProperty(article, sources[s].filter[f].binding.property)
                     
-                    for(var p = 0; p < boundProp.length && !hasMatch; p++)
+                    if(typeof boundProp === "string")
                     {
-                        var boundData = boundProp[p];
-                        if(sources[s].filter[f].binding.data)
-                            boundData = ComplexPropertyTools.getComplexProperty(boundProp[p], sources[s].filter[f].binding.data);
-                        if(boundData)
-                            for(var v = 0; v < sources[s].filter[f].selectedValues.length && !hasMatch; v++)
-                                if(sources[s].filter[f].selectedValues[v] && ~boundData.indexOf(sources[s].filter[f].selectedValues[v]))
+                        for(var v = 0; v < sources[s].filter[f].selectedValues.length && !hasMatch; v++)
+                                if(sources[s].filter[f].selectedValues[v] && ~boundProp.indexOf(sources[s].filter[f].selectedValues[v]))
                                     hasMatch = true;
+                    }
+                    else
+                    {
+                        for(var p = 0; p < boundProp.length && !hasMatch; p++)
+                        {
+                            var boundData = boundProp[p];
+                            if(sources[s].filter[f].binding.data)
+                                boundData = ComplexPropertyTools.getComplexProperty(boundProp[p], sources[s].filter[f].binding.data);
+                            if(boundData)
+                                for(var v = 0; v < sources[s].filter[f].selectedValues.length && !hasMatch; v++)
+                                    if(sources[s].filter[f].selectedValues[v] && ~boundData.indexOf(sources[s].filter[f].selectedValues[v]))
+                                        hasMatch = true;
+                        }
                     }
                     if(!hasMatch)
                         globalMatch = false;
