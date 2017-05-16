@@ -37,7 +37,6 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 	//Update the options that are visible in the filter based on other options that are selected.
 	$scope.updateFilterOptions = function(source, filter)
 	{
-		//Current issue: updateOptions makes cards dissapear (something with determineShow?)
 		$scope.sources = FilterService.updateOptions($scope.sources, source, $scope.articles, filter, $scope.attributes) || $scope.sources;
 	}
 			
