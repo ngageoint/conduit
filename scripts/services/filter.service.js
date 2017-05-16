@@ -16,7 +16,7 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
             MAX_DAYS_BACK: __config.MAX_DAYS_BACK,
             DEFAULT_DAYS_BACK: __config.DEFAULT_DAYS_BACK,
             daysBack: __config.DEFAULT_DAYS_BACK,
-            trash: false
+            trash: 0
         },
         build: function (sources, articles){
             
