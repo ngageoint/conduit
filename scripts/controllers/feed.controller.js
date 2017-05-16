@@ -1,8 +1,7 @@
 angular.module('conduit.controllers').controller('FeedCtrl', function(
 	$scope, $timeout, __config, ArticlesService, DataSourceService, ComplexPropertyTools,
-	ArrayTools, DateTools, FilterService, RssLiteService) {
+	ArrayTools, DateTools, FilterService) {
 					
-	FilterService.filter.trash = $scope.cbxTrash;
 	$scope.filter = FilterService.filter;	
 
 	//Setup Filter

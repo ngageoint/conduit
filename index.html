@@ -54,7 +54,6 @@
     <script src="scripts/directives/feStateful.directive.js"></script>
     <script src="scripts/directives/fileOnChange.directive.js"></script>
     <script src="scripts/directives/scrollToTop.directive.js"></script>
-    <script src="scripts/directives/tags.directive.js"></script>
 
     <!-- services -->
     <script src="scripts/services/articles.service.js"></script>
@@ -323,7 +322,7 @@
                     <button 	type="button"
                     			style="width: 50%;"
                                 class="btn btn-primary"
-                                ng-model="cbxTrash"
+                                ng-model="filter.trash"
                                 uib-btn-radio="0"
                                 ng-click="refreshFeed()"
                                 title="Feed">
@@ -333,7 +332,7 @@
                     <button 	type="button"
                     			style="width: 50%;"
                                 class="btn btn-primary"
-                                ng-model="cbxTrash"
+                                ng-model="filter.trash"
                                 uib-btn-radio="1"
                                 ng-click="refreshFeed()"
                                 title="Deleted items">

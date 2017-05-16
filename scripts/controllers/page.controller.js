@@ -1,4 +1,5 @@
-angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $filter, ArticlesService, AttributesService, BooksService, ArrayTools) {
+angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $filter,
+ArticlesService, AttributesService, BooksService, ArrayTools) {
 		
 	ArticlesService.getArticles().then(function(data) {
 		$scope.articles = data;

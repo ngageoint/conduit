@@ -1,5 +1,6 @@
 /* The ArticlesService makes all of the articles available in a global, editable promise. */
-angular.module('conduit.services').factory('ArticlesService', function($q, $http, DataSourceService, RssLiteService, ComplexPropertyTools, __config) { 
+angular.module('conduit.services').factory('ArticlesService', function($q, $http,
+DataSourceService, RssLiteService, ComplexPropertyTools, __config) { 
 
 	var articles = 	DataSourceService.getSources().then(function(sources) {
 		
