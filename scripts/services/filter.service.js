@@ -245,22 +245,17 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
 					
 			//Set all the filter values equal to the loneFilter; show all if the filter is operating on its own, or hide all if the filter is working with other filters
 			for(var v = 0; v < sources[source].filter[filter].values.length; v++)
-				sources[source].filter[filter].values[v].show = loneFilter;
+				sources[source].filter[filter].values[v].show = false;
 				
 
 			//If it's a lone filter, we can return now since all we're doing is showing everything
 			if(loneFilter)
 			{
-				/*Attempt to add days to filter of filter
 				for(var p = 0; p < articles.length; p++)
-					//If the article is currently being shown...
-					if(DateTools.isNewerThan(articles[p].date, $scope.filter.daysBack))
-						for(var pv = 0; pv < boundProp.length; pv++)
-							for(var fv = 0; fv < sources[source].filter[filter].values.length; fv++)
-								if(~boundProp[pv].indexOf(sources[source].filter[filter].values[fv].data))	
-										sources[source].filter[filter].values[fv].show = true;
-				*/
-				return sources;
+					if(DateTools.isNewerThan(articles[p].date, this.filter.daysBack))
+                        if(sources && sources[source])
+                            sources[source] = this.setShowValuesTrue(articles[p], filter, sources[source]);  	
+                return sources;
 			}
 								
 			var temp = sources[source].filter[filter].selectedValues;
@@ -270,39 +265,44 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
 			for(var p = 0; p < articles.length; p++)
 				//If the article is currently being shown...
 				if(this.determineShow(articles[p], sources, attributes))
-				{
-                    //IT'S A BOUND PROP ISSUE!!!
-					//...then run through the bound values in the article and compare them to the values in the filter 
-					var boundProp = ComplexPropertyTools.getComplexProperty(articles[p], sources[source].filter[filter].binding.property)
-                    if(typeof boundProp === "undefined")
-                        continue;
-                    if(typeof boundProp === "string")
-                    {
-                         var boundData = boundProp;
-                         if(sources[source].filter[filter].binding.data)
-                                boundData = ComplexPropertyTools.getComplexProperty(boundProp, sources[source].filter[filter].binding.data);
-                            for(var fv = 0; fv < sources[source].filter[filter].values.length; fv++)
-                                //If our visible article has bound data that matches the filter, then we'll go ahead and show that filter value
-                                if(~boundData.indexOf(sources[source].filter[filter].values[fv].data))	
-                                    sources[source].filter[filter].values[fv].show = true
-                    }
-                    else
-                    {
-                        for(var pv = 0; pv < boundProp.length; pv++)
-                        {
-                            var boundData = boundProp[pv];
-                            if(sources[source].filter[filter].binding.data)
-                                boundData = ComplexPropertyTools.getComplexProperty(boundProp[pv], sources[source].filter[filter].binding.data);
-                            for(var fv = 0; fv < sources[source].filter[filter].values.length; fv++)
-                                //If our visible article has bound data that matches the filter, then we'll go ahead and show that filter value
-                                if(~boundData.indexOf(sources[source].filter[filter].values[fv].data))	
-                                    sources[source].filter[filter].values[fv].show = true
-                        }
-                    }
-				}
+                    if(sources && sources[source])
+                        sources[source] = this.setShowValuesTrue(articles[p], filter, sources[source]); 
 				
     		sources[source].filter[filter].selectedValues = temp;
             return sources;
+        },
+        //For a given article, filter, and source, determine which source filter values' "show value" should be true.
+        //eg, if the source is example, the filter is topic, and the article contains the topic "doggos", set example.topic.doggos.show to true
+        setShowValuesTrue: function(article, filter, source)
+        {
+            var boundProp = ComplexPropertyTools.getComplexProperty(article, source.filter[filter].binding.property)
+			if(typeof boundProp === "undefined")
+                return source;
+            if(typeof boundProp === "string")
+            {
+                var boundData = boundProp;
+                if(source.filter[filter].binding.data)
+                        boundData = ComplexPropertyTools.getComplexProperty(boundProp, source.filter[filter].binding.data);
+                    for(var fv = 0; fv < source.filter[filter].values.length; fv++)
+                            //If our visible article has bound data that matches the filter, then we'll go ahead and show that filter value
+                        if(~boundData.indexOf(source.filter[filter].values[fv].data))	
+                            source.filter[filter].values[fv].show = true
+            }
+            else {
+                for(var pv = 0; pv < boundProp.length; pv++)
+                {
+                    var boundData = boundProp[pv];
+                    if(source.filter[filter].binding.data)
+                         boundData = ComplexPropertyTools.getComplexProperty(boundProp[pv], source.filter[filter].binding.data);
+                    for(var fv = 0; fv < source.filter[filter].values.length; fv++)
+                    {
+                        if(~boundData.indexOf(source.filter[filter].values[fv].data))	
+                                 source.filter[filter].values[fv].show = true;
+                    }
+                }
+            }
+
+            return source;
         }
     }
 });
