@@ -2,8 +2,12 @@
 angular.module('conduit.services').factory('RssLiteService', function($http) { 
 	var readUrl = function(url) {
 		return new Promise(function(resolve, reject) {
-
-            var feedObj = $http.get(url).then(function(response) {
+            
+            var loadFeed = function(url, callback) {
+                    $http.get(url).then(callback)
+            }
+                        
+            loadFeed(url, function(response) {
                 var parser = new DOMParser();
                 var xml;
                 xml = parser.parseFromString(response.data,"text/xml");
@@ -19,7 +23,7 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                     feed = xml.getElementsByTagName("channel")[0];
                     entries = feed.getElementsByTagName("item");
                 }
-                
+
                 var parsed = [];
                 for(var i = 0; i < entries.length; i++)
                 {
@@ -29,6 +33,25 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                         //if the entity child has a tag name, move to the child and work from there
                         if(entries[i].childNodes[j].tagName)
                         {
+                            if(entries[i].childNodes[j].tagName === "link")
+                            {
+                                if(typeof entries[i].childNodes[j].attributes === "string")
+                                {
+                                    temp[entries[i].childNodes[j].tagName] = 
+                                            entries[i].childNodes[j].attributes[k].nodeValue;
+                                        continue;
+                                }
+                                for(var k = 0; k < entries[i].childNodes[j].attributes.length; k++)
+                                    if(entries[i].childNodes[j].attributes[k].name === "href")
+                                    {
+                                        temp[entries[i].childNodes[j].tagName] = 
+                                            entries[i].childNodes[j].attributes[k].nodeValue;
+                                        break;
+                                    }
+                                if(temp[entries[i].childNodes[j].tagName])
+                                    continue;
+                            }
+
                             if(entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0])
                             {
                                 if(entries[i].getElementsByTagName(entries[i].childNodes[j].tagName)[0].childNodes[0])
@@ -44,19 +67,19 @@ angular.module('conduit.services').factory('RssLiteService', function($http) {
                                     entries[i].childNodes[j].textContent;
                             }
                         }    
-                    }                
-                                 
+                    }                     
                     parsed.push(temp);
-                }               
+                }
 
-                console.log(parsed);
-                return parsed;
+                if(parsed)
+                    resolve(parsed);
+                else
+                    reject();
+
+                return Promise.resolve(parsed);
             });
 
-            if(feedObj)
-                return Promise.resolve(feedObj);
-            else
-                return Promise.reject();
+           
 
         })
 	};

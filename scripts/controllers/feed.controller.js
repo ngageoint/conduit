@@ -1,17 +1,14 @@
 angular.module('conduit.controllers').controller('FeedCtrl', function(
 	$scope, $timeout, __config, ArticlesService, DataSourceService, ComplexPropertyTools,
-	ArrayTools, DateTools, FilterService, RssLiteService) {
+	ArrayTools, DateTools, FilterService) {
 					
-	FilterService.filter.trash = $scope.cbxTrash;
-	$scope.filter = FilterService.filter;
-
-	RssLiteService.readUrl('https://alerts.weather.gov/cap/wa.php?x=1');
-	//RssLiteService.readUrl('https://feeds.feedburner.com/nfpanewsreleases');
+	$scope.filter = FilterService.filter;	
 
 	//Setup Filter
 	//The filter needs the articles loaded to be built, so we wait from articles to load; no data is passed since we inherit articles
 	ArticlesService.getArticles().then(function() {
 		DataSourceService.getSources().then( function(sourceData) {
+			console.log($scope.articles);
 			$scope.sources = FilterService.build(sourceData, $scope.articles);
 		}).catch( function(err) {
 			console.log(err);
@@ -40,7 +37,6 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 	//Update the options that are visible in the filter based on other options that are selected.
 	$scope.updateFilterOptions = function(source, filter)
 	{
-		//Current issue: updateOptions makes cards dissapear (something with determineShow?)
 		$scope.sources = FilterService.updateOptions($scope.sources, source, $scope.articles, filter, $scope.attributes) || $scope.sources;
 	}
 			
@@ -113,7 +109,7 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 					for(var k = 0; k < $scope.articles.length; k++)
 						if(!$scope.articles[k].display)
 						{
-							$scope.articles = swap($scope.articles, j, k);
+							$scope.articles = ArrayTools.swap($scope.articles, j, k);
 							break;
 						}
 				}

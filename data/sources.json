@@ -1,7 +1,8 @@
 [{
 	"tag":"Example",
 	"name":"Example Source",
-	"src":"www.example.com",
+	"link":"www.example.com",
+	"type":"custom",
 	"checked":true,
 	"filter":[{
 		"name":"Topic",
@@ -16,6 +17,116 @@
 			"property":"region",
 			"data":"abrv",
 			"name":"name"
+		},
+		"values":[],
+		"checked":false
+	}]
+},{
+	"tag":"NWS FL",
+	"name":"National Weather Service FL",
+	"link":"https://alerts.weather.gov/cap/fl.php?x=1",
+	"type":"rss",
+	"binding":[{
+			"local":"date",
+			"source":"published"
+		},{
+			"local":"link",
+			"source":"link"
+		},{
+			"local":"title",
+			"source":"title"
+		},{
+			"local":"text",
+			"source":"summary"
+		},{
+			"local":"cap:event",
+			"source":"cap:event"
+		},{
+			"local":"cap:urgency",
+			"source":"cap:urgency"
+		},{
+			"local":"cap:severity",
+			"source":"cap:severity"
+		},{
+			"local":"cap:certainty",
+			"source":"cap:certainty"
+		}
+	],
+	"tags":["cap:event","cap:urgency","cap:severity","cap:certainty"],
+	"checked":true,
+	"filter":[{
+		"name":"Event",
+		"binding": {
+			"property":"cap:event"
+		},
+		"values":[],
+		"checked":false
+	},{
+		"name":"Urgency",
+		"binding": {
+			"property":"cap:urgency"
+		},
+		"values":[],
+		"checked":false
+	},{
+		"name":"Severity",
+		"binding": {
+			"property":"cap:severity"
+		},
+		"values":[],
+		"checked":false
+	}]
+},{
+	"tag":"NWS GA",
+	"name":"National Weather Service LA",
+	"link":"https://alerts.weather.gov/cap/la.php?x=1",
+	"type":"rss",
+	"binding":[{
+			"local":"date",
+			"source":"published"
+		},{
+			"local":"link",
+			"source":"link"
+		},{
+			"local":"title",
+			"source":"title"
+		},{
+			"local":"text",
+			"source":"summary"
+		},{
+			"local":"cap:event",
+			"source":"cap:event"
+		},{
+			"local":"cap:urgency",
+			"source":"cap:urgency"
+		},{
+			"local":"cap:severity",
+			"source":"cap:severity"
+		},{
+			"local":"cap:certainty",
+			"source":"cap:certainty"
+		}
+	],
+	"tags":["cap:event","cap:urgency","cap:severity","cap:certainty"],
+	"checked":true,
+	"filter":[{
+		"name":"Event",
+		"binding": {
+			"property":"cap:event"
+		},
+		"values":[],
+		"checked":false
+	},{
+		"name":"Urgency",
+		"binding": {
+			"property":"cap:urgency"
+		},
+		"values":[],
+		"checked":false
+	},{
+		"name":"Severity",
+		"binding": {
+			"property":"cap:severity"
 		},
 		"values":[],
 		"checked":false

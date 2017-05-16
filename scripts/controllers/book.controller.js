@@ -25,7 +25,7 @@ angular.module('conduit.controllers').controller('BookCtrl', function($scope, $r
 							
 					if($scope.articles[i].books[j] && ~$scope.articles[i].books[j].name.indexOf($scope.selectedBook.name))
 							$scope.articles[i].inBook = true;
-					
+							
 				}
 			}
 		}	

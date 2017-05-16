@@ -16,75 +16,88 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
             MAX_DAYS_BACK: __config.MAX_DAYS_BACK,
             DEFAULT_DAYS_BACK: __config.DEFAULT_DAYS_BACK,
             daysBack: __config.DEFAULT_DAYS_BACK,
-            trash: false
+            trash: 0
         },
         build: function (sources, articles){
             
+            var buildValue = function(value) {
+                //Values in the filter are JSON objects with the topic name and a field to track whether or not it is checked; this is bound to the dropdowns.
+                value.checked = false;
+                value.show = true;
+                return value;
+            }
+
+            var newValue = function(value) {
+                //Determine if the topic has already been included; if not, add it.;
+                for(var m = 0; m < sources[j].filter[k].values.length; m++)
+                    if(~sources[j].filter[k].values[m].data.indexOf(value['data']))
+                        return false;
+                return true;
+            }
+
             this.filter.count = articles.length;
-                
+
             //Populate our data sources filter attributes with values found in the articles
             for(var i = 0; i < articles.length; i++)
             {						
                 for(var j = 0; j < sources.length; j++)
                 {
-                    if(~articles[i].tags.indexOf(sources[j].tag))
+                    if(~articles[i].source.indexOf(sources[j].name))
                         for(var k = 0; k < sources[j].filter.length; k++)
                             if(sources[j].filter[k].binding.property)
                             {
                                 var boundProp = ComplexPropertyTools.getComplexProperty(articles[i], sources[j].filter[k].binding.property)
                                 if(boundProp)
                                 {
-                                    for(var l = 0; l < boundProp.length; l++)
+                                    if(typeof boundProp === "string")
                                     {
-                                        var value = {};
-                                        if(sources[j].filter[k].binding.data)
+                                        value = {
+                                            data: boundProp,
+                                            name: boundProp
+                                        };
+                                        value = buildValue(value)        
+                                            if(newValue(value))
+                                                sources[j].filter[k].values.push(value);
+                                    }
+                                    else
+                                    {
+                                        for(var l = 0; l < boundProp.length; l++)
                                         {
-                                            var boundData = ComplexPropertyTools.getComplexProperty(boundProp[l], sources[j].filter[k].binding.data)
-                                            
-                                            if(boundData)
-                                                value.data = boundData.trim();
-                                            else
-                                                value.data = boundProp[l].trim();
-                                        }
-                                        else
-                                            value.data = boundProp[l].trim();
-                                        
-                                        if(sources[j].filter[k].binding.name)
-                                        {
-                                            var boundName = ComplexPropertyTools.getComplexProperty(boundProp[l], sources[j].filter[k].binding.name)
-                                            
-                                            if(boundName)
-                                                value.name = boundName.trim();
-                                            else
-                                                value.name = value.data;
-                                        }
-                                        else
-                                            value.name = value.data;
-                                        //Values in the filter are JSON objects with the topic name and a field to track whether or not it is checked; this is bound to the dropdowns.
-                                        value.checked = false;
-                                        value.show = true;
-                                        
-                                        //Determine if the topic has already been included; if not, add it.
-                                        var newValue = true;
-                                        for(var m = 0; m < sources[j].filter[k].values.length; m++)
-                                        {
-                                            if(~sources[j].filter[k].values[m].data.indexOf(value['data']))
+                                            var value = {};
+                                            if(sources[j].filter[k].binding.data)
                                             {
-                                                newValue = false;
-                                                break;
+                                                var boundData = ComplexPropertyTools.getComplexProperty(boundProp[l], sources[j].filter[k].binding.data)
+                                                
+                                                if(boundData)
+                                                    value.data = boundData.trim();
+                                                else
+                                                    value.data = boundProp[l].trim();
                                             }
                                             else
-                                                newValue = true;
+                                                value.data = boundProp[l].trim();
+                                            
+                                            if(sources[j].filter[k].binding.name)
+                                            {
+                                                var boundName = ComplexPropertyTools.getComplexProperty(boundProp[l], sources[j].filter[k].binding.name)
+                                                
+                                                if(boundName)
+                                                    value.name = boundName.trim();
+                                                else
+                                                    value.name = value.data;
+                                            }
+                                            else
+                                                value.name = value.data;
+
+                                            value = buildValue(value)        
+                                            if(newValue(value))
+                                                sources[j].filter[k].values.push(value);
                                         }
-                                                        
-                                        if(newValue)
-                                            sources[j].filter[k].values.push(value);
-                                        }
+                                    }
                                 }
                             }
                 }
             }
-                    
+      
             //Sort and cleanup
             for(var i = 0; i < sources.length; i++)
                 for(var j = 0; j < sources[i].filter.length; j++)
@@ -173,15 +186,24 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
                     //For all of the article binding elements, as long as we haven't found a match yet
                     var boundProp = ComplexPropertyTools.getComplexProperty(article, sources[s].filter[f].binding.property)
                     
-                    for(var p = 0; p < boundProp.length && !hasMatch; p++)
+                    if(typeof boundProp === "string")
                     {
-                        var boundData = boundProp[p];
-                        if(sources[s].filter[f].binding.data)
-                            boundData = ComplexPropertyTools.getComplexProperty(boundProp[p], sources[s].filter[f].binding.data);
-                        if(boundData)
-                            for(var v = 0; v < sources[s].filter[f].selectedValues.length && !hasMatch; v++)
-                                if(sources[s].filter[f].selectedValues[v] && ~boundData.indexOf(sources[s].filter[f].selectedValues[v]))
+                        for(var v = 0; v < sources[s].filter[f].selectedValues.length && !hasMatch; v++)
+                                if(sources[s].filter[f].selectedValues[v] && ~boundProp.indexOf(sources[s].filter[f].selectedValues[v]))
                                     hasMatch = true;
+                    }
+                    else
+                    {
+                        for(var p = 0; p < boundProp.length && !hasMatch; p++)
+                        {
+                            var boundData = boundProp[p];
+                            if(sources[s].filter[f].binding.data)
+                                boundData = ComplexPropertyTools.getComplexProperty(boundProp[p], sources[s].filter[f].binding.data);
+                            if(boundData)
+                                for(var v = 0; v < sources[s].filter[f].selectedValues.length && !hasMatch; v++)
+                                    if(sources[s].filter[f].selectedValues[v] && ~boundData.indexOf(sources[s].filter[f].selectedValues[v]))
+                                        hasMatch = true;
+                        }
                     }
                     if(!hasMatch)
                         globalMatch = false;
@@ -249,18 +271,34 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
 				//If the article is currently being shown...
 				if(this.determineShow(articles[p], sources, attributes))
 				{
+                    //IT'S A BOUND PROP ISSUE!!!
 					//...then run through the bound values in the article and compare them to the values in the filter 
 					var boundProp = ComplexPropertyTools.getComplexProperty(articles[p], sources[source].filter[filter].binding.property)
-					for(var pv = 0; pv < boundProp.length; pv++)
-					{
-						var boundData = boundProp[pv];
-						if(sources[source].filter[filter].binding.data)
-							boundData = ComplexPropertyTools.getComplexProperty(boundProp[pv], sources[source].filter[filter].binding.data);
-						for(var fv = 0; fv < sources[source].filter[filter].values.length; fv++)
-							//If our visible article has bound data that matches the filter, then we'll go ahead and show that filter value
-							if(~boundData.indexOf(sources[source].filter[filter].values[fv].data))	
-								sources[source].filter[filter].values[fv].show = true
-					}
+                    if(typeof boundProp === "undefined")
+                        continue;
+                    if(typeof boundProp === "string")
+                    {
+                         var boundData = boundProp;
+                         if(sources[source].filter[filter].binding.data)
+                                boundData = ComplexPropertyTools.getComplexProperty(boundProp, sources[source].filter[filter].binding.data);
+                            for(var fv = 0; fv < sources[source].filter[filter].values.length; fv++)
+                                //If our visible article has bound data that matches the filter, then we'll go ahead and show that filter value
+                                if(~boundData.indexOf(sources[source].filter[filter].values[fv].data))	
+                                    sources[source].filter[filter].values[fv].show = true
+                    }
+                    else
+                    {
+                        for(var pv = 0; pv < boundProp.length; pv++)
+                        {
+                            var boundData = boundProp[pv];
+                            if(sources[source].filter[filter].binding.data)
+                                boundData = ComplexPropertyTools.getComplexProperty(boundProp[pv], sources[source].filter[filter].binding.data);
+                            for(var fv = 0; fv < sources[source].filter[filter].values.length; fv++)
+                                //If our visible article has bound data that matches the filter, then we'll go ahead and show that filter value
+                                if(~boundData.indexOf(sources[source].filter[filter].values[fv].data))	
+                                    sources[source].filter[filter].values[fv].show = true
+                        }
+                    }
 				}
 				
     		sources[source].filter[filter].selectedValues = temp;
