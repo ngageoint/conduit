@@ -13,7 +13,7 @@
 	"glyphicon":"picture",
 	"compare":"images",
 	"filter":true,
-	"action":false,
+	"action":true,
 	"bookAction":false,
 	"checked":false
 },{

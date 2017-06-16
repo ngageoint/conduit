@@ -1,6 +1,6 @@
 /*Light*/
 /*Dark*/
-/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/filter.scss */
+/* line 3, D:/work/dat/conduit/sass/filter.scss */
 .category-wrapper {
   display: inline-block;
   width: 100%;
@@ -8,7 +8,7 @@
   clear: both;
 }
 
-/* line 10, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/filter.scss */
+/* line 10, D:/work/dat/conduit/sass/filter.scss */
 .category-wrapper .dropdown {
   width: 45% !important;
   min-width: 200px !important;
@@ -17,11 +17,51 @@
   float: left !important;
 }
 
-/* line 18, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/filter.scss */
+/* line 18, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper {
   position: absolute;
   z-index: 100;
-  width: 100%;
+  width: auto;
+  top: 0px;
+  left: 10px;
+  right: 10px;
+}
+
+/* line 26, D:/work/dat/conduit/sass/filter.scss */
+.accordion-wrapper .panel-group {
+  margin-bottom: 0px;
+}
+
+/* line 30, D:/work/dat/conduit/sass/filter.scss */
+.accordion-wrapper .panel {
+  box-shadow: none;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
+}
+
+/* line 35, D:/work/dat/conduit/sass/filter.scss */
+.accordion-wrapper .panel a {
+  color: #fff;
+}
+
+/* line 39, D:/work/dat/conduit/sass/filter.scss */
+.accordion-wrapper .panel-default {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* line 43, D:/work/dat/conduit/sass/filter.scss */
+.accordion-wrapper .panel-heading {
+  background: #757575 !important;
+  height: 12px !important;
+  padding: 0px !important;
+  border-radius: 0 !important;
+}
+
+/* line 49, D:/work/dat/conduit/sass/filter.scss */
+.accordion-wrapper .panel-title {
+  color: #fff !important;
+  text-align: center !important;
+  font-size: 10px !important;
 }
 
 /*# sourceMappingURL=../styles/filter.map */

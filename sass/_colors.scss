@@ -3,15 +3,16 @@ $dark: false;
 
 /*Light*/
 
-    $colorPrimary: 				lighten(#036, 10%)  !default;
+    $colorPrimary: 				#009688             !default;
     $colorPrimaryContrast: 		#fff                !default;
             
-    $colorSecondary:			#c2714f             !default;
-    $colorSecondaryContrast:	#fff                !default;
+    $colorAccent:			    #ff5252             !default;
+    $colorAccentContrast:	    #fff                !default;
 
-    $colorFont:					#444                !default;
-    $colorGrey: 				#ddd                !default;
-    $colorBackground:			#fff                !default;
+    $colorFont:					#212121             !default;
+    $colorGrey: 				#bdbdbd             !default;
+    $colorBackground:			#f2f2f2             !default;
+    $colorCardBackground:       #fff                !default;
 
 		
 /*Dark*/
@@ -19,8 +20,8 @@ $dark: false;
 	$colorPrimary: 				#999;
 	$colorPrimaryContrast: 		#444;
 			
-	$colorSecondary:			#aaa;
-	$colorSecondaryContrast:	#444;
+	$colorAccent:			#aaa;
+	$colorAccentContrast:	#444;
 	
 	$colorFont:					#aaa;
 	$colorGrey: 				#888;

@@ -13,8 +13,12 @@
 @import "bootstrap-customization";
 @import "media.scss";
 
+* {
+/*	border-radius: 2px !important;*/
+}
+
 .title {
-	color: $colorPrimary;
+	color: $colorFont;
 }
 		
 .text {
@@ -22,20 +26,8 @@
 }
 
 .tag {
-	font-size: 	.8em;
+	color: $colorGrey;
 	font-family: 'Montserrat', sans-serif;
-	
-	height: 1.8em;
-	line-height: 1.8em;
-	
-	display: inline-block;
-	width: auto;
-	padding: 0 0.5em;
-	margin-right: 5px;
-	margin-top: 0.3em;
-	background: $colorSecondary;
-	color: $colorSecondaryContrast;
-	border-radius: 5px;
 }
 		 
 	#action {
@@ -45,4 +37,13 @@
 
 .pointer-on-hover:hover {
 	cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 2px;  /* remove scrollbar space */
+    /*background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in accent color */
+::-webkit-scrollbar-thumb {
+    background: $colorAccent;
 }

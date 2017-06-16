@@ -80,7 +80,6 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: $colorPrimaryContrast;
-  background-color: darken($colorPrimary, 10%);
   border-color: darken($colorPrimary, 15%);
 }
 .btn-primary:active:hover,
@@ -281,14 +280,14 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 
 /*FOcus color*/
 a:focus {
-  outline: 5px auto $colorSecondary;
+  outline: 5px auto $colorAccent;
   outline-offset: -2px;
 }
 
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: 5px auto $colorSecondary;
+  outline: 5px auto $colorAccent;
   outline-offset: -2px;
 }
 
@@ -298,31 +297,31 @@ input[type="checkbox"]:focus {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: 5px auto $colorSecondary;
+  outline: 5px auto $colorAccent;
   outline-offset: -2px;
 }
 
 .form-control:focus {
-  border-color: $colorSecondary;
+  border-color: $colorAccent;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorSecondary, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorSecondary, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);
 }
 
 /* Loading Bar*/
 #loading-bar .bar {
-  background: $colorSecondary;
+  background: $colorAccent;
 }
 
 /* Fancy blur effect */
 #loading-bar .peg {
-  -moz-box-shadow: $colorSecondary 1px 0 6px 1px;
-  -ms-box-shadow: $colorSecondary 1px 0 6px 1px;
-  -webkit-box-shadow: $colorSecondary 1px 0 6px 1px;
-  box-shadow: $colorSecondary 1px 0 6px 1px;
+  -moz-box-shadow: $colorAccent 1px 0 6px 1px;
+  -ms-box-shadow: $colorAccent 1px 0 6px 1px;
+  -webkit-box-shadow: $colorAccent 1px 0 6px 1px;
+  box-shadow: $colorAccent 1px 0 6px 1px;
 }
 
 #loading-bar-spinner .spinner-icon {
-  border-top-color:  $colorSecondary;
-  border-left-color: $colorSecondary;
+  border-top-color:  $colorAccent;
+  border-left-color: $colorAccent;
 }

@@ -18,5 +18,38 @@
 .accordion-wrapper {
 	position: absolute;
 	z-index: 100;
-    width: 100%;
+    width: auto;
+	top: 0px;
+	left: 10px;
+	right: 10px;
+
+	.panel-group {
+		margin-bottom: 0px;
+	}
+
+	.panel {
+		box-shadow: none;
+		box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
+	}
+
+	.panel a {
+		color: #fff;
+	}
+
+	.panel-default {
+		border: none !important;
+		border-radius: 0 !important;
+	}
+	.panel-heading {
+		background: #757575 !important;
+		height: 12px !important;
+		padding: 0px !important;
+		border-radius: 0 !important
+	}
+	.panel-title {
+		color: #fff !important;
+		text-align: center !important;
+		font-size: 10px !important;
+	}
+	
 }

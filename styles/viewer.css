@@ -1,7 +1,7 @@
 /*Article View*/
 /*Light*/
 /*Dark*/
-/* line 5, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 5, D:/work/dat/conduit/sass/viewer.scss */
 .article-view {
   position: absolute;
   top: 10px;
@@ -12,70 +12,75 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0 15px 0 15px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+  border-radius: 2px;
+  /*border: 1px solid $colorGrey;*/
   background: #fff;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
 }
 
-/* line 21, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 23, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit {
   visibility: visible;
-  color: #444;
-  background-color: #fff;
+  color: #212121;
+  background-color: #f2f2f2;
   font-family: 'SourceSansPro', sans-serif;
   clear: both;
 }
 
-/* line 28, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 30, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit:hover {
-  background-color: #f1f1f1;
+  background-color: #d1d1d1;
 }
 
-/* line 31, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
-.article-view .edit-field {
-  padding: 0 1vw;
-  width: 50vw;
-}
-
-/* line 36, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
-.article-view #title-wrapper .edit-field {
-  line-height: 1.25em;
-  height: 6em;
-}
-
-/* line 41, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 34, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text.edit-field {
   padding: 0 1vw;
   height: 50vh;
 }
 
-/* line 47, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 39, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper {
   position: relative;
-  padding: 1.6em 0 0 0;
+  padding: 0;
 }
 
-/* line 53, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 45, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .title {
   padding: 0;
-  font-size: 2.15em;
+  font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 60, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 51, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #title-wrapper .edit-field {
+  line-height: 1.813em;
+  height: 6em;
+}
+
+/* line 56, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper {
   display: inline-block;
-  padding: 2vh 0px 3vh 0px;
-  max-width: 100%;
-  max-height: 75vh;
+  padding: 0;
+  width: 100%;
+  max-height: 50vh;
   display: block;
-  margin: 0px 0px 0px 0px;
+  margin: 14px 0 0 0;
   justify-content: center;
   text-align: center;
   clear: both;
 }
 
-/* line 72, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 67, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #image-wrapper #nav-right {
+  float: right;
+}
+
+/* line 70, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #image-wrapper #nav-left {
+  float: left;
+}
+
+/* line 75, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper::before {
   content: '';
   display: inline-block;
@@ -84,66 +89,72 @@
   margin-right: -0.25em;
 }
 
-/* line 80, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
-.article-view #image-wrapper .nav-arrow {
+/* line 83, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #image-wrapper.nav-arrow {
   display: inline-block;
   vertical-align: middle;
   max-width: 10%;
   font-size: 5vw;
   height: auto;
-  color: #444;
+  color: #212121;
+  z-index: 100;
 }
 
-/* line 88, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 92, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper .nav-arrow:hover {
   cursor: pointer;
-  color: #2b2b2b;
+  color: #080808;
 }
 
-/* line 93, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 97, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper .greyout {
   visibility: hidden;
 }
 
-/* line 97, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 101, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image {
   display: inline-block;
-  max-width: 75%;
   margin: auto;
   justify-content: center;
   text-align: center;
 }
 
-/* line 105, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 108, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image .image {
-  max-width: 100%;
-  max-height: 75vh;
+  width: 100%;
+  max-height: 50vh;
   vertical-align: middle;
 }
 
-/* line 112, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 114, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text-wrapper {
   display: inline-block;
   width: 100%;
 }
 
-/* line 117, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 119, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text {
-  padding: 1.5vh 0 75px 0;
+  padding: 30px 3em;
   display: block;
-  font-size: 1.15em;
-  line-height: 1.75em;
+  font-size: 1.125em;
+  line-height: 1.125em;
   clear: both;
   white-space: pre-line;
 }
 
-/* line 127, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 128, D:/work/dat/conduit/sass/viewer.scss */
+.article-view .edit-field {
+  padding: 0 1vw;
+  width: 50vw;
+}
+
+/* line 133, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .editable-buttons {
   float: right;
   margin: 5px 0 75px 0;
 }
 
-/* line 132, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 138, D:/work/dat/conduit/sass/viewer.scss */
 .toolbox {
   position: absolute;
   bottom: -10px;
@@ -152,17 +163,17 @@
   height: 50px;
 }
 
-/* line 139, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 145, D:/work/dat/conduit/sass/viewer.scss */
 .toolbox .container-fluid {
   padding: 0;
 }
 
-/* line 142, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 148, D:/work/dat/conduit/sass/viewer.scss */
 .toolbox .container-fluid .navbar-info {
   padding: 0;
 }
 
-/* line 145, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/viewer.scss */
+/* line 151, D:/work/dat/conduit/sass/viewer.scss */
 .toolbox .container-fluid .navbar-right {
   margin-right: 0;
 }

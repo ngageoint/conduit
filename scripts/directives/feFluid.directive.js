@@ -5,7 +5,7 @@ angular.module('conduit.directives').directive('feFluid', function() {
 			link: function (scope, element, attrs) {
 				
 				scope.$watch('__height', function(newHeight, oldHeight) {
-					element[0].style.marginTop = (newHeight - 10) + 'px';
+					element[0].style.marginTop = (newHeight) + 'px';
 				});				
 			}
 		};

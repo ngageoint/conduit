@@ -1,32 +1,32 @@
 /*Light*/
 /*Dark*/
-/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/comments.scss */
+/* line 3, D:/work/dat/conduit/sass/comments.scss */
 .all-comments-wrapper {
   max-height: 30vh;
   overflow-y: auto;
   margin-bottom: 10px;
 }
 
-/* line 8, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/comments.scss */
+/* line 8, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper {
   margin: 0 0 -10px 0;
 }
 
-/* line 12, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/comments.scss */
+/* line 12, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper .self {
   margin-right: 5px;
   text-align: right;
 }
 
-/* line 17, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/comments.scss */
+/* line 17, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper .info-wrapper .name {
   font-size: 1em;
 }
 
-/* line 22, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/comments.scss */
+/* line 22, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper .info-wrapper .time-stamp {
   font-size: .75em;
-  color: #afafaf;
+  color: #8f8f8f;
 }
 
 /*# sourceMappingURL=../styles/comments.map */

@@ -1,64 +1,67 @@
 <div>
-	<div class="title" title="{{article.title}}">
-        {{article.title}}
-    </div>
-    <div class="text" title="{{article.title}}">
-		{{article.text}}
-    </div>
-    
-    <div class="attributes-wrapper">
-    
-        <div id="tag-wrapper">
-            <div ng-repeat="attr in ::attributes" ng-if="::!attr.action">
-                <span id="icon" class="tag"  ng-if="::showAttribute(article, attr)" alt="{{::attr.alt}}" title="{{::attr.alt}}">
-                    <span ng-if="::attr.glyphicon" class="glyphicon glyphicon-{{::attr.glyphicon}}"></span>
-                </span>
-            </div>
-            <span class="tag" ng-repeat="tag in ::article.tags">{{::tag}}</span>
+	<div class="card-header">
+        <div class="subject">
+            TREES//SPRUCE
         </div>
         
         <div ng-if="::isStream"><!--Different tags for different streams-->
             <div id="tag-wrapper-action">
                 <div ng-repeat="attr in ::attributes" ng-if="::attr.action">
-                    <div ng-show="showAttribute(article, attr)" alt="{{::attr.alt}}" title="{{::attr.alt}}">
+                    <div ng-if="showAttribute(article, attr)" alt="{{::attr.alt}}" title="{{::attr.alt}}">
                         <span ng-if="::attr.glyphicon" class="glyphicon glyphicon-{{::attr.glyphicon}} action"></span>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
         
         <div ng-if="::!isStream"><!--Different tags for different streams-->
             <div id="tag-wrapper-action">
                 <div ng-repeat="attr in ::attributes" ng-if="::attr.action && attr.bookAction">
-                    <div ng-show="showAttribute(article, attr)" alt="{{::attr.alt}}" title="{{::attr.alt}}">
+                    <div ng-if="showAttribute(article, attr)" alt="{{::attr.alt}}" title="{{::attr.alt}}">
                         <span ng-if="::attr.glyphicon" class="glyphicon glyphicon-{{::attr.glyphicon}} action"></span>
                     </div>
                 </div>
             </div>
         </div>
         
+        <div ng-if="isStream && !article.removed">
+            <span 	class="glyphicon glyphicon-remove card-btn"
+                    ng-click="remove(article.id); $event.stopPropagation()"
+                    alt="Remove article from feed"
+                    title="Remove article from feed"></span>
+        </div>
         
+        <div ng-if="isStream && article.removed">
+            <span 	class="glyphicon glyphicon-plus card-btn"
+                    style="color:green"
+                    ng-click="restore(article.id); $event.stopPropagation()"
+                    alt="Restore article"
+                    title="Restore article"></span>
+        </div>
+        
+        <div ng-if="::!isStream">
+            <span 	class="glyphicon glyphicon-remove card-btn"
+                    ng-click="remove(article.id); $event.stopPropagation()"
+                    alt="Remove article from this book"
+                    title="Remove article from this book"></span>
+        </div>
+    </div>
+
+    <div class="title" title="{{article.title}}">
+        {{article.title}}
+    </div>
+    <div class="text" title="{{article.title}}">
+		{{article.text}}
+    </div>  
+
+    <div id="tag-wrapper">
+        <div ng-repeat="attr in ::attributes" ng-if="::!attr.action">
+            <span id="icon" class="tag"  ng-if="::showAttribute(article, attr)" alt="{{::attr.alt}}" title="{{::attr.alt}}">
+                <span ng-if="::attr.glyphicon" class="glyphicon glyphicon-{{::attr.glyphicon}}"></span>
+            </span>
+        </div>
+        <span class="tag" ng-repeat="tag in ::article.tags">{{::tag}}{{$last ? '' : ', '}}</span>
     </div>
     
-    <div ng-if="isStream && !article.removed">
-        <span 	class="glyphicon glyphicon-remove card-btn"
-                ng-click="remove(article.id); $event.stopPropagation()"
-                alt="Remove article from feed"
-                title="Remove article from feed"></span>
-    </div>
     
-    <div ng-if="isStream && article.removed">
-    	<span 	class="glyphicon glyphicon-plus card-btn"
-           		style="color:green"
-                ng-click="restore(article.id); $event.stopPropagation()"
-               	alt="Restore article"
-               	title="Restore article"></span>
-    </div>
-    
-    <div ng-if="::!isStream">
-        <span 	class="glyphicon glyphicon-remove card-btn"
-                ng-click="remove(article.id); $event.stopPropagation()"
-               	alt="Remove article from this book"
-               	title="Remove article from this book"></span>
-    </div>
 </div>

@@ -1,48 +1,106 @@
 /*Light*/
 /*Dark*/
-/* line 3, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+/* line 3, D:/work/dat/conduit/sass/stream.scss */
 .stream {
   width: 100%;
   position: absolute;
   bottom: 0px;
-  right: 0;
-  left: 0;
-  top: 0;
+  right: 0px;
+  left: 0px;
+  top: 12px;
+  margin-top: 0px;
+  padding: 0 8px 100px 10px;
   height: auto;
   max-height: inherit;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  background: #fff;
+  background: transparent;
+}
+
+/* line 19, D:/work/dat/conduit/sass/stream.scss */
+.stream .card:last-child {
+  border-radius: 0 0 2px 2px;
+}
+
+/* line 25, D:/work/dat/conduit/sass/stream.scss */
+#article-stream {
+  top: 0px;
 }
 
 /*Buttons at bottom of a stream*/
-/* line 21, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+/* line 33, D:/work/dat/conduit/sass/stream.scss */
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+/* line 38, D:/work/dat/conduit/sass/stream.scss */
+.btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
+  border-top-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+/* line 44, D:/work/dat/conduit/sass/stream.scss */
 .stream-action {
   width: 100%;
   position: absolute;
-  height: 50px;
+  height: 72px;
+  top: 10px;
   left: 10px;
-  bottom: 10px;
   right: 10px;
+  border: none;
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
+  background-color: #009688;
 }
 
-/* line 30, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+/* line 57, D:/work/dat/conduit/sass/stream.scss */
+.stream-action .btn-primary {
+  border: none;
+  border-bottom: 2px solid #009688;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: none;
+  box-shadow: none;
+}
+
+/* line 65, D:/work/dat/conduit/sass/stream.scss */
+.stream-action .btn-primary:active,
+.stream-action .btn-primary.active {
+  color: #fff;
+}
+
+/* line 70, D:/work/dat/conduit/sass/stream.scss */
+.stream-action .btn-primary:active,
+.stream-action .btn-primary.active,
+.stream-action .btn-primary:focus,
+.stream-action .btn-primary.focus,
+.stream-action .btn-primary:hover,
+.stream-action .btn-primary:active:focus,
+.stream-action .btn-primary.active:focus,
+.stream-action .btn-primary:active:hover,
+.stream-action .btn-primary.active:hover {
+  background-color: #009688;
+  border-bottom: 2px solid #ff5252;
+  box-shadow: none;
+}
+
+/* line 85, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn {
   height: 100%;
 }
 
 /*Feed*/
-/* line 36, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+/* line 91, D:/work/dat/conduit/sass/stream.scss */
 .fluid-container {
-  width: 25vw;
+  width: auto;
   position: absolute;
-  top: 10px;
-  bottom: 104px;
-  left: 10px;
-  right: 10px;
+  top: 82px;
+  bottom: 0px;
+  left: 0px;
+  right: -20px;
   padding: 0;
   max-height: inherit;
   overflow-y: auto;
@@ -50,37 +108,18 @@
   display: inline-block;
 }
 
-/*Allows for clean connection to stream footer*/
-/* line 51, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
-#left .stream {
-  border-radius: 4px 4px 0 0;
-  border-bottom: none;
-}
-
-/* line 56, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
-#stream-footer {
-  position: absolute;
-  bottom: 70px;
-  right: -10px;
-  left: 10px;
-  background-color: #f2f2f2;
-  padding: 5px 0 0 10px;
-  border-radius: 0 0 4px 4px;
-  border: 1px solid #ddd;
-  height: 35px;
-}
-
 /*Book*/
-/* line 69, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+/* line 106, D:/work/dat/conduit/sass/stream.scss */
 .book {
-  width: 20vw;
+  width: auto;
   top: 55px;
-  bottom: 70px;
+  bottom: 0px;
   left: -10px;
+  right: 0px;
   float: right;
 }
 
-/* line 77, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+/* line 115, D:/work/dat/conduit/sass/stream.scss */
 #right .nya-bs-select {
   position: absolute;
   top: 10px;
@@ -88,7 +127,7 @@
   right: 10px;
 }
 
-/* line 85, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/stream.scss */
+/* line 123, D:/work/dat/conduit/sass/stream.scss */
 #right .stream-action {
   left: -10px;
   right: -10px;
