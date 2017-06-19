@@ -100,6 +100,9 @@
         <div id="container">
         	<div id="center" class="column" ng-controller="ViewerCtrl" ng-cloak>
             	<div class="article-view"  ng-model="article" data-scroll-to-top="articles[currentIndex]">
+                    <div id="subject">
+                        TREES//SPRUCE
+                    </div>
                     <div id="title-wrapper">
                         <div 	class="title"
                         		e-class="title edit-field"
@@ -160,7 +163,12 @@
                             {{articles[currentIndex].text}}
                         </div>
                     </div>
+
+                    <div id="fab">
+                        <span class="glyphicon glyphicon-align-justify"></span> 
+                    </div>
                 </div>  
+                
                 
 
                 <nav class="navbar navbar-default toolbox">

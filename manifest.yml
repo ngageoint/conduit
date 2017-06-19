@@ -1,0 +1,5 @@
+---
+applications:
+- name: conduit-dev
+  memory: 128M
+  host: conduit-dev

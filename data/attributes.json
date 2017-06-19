@@ -14,7 +14,7 @@
 	"compare":"images",
 	"filter":true,
 	"action":true,
-	"bookAction":false,
+	"bookAction":true,
 	"checked":false
 },{
 	"name":"In Book",

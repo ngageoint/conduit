@@ -112,7 +112,7 @@
 /* line 106, D:/work/dat/conduit/sass/stream.scss */
 .book {
   width: auto;
-  top: 55px;
+  top: 66px;
   bottom: 0px;
   left: -10px;
   right: 0px;
@@ -123,11 +123,12 @@
 #right .nya-bs-select {
   position: absolute;
   top: 10px;
-  left: -10px;
+  left: -5px;
   right: 10px;
+  width: auto;
 }
 
-/* line 123, D:/work/dat/conduit/sass/stream.scss */
+/* line 124, D:/work/dat/conduit/sass/stream.scss */
 #right .stream-action {
   left: -10px;
   right: -10px;

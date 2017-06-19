@@ -1,7 +1,8 @@
 /*Article View*/
 /*Light*/
 /*Dark*/
-/* line 5, D:/work/dat/conduit/sass/viewer.scss */
+/*does not apply to all elements*/
+/* line 7, D:/work/dat/conduit/sass/viewer.scss */
 .article-view {
   position: absolute;
   top: 10px;
@@ -11,14 +12,24 @@
   max-height: inherit;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 15px 0 15px;
+  padding: 0;
   border-radius: 2px;
   /*border: 1px solid $colorGrey;*/
   background: #fff;
   box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
 }
 
-/* line 23, D:/work/dat/conduit/sass/viewer.scss */
+/* line 25, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #subject {
+  color: #bdbdbd;
+  font-size: 12px;
+  line-height: 15px;
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 34, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit {
   visibility: visible;
   color: #212121;
@@ -27,40 +38,39 @@
   clear: both;
 }
 
-/* line 30, D:/work/dat/conduit/sass/viewer.scss */
+/* line 41, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit:hover {
   background-color: #d1d1d1;
 }
 
-/* line 34, D:/work/dat/conduit/sass/viewer.scss */
+/* line 45, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text.edit-field {
-  padding: 0 1vw;
+  margin: 0 15px;
   height: 50vh;
 }
 
-/* line 39, D:/work/dat/conduit/sass/viewer.scss */
+/* line 50, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper {
   position: relative;
-  padding: 0;
+  margin-top: 8px;
+  margin: 0 15px;
 }
 
-/* line 45, D:/work/dat/conduit/sass/viewer.scss */
+/* line 57, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .title {
-  padding: 0;
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 51, D:/work/dat/conduit/sass/viewer.scss */
+/* line 62, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper .edit-field {
   line-height: 1.813em;
   height: 6em;
 }
 
-/* line 56, D:/work/dat/conduit/sass/viewer.scss */
+/* line 67, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper {
-  display: inline-block;
-  padding: 0;
+  position: relative;
   width: 100%;
   max-height: 50vh;
   display: block;
@@ -70,17 +80,25 @@
   clear: both;
 }
 
-/* line 67, D:/work/dat/conduit/sass/viewer.scss */
+/* line 77, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-right {
-  float: right;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  bottom: 50%;
+  z-index: 100;
 }
 
-/* line 70, D:/work/dat/conduit/sass/viewer.scss */
+/* line 84, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-left {
-  float: left;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  bottom: 50%;
+  z-index: 100;
 }
 
-/* line 75, D:/work/dat/conduit/sass/viewer.scss */
+/* line 93, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper::before {
   content: '';
   display: inline-block;
@@ -89,29 +107,36 @@
   margin-right: -0.25em;
 }
 
-/* line 83, D:/work/dat/conduit/sass/viewer.scss */
-.article-view #image-wrapper.nav-arrow {
-  display: inline-block;
+/* line 101, D:/work/dat/conduit/sass/viewer.scss */
+#image-wrapper .nav-arrow {
+  background-color: #009688;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 1.25em;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+  transition: box-shadow .25s ease-in-out;
+  font-size: 0.75em;
+  color: #fff;
+  padding: 0.775em;
+  text-align: center;
+  justify-content: center;
   vertical-align: middle;
-  max-width: 10%;
-  font-size: 5vw;
-  height: auto;
-  color: #212121;
-  z-index: 100;
 }
 
-/* line 92, D:/work/dat/conduit/sass/viewer.scss */
-.article-view #image-wrapper .nav-arrow:hover {
+/* line 121, D:/work/dat/conduit/sass/viewer.scss */
+#image-wrapper .nav-arrow:hover {
   cursor: pointer;
-  color: #080808;
+  background-color: #00796b;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.12), 0 4px 4px 0 rgba(0, 0, 0, 0.24);
+  transition: box-shadow .25s ease-in-out;
 }
 
-/* line 97, D:/work/dat/conduit/sass/viewer.scss */
+/* line 128, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper .greyout {
   visibility: hidden;
 }
 
-/* line 101, D:/work/dat/conduit/sass/viewer.scss */
+/* line 132, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image {
   display: inline-block;
   margin: auto;
@@ -119,22 +144,22 @@
   text-align: center;
 }
 
-/* line 108, D:/work/dat/conduit/sass/viewer.scss */
+/* line 139, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image .image {
   width: 100%;
   max-height: 50vh;
   vertical-align: middle;
 }
 
-/* line 114, D:/work/dat/conduit/sass/viewer.scss */
+/* line 145, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text-wrapper {
-  display: inline-block;
-  width: 100%;
+  margin: 0 15px;
+  position: relative;
+  top: 30px;
 }
 
-/* line 119, D:/work/dat/conduit/sass/viewer.scss */
+/* line 151, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text {
-  padding: 30px 3em;
   display: block;
   font-size: 1.125em;
   line-height: 1.125em;
@@ -142,19 +167,19 @@
   white-space: pre-line;
 }
 
-/* line 128, D:/work/dat/conduit/sass/viewer.scss */
+/* line 159, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .edit-field {
   padding: 0 1vw;
   width: 50vw;
 }
 
-/* line 133, D:/work/dat/conduit/sass/viewer.scss */
+/* line 164, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .editable-buttons {
   float: right;
   margin: 5px 0 75px 0;
 }
 
-/* line 138, D:/work/dat/conduit/sass/viewer.scss */
+/* line 169, D:/work/dat/conduit/sass/viewer.scss */
 .toolbox {
   position: absolute;
   bottom: -10px;
@@ -163,17 +188,17 @@
   height: 50px;
 }
 
-/* line 145, D:/work/dat/conduit/sass/viewer.scss */
+/* line 176, D:/work/dat/conduit/sass/viewer.scss */
 .toolbox .container-fluid {
   padding: 0;
 }
 
-/* line 148, D:/work/dat/conduit/sass/viewer.scss */
+/* line 179, D:/work/dat/conduit/sass/viewer.scss */
 .toolbox .container-fluid .navbar-info {
   padding: 0;
 }
 
-/* line 151, D:/work/dat/conduit/sass/viewer.scss */
+/* line 182, D:/work/dat/conduit/sass/viewer.scss */
 .toolbox .container-fluid .navbar-right {
   margin-right: 0;
 }

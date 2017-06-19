@@ -36,7 +36,8 @@ $card-spacing:      .313em;
 
     display: block;
 
-    transition: box-shadow .25 ease-in-out;
+    transition: all .25s ease-in-out !important;
+    transition: box-shadow .25s ease-in-out;
     box-shadow: 0 0px 2px rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
     transition: margin .25s ease-in-out;
     margin: 0;
@@ -101,9 +102,9 @@ $card-spacing:      .313em;
         .card #tag-wrapper {
             width: 70%;
             margin: $card-spacing 0 0 0;
-            height: $tag-line-height;
+            height: $tag-line-height  + .5 em;
             white-space: nowrap;
-            overflow: show;
+            overflow-x: hidden;
             float: left;
         }
 
@@ -127,7 +128,16 @@ $card-spacing:      .313em;
             
         .card #icon {
             float: left;
-        }		
+        }
+
+    .card #date {
+        width: 30%;
+        margin: $card-spacing 0 0 0;
+        height: $tag-line-height + .5 em;
+        white-space: nowrap;
+        overflow: hidden;
+        float: right;
+    }
 		
 	.card .card-btn{
 		visibility: hidden;
@@ -192,3 +202,16 @@ $card-spacing:      .313em;
             color: darken($colorGrey, 30%);
         }
     }
+
+.card.ng-hide:not(.ng-hide-animate) {
+  /* These are just alternative ways of hiding an element */
+  display: block !important;
+  transition: all .25s ease-in-out !important;
+  height: 0px !important;
+  max-height: 0px !important;
+  min-height: 0px !important;
+  padding: 0px !important;
+  border: none;
+  /*position: absolute;
+  top: -9999px;*/
+}

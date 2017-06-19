@@ -62,6 +62,12 @@
         </div>
         <span class="tag" ng-repeat="tag in ::article.tags">{{::tag}}{{$last ? '' : ', '}}</span>
     </div>
+
+    <div id="date" ng-if="article.date">
+        <div class="tag">
+            {{article.date}}
+        </div>
+    </div>
     
     
 </div>

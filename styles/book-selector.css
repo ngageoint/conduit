@@ -1,0 +1,39 @@
+/*Light*/
+/*Dark*/
+/* line 4, D:/work/dat/conduit/sass/book-selector.scss */
+#right .btn.btn-default.dropdown-toggle {
+  background-color: #009688;
+  color: white;
+  height: 56px;
+  border: none;
+  border-radius: 2px 2px 0 0;
+  color: white;
+  font-size: 16px;
+  line-height: 19px;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
+  z-index: 100;
+}
+
+/* line 22, D:/work/dat/conduit/sass/book-selector.scss */
+#right .dropdown-menu.open {
+  position: relative;
+  top: -20px;
+  left: 28%;
+  height: auto;
+  max-height: 25vh;
+  transition: max-height .25s ease-in-out;
+  max-width: 70%;
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+  z-index: 101;
+}
+
+/* line 37, D:/work/dat/conduit/sass/book-selector.scss */
+#right .nya-bs-select.btn-group .dropdown-menu {
+  width: 100% !important;
+  min-width: initial !important;
+}
+
+/*# sourceMappingURL=../styles/book-selector.map */

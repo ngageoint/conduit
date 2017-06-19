@@ -1,6 +1,6 @@
 /*Light*/
 /*Dark*/
-/* line 3, D:/work/dat/conduit/sass/filter.scss */
+/* line 5, D:/work/dat/conduit/sass/filter.scss */
 .category-wrapper {
   display: inline-block;
   width: 100%;
@@ -8,7 +8,7 @@
   clear: both;
 }
 
-/* line 10, D:/work/dat/conduit/sass/filter.scss */
+/* line 12, D:/work/dat/conduit/sass/filter.scss */
 .category-wrapper .dropdown {
   width: 45% !important;
   min-width: 200px !important;
@@ -17,7 +17,7 @@
   float: left !important;
 }
 
-/* line 18, D:/work/dat/conduit/sass/filter.scss */
+/* line 20, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper {
   position: absolute;
   z-index: 100;
@@ -25,43 +25,61 @@
   top: 0px;
   left: 10px;
   right: 10px;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
 }
 
-/* line 26, D:/work/dat/conduit/sass/filter.scss */
+/* line 30, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-group {
   margin-bottom: 0px;
 }
 
-/* line 30, D:/work/dat/conduit/sass/filter.scss */
+/* line 34, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel {
   box-shadow: none;
-  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
 }
 
-/* line 35, D:/work/dat/conduit/sass/filter.scss */
+/* line 38, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel a {
   color: #fff;
 }
 
-/* line 39, D:/work/dat/conduit/sass/filter.scss */
+/* line 42, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-default {
   border: none !important;
   border-radius: 0 !important;
 }
 
-/* line 43, D:/work/dat/conduit/sass/filter.scss */
+/* line 46, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-heading {
   background: #757575 !important;
-  height: 12px !important;
+  height: 24px !important;
   padding: 0px !important;
   border-radius: 0 !important;
+  z-index: 99;
 }
 
-/* line 49, D:/work/dat/conduit/sass/filter.scss */
+/* line 53, D:/work/dat/conduit/sass/filter.scss */
+.accordion-wrapper .panel-open .panel-heading {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0px 0px 2px 2px;
+}
+
+/* line 60, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title {
   color: #fff !important;
   text-align: center !important;
-  font-size: 10px !important;
+  font-size: 14px !important;
+  padding: 5px 0;
+}
+
+/* line 67, D:/work/dat/conduit/sass/filter.scss */
+.accordion-wrapper .panel-body {
+  max-height: 40vh;
+  overflow-y: scroll;
+  padding: 15px 15px 39px 15px;
 }
 
 /*# sourceMappingURL=../styles/filter.map */
