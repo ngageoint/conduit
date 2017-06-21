@@ -35,10 +35,6 @@ $filterHeaderHeight: 24px;
 		box-shadow: none;
 	}
 
-	.panel a {
-		color: #fff;
-	}
-
 	.panel-default {
 		border: none !important;
 		border-radius: 0 !important;
@@ -63,6 +59,9 @@ $filterHeaderHeight: 24px;
 		font-size: 14px !important;
 		padding: 5px 0;
 	}
+		.panel-title a {
+			color: #fff;
+		}
 
 	.panel-body {
 		max-height: 40vh;

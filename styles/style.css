@@ -318,24 +318,85 @@ body {
   width: auto;
   top: 66px;
   bottom: 0px;
-  left: -10px;
+  left: -15px;
   right: 0px;
   float: right;
 }
 
-/* line 115, D:/work/dat/conduit/sass/stream.scss */
-#right .nya-bs-select {
+/* line 118, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper {
   position: absolute;
   top: 10px;
   left: -5px;
   right: 10px;
   width: auto;
+  height: 56px;
+  display: inline-block;
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
+  z-index: 100;
 }
 
-/* line 124, D:/work/dat/conduit/sass/stream.scss */
-#right .stream-action {
-  left: -10px;
-  right: -10px;
+/* line 133, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper .btn-primary {
+  border: none;
+  border-bottom: 2px solid #009688;
+  box-shadow: none;
+}
+
+/* line 139, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper .btn-primary:active,
+#book-action-wrapper .btn-primary.active,
+#book-action-wrapper .btn-primary:focus,
+#book-action-wrapper .btn-primary.focus,
+#book-action-wrapper .btn-primary:hover,
+#book-action-wrapper .btn-primary:active:focus,
+#book-action-wrapper .btn-primary.active:focus,
+#book-action-wrapper .btn-primary:active:hover,
+#book-action-wrapper .btn-primary.active:hover {
+  background-color: #009688;
+  border-bottom: 2px solid #ff5252;
+  box-shadow: none;
+}
+
+/* line 153, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper .nya-bs-select {
+  position: absolute;
+  left: 0;
+  right: 48px;
+  height: 100%;
+  width: auto;
+  border-radius: 2px 0 0 0;
+  border-bottom: 2px solid #009688;
+  box-shadow: none;
+}
+
+/* line 166, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper nya-bs-select:active,
+#book-action-wrapper nya-bs-select.active,
+#book-action-wrapper nya-bs-select:focus,
+#book-action-wrapper nya-bs-select.focus,
+#book-action-wrapper nya-bs-select:hover,
+#book-action-wrapper nya-bs-select:active:focus,
+#book-action-wrapper nya-bs-select.active:focus,
+#book-action-wrapper nya-bs-select:active:hover,
+#book-action-wrapper nya-bs-select.active:hover {
+  background-color: #009688;
+  border-bottom: 2px solid #ff5252;
+  box-shadow: none;
+}
+
+/* line 180, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper .stream-action {
+  position: absolute;
+  width: 48px;
+  top: 0 !important;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  height: 100%;
+  border-radius: 0 2px 0 0;
+  box-shadow: none;
 }
 
 /*Light*/
@@ -379,17 +440,12 @@ body {
 }
 
 /* line 38, D:/work/dat/conduit/sass/filter.scss */
-.accordion-wrapper .panel a {
-  color: #fff;
-}
-
-/* line 42, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-default {
   border: none !important;
   border-radius: 0 !important;
 }
 
-/* line 46, D:/work/dat/conduit/sass/filter.scss */
+/* line 42, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-heading {
   background: #757575 !important;
   height: 24px !important;
@@ -398,7 +454,7 @@ body {
   z-index: 99;
 }
 
-/* line 53, D:/work/dat/conduit/sass/filter.scss */
+/* line 49, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-open .panel-heading {
   position: absolute;
   bottom: 0;
@@ -407,7 +463,7 @@ body {
   border-radius: 0px 0px 2px 2px;
 }
 
-/* line 60, D:/work/dat/conduit/sass/filter.scss */
+/* line 56, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title {
   color: #fff !important;
   text-align: center !important;
@@ -415,7 +471,12 @@ body {
   padding: 5px 0;
 }
 
-/* line 67, D:/work/dat/conduit/sass/filter.scss */
+/* line 62, D:/work/dat/conduit/sass/filter.scss */
+.accordion-wrapper .panel-title a {
+  color: #fff;
+}
+
+/* line 66, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-body {
   max-height: 40vh;
   overflow-y: scroll;
@@ -646,24 +707,32 @@ body {
 /*Light*/
 /*Dark*/
 /*does not apply to all elements*/
-/* line 7, D:/work/dat/conduit/sass/viewer.scss */
+/* line 10, D:/work/dat/conduit/sass/viewer.scss */
 .article-view {
   position: absolute;
   top: 10px;
   left: 20px;
   right: 20px;
-  bottom: 70px;
+  bottom: 10px;
   max-height: inherit;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0;
+  overflow: hidden;
   border-radius: 2px;
   /*border: 1px solid $colorGrey;*/
   background: #fff;
   box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
 }
 
-/* line 25, D:/work/dat/conduit/sass/viewer.scss */
+/* line 26, D:/work/dat/conduit/sass/viewer.scss */
+#content-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 52px;
+  left: 0;
+  overflow-y: auto;
+}
+
+/* line 35, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #subject {
   color: #bdbdbd;
   font-size: 12px;
@@ -673,7 +742,7 @@ body {
   text-align: center;
 }
 
-/* line 34, D:/work/dat/conduit/sass/viewer.scss */
+/* line 44, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit {
   visibility: visible;
   color: #212121;
@@ -682,37 +751,37 @@ body {
   clear: both;
 }
 
-/* line 41, D:/work/dat/conduit/sass/viewer.scss */
+/* line 51, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit:hover {
   background-color: #d1d1d1;
 }
 
-/* line 45, D:/work/dat/conduit/sass/viewer.scss */
+/* line 55, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text.edit-field {
   margin: 0 15px;
   height: 50vh;
 }
 
-/* line 50, D:/work/dat/conduit/sass/viewer.scss */
+/* line 60, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper {
   position: relative;
   margin-top: 8px;
   margin: 0 15px;
 }
 
-/* line 57, D:/work/dat/conduit/sass/viewer.scss */
+/* line 67, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .title {
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 62, D:/work/dat/conduit/sass/viewer.scss */
+/* line 72, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper .edit-field {
   line-height: 1.813em;
   height: 6em;
 }
 
-/* line 67, D:/work/dat/conduit/sass/viewer.scss */
+/* line 77, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper {
   position: relative;
   width: 100%;
@@ -724,7 +793,7 @@ body {
   clear: both;
 }
 
-/* line 77, D:/work/dat/conduit/sass/viewer.scss */
+/* line 87, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-right {
   position: absolute;
   top: 50%;
@@ -733,7 +802,7 @@ body {
   z-index: 100;
 }
 
-/* line 84, D:/work/dat/conduit/sass/viewer.scss */
+/* line 94, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-left {
   position: absolute;
   top: 50%;
@@ -742,7 +811,7 @@ body {
   z-index: 100;
 }
 
-/* line 93, D:/work/dat/conduit/sass/viewer.scss */
+/* line 103, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper::before {
   content: '';
   display: inline-block;
@@ -751,7 +820,7 @@ body {
   margin-right: -0.25em;
 }
 
-/* line 101, D:/work/dat/conduit/sass/viewer.scss */
+/* line 111, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow {
   background-color: #009688;
   width: 2.5em;
@@ -767,7 +836,7 @@ body {
   vertical-align: middle;
 }
 
-/* line 121, D:/work/dat/conduit/sass/viewer.scss */
+/* line 131, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow:hover {
   cursor: pointer;
   background-color: #00796b;
@@ -775,12 +844,12 @@ body {
   transition: box-shadow .25s ease-in-out;
 }
 
-/* line 128, D:/work/dat/conduit/sass/viewer.scss */
+/* line 138, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper .greyout {
   visibility: hidden;
 }
 
-/* line 132, D:/work/dat/conduit/sass/viewer.scss */
+/* line 142, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image {
   display: inline-block;
   margin: auto;
@@ -788,21 +857,21 @@ body {
   text-align: center;
 }
 
-/* line 139, D:/work/dat/conduit/sass/viewer.scss */
+/* line 149, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image .image {
   width: 100%;
   max-height: 50vh;
   vertical-align: middle;
 }
 
-/* line 145, D:/work/dat/conduit/sass/viewer.scss */
+/* line 155, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text-wrapper {
   margin: 0 15px;
   position: relative;
   top: 30px;
 }
 
-/* line 151, D:/work/dat/conduit/sass/viewer.scss */
+/* line 161, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text {
   display: block;
   font-size: 1.125em;
@@ -811,40 +880,97 @@ body {
   white-space: pre-line;
 }
 
-/* line 159, D:/work/dat/conduit/sass/viewer.scss */
+/* line 169, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .edit-field {
   padding: 0 1vw;
   width: 50vw;
 }
 
-/* line 164, D:/work/dat/conduit/sass/viewer.scss */
+/* line 174, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .editable-buttons {
   float: right;
   margin: 5px 0 75px 0;
 }
 
-/* line 169, D:/work/dat/conduit/sass/viewer.scss */
-.toolbox {
-  position: absolute;
-  bottom: -10px;
-  left: 20px;
-  right: 20px;
-  height: 50px;
-}
-
-/* line 176, D:/work/dat/conduit/sass/viewer.scss */
-.toolbox .container-fluid {
-  padding: 0;
-}
-
 /* line 179, D:/work/dat/conduit/sass/viewer.scss */
-.toolbox .container-fluid .navbar-info {
-  padding: 0;
+.article-view #date {
+  color: #bdbdbd;
+  font-size: 14px;
+  line-height: 18px;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
 }
 
-/* line 182, D:/work/dat/conduit/sass/viewer.scss */
-.toolbox .container-fluid .navbar-right {
-  margin-right: 0;
+/* line 190, D:/work/dat/conduit/sass/viewer.scss */
+#action-area {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 52px;
+  padding: 8px;
+  border-top: 1px solid #bdbdbd;
+  display: inline-block;
+}
+
+/* line 203, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn {
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 2px !important;
+  float: right;
+  font-weight: 700;
+}
+
+/* line 213, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-default {
+  color: #212121;
+}
+
+/* line 217, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-default:hover,
+#action-area .btn-default:focus {
+  background: rgba(33, 33, 33, 0.12);
+}
+
+/* line 222, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-primary {
+  color: #009688;
+}
+
+/* line 226, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-primary:hover,
+#action-area .btn-primary:focus,
+#action-area .btn-primary:active,
+#action-area .btn-primary.open {
+  background: rgba(0, 150, 136, 0.12);
+  box-shadow: none;
+}
+
+/* line 234, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .dropdown-menu.open {
+  position: relative;
+  top: -350%;
+  right: 0;
+  height: auto;
+  max-height: 25vh;
+  transition: max-height .25s ease-in-out;
+  max-width: 70%;
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+  z-index: 101;
+}
+
+/* line 249, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-group.open .dropdown-toggle {
+  width: 100% !important;
+  min-width: initial !important;
+  box-shadow: none;
+  background: rgba(0, 150, 136, 0.12);
 }
 
 /*Light*/
@@ -1258,8 +1384,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 /*FOcus color*/
 /* line 282, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 a:focus {
-  outline: 5px auto #ff5252;
-  outline-offset: -2px;
+  /*outline: 2px auto $colorAccent;
+  outline-offset: -2px;*/
 }
 
 /* line 287, D:/work/dat/conduit/sass/bootstrap-customization.scss */
@@ -1277,16 +1403,16 @@ input[type="checkbox"]:focus {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: 5px auto #ff5252;
-  outline-offset: -2px;
+  /*outline: 5px auto $colorAccent;
+  outline-offset: -2px;*/
 }
 
 /* line 304, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .form-control:focus {
-  border-color: #ff5252;
+  border-bottom: 2px solid #ff5252;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 82, 82, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 82, 82, 0.6);
+  /*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);*/
 }
 
 /* Loading Bar*/
@@ -1396,11 +1522,11 @@ input[type="checkbox"]:focus {
   color: white;
   height: 56px;
   border: none;
-  border-radius: 2px 2px 0 0;
+  border-radius: 2px 0 0 0;
   color: white;
   font-size: 16px;
   line-height: 19px;
-  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
+  /*box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);*/
   z-index: 100;
 }
 

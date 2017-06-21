@@ -4,22 +4,32 @@
 
 $lrpadding: 15px; /*does not apply to all elements*/
 
+$actBtnHeight: 36px;
+$actPadding: 8px;
+
 .article-view {
 			
 	position: absolute;
 	top: 10px;
 	left: 20px;
 	right: 20px;
-	bottom: 70px;
+	bottom: 10px;
 	max-height: inherit;
-	overflow-y: auto;
-	overflow-x: hidden;
-	padding: 0;
+	overflow: hidden;
 
 	border-radius: 2px;
 	/*border: 1px solid $colorGrey;*/
 	background: $colorCardBackground;
 	box-shadow: 0 0px 2px rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+}
+
+#content-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: $actBtnHeight + ($actPadding * 2);
+    left: 0;
+    overflow-y: auto;
 }
 
 .article-view #subject {
@@ -166,21 +176,79 @@ $lrpadding: 15px; /*does not apply to all elements*/
 	margin: 5px 0 75px 0;
 }
 
-.toolbox {
+.article-view #date {
+	color: $colorGrey;
+	font-size: 14px;
+	line-height: 18px;
 	position: absolute;
-	bottom: -10px;
-	left: 20px;
-	right: 20px;
-	height: 50px;
+	left: 15px;
+	bottom: 15px;
+}
 
-	.container-fluid {
-		padding: 0;
 
-		.navbar-info {
-			padding: 0;
-		}
-		.navbar-right {
-			margin-right: 0;
-		}
-	}
+
+#action-area {
+	position:absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	
+	height: $actBtnHeight + ($actPadding * 2);
+	padding: $actPadding;
+
+	border-top: 1px solid $colorGrey;
+	display: inline-block;
+}
+
+#action-area .btn {
+	height: $actBtnHeight;
+	background: transparent;
+	border: none;
+	border-radius: 2px !important;
+	
+	float: right;
+	font-weight: 700;
+}
+
+#action-area .btn-default{
+	color: $colorFont;
+}
+
+#action-area .btn-default:hover,
+#action-area .btn-default:focus{
+	background: rgba($colorFont, .12);
+}
+
+#action-area .btn-primary{
+	color: $colorPrimary;
+}
+
+#action-area .btn-primary:hover,
+#action-area .btn-primary:focus,
+#action-area .btn-primary:active,
+#action-area .btn-primary.open{
+	background: rgba($colorPrimary, .12);
+	box-shadow: none;
+}
+
+#action-area .dropdown-menu.open {
+    position: relative;
+    top: -350%;
+    right: 0;
+    height: auto;
+    max-height: 25vh;
+    transition: max-height .25s ease-in-out;
+    max-width: 70%;
+    background-color: #fff;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+    z-index: 101;
+}
+
+#action-area .btn-group.open .dropdown-toggle {
+    width: 100% !important;
+    min-width: initial !important;
+	box-shadow: none;
+	background: rgba($colorPrimary, .12);
 }

@@ -378,8 +378,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 /*FOcus color*/
 /* line 282, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 a:focus {
-  outline: 5px auto #ff5252;
-  outline-offset: -2px;
+  /*outline: 2px auto $colorAccent;
+  outline-offset: -2px;*/
 }
 
 /* line 287, D:/work/dat/conduit/sass/bootstrap-customization.scss */
@@ -397,16 +397,16 @@ input[type="checkbox"]:focus {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: 5px auto #ff5252;
-  outline-offset: -2px;
+  /*outline: 5px auto $colorAccent;
+  outline-offset: -2px;*/
 }
 
 /* line 304, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .form-control:focus {
-  border-color: #ff5252;
+  border-bottom: 2px solid #ff5252;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 82, 82, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 82, 82, 0.6);
+  /*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);*/
 }
 
 /* Loading Bar*/

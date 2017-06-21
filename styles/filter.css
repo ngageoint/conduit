@@ -39,17 +39,12 @@
 }
 
 /* line 38, D:/work/dat/conduit/sass/filter.scss */
-.accordion-wrapper .panel a {
-  color: #fff;
-}
-
-/* line 42, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-default {
   border: none !important;
   border-radius: 0 !important;
 }
 
-/* line 46, D:/work/dat/conduit/sass/filter.scss */
+/* line 42, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-heading {
   background: #757575 !important;
   height: 24px !important;
@@ -58,7 +53,7 @@
   z-index: 99;
 }
 
-/* line 53, D:/work/dat/conduit/sass/filter.scss */
+/* line 49, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-open .panel-heading {
   position: absolute;
   bottom: 0;
@@ -67,7 +62,7 @@
   border-radius: 0px 0px 2px 2px;
 }
 
-/* line 60, D:/work/dat/conduit/sass/filter.scss */
+/* line 56, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title {
   color: #fff !important;
   text-align: center !important;
@@ -75,7 +70,12 @@
   padding: 5px 0;
 }
 
-/* line 67, D:/work/dat/conduit/sass/filter.scss */
+/* line 62, D:/work/dat/conduit/sass/filter.scss */
+.accordion-wrapper .panel-title a {
+  color: #fff;
+}
+
+/* line 66, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-body {
   max-height: 40vh;
   overflow-y: scroll;

@@ -114,24 +114,85 @@
   width: auto;
   top: 66px;
   bottom: 0px;
-  left: -10px;
+  left: -15px;
   right: 0px;
   float: right;
 }
 
-/* line 115, D:/work/dat/conduit/sass/stream.scss */
-#right .nya-bs-select {
+/* line 118, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper {
   position: absolute;
   top: 10px;
   left: -5px;
   right: 10px;
   width: auto;
+  height: 56px;
+  display: inline-block;
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
+  z-index: 100;
 }
 
-/* line 124, D:/work/dat/conduit/sass/stream.scss */
-#right .stream-action {
-  left: -10px;
-  right: -10px;
+/* line 133, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper .btn-primary {
+  border: none;
+  border-bottom: 2px solid #009688;
+  box-shadow: none;
+}
+
+/* line 139, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper .btn-primary:active,
+#book-action-wrapper .btn-primary.active,
+#book-action-wrapper .btn-primary:focus,
+#book-action-wrapper .btn-primary.focus,
+#book-action-wrapper .btn-primary:hover,
+#book-action-wrapper .btn-primary:active:focus,
+#book-action-wrapper .btn-primary.active:focus,
+#book-action-wrapper .btn-primary:active:hover,
+#book-action-wrapper .btn-primary.active:hover {
+  background-color: #009688;
+  border-bottom: 2px solid #ff5252;
+  box-shadow: none;
+}
+
+/* line 153, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper .nya-bs-select {
+  position: absolute;
+  left: 0;
+  right: 48px;
+  height: 100%;
+  width: auto;
+  border-radius: 2px 0 0 0;
+  border-bottom: 2px solid #009688;
+  box-shadow: none;
+}
+
+/* line 166, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper nya-bs-select:active,
+#book-action-wrapper nya-bs-select.active,
+#book-action-wrapper nya-bs-select:focus,
+#book-action-wrapper nya-bs-select.focus,
+#book-action-wrapper nya-bs-select:hover,
+#book-action-wrapper nya-bs-select:active:focus,
+#book-action-wrapper nya-bs-select.active:focus,
+#book-action-wrapper nya-bs-select:active:hover,
+#book-action-wrapper nya-bs-select.active:hover {
+  background-color: #009688;
+  border-bottom: 2px solid #ff5252;
+  box-shadow: none;
+}
+
+/* line 180, D:/work/dat/conduit/sass/stream.scss */
+#book-action-wrapper .stream-action {
+  position: absolute;
+  width: 48px;
+  top: 0 !important;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  height: 100%;
+  border-radius: 0 2px 0 0;
+  box-shadow: none;
 }
 
 /*# sourceMappingURL=../styles/stream.map */
