@@ -1,32 +1,32 @@
 /*Links*/
 /*Light*/
 /*Dark*/
-/* line 5, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+/* line 5, D:/work/dat/conduit/sass/links.scss */
 a:link {
   text-decoration: none;
-  color: #c2714f;
+  color: #ff5252;
 }
 
-/* line 10, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+/* line 10, D:/work/dat/conduit/sass/links.scss */
 a:hover {
   text-decoration: underline;
-  color: #a55939;
+  color: #ff1f1f;
 }
 
-/* line 15, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+/* line 15, D:/work/dat/conduit/sass/links.scss */
 a:active {
   outline: 0;
   outline: none;
 }
 
-/* line 20, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+/* line 20, D:/work/dat/conduit/sass/links.scss */
 a:visited {
   outline: 0;
   outline: none;
-  color: #004d99;
+  color: #009688;
 }
 
-/* line 26, C:/Users/NGA_XFO/Documents/digital-attack-team/conduit/sass/links.scss */
+/* line 26, D:/work/dat/conduit/sass/links.scss */
 a:focus {
   outline: 0;
   outline: none;

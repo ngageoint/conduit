@@ -13,8 +13,8 @@
 	"glyphicon":"picture",
 	"compare":"images",
 	"filter":true,
-	"action":false,
-	"bookAction":false,
+	"action":true,
+	"bookAction":true,
 	"checked":false
 },{
 	"name":"In Book",

@@ -2,23 +2,65 @@
 
 @import "colors.scss";
 
+$header-height:     1.250em;
+$title-line-height: 1.5em;
+$text-line-height:  1em;
+$text-lines:        2;
+$tag-line-height:   .938em;
+
+$card-padding:      .625em;
+$card-spacing:      .313em;
+
+
+
 .card {
-	min-height: 6.5em;
-	max-height: 6.5em;
-	height: 6.5em;
+	$height:    $header-height + 
+                $title-line-height + 
+                ($text-line-height * $text-lines) +
+                $tag-line-height +
+                ($card-spacing * 2) + 
+                ($card-padding * 2);
+    
+    min-height: $height;
+	max-height: $height;
+	height: $height;
 			
-	padding: 5px 10px 5px 10px;
+	padding: $card-padding;
 	margin: 0;
 			
 	width: 100%;
 	border-bottom: 	1px solid $colorGrey;
 	overflow: hidden;
 	position: relative;
-	background: $colorBackground;
+	background: $colorCardBackground;
+
+    display: block;
+
+    transition: all .25s ease-in-out !important;
+    transition: box-shadow .25s ease-in-out;
+    box-shadow: 0 0px 2px rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+    transition: margin .25s ease-in-out;
+    margin: 0;
 }
+
+    .card-header {
+        height: $header-height;
+    }
+
+        .card .subject {
+            color: $colorGrey;
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: .75em;
+        }
 		
     .card:hover {
-	    background: lighten($colorGrey, 8%);
+	    background: darken($colorCardBackground, 5%);
+        transition: box-shadow .25s ease-in-out;
+        box-shadow: 0 0px 4px 0 rgba(0,0,0,0.12), 0 4px 4px 0 rgba(0,0,0,0.24);
+        z-index: 98;
 		cursor: pointer;
 	}			
 		
@@ -30,40 +72,46 @@
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
-		
+
 		font-size: 	1.25em;
-		line-height: 1.15em;
+		line-height: 1.5em;
 	}
 		
-	.card .text{	
-		min-height: 2.5em;
-		height: 2.5em;
-			
-		overflow: hidden;
+	.card .text{
+        overflow: hidden;
 		white-space: normal;
+
+        min-height: $text-line-height * 2;
+		height: $text-line-height * 2;		
 			
-		font-size: 	1em;
-		line-height: 1.25em;
+		font-size: 	.875em;
+		line-height: $text-line-height;
 	}
+
+    .card .tag {
+        font-size: .75em;
+        line-height: $tag-line-height;
+        font-style: italic;
+
+        display: inline-block;
+        width: auto;
+        margin-right: 5px;
+        border: none;
+    }
 		
         .card #tag-wrapper {
             width: 70%;
-            height: auto;
+            margin: $card-spacing 0 0 0;
+            height: $tag-line-height  + .5 em;
             white-space: nowrap;
-            overflow: show;
+            overflow-x: hidden;
             float: left;
         }
 
-        .card .attributes-wrapper {
-            background: inherit;
-        }
-
         .card #tag-wrapper-action {
-            display: inline-block;
-            width: 30%;
-            position: absolute;
-            right: 5px;
-            bottom: 10px;
+            width: 33%;
+            float: left;
+            text-align: left;
             overflow: hidden;
             white-space: nowrap;
             background: inherit;
@@ -72,15 +120,24 @@
             .card #tag-wrapper-action .action {
                 background: none;
                 border: none;
-                float: right;
+                float: left;
                 margin-right: 5px;
                 clear: none;
-                color: ($colorSecondary);
+                color: $colorPrimary;
             }    
             
         .card #icon {
             float: left;
-        }		
+        }
+
+    .card #date {
+        width: 30%;
+        margin: $card-spacing 0 0 0;
+        height: $tag-line-height + .5 em;
+        white-space: nowrap;
+        overflow: hidden;
+        float: right;
+    }
 		
 	.card .card-btn{
 		visibility: hidden;
@@ -99,77 +156,62 @@
             transition: opacity .2s ease-in-out;
         }
 
-    .active {
-		background: darken($colorGrey, 10%);
-	}
-		
-	    .active:hover {
-			background: darken($colorGrey, 18%);
+    .card.active {        
+        background: darken($colorCardBackground, 15%);
+        transition: box-shadow .25s ease-in-out;
+        box-shadow: 0 0px 6px 0 rgba(0,0,0,0.12), 0 6px 6px 0 rgba(0,0,0,0.24);
+        transition: margin .25s ease-in-out;
+        margin: 10px -5px 10px -5px;
+        width: auto;
+        z-index: 99;
+	}		
+	    .card.active:hover {
+			background: darken($colorCardBackground, 20%);
+            box-shadow: 0 0px 6px 0 rgba(0,0,0,0.12), 0 6px 6px 0 rgba(0,0,0,0.24);
+            transition: margin .25s ease-in-out;
 		}
+
+    .card.active .tag {
+        color: $colorFont;
+    }
 		
 	.read {
         .title {
-            color: darken($colorGrey, 18%);
+            color: $colorGrey
         }
         .text {
-            color: darken($colorGrey, 10%);
+            color: $colorGrey
         }
         .tag {
-            background: transparent;					
-            border: 1px solid darken($colorGrey, 10%);
-            color: darken($colorGrey, 10%);
+            background: transparent;
+            color: $colorGrey
         }
     }
 
 	.active-read {
         .title {
-            color: darken($colorGrey, 43%);
+            color: darken($colorGrey, 30%);
         }
         .text {
-            color: darken($colorGrey, 35%);
+            color: darken($colorGrey, 30%);
         }
         .tag {
-            background: transparent;
-            border: 1px solid darken($colorGrey, 35%);
-            color: darken($colorGrey, 35%);
+            color: darken($colorGrey, 30%);
+        }
+        .subject {
+            color: darken($colorGrey, 30%);
         }
     }
 
-#end-of-stream {
-	height: 100%;
-	text-align: center;	
-	color: darken($colorGrey, 10%);
-	width: inherit;
-	font-size: 1em;
-	cursor: default;
-	overflow: hidden;
-    margin: 0;
-    padding: 0;
+.card.ng-hide:not(.ng-hide-animate) {
+  /* These are just alternative ways of hiding an element */
+  display: block !important;
+  transition: all .25s ease-in-out !important;
+  height: 0px !important;
+  max-height: 0px !important;
+  min-height: 0px !important;
+  padding: 0px !important;
+  border: none;
+  /*position: absolute;
+  top: -9999px;*/
 }
-		
-    #end-of-stream:hover {
-        background: $colorBackground;
-    }
-
-    #end-of-stream #wrapper:before {
-        content: '';
-        height: 100%;
-        display: inline-block;
-        vertical-align: middle;
-    }
-            
-    #end-of-stream #wrapper {
-        position: relative;
-        height: 100%;
-        display: inline-block;
-        vertical-align: middle;
-        width: 100%;
-    }
-            
-    #end-of-stream #wrapper div {
-        display: inline-block;
-        vertical-align: middle;
-        white-space: normal;
-        line-height: 140%;
-        width: 90%;
-    }

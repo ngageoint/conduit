@@ -22,9 +22,9 @@
 		"checked":false
 	}]
 },{
-	"tag":"NWS FL",
-	"name":"National Weather Service FL",
-	"link":"https://alerts.weather.gov/cap/fl.php?x=1",
+	"tag":"NWS VA",
+	"name":"National Weather Service VA",
+	"link":"https://alerts.weather.gov/cap/va.php?x=1",
 	"type":"rss",
 	"binding":[{
 			"local":"date",

@@ -2,20 +2,43 @@
 
 @import "colors.scss";
 
+$lrpadding: 15px; /*does not apply to all elements*/
+
+$actBtnHeight: 36px;
+$actPadding: 8px;
+
 .article-view {
 			
 	position: absolute;
 	top: 10px;
 	left: 20px;
 	right: 20px;
-	bottom: 70px;
+	bottom: 10px;
 	max-height: inherit;
-	overflow-y: auto;
-	overflow-x: hidden;
-	padding: 0 15px 0 15px;
-	border-radius: 4px;
-	border: 1px solid $colorGrey;
-	background: $colorBackground;
+	overflow: hidden;
+
+	border-radius: 2px;
+	/*border: 1px solid $colorGrey;*/
+	background: $colorCardBackground;
+	box-shadow: 0 0px 2px rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+}
+
+#content-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: $actBtnHeight + ($actPadding * 2);
+    left: 0;
+    overflow-y: auto;
+}
+
+.article-view #subject {
+    color: $colorGrey;
+	font-size: 12px;
+	line-height: 15px;
+	margin-top: 20px;
+	width: 100%;
+	text-align: center;
 }
 
 .btn-edit  {
@@ -28,45 +51,53 @@
 .btn-edit:hover {
 	background-color: lighten($colorGrey, 8%);
 }
-.article-view .edit-field {
-	padding: 0 1vw;
-	width: 50vw;
-}
-
-.article-view #title-wrapper .edit-field {
-	line-height: 1.25em;
-	height: 6em;
-}
 
 .article-view .text.edit-field {
-	padding: 0 1vw;
+	margin: 0 $lrpadding;
 	height: 50vh;
 }
 
-
 .article-view #title-wrapper {
 	position: relative;
-	padding: 1.6em 0 0 0;
+	margin-top: 8px;
+	margin: 0 $lrpadding;
 }
 
 
 .article-view .title {
-	padding: 0;
-	font-size: 2.15em;
+	font-size: 1.5em;
 	font-family: 'Montserrat', sans-serif;	
 }
 
+.article-view #title-wrapper .edit-field {
+	line-height: 1.813em;
+	height: 6em;
+}
 
 .article-view #image-wrapper {
-	display: inline-block;
-	padding: 2vh 0px 3vh 0px;
-	max-width: 100%;
-	max-height: 75vh;
+	position: relative;
+	width: 100%;
+	max-height: 50vh;
 	display: block;
-	margin: 0px 0px 0px 0px;
+	margin: 14px 0 0 0;
 	justify-content: center;
 	text-align: center;
 	clear: both;
+
+	#nav-right {
+		position: absolute;
+		top: 50%;
+		right: 15px;
+		bottom: 50%;
+		z-index: 100;
+	}
+	#nav-left {
+		position: absolute;
+		top: 50%;
+		left: 15px;
+		bottom: 50%;
+		z-index: 100;
+	}
 }
 		
     .article-view #image-wrapper::before {
@@ -77,17 +108,31 @@
         margin-right: -0.25em;
     }
 		
-.article-view #image-wrapper .nav-arrow{
-	display: inline-block;
-	vertical-align: middle;
-	max-width: 10%;
-	font-size: 5vw;
-	height: auto;
-	color: $colorFont;
+#image-wrapper .nav-arrow{
+		$nav-icon-size: .75em;
+		$nav-circle-size: 2.5em;
+
+		background-color: $colorPrimary;
+		
+		width: $nav-circle-size;
+		height: $nav-circle-size;
+		border-radius: $nav-circle-size / 2;
+		box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+		transition: box-shadow .25s ease-in-out;
+
+		font-size: $nav-icon-size;
+		color: #fff;
+
+		padding: (($nav-circle-size - $nav-icon-size) / 2) - .1em;
+		text-align: center;
+		justify-content: center;
+		vertical-align: middle;
 }
-	.article-view #image-wrapper .nav-arrow:hover{
+	#image-wrapper .nav-arrow:hover{
 		cursor: pointer;
-		color: darken($colorFont, 10%);	
+		background-color: $colorPrimary700;	
+		box-shadow: 0 0 4px 0 rgba(0,0,0,0.12), 0 4px 4px 0 rgba(0,0,0,0.24);
+		transition: box-shadow .25s ease-in-out;
 	}
 
 .article-view #image-wrapper .greyout {
@@ -96,54 +141,114 @@
 		
 .article-view .article-image {
 	display: inline-block;
-	max-width: 75%;
 	margin: auto;
 	justify-content: center;
 	text-align: center;
 }
 		
 .article-view .article-image .image{
-	max-width: 100%;
-	max-height: 75vh;
+	width: 100%;
+	max-height: 50vh;
 	vertical-align: middle;
 }
 		
-
 .article-view .text-wrapper {
-    display: inline-block;
-	width: 100%;
+    margin: 0 $lrpadding;
+    position: relative;
+    top: 30px;
 }
 
 .article-view .text {
-	padding: 1.5vh 0 75px 0;
 	display: block;
-	font-size: 1.15em;
-	line-height: 1.75em;
+	font-size: 1.125em;
+	line-height: 1.125em;
 	clear: both;
 	white-space: pre-line;
 }
 
+.article-view .edit-field {
+	padding: 0 1vw;
+	width: 50vw;
+}
    
 .article-view  .editable-buttons {
 	float: right;
 	margin: 5px 0 75px 0;
 }
 
-.toolbox {
+.article-view #date {
+	color: $colorGrey;
+	font-size: 14px;
+	line-height: 18px;
 	position: absolute;
-	bottom: -10px;
-	left: 20px;
-	right: 20px;
-	height: 50px;
+	left: 15px;
+	bottom: 15px;
+}
 
-	.container-fluid {
-		padding: 0;
 
-		.navbar-info {
-			padding: 0;
-		}
-		.navbar-right {
-			margin-right: 0;
-		}
-	}
+
+#action-area {
+	position:absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	
+	height: $actBtnHeight + ($actPadding * 2);
+	padding: $actPadding;
+
+	border-top: 1px solid $colorGrey;
+	display: inline-block;
+}
+
+#action-area .btn {
+	height: $actBtnHeight;
+	background: transparent;
+	border: none;
+	border-radius: 2px !important;
+	
+	float: right;
+	font-weight: 700;
+}
+
+#action-area .btn-default{
+	color: $colorFont;
+}
+
+#action-area .btn-default:hover,
+#action-area .btn-default:focus{
+	background: rgba($colorFont, .12);
+}
+
+#action-area .btn-primary{
+	color: $colorPrimary;
+}
+
+#action-area .btn-primary:hover,
+#action-area .btn-primary:focus,
+#action-area .btn-primary:active,
+#action-area .btn-primary.open{
+	background: rgba($colorPrimary, .12);
+	box-shadow: none;
+}
+
+#action-area .dropdown-menu.open {
+    position: relative;
+    top: -350%;
+    right: 0;
+    height: auto;
+    max-height: 25vh;
+    transition: max-height .25s ease-in-out;
+    max-width: 70%;
+    background-color: #fff;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+    z-index: 101;
+}
+
+#action-area .btn-group.open .dropdown-toggle {
+    width: 100% !important;
+    min-width: initial !important;
+	box-shadow: none;
+	background: rgba($colorPrimary, .12);
 }

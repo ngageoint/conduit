@@ -100,63 +100,115 @@
         <div id="container">
         	<div id="center" class="column" ng-controller="ViewerCtrl" ng-cloak>
             	<div class="article-view"  ng-model="article" data-scroll-to-top="articles[currentIndex]">
-                    <div id="title-wrapper">
-                        <div 	class="title"
-                        		e-class="title edit-field"
-                            	e-form="titleEdit"
-                           	 	editable-textarea="articles[currentIndex].title"
-                            	blur="submit">
-                            {{articles[currentIndex].title}}
+                    <div id="content-wrapper">
+                        <div id="subject">
+                            TREES//SPRUCE
                         </div>
-                        <button id="btn-title" class="btn btn-edit" ng-click="titleEdit.$show()" ng-hide="titleEdit.$visible">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            <div class="ico-text-2">Edit</div>
-                        </button>
-                    </div>
-                	<div id="image-wrapper" ng-if="!articles[currentIndex].images.length == 0">
-                    	
-                        <span 	class="glyphicon glyphicon-menu-left nav-arrow"
-                        	ng-class="{'greyout': !(articles[currentIndex].images.length > 1 && articles[currentIndex].selectedImage > 0)}"
-                            ng-click="navBefore()"
-                            alt="Navitage to previous image"
-                            title="Navigate to previous image">
-                        	
-                        </span>
-                        
-                        <a class="article-image" ng-href="{{articles[currentIndex].images[articles[currentIndex].selectedImage]}}" target="_blank">
-                        	<img	ng-show="articles[currentIndex].images[articles[currentIndex].selectedImage]"
-                            		ng-src="{{articles[currentIndex].images[articles[currentIndex].selectedImage]}}"
-                                    alt="Click to open image"
-                                    title="Click to open image"
-                                    class="image"/>
-                        </a>
-                                            
-                        <span 	class="glyphicon glyphicon-menu-right nav-arrow"
-                        	ng-class="{'greyout': !(articles[currentIndex].images.length > 1 && articles[currentIndex].selectedImage < articles[currentIndex].images.length -1)}"
-                            ng-click="navNext()"
-                            alt="Navigate to next image"
-                            title="Navigate to next image">
-                        	
-                        </span> 
-                    </div>
-                    
-                    <div ng-if="articles[currentIndex].images.length == 0" style="text-align:center"><b>No image to show.</b></div>
-                    
-                    <div class="text-wrapper">
-                        <div 	class="text" 
-                        		e-class="text edit-field"
-                                e-form="textEdit"
-                                editable-textarea="articles[currentIndex].text"
-                                blur="submit">
-                            <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
+                        <div id="title-wrapper">
+                            <div 	class="title"
+                                    e-class="title edit-field"
+                                    e-form="titleEdit"
+                                    editable-textarea="articles[currentIndex].title"
+                                    blur="submit">
+                                {{articles[currentIndex].title}}
+                            </div>
+                            <button id="btn-title" class="btn btn-edit" ng-click="titleEdit.$show()" ng-hide="titleEdit.$visible">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <div class="ico-text-2">Edit</div>
                             </button>
-                            {{articles[currentIndex].text}}
+                        </div>
+                        <div id="image-wrapper" ng-if="!articles[currentIndex].images.length == 0">
+                            
+                            <span 
+                                id="nav-left"
+                                class="glyphicon glyphicon-menu-left nav-arrow"
+                                ng-class="{'greyout': !(articles[currentIndex].images.length > 1 && articles[currentIndex].selectedImage > 0)}"
+                                ng-click="navBefore()"
+                                alt="Navitage to previous image"
+                                title="Navigate to previous image">
+                                
+                            </span>
+                            
+                            <a class="article-image" ng-href="{{articles[currentIndex].images[articles[currentIndex].selectedImage]}}" target="_blank">
+                                <img	ng-show="articles[currentIndex].images[articles[currentIndex].selectedImage]"
+                                        ng-src="{{articles[currentIndex].images[articles[currentIndex].selectedImage]}}"
+                                        alt="Click to open image"
+                                        title="Click to open image"
+                                        class="image"/>
+                                    
+                            </a>
+                                                
+                            <span 
+                                id="nav-right"
+                                class="glyphicon glyphicon-menu-right nav-arrow"
+                                ng-class="{'greyout': !(articles[currentIndex].images.length > 1 && articles[currentIndex].selectedImage < articles[currentIndex].images.length -1)}"
+                                ng-click="navNext()"
+                                alt="Navigate to next image"
+                                title="Navigate to next image">
+                                
+                            </span> 
+                        </div>
+                        
+                        <div ng-if="articles[currentIndex].images.length == 0" style="text-align:center"><b>No image to show.</b></div>
+                        
+                        <div class="text-wrapper">
+                            <div 	class="text" 
+                                    e-class="text edit-field"
+                                    e-form="textEdit"
+                                    editable-textarea="articles[currentIndex].text"
+                                    blur="submit">
+                                <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    <div class="ico-text-2">Edit</div>
+                                </button>
+                                {{articles[currentIndex].text}}
+                            </div>
                         </div>
                     </div>
+                    <div id="action-area">
+                        <div id="date">
+                            {{articles[currentIndex].date}}
+                        </div>
+                        <ol class="btn btn-primary nya-bs-select dropup col-xl-4"
+                            id="toolbox-books"
+                            multiple
+                            data-selected-text-format="count>2"
+                            ng-model="articles[currentIndex].books"
+                            ng-attr-title="ADD">
+                            <li nya-bs-option="book in ::books">
+                                <a>
+                                    {{::book.name}}
+                                    <span class="glyphicon glyphicon-ok check-mark"></span>
+                                </a>
+                            </li>
+                        </ol>
+                        <button ng-controller="ExportCtrl"
+                                class="btn btn-default"
+                                ng-click="export(articles[currentIndex])"
+                                title="EXPORT">
+                            <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                            <div class="ico-text-1">EXPORT</div>
+                        </button>
+                        <button uib-popover-template="'templates/comments-popover.html'"
+                                popover-title="DISCUSS"
+                                type="button"
+                                class="btn btn-default"
+                                popover-trigger="'outsideClick'"
+                                title="DISCUSS">
+                                <!--<span class="glyphicon glyphicon-comment">&nbsp;</span>-->
+                                <div class="ico-text-1">
+                                    DISCUSS<span ng-if="articles[currentIndex].comments.length > 0" class="badge" style="margin-left:4px">{{articles[currentIndex].comments.length}}</span>
+                                </div>
+                        </button>
+                        
+                    </div>
+                        <!--<div id="fab">
+                            <span class="glyphicon glyphicon-align-justify"></span> 
+                        </div>-->
                 </div>  
                 
+                
+<!--
                 <nav class="navbar navbar-default toolbox">
 					<div class="container-fluid">
 						<div class="navbar-header">
@@ -211,11 +263,35 @@
        						</form>
        					</div>
    					</div>
-   				</nav>              
+   				</nav>
+-->
             </div>
             
             <div id="left" class="column" ng-controller="FeedCtrl" >
-                	<div class="fluid-container">
+                	<div class="btn-group stream-action" id="trash" ng-init="cbxTrash = 0">
+                        <button 	type="button"
+                                    style="width: 50%;"
+                                    class="btn btn-primary"
+                                    ng-model="filter.trash"
+                                    uib-btn-radio="0"
+                                    ng-click="refreshFeed()"
+                                    title="Feed">
+                            <span class="glyphicon glyphicon-th-list"></span>
+                            <div class="ico-text-2">&nbsp;Feed</div>
+                        </button>
+                        <button 	type="button"
+                                    style="width: 50%;"
+                                    class="btn btn-primary"
+                                    ng-model="filter.trash"
+                                    uib-btn-radio="1"
+                                    ng-click="refreshFeed()"
+                                    title="Deleted items">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            <div class="ico-text-2">&nbsp;Deleted Items</div>
+                        </button>
+                    </div>
+                    
+                    <div class="fluid-container">
                         <fe-stateful class="accordion-wrapper">
                             <uib-accordion close-others="true">
                                 <div 	uib-accordion-group 
@@ -227,9 +303,7 @@
                                                             class="pointer-on-hover"
                                                             title="Filter options">
                                         <div>
-                                            <span class="glyphicon glyphicon-filter"></span>
-                                            <div class="ico-text-3">&nbsp;Filter Options:</div>
-                                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
                                         </div>
                                     </uib-accordion-heading>
                                     
@@ -292,7 +366,7 @@
                         </fe-stateful>
                 <fe-fluid 	id="article-stream"
                 			class="stream">
-                    <div infinite-scroll="buildMoreCards()" infinite-scroll-parent="true" infinite-scroll-distance=".75">                         
+                    <div id="infinite-scroll" infinite-scroll="buildMoreCards()" infinite-scroll-parent="true" infinite-scroll-distance=".75">                         
                 	<card	class="card"
                     				ng-repeat="article in articles track by article.id"
                                     ng-if="article.display"
@@ -306,54 +380,40 @@
                                     ng-cloak>
                     </card>
 </div>
-                    <div id="end-of-stream" class="card">
-                    	<div id="wrapper">
-                        	<div>No more articles to show.</div>
-                        </div>
-                    </div>
                 </fe-fluid>
                 </div>
                 
-                <div id="stream-footer" class="pull-right">
+                <!--<div id="stream-footer" class="pull-right">
                     Articles Shown:&nbsp;
                        <span ng-if="articles.length > 0" class="badge">{{filter.count}}</span>
-                </div>
-                <div class="btn-group stream-action" id="trash" ng-init="cbxTrash = 0">
-                    <button 	type="button"
-                    			style="width: 50%;"
-                                class="btn btn-primary"
-                                ng-model="filter.trash"
-                                uib-btn-radio="0"
-                                ng-click="refreshFeed()"
-                                title="Feed">
-                        <span class="glyphicon glyphicon-th-list"></span>
-                        <div class="ico-text-2">&nbsp;Feed</div>
-                     </button>
-                    <button 	type="button"
-                    			style="width: 50%;"
-                                class="btn btn-primary"
-                                ng-model="filter.trash"
-                                uib-btn-radio="1"
-                                ng-click="refreshFeed()"
-                                title="Deleted items">
-                        <span class="glyphicon glyphicon-trash"></span>
-                        <div class="ico-text-2">&nbsp;Deleted Items</div>
-                     </button>
-                 </div>
+                </div>-->
+                
             </div>
             
             <div id="right" class="column" ng-controller="BookCtrl">
-				<ol class="nya-bs-select dropdown form-control"
-                	ng-model="selectedBook"
-                    title="Choose a book...">
-                	<li nya-bs-option="book in ::books" title="{{::book.name}}">
-						<a>
-                            {{::book.name}}&nbsp;
-                            <span ng-if="book.count" class="badge">{{book.count}}</span>
-                            <span class="glyphicon glyphicon-ok check-mark"></span>
-						</a>
-					</li>
-				</ol>             
+                <div id="book-action-wrapper">
+                    <ol class="nya-bs-select dropdown form-control"
+                        ng-model="selectedBook"
+                        title="Choose a book...">
+                        <li nya-bs-option="book in ::books" title="{{::book.name}}">
+                            <a>
+                                {{::book.name}}&nbsp;
+                                <span ng-if="book.count" class="badge">{{book.count}}</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                            </a>
+                        </li>
+                    </ol>   
+                    <div ng-controller="ExportCtrl">
+                        <button	type="button"
+                                id="export-book"
+                                class="btn btn-primary stream-action"
+                                ng-click="exportBook()"
+                                title="Export book">
+                                <span class="glyphicon glyphicon-save-file"></span> 
+                                <!--<div class="ico-text-3">&nbsp;Export book</div>-->
+                        </button>
+                    </div>
+                </div>
                 <div id="article-book" class="stream book">
                     <card	class="card"
                                     ng-repeat="article in articles track by article.id"
@@ -363,22 +423,7 @@
                                     ng-click="activateCard('Book', article.id)"
                                     ng-init="isStream = false">
                     </card>
-                        
-                    <div id="end-of-stream" class="card">
-                        <div id="wrapper">
-                            <div>No more articles to show.</div>
-                        </div>
-                    </div>
                	</div>
-                <div ng-controller="ExportCtrl">
-                    <button	type="button"
-                            class="btn btn-primary stream-action"
-                            ng-click="exportBook()"
-                            title="Export book">
-                            <span class="glyphicon glyphicon-save-file"></span> 
-                            <div class="ico-text-3">&nbsp;Export book</div>
-                    </button>
-            	</div>
             </div>
         
         </div>
