@@ -1,0 +1,271 @@
+/*Article View*/
+/*Light*/
+/*Dark*/
+/*does not apply to all elements*/
+/* line 10, D:/work/dat/conduit/sass/viewer.scss */
+.article-view {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  bottom: 10px;
+  max-height: inherit;
+  overflow: hidden;
+  border-radius: 2px;
+  /*border: 1px solid $colorGrey;*/
+  background: #fff;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+/* line 26, D:/work/dat/conduit/sass/viewer.scss */
+#content-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 52px;
+  left: 0;
+  overflow-y: auto;
+}
+
+/* line 35, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #subject {
+  color: #bdbdbd;
+  font-size: 12px;
+  line-height: 15px;
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 44, D:/work/dat/conduit/sass/viewer.scss */
+.btn-edit {
+  visibility: visible;
+  color: #212121;
+  background-color: #f2f2f2;
+  font-family: 'SourceSansPro', sans-serif;
+  clear: both;
+}
+
+/* line 51, D:/work/dat/conduit/sass/viewer.scss */
+.btn-edit:hover {
+  background-color: #d1d1d1;
+}
+
+/* line 55, D:/work/dat/conduit/sass/viewer.scss */
+.article-view .text.edit-field {
+  margin: 0 15px;
+  height: 50vh;
+}
+
+/* line 60, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #title-wrapper {
+  position: relative;
+  margin-top: 8px;
+  margin: 0 15px;
+}
+
+/* line 67, D:/work/dat/conduit/sass/viewer.scss */
+.article-view .title {
+  font-size: 1.5em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* line 72, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #title-wrapper .edit-field {
+  line-height: 1.813em;
+  height: 6em;
+}
+
+/* line 77, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #image-wrapper {
+  position: relative;
+  width: 100%;
+  max-height: 50vh;
+  display: block;
+  margin: 14px 0 0 0;
+  justify-content: center;
+  text-align: center;
+  clear: both;
+}
+
+/* line 87, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #image-wrapper #nav-right {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  bottom: 50%;
+  z-index: 100;
+}
+
+/* line 94, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #image-wrapper #nav-left {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  bottom: 50%;
+  z-index: 100;
+}
+
+/* line 103, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #image-wrapper::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+/* line 111, D:/work/dat/conduit/sass/viewer.scss */
+#image-wrapper .nav-arrow {
+  background-color: #009688;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 1.25em;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+  transition: box-shadow .25s ease-in-out;
+  font-size: 0.75em;
+  color: #fff;
+  padding: 0.775em;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+/* line 131, D:/work/dat/conduit/sass/viewer.scss */
+#image-wrapper .nav-arrow:hover {
+  cursor: pointer;
+  background-color: #00796b;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.12), 0 4px 4px 0 rgba(0, 0, 0, 0.24);
+  transition: box-shadow .25s ease-in-out;
+}
+
+/* line 138, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #image-wrapper .greyout {
+  visibility: hidden;
+}
+
+/* line 142, D:/work/dat/conduit/sass/viewer.scss */
+.article-view .article-image {
+  display: inline-block;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+/* line 149, D:/work/dat/conduit/sass/viewer.scss */
+.article-view .article-image .image {
+  width: 100%;
+  max-height: 50vh;
+  vertical-align: middle;
+}
+
+/* line 155, D:/work/dat/conduit/sass/viewer.scss */
+.article-view .text-wrapper {
+  margin: 0 15px;
+  position: relative;
+  top: 30px;
+}
+
+/* line 161, D:/work/dat/conduit/sass/viewer.scss */
+.article-view .text {
+  display: block;
+  font-size: 1.125em;
+  line-height: 1.125em;
+  clear: both;
+  white-space: pre-line;
+}
+
+/* line 169, D:/work/dat/conduit/sass/viewer.scss */
+.article-view .edit-field {
+  padding: 0 1vw;
+  width: 50vw;
+}
+
+/* line 174, D:/work/dat/conduit/sass/viewer.scss */
+.article-view .editable-buttons {
+  float: right;
+  margin: 5px 0 75px 0;
+}
+
+/* line 179, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #date {
+  color: #bdbdbd;
+  font-size: 14px;
+  line-height: 18px;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}
+
+/* line 190, D:/work/dat/conduit/sass/viewer.scss */
+#action-area {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 52px;
+  padding: 8px;
+  border-top: 1px solid #bdbdbd;
+  display: inline-block;
+}
+
+/* line 203, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn {
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 2px !important;
+  float: right;
+  font-weight: 700;
+}
+
+/* line 213, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-default {
+  color: #212121;
+}
+
+/* line 217, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-default:hover,
+#action-area .btn-default:focus {
+  background: rgba(33, 33, 33, 0.12);
+}
+
+/* line 222, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-primary {
+  color: #009688;
+}
+
+/* line 226, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-primary:hover,
+#action-area .btn-primary:focus,
+#action-area .btn-primary:active,
+#action-area .btn-primary.open {
+  background: rgba(0, 150, 136, 0.12);
+  box-shadow: none;
+}
+
+/* line 234, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .dropdown-menu.open {
+  position: relative;
+  top: -350%;
+  right: 0;
+  height: auto;
+  max-height: 25vh;
+  transition: max-height .25s ease-in-out;
+  max-width: 70%;
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+  z-index: 101;
+}
+
+/* line 249, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-group.open .dropdown-toggle {
+  width: 100% !important;
+  min-width: initial !important;
+  box-shadow: none;
+  background: rgba(0, 150, 136, 0.12);
+}
+
+/*# sourceMappingURL=../styles/viewer.map */

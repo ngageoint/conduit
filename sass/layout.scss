@@ -1,12 +1,12 @@
 /*Layout*/
 
-@import "colors-light.scss";
+@import "colors.scss";
 
 $leftWidth: 25vw;
 $rightWidth: 20vw;
 $centerWidth: (100vw - ($leftWidth + $rightWidth));
 
-$headerHeight: 50px;
+$headerHeight: 48px;
 
 * {
   -webkit-box-sizing: border-box;
@@ -34,7 +34,7 @@ body {
     font-size: 100%;
 	font-family: 'SourceSansPro', sans-serif;
 
-  background-color: darken($colorBackground, 2%);
+  background-color: $colorBackground;
 }		
 		
 #container {
@@ -80,6 +80,7 @@ body {
 	float: left;
 	margin-left: 0px;
 	max-height: 100%;
+	overflow-x: visible;
 }
 
 #header {
@@ -95,7 +96,9 @@ body {
 	
 	/*FONTS*/
 	font-size: 1.5em;
-	font-family: 'Montserrat', sans-serif;													
+	font-family: 'Montserrat', sans-serif;
+
+	box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);									
 }
 
     #header-content-wrapper:before {

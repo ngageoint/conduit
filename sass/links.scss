@@ -1,11 +1,15 @@
 /*Links*/
 
+@import "colors.scss";
+
 a:link {
 	text-decoration: none;
+	color: $colorAccent;
 }
 		
 a:hover {
 	text-decoration: underline;
+	color: darken($colorAccent, 10%);
 }
 		
 a:active {
@@ -16,12 +20,8 @@ a:active {
 a:visited {
 	outline: 0;
 	outline: none;
+	color: $colorPrimary;
 }
-		
-a:visited {
-	outline: 0;
-	outline: none;
-}	
 		
 a:focus {
 	outline: 0;

@@ -1,0 +1,31 @@
+		
+$dark: false;
+
+/*Light*/
+
+    $colorPrimary: 				#009688             !default;
+    $colorPrimary500: 				#009688             !default;
+    $colorPrimary700:           rgba(0,121,107,1)   !default;
+    $colorPrimaryContrast: 		#fff                !default;
+            
+    $colorAccent:			    #ff5252             !default;
+    $colorAccentContrast:	    #fff                !default;
+
+    $colorFont:					#212121             !default;
+    $colorGrey: 				#bdbdbd             !default;
+    $colorBackground:			#f2f2f2             !default;
+    $colorCardBackground:       #fff                !default;
+
+		
+/*Dark*/
+@if $dark == true {
+	$colorPrimary: 				#999;
+	$colorPrimaryContrast: 		#444;
+			
+	$colorAccent:			#aaa;
+	$colorAccentContrast:	#444;
+	
+	$colorFont:					#aaa;
+	$colorGrey: 				#888;
+	$colorBackground:			#222;
+}
