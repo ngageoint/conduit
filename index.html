@@ -369,7 +369,7 @@
                     <div id="infinite-scroll" infinite-scroll="buildMoreCards()" infinite-scroll-parent="true" infinite-scroll-distance=".75">                         
                 	<card	class="card"
                     				ng-repeat="article in articles track by article.id"
-                                    ng-if="article.display"
+                                    ng-if="article.build"
                                     ng-show="article.inFeed"
                                     ng-class="{	'card-extended-hover': hovering,
                                     			'active-read': article.active && !article.activeInBook && article.read,

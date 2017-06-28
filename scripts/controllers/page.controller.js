@@ -7,7 +7,7 @@ ArticlesService, AttributesService, BooksService, ArrayTools) {
 		//Add the first(__config.MIN_RENDERED_CARDS * 2) cards to the DOM so the user has something to start with.
 		//Enough cards must be added to ensure that scrolling is possible so the infinite scroll event will be triggered
 		for(var i = 0; i < __config.MIN_RENDERED_CARDS * 2 && i < $scope.articles.length; i++)
-			$scope.articles[i].display = true;
+			$scope.articles[i].build = true;
 		if($scope.articles[0])
 		{
 			$scope.articles[0].active = true;

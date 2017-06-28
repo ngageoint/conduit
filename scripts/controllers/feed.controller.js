@@ -96,7 +96,7 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 			numCards = (__config.MIN_RENDERED_CARDS / 2);
 		
 		for(var i = 0; i < $scope.articles.length; i++)
-			if($scope.articles[i].inFeed && !$scope.articles[i].display)//Find the first article that should be shown, but hasn't been built yet
+			if($scope.articles[i].inFeed && !$scope.articles[i].build)//Find the first article that should be shown, but hasn't been built yet
 			{
 				for(var j = i; j < i + numCards && j < $scope.articles.length; j++)//Iterate through numCards from there
 				{
@@ -105,9 +105,9 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 						numCards++;
 						continue;
 					}
-					$scope.articles[j].display = true;
+					$scope.articles[j].build = true;
 					for(var k = 0; k < $scope.articles.length; k++)
-						if(!$scope.articles[k].display)
+						if(!$scope.articles[k].build)
 						{
 							$scope.articles = ArrayTools.swap($scope.articles, j, k);
 							break;
