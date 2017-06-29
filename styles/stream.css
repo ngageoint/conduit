@@ -1,6 +1,5 @@
 /*Light*/
 /*Dark*/
-/* line 3, D:/work/dat/conduit/sass/stream.scss */
 .stream {
   width: 100%;
   position: absolute;
@@ -18,32 +17,27 @@
   background: transparent;
 }
 
-/* line 19, D:/work/dat/conduit/sass/stream.scss */
 .stream .card:last-child {
   border-radius: 0 0 2px 2px;
 }
 
-/* line 25, D:/work/dat/conduit/sass/stream.scss */
 #article-stream {
   top: 0px;
 }
 
 /*Buttons at bottom of a stream*/
-/* line 33, D:/work/dat/conduit/sass/stream.scss */
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 38, D:/work/dat/conduit/sass/stream.scss */
 .btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
   border-top-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 44, D:/work/dat/conduit/sass/stream.scss */
 .stream-action {
   width: 100%;
   position: absolute;
@@ -54,25 +48,22 @@
   border: none;
   border-radius: 2px 2px 0 0;
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
-  background-color: #009688;
+  background-color: blue;
 }
 
-/* line 57, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary {
   border: none;
-  border-bottom: 2px solid #009688;
+  border-bottom: 2px solid blue;
   color: rgba(255, 255, 255, 0.7);
   border-radius: none;
   box-shadow: none;
 }
 
-/* line 65, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active {
   color: #fff;
 }
 
-/* line 70, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active,
 .stream-action .btn-primary:focus,
@@ -82,18 +73,16 @@
 .stream-action .btn-primary.active:focus,
 .stream-action .btn-primary:active:hover,
 .stream-action .btn-primary.active:hover {
-  background-color: #009688;
+  background-color: blue;
   border-bottom: 2px solid #ff5252;
   box-shadow: none;
 }
 
-/* line 85, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn {
   height: 100%;
 }
 
 /*Feed*/
-/* line 91, D:/work/dat/conduit/sass/stream.scss */
 .fluid-container {
   width: auto;
   position: absolute;
@@ -109,7 +98,6 @@
 }
 
 /*Book*/
-/* line 106, D:/work/dat/conduit/sass/stream.scss */
 .book {
   width: auto;
   top: 66px;
@@ -119,7 +107,6 @@
   float: right;
 }
 
-/* line 118, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper {
   position: absolute;
   top: 10px;
@@ -133,14 +120,12 @@
   z-index: 100;
 }
 
-/* line 133, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary {
   border: none;
-  border-bottom: 2px solid #009688;
+  border-bottom: 2px solid blue;
   box-shadow: none;
 }
 
-/* line 139, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary:active,
 #book-action-wrapper .btn-primary.active,
 #book-action-wrapper .btn-primary:focus,
@@ -150,12 +135,11 @@
 #book-action-wrapper .btn-primary.active:focus,
 #book-action-wrapper .btn-primary:active:hover,
 #book-action-wrapper .btn-primary.active:hover {
-  background-color: #009688;
+  background-color: blue;
   border-bottom: 2px solid #ff5252;
   box-shadow: none;
 }
 
-/* line 153, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .nya-bs-select {
   position: absolute;
   left: 0;
@@ -163,11 +147,10 @@
   height: 100%;
   width: auto;
   border-radius: 2px 0 0 0;
-  border-bottom: 2px solid #009688;
+  border-bottom: 2px solid blue;
   box-shadow: none;
 }
 
-/* line 166, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper nya-bs-select:active,
 #book-action-wrapper nya-bs-select.active,
 #book-action-wrapper nya-bs-select:focus,
@@ -177,12 +160,11 @@
 #book-action-wrapper nya-bs-select.active:focus,
 #book-action-wrapper nya-bs-select:active:hover,
 #book-action-wrapper nya-bs-select.active:hover {
-  background-color: #009688;
+  background-color: blue;
   border-bottom: 2px solid #ff5252;
   box-shadow: none;
 }
 
-/* line 180, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .stream-action {
   position: absolute;
   width: 48px;
@@ -194,5 +176,3 @@
   border-radius: 0 2px 0 0;
   box-shadow: none;
 }
-
-/*# sourceMappingURL=../styles/stream.map */

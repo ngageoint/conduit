@@ -206,65 +206,6 @@
                             <span class="glyphicon glyphicon-align-justify"></span> 
                         </div>-->
                 </div>  
-                
-                
-<!--
-                <nav class="navbar navbar-default toolbox">
-					<div class="container-fluid">
-						<div class="navbar-header">
-						</div>								
-						<div class="collapse navbar-collapse navbar-info">
-							<ul class="nav navbar-nav">                               
-							</ul>
-							<form class="nav navbar-form navbar-left">
-                                <button uib-popover-template="'templates/info-popover.html'"
-                                        popover-title="Article Info"
-                                        type="button"
-                                        class="btn btn-default"
-                                        popover-trigger="'outsideClick'"
-                                        title="Article Info">
-                                        <span class="glyphicon glyphicon-info-sign"></span> 
-                                        <div class="ico-text-1">Info</div>
-                                </button>
-							</form>
-							<form class="nav navbar-form navbar-right" >
-								<button ng-controller="ExportCtrl"
-                                        class="btn btn-primary"
-                                        ng-click="export(articles[currentIndex])"
-                                        title="Export this article">
-                                	<span class="glyphicon glyphicon-save-file"></span> 
-                                    <div class="ico-text-1">&nbsp;Export this article</div>
-                             	</button>
-                                
-                                    <button uib-popover-template="'templates/comments-popover.html'"
-                                            popover-title="Comments"
-                                            type="button"
-                                            class="btn btn-primary"
-                                            popover-trigger="'outsideClick'"
-                                            title="Comments">
-                                            <span class="glyphicon glyphicon-comment"></span> 
-                                            <div class="ico-text-1">
-                                                &nbsp;Comments&nbsp;<span ng-if="articles[currentIndex].comments.length > 0" class="badge">{{articles[currentIndex].comments.length}}</span>
-                                            </div>
-                                    </button>
-                                <ol class="btn nya-bs-select dropup col-xl-4"
-                                  	id="toolbox-books"
-                                    multiple
-                                    data-selected-text-format="count>2"
-                                    ng-model="articles[currentIndex].books"
-                                    ng-attr-title="Add to book(s)...">
-                                  	<li nya-bs-option="book in ::books">
-                                   		<a>
-                                           	{{::book.name}}
-                                           	<span class="glyphicon glyphicon-ok check-mark"></span>
-                                        </a>
-                                    </li>
-                                </ol>
-       						</form>
-       					</div>
-   					</div>
-   				</nav>
--->
             </div>
             
             <div id="left" class="column" ng-controller="FeedCtrl" >
