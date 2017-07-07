@@ -13,6 +13,7 @@ angular.module('conduit.controllers').controller('BetaCtrl', function ($scope, $
 			
 			console.log(fileURI);
 			
+			
 			$http.get(fileURI).then(function(response) {
 					var savedArticles = response.data;
 					

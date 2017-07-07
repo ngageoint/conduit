@@ -103,7 +103,7 @@
 }
 
 #image-wrapper .nav-arrow {
-  background-color: blue;
+  background-color: #009688;
   width: 2.5em;
   height: 2.5em;
   border-radius: 1.25em;
@@ -204,14 +204,14 @@
 }
 
 #action-area .btn-primary {
-  color: blue;
+  color: #009688;
 }
 
 #action-area .btn-primary:hover,
 #action-area .btn-primary:focus,
 #action-area .btn-primary:active,
 #action-area .btn-primary.open {
-  background: rgba(0, 0, 255, 0.12);
+  background: rgba(0, 150, 136, 0.12);
   box-shadow: none;
 }
 
@@ -234,5 +234,5 @@
   width: 100% !important;
   min-width: initial !important;
   box-shadow: none;
-  background: rgba(0, 0, 255, 0.12);
+  background: rgba(0, 150, 136, 0.12);
 }

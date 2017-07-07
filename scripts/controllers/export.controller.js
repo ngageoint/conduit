@@ -1,6 +1,6 @@
 angular.module('conduit.controllers').controller('ExportCtrl', function($q, $scope, DateTools,XMLTools) {
 		
-	/*Retruns a promise of a docx file*/
+	/*Returns a promise of a docx file*/
 	var createFile = function(article) {			
 		return new Promise(function(resolve, reject){			
 

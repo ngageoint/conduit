@@ -19,7 +19,7 @@ a:active {
 a:visited {
   outline: 0;
   outline: none;
-  color: blue;
+  color: #009688;
 }
 
 a:focus {

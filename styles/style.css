@@ -48,7 +48,7 @@ a:active {
 a:visited {
   outline: 0;
   outline: none;
-  color: blue;
+  color: #009688;
 }
 
 a:focus {
@@ -149,7 +149,7 @@ body {
   height: 48px;
   padding: 5px;
   /*COLORS*/
-  background: blue;
+  background: #009688;
   color: #fff;
   /*FONTS*/
   font-size: 1.5em;
@@ -234,12 +234,12 @@ body {
   border: none;
   border-radius: 2px 2px 0 0;
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
-  background-color: blue;
+  background-color: #009688;
 }
 
 .stream-action .btn-primary {
   border: none;
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid #009688;
   color: rgba(255, 255, 255, 0.7);
   border-radius: none;
   box-shadow: none;
@@ -259,7 +259,7 @@ body {
 .stream-action .btn-primary.active:focus,
 .stream-action .btn-primary:active:hover,
 .stream-action .btn-primary.active:hover {
-  background-color: blue;
+  background-color: #009688;
   border-bottom: 2px solid #ff5252;
   box-shadow: none;
 }
@@ -308,7 +308,7 @@ body {
 
 #book-action-wrapper .btn-primary {
   border: none;
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid #009688;
   box-shadow: none;
 }
 
@@ -321,7 +321,7 @@ body {
 #book-action-wrapper .btn-primary.active:focus,
 #book-action-wrapper .btn-primary:active:hover,
 #book-action-wrapper .btn-primary.active:hover {
-  background-color: blue;
+  background-color: #009688;
   border-bottom: 2px solid #ff5252;
   box-shadow: none;
 }
@@ -333,7 +333,7 @@ body {
   height: 100%;
   width: auto;
   border-radius: 2px 0 0 0;
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid #009688;
   box-shadow: none;
 }
 
@@ -346,7 +346,7 @@ body {
 #book-action-wrapper nya-bs-select.active:focus,
 #book-action-wrapper nya-bs-select:active:hover,
 #book-action-wrapper nya-bs-select.active:hover {
-  background-color: blue;
+  background-color: #009688;
   border-bottom: 2px solid #ff5252;
   box-shadow: none;
 }
@@ -534,7 +534,7 @@ body {
   float: left;
   margin-right: 5px;
   clear: none;
-  color: blue;
+  color: #009688;
 }
 
 .card #icon {
@@ -735,7 +735,7 @@ body {
 }
 
 #image-wrapper .nav-arrow {
-  background-color: blue;
+  background-color: #009688;
   width: 2.5em;
   height: 2.5em;
   border-radius: 1.25em;
@@ -836,14 +836,14 @@ body {
 }
 
 #action-area .btn-primary {
-  color: blue;
+  color: #009688;
 }
 
 #action-area .btn-primary:hover,
 #action-area .btn-primary:focus,
 #action-area .btn-primary:active,
 #action-area .btn-primary.open {
-  background: rgba(0, 0, 255, 0.12);
+  background: rgba(0, 150, 136, 0.12);
   box-shadow: none;
 }
 
@@ -866,7 +866,7 @@ body {
   width: 100% !important;
   min-width: initial !important;
   box-shadow: none;
-  background: rgba(0, 0, 255, 0.12);
+  background: rgba(0, 150, 136, 0.12);
 }
 
 /*Light*/
@@ -965,28 +965,28 @@ fieldset[disabled] .btn-default.focus {
 /*Primary buttons*/
 .btn-primary {
   color: #fff;
-  background-color: blue;
-  border-color: #0000e6;
+  background-color: #009688;
+  border-color: #007d71;
 }
 
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
-  background-color: #0000e6;
-  border-color: #0000cc;
+  background-color: #007d71;
+  border-color: #00635a;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #0000e6;
-  border-color: #0000cc;
+  background-color: #007d71;
+  border-color: #00635a;
 }
 
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
-  border-color: #0000b3;
+  border-color: #004a43;
 }
 
 .btn-primary:active:hover,
@@ -999,8 +999,8 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
   color: #fff;
-  background-color: #0000b3;
-  border-color: #000099;
+  background-color: #004a43;
+  border-color: #00302c;
 }
 
 .btn-primary:active,
@@ -1018,12 +1018,12 @@ fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled.focus,
 .btn-primary[disabled].focus,
 fieldset[disabled] .btn-primary.focus {
-  background-color: #3333ff;
-  border-color: #1a1aff;
+  background-color: #00c9b6;
+  border-color: #00b09f;
 }
 
 .btn-primary .badge {
-  color: blue;
+  color: #009688;
   background-color: #fff;
 }
 
