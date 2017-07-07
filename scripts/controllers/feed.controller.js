@@ -4,11 +4,14 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 					
 	$scope.filter = FilterService.filter;	
 
-	//Setup Filter
-	//The filter needs the articles loaded to be built, so we wait from articles to load; no data is passed since we inherit articles
+	/**
+	 * Setup the filter.
+	 * 
+	 * Wait for the articles promise and sources promise to be resolved, then build the filter.
+	 * Articles is inherited from page controller, but we must still wait for the promise to resolve.
+	 */
 	ArticlesService.getArticles().then(function() {
 		DataSourceService.getSources().then( function(sourceData) {
-			console.log($scope.articles);
 			$scope.sources = FilterService.build(sourceData, $scope.articles);
 		}).catch( function(err) {
 			console.log(err);
@@ -18,9 +21,12 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 	});
 
 	
-
-	//Setup events for drop downs in filter
-	//Is not very smooth; but may be worth improving in the future
+	/**
+	 * When attached to a Bootstrap dropdown, remove the 'open' class after the cursor has left the dropdown for a specified period
+	 * 
+	 * @param {event} $event The onmouseout/onmouseleave event for the dropdown
+	 * @param {int} delay The delay for close in ms; default 500ms
+	 */
 	$scope.closeDropDownOnDelay = function($event, delay)
 	{
 		if(!$event)
@@ -29,12 +35,16 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 			delay = 500;
 		
 		element = angular.element($event.currentTarget);
-			$timeout(function() {
+		$timeout(function() {
 			element.removeClass('open');
 		}, delay);
    	}
 	
 	//Update the options that are visible in the filter based on other options that are selected.
+	/**
+	 * 
+	 * 
+	 */
 	$scope.updateFilterOptions = function(source, filter)
 	{
 		$scope.sources = FilterService.updateOptions($scope.sources, source, $scope.articles, filter, $scope.attributes) || $scope.sources;

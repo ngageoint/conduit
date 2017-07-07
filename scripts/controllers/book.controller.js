@@ -18,19 +18,22 @@ angular.module('conduit.controllers').controller('BookCtrl', function($scope, $r
 	 */
 	$scope.updateBook = function(index) {
 		if($scope.selectedBook && $scope.articles)
-		{				
+		{
+			//Reset the counter for each book
 			for(var i = 0; i < $scope.books.length; i++)
 				$scope.books[i].count = 0;
 			
 			for(var i = 0; i < $scope.articles.length; i++)
 			{
+				//Assume the article is not being shown
 				$scope.articles[i].inBook = false;
 				for(var j = 0; j < $scope.articles[i].books.length; j++)
 				{
 					for(var k = 0; k < $scope.books.length; k++)
+						//If a book contains the current article, increment the counter for that book
 						if($scope.articles[i].books[j] && ~$scope.articles[i].books[j].name.indexOf($scope.books[k].name))
 							$scope.books[k].count++;
-							
+					//If the article is in the currently selected book, make sure it is being shown		
 					if($scope.articles[i].books[j] && ~$scope.articles[i].books[j].name.indexOf($scope.selectedBook.name))
 							$scope.articles[i].inBook = true;
 							
