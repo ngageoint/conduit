@@ -13,10 +13,10 @@ angular.module('conduit.tools').factory('ComplexPropertyTools', function($q, $ht
 		 * should be modified to identify a different delimiter.
 		 * 		*yell at whoever does this
 		 * 
-		 * @param obj The object from which the property will be pulled
-		 * @param prop A string presenting the complex property
-		 * @param delimiter A char or string reprsenting how the complex property will be delimited; default '.'
-		 * @return The object at the complex property
+		 * @param {object} obj The object from which the property will be pulled
+		 * @param {string} prop A string presenting the complex property
+		 * @param {string} delimiter A char or string reprsenting how the complex property will be delimited; default '.'
+		 * @return {object} The object at the complex property
 		 */
         getComplexProperty: function(obj, prop, delimiter) {
 			if(typeof obj === 'undefined')

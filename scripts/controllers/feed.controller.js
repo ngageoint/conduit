@@ -40,82 +40,125 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 		}, delay);
    	}
 	
-	//Update the options that are visible in the filter based on other options that are selected.
 	/**
+	 * Update the options that are visible in the filter based on other options that are selected.
 	 * 
-	 * 
+	 * @param {object} source The source that is currently being filtered by the user
+	 * @param {object} filter The filter that is currently being adjusted by the user
 	 */
 	$scope.updateFilterOptions = function(source, filter)
 	{
 		$scope.sources = FilterService.updateOptions($scope.sources, source, $scope.articles, filter, $scope.attributes) || $scope.sources;
 	}
-			
+	
+	/**
+	 * Refreshes the feed to reflect the current filter
+	 */
 	$scope.refreshFeed = function() {
+		//Check for minimum required scope
 		if(!$scope.articles)
 			return;
-			
+		
+		//Ensure the days back does not exceed filter bounds
 		if(FilterService.filter.daysBack < 1)
 			FilterService.filter.daysBack = 1;
 		if(FilterService.filter.daysBack > __config.MAX_DAYS_BACK)
 			FilterService.filter.daysBack = __config.MAX_DAYS_BACK;
-			
+		
+		//Reset the count
 		$scope.filter.count = 0;
 		for(var i = 0; i < $scope.articles.length; i++)
-		{
+		{	
+			//Determine whether or not the article is shown
 			$scope.articles[i].inFeed = FilterService.determineShow($scope.articles[i], $scope.sources, $scope.attributes);
 			if($scope.articles[i].inFeed)
-				$scope.filter.count++;
+				$scope.filter.count++;//increment count if necessary
 		}
-				
+		
+		//Build the minimum number of cards required to activate a scroll
+		//This is important to run every time the filter changes, just in case the filter eliminates all the built cards and
+		//the user can no longer trigger an infinite scroll event (because they can't scroll)
 		$scope.buildMoreCards(__config.MIN_RENDERED_CARDS);
 	}
-			
+	
+	//idk
 	$scope.$watch('attributes[0].checked', function() {
 		$scope.refreshFeed();
 	});
 			
-	//Remove feature
+	/**
+	 * Remove an article from the feed given an id
+	 * 
+	 * @param {string} id  The id of the article to remove (represented by Conduit's standard article paramter article.id)
+	 */
 	$scope.remove = function (id) {
-		
+		//Get the index of the article
 		index = ArrayTools.getIndex($scope.articles, id);
 		
+		//Update view properties
 		$scope.articles[index].removed = true;
 		$scope.articles[index].read = true;
 		$scope.articles[index].inFeed = false;
 		
+		//Refresh view
 		$scope.refreshFeed();
 		$scope.activateCard();
 	}
 		
-    //Restore feature
+    /**
+	 * Restore an article to the feed given an id
+	 * 
+	 * @param {string} id  The id of the article to restore (represented by Conduit's standard article paramter article.id)
+	 */
 	$scope.restore = function (id) {
-				
+		//Get the index of the article
 		index = ArrayTools.getIndex($scope.articles, id);
 		
+		//Update the view properties
 		$scope.articles[index].removed = false;
 		$scope.articles[index].active = false;
 		
+		//Refresh view
 		$scope.refreshFeed();
 	}
 			
-	//InfiniteScroll
+	/**
+	 * Add x number of cards to the DOM. This is necessary to reduce DOM events at load and reduce the page load time by >16 seconds.
+	 * This is automatically called for a predetermined number of cards every time the user reaches the bottom of the FEED.
+	 * All objects in the BOOK are built and destroyed on demand.
+	 * 
+	 * This function will add up to x cards to the DOM, only building them if they have not already been built but are currently supposed to be shown.
+	 * If there are less than x cards that meet build criteria, then only those cards will be built.
+	 * This function will also *reorder the articles array* so that articles are shown in the order they were built. This prevents the user from setting 
+	 * and then removing a filter and causing an article to 'stick' to the bottom of the feed as they scroll.
+	 * 
+	 * @param {int} numCards The number of cards to build; default is __config.MIN_RENDERED_CARDS / 2
+	 */
 	$scope.buildMoreCards = function (numCards) {
+		//Enforce minimums and set defaults
 		if(!$scope.articles)
 			return;
 		if(!numCards)
 			numCards = (__config.MIN_RENDERED_CARDS / 2);
 		
 		for(var i = 0; i < $scope.articles.length; i++)
-			if($scope.articles[i].inFeed && !$scope.articles[i].build)//Find the first article that should be shown, but hasn't been built yet
+			//Find the first article that should be shown, but hasn't been built yet
+			if($scope.articles[i].inFeed && !$scope.articles[i].build)
 			{
-				for(var j = i; j < i + numCards && j < $scope.articles.length; j++)//Iterate through numCards from there
+				//Iterate through numCards from there
+				for(var j = i; j < i + numCards && j < $scope.articles.length; j++)
 				{
-					if(!$scope.articles[j].inFeed)//If the article is not supposed to be in the feed, skip it and increment numCards
+					//If the article is not supposed to be in the feed, skip it and increment numCards to allow for an additional loop iteration
+					//Remember: base case is 'j < i + numCards', so incrementing numCards pushes the base case up
+					if(!$scope.articles[j].inFeed)
 					{
 						numCards++;
 						continue;
 					}
+					//Flag the article for build on next digest cycle
 					$scope.articles[j].build = true;
+
+					//Rearrange the array so that the article appears right after the most recently built article
 					for(var k = 0; k < $scope.articles.length; k++)
 						if(!$scope.articles[k].build)
 						{

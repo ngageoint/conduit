@@ -1,47 +1,44 @@
-angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $scope, $rootScope, $timeout, __config) {
-		
+angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $scope, $rootScope, $timeout, __config, DateTools) {
+	
+	//If the current article has been added to or removed from a book, send out a broadcast to trigger a book update
 	$scope.$watch('articles[currentIndex].books', function() {
 		$rootScope.$broadcast('update-book');
 	});
 	
 	$scope.imageIndex = 0;
 	
-	//ng-click of navBefore element
+	/**
+	 * Navigate the image index to the previous image, if it exists. Called by ng-click of navBefore element
+	 */
 	$scope.navBefore = function()
 	{
 		if($scope.articles[$scope.currentIndex].selectedImage > 0)
 			$scope.articles[$scope.currentIndex].selectedImage--;
 	}
 	
-	//ng-click of navNext element
+	/**
+	 * Navigate the image index to the next image, if it exists. Called by ng-click of navNextelement
+	 */
 	$scope.navNext = function()
 	{
 		if($scope.articles[$scope.currentIndex].selectedImage < $scope.articles[$scope.currentIndex].images.length - 1)
 			$scope.articles[$scope.currentIndex].selectedImage++;
 	}
 
+	/**
+	 * Add a new comment to this article.
+	 * 
+	 * @param {string} newComment The comment to be added.
+	 */
 	$scope.post = function(newComment) {
 		if(newComment)
-		{									
-			var date = new Date;
-			
-					var hour = date.getHours();
-					hour = hour < 10 ? '0' + hour : hour;
-				var minute = date.getMinutes();
-					minute = minute < 10 ? '0' + minute : minute;
-				var second = date.getSeconds();
-					second = second < 10 ? '0' + second : second;
-				
-				var month = date.getMonth() + 1;
-					month = month < 10 ? '0' + month : month;
-				var day = date.getDate();
-					day = day < 10 ? '0' + day : day;
-				var year = date.getFullYear();
-				
-				dateStr = year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;
-			
+		{										
+			dateStr = DateTools.formatDate(new Date,'yyyy\/MM\/dd HH:mm:ss');
+
+			//If no comments exist yet, create the array and add it to the current article
 			if(!$scope.articles[$scope.currentIndex].comments)
 				$scope.articles[$scope.currentIndex].comments = [];
+			//Comments follow this data format: {user, text, dateTime};
 			$scope.articles[$scope.currentIndex].comments.push({user: $scope.user.name, text: newComment, dateTime: dateStr});
 		}
 	}	
