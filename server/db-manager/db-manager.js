@@ -5,7 +5,7 @@ const select = require('./select.js');
   var dbConfig = {
     user: 'postgres', //env var: PGUSER
     database: 'conduit-db', //env var: PGDATABASE
-    password: process.env.PG_PWD, //its a test environment stop judging me
+    password: 'P@$$w0rd', //process.env.PG_PWD, //its a test environment stop judging me
     host: 'localhost', // Server hosting the postgres database
     port: 5432, //env var: PGPORT
     max: 10, // max number of clients in the pool
@@ -26,9 +26,14 @@ var connect = function (callback) {
 };
 
 select.setQueryManager(queryManager);
-select.fullArticle('1', function(res) {
-    console.log(res);
+/*select.fullArticle('1', function(article) {
+    console.log(article);
+});*/
+
+select.baseArticle('1', function(article) {
+    console.log(article);
 });
+
 /*
 pool.query('SELECT * FROM "conduit-db"."ARTICLES"', [], function(err, res) {
    if(err) {

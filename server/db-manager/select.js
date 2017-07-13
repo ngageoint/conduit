@@ -2,95 +2,157 @@
 var query = undefined;
 const tools = require('./db-tools.js');
 
+var selectFullArticle = function(id, callback) {
+
+    var promises = []; //h*ck
+
+
+    //maybe instead of .all, chain with .then() to build article.books > .images etc
+    //Then return a single promise that can be resolved by .all in higher function
+    var baseArticle = function(id) {
+        return new Promise(function(resolve, reject) {
+            module.exports.baseArticle(id, function(res) {
+                if(res)
+                    resolve(res);
+                else
+                    reject();
+                return Promise.resolve(res); 
+            });
+        });
+    };
+    promises.push(baseArticle(id));
+
+    var booksByArticle = function(id) {
+        return new Promise(function(resolve, reject) {
+            module.exports.booksByArticle(id, function(res) {
+                if(res)
+                    resolve(res);
+                else
+                    reject();
+                return Promise.resolve(res); 
+            });
+        });
+    };
+    promises.push(booksByArticle(id));
+
+    var imagesByArticle = function(id) {
+        return new Promise(function(resolve, reject) {
+            module.exports.imagesByArticle(id, function(res) {
+                if(res)
+                    resolve(res);
+                else
+                    reject();
+                return Promise.resolve(res); 
+            });
+        });
+    };
+    promises.push(imagesByArticle(id));
+
+    var commentsByArticle = function(id) {
+        return new Promise(function(resolve, reject) {
+            module.exports.commentsByArticle(id, function(res) {
+                if(res)
+                    resolve(res);
+                else
+                    reject();
+                return Promise.resolve(res); 
+            });
+        });
+    };
+    promises.push(commentsByArticle(id));
+
+    var tagsByArticle = function(id) {
+        return new Promise(function(resolve, reject) {
+            module.exports.tagsByArticle(id, function(res) {
+                if(res)
+                    resolve(res);
+                else
+                    reject();
+                return Promise.resolve(res); 
+            });
+        });
+    };
+    promises.push(tagsByArticle(id));
+/*
+    baseArticle(id)
+        .then(booksByArticle(id))
+        .then(imagesByArticle(id))
+        .then(commentsByArticle(id)
+        .then(tagsByArticle(id))
+        .then(function(res) {
+            console.log(res);
+            callback(res);
+        });*/
+
+    /*promises in order:
+        0:base, 1:books[object], 2:images[string], 3:comments[object], 4:tags[string]
+    */
+    return Promise.all(promises).then(function(res) {     
+        var article = res[0];
+        article.books = res[1];
+        article.images = res[2];
+        article.comments = res[3];
+        article.tags = res[4];
+
+        callback(article);
+    });			
+}
+
 module.exports = {
     setQueryManager: function(query) {
         this.query = query;
     },
     fullArticle: function(id, callback) {
-        
-        var promises = []; //h*ck
 
-        var baseArticle = function(id) {
-            return new Promise(function(resolve, reject) {
-                module.exports.baseArticle(id, function(res) {
-                    if(res)
-                        resolve(res);
-                    else
-                        reject();
-                    return Promise.resolve(res); 
-                });
-            });
-        };
-        promises.push(baseArticle(id));
+        if(typeof id === "string")
+        {
+            selectFullArticle(id, callback);
+            return;
+        }
 
-        var booksByArticle = function(id) {
-            return new Promise(function(resolve, reject) {
-                module.exports.booksByArticle(id, function(res) {
-                    if(res)
-                        resolve(res);
-                    else
-                        reject();
-                    return Promise.resolve(res); 
-                });
-            });
-        };
-        promises.push(booksByArticle(id));
+        //No support for Arrays yet....
+        if(id instanceof Array)
+        {
+            var promises = [];
 
-        var imagesByArticle = function(id) {
-            return new Promise(function(resolve, reject) {
-                module.exports.imagesByArticle(id, function(res) {
-                    if(res)
-                        resolve(res);
-                    else
-                        reject();
-                    return Promise.resolve(res); 
-                });
-            });
-        };
-        promises.push(imagesByArticle(id));
+                for(var i = 0; i < id.length; i++)
+                    if(typeof id[i] === "string")
+                        articles.push(selectFullArticle(id));
 
-        var commentsByArticle = function(id) {
-            return new Promise(function(resolve, reject) {
-                module.exports.commentsByArticle(id, function(res) {
-                    if(res)
-                        resolve(res);
-                    else
-                        reject();
-                    return Promise.resolve(res); 
-                });
-            });
-        };
-        promises.push(commentsByArticle(id));
 
-        var tagsByArticle = function(id) {
-            return new Promise(function(resolve, reject) {
-                module.exports.tagsByArticle(id, function(res) {
-                    if(res)
-                        resolve(res);
-                    else
-                        reject();
-                    return Promise.resolve(res); 
-                });
-            });
-        };
-        promises.push(tagsByArticle(id));
+            return (Promise.all(promises).then(function(res) {
+                console.log(res);
+            }).then(function(res) {
+                console.log(res);
+                callback(res);
+            }));	
+        }
 
-        return Promise.all(promises).then(function(res) {
-			callback(res);
-		});			
+        return; 		
     },
     baseArticle: function(id, callback)
     {
+        if(!(id instanceof Array))
+            id = JSON.parse('[' + id + ']');
         const query = {
-            text: tools.readQueryFile('./server/db-manager/queries/SELECT_FULL_ARTICLE.sql'),
+            text: tools.readQueryFile('./server/db-manager/queries/SELECT_MULTIPLE_BASE_ARTICLES.sql'),
             values: [id],
         }
+        console.log(id);
+        console.log(id instanceof Array);
+console.log(query.text);
+
         this.query(query, function(err, res) {
             if(err) {
                 return console.error('error running query', err);
             }
-            if(res.rows[0])
-                callback(res.rows[0]);
+            if(res.rows)
+            {
+                if(typeof id === "string")
+                    callback(res.rows[0]);
+                else if (id instanceof Array)
+                    callback(res.rows);
+            }
             else
                 callback('undefined');
         });
@@ -167,8 +229,9 @@ module.exports = {
             if(res && res.rows)
             {
                 var tags = [];
+
                 for(var i = 0; i < res.rows.length; i++)
-                    tags.push(res.rows[i]['name']);
+                    tags.push(res.rows[i]['tag']);
                 callback(tags);
             }
             else
