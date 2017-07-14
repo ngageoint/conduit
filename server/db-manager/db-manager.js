@@ -5,7 +5,7 @@ const select = require('./select.js');
   var dbConfig = {
     user: 'postgres', //env var: PGUSER
     database: 'conduit-db', //env var: PGDATABASE
-    password: 'P@$$w0rd', //process.env.PG_PWD, //its a test environment stop judging me
+    password: '[insert_pwd_here]', //its a test environment stop judging me
     host: 'localhost', // Server hosting the postgres database
     port: 5432, //env var: PGPORT
     max: 10, // max number of clients in the pool
