@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="./packages/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./packages/nya-bs-select/nya-bs-select.min.css" />
     <link rel="stylesheet" type="text/css" href="./packages/angular-loading-bar/loading-bar.min.css" />
-    <link rel="stylesheet" type="text/css" href="./styles/style.css" />    
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" /> 
   
     <!-- vendor -->
 	<script src="https://code.angularjs.org/1.6.2/angular.js"></script>
@@ -104,6 +104,35 @@
                         <div id="subject">
                             TREES//SPRUCE
                         </div>
+
+                        <ol id="overflow-menu" class="nya-bs-select dropdown form-control"
+                            ng-model="selectedBook">
+                            <li>
+                                
+                                <a href="{{articles[currentIndex].link}}" target="_blank">
+                                    View Original&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window pull-right"></span>
+                                </a>
+                                <a href="{{articles[currentIndex].link}}" target="_blank">
+                                        Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil pull-right"></span>
+                                    </a>
+                            </li>
+                        </ol>   
+
+                        <!--
+                        <a href="#" id="overflow-btn" ng-click="overflowOpen = !overflowOpen">
+                            <i class="glyphicon glyphicon-option-vertical"></i>
+                        </a>
+
+                        <div id="overflow-menu" ng-show="overflowOpen">
+                            <a href="{{articles[currentIndex].link}}" target="_blank">
+                                View Original
+                            </a>
+                            <a href="{{articles[currentIndex].link}}" target="_blank">
+                                Edit
+                            </a>
+                        </div>
+                    -->
+
                         <div id="title-wrapper">
                             <div 	class="title"
                                     e-class="title edit-field"
