@@ -247,7 +247,9 @@
                                     ng-click="refreshFeed()"
                                     title="Feed">
                             <span class="glyphicon glyphicon-th-list"></span>
-                            <div class="ico-text-2">&nbsp;Feed</div>
+                            <div class="ico-text-2">&nbsp;Feed&nbsp;
+                                <span ng-if="filter.trash == 0 && articles.length > 0" class="badge">{{filter.count}}</span>
+                            </div>
                         </button>
                         <button 	type="button"
                                     style="width: 50%;"
@@ -257,7 +259,10 @@
                                     ng-click="refreshFeed()"
                                     title="Deleted items">
                             <span class="glyphicon glyphicon-trash"></span>
-                            <div class="ico-text-2">&nbsp;Deleted Items</div>
+                            <div class="ico-text-2">
+                                &nbsp;Deleted Items&nbsp;
+                                <span ng-if="filter.trash == 1 && articles.length > 0" class="badge">{{filter.count}}</span>
+                            </div>
                         </button>
                     </div>
                     
