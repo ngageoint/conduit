@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "../sass/fab.css",
+	"sources": [
+		"../sass/fab.scss",
+		"../sass/colors.scss"
+	],
+	"sourcesContent": [
+		"@import \"colors\";\n\n$fabHW: 55px;\n\n#fab {\n    position: absolute;\n    bottom: 15px;\n    right: 15px;\n    \n    height: $fabHW;\n    width: $fabHW;\n    border-radius: ($fabHW / 2);\n\n    background-color: $colorAccent;\n    color: #fff;\n\n    transition: box-shadow .25s ease-in-out;\n    box-shadow: 0 0 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);\n\n    font-size: 18px;\n    text-align: center;\n    padding: 16px;\n}\n\n#fab:hover {\n    transition: box-shadow .25s ease-in-out;\n    box-shadow: 0 0 12px 0 rgba(0,0,0,0.12), 0 12px 12px 0 rgba(0,0,0,0.24);\n    cursor: pointer;\n}",
+		"\t\t\n$dark: false;\n\n/*Light*/\n\n    $colorPrimary: \t\t\t\t#009688             !default;\n    $colorPrimary500: \t\t\t#009688             !default;\n    $colorPrimary700:           rgba(0,121,107,1)   !default;\n    $colorPrimaryContrast: \t\t#fff                !default;\n            \n    $colorAccent:\t\t\t    #ff5252             !default;\n    $colorAccentContrast:\t    #fff                !default;\n\n    $colorFont:\t\t\t\t\t#212121             !default;\n    $colorGrey: \t\t\t\t#bdbdbd             !default;\n    $colorBackground:\t\t\t#f2f2f2             !default;\n    $colorCardBackground:       #fff                !default;\n\n\t\t\n/*Dark*/\n@if $dark == true {\n\t$colorPrimary: \t\t\t\t#999;\n\t$colorPrimaryContrast: \t\t#444;\n\t\t\t\n\t$colorAccent:\t\t\t#aaa;\n\t$colorAccentContrast:\t#444;\n\t\n\t$colorFont:\t\t\t\t\t#aaa;\n\t$colorGrey: \t\t\t\t#888;\n\t$colorBackground:\t\t\t#222;\n}"
+	],
+	"mappings": "ACGA,SAAS;AAgBT,QAAQ;;ADfR,AAAA,IAAI,CAAC;EACD,QAAQ,EAAE,QAAS;EACnB,MAAM,EAAE,IAAK;EACb,KAAK,EAAE,IAAK;EAEZ,MAAM,EAPF,IAAI;EAQR,KAAK,EARD,IAAI;EASR,aAAa,EAAG,MAAM;EAEtB,gBAAgB,ECHI,OAAO;EDI3B,KAAK,EAAE,IAAK;EAEZ,UAAU,EAAE,2BAA4B;EACxC,UAAU,EAAE,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,CAAC,CAAC,mBAAI,EAAc,CAAC,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,CAAC,mBAAI;EAExD,SAAS,EAAE,IAAK;EAChB,UAAU,EAAE,MAAO;EACnB,OAAO,EAAE,IAAK;CACjB;;;AAED,AAAI,IAAA,AAAA,MAAM,CAAC;EACP,UAAU,EAAE,2BAA4B;EACxC,UAAU,EAAE,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,CAAC,mBAAI,EAAc,CAAC,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC,CAAC,mBAAI;EAC3D,MAAM,EAAE,OAAQ;CACnB",
+	"names": []
+}

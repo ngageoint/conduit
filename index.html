@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="./packages/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./packages/nya-bs-select/nya-bs-select.min.css" />
     <link rel="stylesheet" type="text/css" href="./packages/angular-loading-bar/loading-bar.min.css" />
-    <link rel="stylesheet" type="text/css" href="./styles/style.css" />    
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" /> 
   
     <!-- vendor -->
 	<script src="https://code.angularjs.org/1.6.2/angular.js"></script>
@@ -104,18 +104,52 @@
                         <div id="subject">
                             TREES//SPRUCE
                         </div>
+
+                        <ol id="overflow-menu" class="nya-bs-select dropdown form-control"
+                            ng-model="selectedBook">
+                            <li>
+                                
+                                <a href="{{articles[currentIndex].link}}" target="_blank">
+                                    View Original&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window pull-right"></span>
+                                </a>
+                                <a  href="#"
+                                    ng-controller="ExportCtrl"
+                                    ng-click="export(articles[currentIndex])">
+                                    Export&nbsp;&nbsp;<span class="glyphicon glyphicon-save-file pull-right"></span>
+                                </a>
+                                <a href"#" target="_blank" ng-click="articleEdit.$show()">
+                                        Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil pull-right"></span>
+                                    </a>
+                            </li>
+                        </ol>   
+
+                        <!--
+                        <a href="#" id="overflow-btn" ng-click="overflowOpen = !overflowOpen">
+                            <i class="glyphicon glyphicon-option-vertical"></i>
+                        </a>
+
+                        <div id="overflow-menu" ng-show="overflowOpen">
+                            <a href="{{articles[currentIndex].link}}" target="_blank">
+                                View Original
+                            </a>
+                            <a href="{{articles[currentIndex].link}}" target="_blank">
+                                Edit
+                            </a>
+                        </div>
+                    -->
+
                         <div id="title-wrapper">
                             <div 	class="title"
                                     e-class="title edit-field"
-                                    e-form="titleEdit"
+                                    e-form="articleEdit"
                                     editable-textarea="articles[currentIndex].title"
                                     blur="submit">
                                 {{articles[currentIndex].title}}
                             </div>
-                            <button id="btn-title" class="btn btn-edit" ng-click="titleEdit.$show()" ng-hide="titleEdit.$visible">
+                            <!--<button id="btn-title" class="btn btn-edit" ng-click="titleEdit.$show()" ng-hide="titleEdit.$visible">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <div class="ico-text-2">Edit</div>
-                            </button>
+                            </button>-->
                         </div>
                         <div id="image-wrapper" ng-if="!articles[currentIndex].images.length == 0">
                             
@@ -154,13 +188,13 @@
                         <div class="text-wrapper">
                             <div 	class="text" 
                                     e-class="text edit-field"
-                                    e-form="textEdit"
+                                    e-form="articleEdit"
                                     editable-textarea="articles[currentIndex].text"
                                     blur="submit">
-                                <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
+                               <!-- <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                     <div class="ico-text-2">Edit</div>
-                                </button>
+                                </button>-->
                                 {{articles[currentIndex].text}}
                             </div>
                         </div>
@@ -182,12 +216,11 @@
                                 </a>
                             </li>
                         </ol>
-                        <button ng-controller="ExportCtrl"
-                                class="btn btn-default"
-                                ng-click="export(articles[currentIndex])"
-                                title="EXPORT">
+                        <button class="btn btn-default"
+                                ng-click="articleEdit.$show()"
+                                title="EDIT">
                             <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
-                            <div class="ico-text-1">EXPORT</div>
+                            <div class="ico-text-1">EDIT</div>
                         </button>
                         <button uib-popover-template="'templates/comments-popover.html'"
                                 popover-title="DISCUSS"

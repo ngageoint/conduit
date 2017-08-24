@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "../sass/book-selector.css",
+	"sources": [
+		"../sass/book-selector.scss",
+		"../sass/colors.scss"
+	],
+	"sourcesContent": [
+		"\n@import \"colors.scss\";\n\n#right .btn.btn-default.dropdown-toggle {\n    background-color: $colorPrimary500;\n    color: white;\n    height: 56px;\n    border: none;\n    border-radius: 2px 0 0 0;\n\n    color: white;\n    font-size: 16px;\n    line-height: 19px;\n    \n    /*box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);*/\n\n\n\n    z-index: 100;\n}\n\n#right .dropdown-menu.open {\n    position: relative;\n    top: -20px;\n    left: 28%;\n    height: auto;\n    max-height: 25vh;\n    transition: max-height .25s ease-in-out;\n    max-width: 70%;\n    background-color: #fff;\n    border: none;\n    border-radius: 2px;\n    box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);\n    z-index: 101;\n}\n\n#right .nya-bs-select.btn-group .dropdown-menu {\n    width: 100% !important;\n    min-width: initial !important;\n}",
+		"\t\t\n$dark: false;\n\n/*Light*/\n\n    $colorPrimary: \t\t\t\t#009688             !default;\n    $colorPrimary500: \t\t\t#009688             !default;\n    $colorPrimary700:           rgba(0,121,107,1)   !default;\n    $colorPrimaryContrast: \t\t#fff                !default;\n            \n    $colorAccent:\t\t\t    #ff5252             !default;\n    $colorAccentContrast:\t    #fff                !default;\n\n    $colorFont:\t\t\t\t\t#212121             !default;\n    $colorGrey: \t\t\t\t#bdbdbd             !default;\n    $colorBackground:\t\t\t#f2f2f2             !default;\n    $colorCardBackground:       #fff                !default;\n\n\t\t\n/*Dark*/\n@if $dark == true {\n\t$colorPrimary: \t\t\t\t#999;\n\t$colorPrimaryContrast: \t\t#444;\n\t\t\t\n\t$colorAccent:\t\t\t#aaa;\n\t$colorAccentContrast:\t#444;\n\t\n\t$colorFont:\t\t\t\t\t#aaa;\n\t$colorGrey: \t\t\t\t#888;\n\t$colorBackground:\t\t\t#222;\n}"
+	],
+	"mappings": "ACGA,SAAS;AAgBT,QAAQ;;ADhBR,AAAuB,MAAjB,CAAC,IAAI,AAAA,YAAY,AAAA,gBAAgB,CAAC;EACpC,gBAAgB,ECEK,OAAO;EDD5B,KAAK,EAAE,KAAM;EACb,MAAM,EAAE,IAAK;EACb,MAAM,EAAE,IAAK;EACb,aAAa,EAAE,SAAU;EAEzB,KAAK,EAAE,KAAM;EACb,SAAS,EAAE,IAAK;EAChB,WAAW,EAAE,IAAK;EAElB,2EAA2E;EAI3E,OAAO,EAAE,GAAI;CAChB;;;AAED,AAAqB,MAAf,CAAC,cAAc,AAAA,KAAK,CAAC;EACvB,QAAQ,EAAE,QAAS;EACnB,GAAG,EAAE,KAAM;EACX,IAAI,EAAE,GAAI;EACV,MAAM,EAAE,IAAK;EACb,UAAU,EAAE,IAAK;EACjB,UAAU,EAAE,2BAA4B;EACxC,SAAS,EAAE,GAAI;EACf,gBAAgB,EAAE,IAAK;EACvB,MAAM,EAAE,IAAK;EACb,aAAa,EAAE,GAAI;EACnB,UAAU,EAAE,CAAC,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,CAAC,mBAAI,EAAiB,CAAC,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,CAAC,mBAAI;EAC7D,OAAO,EAAE,GAAI;CAChB;;;AAED,AAAgC,MAA1B,CAAC,cAAc,AAAA,UAAU,CAAC,cAAc,CAAC;EAC3C,KAAK,EAAE,eAAgB;EACvB,SAAS,EAAE,kBAAmB;CACjC",
+	"names": []
+}

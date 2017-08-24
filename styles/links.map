@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "../sass/links.css",
+	"sources": [
+		"../sass/links.scss",
+		"../sass/colors.scss"
+	],
+	"sourcesContent": [
+		"/*Links*/\n\n@import \"colors.scss\";\n\na:link {\n\ttext-decoration: none;\n\tcolor: $colorAccent;\n}\n\t\t\na:hover {\n\ttext-decoration: underline;\n\tcolor: darken($colorAccent, 10%);\n}\n\t\t\na:active {\n\toutline: 0;\n\toutline: none;\n}\n\t\t\na:visited {\n\toutline: 0;\n\toutline: none;\n\tcolor: $colorPrimary;\n}\n\t\t\na:focus {\n\toutline: 0;\n\toutline: none;\n\ttext-decoration: underline;\t\n}",
+		"\t\t\n$dark: false;\n\n/*Light*/\n\n    $colorPrimary: \t\t\t\t#009688             !default;\n    $colorPrimary500: \t\t\t#009688             !default;\n    $colorPrimary700:           rgba(0,121,107,1)   !default;\n    $colorPrimaryContrast: \t\t#fff                !default;\n            \n    $colorAccent:\t\t\t    #ff5252             !default;\n    $colorAccentContrast:\t    #fff                !default;\n\n    $colorFont:\t\t\t\t\t#212121             !default;\n    $colorGrey: \t\t\t\t#bdbdbd             !default;\n    $colorBackground:\t\t\t#f2f2f2             !default;\n    $colorCardBackground:       #fff                !default;\n\n\t\t\n/*Dark*/\n@if $dark == true {\n\t$colorPrimary: \t\t\t\t#999;\n\t$colorPrimaryContrast: \t\t#444;\n\t\t\t\n\t$colorAccent:\t\t\t#aaa;\n\t$colorAccentContrast:\t#444;\n\t\n\t$colorFont:\t\t\t\t\t#aaa;\n\t$colorGrey: \t\t\t\t#888;\n\t$colorBackground:\t\t\t#222;\n}"
+	],
+	"mappings": "AAAA,SAAS;ACGT,SAAS;AAgBT,QAAQ;;ADfR,AAAC,CAAA,AAAA,KAAK,CAAC;EACN,eAAe,EAAE,IAAK;EACtB,KAAK,ECIkB,OAAO;CDH9B;;;AAED,AAAC,CAAA,AAAA,MAAM,CAAC;EACP,eAAe,EAAE,SAAU;EAC3B,KAAK,EAAE,OAAM;CACb;;;AAED,AAAC,CAAA,AAAA,OAAO,CAAC;EACR,OAAO,EAAE,CAAE;EACX,OAAO,EAAE,IAAK;CACd;;;AAED,AAAC,CAAA,AAAA,QAAQ,CAAC;EACT,OAAO,EAAE,CAAE;EACX,OAAO,EAAE,IAAK;EACd,KAAK,ECjBiB,OAAO;CDkB7B;;;AAED,AAAC,CAAA,AAAA,MAAM,CAAC;EACP,OAAO,EAAE,CAAE;EACX,OAAO,EAAE,IAAK;EACd,eAAe,EAAE,SAAU;CAC3B",
+	"names": []
+}
