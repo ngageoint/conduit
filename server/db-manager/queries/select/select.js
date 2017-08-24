@@ -1,6 +1,13 @@
-
 var query = undefined;
-const tools = require('./db-tools.js');
+const path = require('path')
+const tools = require(path.join(__dirname, '..','..','db-tools.js'));
+
+/*TODO change our callback structure to a Promise structure.
+So intead of doing select.baseArticle(id, callback), we can do a 
+select.baseArticle(id).then(){}. It's a much more flexible structure
+for reusing queries accross the api. (eg. an insert should check
+for an existing pk first; with this we can do a 
+select.then(insert)*/
 
 var selectFullArticle = function(id, callback) {
 
@@ -135,14 +142,14 @@ module.exports = {
         if(!(id instanceof Array))
             id = JSON.parse('[' + id + ']');
         const query = {
-            text: tools.readQueryFile('./server/db-manager/queries/SELECT_MULTIPLE_BASE_ARTICLES.sql'),
+            text: tools.readQueryFile(path.join(__dirname, 'SELECT_MULTIPLE_BASE_ARTICLES.sql')),
             values: [id],
         }
         console.log(id);
         console.log(id instanceof Array);
 console.log(query.text);
 
-        this.query(query, function(err, res) {
+        this.query(query, function(err, res) {            
             if(err) {
                 return console.error('error running query', err);
             }
@@ -159,7 +166,7 @@ console.log(query.text);
     },
     booksByArticle: function(id, callback) {
         const query = {
-            text: tools.readQueryFile('./server/db-manager/queries/SELECT_BOOKS_BY_ARTICLE.sql'),
+            text: tools.readQueryFile(path.join(__dirname, 'SELECT_BOOKS_BY_ARTICLE.sql')),
             values: [id],
         }
         this.query(query, function(err, res) {
@@ -179,7 +186,7 @@ console.log(query.text);
     },
     imagesByArticle: function(id, callback) {
         const query = {
-            text: tools.readQueryFile('./server/db-manager/queries/SELECT_IMAGES_BY_ARTICLE.sql'),
+            text: tools.readQueryFile(path.join(__dirname, 'SELECT_IMAGES_BY_ARTICLE.sql')),
             values: [id],
         }
         this.query(query, function(err, res) {
@@ -199,7 +206,7 @@ console.log(query.text);
     },
     commentsByArticle: function(id, callback) {
         const query = {
-            text: tools.readQueryFile('./server/db-manager/queries/SELECT_COMMENTS_BY_ARTICLE.sql'),
+            text: tools.readQueryFile(path.join(__dirname, 'SELECT_COMMENTS_BY_ARTICLE.sql')),
             values: [id],
         }
         this.query(query, function(err, res) {
@@ -219,7 +226,7 @@ console.log(query.text);
     },
     tagsByArticle: function(id, callback) {
         const query = {
-            text: tools.readQueryFile('./server/db-manager/queries/SELECT_TAGS_BY_ARTICLE.sql'),
+            text: tools.readQueryFile(path.join(__dirname, 'SELECT_TAGS_BY_ARTICLE.sql')),
             values: [id],
         }
         this.query(query, function(err, res) {
@@ -239,7 +246,7 @@ console.log(query.text);
         });
     },
     imageById: function() {
-        this.query(tools.readQueryFile('./server/db-manager/queries/SELECT_IMAGE.sql'), [id], function(err, res) {
+        this.query(tools.readQueryFile(path.join(__dirname, 'SELECT_IMAGE.sql')), [id], function(err, res) {
             if(err) {
                 return console.error('error running query', err);
             }

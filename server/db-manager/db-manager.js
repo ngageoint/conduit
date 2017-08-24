@@ -1,6 +1,7 @@
 //Setup postgres
 const pg = require('pg');
-const select = require('./select.js');
+const select = require('./queries/select/select.js');
+const insert = require('./queries/insert/insert.js');
 
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
 
@@ -28,13 +29,19 @@ var connect = function (callback) {
 };
 
 select.setQueryManager(queryManager);
+insert.setQueryManager(queryManager);
 /*select.fullArticle('1', function(article) {
     console.log(article);
 });*/
 
-select.baseArticle('1', function(article) {
-    console.log(article);
-});
+insert.baseArticle(
+    {'date':new Date(),'id':3,'link':'www.google.com','selectedImage':3,'title':'Sample text','title':'Article Three','customProperties':{}},
+    function() {
+        select.baseArticle('3', function(article) {
+            console.log(article);
+        });
+    }
+);
 
 /*
 pool.query('SELECT * FROM "conduit-db"."ARTICLES"', [], function(err, res) {
