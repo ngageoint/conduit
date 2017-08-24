@@ -37,6 +37,7 @@ $actPadding: 8px;
 	font-size: 12px;
 	line-height: 15px;
 	margin-top: 20px;
+	margin-bottom: 20px;
 	width: 100%;
 	text-align: center;
 }
@@ -53,7 +54,7 @@ $actPadding: 8px;
 }
 
 .article-view .text.edit-field {
-	margin: 0 $lrpadding;
+	padding: $lrpadding;
 	height: 50vh;
 }
 
@@ -153,7 +154,7 @@ $actPadding: 8px;
 }
 		
 .article-view .text-wrapper {
-    margin: 0 $lrpadding;
+    margin: 0 $lrpadding $lrpadding $lrpadding;
     position: relative;
     top: 30px;
 }
@@ -168,7 +169,7 @@ $actPadding: 8px;
 
 .article-view .edit-field {
 	padding: 0 1vw;
-	width: 50vw;
+	width: 100%;
 }
    
 .article-view  .editable-buttons {
@@ -300,6 +301,10 @@ $actPadding: 8px;
 	right: 0;
 }
 
+#content-wrapper .edit-field.form-control {
+	width: 100% !important;
+}
+
 #overflow-menu .btn.btn-default.dropdown-toggle:after {
 	font-family: "Glyphicons Halflings";
 	content: '\e235';
@@ -340,11 +345,11 @@ $actPadding: 8px;
 #overflow-menu .dropdown-menu.open {
     position: relative;
     top: 30px;
-    left: -15%;
-    height: auto;
+    left: -35%;
+	height: auto;
+	width: 120%;
     max-height: 25vh;
     transition: max-height .25s ease-in-out;
-    max-width: 70%;
     background-color: #fff;
     border: none;
     border-radius: 2px;

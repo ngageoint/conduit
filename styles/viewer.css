@@ -33,11 +33,12 @@
   font-size: 12px;
   line-height: 15px;
   margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
   text-align: center;
 }
 
-/* line 44, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 45, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .btn-edit {
   visibility: visible;
   color: #212121;
@@ -46,37 +47,37 @@
   clear: both;
 }
 
-/* line 51, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 52, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .btn-edit:hover {
   background-color: #d1d1d1;
 }
 
-/* line 55, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 56, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .text.edit-field {
-  margin: 0 15px;
+  padding: 15px;
   height: 50vh;
 }
 
-/* line 60, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 61, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #title-wrapper {
   position: relative;
   margin-top: 8px;
   margin: 0 15px;
 }
 
-/* line 67, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 68, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .title {
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 72, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 73, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #title-wrapper .edit-field {
   line-height: 1.813em;
   height: 6em;
 }
 
-/* line 77, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 78, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-wrapper {
   position: relative;
   width: 100%;
@@ -88,7 +89,7 @@
   clear: both;
 }
 
-/* line 87, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 88, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-right {
   position: absolute;
   top: 50%;
@@ -97,7 +98,7 @@
   z-index: 100;
 }
 
-/* line 94, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 95, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-left {
   position: absolute;
   top: 50%;
@@ -106,7 +107,7 @@
   z-index: 100;
 }
 
-/* line 103, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 104, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-wrapper::before {
   content: '';
   display: inline-block;
@@ -115,7 +116,7 @@
   margin-right: -0.25em;
 }
 
-/* line 111, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 112, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow {
   background-color: #009688;
   width: 2.5em;
@@ -131,7 +132,7 @@
   vertical-align: middle;
 }
 
-/* line 131, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 132, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow:hover {
   cursor: pointer;
   background-color: #00796b;
@@ -139,12 +140,12 @@
   transition: box-shadow .25s ease-in-out;
 }
 
-/* line 138, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 139, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-wrapper .greyout {
   visibility: hidden;
 }
 
-/* line 142, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 143, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .article-image {
   display: inline-block;
   margin: auto;
@@ -152,21 +153,21 @@
   text-align: center;
 }
 
-/* line 149, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 150, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .article-image .image {
   width: 100%;
   max-height: 50vh;
   vertical-align: middle;
 }
 
-/* line 155, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 156, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .text-wrapper {
-  margin: 0 15px;
+  margin: 0 15px 15px 15px;
   position: relative;
   top: 30px;
 }
 
-/* line 161, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 162, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .text {
   display: block;
   font-size: 1.125em;
@@ -175,19 +176,19 @@
   white-space: pre-line;
 }
 
-/* line 169, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 170, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .edit-field {
   padding: 0 1vw;
-  width: 50vw;
+  width: 100%;
 }
 
-/* line 174, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 175, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .editable-buttons {
   float: right;
   margin: 5px 0 75px 0;
 }
 
-/* line 179, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 180, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #date {
   color: #bdbdbd;
   font-size: 14px;
@@ -197,7 +198,7 @@
   bottom: 15px;
 }
 
-/* line 190, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 191, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area {
   position: absolute;
   right: 0;
@@ -209,7 +210,7 @@
   display: inline-block;
 }
 
-/* line 203, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 204, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn {
   height: 36px;
   background: transparent;
@@ -219,23 +220,23 @@
   font-weight: 700;
 }
 
-/* line 213, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 214, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn-default {
   color: #212121;
 }
 
-/* line 217, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 218, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn-default:hover,
 #action-area .btn-default:focus {
   background: rgba(33, 33, 33, 0.12);
 }
 
-/* line 222, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 223, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn-primary {
   color: #009688;
 }
 
-/* line 226, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 227, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn-primary:hover,
 #action-area .btn-primary:focus,
 #action-area .btn-primary:active,
@@ -244,7 +245,7 @@
   box-shadow: none;
 }
 
-/* line 234, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 235, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .dropdown-menu.open {
   position: relative;
   top: -350%;
@@ -260,7 +261,7 @@
   z-index: 101;
 }
 
-/* line 249, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 250, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn-group.open .dropdown-toggle {
   width: 100% !important;
   min-width: initial !important;
@@ -286,7 +287,7 @@
 #overflow-menu:hover {
 	background: lighten($colorGrey, 20%);
 }*/
-/* line 274, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 275, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-btn {
   position: absolute;
   top: 10px;
@@ -303,12 +304,12 @@
   vertical-align: middle;
 }
 
-/* line 290, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 291, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .caret {
   visibility: hidden;
 }
 
-/* line 294, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 295, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #content-wrapper .form-control {
   box-shadow: none;
   -webkit-box-shadow: none;
@@ -318,14 +319,19 @@
   right: 0;
 }
 
-/* line 303, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 304, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+#content-wrapper .edit-field.form-control {
+  width: 100% !important;
+}
+
+/* line 308, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:after {
   font-family: "Glyphicons Halflings";
   content: '\e235';
   margin-left: -.25em;
 }
 
-/* line 309, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 314, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle {
   position: absolute;
   top: 10px;
@@ -345,28 +351,28 @@
   box-shadow: none;
 }
 
-/* line 329, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 334, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:hover {
   cursor: pointer;
   background-color: #f0f0f0;
 }
 
-/* line 334, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 339, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:active,
 #overflow-menu .btn.btn-default.dropdown-toggle:focus {
   cursor: pointer;
   background-color: #e3e3e3;
 }
 
-/* line 340, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 345, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .dropdown-menu.open {
   position: relative;
   top: 30px;
-  left: -15%;
+  left: -35%;
   height: auto;
+  width: 120%;
   max-height: 25vh;
   transition: max-height .25s ease-in-out;
-  max-width: 70%;
   background-color: #fff;
   border: none;
   border-radius: 2px;
@@ -374,7 +380,7 @@
   z-index: 101;
 }
 
-/* line 355, /Users/scott/Documents/work/conduit/sass/viewer.scss */
+/* line 360, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #righoverflow-menut .nya-bs-select.btn-group .dropdown-menu {
   width: 100% !important;
   min-width: initial !important;

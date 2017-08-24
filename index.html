@@ -112,7 +112,12 @@
                                 <a href="{{articles[currentIndex].link}}" target="_blank">
                                     View Original&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window pull-right"></span>
                                 </a>
-                                <a href="{{articles[currentIndex].link}}" target="_blank">
+                                <a  href="#"
+                                    ng-controller="ExportCtrl"
+                                    ng-click="export(articles[currentIndex])">
+                                    Export&nbsp;&nbsp;<span class="glyphicon glyphicon-save-file pull-right"></span>
+                                </a>
+                                <a href"#" target="_blank" ng-click="articleEdit.$show()">
                                         Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil pull-right"></span>
                                     </a>
                             </li>
@@ -136,15 +141,15 @@
                         <div id="title-wrapper">
                             <div 	class="title"
                                     e-class="title edit-field"
-                                    e-form="titleEdit"
+                                    e-form="articleEdit"
                                     editable-textarea="articles[currentIndex].title"
                                     blur="submit">
                                 {{articles[currentIndex].title}}
                             </div>
-                            <button id="btn-title" class="btn btn-edit" ng-click="titleEdit.$show()" ng-hide="titleEdit.$visible">
+                            <!--<button id="btn-title" class="btn btn-edit" ng-click="titleEdit.$show()" ng-hide="titleEdit.$visible">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <div class="ico-text-2">Edit</div>
-                            </button>
+                            </button>-->
                         </div>
                         <div id="image-wrapper" ng-if="!articles[currentIndex].images.length == 0">
                             
@@ -183,13 +188,13 @@
                         <div class="text-wrapper">
                             <div 	class="text" 
                                     e-class="text edit-field"
-                                    e-form="textEdit"
+                                    e-form="articleEdit"
                                     editable-textarea="articles[currentIndex].text"
                                     blur="submit">
-                                <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
+                               <!-- <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                     <div class="ico-text-2">Edit</div>
-                                </button>
+                                </button>-->
                                 {{articles[currentIndex].text}}
                             </div>
                         </div>
@@ -211,12 +216,11 @@
                                 </a>
                             </li>
                         </ol>
-                        <button ng-controller="ExportCtrl"
-                                class="btn btn-default"
-                                ng-click="export(articles[currentIndex])"
-                                title="EXPORT">
+                        <button class="btn btn-default"
+                                ng-click="articleEdit.$show()"
+                                title="EDIT">
                             <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
-                            <div class="ico-text-1">EXPORT</div>
+                            <div class="ico-text-1">EDIT</div>
                         </button>
                         <button uib-popover-template="'templates/comments-popover.html'"
                                 popover-title="DISCUSS"
