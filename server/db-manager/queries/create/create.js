@@ -9,7 +9,7 @@ module.exports = {
     db: function(callback) {
 
         const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'CREATE_CONDUIT_DB.sql')),,
+            text: tools.readQueryFile(path.join(__dirname, 'CREATE_CONDUIT_DB.sql')),
         }
         this.query(query, function(err, res) {
             if(err) {
@@ -21,12 +21,14 @@ module.exports = {
     tables: function(callback) {
         
         const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'CREATE_CONDUIT_TABLES.sql')),,
+            text: tools.readQueryFile(path.join(__dirname, 'CREATE_CONDUIT_TABLES.sql')),
         }
         this.query(query, function(err, res) {
             if(err) {
-                return console.error('error creating db tables', err);
+                callback(err);
             }
+            else
+                callback(res);
             callback();
         });
     }

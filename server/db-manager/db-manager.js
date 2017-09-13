@@ -2,7 +2,7 @@
 const pg = require('pg');
 const select = require('./queries/select/select.js');
 const insert = require('./queries/insert/insert.js');
-const create = require('./queries/insert/insert.js');
+const create = require('./queries/create/create.js');
 
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
 
@@ -10,9 +10,6 @@ try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
 var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : process.env;
 if(process.env.VCAP_SERVICES)
   environment = environment['postgresql-9.5-odb'][0];
-
-console.log(environment);
-console.log(environment.credentials);
 
   var dbConfig = {
     user: environment.credentials.username,
@@ -50,7 +47,7 @@ module.exports = {
 /*select.fullArticle('1', function(article) {
     console.log(article);
 });*/
-
+/*
 insert.baseArticle(
     {'date':new Date(),'id':3,'link':'www.google.com','selectedImage':3,'title':'Sample text','title':'Article Three','customProperties':{}},
     function() {
@@ -58,10 +55,10 @@ insert.baseArticle(
             console.log(article);
         });
     }
-);
+);*/
 
 /*
-pool.query('SELECT * FROM "conduit-db"."ARTICLES"', [], function(err, res) {
+pool.query('SELECT * FROM "conduit_db"."ARTICLES"', [], function(err, res) {
    if(err) {
     return console.error('error running query', err);
   }

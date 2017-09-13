@@ -17,13 +17,13 @@ SET row_security = off;
 
 --
 -- TOC entry 8 (class 2615 OID 16394)
--- Name: conduit-db; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: conduit_db; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
-CREATE SCHEMA "conduit-db";
+CREATE SCHEMA "conduit_db";
 
 
-ALTER SCHEMA "conduit-db" OWNER TO postgres;
+ALTER SCHEMA "conduit_db" OWNER TO postgres;
 
 --
 -- TOC entry 1 (class 3079 OID 12355)
@@ -42,7 +42,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
-SET search_path = "conduit-db", pg_catalog;
+SET search_path = "conduit_db", pg_catalog;
 
 SET default_tablespace = '';
 

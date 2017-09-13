@@ -12,8 +12,12 @@ app.use('/styles', express.static(path.join(__dirname, '/styles')));
 app.use('/templates', express.static(path.join(__dirname, '/templates')));
 app.use('/data', express.static(path.join(__dirname, '/data')));
 
-db.create.tables(function() {
-  console.log("attempted to create tables");
+db.create.tables(function(res) {
+  console.log(res);
+})
+
+db.insert.sampleData(function(res) {
+  console.log(res);
 })
 
 /* GET home page. */

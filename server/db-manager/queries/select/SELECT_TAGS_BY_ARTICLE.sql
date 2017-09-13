@@ -1,6 +1,6 @@
 ﻿SELECT
 	"TAGS"."tag"
 FROM
-	"conduit-db"."TAGS"
+	"conduit_db"."TAGS"
 WHERE
 	"TAGS"."article_id" = $1;

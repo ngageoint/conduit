@@ -7,5 +7,5 @@ SELECT
     "ARTICLES".title,
     "ARTICLES".custom_properties
 FROM
-    "conduit-db"."ARTICLES"
+    "conduit_db"."ARTICLES"
 WHERE "ARTICLES".id = $1

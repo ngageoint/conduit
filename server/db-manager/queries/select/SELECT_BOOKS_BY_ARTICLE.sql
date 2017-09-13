@@ -2,8 +2,8 @@ SELECT
 	"BOOKS"."ID",
 	"BOOKS"."NAME"
 FROM
-	"conduit-db"."BOOKS"
-FULL JOIN"conduit-db"."BOOKS_STATUS"
+	"conduit_db"."BOOKS"
+FULL JOIN"conduit_db"."BOOKS_STATUS"
 	ON
 		"BOOKS_STATUS"."BOOK_ID" = "BOOKS"."ID"
 WHERE

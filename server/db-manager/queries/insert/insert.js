@@ -32,5 +32,17 @@ module.exports = {
             }
             callback();
         });
+    },
+    sampleData: function(callback) {
+        const query = {
+            text: tools.readQueryFile(path.join(__dirname, 'INSERT_SAMPLE_DATA.sql'))
+        }
+        this.query(query, function(err, res) {
+            if(err) {
+                callback(err);
+            }
+            else
+                callback(res);
+        })
     }
 };

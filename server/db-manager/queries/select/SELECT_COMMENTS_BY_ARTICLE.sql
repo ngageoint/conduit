@@ -4,9 +4,9 @@
 	"COMMENTS"."date",
 	"COMMENTS"."text"
 FROM
-	"conduit-db"."COMMENTS"
+	"conduit_db"."COMMENTS"
 INNER JOIN
-	"conduit-db"."USERS"
+	"conduit_db"."USERS"
 	ON
 		"USERS"."id" = "COMMENTS"."user_id"
 WHERE
