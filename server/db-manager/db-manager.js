@@ -2,15 +2,24 @@
 const pg = require('pg');
 const select = require('./queries/select/select.js');
 const insert = require('./queries/insert/insert.js');
+const create = require('./queries/insert/insert.js');
 
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
 
+
+var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : process.env;
+if(process.env.VCAP_SERVICES)
+  environment = environment['postgresql-9.5-odb'][0];
+
+console.log(environment);
+console.log(environment.credentials);
+
   var dbConfig = {
-    user: process.env.CONDUIT_DB_USER,
-    database: process.env.CONDUIT_DB_NAME, //env var: PGDATABASE
-    password: process.env.CONDUIT_DB_PWD, //its a test environment stop judging me
-    host: 'localhost', // Server hosting the postgres database
-    port: 5432, //env var: PGPORT
+    user: environment.credentials.username,
+    database: environment.credentials.db_name,
+    password: environment.credentials.password,
+    host: environment.credentials.db_host,
+    port: environment.credentials.db_port,
     max: 10, // max number of clients in the pool
     idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
   };
@@ -30,6 +39,14 @@ var connect = function (callback) {
 
 select.setQueryManager(queryManager);
 insert.setQueryManager(queryManager);
+create.setQueryManager(queryManager);
+
+module.exports = {
+  select: select,
+  insert: insert,
+  create: create
+};
+
 /*select.fullArticle('1', function(article) {
     console.log(article);
 });*/

@@ -1,7 +1,7 @@
 var query = undefined;
 const path = require('path')
 const tools = require(path.join(__dirname, '..','..','db-tools.js'));
-const select = require(path.join(__dirname, '..', 'select.js'));
+const select = require(path.join(__dirname, '..','select','select.js'));
 
 module.exports = {
     setQueryManager: function(query) {

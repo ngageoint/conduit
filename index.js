@@ -12,10 +12,22 @@ app.use('/styles', express.static(path.join(__dirname, '/styles')));
 app.use('/templates', express.static(path.join(__dirname, '/templates')));
 app.use('/data', express.static(path.join(__dirname, '/data')));
 
+db.create.tables(function() {
+  console.log("attempted to create tables");
+})
+
 /* GET home page. */
 app.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, './', '', 'index.html'));
 });
+
+app.get('/articleById', function(req, res, next) {
+  db.select.fullArticle(req.query.id, function(article) {
+    console.log("rest query");
+    console.log(article);
+    res.json(article);
+  });
+})
 
 console.log("listening on " + port);
 
