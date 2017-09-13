@@ -4,9 +4,10 @@ const select = require('./queries/select/select.js');
 const insert = require('./queries/insert/insert.js');
 const create = require('./queries/create/create.js');
 
+//Load local environment variable file (.env)
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
 
-
+//Detect environment
 var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : process.env;
 if(process.env.VCAP_SERVICES)
   environment = environment['postgresql-9.5-odb'][0];

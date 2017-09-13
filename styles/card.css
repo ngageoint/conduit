@@ -1,7 +1,7 @@
 /*Article Card*/
 /*Light*/
 /*Dark*/
-/* line 16, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 16, D:/work/dat/conduit/sass/card.scss */
 .card {
   min-height: 7.564em;
   max-height: 7.564em;
@@ -21,12 +21,12 @@
   margin: 0;
 }
 
-/* line 46, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 46, D:/work/dat/conduit/sass/card.scss */
 .card-header {
   height: 1.25em;
 }
 
-/* line 50, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 50, D:/work/dat/conduit/sass/card.scss */
 .card .subject {
   color: #bdbdbd;
   position: absolute;
@@ -36,7 +36,7 @@
   font-size: .75em;
 }
 
-/* line 59, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 59, D:/work/dat/conduit/sass/card.scss */
 .card:hover {
   background: #f2f2f2;
   transition: box-shadow .25s ease-in-out;
@@ -45,12 +45,12 @@
   cursor: pointer;
 }
 
-/* line 67, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 67, D:/work/dat/conduit/sass/card.scss */
 .card:hover .card-btn {
   visibility: visible;
 }
 
-/* line 71, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 71, D:/work/dat/conduit/sass/card.scss */
 .card .title {
   overflow: hidden;
   white-space: nowrap;
@@ -59,7 +59,7 @@
   line-height: 1.5em;
 }
 
-/* line 80, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 80, D:/work/dat/conduit/sass/card.scss */
 .card .text {
   overflow: hidden;
   white-space: normal;
@@ -69,7 +69,7 @@
   line-height: 1em;
 }
 
-/* line 91, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 91, D:/work/dat/conduit/sass/card.scss */
 .card .tag {
   font-size: .75em;
   line-height: 0.938em;
@@ -80,7 +80,7 @@
   border: none;
 }
 
-/* line 102, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 102, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper {
   width: 70%;
   margin: 0.313em 0 0 0;
@@ -90,7 +90,7 @@
   float: left;
 }
 
-/* line 111, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 111, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper-action {
   width: 33%;
   float: left;
@@ -100,7 +100,7 @@
   background: inherit;
 }
 
-/* line 120, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 120, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper-action .action {
   background: none;
   border: none;
@@ -110,12 +110,12 @@
   color: #009688;
 }
 
-/* line 129, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 129, D:/work/dat/conduit/sass/card.scss */
 .card #icon {
   float: left;
 }
 
-/* line 133, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 133, D:/work/dat/conduit/sass/card.scss */
 .card #date {
   width: 30%;
   margin: 0.313em 0 0 0;
@@ -125,7 +125,7 @@
   float: right;
 }
 
-/* line 142, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 142, D:/work/dat/conduit/sass/card.scss */
 .card .card-btn {
   visibility: hidden;
   position: absolute;
@@ -137,7 +137,7 @@
   /* For IE8 and earlier */
 }
 
-/* line 153, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 153, D:/work/dat/conduit/sass/card.scss */
 .card .card-btn:hover {
   opacity: 1;
   filter: alpha(opacity=100);
@@ -145,7 +145,7 @@
   transition: opacity .2s ease-in-out;
 }
 
-/* line 159, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 159, D:/work/dat/conduit/sass/card.scss */
 .card.active {
   background: #d9d9d9;
   transition: box-shadow .25s ease-in-out;
@@ -156,55 +156,55 @@
   z-index: 99;
 }
 
-/* line 168, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 168, D:/work/dat/conduit/sass/card.scss */
 .card.active:hover {
   background: #cccccc;
   box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24);
   transition: margin .25s ease-in-out;
 }
 
-/* line 174, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 174, D:/work/dat/conduit/sass/card.scss */
 .card.active .tag {
   color: #212121;
 }
 
-/* line 179, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 179, D:/work/dat/conduit/sass/card.scss */
 .read .title {
   color: #bdbdbd;
 }
 
-/* line 182, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 182, D:/work/dat/conduit/sass/card.scss */
 .read .text {
   color: #bdbdbd;
 }
 
-/* line 185, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 185, D:/work/dat/conduit/sass/card.scss */
 .read .tag {
   background: transparent;
   color: #bdbdbd;
 }
 
-/* line 192, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 192, D:/work/dat/conduit/sass/card.scss */
 .active-read .title {
   color: #717171;
 }
 
-/* line 195, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 195, D:/work/dat/conduit/sass/card.scss */
 .active-read .text {
   color: #717171;
 }
 
-/* line 198, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 198, D:/work/dat/conduit/sass/card.scss */
 .active-read .tag {
   color: #717171;
 }
 
-/* line 201, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 201, D:/work/dat/conduit/sass/card.scss */
 .active-read .subject {
   color: #717171;
 }
 
-/* line 206, /Users/scott/Documents/work/conduit/sass/card.scss */
+/* line 206, D:/work/dat/conduit/sass/card.scss */
 .card.ng-hide:not(.ng-hide-animate) {
   /* These are just alternative ways of hiding an element */
   display: block !important;

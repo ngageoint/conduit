@@ -1,6 +1,6 @@
 /*Light*/
 /*Dark*/
-/* line 4, /Users/scott/Documents/work/conduit/sass/book-selector.scss */
+/* line 4, D:/work/dat/conduit/sass/book-selector.scss */
 #right .btn.btn-default.dropdown-toggle {
   background-color: #009688;
   color: white;
@@ -14,7 +14,7 @@
   z-index: 100;
 }
 
-/* line 22, /Users/scott/Documents/work/conduit/sass/book-selector.scss */
+/* line 22, D:/work/dat/conduit/sass/book-selector.scss */
 #right .dropdown-menu.open {
   position: relative;
   top: -20px;
@@ -30,7 +30,7 @@
   z-index: 101;
 }
 
-/* line 37, /Users/scott/Documents/work/conduit/sass/book-selector.scss */
+/* line 37, D:/work/dat/conduit/sass/book-selector.scss */
 #right .nya-bs-select.btn-group .dropdown-menu {
   width: 100% !important;
   min-width: initial !important;
