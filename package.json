@@ -3,10 +3,6 @@
   "version": "0.4.1",
   "description": "Beta version of Conduit",
   "main": "source.js",
-  "scripts": {
-    "lite": "lite-server –port 10001",
-    "start": "npm run lite"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ngageoint/conduit.git"

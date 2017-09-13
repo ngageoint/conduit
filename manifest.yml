@@ -1,5 +1,6 @@
 ---
 applications:
 - name: conduit-dev
+  command: node index.js
   memory: 128M
   host: conduit-dev
