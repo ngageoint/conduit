@@ -10,7 +10,7 @@ try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
 //Detect environment
 var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : process.env;
 if(process.env.VCAP_SERVICES)
-  environment = environment['postgresql-9.5-odb'][0];
+  environment = environment['crunchy-postgresql-9.5-on-demand'][0];
 
 var dbConfig = {
   user: environment.credentials.username,
