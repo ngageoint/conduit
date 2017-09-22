@@ -15,7 +15,7 @@ var REDIRECT_URL = function() {
         return  sso.auth_domain +
                 '/oauth/authorize?client_id=' + 
                 sso.client_id +
-                '&response_type-code&redirect_uri=https://' +
+                '&response_type-code&redirect_uri=http://' +
                 app.uris[0];
     else
         console.error('SSO not found');

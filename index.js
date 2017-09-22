@@ -25,6 +25,13 @@ db.insert.sampleData(function(res) {
 /* GET home page. */
 app.get('/', function(req, res, next) {
 
+	var authEnabled = false;
+	if(!authEnabled)
+	{
+		res.sendFile(path.join(__dirname, './', '', 'index.html'));
+		return;
+	}
+
 	//Authentication
 	//Check for SSO code
 	if(!req.query.code)
