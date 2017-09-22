@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/ngageoint/conduit#readme",
   "dependencies": {
-    "@angular/animations": "^4.2.2"
+    "@angular/animations": "^4.2.2",
+    "axios": "^0.16.2"
   }
 }

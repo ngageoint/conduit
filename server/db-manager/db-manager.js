@@ -12,24 +12,24 @@ var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVIC
 if(process.env.VCAP_SERVICES)
   environment = environment['postgresql-9.5-odb'][0];
 
-  var dbConfig = {
-    user: environment.credentials.username,
-    database: environment.credentials.db_name,
-    password: environment.credentials.password,
-    host: environment.credentials.db_host,
-    port: environment.credentials.db_port,
-    max: 10, // max number of clients in the pool
-    idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
-  };
+var dbConfig = {
+  user: environment.credentials.username,
+  database: environment.credentials.db_name,
+  password: environment.credentials.password,
+  host: environment.credentials.db_host,
+  port: environment.credentials.db_port,
+  max: 10, // max number of clients in the pool
+  idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+};
 
-  const pool = new pg.Pool(dbConfig);
-  pool.on('error', function (err, client) {
-    console.error('idle client error', err.message, err/stack);
-  });
+const pool = new pg.Pool(dbConfig);
+pool.on('error', function (err, client) {
+  console.error('idle client error', err.message, err/stack);
+});
 
- var queryManager = function (text, values, callback) {
-    return pool.query(text, values, callback);
-  };
+var queryManager = function (text, values, callback) {
+  return pool.query(text, values, callback);
+};
 
 var connect = function (callback) {
   return pool.connect(callback);
