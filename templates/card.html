@@ -1,8 +1,7 @@
 <div>
 	<div class="card-header">
-        <div class="subject" ng-controller="SubjectCtrl">
-            {{subject(article)}}
-        </div>
+        <subject id="subject" class="subject" ng-controller="SubjectCtrl" ng-init="target = article">
+        </subject>
         
         <div ng-if="::isStream"><!--Different tags for different streams-->
             <div id="tag-wrapper-action">

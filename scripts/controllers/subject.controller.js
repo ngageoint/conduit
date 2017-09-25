@@ -2,10 +2,8 @@
 the subject line will require a bit of processing to enforce compliance. This processing
 is different for each network, so this makes it easy to manage*/
 
-angular.module('conduit.controllers').controller('SubjectCtrl', function($scope) {	
-	$scope.subject = function(article) {
-		if(!article)
-			return '';
-		return article.source;
+angular.module('conduit.controllers').controller('SubjectCtrl', function($scope) {			
+	$scope.subject = function() {		
+		return $scope.target ? $scope.target.source : $scope.articles[$scope.currentIndex].source;
 	}
 });

@@ -2,11 +2,11 @@ const axios = require('axios');
 const https = require('https');
 
 //Find environment variables
-var sso = JSON.parse(process.env.VCAP_SERVICES);
+var sso = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : undefined;
 if(sso && sso['p-identity'])
     sso = sso['p-identity'][0].credentials;
 
-var app = JSON.parse(process.env.VCAP_APPLICATION);
+var app = process.env.VCAP_APPLICATION ? JSON.parse(process.env.VCAP_APPLICATION) : undefined;
 
 var user = {};
 
@@ -24,6 +24,9 @@ var REDIRECT_URL = function() {
 var authenticateUser = function (AUTH_CODE) {
     return new Promise(function(resolve, reject) {
         
+        if(!sso || !app)
+            return Promise.reject();
+
         var url =   sso.auth_domain +
                     '/oauth/token?grant_type=authorization_code&code=' +
                     AUTH_CODE +
@@ -59,6 +62,9 @@ var getUserInfo = function (ACCESS_TOKEN) {
         ACCESS_TOKEN = ACCESS_TOKEN ? ACCESS_TOKEN : (user.tokens ? user.tokens.ACCESS_TOKEN : undefined)
         if(!ACCESS_TOKEN)
             return Promise.reject('No access token');
+        if(!sso || !app)
+            return Promise.reject();
+
 
         var url =   sso.auth_domain + 
                     '/userinfo';

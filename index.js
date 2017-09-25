@@ -6,6 +6,12 @@ const port = 8080;
 const db = require('./server/db-manager/db-manager.js');
 const sso = require('./server/sso/sso.js');
 
+//Load local environment variable file (.env)
+try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
+
+var authEnabled = (process.env.VCAP_APPLICATION || process.env);
+authEnabled = false;
+
 /*app.use('/public',express.static(path.join(__dirname, '/public')));*/
 app.use('/packages', express.static(path.join(__dirname, '/packages')));
 app.use('/scripts', express.static(path.join(__dirname, '/scripts')));
@@ -16,10 +22,11 @@ app.use('/data', express.static(path.join(__dirname, '/data')));
 
 var users = {}
 
+
 /* GET home page. */
 app.get('/', function(req, res, next) {
 
-	var authEnabled = false;
+	
 	if(!authEnabled)
 	{
 		res.sendFile(path.join(__dirname, './', '', 'index.html'));

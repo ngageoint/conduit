@@ -39,13 +39,11 @@
     <script src="scripts/modules/tools.module.js"></script>
 
     <!-- controllers -->
-    <script src="scripts/controllers/beta.controller.js"></script>
     <script src="scripts/controllers/book.controller.js"></script>
     <script src="scripts/controllers/export.controller.js"></script>
     <script src="scripts/controllers/feed.controller.js"></script>
     <script src="scripts/controllers/page.controller.js"></script>
     <script src="scripts/controllers/subject.controller.js"></script>
-    <script src="scripts/controllers/username-modal.controller.js"></script>
     <script src="scripts/controllers/viewer.controller.js"></script>
     
 
@@ -55,6 +53,7 @@
     <script src="scripts/directives/feStateful.directive.js"></script>
     <script src="scripts/directives/fileOnChange.directive.js"></script>
     <script src="scripts/directives/scrollToTop.directive.js"></script>
+    <script src="scripts/directives/subject.directive.js"></script>
 
     <!-- services -->
     <script src="scripts/services/articles.service.js"></script>
@@ -76,24 +75,18 @@
 <body>
 
 	<div id="wrapper">        
-        <div id="header" ng-controller="BetaCtrl">
+        <div id="header">
         	<div id="header-content-wrapper">
             	<div id="header-content">
                 	Conduit Beta
                 </div>
                 <div class="pull-left" style="font-size: .35em">
-                	v0.4.1
+                	v0.5.1
                 </div>
-                <button class="btn btn-default pull-right" ng-click="saveState()">
-                	<span class="glyphicon glyphicon-floppy-disk"></span> 
-                   <div class="ico-text-2">&nbsp;Save</div>
-                </button>
-                <label class="btn btn-default pull-right btn-file" style="margin-right: 10px">
-                	<span class="glyphicon glyphicon-folder-open"></span>
-                     <div class="ico-text-2">&nbsp;Load</div>
-                	<input type="file" file-on-change="loadState" style="display:none" hidden>
-                    <!--  -->
-                </label>
+                <div class="btn btn-default pull-right" ng-click="saveState()">
+                	<span class="glyphicon glyphicon-bullhorn"></span> 
+                    <div class="ico-text-2">&nbsp;Send Feedback</div>
+                </div>
             </div>
         </div>
     
@@ -102,10 +95,8 @@
         	<div id="center" class="column" ng-controller="ViewerCtrl" ng-cloak>
             	<div class="article-view"  ng-model="article" data-scroll-to-top="articles[currentIndex]">
                     <div id="content-wrapper">
-                        <div id="subject" ng-controller="SubjectCtrl">
-                            {{subject(articles[currentIndex])}}
-                        </div>
-
+                        <subject id="subject" class="subject" ng-controller="SubjectCtrl">
+                        </subject>
                         <ol id="overflow-menu" class="nya-bs-select dropdown form-control"
                             ng-model="selectedBook">
                             <li>
