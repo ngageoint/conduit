@@ -8,12 +8,12 @@ angular.module('conduit.services').factory('UserService', function($http, $windo
 									.replace(/=/g, '":"')
 							+ '"}');
 
-	var user = $http.get('/userInfo?colde=' + params.code).then(function(response) {
+	var user = $http.get('/userInfo?code=' + params.code).then(function(response) {
 			return response.data;
 	});
 	
     var getUser = function() {
-	    return getUser;
+	    return user;
 	};
 	
 	return {

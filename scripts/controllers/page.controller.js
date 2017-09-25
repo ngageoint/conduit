@@ -1,5 +1,5 @@
 angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $filter,
-ArticlesService, AttributesService, BooksService, ArrayTools) {
+ArticlesService, AttributesService, BooksService, UserService, ArrayTools) {
 	
 	/**
 	 * Wait for the articles promise to resolve; will be inherited by child scopes.
