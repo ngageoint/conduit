@@ -13,7 +13,7 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 	ArticlesService.getArticles().then(function() {
 		DataSourceService.getSources().then( function(sourceData) {
 			$scope.sources = FilterService.build(sourceData, $scope.articles);
-			refreshFeed(); //Ensure the feed is filtered on first load
+			$scope.refreshFeed(); //Ensure the feed is filtered on first load
 		}).catch( function(err) {
 			console.log(err);
 		});

@@ -4,6 +4,7 @@
 	window.__config = window.__config || {};
 	
 	window.__config.articlesUrl = './data/sample-data.json';
+	window.__config.exportTpltUrl = './templates/export-tplt.docx'
 
 	
 	window.__config.MAX_DAYS_BACK = 50; //Will delete anything older than this many days, and will cap the filter at this many days

@@ -1,4 +1,4 @@
-angular.module('conduit.controllers').controller('ExportCtrl', function($q, $scope, DateTools,XMLTools) {
+angular.module('conduit.controllers').controller('ExportCtrl', function($q, $scope, DateTools, XMLTools, __config) {
 		
 	/**
 	 * This function takes an article and creates a promise of a .docx blob.
@@ -20,7 +20,7 @@ angular.module('conduit.controllers').controller('ExportCtrl', function($q, $sco
 			}
 
 			//Callback function creates docx blob and returns promise
-			loadFile("templates/export-tplt.docx", function(err,content){
+			loadFile(__config.exportTpltUrl, function(err,content){
 				if (err) { throw e};
 				doc=new Docxgen(content);
 				doc.setData( {
