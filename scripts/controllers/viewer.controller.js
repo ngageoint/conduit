@@ -39,7 +39,7 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			if(!$scope.articles[$scope.currentIndex].comments)
 				$scope.articles[$scope.currentIndex].comments = [];
 			//Comments follow this data format: {user, text, dateTime};
-			$scope.articles[$scope.currentIndex].comments.push({user: $scope.user.name, text: newComment, dateTime: dateStr});
+			$scope.articles[$scope.currentIndex].comments.push({user: $scope.user.given_name, text: newComment, dateTime: dateStr});
 		}
 	}	
 });

@@ -14,13 +14,7 @@ app.use('/styles', express.static(path.join(__dirname, '/styles')));
 app.use('/templates', express.static(path.join(__dirname, '/templates')));
 app.use('/data', express.static(path.join(__dirname, '/data')));
 
-db.create.tables(function(res) {
-	console.log(res);
-})
-
-db.insert.sampleData(function(res) {
-	console.log(res);
-})
+var users = {}
 
 /* GET home page. */
 app.get('/', function(req, res, next) {
@@ -37,13 +31,36 @@ app.get('/', function(req, res, next) {
 	if(!req.query.code)
 		res.redirect(sso.REDIRECT_URL());
 	else {
-		sso.authenticateUser(req.query.code).then(function(user) {
-			sso.getUserInfo(user.tokens.access_token).then(function(user) {
+		sso.authenticateUser(req.query.code).then(function(auth) {
+			sso.getUserInfo(auth.tokens.access_token).then(function(user) {
+				users[req.query.code] = user;
 				res.sendFile(path.join(__dirname, './', '', 'index.html'));
 			})
+		}).catch(function(res) {
+			res.statusCode(403);
+			res.send("Access denied.");
 		})
 	}
 });
+
+app.get('/userInfo', function(req, res, next) {
+	AUTH_CODE = req.query.code;
+
+	if(!AUTH_CODE)
+	{
+		res.statusCode(400);
+		res.send('Authorization code required');
+		return;
+	}
+	if(!users[AUTH_CODE]);
+	{
+		res.statusCode(401);
+		res.send('Authorization code not valid.');
+		return;
+	}
+	res.statusCode(200);
+	res.json(users[AUTH_CODE].info);
+})
 
 app.get('/articleById', function(req, res, next) {
 	db.select.fullArticle(req.query.id, function(article) {
@@ -56,3 +73,15 @@ app.get('/articleById', function(req, res, next) {
 console.log("listening on " + port);
 
 app.listen(port);
+
+
+/*Test functions
+db.create.tables(function(res) {
+	console.log(res);
+})
+
+db.insert.sampleData(function(res) {
+	console.log(res);
+})
+
+*/

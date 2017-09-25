@@ -10,14 +10,14 @@ try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
 //Detect environment
 var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : process.env;
 if(process.env.VCAP_SERVICES)
-  environment = environment['crunchy-postgresql-9.5-on-demand'][0];
+  environment = environment['crunchy-postgresql-9.5-on-demand'][0].credentials;
 
 var dbConfig = {
-  user: environment.credentials.username,
-  database: environment.credentials.db_name,
-  password: environment.credentials.password,
-  host: environment.credentials.db_host,
-  port: environment.credentials.db_port,
+  user: environment.username,
+  database: environment.db_name,
+  password: environment.password,
+  host: environment.db_host,
+  port: environment.db_port,
   max: 10, // max number of clients in the pool
   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 };
