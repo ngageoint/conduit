@@ -1,7 +1,7 @@
 <div>
 	<div class="card-header">
-        <div class="subject">
-            TREES//SPRUCE
+        <div class="subject" ng-controller="SubjectCtrl">
+            {{subject(article)}}
         </div>
         
         <div ng-if="::isStream"><!--Different tags for different streams-->
