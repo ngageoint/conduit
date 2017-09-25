@@ -4,6 +4,12 @@ is different for each network, so this makes it easy to manage*/
 
 angular.module('conduit.controllers').controller('SubjectCtrl', function($scope) {			
 	$scope.subject = function() {		
-		return $scope.target ? $scope.target.source : $scope.articles[$scope.currentIndex].source;
+		return 	$scope.target ? 
+					$scope.target.source : 
+					($scope.articles ? 
+						($scope.articles[$scope.currentIndex] ? 
+							$scope.articles[$scope.currentIndex].source : 
+							undefined) :
+						undefined);
 	}
 });
