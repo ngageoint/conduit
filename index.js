@@ -44,10 +44,14 @@ app.get('/', function(req, res, next) {
 				res.sendFile(path.join(__dirname, './', '', 'index.html'));
 			})
 		}).catch(function(res) {
-			res.statusCode(403);
+			res.status(403);
 			res.send("Access denied.");
 		})
 	}
+});
+
+app.get('/unsupported', function(req, res, next) {
+	res.sendFile(path.join(__dirname, './', 'public', 'html', 'unsupported.html'));
 });
 
 app.get('/userInfo', function(req, res, next) {
@@ -55,17 +59,17 @@ app.get('/userInfo', function(req, res, next) {
 
 	if(!AUTH_CODE)
 	{
-		res.statusCode(400);
+		res.status(400);
 		res.send('Authorization code required');
 		return;
 	}
 	if(!users[AUTH_CODE]);
 	{
-		res.statusCode(401);
+		res.status(401);
 		res.send('Authorization code not valid.');
 		return;
 	}
-	res.statusCode(200);
+	res.status(200);
 	res.json(users[AUTH_CODE].info);
 })
 
@@ -76,6 +80,8 @@ app.get('/articleById', function(req, res, next) {
     	res.json(article);
   	});
 })
+
+
 
 console.log("listening on " + port);
 

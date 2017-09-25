@@ -28,6 +28,10 @@ if(window) {
 	Object.assign(config, window.__config);
 }
 
+/*Polyfill to support IE*/
+if(typeof Promise == "undefined")
+	location.href = location.origin + '/' + 'unsupported';
+
 angular.module('conduit', [
     /*custom modules*/
     'conduit.directives', 'conduit.services', 'conduit.controllers', 'conduit.tools',
