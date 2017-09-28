@@ -15,7 +15,7 @@ module.exports = {
         });
 
         const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_BASE_ARTICLE.sql')),
+            text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_BASE.sql')),
             values: [
                 article.date,
                 article.id,
