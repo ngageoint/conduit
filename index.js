@@ -3,6 +3,13 @@ const app = express();
 const path = require('path');
 const port = 8080;
 
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
+
 const db = require('./server/db-manager/db-manager.js');
 const sso = require('./server/sso/sso.js');
 
@@ -22,11 +29,8 @@ app.use('/data', express.static(path.join(__dirname, '/data')));
 
 var users = {}
 
-
 /* GET home page. */
 app.get('/', function(req, res, next) {
-
-	
 	if(!authEnabled)
 	{
 		res.sendFile(path.join(__dirname, './', '', 'index.html'));
@@ -73,7 +77,10 @@ app.get('/userInfo', function(req, res, next) {
 	res.json(users[AUTH_CODE].info);
 })
 
-app.get('/query/articleFull', function(req, res, next) {
+/*=================
+   SELECT Endpoint 
+ ==================*/
+app.get('/select/articleFull', function(req, res, next) {
 	if(!req.query.articleId) {
 		console.log('No id');
 		res.status(400);
@@ -85,14 +92,9 @@ app.get('/query/articleFull', function(req, res, next) {
 		res.status(200);
     	res.json(article);
   	});
-	/*db.select.imagesByArticle(req.query.id, function(images) {
-		console.log(images);
-		res.status(200);
-    	res.json(images);
-  	});*/
 });
 
-app.get('/query/imagesByArticle', function(req, res, next) {
+app.get('/select/imagesByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('No id');
 		res.status(400);
@@ -104,14 +106,9 @@ app.get('/query/imagesByArticle', function(req, res, next) {
 		res.status(200);
     	res.json(images);
   	});
-	/*db.select.imagesByArticle(req.query.id, function(images) {
-		console.log(images);
-		res.status(200);
-    	res.json(images);
-  	});*/
 });
 
-app.get('/query/booksByArticle', function(req, res, next) {
+app.get('/select/booksByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('No id');
 		res.status(400);
@@ -125,7 +122,7 @@ app.get('/query/booksByArticle', function(req, res, next) {
   	});
 });
 
-app.get('/query/commentsByArticle', function(req, res, next) {
+app.get('/select/commentsByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('No id');
 		res.status(400);
@@ -139,7 +136,7 @@ app.get('/query/commentsByArticle', function(req, res, next) {
   	});
 });
 
-app.get('/query/tagsByArticle', function(req, res, next) {
+app.get('/select/tagsByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('No id');
 		res.status(400);
@@ -153,7 +150,7 @@ app.get('/query/tagsByArticle', function(req, res, next) {
   	});
 });
 
-app.get('/query/articleStatusByIds', function(req, res, next) {
+app.get('/select/articleStatusByIds', function(req, res, next) {
 	if(!req.query.articleId || !req.query.userId) {
 		console.log('Missing params');
 		res.status(400);
@@ -167,7 +164,7 @@ app.get('/query/articleStatusByIds', function(req, res, next) {
   	});
 });
 
-app.get('/query/articleBase', function(req, res, next) {
+app.get('/select/articleBase', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('Missing params');
 		res.status(400);
@@ -181,20 +178,148 @@ app.get('/query/articleBase', function(req, res, next) {
   	});
 });
 
+/*=================
+   INSRET Endpoint 
+ ==================*/
+ 
+ app.post('/insert/articleBase', function(req, res, next) {
+	if(!req.body.article) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. article is required');
+		return;
+	}
+	db.insert.articleBase(req.body.article).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
 
+app.post('/insert/articleStatus', function(req, res, next) {
+	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
+		console.log('Missing params');
+		console.log(req.body);
+		res.status(400);
+		res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
+		return;
+	}
+	db.insert.articleStatus(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRead).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+ 
+ app.post('/insert/book', function(req, res, next) {
+	if(!req.body.name) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. name is required, teamId is optional. NOTE: teamId is expected to be required in future versions');
+		return;
+	}
+	db.insert.book(req.body.name, req.body.teamId).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+app.post('/insert/bookStatus', function(req, res, next) {
+	if(!req.body.bookId || !req.body.articleId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. bookId and articleId are required');
+		return;
+	}
+	db.insert.bookStatus(req.body.bookId, req.body.articleId).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+//TODO: add support for comment object
+app.post('/insert/comment', function(req, res, next) {
+	if(!req.body.articleId || !req.body.userId || !req.body.teamId || !req.body.date || !req.body.text) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. articleId, userId, teamId, date, and text are required');
+		return;
+	}
+	db.insert.comment(req.body.articleId, req.body.userId, req.body.teamId, req.body.date, req.body.text).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+//TODO: add sopport for image arrays
+app.post('/insert/image', function(req, res, next) {
+	if(!req.body.uri || !req.body.articleId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. uri and articleId are required');
+		return;
+	}
+	db.insert.image(req.body.uri, req.body.articleId).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+//TODO: add support for tag arrays
+app.post('/insert/tag', function(req, res, next) {
+	if(!req.body.name || !req.body.articleId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. name and articleId are required');
+		return;
+	}
+	db.insert.tag(req.body.name, req.body.articleId).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+app.post('/insert/team', function(req, res, next) {
+	if(!req.body.name) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. name is required');
+		return;
+	}
+	db.insert.team(req.body.name).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+app.post('/insert/user', function(req, res, next) {
+	if(!req.body.firstName || !req.body.lastName && !req.body.prefName || !req.body.teamId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. firstName, lastName, prefName, and teamId are required. id is optional');
+		return;
+	}
+	if(req.body.id) {
+		db.insert.userWithId(req.body.id, req.body.firstName, req.body.lastName, req.body.prefName, req.body.teamId).then(function(result) {
+			console.log(result);
+			res.status(200);
+			res.json(result);
+		});
+	} else {
+		db.insert.userNoId(req.body.firstName, req.body.lastName, req.body.prefName, req.body.teamId).then(function(result) {
+			console.log(result);
+			res.status(200);
+			res.json(result);
+		});
+	}
+});
 
 console.log("listening on " + port);
 
 app.listen(port);
-
-
-/*Test functions
-db.create.tables(function(res) {
-	console.log(res);
-})
-
-db.insert.sampleData(function(res) {
-	console.log(res);
-})
-
-*/
