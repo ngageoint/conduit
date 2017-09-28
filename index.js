@@ -80,11 +80,16 @@ app.get('/query/imagesByArticle', function(req, res, next) {
 		res.send('Missing parameters. id required.');
 		return;
 	}
-	db.select.imagesByArticle(req.query.id, function(images) {
+	db.select.imagesByArticle(req.query.id).then(function(images) {
 		console.log(images);
 		res.status(200);
     	res.json(images);
   	});
+	/*db.select.imagesByArticle(req.query.id, function(images) {
+		console.log(images);
+		res.status(200);
+    	res.json(images);
+  	});*/
 });
 
 app.get('/query/booksByArticle', function(req, res, next) {
@@ -94,7 +99,7 @@ app.get('/query/booksByArticle', function(req, res, next) {
 		res.send('Missing parameters. id required.');
 		return;
 	}
-	db.select.booksByArticle(req.query.id, function(books) {
+	db.select.booksByArticle(req.query.id).then(function(books) {
 		console.log(books);
 		res.status(200);
     	res.json(books);
@@ -108,7 +113,7 @@ app.get('/query/commentsByArticle', function(req, res, next) {
 		res.send('Missing parameters. id required.');
 		return;
 	}
-	db.select.commentsByArticle(req.query.id, function(comments) {
+	db.select.commentsByArticle(req.query.id).then(function(comments) {
 		console.log(comments);
 		res.status(200);
     	res.json(comments);
@@ -122,7 +127,7 @@ app.get('/query/tagsByArticle', function(req, res, next) {
 		res.send('Missing parameters. id required.');
 		return;
 	}
-	db.select.tagsByArticle(req.query.id, function(tags) {
+	db.select.tagsByArticle(req.query.id).then(function(tags) {
 		console.log(tags);
 		res.status(200);
     	res.json(tags);
@@ -136,7 +141,7 @@ app.get('/query/articleStatusByIds', function(req, res, next) {
 		res.send('Missing parameters. articleId and userId required.');
 		return;
 	}
-	db.select.articleStatusByIds(req.query.articleId, req.query.userId, function(status) {
+	db.select.articleStatusByIds(req.query.articleId, req.query.userId).then(function(status) {
 		console.log(status);
 		res.status(200);
     	res.json(status);
@@ -150,7 +155,7 @@ app.get('/query/articleBase', function(req, res, next) {
 		res.send('Missing parameters. id required.');
 		return;
 	}
-	db.select.articleBase(req.query.id, function(article) {
+	db.select.articleBase(req.query.id).then(function(article) {
 		console.log(article);
 		res.status(200);
     	res.json(article);

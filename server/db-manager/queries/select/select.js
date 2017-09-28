@@ -107,7 +107,7 @@ var selectFullArticle = function(id, callback) {
 
 module.exports = {
     setQueryManager: function(query) {
-        this.query = query;
+        module.exports.query = query;
     },
     fullArticle: function(id, callback) {
 
@@ -137,8 +137,7 @@ module.exports = {
 
         return; 		
     },
-    baseArticle: function(id, callback)
-    {
+    baseArticle: function(id, callback) {
         if(!(id instanceof Array))
             id = JSON.parse('[' + id + ']');
         const query = {
@@ -147,9 +146,9 @@ module.exports = {
         }
         console.log(id);
         console.log(id instanceof Array);
-console.log(query.text);
+        console.log(query.text);
 
-        this.query(query, function(err, res) {            
+        module.exports.query(query, function(err, res) {            
             if(err) {
                 return console.error('error running query', err);
             }
@@ -165,127 +164,141 @@ console.log(query.text);
         });
     },
     articleBase: function(id, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_BASE.sql')),
-            values: [id],
-        }
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_BASE.sql')),
+                values: [id],
+            }
 
-        this.query(query, function(err, res) {            
-            if(err) {
-                return console.error('error running query', err);
-            }
-            if(res.rows) {
-                callback(res.rows[0]);
-            }
-            else {
-                callback('undefined');
-            }
+            module.exports.query(query, function(err, res) {            
+                if(err) {
+                    return reject(err);
+                }
+                if(res.rows) {
+                    return resolve(res.rows[0]);
+                }
+                else {
+                    return reject('No results');
+                }
+            });
         });
     },
     articleStatusByIds: function(articleId, userId, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_STATUS_BY_IDS.sql')),
-            values: [articleId, userId],
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                return console.error('error running query', err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_STATUS_BY_IDS.sql')),
+                values: [articleId, userId],
             }
-            if(res && res.rows && res.rows[0] && res.rows[0].read) {
-                callback(res.rows[0].read);
-            } else {
-                callback('undefined');
-            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows && res.rows[0] && res.rows[0].read) {
+                    return resolve(res.rows[0].read);
+                } else {
+                    return reject('No results');
+                }
+            });
         });
     },
     booksByArticle: function(id, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'SELECT_BOOKS_BY_ARTICLE.sql')),
-            values: [id],
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                return console.error('error running query', err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_BOOKS_BY_ARTICLE.sql')),
+                values: [id],
             }
-            if(res && res.rows)
-            {
-                var books = [];
-                for(var i = 0; i < res.rows.length; i++)
-                    books.push(res.rows[i])
-                callback(books);
-            }
-            else
-                callback('undefined');
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows)
+                {
+                    var books = [];
+                    for(var i = 0; i < res.rows.length; i++)
+                        books.push(res.rows[i])
+                    return resolve(books);
+                }
+                else
+                    return reject('No results');
+            });
         });
     },
-    imagesByArticle: function(id, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'SELECT_IMAGES_BY_ARTICLE.sql')),
-            values: [id],
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                return console.error('error running query', err);
+    imagesByArticle: function(id) {
+        return new Promise(function(resolve, reject) {        
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_IMAGES_BY_ARTICLE.sql')),
+                values: [id],
             }
-            if(res && res.rows)
-            {
-                var images = [];
-                for(var i = 0; i < res.rows.length; i++)
-                    images.push(res.rows[i]['uri']);
-                callback(images);
-            }
-            else
-                callback('undefined');
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows)
+                {
+                    var images = [];
+                    for(var i = 0; i < res.rows.length; i++)
+                        images.push(res.rows[i]['uri']);
+                    return resolve(images);
+                }
+                else
+                   return reject('No results');
+                });
         });
     },
     commentsByArticle: function(id, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'SELECT_COMMENTS_BY_ARTICLE.sql')),
-            values: [id],
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                return console.error('error running query', err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_COMMENTS_BY_ARTICLE.sql')),
+                values: [id],
             }
-            if(res && res.rows)
-            {
-                var comments = [];
-                for(var i = 0; i < res.rows.length; i++)
-                    comments.push(res.rows[i])
-                callback(comments);
-            }
-            else
-                callback('undefined');
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows)
+                {
+                    var comments = [];
+                    for(var i = 0; i < res.rows.length; i++)
+                        comments.push(res.rows[i])
+                    return resolve(comments);
+                }
+                else
+                    return reject('No results');
+            });
         });
     },
     tagsByArticle: function(id, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'SELECT_TAGS_BY_ARTICLE.sql')),
-            values: [id],
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                return console.error('error running query', err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_TAGS_BY_ARTICLE.sql')),
+                values: [id],
             }
-            if(res && res.rows)
-            {
-                var tags = [];
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows)
+                {
+                    var tags = [];
 
-                for(var i = 0; i < res.rows.length; i++)
-                    tags.push(res.rows[i]['tag']);
-                callback(tags);
-            }
-            else
-                callback('undefined');
+                    for(var i = 0; i < res.rows.length; i++)
+                        tags.push(res.rows[i]['tag']);
+                    return resolve(tags);
+                }
+                else
+                    return reject('No results');
+            });
         });
     },
     imageById: function() {
-        this.query(tools.readQueryFile(path.join(__dirname, 'SELECT_IMAGE.sql')), [id], function(err, res) {
-            if(err) {
-                return console.error('error running query', err);
-            }
-            for(var i = 0; i < res.rows.length; i++)
-                console.log('row ' + i + ':', res.rows[i]);
+        return new Promise(function(resolve, reject) {
+            module.exports.query(tools.readQueryFile(path.join(__dirname, 'SELECT_IMAGE.sql')), [id], function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                for(var i = 0; i < res.rows.length; i++)
+                    console.log('row ' + i + ':', res.rows[i]);
+            });
         });
     }
 }
