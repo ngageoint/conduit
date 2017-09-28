@@ -197,6 +197,7 @@ module.exports = {
         });
     },
     tagsByArticle: function(id) {
+        
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_TAGS_BY_ARTICLE.sql')),

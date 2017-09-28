@@ -7,6 +7,40 @@ module.exports = {
     setQueryManager: function(query) {
         module.exports.query = query;
     },
+    articleFull: function(article, userId) {
+        return new Promise(function(resolve, reject) {
+            
+            var promises = [];
+            
+            promises.push(module.exports.articleBase(article));
+            promises.push(module.exports.articleStatus(article.id, userId));
+            promises.push(module.exports.bookStatus(article.books, article.id));
+            promises.push(module.exports.comment(article.comments, article.id));
+            promises.push(module.exports.image(article.images, article.id));
+            promises.push(module.exports.tag(article.tags, article.id));
+            if(userId) {
+                promises.push(module.exports.articleStatusByIds(articleId, userId));
+            }
+
+            /*promises in order:
+            0:base, 1:books[object], 2:images[string], 3:comments[object], 4:tags[string], 5:status[boolean]
+            */
+            return Promise.all(promises).then(function(res) {
+                var article = res[0];
+                article.books = res[1];
+                article.images = res[2];
+                article.comments = res[3];
+                article.tags = res[4];
+                if(res[5]) {
+                    article.read = res[5];
+                }
+
+                return resolve(article);
+            }).catch(function(err) {
+                return reject(err);
+            });
+        });
+    },
     articleBase: function(article) {
         return new Promise(function(resolve, reject) {
             const query = {
