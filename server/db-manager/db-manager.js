@@ -49,7 +49,7 @@ module.exports = {
     console.log(article);
 });*/
 /*
-insert.baseArticle(
+insert.articleBase(
     {'date':new Date(),'id':3,'link':'www.google.com','selectedImage':3,'title':'Sample text','title':'Article Three','customProperties':{}},
     function() {
         select.baseArticle('3', function(article) {

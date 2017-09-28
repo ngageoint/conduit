@@ -164,6 +164,40 @@ console.log(query.text);
                 callback('undefined');
         });
     },
+    articleBase: function(id, callback) {
+        const query = {
+            text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_BASE.sql')),
+            values: [id],
+        }
+
+        this.query(query, function(err, res) {            
+            if(err) {
+                return console.error('error running query', err);
+            }
+            if(res.rows) {
+                callback(res.rows[0]);
+            }
+            else {
+                callback('undefined');
+            }
+        });
+    },
+    articleStatusByIds: function(articleId, userId, callback) {
+        const query = {
+            text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_STATUS_BY_IDS.sql')),
+            values: [articleId, userId],
+        }
+        this.query(query, function(err, res) {
+            if(err) {
+                return console.error('error running query', err);
+            }
+            if(res && res.rows && res.rows[0] && res.rows[0].read) {
+                callback(res.rows[0].read);
+            } else {
+                callback('undefined');
+            }
+        });
+    },
     booksByArticle: function(id, callback) {
         const query = {
             text: tools.readQueryFile(path.join(__dirname, 'SELECT_BOOKS_BY_ARTICLE.sql')),

@@ -7,6 +7,33 @@ module.exports = {
     setQueryManager: function(query) {
         this.query = query;
     },
+    articleBase: function(article, callback) {
+        var exists = false;
+        select.baseArticle(article.id, function(res) {
+            if(res.rows[0])
+                return false;
+        });
+
+        const query = {
+            text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_BASE.sql')),
+            values: [
+                article.date,
+                article.id,
+                article.link,
+                article.selectedImage,
+                article.text,
+                article.title,
+                article.customProperties,
+                article.source
+            ],
+        }
+        this.query(query, function(err, res) {
+            if(err) {
+                return console.error('error running query', err);
+            }
+            callback();
+        });
+    },
     articleStatus: function(articleId, userId, teamId, isRead, callback) {
         const query = {
             text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_STATUS.sql')),
@@ -125,32 +152,6 @@ module.exports = {
             else
                 callback(res);
         })
-    },
-    baseArticle: function(article, callback) {
-        var exists = false;
-        select.baseArticle(article.id, function(res) {
-            if(res.rows[0])
-                return false;
-        });
-
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_BASE.sql')),
-            values: [
-                article.date,
-                article.id,
-                article.link,
-                article.selectedImage,
-                article.text,
-                article.title,
-                article.customProperties
-            ],
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                return console.error('error running query', err);
-            }
-            callback();
-        });
     },
     sampleData: function(callback) {
         const query = {
