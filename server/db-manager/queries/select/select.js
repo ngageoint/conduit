@@ -6,60 +6,6 @@ module.exports = {
     setQueryManager: function(query) {
         module.exports.query = query;
     },
-    fullArticle: function(id) {
-
-        if(typeof id === "string")
-        {
-            selectFullArticle(id, callback);
-            return;
-        }
-
-        //No support for Arrays yet....
-        if(id instanceof Array)
-        {
-            var promises = [];
-
-                for(var i = 0; i < id.length; i++)
-                    if(typeof id[i] === "string")
-                        articles.push(selectFullArticle(id));
-
-
-            return (Promise.all(promises).then(function(res) {
-                console.log(res);
-            }).then(function(res) {
-                console.log(res);
-                callback(res);
-            }));	
-        }
-
-        return; 		
-    },
-    baseArticle: function(id) {
-        if(!(id instanceof Array))
-            id = JSON.parse('[' + id + ']');
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'SELECT_MULTIPLE_BASE_ARTICLES.sql')),
-            values: [id],
-        }
-        console.log(id);
-        console.log(id instanceof Array);
-        console.log(query.text);
-
-        module.exports.query(query, function(err, res) {            
-            if(err) {
-                return console.error('error running query', err);
-            }
-            if(res.rows)
-            {
-                if(typeof id === "string")
-                    callback(res.rows[0]);
-                else if (id instanceof Array)
-                    callback(res.rows);
-            }
-            else
-                callback('undefined');
-        });
-    },
     articleBase: function(id) {
         return new Promise(function(resolve, reject) {
             const query = {
@@ -217,17 +163,6 @@ module.exports = {
                 }
                 else
                     return reject('No results');
-            });
-        });
-    },
-    imageById: function() {
-        return new Promise(function(resolve, reject) {
-            module.exports.query(tools.readQueryFile(path.join(__dirname, 'SELECT_IMAGE.sql')), [id], function(err, res) {
-                if(err) {
-                    return reject(err);
-                }
-                for(var i = 0; i < res.rows.length; i++)
-                    console.log('row ' + i + ':', res.rows[i]);
             });
         });
     }
