@@ -1,2 +1,2 @@
 INSERT INTO "conduit_db"."BOOKS"
-VALUES ($1,$2);
+VALUES (DEFAULT,$1,$2);

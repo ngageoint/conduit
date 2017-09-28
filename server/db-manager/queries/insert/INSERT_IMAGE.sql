@@ -1,2 +1,2 @@
 INSERT INTO "conduit_db"."IMAGES"
-VALUES ($1,$2,$3);
+VALUES (DEFAULT,$1,$2);
