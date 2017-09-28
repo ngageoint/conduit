@@ -73,6 +73,25 @@ app.get('/userInfo', function(req, res, next) {
 	res.json(users[AUTH_CODE].info);
 })
 
+app.get('/query/articleFull', function(req, res, next) {
+	if(!req.query.articleId) {
+		console.log('No id');
+		res.status(400);
+		res.send('Missing parameters. articleId required, userId optional');
+		return;
+	}
+	db.select.articleFull(req.query.articleId, req.query.userId).then(function(article) {
+		console.log(article);
+		res.status(200);
+    	res.json(article);
+  	});
+	/*db.select.imagesByArticle(req.query.id, function(images) {
+		console.log(images);
+		res.status(200);
+    	res.json(images);
+  	});*/
+});
+
 app.get('/query/imagesByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('No id');

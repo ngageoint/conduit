@@ -109,7 +109,7 @@ module.exports = {
     setQueryManager: function(query) {
         module.exports.query = query;
     },
-    fullArticle: function(id, callback) {
+    fullArticle: function(id) {
 
         if(typeof id === "string")
         {
@@ -137,7 +137,7 @@ module.exports = {
 
         return; 		
     },
-    baseArticle: function(id, callback) {
+    baseArticle: function(id) {
         if(!(id instanceof Array))
             id = JSON.parse('[' + id + ']');
         const query = {
@@ -163,7 +163,7 @@ module.exports = {
                 callback('undefined');
         });
     },
-    articleBase: function(id, callback) {
+    articleBase: function(id) {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_BASE.sql')),
@@ -183,7 +183,39 @@ module.exports = {
             });
         });
     },
-    articleStatusByIds: function(articleId, userId, callback) {
+    articleFull: function(articleId, userId) {
+        return new Promise(function(resolve, reject) {
+            var promises = [];
+
+            promises.push(module.exports.articleBase(articleId));
+            promises.push(module.exports.booksByArticle(articleId));
+            promises.push(module.exports.imagesByArticle(articleId));
+            promises.push(module.exports.commentsByArticle(articleId));
+            promises.push(module.exports.tagsByArticle(articleId));
+            if(userId) {
+                promises.push(module.exports.articleStatusByIds(articleId, userId));
+            }
+
+            /*promises in order:
+            0:base, 1:books[object], 2:images[string], 3:comments[object], 4:tags[string], 5:status[boolean]
+            */
+            return Promise.all(promises).then(function(res) {
+                var article = res[0];
+                article.books = res[1];
+                article.images = res[2];
+                article.comments = res[3];
+                article.tags = res[4];
+                if(res[5]) {
+                    article.read = res[5];
+                }
+
+                return resolve(article);
+            }).catch(function(err) {
+                return reject(err);
+            });
+        });
+    },
+    articleStatusByIds: function(articleId, userId) {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_STATUS_BY_IDS.sql')),
@@ -201,7 +233,7 @@ module.exports = {
             });
         });
     },
-    booksByArticle: function(id, callback) {
+    booksByArticle: function(id) {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_BOOKS_BY_ARTICLE.sql')),
@@ -245,7 +277,7 @@ module.exports = {
                 });
         });
     },
-    commentsByArticle: function(id, callback) {
+    commentsByArticle: function(id) {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_COMMENTS_BY_ARTICLE.sql')),
@@ -267,7 +299,7 @@ module.exports = {
             });
         });
     },
-    tagsByArticle: function(id, callback) {
+    tagsByArticle: function(id) {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_TAGS_BY_ARTICLE.sql')),
