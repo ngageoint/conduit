@@ -8,161 +8,181 @@ module.exports = {
         this.query = query;
     },
     articleBase: function(article, callback) {
-        var exists = false;
-        select.baseArticle(article.id, function(res) {
-            if(res.rows[0])
-                return false;
-        });
+        return new Promise(function(resolve, reject) {
+            var exists = false;
+            select.baseArticle(article.id, function(res) {
+                if(res.rows[0])
+                    return reject('Article does not exist');
+            });
 
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_BASE.sql')),
-            values: [
-                article.date,
-                article.id,
-                article.link,
-                article.selectedImage,
-                article.text,
-                article.title,
-                article.customProperties,
-                article.source
-            ],
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                return console.error('error running query', err);
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_BASE.sql')),
+                values: [
+                    article.date,
+                    article.id,
+                    article.link,
+                    article.selectedImage,
+                    article.text,
+                    article.title,
+                    article.customProperties,
+                    article.source
+                ],
             }
-            callback();
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                return resolve();
+            });
         });
     },
     articleStatus: function(articleId, userId, teamId, isRead, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_STATUS.sql')),
-            values: [articleId, userId, teamId, isRead]
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_STATUS.sql')),
+                values: [articleId, userId, teamId, isRead]
             }
-            else
-                callback(res);
-        })
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
     },
     book: function(name, teamId, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_BOOK.sql')),
-            values: [name, teamId]
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_BOOK.sql')),
+                values: [name, teamId]
             }
-            else
-                callback(res);
-        })
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
     },
     bookStatus: function(bookId, articleId, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_BOOK_STATUS.sql')),
-            values: [bookId, articleId]
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_BOOK_STATUS.sql')),
+                values: [bookId, articleId]
             }
-            else
-                callback(res);
-        })
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
     },
     comment: function(articleId, userId, teamId, date, text, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_COMMENT.sql')),
-            values: [articleId, userId, date, text, teamId]
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_COMMENT.sql')),
+                values: [articleId, userId, date, text, teamId]
             }
-            else
-                callback(res);
-        })
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
     },
     image: function(uri, articleId, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_IMAGE.sql')),
-            values: [uri, articleId]
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_IMAGE.sql')),
+                values: [uri, articleId]
             }
-            else
-                callback(res);
-        })
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
     },
     tag: function(name, articleId, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_TAG.sql')),
-            values: [articleId, name]
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_TAG.sql')),
+                values: [articleId, name]
             }
-            else
-                callback(res);
-        })
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
     },
     team: function(name, callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_TEAM.sql')),
-            values: [name]
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_TEAM.sql')),
+                values: [name]
             }
-            else
-                callback(res);
-        })
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
     },
     userNoId: function(firstName, lastName, prefName, teamId, callback) {
-          
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_USER_NO_ID.sql')),
-            values: [firstName, lastName, prefName, teamId]
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_USER_NO_ID.sql')),
+                values: [firstName, lastName, prefName, teamId]
             }
-            else
-                callback(res);
-        })
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
     },
     userWithId: function(id, firstName, lastName, prefName, teamId, callback) {
-        
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_USER_WITH_ID.sql')),
-            values: [id, firstName, lastName, prefName, teamId]
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_USER_WITH_ID.sql')),
+                values: [id, firstName, lastName, prefName, teamId]
             }
-            else
-                callback(res);
-        })
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
     },
     sampleData: function(callback) {
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'INSERT_SAMPLE_DATA.sql'))
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_SAMPLE_DATA.sql'))
             }
-            else
-                callback(res);
-        })
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            })
+        });
     }
 };
