@@ -1,6 +1,6 @@
 /* The ArticlesService makes all of the articles available in a global, editable promise. */
 angular.module('conduit.services').factory('ArticlesService', function($q, $http,
-DataSourceService, RssLiteService, ComplexPropertyTools, __config) { 
+ApiService, BooksService, DataSourceService, RssLiteService, ComplexPropertyTools, __config) { 
 
 	var articles = 	DataSourceService.getSources().then(function(sources) {
 		
@@ -10,7 +10,17 @@ DataSourceService, RssLiteService, ComplexPropertyTools, __config) {
 		queries.push($http.get(__config.articlesUrl)
 				.then(function(response) {
 					return response.data;
-				}))
+				})
+		);
+
+		queries.push(ApiService.select.articlesByUserFromDate(1,'2017-07-13')
+				.then(function(response) {
+					if(response instanceof Array)
+						for(var i = 0; i < response.length; i++)
+							response[i] = forceArticleCompliance(response[i]);
+					return response;
+				})
+		);
 
 		//Run through all of the sources
 		for(var i = 0; i < sources.length; i++)
@@ -19,7 +29,7 @@ DataSourceService, RssLiteService, ComplexPropertyTools, __config) {
 			if(sources[i].type && ~sources[i].type.indexOf("rss"))
 			{
 				var deferred = $q.defer();
-    			queries[i] = deferred.promise;
+    			queries.push(deferred.promise);
 				makeRssCall(deferred, i);
 			}
 		}
@@ -36,9 +46,19 @@ DataSourceService, RssLiteService, ComplexPropertyTools, __config) {
 		//Request all promises from our queries array, concat them, and return
 		return $q.all(queries).then(function(results) {
 			var fullResponse = [];
-			for(var i = 0; i < results.length; i++)
+			for(var i = 0; i < results.length; i++) {
 				fullResponse = fullResponse.concat(results[i]);
-			return fullResponse;
+			}
+
+			return BooksService.getBooks().then(function(books) {
+				for(var i = 0; i < fullResponse.length; i++) {
+					forceArticleCompliance(fullResponse[i], books);
+				}
+				return fullResponse;
+			}).catch(function(err) {
+				console.log("article books may make duplicate object references")
+				return fullResponse
+			});			
 		});			
 	});
 	
@@ -73,7 +93,7 @@ DataSourceService, RssLiteService, ComplexPropertyTools, __config) {
 	}
 
 //Force the article to have the minimum fields and set defaults if none given
-	var forceArticleCompliance = function(article) {
+	var forceArticleCompliance = function(article, books) {
 		
 		//Set booleans
 		if(typeof article.wasRead == "undefined")
@@ -86,6 +106,15 @@ DataSourceService, RssLiteService, ComplexPropertyTools, __config) {
 		//Set fields created by conduit
 		if(typeof article.books == "undefined")
 			article.books = [];
+		//Ensure articles with existing books are referencing the correct object
+		if(article.books.length > 0 && books) {
+			for(var i = 0; i < article.books.length; i++) {
+				for(var j = 0; j < books.length; j++) {
+					if(article.books[i].id === books[j].id)
+						article.books[i] = books[j]
+				}
+			}
+		}
 		if(typeof article.comments == "undefined")
 			article.comments = [];
 

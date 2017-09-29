@@ -5,8 +5,7 @@
     "ARTICLES".selected_image,
     "ARTICLES".text,
     "ARTICLES".title,
-    "ARTICLES".custom_properties,
-    "ARTICLES".source
+    "ARTICLES".custom_properties
 FROM
     "conduit_db"."ARTICLES"
-WHERE "ARTICLES".id = $1;
+WHERE "ARTICLES".date >= $1

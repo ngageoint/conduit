@@ -56,6 +56,7 @@
     <script src="scripts/directives/subject.directive.js"></script>
 
     <!-- services -->
+    <script src="scripts/services/api.service.js"></script>
     <script src="scripts/services/articles.service.js"></script>
     <script src="scripts/services/attributes.service.js"></script>
     <script src="scripts/services/books.service.js"></script>
@@ -99,8 +100,7 @@
                     <div id="content-wrapper">
                         <subject id="subject" class="subject" ng-controller="SubjectCtrl">
                         </subject>
-                        <ol id="overflow-menu" class="nya-bs-select dropdown form-control"
-                            ng-model="selectedBook">
+                        <ol id="overflow-menu" class="nya-bs-select dropdown form-control" ng-model="overflow-menu">
                             <li>
                                 
                                 <a href="{{articles[currentIndex].link}}" target="_blank">
