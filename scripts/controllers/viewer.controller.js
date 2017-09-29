@@ -25,6 +25,7 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			$scope.articles[$scope.currentIndex].selectedImage++;
 	}
 
+	//TODO: track by userId
 	/**
 	 * Add a new comment to this article.
 	 * 

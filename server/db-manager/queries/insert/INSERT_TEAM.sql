@@ -1,0 +1,2 @@
+INSERT INTO "conduit_db"."TEAMS"
+VALUES (DEFAULT,$1);

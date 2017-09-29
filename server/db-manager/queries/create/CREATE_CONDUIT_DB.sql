@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.7
 -- Dumped by pg_dump version 9.5.7
 
--- Started on 2017-07-14 13:42:13
+-- Started on 2017-09-28 07:45:11
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -17,32 +17,13 @@ SET row_security = off;
 
 --
 -- TOC entry 8 (class 2615 OID 16394)
--- Name: conduit_db; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: conduit_db; Type: SCHEMA; Schema: -; Owner: -
 --
 
-CREATE SCHEMA "conduit_db";
+CREATE SCHEMA conduit_db;
 
 
-ALTER SCHEMA "conduit_db" OWNER TO postgres;
-
---
--- TOC entry 1 (class 3079 OID 12355)
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- TOC entry 2187 (class 0 OID 0)
--- Dependencies: 1
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
-SET search_path = "conduit_db", pg_catalog;
+SET search_path = conduit_db, pg_catalog;
 
 SET default_tablespace = '';
 
