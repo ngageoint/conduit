@@ -15,9 +15,6 @@ ApiService, BooksService, DataSourceService, RssLiteService, ComplexPropertyTool
 
 		queries.push(ApiService.select.articlesByUserFromDate(1,'2017-07-13')
 				.then(function(response) {
-					if(response instanceof Array)
-						for(var i = 0; i < response.length; i++)
-							response[i] = forceArticleCompliance(response[i]);
 					return response;
 				})
 		);
@@ -51,12 +48,16 @@ ApiService, BooksService, DataSourceService, RssLiteService, ComplexPropertyTool
 			}
 
 			return BooksService.getBooks().then(function(books) {
+				var articles = []
 				for(var i = 0; i < fullResponse.length; i++) {
-					forceArticleCompliance(fullResponse[i], books);
+					(function(article) {
+						articles.push(forceArticleCompliance(article, books));
+					})(fullResponse[i]);
 				}
-				return fullResponse;
+				return $q.all(articles).then(function(articles) {
+					return articles;
+				});
 			}).catch(function(err) {
-				console.log("article books may make duplicate object references")
 				return fullResponse
 			});			
 		});			
@@ -79,22 +80,47 @@ ApiService, BooksService, DataSourceService, RssLiteService, ComplexPropertyTool
 			articles.push(forceArticleCompliance(temp));
 		}
 
-		for(var i = 0; i < articles.length; i++)
-		{
-			articles[i].tags.push(source.tag);
-			for(var j = 0; j < source.tags.length; j++)
-				if(source.tags[j])
-					articles[i].tags.push(ComplexPropertyTools.getComplexProperty(articles[i], source.tags[j]));
-		}
-
-		console.log(articles);
-
-		return articles;
+		return $q.all(articles).then(function(articles) {
+			for(var i = 0; i < articles.length; i++)
+			{
+				articles[i].tags.push(source.tag);
+				for(var j = 0; j < source.tags.length; j++)
+					if(source.tags[j])
+						articles[i].tags.push(ComplexPropertyTools.getComplexProperty(articles[i], source.tags[j]));
+			}
+			return articles;
+		});
 	}
 
 //Force the article to have the minimum fields and set defaults if none given
 	var forceArticleCompliance = function(article, books) {
-		
+		return new Promise(function(resolve, reject) {
+
+			//Set hashable values first		
+			if(typeof article.title == "undefined")
+				article.title = "";
+			if(typeof article.text == "undefined")
+				article.text = "";
+			if(typeof article.images == "undefined")
+				article.images = [];
+			if(typeof article.source == "undefined")
+				article.source = "";
+
+			if(!article.id || article.id === "") {
+				ApiService.generateHash(article).then(function(hash) {
+					article.id = hash
+					return resolve(completeCompliance(article, books));
+				}).catch(function(err) {
+					article.id = generateUUID();
+					return resolve(completeCompliance(article, books));
+				});
+			} else {
+				return resolve(completeCompliance(article, books));
+			}	
+		});
+	}
+
+	var completeCompliance = function (article, books) {
 		//Set booleans
 		if(typeof article.wasRead == "undefined")
 			article.wasRead = false;
@@ -118,23 +144,13 @@ ApiService, BooksService, DataSourceService, RssLiteService, ComplexPropertyTool
 		if(typeof article.comments == "undefined")
 			article.comments = [];
 
-		//Set fields required by conduit
+		//Set additional fields required by conduit
 		if(typeof article.date == "undefined")
 			article.date = new Date();
-		if(!article.id || article.id === "")
-			article.id = generateUUID();
-		if(typeof article.title == "undefined")
-			article.title = "";
-		if(typeof article.text == "undefined")
-			article.text = "";
-		if(typeof article.images == "undefined")
-			article.images = [];
 		if(typeof article.selectedImage == "undefined")
 			article.selectedImage = 0;
 		if(typeof article.tags == "undefined")
 			article.tags = [];
-		if(typeof article.source == "undefined")
-			article.source = "";
 
 		return article;
 	}

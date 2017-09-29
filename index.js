@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
+const hash = require('object-hash');
 
 const db = require('./server/db-manager/db-manager.js');
 const sso = require('./server/sso/sso.js');
@@ -58,6 +59,21 @@ app.get('/unsupported', function(req, res, next) {
 	res.sendFile(path.join(__dirname, './', 'public', 'html', 'unsupported.html'));
 });
 
+app.post('/hash', function(req, res, next) {
+	
+	var article = req.body.article;
+
+	if(article.title && article.text && article.images && article.source) {
+		res.status(200);
+		console.log(hash(article));
+		res.json({"hash": hash(article)})
+	} else {
+		res.status(401);
+		res.send('Missing hashable fields. title, text, images, and source are required');
+		return;
+	}
+});
+
 app.get('/userInfo', function(req, res, next) {
 	AUTH_CODE = req.query.code;
 
@@ -75,6 +91,21 @@ app.get('/userInfo', function(req, res, next) {
 	}
 	res.status(200);
 	res.json(users[AUTH_CODE].info);
+})
+
+app.post('/userInfo', function(req, res, next) {
+	
+	article = req.body.article
+
+	if(!article)
+	{
+		res.status(400);
+		res.send('Article required');
+		return;
+	} else {
+		res.status(200);
+		res.json(users[AUTH_CODE].info);
+	}
 })
 
 /*=================
