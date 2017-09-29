@@ -9,7 +9,10 @@
     "tags":["Example", "USA", "Topic 1", "Topic 2"],
     "topics":["Topic 1", "Topic 2"],
     "region":[{"abrv":"USA","name":"United States"}],
-    "books":[],
+    "books":[{
+        "name":"World News",
+        "id":1
+    }],
     "comments":[],
     "wasRead":false,
 	"inFeed":true,
