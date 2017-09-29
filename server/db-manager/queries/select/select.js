@@ -58,6 +58,35 @@ module.exports = {
             });
         });
     },
+    articlesByUserFromDate: function(userId, fromDate) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLES_BASE_FROM_DATE.sql')),
+                values: [fromDate],
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows && res.rows[0]) {
+                    var promises = []
+                    for(var i = 0; i < res.rows.length; i++) {
+                        (function(thisId) {
+                            console.log(thisId);
+                            promises.push(module.exports.articleFull(thisId, userId));
+                        })(res.rows[i].id);
+                    }
+                    return Promise.all(promises).then(function(res) {
+                        return resolve(res);
+                    }).catch(function(err) {
+                        return reject(err);
+                    });
+                } else {
+                    return reject('No results for articlesByUserFromDate');
+                }
+            });
+        });
+    },
     articleStatusByIds: function(articleId, userId) {
         return new Promise(function(resolve, reject) {
             const query = {
@@ -68,10 +97,10 @@ module.exports = {
                 if(err) {
                     return reject(err);
                 }
-                if(res && res.rows && res.rows[0] && res.rows[0].read) {
+                if(res && res.rows && res.rows[0] && typeof res.rows[0].read !== "undefined") {
                     return resolve(res.rows[0].read);
                 } else {
-                    return reject('No results');
+                    return reject('No results for articleStatusByIds where articleId='+ articleId + " and userId=" + userId);
                 }
             });
         });
@@ -94,7 +123,7 @@ module.exports = {
                     return resolve(books);
                 }
                 else
-                    return reject('No results');
+                    return reject('No results for booksByArticle where id=' + id);
             });
         });
     },
@@ -112,7 +141,7 @@ module.exports = {
                     return resolve(res.rows);
                 }
                 else
-                    return reject('No results');
+                    return reject('No results for bookStatusByIds where bookId=' + bookId + ' and articleId=' + articleId);
             });
         });
     },
@@ -134,7 +163,7 @@ module.exports = {
                     return resolve(images);
                 }
                 else
-                   return reject('No results');
+                   return reject('No results for imagesByArticle where id=' + id);
                 });
         });
     },
@@ -152,7 +181,7 @@ module.exports = {
                     return resolve(res.rows);
                 }
                 else
-                   return reject('No results');
+                   return reject('No results for imagesByUriAndArticleId');
                 });
         });
     },
@@ -174,7 +203,7 @@ module.exports = {
                     return resolve(comments);
                 }
                 else
-                    return reject('No results');
+                    return reject('No results for commentsByArticle where id=' + id);
             });
         });
     },
@@ -198,7 +227,7 @@ module.exports = {
                     return resolve(tags);
                 }
                 else
-                    return reject('No results');
+                    return reject('No results for tagsByArticle where id='+id);
             });
         });
     },
@@ -217,7 +246,7 @@ module.exports = {
                     return resolve(res.rows);
                 }
                 else
-                    return reject('No results');
+                    return reject('No results for tagsByNameAndArticleId where name=' + name + " and articleId=" + articleId);
             });
         });
     }

@@ -91,7 +91,6 @@ module.exports = {
                         (function(thisId) {
                             select.bookStatusByIds(thisId, articleId).then(function(statuses) {
                                 if(!statuses[0]) {
-                                    console.log(thisId);
                                     promises.push(module.exports.bookStatus(thisId, articleId));
                                 }
                             });  
