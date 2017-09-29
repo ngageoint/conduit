@@ -82,20 +82,20 @@ module.exports = {
             });
         });
     },
-    //TODO: add suport for status array
-    //TODO: TEST
     bookStatus: function(bookId, articleId) {
         return new Promise(function(resolve, reject) {
             if(bookId instanceof Array) {
                 var promises = [];
                 for(var i = 0; i < bookId.length; i++) {
                     if(bookId[i]) {
-                        select.bookStatusByIds(bookId[i], articleId).then(function(statuses) {
-                            if(!statuses[0]) {
-                                console.log("pushed promise");
-                                promises.push(module.exports.bookStatus(bookId[i], articleId));
-                            }
-                        });     
+                        (function(thisId) {
+                            select.bookStatusByIds(bookId[i], articleId).then(function(statuses) {
+                                if(!statuses[0]) {
+                                    console.log(thisId);
+                                    promises.push(module.exports.bookStatus(thisId, articleId));
+                                }
+                            });  
+                        }(bookId[i]));   
                     }
                 }
                 return Promise.all(promises).then(function(res) {
@@ -151,6 +151,40 @@ module.exports = {
     },
     tag: function(name, articleId) {
         return new Promise(function(resolve, reject) {
+            if(name instanceof Array) {
+                var promises = [];
+                for(var i = 0; i < name.length; i++) {
+                    if(name[i]) {
+                        (function(thisName) {
+                            select.tagsByNameAndArticleId(name[i], articleId).then(function(statuses) {
+                                if(!statuses[0]) {
+                                    promises.push(module.exports.tag(thisName, articleId));
+                                }
+                            });  
+                        }(name[i]));   
+                    }
+                }
+                return Promise.all(promises).then(function(res) {
+                    return resolve(res);
+                }).catch(function(err) {
+                    return reject(err);
+                });
+            } else {
+                const query = {
+                    text: tools.readQueryFile(path.join(__dirname, 'INSERT_TAG.sql')),
+                    values: [articleId, name]
+                }
+                console.log(query.values);
+                module.exports.query(query, function(err, res) {
+                    if(err) {
+                        return reject(err);
+                    }
+                    else
+                        return resolve(res);
+                });
+            }
+        });
+        /*return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'INSERT_TAG.sql')),
                 values: [articleId, name]
@@ -162,7 +196,7 @@ module.exports = {
                 else
                     return resolve(res);
             });
-        });
+        });*/
     },
     team: function(name) {
         return new Promise(function(resolve, reject) {
