@@ -56,7 +56,7 @@ module.exports = {
             */
             return Promise.all(promises).then(function(res) {
                 var article = res[0];
-                article.books = res[1].name;
+                article.books = res[1];
                 article.images = res[2];
                 article.comments = res[3];
                 article.tags = res[4];
