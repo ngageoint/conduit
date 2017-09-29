@@ -118,9 +118,20 @@ module.exports = {
             }
         });
     },
-    //TODO: add support for comment object
-    comment: function(articleId, userId, teamId, date, text) {
+    //TODO: Once front end tracks comments by user id, userId param can be removed.
+    //teamId should still be tracked separate bc there's no reason to attach team id to every
+    //comment in the front end
+    comment: function(articleId, userId, teamId, comment, date, text) {
         return new Promise(function(resolve, reject) {
+            if((!date || !text) && !comment) {
+                return reject ('Missing required parameters');
+            }
+            if(!date && comment && comment.dateTime) {
+                date = comment.dateTime
+            }
+            if(!text && comment && comment.text) {
+                text = comment.text
+            }
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'INSERT_COMMENT.sql')),
                 values: [articleId, userId, date, text, teamId]

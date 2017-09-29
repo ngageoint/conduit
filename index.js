@@ -239,15 +239,18 @@ app.post('/insert/bookStatus', function(req, res, next) {
   	});
 });
 
-//TODO: add support for comment object
 app.post('/insert/comment', function(req, res, next) {
-	if(!req.body.articleId || !req.body.userId || !req.body.teamId || !req.body.date || !req.body.text) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId, userId, teamId, date, and text are required');
-		return;
+	console.log(req.body);
+	console.log((!req.body.text && !req.body.comment.text))
+	if(	!req.body.articleId || !req.body.userId || !req.body.teamId || 
+		(!req.body.date && !req.body.comment.dateTime) || 
+		(!req.body.text && !req.body.comment.text)) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. articleId, userId, teamId, date, and text are required, or a comment object is required');
+			return;
 	}
-	db.insert.comment(req.body.articleId, req.body.userId, req.body.teamId, req.body.date, req.body.text).then(function(result) {
+	db.insert.comment(req.body.articleId, req.body.userId, req.body.teamId, req.body.comment, req.body.date, req.body.text).then(function(result) {
 		console.log(result);
 		res.status(200);
     	res.json(result);
