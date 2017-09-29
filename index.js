@@ -82,7 +82,7 @@ app.get('/userInfo', function(req, res, next) {
  ==================*/
 app.get('/select/articleFull', function(req, res, next) {
 	if(!req.query.articleId) {
-		console.log('No id');
+		console.log('Missing params');
 		res.status(400);
 		res.send('Missing parameters. articleId required, userId optional');
 		return;
@@ -94,9 +94,23 @@ app.get('/select/articleFull', function(req, res, next) {
   	});
 });
 
+app.get('/select/articlesByUserFromDate', function(req, res, next) {
+	if(!req.query.userId || !req.query.date) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. userId and date required');
+		return;
+	}
+	db.select.articlesByUserFromDate(req.query.userId, req.query.date).then(function(article) {
+		console.log(article);
+		res.status(200);
+    	res.json(article);
+  	});
+});
+
 app.get('/select/imagesByArticle', function(req, res, next) {
 	if(!req.query.id) {
-		console.log('No id');
+		console.log('Missing params');
 		res.status(400);
 		res.send('Missing parameters. id required.');
 		return;
@@ -110,7 +124,7 @@ app.get('/select/imagesByArticle', function(req, res, next) {
 
 app.get('/select/booksByArticle', function(req, res, next) {
 	if(!req.query.id) {
-		console.log('No id');
+		console.log('Missing params');
 		res.status(400);
 		res.send('Missing parameters. id required.');
 		return;
@@ -124,7 +138,7 @@ app.get('/select/booksByArticle', function(req, res, next) {
 
 app.get('/select/commentsByArticle', function(req, res, next) {
 	if(!req.query.id) {
-		console.log('No id');
+		console.log('Missing params');
 		res.status(400);
 		res.send('Missing parameters. id required.');
 		return;
@@ -138,7 +152,7 @@ app.get('/select/commentsByArticle', function(req, res, next) {
 
 app.get('/select/tagsByArticle', function(req, res, next) {
 	if(!req.query.id) {
-		console.log('No id');
+		console.log('Missing params');
 		res.status(400);
 		res.send('Missing parameters. id required.');
 		return;
