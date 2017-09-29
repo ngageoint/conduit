@@ -136,6 +136,20 @@ app.get('/select/booksByArticle', function(req, res, next) {
   	});
 });
 
+app.get('/select/booksByTeam', function(req, res, next) {
+	if(!req.query.teamId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. id required.');
+		return;
+	}
+	db.select.booksByTeam(req.query.teamId).then(function(books) {
+		console.log(books);
+		res.status(200);
+    	res.json(books);
+  	});
+});
+
 app.get('/select/commentsByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('Missing params');

@@ -117,6 +117,24 @@ module.exports = {
             });
         });
     },
+    booksByTeam: function(teamId) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_BOOKS_BY_TEAM.sql')),
+                values: [teamId],
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows) {
+                    return resolve(res.rows);
+                }
+                else
+                    return reject('No results for booksByArticle where id=' + id);
+            });
+        });
+    },
     booksByArticle: function(id) {
         return new Promise(function(resolve, reject) {
             const query = {
@@ -127,12 +145,8 @@ module.exports = {
                 if(err) {
                     return reject(err);
                 }
-                if(res && res.rows)
-                {
-                    var books = [];
-                    for(var i = 0; i < res.rows.length; i++)
-                        books.push(res.rows[i])
-                    return resolve(books);
+                if(res && res.rows) {
+                    return resolve(res.rows);
                 }
                 else
                     return reject('No results for booksByArticle where id=' + id);
