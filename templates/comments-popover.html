@@ -1,9 +1,9 @@
 <div>
 	<div class="all-comments-wrapper">
-        <div ng-repeat="comment in articles[currentIndex].comments track by comment.dateTime" class="comments-wrapper">
+        <div ng-repeat="comment in articles[currentIndex].comments track by comment.date" class="comments-wrapper">
             <div class="info-wrapper" ng-class="{'self': comment.user == username}">
                 <div class="name">{{comment.user}}</div>
-                <div class="time-stamp">{{comment.dateTime}}</div>
+                <div class="time-stamp">{{comment.date}}</div>
             </div>
             <div class="well well-sm" ng-class="{'self': comment.user == username}">{{comment.text}}</div>	
         </div>

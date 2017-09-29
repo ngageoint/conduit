@@ -18,6 +18,18 @@ module.exports = {
                     return reject(err);
                 }
                 if(res.rows) {
+                    //Move custom properties up to make obj more flat
+                    if(res.rows[0].custom_properties) {
+                        console.log("has custom properties")
+                        for (var key in res.rows[0].custom_properties) {
+                            console.log("key: " + key)
+                            if (res.rows[0].custom_properties.hasOwnProperty(key)) {
+                                res.rows[0][key] = res.rows[0].custom_properties[key];
+                                console.log(res.rows[0][key]);
+                            }
+                        }
+                        delete res.rows[0].custom_properties
+                    }
                     return resolve(res.rows[0]);
                 }
                 else {
@@ -44,7 +56,7 @@ module.exports = {
             */
             return Promise.all(promises).then(function(res) {
                 var article = res[0];
-                article.books = res[1];
+                article.books = res[1].name;
                 article.images = res[2];
                 article.comments = res[3];
                 article.tags = res[4];

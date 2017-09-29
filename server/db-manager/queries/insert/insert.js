@@ -125,8 +125,8 @@ module.exports = {
             if((!date || !text) && !comment) {
                 return reject ('Missing required parameters');
             }
-            if(!date && comment && comment.dateTime) {
-                date = comment.dateTime
+            if(!date && comment && comment.date) {
+                date = comment.date
             }
             if(!text && comment && comment.text) {
                 text = comment.text

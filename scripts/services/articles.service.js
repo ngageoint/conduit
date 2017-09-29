@@ -1,6 +1,6 @@
 /* The ArticlesService makes all of the articles available in a global, editable promise. */
 angular.module('conduit.services').factory('ArticlesService', function($q, $http,
-DataSourceService, RssLiteService, ComplexPropertyTools, __config) { 
+ApiService, DataSourceService, RssLiteService, ComplexPropertyTools, __config) { 
 
 	var articles = 	DataSourceService.getSources().then(function(sources) {
 		
@@ -10,7 +10,17 @@ DataSourceService, RssLiteService, ComplexPropertyTools, __config) {
 		queries.push($http.get(__config.articlesUrl)
 				.then(function(response) {
 					return response.data;
-				}))
+				})
+		);
+
+		queries.push(ApiService.select.articlesByUserFromDate(1,'2017-07-13')
+				.then(function(response) {
+					if(response instanceof Array)
+						for(var i = 0; i < response.length; i++)
+							response[i] = forceArticleCompliance(response[i]);
+					return response;
+				})
+		);
 
 		//Run through all of the sources
 		for(var i = 0; i < sources.length; i++)
@@ -19,7 +29,7 @@ DataSourceService, RssLiteService, ComplexPropertyTools, __config) {
 			if(sources[i].type && ~sources[i].type.indexOf("rss"))
 			{
 				var deferred = $q.defer();
-    			queries[i] = deferred.promise;
+    			queries.push(deferred.promise);
 				makeRssCall(deferred, i);
 			}
 		}
@@ -38,6 +48,7 @@ DataSourceService, RssLiteService, ComplexPropertyTools, __config) {
 			var fullResponse = [];
 			for(var i = 0; i < results.length; i++)
 				fullResponse = fullResponse.concat(results[i]);
+			console.log(fullResponse);
 			return fullResponse;
 		});			
 	});

@@ -257,7 +257,7 @@ app.post('/insert/comment', function(req, res, next) {
 	console.log(req.body);
 	console.log((!req.body.text && !req.body.comment.text))
 	if(	!req.body.articleId || !req.body.userId || !req.body.teamId || 
-		(!req.body.date && !req.body.comment.dateTime) || 
+		(!req.body.date && !req.body.comment.date) || 
 		(!req.body.text && !req.body.comment.text)) {
 			console.log('Missing params');
 			res.status(400);
