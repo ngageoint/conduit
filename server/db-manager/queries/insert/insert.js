@@ -89,7 +89,7 @@ module.exports = {
                 for(var i = 0; i < bookId.length; i++) {
                     if(bookId[i]) {
                         (function(thisId) {
-                            select.bookStatusByIds(bookId[i], articleId).then(function(statuses) {
+                            select.bookStatusByIds(thisId, articleId).then(function(statuses) {
                                 if(!statuses[0]) {
                                     console.log(thisId);
                                     promises.push(module.exports.bookStatus(thisId, articleId));
@@ -136,17 +136,37 @@ module.exports = {
     },
     image: function(uri, articleId) {
         return new Promise(function(resolve, reject) {
-            const query = {
-                text: tools.readQueryFile(path.join(__dirname, 'INSERT_IMAGE.sql')),
-                values: [uri, articleId]
-            }
-            module.exports.query(query, function(err, res) {
-                if(err) {
-                    return reject(err);
+            if(uri instanceof Array) {
+                var promises = [];
+                for(var i = 0; i < uri.length; i++) {
+                    if(uri[i]) {
+                        (function(thisUri) {
+                            select.imagesByUriAndArticleId(thisUri, articleId).then(function(images) {
+                                if(!images[0]) {
+                                    promises.push(module.exports.image(thisUri, articleId));
+                                }
+                            });
+                        }(uri[i]));   
+                    }
                 }
-                else
+                return Promise.all(promises).then(function(res) {
                     return resolve(res);
-            });
+                }).catch(function(err) {
+                    return reject(err);
+                });
+            } else {
+                const query = {
+                    text: tools.readQueryFile(path.join(__dirname, 'INSERT_IMAGE.sql')),
+                    values: [uri, articleId]
+                }
+                module.exports.query(query, function(err, res) {
+                    if(err) {
+                        return reject(err);
+                    }
+                    else
+                        return resolve(res);
+                });
+            }
         });
     },
     tag: function(name, articleId) {
@@ -156,11 +176,11 @@ module.exports = {
                 for(var i = 0; i < name.length; i++) {
                     if(name[i]) {
                         (function(thisName) {
-                            select.tagsByNameAndArticleId(name[i], articleId).then(function(statuses) {
+                            select.tagsByNameAndArticleId(thisName, articleId).then(function(statuses) {
                                 if(!statuses[0]) {
                                     promises.push(module.exports.tag(thisName, articleId));
                                 }
-                            });  
+                            });
                         }(name[i]));   
                     }
                 }
@@ -184,19 +204,6 @@ module.exports = {
                 });
             }
         });
-        /*return new Promise(function(resolve, reject) {
-            const query = {
-                text: tools.readQueryFile(path.join(__dirname, 'INSERT_TAG.sql')),
-                values: [articleId, name]
-            }
-            module.exports.query(query, function(err, res) {
-                if(err) {
-                    return reject(err);
-                }
-                else
-                    return resolve(res);
-            });
-        });*/
     },
     team: function(name) {
         return new Promise(function(resolve, reject) {
