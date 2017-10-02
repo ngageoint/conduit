@@ -383,6 +383,24 @@ app.post('/insert/user', function(req, res, next) {
 });
 
 /*=================
+   UPDATE Endpoint 
+ ==================*/
+
+ app.post('/update/articleBase', function(req, res, next) {
+	if(!req.body.article) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. article is required');
+		return;
+	}
+	db.update.articleBase(req.body.article).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+/*=================
    DELETE Endpoint 
  ==================*/
 

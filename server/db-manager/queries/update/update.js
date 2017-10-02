@@ -7,6 +7,9 @@ module.exports = {
     setQueryManager: function(query) {
         this.query = query;
     },
+    articleBase: function(article) { 
+        return insert.articleBase(article);
+    },
     articleStatus: function(articleId, userId, teamId, isRead) {
         return insert.articleStatus(articleId, userId, teamId, isRead);
     }
