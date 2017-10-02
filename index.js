@@ -382,6 +382,24 @@ app.post('/insert/user', function(req, res, next) {
 	}
 });
 
+/*=================
+   DELETE Endpoint 
+ ==================*/
+
+app.post('/delete/bookStatus', function(req, res, next) {
+	if(!req.body.bookId || !req.body.articleId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. bookId and articleId are required');
+		return;
+	}
+	db.delete.bookStatus(req.body.bookId, req.body.articleId).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
 console.log("listening on " + port);
 
 app.listen(port);

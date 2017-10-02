@@ -4,6 +4,7 @@ const select = require('./queries/select/select.js');
 const insert = require('./queries/insert/insert.js');
 const create = require('./queries/create/create.js');
 const update = require('./queries/update/update.js');
+const del = require('./queries/delete/delete.js');
 
 //Load local environment variable file (.env)
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
@@ -40,12 +41,14 @@ select.setQueryManager(queryManager);
 insert.setQueryManager(queryManager);
 create.setQueryManager(queryManager);
 update.setQueryManager(queryManager);
+del.setQueryManager(queryManager);
 
 module.exports = {
   select: select,
   insert: insert,
   create: create,
-  update: update
+  update: update,
+  delete: del
 };
 
 /*select.fullArticle('1', function(article) {
