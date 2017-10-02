@@ -12,14 +12,7 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			}
 			//.parse/stringify() is added to protect from reference errors that would overwrite the article's books
 			var addedBooks = JSON.parse(JSON.stringify(newBooks));
-			for(var i = 0; i < sameBooks.length; i++) {
-				for(var j = 0; j < addedBooks.length; j++) {
-					if(sameBooks[i].id === addedBooks[j].id) {
-						addedBooks = ArrayTools.removeElement(addedBooks, j);
-						j--;
-					}
-				}
-			}
+			addedBooks = ArrayTools.diff(addedBooks, sameBooks);
 			if(addedBooks.length > 0) {
 				ApiService.insert.bookStatus(addedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {
 					console.log(res);
@@ -27,14 +20,7 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			}
 
 			var removedBooks = JSON.parse(JSON.stringify(oldBooks));
-			for(var i = 0; i < sameBooks.length; i++) {
-				for(var j = 0; j < removedBooks.length; j++) {
-					if(sameBooks[i].id === removedBooks[j].id) {
-						removedBooks = ArrayTools.removeElement(removedBooks, j);
-						j--;
-					}
-				}
-			}
+			removedBooks = ArrayTools.diff(removedBooks, sameBooks);
 			if(removedBooks.length > 0) {
 				ApiService.delete.bookStatus(removedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {
 					console.log(res);
