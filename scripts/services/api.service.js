@@ -18,6 +18,22 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 				});
 			}
 		},
+		insert : {
+			bookStatus: function(bookId, articleId) {
+				return new Promise(function(resolve, reject) {
+					var data = {
+						bookId: bookId,
+						articleId: articleId
+					}
+
+					$http.post('/insert/bookStatus', data).then(function(response) {
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				});
+			}
+		},
 		update : {
 			articleBase: function(article) {
 				return new Promise(function(resolve, reject) {
@@ -43,6 +59,22 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					}
 
 					$http.post('/update/articleStatus', data).then(function(response) {
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				});
+			}
+		},
+		delete : {
+			bookStatus: function(bookId, articleId) {
+				return new Promise(function(resolve, reject) {
+					var data = {
+						bookId: bookId,
+						articleId: articleId
+					}
+
+					$http.post('/delete/bookStatus', data).then(function(response) {
 						return resolve(response);
 					}).catch(function(err) {
 						return reject(err);

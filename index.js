@@ -426,6 +426,9 @@ app.post('/delete/bookStatus', function(req, res, next) {
 		res.send('Missing parameters. bookId and articleId are required');
 		return;
 	}
+	console.log(req.body.bookId);
+	console.log(req.body.articleId);
+	console.log(req.body);
 	db.delete.bookStatus(req.body.bookId, req.body.articleId).then(function(result) {
 		console.log(result);
 		res.status(200);

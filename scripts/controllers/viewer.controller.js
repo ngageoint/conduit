@@ -1,7 +1,60 @@
-angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $scope, $rootScope, $timeout, __config, DateTools) {
+angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $scope, $rootScope, $timeout, __config, ApiService, ArrayTools, DateTools) {
 	
 	//If the current article has been added to or removed from a book, send out a broadcast to trigger a book update
-	$scope.$watch('articles[currentIndex].books', function() {
+	$scope.$watch('articles[currentIndex].books', function(newBooks, oldBooks) {
+		console.log("new books")
+		console.log(newBooks);
+		console.log("old books")
+		console.log(JSON.stringify(oldBooks));
+		
+		if(newBooks && oldBooks) {
+			var sameBooks = [];
+			for(var i = 0; i < newBooks.length; i++) {
+				for(var j = 0; j < oldBooks.length; j++) {
+					if(newBooks[i].id === oldBooks[j].id)
+						sameBooks.push(newBooks[i]);
+				}
+			}
+			console.log("Same books:")
+			console.log(sameBooks)
+			//.parse/stringify() is added to protect from reference errors that would overwrite the article's books
+			var addedBooks = JSON.parse(JSON.stringify(newBooks));
+			for(var i = 0; i < sameBooks.length; i++) {
+				for(var j = 0; j < addedBooks.length; j++) {
+					if(sameBooks[i].id === addedBooks[j].id) {
+						addedBooks = ArrayTools.removeElement(addedBooks, j);
+						j--;
+					}
+				}
+			}
+			console.log("Added books:")
+			console.log(addedBooks)
+			if(addedBooks.length > 0) {
+				ApiService.insert.bookStatus(addedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {
+					console.log(res);
+				});
+			}
+
+			var removedBooks = JSON.parse(JSON.stringify(oldBooks));
+			console.log("Removed books pre processing");
+			console.log(removedBooks);
+			for(var i = 0; i < sameBooks.length; i++) {
+				for(var j = 0; j < removedBooks.length; j++) {
+					if(sameBooks[i].id === removedBooks[j].id) {
+						removedBooks = ArrayTools.removeElement(removedBooks, j);
+						j--;
+					}
+				}
+			}
+			console.log("Removed books:")
+			console.log(JSON.stringify(removedBooks))
+			if(removedBooks.length > 0) {
+				ApiService.delete.bookStatus(removedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {
+					console.log(res);
+				})
+			};
+		}
+
 		$rootScope.$broadcast('update-book');
 	});
 	
