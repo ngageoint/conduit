@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "../sass/book-selector.css",
+	"sources": [
+		"../sass/book-selector.scss",
+		"../sass/colors.scss"
+	],
+	"sourcesContent": [
+		"\r\n@import \"colors.scss\";\r\n\r\n#right .btn.btn-default.dropdown-toggle {\r\n    background-color: $colorPrimary500;\r\n    color: white;\r\n    height: 56px;\r\n    border: none;\r\n    border-radius: 2px 0 0 0;\r\n\r\n    color: white;\r\n    font-size: 16px;\r\n    line-height: 19px;\r\n    \r\n    /*box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);*/\r\n\r\n\r\n\r\n    z-index: 100;\r\n}\r\n\r\n#right .dropdown-menu.open {\r\n    position: relative;\r\n    top: -20px;\r\n    left: 28%;\r\n    height: auto;\r\n    max-height: 25vh;\r\n    transition: max-height .25s ease-in-out;\r\n    max-width: 70%;\r\n    background-color: #fff;\r\n    border: none;\r\n    border-radius: 2px;\r\n    box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);\r\n    z-index: 101;\r\n}\r\n\r\n#right .nya-bs-select.btn-group .dropdown-menu {\r\n    width: 100% !important;\r\n    min-width: initial !important;\r\n}",
+		"\t\t\r\n$dark: false;\r\n\r\n/*Light*/\r\n\r\n    $colorPrimary: \t\t\t\t#009688             !default;\r\n    $colorPrimary500: \t\t\t#009688             !default;\r\n    $colorPrimary700:           rgba(0,121,107,1)   !default;\r\n    $colorPrimaryContrast: \t\t#fff                !default;\r\n            \r\n    $colorAccent:\t\t\t    #ff5252             !default;\r\n    $colorAccentContrast:\t    #fff                !default;\r\n\r\n    $colorFont:\t\t\t\t\t#212121             !default;\r\n    $colorGrey: \t\t\t\t#bdbdbd             !default;\r\n    $colorBackground:\t\t\t#f2f2f2             !default;\r\n    $colorCardBackground:       #fff                !default;\r\n\r\n\t\t\r\n/*Dark*/\r\n@if $dark == true {\r\n\t$colorPrimary: \t\t\t\t#999;\r\n\t$colorPrimaryContrast: \t\t#444;\r\n\t\t\t\r\n\t$colorAccent:\t\t\t#aaa;\r\n\t$colorAccentContrast:\t#444;\r\n\t\r\n\t$colorFont:\t\t\t\t\t#aaa;\r\n\t$colorGrey: \t\t\t\t#888;\r\n\t$colorBackground:\t\t\t#222;\r\n}"
+	],
+	"mappings": "ACGA,SAAS;AAgBT,QAAQ;;ADhBR,AAAuB,MAAjB,CAAC,IAAI,AAAA,YAAY,AAAA,gBAAgB,CAAC;EACpC,gBAAgB,ECEK,OAAO;EDD5B,KAAK,EAAE,KAAM;EACb,MAAM,EAAE,IAAK;EACb,MAAM,EAAE,IAAK;EACb,aAAa,EAAE,SAAU;EAEzB,KAAK,EAAE,KAAM;EACb,SAAS,EAAE,IAAK;EAChB,WAAW,EAAE,IAAK;EAElB,2EAA2E;EAI3E,OAAO,EAAE,GAAI;CAChB;;;AAED,AAAqB,MAAf,CAAC,cAAc,AAAA,KAAK,CAAC;EACvB,QAAQ,EAAE,QAAS;EACnB,GAAG,EAAE,KAAM;EACX,IAAI,EAAE,GAAI;EACV,MAAM,EAAE,IAAK;EACb,UAAU,EAAE,IAAK;EACjB,UAAU,EAAE,2BAA4B;EACxC,SAAS,EAAE,GAAI;EACf,gBAAgB,EAAE,IAAK;EACvB,MAAM,EAAE,IAAK;EACb,aAAa,EAAE,GAAI;EACnB,UAAU,EAAE,CAAC,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,CAAC,mBAAI,EAAiB,CAAC,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,CAAC,mBAAI;EAC7D,OAAO,EAAE,GAAI;CAChB;;;AAED,AAAgC,MAA1B,CAAC,cAAc,AAAA,UAAU,CAAC,cAAc,CAAC;EAC3C,KAAK,EAAE,eAAgB;EACvB,SAAS,EAAE,kBAAmB;CACjC",
+	"names": []
+}

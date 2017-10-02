@@ -2,11 +2,7 @@
   "name": "conduit",
   "version": "0.4.1",
   "description": "Beta version of Conduit",
-  "main": "source.js",
-  "scripts": {
-    "lite": "lite-server –port 10001",
-    "start": "npm run lite"
-  },
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ngageoint/conduit.git"
@@ -17,11 +13,9 @@
     "url": "https://github.com/ngageoint/conduit/issues"
   },
   "homepage": "https://github.com/ngageoint/conduit#readme",
-  "devDependencies": {
-    "lite-server": "^2.3.0"
-  },
   "dependencies": {
     "@angular/animations": "^4.2.2",
-    "@angular/material": "^2.0.0-beta.6"
+    "axios": "^0.16.2",
+    "body-parser": "^1.18.2"
   }
 }

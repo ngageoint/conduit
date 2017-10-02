@@ -1,17 +1,20 @@
 /*Layout*/
 /*Light*/
 /*Dark*/
+/* line 11, D:/work/dat/conduit/sass/layout.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
+/* line 17, D:/work/dat/conduit/sass/layout.scss */
 html {
   font-size: 100% !important;
   font-family: 'SourceSansPro', sans-serif !important;
 }
 
+/* line 22, D:/work/dat/conduit/sass/layout.scss */
 body {
   min-width: 750px;
   /* 2x (LC fullwidth +
@@ -29,6 +32,7 @@ body {
   background-color: #f2f2f2;
 }
 
+/* line 40, D:/work/dat/conduit/sass/layout.scss */
 #container {
   position: fixed;
   padding-left: 25vw;
@@ -41,6 +45,7 @@ body {
   background: transparent;
 }
 
+/* line 50, D:/work/dat/conduit/sass/layout.scss */
 #container .column {
   position: relative;
   float: left;
@@ -48,6 +53,7 @@ body {
   background: inherit;
 }
 
+/* line 57, D:/work/dat/conduit/sass/layout.scss */
 #center {
   padding: 0;
   /* CC padding */
@@ -56,6 +62,7 @@ body {
   float: left;
 }
 
+/* line 64, D:/work/dat/conduit/sass/layout.scss */
 #left {
   width: 25vw;
   /* LC width */
@@ -69,6 +76,7 @@ body {
   display: inline-block;
 }
 
+/* line 75, D:/work/dat/conduit/sass/layout.scss */
 #right {
   width: 20vw;
   /* RC width */
@@ -83,6 +91,7 @@ body {
   overflow-x: visible;
 }
 
+/* line 86, D:/work/dat/conduit/sass/layout.scss */
 #header {
   /*DISPLAY*/
   float: left;
@@ -98,6 +107,7 @@ body {
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
 }
 
+/* line 104, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper:before {
   content: '';
   display: inline-block;
@@ -106,6 +116,7 @@ body {
   margin-right: -0.25em;
 }
 
+/* line 112, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -114,13 +125,17 @@ body {
   text-align: center;
 }
 
+/* line 120, D:/work/dat/conduit/sass/layout.scss */
 #header-content {
   display: inline-block;
   vertical-align: middle;
 }
 
 /*** IE Fix ***/
+/* line 126, D:/work/dat/conduit/sass/layout.scss */
 * html #left {
   left: 390px;
   /* RC fullwidth */
 }
+
+/*# sourceMappingURL=../styles/layout.map */

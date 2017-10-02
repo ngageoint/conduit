@@ -1,5 +1,5 @@
 [{
-	"date":"18 Jun 2017 13:46:34",
+	"date":"18 Sep 2017 13:46:34",
     "link":"www.example.com/article12345.html",
     "id":"12345",
     "title":"Article One",
@@ -9,13 +9,16 @@
     "tags":["Example", "USA", "Topic 1", "Topic 2"],
     "topics":["Topic 1", "Topic 2"],
     "region":[{"abrv":"USA","name":"United States"}],
-    "books":[],
+    "books":[{
+        "name":"World News",
+        "id":1
+    }],
     "comments":[],
     "wasRead":false,
 	"inFeed":true,
 	"source":"Example Source"
 },{
-	"date":"25 May 2017 09:23:86",
+	"date":"25 Aug 2017 09:23:86",
     "link":"www.example.com/article8675309.html",
     "id":"8675309",
     "title":"Article Two",

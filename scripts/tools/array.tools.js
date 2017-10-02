@@ -33,7 +33,7 @@ angular.module('conduit.tools').factory('ArrayTools', function($q, $http, __conf
 		 * @return {array} The array with the specified element moved to the end
 		 */
         moveToEnd: function(array, index) {
-			return swap(array, index, array.length - 1);	
+			return this.swap(array, index, array.length - 1);	
 		},
 		/**
 		 * This function gets the index of an object in an array, assuming the object has an id property

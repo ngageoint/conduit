@@ -1,5 +1,5 @@
 angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $filter,
-ArticlesService, AttributesService, BooksService, ArrayTools) {
+ArticlesService, AttributesService, BooksService, UserService, ArrayTools) {
 	
 	/**
 	 * Wait for the articles promise to resolve; will be inherited by child scopes.
@@ -44,23 +44,16 @@ ArticlesService, AttributesService, BooksService, ArrayTools) {
 	}).catch( function() {
 			
 	});
-	
-	//Make sure our scope has a user object
-	$scope.user = {
-			name: '',
-		};
-	
+
 	/**
-	 * When passed a user object, set minimum user properties
-	 * 
-	 * @param {object} user User object (eg user.name, user.id, user.email, etc)
+	 * Wait for the user promise to resolve; will be inherited by child scopes.
 	 */
-	$scope.setUserInfo = function (user) {
-		if(user.name && user.name != '')
-			$scope.user.name = user.name;
-		if($scope.user.name == '')
-			$scope.user.name = "Unknown User";
-	}
+	UserService.getUser().then( function(data) {
+		$scope.user = data;
+	}).catch( function() {
+		$scope.user = {}
+		$scope.user.given_name = "Unknown user"
+	});
 	
 	//Card Activation
 		

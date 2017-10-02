@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="./packages/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./packages/nya-bs-select/nya-bs-select.min.css" />
     <link rel="stylesheet" type="text/css" href="./packages/angular-loading-bar/loading-bar.min.css" />
-    <link rel="stylesheet" type="text/css" href="./styles/style.css" />    
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" /> 
   
     <!-- vendor -->
 	<script src="https://code.angularjs.org/1.6.2/angular.js"></script>
@@ -39,12 +39,11 @@
     <script src="scripts/modules/tools.module.js"></script>
 
     <!-- controllers -->
-    <script src="scripts/controllers/beta.controller.js"></script>
     <script src="scripts/controllers/book.controller.js"></script>
     <script src="scripts/controllers/export.controller.js"></script>
     <script src="scripts/controllers/feed.controller.js"></script>
     <script src="scripts/controllers/page.controller.js"></script>
-    <script src="scripts/controllers/username-modal.controller.js"></script>
+    <script src="scripts/controllers/subject.controller.js"></script>
     <script src="scripts/controllers/viewer.controller.js"></script>
     
 
@@ -54,13 +53,16 @@
     <script src="scripts/directives/feStateful.directive.js"></script>
     <script src="scripts/directives/fileOnChange.directive.js"></script>
     <script src="scripts/directives/scrollToTop.directive.js"></script>
+    <script src="scripts/directives/subject.directive.js"></script>
 
     <!-- services -->
+    <script src="scripts/services/api.service.js"></script>
     <script src="scripts/services/articles.service.js"></script>
     <script src="scripts/services/attributes.service.js"></script>
     <script src="scripts/services/books.service.js"></script>
     <script src="scripts/services/data-source.service.js"></script>
     <script src="scripts/services/filter.service.js"></script>
+    <script src="scripts/services/user.service.js"></script>
     <script src="scripts/services/rss-lite.service.js"></script>
 
     <!-- tools -->
@@ -74,48 +76,74 @@
 <body>
 
 	<div id="wrapper">        
-        <div id="header" ng-controller="BetaCtrl">
+        <div id="header">
         	<div id="header-content-wrapper">
             	<div id="header-content">
                 	Conduit Beta
                 </div>
                 <div class="pull-left" style="font-size: .35em">
-                	v0.4.1
+                	v0.5.1
                 </div>
-                <button class="btn btn-default pull-right" ng-click="saveState()">
-                	<span class="glyphicon glyphicon-floppy-disk"></span> 
-                   <div class="ico-text-2">&nbsp;Save</div>
-                </button>
-                <label class="btn btn-default pull-right btn-file" style="margin-right: 10px">
-                	<span class="glyphicon glyphicon-folder-open"></span>
-                     <div class="ico-text-2">&nbsp;Load</div>
-                	<input type="file" file-on-change="loadState" style="display:none" hidden>
-                    <!--  -->
-                </label>
+                <a href="mailto:conduit@nga.mil">
+                    <div class="btn btn-default pull-right" ng-click="saveState()">
+                        <span class="glyphicon glyphicon-bullhorn"></span> 
+                        <div class="ico-text-2">&nbsp;Send Feedback</div>
+                    </div>
+                </a>
             </div>
         </div>
     
 	<div ng-controller="PageCtrl">
-    	<div ng-controller="UsernameModalCtrl as $ctrl" ng-init="$ctrl.open()"></div>
         <div id="container">
         	<div id="center" class="column" ng-controller="ViewerCtrl" ng-cloak>
             	<div class="article-view"  ng-model="article" data-scroll-to-top="articles[currentIndex]">
                     <div id="content-wrapper">
-                        <div id="subject">
-                            TREES//SPRUCE
+                        <subject id="subject" class="subject" ng-controller="SubjectCtrl">
+                        </subject>
+                        <ol id="overflow-menu" class="nya-bs-select dropdown form-control" ng-model="overflow-menu">
+                            <li>
+                                
+                                <a href="{{articles[currentIndex].link}}" target="_blank">
+                                    View Original&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window pull-right"></span>
+                                </a>
+                                <a  href="#"
+                                    ng-controller="ExportCtrl"
+                                    ng-click="export(articles[currentIndex])">
+                                    Export&nbsp;&nbsp;<span class="glyphicon glyphicon-save-file pull-right"></span>
+                                </a>
+                                <a href"#" target="_blank" ng-click="articleEdit.$show()">
+                                        Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil pull-right"></span>
+                                    </a>
+                            </li>
+                        </ol>   
+
+                        <!--
+                        <a href="#" id="overflow-btn" ng-click="overflowOpen = !overflowOpen">
+                            <i class="glyphicon glyphicon-option-vertical"></i>
+                        </a>
+
+                        <div id="overflow-menu" ng-show="overflowOpen">
+                            <a href="{{articles[currentIndex].link}}" target="_blank">
+                                View Original
+                            </a>
+                            <a href="{{articles[currentIndex].link}}" target="_blank">
+                                Edit
+                            </a>
                         </div>
+                    -->
+
                         <div id="title-wrapper">
                             <div 	class="title"
                                     e-class="title edit-field"
-                                    e-form="titleEdit"
+                                    e-form="articleEdit"
                                     editable-textarea="articles[currentIndex].title"
                                     blur="submit">
                                 {{articles[currentIndex].title}}
                             </div>
-                            <button id="btn-title" class="btn btn-edit" ng-click="titleEdit.$show()" ng-hide="titleEdit.$visible">
+                            <!--<button id="btn-title" class="btn btn-edit" ng-click="titleEdit.$show()" ng-hide="titleEdit.$visible">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <div class="ico-text-2">Edit</div>
-                            </button>
+                            </button>-->
                         </div>
                         <div id="image-wrapper" ng-if="!articles[currentIndex].images.length == 0">
                             
@@ -154,13 +182,13 @@
                         <div class="text-wrapper">
                             <div 	class="text" 
                                     e-class="text edit-field"
-                                    e-form="textEdit"
+                                    e-form="articleEdit"
                                     editable-textarea="articles[currentIndex].text"
                                     blur="submit">
-                                <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
+                               <!-- <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                     <div class="ico-text-2">Edit</div>
-                                </button>
+                                </button>-->
                                 {{articles[currentIndex].text}}
                             </div>
                         </div>
@@ -182,12 +210,11 @@
                                 </a>
                             </li>
                         </ol>
-                        <button ng-controller="ExportCtrl"
-                                class="btn btn-default"
-                                ng-click="export(articles[currentIndex])"
-                                title="EXPORT">
+                        <button class="btn btn-default"
+                                ng-click="articleEdit.$show()"
+                                title="EDIT">
                             <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
-                            <div class="ico-text-1">EXPORT</div>
+                            <div class="ico-text-1">EDIT</div>
                         </button>
                         <button uib-popover-template="'templates/comments-popover.html'"
                                 popover-title="DISCUSS"
@@ -218,7 +245,9 @@
                                     ng-click="refreshFeed()"
                                     title="Feed">
                             <span class="glyphicon glyphicon-th-list"></span>
-                            <div class="ico-text-2">&nbsp;Feed</div>
+                            <div class="ico-text-2">&nbsp;Feed&nbsp;
+                                <span ng-if="filter.trash == 0 && articles.length > 0" class="badge">{{filter.count}}</span>
+                            </div>
                         </button>
                         <button 	type="button"
                                     style="width: 50%;"
@@ -228,7 +257,10 @@
                                     ng-click="refreshFeed()"
                                     title="Deleted items">
                             <span class="glyphicon glyphicon-trash"></span>
-                            <div class="ico-text-2">&nbsp;Deleted Items</div>
+                            <div class="ico-text-2">
+                                &nbsp;Deleted Items&nbsp;
+                                <span ng-if="filter.trash == 1 && articles.length > 0" class="badge">{{filter.count}}</span>
+                            </div>
                         </button>
                     </div>
                     

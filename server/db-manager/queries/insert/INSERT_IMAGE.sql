@@ -1,0 +1,2 @@
+INSERT INTO "conduit_db"."IMAGES"
+VALUES (DEFAULT,$1,$2);

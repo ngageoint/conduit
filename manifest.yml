@@ -1,5 +1,7 @@
 ---
 applications:
 - name: conduit-dev
+  buildpack: https://github.com/cloudfoundry/buildpack-nodejs.git
+  command: node index.js
   memory: 128M
   host: conduit-dev

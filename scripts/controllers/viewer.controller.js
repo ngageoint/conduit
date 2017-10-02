@@ -25,6 +25,7 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			$scope.articles[$scope.currentIndex].selectedImage++;
 	}
 
+	//TODO: track by userId
 	/**
 	 * Add a new comment to this article.
 	 * 
@@ -38,8 +39,8 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			//If no comments exist yet, create the array and add it to the current article
 			if(!$scope.articles[$scope.currentIndex].comments)
 				$scope.articles[$scope.currentIndex].comments = [];
-			//Comments follow this data format: {user, text, dateTime};
-			$scope.articles[$scope.currentIndex].comments.push({user: $scope.user.name, text: newComment, dateTime: dateStr});
+			//Comments follow this data format: {user, text, date};
+			$scope.articles[$scope.currentIndex].comments.push({user: $scope.user.given_name, text: newComment, date: dateStr});
 		}
 	}	
 });

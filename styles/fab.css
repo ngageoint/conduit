@@ -1,5 +1,6 @@
 /*Light*/
 /*Dark*/
+/* line 5, D:/work/dat/conduit/sass/fab.scss */
 #fab {
   position: absolute;
   bottom: 15px;
@@ -16,8 +17,11 @@
   padding: 16px;
 }
 
+/* line 25, D:/work/dat/conduit/sass/fab.scss */
 #fab:hover {
   transition: box-shadow .25s ease-in-out;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.12), 0 12px 12px 0 rgba(0, 0, 0, 0.24);
   cursor: pointer;
 }
+
+/*# sourceMappingURL=../styles/fab.map */
