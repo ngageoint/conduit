@@ -18,6 +18,38 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 				});
 			}
 		},
+		update : {
+			articleBase: function(article) {
+				return new Promise(function(resolve, reject) {
+					var data = {
+						article: article
+					}
+
+					$http.post('/update/articleBase', data).then(function(response) {
+						console.log("successfully updated article base");
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				});
+			},
+			articleStatus: function(articleId, userId, teamId, isRead) {
+				return new Promise(function(resolve, reject) {
+					var data = {
+						articleId: articleId,
+						userId: userId || 1,
+						teamId: teamId || 1,
+						isRead: isRead
+					}
+
+					$http.post('/update/articleStatus', data).then(function(response) {
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				});
+			}
+		},
 		generateHash: function(article) {
 			return new Promise(function(resolve, reject) {
 				if(article.title && article.text && article.images && article.source) {

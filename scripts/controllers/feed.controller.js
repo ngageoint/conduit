@@ -1,5 +1,5 @@
 angular.module('conduit.controllers').controller('FeedCtrl', function(
-	$scope, $timeout, __config, ArticlesService, DataSourceService, ComplexPropertyTools,
+	$scope, $timeout, __config, ApiService, ArticlesService, DataSourceService, ComplexPropertyTools,
 	ArrayTools, DateTools, FilterService) {
 					
 	$scope.filter = FilterService.filter;	
@@ -99,6 +99,7 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 		//Update view properties
 		$scope.articles[index].removed = true;
 		$scope.articles[index].read = true;
+		ApiService.update.articleStatus($scope.articles[index].id, undefined, undefined, true).then(function(res){});
 		$scope.articles[index].inFeed = false;
 		
 		//Refresh view

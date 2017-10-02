@@ -400,6 +400,21 @@ app.post('/insert/user', function(req, res, next) {
   	});
 });
 
+app.post('/update/articleStatus', function(req, res, next) {
+	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
+		console.log('Missing params');
+		console.log(req.body);
+		res.status(400);
+		res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
+		return;
+	}
+	db.update.articleStatus(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRead).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
 /*=================
    DELETE Endpoint 
  ==================*/
