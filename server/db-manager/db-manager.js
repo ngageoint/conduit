@@ -3,6 +3,7 @@ const pg = require('pg');
 const select = require('./queries/select/select.js');
 const insert = require('./queries/insert/insert.js');
 const create = require('./queries/create/create.js');
+const update = require('./queries/update/update.js');
 
 //Load local environment variable file (.env)
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
@@ -38,11 +39,13 @@ var connect = function (callback) {
 select.setQueryManager(queryManager);
 insert.setQueryManager(queryManager);
 create.setQueryManager(queryManager);
+update.setQueryManager(queryManager);
 
 module.exports = {
   select: select,
   insert: insert,
-  create: create
+  create: create,
+  update: update
 };
 
 /*select.fullArticle('1', function(article) {
