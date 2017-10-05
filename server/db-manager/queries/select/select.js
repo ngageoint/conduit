@@ -211,6 +211,24 @@ module.exports = {
                 });
         });
     },
+    mostRecentArticleEdit: function(articleId, userId, teamId) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_MOST_RECENT_ARTICLE_EDIT.sql')),
+                values: [articleId, userId, teamId],
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows) {
+                    return resolve(res.rows);
+                }
+                else
+                    return reject('No results for mostRecentArticleEdit where articleId=' + articleId + ', userId=' + userId+ ', teamId=' + teamId);
+            });
+        });
+    },
     commentsByArticle: function(id) {
         return new Promise(function(resolve, reject) {
             const query = {

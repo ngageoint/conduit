@@ -195,6 +195,20 @@ app.get('/select/commentsByArticle', function(req, res, next) {
   	});
 });
 
+app.get('/select/mostRecentArticleEdit', function(req, res, next) {
+	if(!req.query.articleId || !req.query.userId || !req.query.teamId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. articleId, userId, teamId required.');
+		return;
+	}
+	db.select.mostRecentArticleEdit(req.query.articleId, req.query.userId, req.query.teamId).then(function(edit) {
+		console.log(edit);
+		res.status(200);
+    	res.json(edit);
+  	});
+});
+
 app.get('/select/tagsByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('Missing params');
