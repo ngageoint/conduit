@@ -13,6 +13,7 @@ const hash = require('object-hash');
 
 const db = require('./server/db-manager/db-manager.js');
 const sso = require('./server/sso/sso.js');
+const moe = require('./server/export/export.js'); //Microsoft Office Export, MOE; export is a reserved word
 
 //Load local environment variable file (.env)
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
@@ -70,6 +71,43 @@ app.post('/hash', function(req, res, next) {
 	} else {
 		res.status(401);
 		res.send('Missing hashable fields. title, text, images, and source are required');
+		return;
+	}
+});
+
+app.post('/export', function(req, res, next) {
+	
+	var article = req.body.article;
+
+	if(article.title && article.text && article.date && req.body.tpltId) {
+		res.status(200);
+		moe.generateWordDoc(article, req.body.tpltId).then(function(filename) {
+			res.send(filename);
+		});
+	} else {
+		res.status(401);
+		res.send('Missing export fields. tpltId, title, text, date, and images are required');
+		return;
+	}
+});
+
+app.get('/download', function(req, res, next) {
+
+	var fileName = req.query.fileName;
+
+	if(fileName) {
+		res.status(200);
+		var filePath = path.resolve(__dirname, 'server', 'export', 'temp', fileName)
+		res.download(filePath, fileName, function(err) {
+			if(err) {
+				console.log(err);
+			} else {
+				moe.deleteTemporaryFiles(filePath);
+			}
+		});
+	} else {
+		res.status(401);
+		res.send('Missing fileName');
 		return;
 	}
 });

@@ -1,4 +1,4 @@
-angular.module('conduit.controllers').controller('ExportCtrl', function($q, $scope, DateTools, XMLTools, __config) {
+angular.module('conduit.controllers').controller('ExportCtrl', function($q, $scope, ApiService, DateTools, XMLTools, __config) {
 		
 	/**
 	 * This function takes an article and creates a promise of a .docx blob.
@@ -49,9 +49,14 @@ angular.module('conduit.controllers').controller('ExportCtrl', function($q, $sco
 	 * @param {object} article An article following the minimum Conduit format
 	 */
 	$scope.export = function(article) {
-		createFile(article).then(function(doc) {
+		ApiService.exportFile(article).then(function(res) {
+			console.log(res);
+			//saveFile(getFirstChars(article.title, 75).replace('\\','-').replace('/','-'), doc, '.docx');
+		});
+		
+		/*createFile(article).then(function(doc) {
 			saveFile(getFirstChars(article.title, 75).replace('\\','-').replace('/','-'), doc, '.docx');
-		});	
+		});*/	
 	}
 	
 	/**

@@ -1,5 +1,5 @@
 /* The DataSourceService makes all of the data source properties available in a global, editable promise. */
-angular.module('conduit.services').factory('ApiService', function($http, $location) { 
+angular.module('conduit.services').factory('ApiService', function($http, $location, $window) { 
 
 	return {
 	  	select: {
@@ -113,6 +113,36 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 
 					$http.post('/hash', data).then(function(response) {
 						return resolve(response.data.hash);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				} else {
+					reject('Required hash fields not available')
+				}
+			});
+		},
+		exportFile: function(article) {
+			return new Promise(function(resolve, reject) {
+				if(article.id && article.title && article.text && article.date) {
+					var data = {
+						article: {
+							id: article.id,
+							title: article.title,
+							text: article.text,
+							date: article.date,
+							imageUri: article.images[0] || article.images[article.selectImage]
+						},
+						tpltId: 1
+					}
+
+					console.log(article);
+
+					console.log(data);
+
+					$http.post('/export', data).then(function(response) {
+						console.log(response.data);
+						$window.open('/download?fileName=' + response.data);
+						return resolve(response.data);
 					}).catch(function(err) {
 						return reject(err);
 					});
