@@ -48,11 +48,14 @@ module.exports = {
             promises.push(module.exports.commentsByArticle(articleId));
             promises.push(module.exports.tagsByArticle(articleId));
             if(userId) {
+                promises.push(module.exports.mostRecentArticleEdit(articleId, userId, 1)); //TODO: update team info
                 promises.push(module.exports.articleStatusByIds(articleId, userId));
+            } else {
+                promises.push(module.exports.mostRecentArticleEdit(articleId, 1, 1)); //TODO: update team info
             }
 
             /*promises in order:
-            0:base, 1:books[object], 2:images[string], 3:comments[object], 4:tags[string], 5:status[boolean]
+            0:base, 1:books[object], 2:images[string], 3:comments[object], 4:tags[string], 5:status[boolean], 6:edit
             */
             return Promise.all(promises).then(function(res) {
                 var article = res[0];
@@ -61,8 +64,18 @@ module.exports = {
                 article.comments = res[3];
                 article.tags = res[4];
                 if(res[5]) {
-                    article.read = res[5];
+                    console.log("res[5]");
+                    console.log(res[5]);
+                    console.log(res[5].title);
+                    article.isEdit = true;
+                    article.title = res[5].title;
+                    article.text = res[5].text;
                 }
+                if(res[6]) {
+                    article.read = res[6];
+                }
+                
+
 
                 return resolve(article);
             }).catch(function(err) {
@@ -209,6 +222,24 @@ module.exports = {
                 else
                    return reject('No results for imagesByUriAndArticleId');
                 });
+        });
+    },
+    mostRecentArticleEdit: function(articleId, userId, teamId) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_MOST_RECENT_ARTICLE_EDIT.sql')),
+                values: [articleId, userId, teamId],
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows && res.rows[0]) {
+                    return resolve(res.rows[0]);
+                }
+                else
+                    return resolve(false);
+            });
         });
     },
     commentsByArticle: function(id) {

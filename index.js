@@ -195,6 +195,20 @@ app.get('/select/commentsByArticle', function(req, res, next) {
   	});
 });
 
+app.get('/select/mostRecentArticleEdit', function(req, res, next) {
+	if(!req.query.articleId || !req.query.userId || !req.query.teamId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. articleId, userId, teamId required.');
+		return;
+	}
+	db.select.mostRecentArticleEdit(req.query.articleId, req.query.userId, req.query.teamId).then(function(edit) {
+		console.log(edit);
+		res.status(200);
+    	res.json(edit);
+  	});
+});
+
 app.get('/select/tagsByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('Missing params');
@@ -249,6 +263,21 @@ app.get('/select/articleBase', function(req, res, next) {
 		return;
 	}
 	db.insert.articleBase(req.body.article).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+app.post('/insert/articleEdit', function(req, res, next) {
+	if(!req.body.articleId || !req.body.userId || !req.body.teamId || !req.body.title || !req.body.text) {
+		console.log('Missing params');
+		console.log(req.body);
+		res.status(400);
+		res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
+		return;
+	}
+	db.insert.articleEdit(req.body.articleId, req.body.userId, req.body.teamId, req.body.title, req.body.text).then(function(result) {
 		console.log(result);
 		res.status(200);
     	res.json(result);
@@ -380,6 +409,60 @@ app.post('/insert/user', function(req, res, next) {
 			res.json(result);
 		});
 	}
+});
+
+/*=================
+   UPDATE Endpoint 
+ ==================*/
+
+ app.post('/update/articleBase', function(req, res, next) {
+	if(!req.body.article) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. article is required');
+		return;
+	}
+	db.update.articleBase(req.body.article).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+app.post('/update/articleStatus', function(req, res, next) {
+	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
+		console.log('Missing params');
+		console.log(req.body);
+		res.status(400);
+		res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
+		return;
+	}
+	db.update.articleStatus(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRead).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+/*=================
+   DELETE Endpoint 
+ ==================*/
+
+app.post('/delete/bookStatus', function(req, res, next) {
+	if(!req.body.bookId || !req.body.articleId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. bookId and articleId are required');
+		return;
+	}
+	console.log(req.body.bookId);
+	console.log(req.body.articleId);
+	console.log(req.body);
+	db.delete.bookStatus(req.body.bookId, req.body.articleId).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
 });
 
 console.log("listening on " + port);

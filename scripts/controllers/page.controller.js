@@ -1,5 +1,5 @@
 angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $filter,
-ArticlesService, AttributesService, BooksService, UserService, ArrayTools) {
+ApiService, ArticlesService, AttributesService, BooksService, UserService, ArrayTools) {
 	
 	/**
 	 * Wait for the articles promise to resolve; will be inherited by child scopes.
@@ -82,6 +82,7 @@ ArticlesService, AttributesService, BooksService, UserService, ArrayTools) {
 			//Set the old article to be inactive and read
 			$scope.articles[$scope.currentIndex].active = false;
 			$scope.articles[$scope.currentIndex].read = true;
+			ApiService.update.articleStatus($scope.articles[$scope.currentIndex].id, undefined, undefined, true).then(function(res){});
 			
 			/*If no parent or index are given, pick the next card to be selected based on the last known selection
 				Order:
