@@ -19,6 +19,23 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 			}
 		},
 		insert : {
+			articleEdit: function(articleId, userId, teamId, title, text) {
+				return new Promise(function(resolve, reject) {
+					var data = {
+						articleId: articleId,
+						userId: userId,
+						teamId: teamId,
+						title: title,
+						text: text
+					}
+
+					$http.post('/insert/articleEdit', data).then(function(response) {
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				});
+			},
 			bookStatus: function(bookId, articleId) {
 				return new Promise(function(resolve, reject) {
 					var data = {

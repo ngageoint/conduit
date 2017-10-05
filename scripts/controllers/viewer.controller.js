@@ -69,4 +69,18 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			$scope.articles[$scope.currentIndex].comments.push({user: $scope.user.given_name, text: newComment, date: dateStr});
 		}
 	}	
+
+	$scope.submitEdit = function() {
+		ApiService.insert.articleEdit(	$scope.articles[$scope.currentIndex].id, 
+										1, 
+										1, 
+										$scope.articles[$scope.currentIndex].title, 
+										$scope.articles[$scope.currentIndex].text)
+							.then(function(res) {
+								console.log("Edit post success");
+								console.log(res);
+							}).catch(function(err) {
+								console.log(err);
+							})
+	}
 });
