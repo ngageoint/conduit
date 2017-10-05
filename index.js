@@ -255,6 +255,21 @@ app.get('/select/articleBase', function(req, res, next) {
   	});
 });
 
+app.post('/insert/articleEdit', function(req, res, next) {
+	if(!req.body.articleId || !req.body.userId || !req.body.teamId || !req.body.title || !req.body.text) {
+		console.log('Missing params');
+		console.log(req.body);
+		res.status(400);
+		res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
+		return;
+	}
+	db.insert.articleEdit(req.body.articleId, req.body.userId, req.body.teamId, req.body.title, req.body.text).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
 app.post('/insert/articleStatus', function(req, res, next) {
 	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
 		console.log('Missing params');

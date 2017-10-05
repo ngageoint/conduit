@@ -52,6 +52,21 @@ module.exports = {
             });
         });
     },
+    articleEdit: function(articleId, userId, teamId, title, text) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_EDIT.sql')),
+                values: [articleId, userId, teamId, title, text]
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
+    },
     articleStatus: function(articleId, userId, teamId, isRead) {
         return new Promise(function(resolve, reject) {
             const query = {
