@@ -1,6 +1,20 @@
 angular.module('conduit.tools').factory('ArrayTools', function($q, $http, __config) { 
 	return {
-        /**
+		diff: function(a, b) {
+			for(var i = 0; i < b.length; i++) {
+				for(var j = 0; j < a.length; j++) {
+					if(b[i].id === a[j].id) {
+						a = this.removeElement(a, j);
+						j--;
+					}
+				}
+			}
+			return a;
+		},
+		same: function(a, b) {
+			return a.filter(function(i) {return b.indexOf(i) >= 0;});
+		},
+		/**
 		 * This function removes and element at a specified index from the array, adusting all other elements accordingly.
 		 * 
 		 * @param {array} array The array on which the action will be performed

@@ -1,4 +1,4 @@
-angular.module('conduit.controllers').controller('BookCtrl', function($scope, $rootScope, BooksService, ArrayTools) {
+angular.module('conduit.controllers').controller('BookCtrl', function($scope, $rootScope, ApiService, BooksService, ArrayTools) {
 	
 	//Watch the selectedBook variable (bound to the dropdown); if changed, update the articles displayed in the book
 	$scope.$watch('selectedBook', function() {
@@ -65,6 +65,11 @@ angular.module('conduit.controllers').controller('BookCtrl', function($scope, $r
 		for(var i = 0; i < $scope.articles[index].books.length; i++)
 			if(~$scope.articles[index].books[i].name.indexOf(bookName))
 				$scope.articles[index].books = ArrayTools.removeElement($scope.articles[index].books, i);
+
+		//Upate on server
+		ApiService.delete.bookStatus($scope.selectedBook.id, id).then(function(res) {
+			console.log(res);
+		})
 		
 		//Update the view
 		$scope.updateBook();
