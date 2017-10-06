@@ -157,6 +157,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					}
 
 					$http.post('/exportZip', data).then(function(response) {
+						console.log("got return");
 						console.log(response.data);
 						$window.open('/download?fileName=' + response.data);
 						return resolve(response.data);
@@ -168,5 +169,5 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 				}
 			});
 		}
-	},
+	}
 });

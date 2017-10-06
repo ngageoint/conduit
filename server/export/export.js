@@ -3,7 +3,7 @@ const Docxtemplater = require('docxtemplater');
 const ImageModule = require('docxtemplater-image-module')
 const request = require('request');
 const axios = require('axios');
-var AdmZip = require('adm-zip');
+const niv = require('npm-install-version');
 
 const fs = require('fs');
 const path = require('path');
@@ -167,30 +167,36 @@ var generateZip = function(articles, tpltId) {
         }
 
         //Resolve all promises and add to the JSZip object
-        return Promise.all(promises)
-            .then(function(results) {
+        return Promise.all(promises).then(function(results) {
                 
-                var zip = new AdmZip();
-
                 var fileName = path.resolve(__dirname, 'temp', id);
 
-                glob(fileName + '*', function(err, files) {
+                var zip = {}
+                
+                var jszip3x = undefined;
+                if(!JSZip.support.blob) {
+                    niv.install('jszip@3.1.4');
+                    jszip3x = niv.require('jszip@3.1.4');
+                }
+
+                console.log(jszip3x);
+
+                zip = new jszip3x() || new JSZip();
+
+                return glob(fileName + '*', function(err, files) {
                     for(var i = 0; i < files.length; i++) {
-                        zip.addFile('test.txt', fs.readFileSync(files[i], '', 0644 << 16));
+                        zip.file(files[i].substring(files[i].indexOf(id) + id.length + 1), fs.readFileSync(files[i]));
+                        
                     }
 
-                    console.log("fuusged fir kiio")
-
-                    var entries = zip.getEntries();
-                    for(var i = 0; i < entries.length; i++) {
-                        console.log(entries[i].entryName);
-                        console.log(entries[i].isDirectory);
-                        console.log(entries[i].getData());
-                    }
-    
                     fileName = path.resolve(__dirname, 'temp', id + '.zip');
-                    
-                    zip.writeZip(fileName);
+
+                     zip.generateAsync({type : "nodebuffer"}).then(function(buf) {
+                        fs.writeFileSync(fileName, buf)
+                        return resolve(fileName);
+                    }).catch(function(err) {
+                        return reject(err);
+                    });
                 });
             });
     });

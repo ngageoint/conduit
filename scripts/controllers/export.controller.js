@@ -126,6 +126,7 @@ angular.module('conduit.controllers').controller('ExportCtrl', function($q, $sco
 			createZip(zip);	
 		});
 		}*/
+	}
 	
 	/**
 	 * Given file info, this function will save the file to the user's machine with standard 'Save As' prompts
