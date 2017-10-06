@@ -96,10 +96,10 @@ var generateWordDoc = function(article, tpltId, id) {
                 return resolve(path.basename(filename));
             });
         }
-        
+    
+
         if(article.imageUri) {
             return downloadImage(article.imageUri, id).then(function(imagePath) {
-
                 data = {
                     "title":    article.title,
                     "text":     article.text,
@@ -185,8 +185,10 @@ var generateZip = function(articles, tpltId) {
 
                 return glob(fileName + '*', function(err, files) {
                     for(var i = 0; i < files.length; i++) {
-                        zip.file(files[i].substring(files[i].indexOf(id) + id.length + 1), fs.readFileSync(files[i]));
-                        
+                        console.log(path.extname(files[i]));
+                        if(path.extname(files[i]) === '.docx') {
+                            zip.file(files[i].substring(files[i].indexOf(id) + id.length + 1), fs.readFileSync(files[i])); 
+                        }       
                     }
 
                     fileName = path.resolve(__dirname, 'temp', id + '.zip');
