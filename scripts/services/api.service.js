@@ -149,10 +149,24 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 		},
 		exportBook: function(book, articles) {
 			return new Promise(function(resolve, reject) {
+				
+				var formattedArticles = []
+
+				for(var i = 0; i < articles.length; i++)
+				{
+					formattedArticles.push({
+						id: articles[i].id,
+						title: articles[i].title,
+						text: articles[i].text,
+						date: articles[i].date,
+						imageUri: articles[i].images[0] || articles[i].images[articles[i].selectImage]
+					})
+				}
+				
 				if(book && articles) {
 					var data = {
 						book: book,
-						articles: articles,
+						articles: formattedArticles,
 						tpltId: 1
 					}
 
