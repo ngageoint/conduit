@@ -91,6 +91,21 @@ app.post('/export', function(req, res, next) {
 	}
 });
 
+app.post('/exportZip', function(req, res, next) {
+
+	if(req.body.articles && req.body.tpltId) {
+		res.status(200);
+		moe.generateZip(req.body.articles, req.body.tpltId).then(function(filename) {
+			console.log(filename);
+			res.send(filename);
+		});
+	} else {
+		res.status(401);
+		res.send('Missing export fields. articles and tpltId are required');
+		return;
+	}
+});
+
 app.get('/download', function(req, res, next) {
 
 	var fileName = req.query.fileName;

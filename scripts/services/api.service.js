@@ -135,10 +135,6 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						tpltId: 1
 					}
 
-					console.log(article);
-
-					console.log(data);
-
 					$http.post('/export', data).then(function(response) {
 						console.log(response.data);
 						$window.open('/download?fileName=' + response.data);
@@ -147,9 +143,30 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						return reject(err);
 					});
 				} else {
-					reject('Required hash fields not available')
+					reject('Required fields not available')
+				}
+			});
+		},
+		exportBook: function(book, articles) {
+			return new Promise(function(resolve, reject) {
+				if(book && articles) {
+					var data = {
+						book: book,
+						articles: articles,
+						tpltId: 1
+					}
+
+					$http.post('/exportZip', data).then(function(response) {
+						console.log(response.data);
+						$window.open('/download?fileName=' + response.data);
+						return resolve(response.data);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				} else {
+					reject('Required fields not available')
 				}
 			});
 		}
-	};
+	},
 });

@@ -105,11 +105,27 @@ angular.module('conduit.controllers').controller('ExportCtrl', function($q, $sco
 		
 		var zip = new JSZip();
 		
+		var articlesInBook = []
+
+		if($scope.selectedBook && $scope.articles){	
+			for(var i = 0; i < $scope.articles.length - 1; i++) {
+				for(var j = 0; j < $scope.articles[i].books.length; j++) {
+					if($scope.articles[i].books[j] && ~$scope.articles[i].books[j].name.indexOf($scope.selectedBook.name)) {
+						articlesInBook.push($scope.articles[i]);
+					}
+				}
+			}
+			ApiService.exportBook($scope.selectedBook, articlesInBook).then(function(res) {
+				console.log("zip success");
+			});
+		}
+
 		//Once all the files have been loaded and the JSZip promise successfully returned, create and save the zip
+		/*
 		loadAllFiles().then(function(zip) {
 			createZip(zip);	
 		});
-		}
+		}*/
 	
 	/**
 	 * Given file info, this function will save the file to the user's machine with standard 'Save As' prompts
