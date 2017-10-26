@@ -3,11 +3,12 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 
 	return {
 	  	select: {
-			articlesByUserFromDate: function(userId, date) {
+			articlesByUserFromDate: function(userId, date, teamId) {
 				return new Promise(function(resolve, reject) {
 					var query = '/select/articlesByUserFromDate?' +
 								'userId=' + userId + 
-								'&date=' + date;
+								'&date=' + date + 
+								(teamId ? '&teamId=' + teamId : '');
 
 					$http.get(query).then(function(response) {
 						console.log(response.data);
@@ -66,7 +67,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					});
 				});
 			},
-			articleStatus: function(articleId, userId, teamId, isRead) {
+			articleStatusRead: function(articleId, userId, teamId, isRead) {
 				return new Promise(function(resolve, reject) {
 					var data = {
 						articleId: articleId,
@@ -75,7 +76,23 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						isRead: isRead
 					}
 
-					$http.post('/update/articleStatus', data).then(function(response) {
+					$http.post('/update/articleStatusRead', data).then(function(response) {
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				});
+			},
+			articleStatusRemoved: function(articleId, userId, teamId, isRemoved) {
+				return new Promise(function(resolve, reject) {
+					var data = {
+						articleId: articleId,
+						userId: userId || 1,
+						teamId: teamId || 1,
+						isRemoved: isRemoved
+					}
+
+					$http.post('/update/articleStatusRemoved', data).then(function(response) {
 						return resolve(response);
 					}).catch(function(err) {
 						return reject(err);

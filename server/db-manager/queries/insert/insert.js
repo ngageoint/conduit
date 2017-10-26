@@ -7,13 +7,14 @@ module.exports = {
     setQueryManager: function(query) {
         module.exports.query = query;
     },
-    articleFull: function(article, userId) {
+    articleFull: function(article, userId, teamId) {
         return new Promise(function(resolve, reject) {
             
             var promises = [];
             
             module.exports.articleBase(article).then(function(res) {
-                promises.push(module.exports.articleStatus(article.id, userId));
+                promises.push(module.exports.articleStatusRead(article.id, userId));
+                promises.push(module.exports.articleStatusRemoved(article.id, teamId));
                 promises.push(module.exports.bookStatus(article.books, article.id));
                 promises.push(module.exports.comment(article.comments, article.id));
                 promises.push(module.exports.image(article.images, article.id));
@@ -67,11 +68,26 @@ module.exports = {
             });
         });
     },
-    articleStatus: function(articleId, userId, teamId, isRead) {
+    articleStatusRead: function(articleId, userId, teamId, isRead) {
         return new Promise(function(resolve, reject) {
             const query = {
-                text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_STATUS.sql')),
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_STATUS_READ.sql')),
                 values: [articleId, userId, teamId, isRead]
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
+        });
+    },
+    articleStatusRemoved: function(articleId, userId, teamId, isRemoved) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_STATUS_REMOVED.sql')),
+                values: [articleId, userId, teamId, isRemoved]
             }
             module.exports.query(query, function(err, res) {
                 if(err) {

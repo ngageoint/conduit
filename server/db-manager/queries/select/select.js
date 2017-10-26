@@ -38,7 +38,7 @@ module.exports = {
             });
         });
     },
-    articleFull: function(articleId, userId) {
+    articleFull: function(articleId, userId, teamId) {
         return new Promise(function(resolve, reject) {
             var promises = [];
 
@@ -48,11 +48,17 @@ module.exports = {
             promises.push(module.exports.commentsByArticle(articleId));
             promises.push(module.exports.tagsByArticle(articleId));
             if(userId) {
-                promises.push(module.exports.mostRecentArticleEdit(articleId, userId, 1)); //TODO: update team info
-                promises.push(module.exports.articleStatusByIds(articleId, userId));
+                promises.push(module.exports.mostRecentArticleEdit(articleId, userId, teamId || 1)); //TODO: update team info
+                promises.push(module.exports.articleStatusReadByIds(articleId, userId));
             } else {
-                promises.push(module.exports.mostRecentArticleEdit(articleId, 1, 1)); //TODO: update team info
+                promises.push(module.exports.mostRecentArticleEdit(articleId, 1, teamId || 1)); //TODO: update team info
             }
+            console.log('!!!! team id: ' + teamId);
+            if(teamId) {
+                console.log('checking removed by team')
+                promises.push(module.exports.articleStatusRemovedByTeam(articleId, teamId || 1));//TODO: update team info
+            }
+
 
             /*promises in order:
             0:base, 1:books[object], 2:images[string], 3:comments[object], 4:tags[string], 5:status[boolean], 6:edit
@@ -74,7 +80,10 @@ module.exports = {
                 if(res[6]) {
                     article.read = res[6];
                 }
-                
+                if(res[7]) {
+                    console.log(res[7]);
+                    article.removed = res[7];
+                }
 
 
                 return resolve(article);
@@ -83,7 +92,7 @@ module.exports = {
             });
         });
     },
-    articlesByUserFromDate: function(userId, fromDate) {
+    articlesByUserFromDate: function(userId, fromDate, teamId) {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLES_BASE_FROM_DATE.sql')),
@@ -98,7 +107,7 @@ module.exports = {
                     for(var i = 0; i < res.rows.length; i++) {
                         (function(thisId) {
                             console.log(thisId);
-                            promises.push(module.exports.articleFull(thisId, userId));
+                            promises.push(module.exports.articleFull(thisId, userId, teamId));
                         })(res.rows[i].id);
                     }
                     return Promise.all(promises).then(function(res) {
@@ -112,10 +121,10 @@ module.exports = {
             });
         });
     },
-    articleStatusByIds: function(articleId, userId) {
+    articleStatusReadByIds: function(articleId, userId) {
         return new Promise(function(resolve, reject) {
             const query = {
-                text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_STATUS_BY_IDS.sql')),
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_STATUS_READ_BY_IDS.sql')),
                 values: [articleId, userId],
             }
             module.exports.query(query, function(err, res) {
@@ -125,7 +134,30 @@ module.exports = {
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].read !== "undefined") {
                     return resolve(res.rows[0].read);
                 } else {
-                    return reject('No results for articleStatusByIds where articleId='+ articleId + " and userId=" + userId);
+                    return reject('No results for articleStatusReadByIds where articleId='+ articleId + " and userId=" + userId);
+                }
+            });
+        });
+    },
+    articleStatusRemovedByTeam: function(articleId, teamId) {
+        return new Promise(function(resolve, reject) {
+            console.log('REMOVED PROMISE');
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_STATUS_REMOVED_BY_TEAM.sql')),
+                values: [articleId, teamId],
+            }
+            console.log('REMOVED QUERY');
+            console.log(query);
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                console.log('REMOVED RESULTS');
+                console.log(res);
+                if(res && res.rows && res.rows[0] && typeof res.rows[0].removed !== "undefined") {
+                    return resolve(res.rows[0].removed);
+                } else {
+                    return reject('No results for articleStatusRemovedByTeam where articleId='+ articleId + " and teamId=" + teamId);
                 }
             });
         });

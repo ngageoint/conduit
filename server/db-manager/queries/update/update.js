@@ -10,7 +10,10 @@ module.exports = {
     articleBase: function(article) { 
         return insert.articleBase(article);
     },
-    articleStatus: function(articleId, userId, teamId, isRead) {
-        return insert.articleStatus(articleId, userId, teamId, isRead);
+    articleStatusRead: function(articleId, userId, teamId, isRead) {
+        return insert.articleStatusRead(articleId, userId, teamId, isRead);
+    },
+    articleStatusRemoved: function(articleId, userId, teamId, isRemoved) {
+        return insert.articleStatusRemoved(articleId, userId, teamId, isRemoved);
     }
 };

@@ -13,7 +13,7 @@ ApiService, BooksService, DataSourceService, RssLiteService, ComplexPropertyTool
 				})
 		);
 
-		queries.push(ApiService.select.articlesByUserFromDate(1,'2017-07-13')
+		queries.push(ApiService.select.articlesByUserFromDate(1,'2017-07-13',1)
 				.then(function(response) {
 					return response;
 				})
