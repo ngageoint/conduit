@@ -152,6 +152,10 @@ $actPadding: 8px;
 	max-height: 50vh;
 	vertical-align: middle;
 }
+
+.article-view #image-load-error {
+	color: $colorAccent;
+}
 		
 .article-view .text-wrapper {
     margin: 0 $lrpadding $lrpadding $lrpadding;

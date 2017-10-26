@@ -52,6 +52,7 @@
     <script src="scripts/directives/feFluid.directive.js"></script>
     <script src="scripts/directives/feStateful.directive.js"></script>
     <script src="scripts/directives/fileOnChange.directive.js"></script>
+    <script src="scripts/directives/imageLoadError.directive.js"></script>
     <script src="scripts/directives/scrollToTop.directive.js"></script>
     <script src="scripts/directives/subject.directive.js"></script>
 
@@ -161,11 +162,18 @@
                             <a class="article-image" ng-href="{{articles[currentIndex].images[articles[currentIndex].selectedImage]}}" target="_blank">
                                 <img	ng-show="articles[currentIndex].images[articles[currentIndex].selectedImage]"
                                         ng-src="{{articles[currentIndex].images[articles[currentIndex].selectedImage]}}"
-                                        alt="Click to open image"
-                                        title="Click to open image"
-                                        class="image"/>
-                                    
+                                        alt=""
+                                        title=""
+                                        class="image"
+                                        image-load-error/>                                    
                             </a>
+
+                            <div id="image-load-error"
+                                    class="pointer-on-hover"
+                                    ng-show="inErrorState"
+                                    ng-click="forceReload()">
+                                    <span class="glyphicon glyphicon-repeat"></span>&nbsp;{{reloadMsg}}
+                            </div>
                                                 
                             <span 
                                 id="nav-right"
