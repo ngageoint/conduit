@@ -55,6 +55,9 @@ ApiService, BooksService, DataSourceService, RssLiteService, ComplexPropertyTool
 					})(fullResponse[i]);
 				}
 				return $q.all(articles).then(function(articles) {
+					console.log("all promises resolved")
+					ApiService.insert.articleFull(articles, 1, 1);//TODO: update with dynamic user and team info
+					
 					return articles;
 				});
 			}).catch(function(err) {

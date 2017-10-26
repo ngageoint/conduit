@@ -9,25 +9,62 @@ module.exports = {
     },
     articleFull: function(article, userId, teamId) {
         return new Promise(function(resolve, reject) {
-            
-            var promises = [];
-            
-            module.exports.articleBase(article).then(function(res) {
-                promises.push(module.exports.articleStatusRead(article.id, userId));
-                promises.push(module.exports.articleStatusRemoved(article.id, teamId));
-                promises.push(module.exports.bookStatus(article.books, article.id));
-                promises.push(module.exports.comment(article.comments, article.id));
-                promises.push(module.exports.image(article.images, article.id));
-                promises.push(module.exports.tag(article.tags, article.id));
-            }).catch(function(err) {
-                return reject(err);  
-            });
-            
-            return Promise.all(promises).then(function(res) {
-                return resolve(res);
-            }).catch(function(err) {
-                return reject(err);
-            });
+            if(article instanceof Array) {
+                var promises = [];
+                for(var i = 0; i < article.length; i++) {
+                    if(article[i]) {
+                        (function(thisArticle) {
+                            select.articleBase(thisArticle.id).then(function(baseArticle) {
+                                //Only push the article into a promice of the returned base article is undefined
+                                if(!baseArticle) {
+                                    promises.push(module.exports.articleFull(thisArticle));
+                                }
+                            }).catch(function(err) {
+                                //If no base article was found, push the promise
+                                if(err === 'No results') {
+                                    promises.push(module.exports.articleFull(thisArticle));
+                                }
+                            }); 
+                        }(article[i]));   
+                    }
+                }
+                return Promise.all(promises).then(function(res) {
+                    return resolve(res);
+                }).catch(function(err) {
+                    return reject(err);
+                });
+            } else {
+                var promises = [];
+
+                var completeFullArticle = function(article, userId, teamId) {
+                    module.exports.articleBase(article).then(function(res) {
+                        promises.push(module.exports.articleStatusRead(article.id, userId));
+                        promises.push(module.exports.articleStatusRemoved(article.id, teamId));
+                        promises.push(module.exports.bookStatus(article.books, article.id));
+                        promises.push(module.exports.comment(article.comments, article.id));
+                        promises.push(module.exports.imageStatus(article.id, teamId, article.selectedImage));
+                        promises.push(module.exports.tag(article.tags, article.id));
+                    }).catch(function(err) {
+                        console.log('ERROR IN BASE ARTICLE!!!!!!!!!!!!');
+                        console.log(err);
+                        return reject(err);  
+                    });
+                }
+
+                //Load images first, then article bases, then all others (to support FK dependencies);
+                module.exports.image(article.images, article.id).then(function(res) {
+                    completeFullArticle(article, userId, teamId)
+                }).catch(function(err) {
+                    completeFullArticle(article, userId, teamId);
+                });
+                
+                return Promise.all(promises).then(function(res) {
+                    console.log('ALL PROMISES RESOLVED');
+                    return resolve(res);
+                }).catch(function(err) {
+                    return reject(err);
+                });
+            }
         });
     },
     articleBase: function(article) {
@@ -38,7 +75,6 @@ module.exports = {
                     article.date,
                     article.id,
                     article.link,
-                    article.selectedImage,
                     article.text,
                     article.title,
                     article.customProperties,
@@ -49,7 +85,8 @@ module.exports = {
                 if(err) {
                     return reject(err);
                 }
-                return resolve();
+                console.log('SUCCESS IN BASE ARTICLE');
+                return resolve(true);
             });
         });
     },
@@ -211,6 +248,21 @@ module.exports = {
                         return resolve(res);
                 });
             }
+        });
+    },
+    imageStatus: function(articleId, teamId, selectedImageId) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_IMAGES_STATUS.sql')),
+                values: [articleId, userId, selectedImageId]
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
         });
     },
     tag: function(name, articleId) {

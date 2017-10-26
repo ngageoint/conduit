@@ -64,6 +64,9 @@ app.post('/hash', function(req, res, next) {
 	
 	var article = req.body.article;
 
+	console.log('HASH TEST');
+	console.log(article);
+
 	if(article.title && article.text && article.images && article.source) {
 		res.status(200);
 		console.log(hash(article));
@@ -330,6 +333,20 @@ app.get('/select/articleBase', function(req, res, next) {
 		return;
 	}
 	db.insert.articleBase(req.body.article).then(function(result) {
+		console.log(result);
+		res.status(200);
+    	res.json(result);
+  	});
+});
+
+app.post('/insert/articleFull', function(req, res, next) {
+	if(!req.body.article || !req.body.userId || !req.body.teamId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. article, userId, and teamId are required');
+		return;
+	}
+	db.insert.articleFull(req.body.article, req.body.userId, req.body.teamId).then(function(result) {
 		console.log(result);
 		res.status(200);
     	res.json(result);

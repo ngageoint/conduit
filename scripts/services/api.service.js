@@ -37,6 +37,23 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					});
 				});
 			},
+			articleFull: function(article, userId, teamId) {
+				console.log("article full");
+				console.log(article);
+				return new Promise(function(resolve, reject) {
+					var data = {
+						article: article,
+						userId: userId,
+						teamId: teamId
+					}
+
+					$http.post('/insert/articleFull', data).then(function(response) {
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				});
+			},
 			bookStatus: function(bookId, articleId) {
 				return new Promise(function(resolve, reject) {
 					var data = {

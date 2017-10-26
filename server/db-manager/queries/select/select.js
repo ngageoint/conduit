@@ -17,7 +17,7 @@ module.exports = {
                 if(err) {
                     return reject(err);
                 }
-                if(res.rows) {
+                if(res.rows && res.rows[0]) {
                     //Move custom properties up to make obj more flat
                     if(res.rows[0].custom_properties) {
                         console.log("has custom properties")
@@ -45,6 +45,7 @@ module.exports = {
             promises.push(module.exports.articleBase(articleId));
             promises.push(module.exports.booksByArticle(articleId));
             promises.push(module.exports.imagesByArticle(articleId));
+            promises.push(module.exports.imageStatusByIds(articleId, teamId || 1));
             promises.push(module.exports.commentsByArticle(articleId));
             promises.push(module.exports.tagsByArticle(articleId));
             if(userId) {
@@ -53,9 +54,7 @@ module.exports = {
             } else {
                 promises.push(module.exports.mostRecentArticleEdit(articleId, 1, teamId || 1)); //TODO: update team info
             }
-            console.log('!!!! team id: ' + teamId);
             if(teamId) {
-                console.log('checking removed by team')
                 promises.push(module.exports.articleStatusRemovedByTeam(articleId, teamId || 1));//TODO: update team info
             }
 
@@ -64,27 +63,29 @@ module.exports = {
             0:base, 1:books[object], 2:images[string], 3:comments[object], 4:tags[string], 5:status[boolean], 6:edit
             */
             return Promise.all(promises).then(function(res) {
+                console.log('ALL PROMISES RESOLVED');
                 var article = res[0];
                 article.books = res[1];
                 article.images = res[2];
-                article.comments = res[3];
-                article.tags = res[4];
-                if(res[5]) {
-                    console.log("res[5]");
-                    console.log(res[5]);
-                    console.log(res[5].title);
-                    article.isEdit = true;
-                    article.title = res[5].title;
-                    article.text = res[5].text;
-                }
+                article.selectedImage = res[3];
+                article.comments = res[4];
+                article.tags = res[5];
                 if(res[6]) {
-                    article.read = res[6];
+                    console.log(res[6]);
+                    console.log(res[6].title);
+                    article.isEdit = true;
+                    article.title = res[6].title;
+                    article.text = res[6].text;
                 }
                 if(res[7]) {
-                    console.log(res[7]);
-                    article.removed = res[7];
+                    article.read = res[7];
+                }
+                if(res[8]) {
+                    console.log(res[8]);
+                    article.removed = res[8];
                 }
 
+                console.log(article);
 
                 return resolve(article);
             }).catch(function(err) {
@@ -141,19 +142,14 @@ module.exports = {
     },
     articleStatusRemovedByTeam: function(articleId, teamId) {
         return new Promise(function(resolve, reject) {
-            console.log('REMOVED PROMISE');
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_STATUS_REMOVED_BY_TEAM.sql')),
                 values: [articleId, teamId],
             }
-            console.log('REMOVED QUERY');
-            console.log(query);
             module.exports.query(query, function(err, res) {
                 if(err) {
                     return reject(err);
                 }
-                console.log('REMOVED RESULTS');
-                console.log(res);
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].removed !== "undefined") {
                     return resolve(res.rows[0].removed);
                 } else {
@@ -235,6 +231,32 @@ module.exports = {
                 }
                 else
                    return reject('No results for imagesByArticle where id=' + id);
+                });
+        });
+    },
+    imageStatusByIds: function(articleId, teamId) {
+        return new Promise(function(resolve, reject) { 
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_IMAGE_STATUS_BY_IDS.sql')),
+                values: [articleId, teamId],
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    console.log(err);
+                    return reject(err);
+                }
+                if(res && res.rows && res.rows[0] && res.rows[0].image_id)
+                {
+                    console.log('IMG STAT RES!!!!!!!');
+                    console.log(articleId);
+                    console.log(res);
+                    console.log('^^^^^^^^^^^^^');
+                    return resolve(res.rows[0].image_id);
+                }
+                else {
+                   console.log('error with images');
+                    return reject('No results for imagesStatusByIds where id=' + id);
+                }
                 });
         });
     },
