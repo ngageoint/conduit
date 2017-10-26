@@ -18,5 +18,9 @@
     "axios": "^0.16.2",
     "body-parser": "^1.18.2",
     "jszip-new": "https://github.com/Stuk/jszip"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
   }
 }
