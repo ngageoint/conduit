@@ -181,13 +181,15 @@ $actPadding: 8px;
 	margin: 5px 0 75px 0;
 }
 
-.article-view #date {
-	color: $colorGrey;
+.article-view #id {
 	font-size: 14px;
 	line-height: 18px;
 	position: absolute;
 	left: 15px;
 	bottom: 15px;
+	a {
+		color: $colorGrey;
+	}
 }
 
 

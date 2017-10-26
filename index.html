@@ -203,8 +203,10 @@
                         </div>
                     </div>
                     <div id="action-area">
-                        <div id="date">
-                            {{articles[currentIndex].date}}
+                        <div id="id">
+                            <a ng-href="{{articles[currentIndex].link}}" target="_blank">
+                                {{articles[currentIndex].id}}
+                            </a>
                         </div>
                         <ol class="btn btn-primary nya-bs-select dropup col-xl-4"
                             id="toolbox-books"
