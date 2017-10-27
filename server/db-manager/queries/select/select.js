@@ -71,8 +71,6 @@ module.exports = {
                 article.comments = res[4];
                 article.tags = res[5];
                 if(res[6]) {
-                    console.log(res[6]);
-                    console.log(res[6].title);
                     article.isEdit = true;
                     article.title = res[6].title;
                     article.text = res[6].text;
@@ -92,6 +90,21 @@ module.exports = {
                 return reject(err);
             });
         });
+    },
+    articleOriginal: function(article, userId, teamId) {
+        return new Promise(function(resolve, reject) {
+            return module.exports.articleBase(article.id).then(function(baseArticle) {
+                console.log('FOUND BASE ARTICLE');
+                console.log(baseArticle);
+                article.title = baseArticle.title;
+                article.text = baseArticle.text;
+                article.isEdit = false;
+                return resolve(article);
+            }).catch(function(err) {
+                return reject(err);
+            });
+        })
+        
     },
     articlesByUserFromDate: function(userId, fromDate, teamId) {
         return new Promise(function(resolve, reject) {
@@ -284,17 +297,40 @@ module.exports = {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_MOST_RECENT_ARTICLE_EDIT.sql')),
-                values: [articleId, userId, teamId],
+                values: [
+                    articleId instanceof Object ? articleId.id : articleId,
+                    userId,
+                    teamId]
             }
+
+            console.log('RECENT EDIT QUERY');
+            console.log(query);
             module.exports.query(query, function(err, res) {
                 if(err) {
                     return reject(err);
                 }
+                console.log(res);
+                console.log('if test');
+                console.log(res.rows[0])
                 if(res && res.rows && res.rows[0]) {
-                    return resolve(res.rows[0]);
+                    console.log('HERE');
+                    console.log(articleId);
+                    if(articleId instanceof Object) {
+                        console.log('THERE');
+
+                        articleId.isEdit = true;
+                        articleId.title = res.rows[0].title;
+                        articleId.text = res.rows[0].text;
+                        console.log(articleId);
+                        return resolve(articleId);
+                    } else {
+                        return resolve(res.rows[0]);
+                    }
                 }
-                else
+                else {
+                    console.log('resolving negative');
                     return resolve(false);
+                }
             });
         });
     },

@@ -32,6 +32,22 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 	});
 	
 	$scope.imageIndex = 0;
+
+	$scope.hasEdits = function () {
+		return (typeof $scope.articles[$scope.currentIndex].isEdit !== "undefined");
+	}
+
+	$scope.getOriginalArticle = function() {
+		ApiService.select.articleOriginal($scope.articles[$scope.currentIndex]).then(function(article) {
+			$scope.articles[$scope.currentIndex] = article;
+		});
+	}
+
+	$scope.getMostRecentEdit = function() {
+		ApiService.select.mostRecentArticleEdit($scope.articles[$scope.currentIndex]).then(function(article) {
+			$scope.articles[$scope.currentIndex] = article;
+		});
+	}
 	
 	/**
 	 * Navigate the image index to the previous image, if it exists. Called by ng-click of navBefore element
@@ -72,6 +88,7 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 	}	
 
 	$scope.submitEdit = function() {
+		$scope.articles[$scope.currentIndex].isEdit = true;
 		ApiService.insert.articleEdit(	$scope.articles[$scope.currentIndex].id,
 										$scope.articles[$scope.currentIndex].title, 
 										$scope.articles[$scope.currentIndex].text)

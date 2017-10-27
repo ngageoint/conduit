@@ -191,6 +191,21 @@ app.get('/select/articleFull', function(req, res, next) {
   	});
 });
 
+app.post('/select/articleOriginal', function(req, res, next) {
+	
+	if(!req.body.article) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. article object required, userId and teamId optional');
+		return;
+	}
+	db.select.articleOriginal(req.body.article, req.body.userId, req.body.teamId).then(function(article) {
+		console.log(article);
+		res.status(200);
+    	res.json(article);
+  	});
+});
+
 app.get('/select/articlesByUserFromDate', function(req, res, next) {
 	if(!req.query.userId || !req.query.date) {
 		console.log('Missing params');
@@ -261,14 +276,15 @@ app.get('/select/commentsByArticle', function(req, res, next) {
   	});
 });
 
-app.get('/select/mostRecentArticleEdit', function(req, res, next) {
-	if(!req.query.articleId || !req.query.userId || !req.query.teamId) {
+app.post('/select/mostRecentArticleEdit', function(req, res, next) {
+	if(!req.body.article && (!req.body.articleId || !req.body.userId || !req.body.teamId)) {
 		console.log('Missing params');
 		res.status(400);
-		res.send('Missing parameters. articleId, userId, teamId required.');
+		res.send('Missing parameters. articleId, userId, teamId required, or an article object is required.');
 		return;
 	}
-	db.select.mostRecentArticleEdit(req.query.articleId, req.query.userId, req.query.teamId).then(function(edit) {
+	db.select.mostRecentArticleEdit(req.body.article || req.body.articleId, req.body.userId, req.body.teamId).then(function(edit) {
+		console.log('RESOLVED');
 		console.log(edit);
 		res.status(200);
     	res.json(edit);

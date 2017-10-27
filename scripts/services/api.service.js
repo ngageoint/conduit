@@ -19,6 +19,40 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						});
 					});
 				});
+			},
+			articleOriginal: function(article) {
+				return new Promise(function(resolve, reject) {
+					
+					return UserService.getUser().then(function(user) {
+						var data = {
+							article: article,
+							userId: user.id,
+							teamId: user.team
+						}
+						$http.post('/select/articleOriginal', data).then(function(response) {
+							return resolve(response.data);
+						}).catch(function(err) {
+							return reject(err);
+						});
+					});
+				});
+			},
+			mostRecentArticleEdit: function(article) {
+				return new Promise(function(resolve, reject) {
+					return UserService.getUser().then(function(user) {
+						var data = {
+							article: article,
+							userId: user.id,
+							teamId: user.team
+						}
+
+						$http.post('/select/mostRecentArticleEdit', data).then(function(response) {
+							return resolve(response.data);
+						}).catch(function(err) {
+							return reject(err);
+						});
+					});
+				});
 			}
 		},
 		insert : {

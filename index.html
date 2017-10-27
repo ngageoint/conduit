@@ -105,16 +105,26 @@
                             <li>
                                 
                                 <a href="{{articles[currentIndex].link}}" target="_blank">
-                                    View Original&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window pull-right"></span>
+                                    View Source&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window pull-right"></span>
+                                </a>
+                                <a  href="#"
+                                    ng-show="hasEdits() && articles[currentIndex].isEdit"
+                                    ng-click="getOriginalArticle()">
+                                    View Original&nbsp;&nbsp;<span class="glyphicon glyphicon-fast-backward pull-right"></span>
+                                </a>
+                                <a  href="#"
+                                    ng-show="hasEdits() && !articles[currentIndex].isEdit"
+                                    ng-click="getMostRecentEdit()">
+                                    View Latest Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-fast-forward pull-right"></span>
+                                </a>
+                                <a href"#" target="_blank" ng-click="articleEdit.$show()">
+                                    Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil pull-right"></span>
                                 </a>
                                 <a  href="#"
                                     ng-controller="ExportCtrl"
                                     ng-click="export(articles[currentIndex])">
                                     Export&nbsp;&nbsp;<span class="glyphicon glyphicon-save-file pull-right"></span>
                                 </a>
-                                <a href"#" target="_blank" ng-click="articleEdit.$show()">
-                                        Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil pull-right"></span>
-                                    </a>
                             </li>
                         </ol>   
 
@@ -207,6 +217,7 @@
                             <a ng-href="{{articles[currentIndex].link}}" target="_blank">
                                 {{articles[currentIndex].id}}
                             </a>
+                            {{' - ' + (articles[currentIndex].isEdit ? 'Edited' : 'Original')}}
                         </div>
                         <ol class="btn btn-primary nya-bs-select dropup col-xl-4"
                             id="toolbox-books"
