@@ -220,6 +220,14 @@ app.get('/select/articlesByUserFromDate', function(req, res, next) {
   	});
 });
 
+app.get('/select/attributes', function(req, res, next) {
+	db.select.attributes().then(function(attributes) {
+		console.log(attributes);
+		res.status(200);
+    	res.json(attributes);
+  	});
+});
+
 app.get('/select/imagesByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('Missing params');

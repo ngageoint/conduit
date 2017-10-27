@@ -173,6 +173,23 @@ module.exports = {
             });
         });
     },
+    attributes: function(id) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_ATTRIBUTES.sql'))
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows) {
+                    return resolve(res.rows);
+                }
+                else
+                    return reject('No results for commentsByArticle where id=' + id);
+            });
+        });
+    },
     booksByTeam: function(teamId) {
         return new Promise(function(resolve, reject) {
             const query = {
