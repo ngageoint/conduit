@@ -54,6 +54,22 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					});
 				});
 			},
+			comment: function(comment, articleId, userId, teamId) {
+				return new Promise(function(resolve, reject) {
+					var data = {
+						comment: comment,
+						articleId: articleId,
+						userId: userId || 1,
+						teamId: teamId || 1
+					}
+
+					$http.post('/insert/comment', data).then(function(response) {
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				});
+			},
 			bookStatus: function(bookId, articleId) {
 				return new Promise(function(resolve, reject) {
 					var data = {

@@ -66,7 +66,9 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			if(!$scope.articles[$scope.currentIndex].comments)
 				$scope.articles[$scope.currentIndex].comments = [];
 			//Comments follow this data format: {user, text, date};
-			$scope.articles[$scope.currentIndex].comments.push({user: $scope.user.given_name, text: newComment, date: dateStr});
+			var comment = {user: $scope.user.given_name, text: newComment, date: dateStr}
+			$scope.articles[$scope.currentIndex].comments.push(comment);
+			ApiService.insert.comment(comment, $scope.articles[$scope.currentIndex].id, 1)//TODO: implement user id
 		}
 	}	
 
