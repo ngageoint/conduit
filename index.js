@@ -615,6 +615,19 @@ app.post('/delete/bookStatus', function(req, res, next) {
   	});
 });
 
+/*=================
+   CREATE Endpoint 
+ ==================*/
+ app.get('/create/tables', function(req, res, next) {
+	db.create.tables(req.query.articleId, req.query.userId, req.query.teamId).then(function(res) {
+		res.status(200);
+    	res.send(res);
+  	}).catch(function(err) {
+		res.status(500);
+		res.send(err);
+	});
+});
+
 console.log("listening on " + port);
 
 app.listen(port);

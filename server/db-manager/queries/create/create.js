@@ -19,17 +19,17 @@ module.exports = {
         });
     },
     tables: function(callback) {
-        
-        const query = {
-            text: tools.readQueryFile(path.join(__dirname, 'CREATE_CONDUIT_TABLES.sql')),
-        }
-        this.query(query, function(err, res) {
-            if(err) {
-                callback(err);
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'conduit_db.schema.backup.sql')),
             }
-            else
-                callback(res);
-            callback();
+            this.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve(res);
+            });
         });
     }
 };
