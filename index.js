@@ -346,6 +346,8 @@ app.post('/insert/articleFull', function(req, res, next) {
 		res.send('Missing parameters. article, userId, and teamId are required');
 		return;
 	}
+	console.log('USER ID IN API');
+	console.log(req.body.userId)
 	db.insert.articleFull(req.body.article, req.body.userId, req.body.teamId).then(function(result) {
 		console.log(result);
 		res.status(200);

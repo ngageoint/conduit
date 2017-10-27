@@ -1,17 +1,1 @@
-[{
-	"date":"25 Aug 2017 09:23:86",
-    "link":"www.example.com/article8675309.html",
-    "id":"8675309",
-    "title":"Article Two",
-    "text":"The text associated with article two",
-    "images":["www.imgur.com/abc.png","www.imgur.com/xyz.png"],
-    "selectedImage":0,
-    "tags":["Example", "USA", "EUR", "Topic 1", "Topic 3"],
-    "topics":["Topic 1", "Topic 3"],
-    "region":[{"abrv":"USA","name":"United States"}, {"abrv":"EUR","name":"Europe"}],
-    "books":[],
-    "comments":[],
-    "wasRead":false,
-	"inFeed":true,
-	"source":"Example Source"
-}]
+[]

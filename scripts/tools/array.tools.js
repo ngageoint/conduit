@@ -14,6 +14,13 @@ angular.module('conduit.tools').factory('ArrayTools', function($q, $http, __conf
 		same: function(a, b) {
 			return a.filter(function(i) {return b.indexOf(i) >= 0;});
 		},
+		removeDuplicates: function(a, key) {
+			var seen = {};
+			return a.filter(function(item) {
+				var k = key(item);
+				return seen.hasOwnProperty(k) ? false : (seen[k] = true);
+			})
+		},
 		/**
 		 * This function removes and element at a specified index from the array, adusting all other elements accordingly.
 		 * 

@@ -8,6 +8,8 @@ module.exports = {
         module.exports.query = query;
     },
     articleFull: function(article, userId, teamId) {
+        console.log('USER ID');
+        console.log(userId);
         return new Promise(function(resolve, reject) {
             if(article instanceof Array) {
                 var promises = [];
@@ -242,6 +244,8 @@ module.exports = {
                 }
                 module.exports.query(query, function(err, res) {
                     if(err) {
+                        console.log(err);
+                        console.log('Db error where uri='+uri+' articleId='+articleId);
                         return reject(err);
                     }
                     else
@@ -253,7 +257,7 @@ module.exports = {
     imageStatus: function(articleId, teamId, selectedImageId) {
         return new Promise(function(resolve, reject) {
             const query = {
-                text: tools.readQueryFile(path.join(__dirname, 'INSERT_IMAGES_STATUS.sql')),
+                text: tools.readQueryFile(path.join(__dirname, 'INSERT_IMAGE_STATUS.sql')),
                 values: [articleId, userId, selectedImageId]
             }
             module.exports.query(query, function(err, res) {

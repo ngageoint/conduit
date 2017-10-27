@@ -1,6 +1,6 @@
 /* The ArticlesService makes all of the articles available in a global, editable promise. */
 angular.module('conduit.services').factory('ArticlesService', function($q, $http,
-ApiService, BooksService, DataSourceService, RssLiteService, ComplexPropertyTools, __config) { 
+ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, ComplexPropertyTools, __config) { 
 
 	var articles = 	DataSourceService.getSources().then(function(sources) {
 		
@@ -55,9 +55,11 @@ ApiService, BooksService, DataSourceService, RssLiteService, ComplexPropertyTool
 					})(fullResponse[i]);
 				}
 				return $q.all(articles).then(function(articles) {
-					console.log("all promises resolved")
+					//Send articles to db
 					ApiService.insert.articleFull(articles, 1, 1);//TODO: update with dynamic user and team info
-					
+					articles = ArrayTools.removeDuplicates(articles, function(thisArticle) {
+						return thisArticle.id;
+					});
 					return articles;
 				});
 			}).catch(function(err) {

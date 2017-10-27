@@ -135,7 +135,8 @@ module.exports = {
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].read !== "undefined") {
                     return resolve(res.rows[0].read);
                 } else {
-                    return reject('No results for articleStatusReadByIds where articleId='+ articleId + " and userId=" + userId);
+                    console.log('No results for articleStatusReadByIds where articleId='+ articleId + " and userId=" + userId)
+                    return resolve(false);
                 }
             });
         });
@@ -153,7 +154,8 @@ module.exports = {
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].removed !== "undefined") {
                     return resolve(res.rows[0].removed);
                 } else {
-                    return reject('No results for articleStatusRemovedByTeam where articleId='+ articleId + " and teamId=" + teamId);
+                    console.log('No results for articleStatusRemovedByTeam where articleId='+ articleId + " and teamId=" + teamId);
+                    return resolve(false);
                 }
             });
         });
@@ -254,8 +256,8 @@ module.exports = {
                     return resolve(res.rows[0].image_id);
                 }
                 else {
-                   console.log('error with images');
-                    return reject('No results for imagesStatusByIds where id=' + id);
+                    console.log('RESOLVING UNDEFINED');
+                   return resolve(undefined);
                 }
                 });
         });

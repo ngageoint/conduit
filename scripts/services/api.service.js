@@ -43,8 +43,8 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 				return new Promise(function(resolve, reject) {
 					var data = {
 						article: article,
-						userId: userId,
-						teamId: teamId
+						userId: userId || 1,
+						teamId: teamId || 1
 					}
 
 					$http.post('/insert/articleFull', data).then(function(response) {
