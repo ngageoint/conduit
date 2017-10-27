@@ -82,7 +82,7 @@ ApiService, ArticlesService, AttributesService, BooksService, UserService, Array
 			//Set the old article to be inactive and read
 			$scope.articles[$scope.currentIndex].active = false;
 			$scope.articles[$scope.currentIndex].read = true;
-			ApiService.update.articleStatusRead($scope.articles[$scope.currentIndex].id, undefined, undefined, true).then(function(res){});
+			ApiService.update.articleStatusRead($scope.articles[$scope.currentIndex].id, true).then(function(res){});
 			
 			/*If no parent or index are given, pick the next card to be selected based on the last known selection
 				Order:

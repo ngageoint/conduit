@@ -131,8 +131,18 @@ app.get('/download', function(req, res, next) {
 });
 
 app.get('/userInfo', function(req, res, next) {
-	AUTH_CODE = req.query.code;
+	//For test purposes
+	var user = {
+		id: 1,
+		team: 1,
+		given_name: 'Test User',
+		auth: 1
+	}
+	res.status(200);
+	res.json(user);
+	return;
 
+	AUTH_CODE = req.query.code;
 	if(!AUTH_CODE)
 	{
 		res.status(400);

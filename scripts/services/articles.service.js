@@ -13,7 +13,7 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 				})
 		);
 
-		queries.push(ApiService.select.articlesByUserFromDate(1,'2017-07-13',1)
+		queries.push(ApiService.select.articlesByUserFromDate('2017-07-13')
 				.then(function(response) {
 					return response;
 				})
@@ -56,7 +56,7 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 				}
 				return $q.all(articles).then(function(articles) {
 					//Send articles to db
-					ApiService.insert.articleFull(articles, 1, 1);//TODO: update with dynamic user and team info
+					ApiService.insert.articleFull(articles);
 					articles = ArrayTools.removeDuplicates(articles, function(thisArticle) {
 						return thisArticle.id;
 					});

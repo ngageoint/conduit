@@ -1,66 +1,72 @@
 /* The DataSourceService makes all of the data source properties available in a global, editable promise. */
-angular.module('conduit.services').factory('ApiService', function($http, $location, $window) { 
+angular.module('conduit.services').factory('ApiService', function($http, $location, $window, UserService) { 
 
 	return {
 	  	select: {
-			articlesByUserFromDate: function(userId, date, teamId) {
+			articlesByUserFromDate: function(date) {
 				return new Promise(function(resolve, reject) {
-					var query = '/select/articlesByUserFromDate?' +
-								'userId=' + userId + 
-								'&date=' + date + 
-								(teamId ? '&teamId=' + teamId : '');
+					return UserService.getUser().then(function(user) {
+						var query = '/select/articlesByUserFromDate?' +
+									'userId=' + user.id + 
+									'&date=' + date + 
+									(user.team ? '&teamId=' + user.team : '');
 
-					$http.get(query).then(function(response) {
-						console.log(response.data);
-						return resolve(response.data);
-					}).catch(function(err) {
-						return reject(err);
+						$http.get(query).then(function(response) {
+							console.log(response.data);
+							return resolve(response.data);
+						}).catch(function(err) {
+							return reject(err);
+						});
 					});
 				});
 			}
 		},
 		insert : {
-			articleEdit: function(articleId, userId, teamId, title, text) {
+			articleEdit: function(articleId, title, text) {
 				return new Promise(function(resolve, reject) {
-					var data = {
-						articleId: articleId,
-						userId: userId,
-						teamId: teamId,
-						title: title,
-						text: text
-					}
+					return UserService.getUser().then(function(user) {
+						var data = {
+							articleId: articleId,
+							userId: user.id,
+							teamId: user.team,
+							title: title,
+							text: text
+						}
 
-					$http.post('/insert/articleEdit', data).then(function(response) {
-						return resolve(response);
-					}).catch(function(err) {
-						return reject(err);
+						$http.post('/insert/articleEdit', data).then(function(response) {
+							return resolve(response);
+						}).catch(function(err) {
+							return reject(err);
+						});
 					});
 				});
 			},
-			articleFull: function(article, userId, teamId) {
+			articleFull: function(article) {
 				console.log("article full");
 				console.log(article);
 				return new Promise(function(resolve, reject) {
-					var data = {
-						article: article,
-						userId: userId || 1,
-						teamId: teamId || 1
-					}
+					return UserService.getUser().then(function(user) {
+						var data = {
+							article: article,
+							userId: user.id || 1,
+							teamId: user.team || 1
+						}
 
-					$http.post('/insert/articleFull', data).then(function(response) {
-						return resolve(response);
-					}).catch(function(err) {
-						return reject(err);
+						$http.post('/insert/articleFull', data).then(function(response) {
+							return resolve(response);
+						}).catch(function(err) {
+							return reject(err);
+						});
 					});
 				});
 			},
-			comment: function(comment, articleId, userId, teamId) {
+			comment: function(comment, articleId) {
 				return new Promise(function(resolve, reject) {
 					var data = {
 						comment: comment,
 						articleId: articleId,
-						userId: userId || 1,
-						teamId: teamId || 1
+						userId: comment.user.id,
+						teamId: comment.user.team
 					}
 
 					$http.post('/insert/comment', data).then(function(response) {
@@ -100,35 +106,39 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					});
 				});
 			},
-			articleStatusRead: function(articleId, userId, teamId, isRead) {
+			articleStatusRead: function(articleId, isRead) {
 				return new Promise(function(resolve, reject) {
-					var data = {
-						articleId: articleId,
-						userId: userId || 1,
-						teamId: teamId || 1,
-						isRead: isRead
-					}
+					return UserService.getUser().then(function(user) {
+						var data = {
+							articleId: articleId,
+							userId: user.id,
+							teamId: team.id,
+							isRead: isRead
+						}
 
-					$http.post('/update/articleStatusRead', data).then(function(response) {
-						return resolve(response);
-					}).catch(function(err) {
-						return reject(err);
+						$http.post('/update/articleStatusRead', data).then(function(response) {
+							return resolve(response);
+						}).catch(function(err) {
+							return reject(err);
+						});
 					});
 				});
 			},
-			articleStatusRemoved: function(articleId, userId, teamId, isRemoved) {
+			articleStatusRemoved: function(articleId, isRemoved) {
 				return new Promise(function(resolve, reject) {
-					var data = {
-						articleId: articleId,
-						userId: userId || 1,
-						teamId: teamId || 1,
-						isRemoved: isRemoved
-					}
+					return UserService.getUser().then(function(user) {
+						var data = {
+							articleId: articleId,
+							userId: user.id,
+							teamId: user.team,
+							isRemoved: isRemoved
+						}
 
-					$http.post('/update/articleStatusRemoved', data).then(function(response) {
-						return resolve(response);
-					}).catch(function(err) {
-						return reject(err);
+						$http.post('/update/articleStatusRemoved', data).then(function(response) {
+							return resolve(response);
+						}).catch(function(err) {
+							return reject(err);
+						});
 					});
 				});
 			}

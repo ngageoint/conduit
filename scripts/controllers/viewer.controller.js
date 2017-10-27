@@ -51,7 +51,6 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			$scope.articles[$scope.currentIndex].selectedImage++;
 	}
 
-	//TODO: track by userId
 	/**
 	 * Add a new comment to this article.
 	 * 
@@ -66,16 +65,14 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			if(!$scope.articles[$scope.currentIndex].comments)
 				$scope.articles[$scope.currentIndex].comments = [];
 			//Comments follow this data format: {user, text, date};
-			var comment = {user: $scope.user.given_name, text: newComment, date: dateStr}
+			var comment = {user: $scope.user, text: newComment, date: dateStr}
 			$scope.articles[$scope.currentIndex].comments.push(comment);
-			ApiService.insert.comment(comment, $scope.articles[$scope.currentIndex].id, 1)//TODO: implement user id
+			ApiService.insert.comment(comment, $scope.articles[$scope.currentIndex].id)
 		}
 	}	
 
 	$scope.submitEdit = function() {
-		ApiService.insert.articleEdit(	$scope.articles[$scope.currentIndex].id, 
-										1, 
-										1, 
+		ApiService.insert.articleEdit(	$scope.articles[$scope.currentIndex].id,
 										$scope.articles[$scope.currentIndex].title, 
 										$scope.articles[$scope.currentIndex].text)
 							.then(function(res) {
