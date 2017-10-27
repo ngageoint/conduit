@@ -112,7 +112,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						var data = {
 							articleId: articleId,
 							userId: user.id,
-							teamId: team.id,
+							teamId: user.team,
 							isRead: isRead
 						}
 
