@@ -20,12 +20,9 @@ module.exports = {
                 if(res.rows && res.rows[0]) {
                     //Move custom properties up to make obj more flat
                     if(res.rows[0].custom_properties) {
-                        console.log("has custom properties")
                         for (var key in res.rows[0].custom_properties) {
-                            console.log("key: " + key)
                             if (res.rows[0].custom_properties.hasOwnProperty(key)) {
                                 res.rows[0][key] = res.rows[0].custom_properties[key];
-                                console.log(res.rows[0][key]);
                             }
                         }
                         delete res.rows[0].custom_properties
@@ -63,27 +60,31 @@ module.exports = {
             0:base, 1:books[object], 2:images[string], 3:comments[object], 4:tags[string], 5:status[boolean], 6:edit
             */
             return Promise.all(promises).then(function(res) {
-                console.log('ALL PROMISES RESOLVED');
                 var article = res[0];
                 article.books = res[1];
                 article.images = res[2];
                 article.selectedImage = res[3];
                 article.comments = res[4];
                 article.tags = res[5];
-                if(res[6]) {
+                
+                var i = 6;
+                if(res[i].title) {
+                    console.log('CHECKING EDITS');
                     article.isEdit = true;
-                    article.title = res[6].title;
-                    article.text = res[6].text;
+                    article.title = res[i].title;
+                    article.text = res[i].text;
+                    i++;
                 }
-                if(res[7]) {
-                    article.read = res[7];
+                if(res[i]) {
+                    console.log('CHECKING READ');
+                    article.read = res[i];
+                    i++;
                 }
-                if(res[8]) {
-                    console.log(res[8]);
-                    article.removed = res[8];
+                if(res[i]) {
+                    console.log('CHECKING REMOVED');
+                    console.log(res[i]);
+                    article.removed = res[i];
                 }
-
-                console.log(article);
 
                 return resolve(article);
             }).catch(function(err) {
@@ -94,8 +95,6 @@ module.exports = {
     articleOriginal: function(article, userId, teamId) {
         return new Promise(function(resolve, reject) {
             return module.exports.articleBase(article.id).then(function(baseArticle) {
-                console.log('FOUND BASE ARTICLE');
-                console.log(baseArticle);
                 article.title = baseArticle.title;
                 article.text = baseArticle.text;
                 article.isEdit = false;
@@ -120,7 +119,6 @@ module.exports = {
                     var promises = []
                     for(var i = 0; i < res.rows.length; i++) {
                         (function(thisId) {
-                            console.log(thisId);
                             promises.push(module.exports.articleFull(thisId, userId, teamId));
                         })(res.rows[i].id);
                     }
@@ -274,19 +272,13 @@ module.exports = {
             }
             module.exports.query(query, function(err, res) {
                 if(err) {
-                    console.log(err);
                     return reject(err);
                 }
                 if(res && res.rows && res.rows[0] && res.rows[0].image_id)
                 {
-                    console.log('IMG STAT RES!!!!!!!');
-                    console.log(articleId);
-                    console.log(res);
-                    console.log('^^^^^^^^^^^^^');
                     return resolve(res.rows[0].image_id);
                 }
                 else {
-                    console.log('RESOLVING UNDEFINED');
                    return resolve(undefined);
                 }
                 });
@@ -319,33 +311,22 @@ module.exports = {
                     userId,
                     teamId]
             }
-
-            console.log('RECENT EDIT QUERY');
-            console.log(query);
             module.exports.query(query, function(err, res) {
                 if(err) {
                     return reject(err);
                 }
-                console.log(res);
-                console.log('if test');
-                console.log(res.rows[0])
                 if(res && res.rows && res.rows[0]) {
-                    console.log('HERE');
-                    console.log(articleId);
                     if(articleId instanceof Object) {
-                        console.log('THERE');
-
                         articleId.isEdit = true;
                         articleId.title = res.rows[0].title;
                         articleId.text = res.rows[0].text;
-                        console.log(articleId);
+
                         return resolve(articleId);
                     } else {
                         return resolve(res.rows[0]);
                     }
                 }
                 else {
-                    console.log('resolving negative');
                     return resolve(false);
                 }
             });
@@ -413,6 +394,30 @@ module.exports = {
                 }
                 else
                     return reject('No results for tagsByNameAndArticleId where name=' + name + " and articleId=" + articleId);
+            });
+        });
+    },
+    userById: function(id) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_USER_BY_ID.sql')),
+                values: [id]
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows && res.rows[0]) {
+                    var user = {
+                        id: res.rows[0].id,
+                        team: res.rows[0].team_id,
+                        given_name: res.rows[0].name_preferred
+                    }
+                    
+                    return resolve(user);
+                }
+                else
+                    return reject('No results for user where id=' + id);
             });
         });
     }

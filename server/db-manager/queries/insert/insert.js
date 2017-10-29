@@ -8,8 +8,6 @@ module.exports = {
         module.exports.query = query;
     },
     articleFull: function(article, userId, teamId) {
-        console.log('USER ID');
-        console.log(userId);
         return new Promise(function(resolve, reject) {
             if(article instanceof Array) {
                 var promises = [];
@@ -47,8 +45,6 @@ module.exports = {
                         promises.push(module.exports.imageStatus(article.id, teamId, article.selectedImage));
                         promises.push(module.exports.tag(article.tags, article.id));
                     }).catch(function(err) {
-                        console.log('ERROR IN BASE ARTICLE!!!!!!!!!!!!');
-                        console.log(err);
                         return reject(err);  
                     });
                 }
@@ -61,7 +57,6 @@ module.exports = {
                 });
                 
                 return Promise.all(promises).then(function(res) {
-                    console.log('ALL PROMISES RESOLVED');
                     return resolve(res);
                 }).catch(function(err) {
                     return reject(err);
@@ -87,7 +82,6 @@ module.exports = {
                 if(err) {
                     return reject(err);
                 }
-                console.log('SUCCESS IN BASE ARTICLE');
                 return resolve(true);
             });
         });
@@ -244,8 +238,6 @@ module.exports = {
                 }
                 module.exports.query(query, function(err, res) {
                     if(err) {
-                        console.log(err);
-                        console.log('Db error where uri='+uri+' articleId='+articleId);
                         return reject(err);
                     }
                     else
@@ -294,7 +286,6 @@ module.exports = {
                     text: tools.readQueryFile(path.join(__dirname, 'INSERT_TAG.sql')),
                     values: [articleId, name]
                 }
-                console.log(query.values);
                 module.exports.query(query, function(err, res) {
                     if(err) {
                         return reject(err);

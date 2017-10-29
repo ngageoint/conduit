@@ -7,11 +7,11 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 		var queries = [];
 
 		//Create the static query Promise for our sample data
-		queries.push($http.get(__config.articlesUrl)
+		/*queries.push($http.get(__config.articlesUrl)
 				.then(function(response) {
 					return response.data;
 				})
-		);
+		);*/
 
 		queries.push(ApiService.select.articlesByUserFromDate('2017-07-13')
 				.then(function(response) {

@@ -34,7 +34,11 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 	$scope.imageIndex = 0;
 
 	$scope.hasEdits = function () {
-		return (typeof $scope.articles[$scope.currentIndex].isEdit !== "undefined");
+		if($scope.articles) {
+			return (typeof $scope.articles[$scope.currentIndex].isEdit !== "undefined");
+		} else {
+			return false;
+		}
 	}
 
 	$scope.getOriginalArticle = function() {
