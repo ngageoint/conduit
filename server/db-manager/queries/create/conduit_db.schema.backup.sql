@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.7
 -- Dumped by pg_dump version 9.5.7
 
--- Started on 2017-10-27 13:18:42
+-- Started on 2017-10-28 20:07:03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -757,7 +757,7 @@ ALTER TABLE ONLY "COMMENTS"
     ADD CONSTRAINT "FK__USERS__COMMENTS" FOREIGN KEY (user_id) REFERENCES "USERS"(id);
 
 
--- Completed on 2017-10-27 13:18:42
+-- Completed on 2017-10-28 20:07:03
 
 --
 -- PostgreSQL database dump complete
