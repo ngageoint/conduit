@@ -14,6 +14,7 @@ const hash = require('object-hash');
 const db = require('./server/db-manager/db-manager.js');
 const sso = require('./server/sso/sso.js');
 const moe = require('./server/export/export.js'); //Microsoft Office Export, MOE; export is a reserved word
+const ArticleManager = require('./server/article-manager/article-manager.js');
 
 //Load local environment variable file (.env)
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
@@ -192,7 +193,7 @@ app.get('/select/articlesByUserFromDate', function(req, res, next) {
 	}
 	console.log(req.query);
 	db.select.articlesByUserFromDate(req.query.userId, req.query.date, req.query.teamId).then(function(article) {
-		console.log(article);
+		//console.log(article);
 		res.status(200);
     	res.json(article);
   	});
@@ -347,7 +348,7 @@ app.post('/insert/articleFull', function(req, res, next) {
 		return;
 	}
 	db.insert.articleFull(req.body.article, req.body.userId, req.body.teamId).then(function(result) {
-		console.log(result);
+		//console.log(result);
 		res.status(200);
     	res.json(result);
   	});

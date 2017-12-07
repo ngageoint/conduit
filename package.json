@@ -7,20 +7,14 @@
     "type": "git",
     "url": "git+https://github.com/ngageoint/conduit.git"
   },
+  "engines": {
+    "node": "6.11.x",
+    "npm":"3.10.10"
+  },
   "author": "National Geospatial-Intelligence Agency",
   "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/ngageoint/conduit/issues"
   },
-  "homepage": "https://github.com/ngageoint/conduit#readme",
-  "dependencies": {
-    "@angular/animations": "^4.2.2",
-    "axios": "^0.16.2",
-    "body-parser": "^1.18.2",
-    "jszip-new": "https://github.com/Stuk/jszip"
-  },
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^4.0.1"
-  }
+  "homepage": "https://github.com/ngageoint/conduit#readme"
 }
