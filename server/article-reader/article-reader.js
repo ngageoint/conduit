@@ -11,6 +11,10 @@ module.exports = {
     readSource: function(source, conditioning) {
         return new Promise(function(resolve, reject) {
             
+            console.log(source);
+            console.log(source.type);
+            console.log(source.type.toLowerCase() === 'rss');
+
             //Test for RSS and process if true
             if(source.type.toLowerCase() === 'rss') {
                 module.exports.readRss(source).then(function(articles) {
@@ -21,7 +25,7 @@ module.exports = {
             }
 
             //Test for special data conditioning (not available for RSS at this time);
-            if(conditioning) {
+            else if(conditioning) {
                 var config = {
                     //TODO: Add auth config info
                 }
@@ -32,8 +36,9 @@ module.exports = {
                     return reject(err);
                 });
             }
-
-            return Promise.reject('No available actions for this source');
+            else {
+                return reject('No available actions for this source');
+            }
         });
     },
     readRss: function(source) {
@@ -169,7 +174,3 @@ source = {
 		"checked":false
     }]
 }
-
-module.exports.readSource(source).then(function(res) {
-    console.log(res); 
-});

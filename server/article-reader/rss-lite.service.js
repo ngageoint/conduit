@@ -55,7 +55,7 @@ module.exports = {
                 });
             }).catch(function(err) {
                 console.error(err);
-                return Promise.reject(err);
+                return reject(err);
             });                    
         //});
 	}
