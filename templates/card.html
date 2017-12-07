@@ -59,7 +59,7 @@
                 <span ng-if="::attr.glyphicon" class="glyphicon glyphicon-{{::attr.glyphicon}}"></span>
             </span>
         </div>
-        <span class="tag" ng-repeat="tag in ::article.tags">{{::tag}}{{$last ? '' : ', '}}</span>
+        <span class="tag" ng-repeat="tag in ::article.tags track by $index">{{::tag}}{{$last ? '' : ', '}}</span>
     </div>
 
     <div id="date" ng-if="article.date">
