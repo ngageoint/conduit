@@ -1,30 +1,23 @@
 const axios = require('axios');
-var parse = require('xml-parser');
 var xml2js = require('xml2js');
 
 module.exports = {
     readUrl: function(url) {
 		return new Promise(function(resolve, reject) {
-            
-            var loadFeed = function(url, callback) {
-                var config = {
-                    //TODO: Add auth config info
-                }
-        
-                axios.get(url, config).then(callback).catch(function(err) {
-                    console.error(err);
-                    return Promise.reject();
-                });
+            var config = {
+                //TODO: Add auth config info
             }
-                        
-            loadFeed(url, function(response) {
-                
-                var parser = new xml2js.Parser({ignoreAttrs : false, mergeAttrs : true})
-                var parseString = parser.parseString;
-                var xml = response.data
+    
+            axios.get(url, config).then(function(response) { 
+                console.log('in callback');
+                //return new Promise(function(resolve, reject) {
+                    var parser = new xml2js.Parser({ignoreAttrs : false, mergeAttrs : true})
+                    var parseString = parser.parseString;
+                    var xml = response.data
 
-                parseString(xml, function (err, xml) {
-
+                    parseString(xml, function (err, res) {
+                        xml = res;
+                    });
                     var entries;
                     var parsed = [];
 
@@ -54,14 +47,16 @@ module.exports = {
                     } 
 
                     if(parsed) {
-                        return Promise.resolve(parsed);
-                    }
-                    else {
-                        return Promise.reject();
+                        console.log('resolving');
+                        return resolve(parsed);
+                    } else {
+                        return reject();
                     }
                 });
-                
-            });
-        });
+            }).catch(function(err) {
+                console.error(err);
+                return Promise.reject(err);
+            });                    
+        //});
 	}
 }

@@ -14,7 +14,7 @@ const hash = require('object-hash');
 const db = require('./server/db-manager/db-manager.js');
 const sso = require('./server/sso/sso.js');
 const moe = require('./server/export/export.js'); //Microsoft Office Export, MOE; export is a reserved word
-const ArticleManager = require('./server/article-manager/article-manager.js');
+const ArticleReader = require('./server/article-reader/article-reader.js');
 
 //Load local environment variable file (.env)
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
