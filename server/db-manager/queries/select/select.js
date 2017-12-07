@@ -46,6 +46,8 @@ module.exports = {
             promises.push(module.exports.commentsByArticle(articleId));
             promises.push(module.exports.tagsByArticle(articleId));
             if(userId) {
+                if(articleId === 'dddce74e1ea730b1402e6510abdef4f9b057a735')
+                    console.log('Checking article read status');
                 promises.push(module.exports.mostRecentArticleEdit(articleId, userId, teamId || 1)); //TODO: update team info
                 promises.push(module.exports.articleStatusReadByIds(articleId, userId));
             } else {
@@ -67,23 +69,30 @@ module.exports = {
                 article.comments = res[4];
                 article.tags = res[5];
                 
-                var i = 6;
-                if(res[i].title) {
-                    console.log('CHECKING EDITS');
+                if(res[6].title) {
                     article.isEdit = true;
-                    article.title = res[i].title;
-                    article.text = res[i].text;
-                    i++;
+                    article.title = res[6].title;
+                    article.text = res[6].text;
                 }
-                if(res[i]) {
-                    console.log('CHECKING READ');
-                    article.read = res[i];
-                    i++;
+
+                //If there are 8 results, both read and removed were promised
+                //In this case, 7 will be read, and 8 will be removed
+                if(res[8]) {
+                    article.read = res[7];
+                    article.removed = res[8];
+                } else {
+                    //Otherwise, we have to check what the input was to determine
+                    //what property res belongs to
+                    if(userId) {
+                        article.read = res[7];
+                    } else if (teamId) {
+                        article.removed = res[7];
+                    }
                 }
-                if(res[i]) {
-                    console.log('CHECKING REMOVED');
-                    console.log(res[i]);
-                    article.removed = res[i];
+
+                if(article.id === 'dddce74e1ea730b1402e6510abdef4f9b057a735') {
+                    console.log(article);
+                    //console.log(res);
                 }
 
                 return resolve(article);
@@ -144,9 +153,10 @@ module.exports = {
                     return reject(err);
                 }
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].read !== "undefined") {
+                    console.log("Matching status found");
                     return resolve(res.rows[0].read);
                 } else {
-                    console.log('No results for articleStatusReadByIds where articleId='+ articleId + " and userId=" + userId)
+                    //console.log('No results for articleStatusReadByIds where articleId='+ articleId + " and userId=" + userId)
                     return resolve(false);
                 }
             });
@@ -163,9 +173,10 @@ module.exports = {
                     return reject(err);
                 }
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].removed !== "undefined") {
+                    console.log("Successful team removed found");
                     return resolve(res.rows[0].removed);
                 } else {
-                    console.log('No results for articleStatusRemovedByTeam where articleId='+ articleId + " and teamId=" + teamId);
+                    //console.log('No results for articconsole.log('No results for articleStatusRemovedByTeam where articleId='+ articleId + " and teamId=" + teamId);
                     return resolve(false);
                 }
             });

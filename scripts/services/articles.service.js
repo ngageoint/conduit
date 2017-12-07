@@ -20,6 +20,7 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 		);
 
 		//Run through all of the sources
+		/*
 		for(var i = 0; i < sources.length; i++)
 		{
 			//Id the rss sources, defer the promsies, and added them to our query array
@@ -39,7 +40,7 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 						})
 					})(sources[i])//Make sure to pass the source on to the callback so that it can be properly formatted
 			};
-
+		*/
 		//Request all promises from our queries array, concat them, and return
 		return $q.all(queries).then(function(results) {
 			var fullResponse = [];
@@ -56,7 +57,7 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 				}
 				return $q.all(articles).then(function(articles) {
 					//Send articles to db
-					ApiService.insert.articleFull(articles);
+					//ApiService.insert.articleFull(articles);
 					articles = ArrayTools.removeDuplicates(articles, function(thisArticle) {
 						return thisArticle.id;
 					});
