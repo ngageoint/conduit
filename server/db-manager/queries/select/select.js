@@ -35,6 +35,43 @@ module.exports = {
             });
         });
     },
+    articleBlock: function(userId, teamId, fromDate, numArticles, startingId) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_IDS.sql')),
+                values: [fromDate],
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows && res.rows[0]) {
+                    var articles = res.rows;
+                    numArticles = parseInt(numArticles);
+                    var promises = []
+                    //Find the starting point
+                    for(var i = 0; i < articles.length; i++) {
+                        if(articles[i].id == startingId || !startingId) {
+                            i++;
+                            for(var j = i; j < articles.length && j < i + numArticles; j++) {
+                                (function(thisId) {
+                                    promises.push(module.exports.articleFull(thisId, userId, teamId));
+                                })(articles[i].id);
+                            }
+                            break;
+                        }
+                    }
+                    return Promise.all(promises).then(function(res) {
+                        return resolve(res);
+                    }).catch(function(err) {
+                        return reject(err);
+                    });
+                } else {
+                    return reject('No results for articleBlock');
+                }
+            });
+        });
+    },
     articleFull: function(articleId, userId, teamId) {
         return new Promise(function(resolve, reject) {
             var promises = [];

@@ -330,6 +330,19 @@ app.get('/select/articleBase', function(req, res, next) {
   	});
 });
 
+app.get('/select/articleBlock', function(req, res, next) {
+	if(!req.query.userId || !req.query.teamId || !req.query.fromDate || !req.query.numArticles) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. userId, teamId, fromDate, and numArticles required.');
+		return;
+	}
+	db.select.articleBlock(req.query.userId, req.query.teamId, req.query.fromDate, req.query.numArticles, req.query.startingId).then(function(article) {
+		res.status(200);
+    	res.json(article);
+  	});
+});
+
 /*=================
    INSRET Endpoint 
  ==================*/
