@@ -66,24 +66,47 @@ module.exports = {
     },
     articleBase: function(article) {
         return new Promise(function(resolve, reject) {
-            const query = {
-                text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_BASE.sql')),
-                values: [
-                    article.date,
-                    article.id,
-                    article.link,
-                    article.text,
-                    article.title,
-                    article.customProperties,
-                    article.source
-                ],
-            }
-            module.exports.query(query, function(err, res) {
-                if(err) {
-                    return reject(err);
+            if(article instanceof Array) {
+                var promises = [];
+                for(var i = 0; i < article.length; i++) {
+                    if(article[i]) {
+                        (function(thisArticle) {
+                            select.articleBase(thisArticle.id).then(function(foundArticles) {
+                                if(!foundArticles[0]) {
+                                    promises.push(module.exports.articleBase(thisArticle));
+                                }
+                            }).catch(function(err) {
+                                promises.push(module.exports.articleBase(thisArticle));
+                            }); 
+                        }(article[i]));   
+                    }
                 }
-                return resolve(true);
-            });
+                return Promise.all(promises).then(function(res) {
+                    return resolve(res);
+                }).catch(function(err) {
+                    return reject(err);
+                });
+            } else {
+                const query = {
+                    text: tools.readQueryFile(path.join(__dirname, 'INSERT_ARTICLE_BASE.sql')),
+                    values: [
+                        article.date,
+                        article.id,
+                        article.link,
+                        article.text,
+                        article.title,
+                        article.customProperties,
+                        article.source
+                    ],
+                }
+    
+                module.exports.query(query, function(err, res) {
+                    if(err) {
+                        return reject(err);
+                    }
+                    return resolve(true);
+                });
+            }
         });
     },
     articleEdit: function(articleId, userId, teamId, title, text) {
