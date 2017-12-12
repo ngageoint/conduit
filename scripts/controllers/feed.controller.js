@@ -20,7 +20,6 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 	}).catch( function(err) {
 		console.log(err);
 	});
-
 	
 	/**
 	 * When attached to a Bootstrap dropdown, remove the 'open' class after the cursor has left the dropdown for a specified period
@@ -59,7 +58,7 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 		//Check for minimum required scope
 		if(!$scope.articles)
 			return;
-		
+
 		//Ensure the days back does not exceed filter bounds
 		if(FilterService.filter.daysBack < 1)
 			FilterService.filter.daysBack = 1;
@@ -138,7 +137,7 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 	 * 
 	 * @param {int} numCards The number of cards to build; default is __config.MIN_RENDERED_CARDS / 2
 	 */
-	$scope.buildMoreCards = function (numCards) {
+	$scope.buildMoreCards = function (numCards) {		
 		//Enforce minimums and set defaults
 		if(!$scope.articles)
 			return;

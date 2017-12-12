@@ -1,5 +1,5 @@
 /* The DataSourceService makes all of the data source properties available in a global, editable promise. */
-angular.module('conduit.services').factory('ApiService', function($http, $location, $window, UserService) { 
+angular.module('conduit.services').factory('ApiService', function($http, $location, $window, UserService, __config) { 
 
 	return {
 	  	select: {
@@ -11,8 +11,29 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 									'&date=' + date + 
 									(user.team ? '&teamId=' + user.team : '');
 
+						console.log(query);
+
 						$http.get(query).then(function(response) {
 							console.log(response.data);
+							return resolve(response.data);
+						}).catch(function(err) {
+							return reject(err);
+						});
+					});
+				});
+			},
+			articleBlock: function(fromDate, numArticles, startingId) {
+				//numArticles is required. For default, input 0
+				return new Promise(function(resolve, reject) {
+					return UserService.getUser().then(function(user) {
+						var query = '/select/articleBlock?' +
+									'userId=' + user.id + 
+									'&teamId=' + (user.team ? user.team : 1) +
+									'&fromDate=' + fromDate + 
+									'&numArticles=' + (numArticles ? numArticles : __config.MIN_RENDERED_CARDS) +
+									(startingId ? '&startingId=' + startingId : '');
+
+						$http.get(query).then(function(response) {
 							return resolve(response.data);
 						}).catch(function(err) {
 							return reject(err);

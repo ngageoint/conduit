@@ -52,17 +52,23 @@ module.exports = {
                     //Find the starting point
                     for(var i = 0; i < articles.length; i++) {
                         if(articles[i].id == startingId || !startingId) {
-                            i++;
+                            if(startingId) {
+                                i++;
+                            }
                             for(var j = i; j < articles.length && j < i + numArticles; j++) {
                                 (function(thisId) {
                                     promises.push(module.exports.articleFull(thisId, userId, teamId));
-                                })(articles[i].id);
+                                })(articles[j].id);
                             }
                             break;
                         }
                     }
                     return Promise.all(promises).then(function(res) {
-                        return resolve(res);
+                        var data = {
+                            count: articles.length,
+                            articles: res
+                        }                  
+                        return resolve(data);
                     }).catch(function(err) {
                         return reject(err);
                     });

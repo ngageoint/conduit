@@ -19,9 +19,6 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
             trash: 0
         },
         build: function (sources, articles){
-            
-console.log(sources);
-
             var buildValue = function(value) {
                 //Values in the filter are JSON objects with the topic name and a field to track whether or not it is checked; this is bound to the dropdowns.
                 value.checked = false;

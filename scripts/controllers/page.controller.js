@@ -1,5 +1,5 @@
 angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $filter,
-ApiService, ArticlesService, AttributesService, BooksService, UserService, ArrayTools) {
+ApiService, ArticlesService, AttributesService, BooksService, DataSourceService, FilterService, UserService, ArrayTools, DateTools, __config) {
 	
 	/**
 	 * Wait for the articles promise to resolve; will be inherited by child scopes.
@@ -7,6 +7,37 @@ ApiService, ArticlesService, AttributesService, BooksService, UserService, Array
 	ArticlesService.getArticles().then(function(data) {
 
 		$scope.articles = data;
+
+		//Finish retrieval of the remaining blocks. It really should be in articles service, but I couldn't get it to work...
+		var continueBlockRetrieval = function() {
+			
+			/*This is one of those completely unecessary things, but...
+			It looked weird to see the articles go up in increments of 10
+			So this applies some randomness and makes the article count go up naturally.
+			*/
+			var rand = Math.floor((Math.random() * (__config.MIN_RENDERED_CARDS * .75)) + (__config.MIN_RENDERED_CARDS * .75))
+			
+			ApiService.select.articleBlock(
+					DateTools.formatDate(new Date(), 'yyyy-MM-dd'),
+					rand,
+					$scope.articles[$scope.articles.length-1].id
+				).then(function(response) {
+					BooksService.getBooks().then( function(books) {
+						for(var i = 0; i < response.articles.length; i++) {
+							ArticlesService.forceArticleCompliance(response.articles[i], books)
+						}
+						$scope.articles = $scope.articles.concat(response.articles);
+						DataSourceService.getSources().then(function(sources) {
+							FilterService.build(sources, $scope.articles);
+							if($scope.articles.length < response.count) {
+								continueBlockRetrieval($scope.articles);
+							}
+						});
+					});
+				})
+		}
+
+		continueBlockRetrieval();
 		
 		//Add the first (__config.MIN_RENDERED_CARDS * 2) cards to the DOM so the user has something to start with.
 		//Enough cards must be added to ensure that scrolling is possible so the infinite scroll event will be triggered
@@ -70,7 +101,7 @@ ApiService, ArticlesService, AttributesService, BooksService, UserService, Array
 		 */
 		$scope.activateCard = function(parent, id) {			
 			var index;
-			
+
 			//Enforce minimums
 			if(!$scope.articles)
 				return;

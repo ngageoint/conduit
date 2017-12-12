@@ -18,10 +18,11 @@ const moe = require('./server/export/export.js'); //Microsoft Office Export, MOE
 const ArticleReader = require('./server/article-reader/article-reader.js');
 const SourceService = require('./server/tools/sources.service.server.js');
 
-
+/*
 ArticleReader.readSource(SourceService.sources[1]).then(function(res) {
 	db.insert.articleBase(res);
 });
+*/
 
 //Load local environment variable file (.env)
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
@@ -337,9 +338,9 @@ app.get('/select/articleBlock', function(req, res, next) {
 		res.send('Missing parameters. userId, teamId, fromDate, and numArticles required.');
 		return;
 	}
-	db.select.articleBlock(req.query.userId, req.query.teamId, req.query.fromDate, req.query.numArticles, req.query.startingId).then(function(article) {
+	db.select.articleBlock(req.query.userId, req.query.teamId, req.query.fromDate, req.query.numArticles, req.query.startingId).then(function(articles) {
 		res.status(200);
-    	res.json(article);
+    	res.json(articles);
   	});
 });
 

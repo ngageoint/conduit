@@ -1,46 +1,18 @@
 /* The ArticlesService makes all of the articles available in a global, editable promise. */
-angular.module('conduit.services').factory('ArticlesService', function($q, $http,
-ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, ComplexPropertyTools, __config) { 
+angular.module('conduit.services').factory('ArticlesService', function($q, $http, $timeout,
+ApiService, BooksService, DataSourceService, FilterService, RssLiteService, ArrayTools, ComplexPropertyTools, DateTools, __config) { 
 
+	var expectedCount = 0;
 	var articles = 	DataSourceService.getSources().then(function(sources) {
 		
 		var queries = [];
 
-		//Create the static query Promise for our sample data
-		/*queries.push($http.get(__config.articlesUrl)
-				.then(function(response) {
-					return response.data;
-				})
-		);*/
-
-		queries.push(ApiService.select.articlesByUserFromDate('2017-07-13')
-				.then(function(response) {
-					return response;
-				})
+		queries.push(ApiService.select.articleBlock(DateTools.formatDate(new Date(), 'yyyy-MM-dd'), 0).then(function(response) {
+				expectedCount = response.count
+				return response.articles;
+			})
 		);
 
-		//Run through all of the sources
-		/*
-		for(var i = 0; i < sources.length; i++)
-		{
-			//Id the rss sources, defer the promsies, and added them to our query array
-			if(sources[i].type && ~sources[i].type.indexOf("rss"))
-			{
-				var deferred = $q.defer();
-    			queries.push(deferred.promise);
-				makeRssCall(deferred, i);
-			}
-		}
-			//The code that $q will call when attempting to fill the promises
-			function makeRssCall(deferred, i) {
-				(function(source) {
-					RssLiteService.readUrl(sources[i].link)
-						.then(function(feed) {
-							deferred.resolve(formatRss(feed, source));
-						})
-					})(sources[i])//Make sure to pass the source on to the callback so that it can be properly formatted
-			};
-		*/
 		//Request all promises from our queries array, concat them, and return
 		return $q.all(queries).then(function(results) {
 			var fullResponse = [];
@@ -61,6 +33,23 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 					articles = ArrayTools.removeDuplicates(articles, function(thisArticle) {
 						return thisArticle.id;
 					});
+
+					var continueBlockRetrieval = function() {
+						ApiService.select.articleBlock(
+								DateTools.formatDate(new Date(), 'yyyy-MM-dd')
+							).then(function(response) {
+								articles = articles.concat(response.articles);
+								DataSourceService.getSources().then(function(sources) {
+									FilterService.build(sources, articles);
+									if(articles.length < expectedCount) {
+										continueBlockRetrieval(articles);
+									}
+								})
+							})
+					}
+
+					//continueBlockRetrieval();
+
 					return articles;
 				});
 			}).catch(function(err) {
@@ -68,8 +57,22 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 			});			
 		});			
 	});
+
+	var continueBlockRetrieval = function(articles) {
+			ApiService.select.articleBlock(
+				DateTools.formatDate(new Date(), 'yyyy-MM-dd')
+				).then(function(response) {
+					articles = articles.concat(response.articles);
+					DataSourceService.getSources().then(function(sources) {
+						FilterService.build(sources, articles);
+						if(articles.length < expectedCount) {
+							continueBlockRetrieval(articles);
+						}
+					})
+				})
+	}
 	
-  var getArticles = function() {
+  	var getArticles = function() {
 		return articles;
 	};
 
@@ -86,7 +89,6 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 			articles.push(forceArticleCompliance(temp));
 		}
 
-		return $q.all(articles).then(function(articles) {
 			for(var i = 0; i < articles.length; i++)
 			{
 				articles[i].tags.push(source.tag);
@@ -95,12 +97,11 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 						articles[i].tags.push(ComplexPropertyTools.getComplexProperty(articles[i], source.tags[j]));
 			}
 			return articles;
-		});
 	}
 
 //Force the article to have the minimum fields and set defaults if none given
 	var forceArticleCompliance = function(article, books) {
-		return new Promise(function(resolve, reject) {
+		//return new Promise(function(resolve, reject) {
 
 			//Set hashable values first		
 			if(typeof article.title == "undefined")
@@ -115,15 +116,15 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 			if(!article.id || article.id === "") {
 				ApiService.generateHash(article).then(function(hash) {
 					article.id = hash
-					return resolve(completeCompliance(article, books));
+					return completeCompliance(article, books);
 				}).catch(function(err) {
 					article.id = generateUUID();
-					return resolve(completeCompliance(article, books));
+					return completeCompliance(article, books);
 				});
 			} else {
-				return resolve(completeCompliance(article, books));
+				return completeCompliance(article, books);
 			}	
-		});
+		//});
 	}
 
 	var completeCompliance = function (article, books) {
@@ -170,7 +171,8 @@ ApiService, BooksService, DataSourceService, RssLiteService, ArrayTools, Complex
 	}
 	
 	return {
-	  getArticles: getArticles,
-		formatRss: formatRss
+	  	getArticles: getArticles,
+		formatRss: formatRss,
+		forceArticleCompliance, forceArticleCompliance
 	};		
 });
