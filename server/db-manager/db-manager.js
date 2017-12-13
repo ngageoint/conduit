@@ -50,25 +50,3 @@ module.exports = {
   update: update,
   delete: del
 };
-
-/*select.fullArticle('1', function(article) {
-    console.log(article);
-});*/
-/*
-insert.articleBase(
-    {'date':new Date(),'id':3,'link':'www.google.com','selectedImage':3,'title':'Sample text','title':'Article Three','customProperties':{}},
-    function() {
-        select.baseArticle('3', function(article) {
-            console.log(article);
-        });
-    }
-);*/
-
-/*
-pool.query('SELECT * FROM "conduit_db"."ARTICLES"', [], function(err, res) {
-   if(err) {
-    return console.error('error running query', err);
-  }
-  for(var i = 0; i < res.rows.length; i++)
-    console.log('row ' + i + ':', res.rows[i]);
-});*/

@@ -34,6 +34,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 									(startingId ? '&startingId=' + startingId : '');
 
 						$http.get(query).then(function(response) {
+							console.log(response.data);
 							return resolve(response.data);
 						}).catch(function(err) {
 							return reject(err);

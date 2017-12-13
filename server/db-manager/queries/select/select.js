@@ -25,8 +25,8 @@ module.exports = {
                                 res.rows[0][key] = res.rows[0].custom_properties[key];
                             }
                         }
-                        delete res.rows[0].custom_properties
                     }
+                    delete res.rows[0].custom_properties
                     return resolve(res.rows[0]);
                 }
                 else {
@@ -132,12 +132,6 @@ module.exports = {
                         article.removed = res[7];
                     }
                 }
-
-                if(article.id === 'dddce74e1ea730b1402e6510abdef4f9b057a735') {
-                    console.log(article);
-                    //console.log(res);
-                }
-
                 return resolve(article);
             }).catch(function(err) {
                 return reject(err);

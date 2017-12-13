@@ -91,12 +91,20 @@ module.exports = {
             }
                 
             //Set booleans
-            if(typeof article.wasRead == "undefined")
-                article.wasRead = false;
-            if(typeof article.inFeed == "undefined")
-                article.inFeed = true;
+            if(typeof article.active == "undefined")
+                article.active = false;
+            if(typeof article.activeInBook == "undefined")
+                article.activeInBook = false;
+            if(typeof article.build == "undefined")
+                article.build = false;
             if(typeof article.inBook == "undefined")
                 article.inBook = false;
+            if(typeof article.inFeed == "undefined")
+                article.inFeed = true;
+            if(typeof article.isEdit == "undefined")
+                article.isEdit = false;
+            if(typeof article.read == "undefined")
+                article.read = false;
 
             //Set fields created by conduit
             if(typeof article.books == "undefined")

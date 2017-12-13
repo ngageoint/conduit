@@ -38,12 +38,17 @@ module.exports = {
 
                 var completeFullArticle = function(article, userId, teamId) {
                     module.exports.articleBase(article).then(function(res) {
-                        promises.push(module.exports.articleStatusRead(article.id, userId));
-                        promises.push(module.exports.articleStatusRemoved(article.id, teamId));
                         promises.push(module.exports.bookStatus(article.books, article.id));
                         promises.push(module.exports.comment(article.comments, article.id));
-                        promises.push(module.exports.imageStatus(article.id, teamId, article.selectedImage));
                         promises.push(module.exports.tag(article.tags, article.id));
+
+                        if(userId) {
+                            promises.push(module.exports.articleStatusRead(article.id, userId));
+                            if(teamId) {
+                                promises.push(module.exports.articleStatusRemoved(article.id, teamId));
+                                promises.push(module.exports.imageStatus(article.id, teamId, article.selectedImage));
+                            }
+                        }
                     }).catch(function(err) {
                         return reject(err);  
                     });
@@ -95,7 +100,7 @@ module.exports = {
                         article.link,
                         article.text,
                         article.title,
-                        article.customProperties,
+                        module.exports.extractCustomProperties(article),
                         article.source
                     ],
                 }
@@ -210,20 +215,19 @@ module.exports = {
     //TODO: Once front end tracks comments by user id, userId param can be removed.
     //teamId should still be tracked separate bc there's no reason to attach team id to every
     //comment in the front end
-    comment: function(articleId, userId, teamId, comment, date, text) {
+    comment: function(articleId, comment) {
         return new Promise(function(resolve, reject) {
-            if((!date || !text) && !comment) {
+            if(!comment && comment.length == 0) {
                 return reject ('Missing required parameters');
             }
-            if(!date && comment && comment.date) {
-                date = comment.date
-            }
-            if(!text && comment && comment.text) {
-                text = comment.text
+
+            if(!comment.user.id || !comment.user.team) {
+                console.log('no user info found');
+                return resolve([]);
             }
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'INSERT_COMMENT.sql')),
-                values: [articleId, userId, date, text, teamId]
+                values: [articleId, comment.user.id, comment.date, comment.text, comment.user.team]
             }
             module.exports.query(query, function(err, res) {
                 if(err) {
@@ -233,6 +237,57 @@ module.exports = {
                     return resolve(res);
             });
         });
+    },
+    extractCustomProperties: function(article) {                
+        //Article class. TODO: actually make this a class in a separate file (and share it)
+        class Article {
+            constructor() {
+                this.active = false,
+                this.activeInBook = false,
+                this.books = [],
+                this.build = false,
+                this.comments = [],
+                this.date = {},
+                this.id = '',
+                this.images = [],
+                this.inBook = false,
+                this.inFeed = true,
+                this.isEdit = false,
+                this.link = '',
+                this.read = false,
+                this.selectedImage = 0,
+                this.source = '',
+                this.tags = [],
+                this.text = '',
+                this.title = ''
+            }
+        }
+
+        let baseCompare = new Article();
+        var customProperties = {};
+
+        var baseKeys = Object.keys(baseCompare);
+        var articleKeys = Object.keys(article);
+
+        //If both objects have same number of keys (or the base has more), return empty object
+        if(baseKeys.length >= articleKeys.length ) {
+            return {};
+        }
+
+        for(var i = 0; i < articleKeys.length; i++) {
+            var isStandard = false;
+            for(var j = 0; j < baseKeys.length; j++) {
+                if(articleKeys[i] == baseKeys[j]) {
+                    isStandard = true;
+                    break;
+                }
+            }
+            if(!isStandard) {
+                customProperties[articleKeys[i]] = article[articleKeys[i]];
+            }
+        }
+
+        return customProperties;
     },
     image: function(uri, articleId) {
         return new Promise(function(resolve, reject) {
