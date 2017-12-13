@@ -148,6 +148,7 @@
                                     e-class="title edit-field"
                                     e-form="articleEdit"
                                     editable-textarea="articles[currentIndex].title"
+                                    onbeforesave="cacheOldValues()"
                                     onaftersave="submitEdit()"
                                     blur="submit">
                                 {{articles[currentIndex].title}}

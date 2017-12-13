@@ -5,3 +5,5 @@ applications:
   command: node index.js
   memory: 128M
   host: conduit-dev
+  services:
+  - conduit_pgsql_instance

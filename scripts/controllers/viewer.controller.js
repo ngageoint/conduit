@@ -91,16 +91,28 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 		}
 	}	
 
+	$scope.oldValues = {};
+
+	$scope.cacheOldValues = function() {
+		$scope.oldValues = {
+			title: $scope.articles[$scope.currentIndex].title, 
+			text: $scope.articles[$scope.currentIndex].text
+		};
+	}
+
 	$scope.submitEdit = function() {
-		$scope.articles[$scope.currentIndex].isEdit = true;
-		ApiService.insert.articleEdit(	$scope.articles[$scope.currentIndex].id,
-										$scope.articles[$scope.currentIndex].title, 
-										$scope.articles[$scope.currentIndex].text)
-							.then(function(res) {
-								console.log("Edit post success");
-								console.log(res);
-							}).catch(function(err) {
-								console.log(err);
-							})
+
+		if(!($scope.oldValues.title === $scope.articles[$scope.currentIndex].title && $scope.oldValues.text === $scope.articles[$scope.currentIndex].text)) {
+				$scope.articles[$scope.currentIndex].isEdit = true;
+				ApiService.insert.articleEdit(	$scope.articles[$scope.currentIndex].id,
+												$scope.articles[$scope.currentIndex].title, 
+												$scope.articles[$scope.currentIndex].text)
+									.then(function(res) {
+										console.log("Edit post success");
+										console.log(res);
+									}).catch(function(err) {
+										console.log(err);
+									})
+			}
 	}
 });
