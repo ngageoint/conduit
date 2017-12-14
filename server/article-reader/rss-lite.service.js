@@ -36,7 +36,7 @@ module.exports = {
                         for(var j = 0; j < keys.length; j++) {
                             if(keys[j] === "link") {
                                 if(entries[i].link[0].href) {
-                                    entries[i].link = entries[i].link[0].href.toString()
+                                    temp.link = entries[i].link[0].href.toString()
                                 }
                             } else {
                                 temp[keys[j]] = entries[i][keys[j]][0];
