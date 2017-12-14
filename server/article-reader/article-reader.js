@@ -10,10 +10,6 @@ const ComplexPropertyTools = require(path.join('..', 'tools', 'complex-property.
 module.exports = {
     readSource: function(source, conditioning) {
         return new Promise(function(resolve, reject) {
-            
-            console.log(source);
-            console.log(source.type);
-            console.log(source.type.toLowerCase() === 'rss');
 
             //Test for RSS and process if true
             if(source.type.toLowerCase() === 'rss') {
@@ -61,8 +57,12 @@ module.exports = {
                 {
                     articles[i].tags.push(source.tag);
                     for(var j = 0; j < source.tags.length; j++)
-                        if(source.tags[j])
-                            articles[i].tags.push(ComplexPropertyTools.getComplexProperty(articles[i], source.tags[j]));
+                        if(source.tags[j]) {
+                            let tag = ComplexPropertyTools.getComplexProperty(articles[i], source.tags[j])
+                            if(tag) {
+                                articles[i].tags.push(tag);
+                            }
+                        }
                 }
                 return resolve(articles);
                // });

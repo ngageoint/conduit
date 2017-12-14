@@ -20,8 +20,8 @@ const SourceService = require('./server/tools/sources.service.server.js');
 
 
 ArticleReader.readSource(SourceService.sources[1]).then(function(res) {
-	//db.insert.articleFull(res);
-	db.insert.articleBase(res);
+	db.insert.articleFull(res);
+	//db.insert.articleBase(res);
 });
 
 
@@ -341,7 +341,6 @@ app.get('/select/articleBlock', function(req, res, next) {
 	}
 	db.select.articleBlock(req.query.userId, req.query.teamId, req.query.fromDate, req.query.numArticles, req.query.startingId).then(function(articles) {
 		res.status(200);
-		console.log(articles);
     	res.json(articles);
   	});
 });

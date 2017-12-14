@@ -11,7 +11,6 @@ module.exports = {
         if(row)
             for(var columnName in row)
                 json[columnName] = row[columnName];
-        console.log(json);
         return json;
     }
 }

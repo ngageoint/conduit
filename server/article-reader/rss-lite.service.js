@@ -9,7 +9,6 @@ module.exports = {
             }
     
             axios.get(url, config).then(function(response) { 
-                console.log('in callback');
                 //return new Promise(function(resolve, reject) {
                     var parser = new xml2js.Parser({ignoreAttrs : false, mergeAttrs : true})
                     var parseString = parser.parseString;
@@ -47,7 +46,6 @@ module.exports = {
                     } 
 
                     if(parsed) {
-                        console.log('resolving');
                         return resolve(parsed);
                     } else {
                         return reject();

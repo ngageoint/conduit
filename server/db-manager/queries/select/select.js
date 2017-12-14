@@ -403,7 +403,7 @@ module.exports = {
         });
     },
     tagsByArticle: function(id) {
-        
+
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_TAGS_BY_ARTICLE.sql')),
@@ -415,6 +415,7 @@ module.exports = {
                 }
                 if(res && res.rows)
                 {
+
                     var tags = [];
 
                     for(var i = 0; i < res.rows.length; i++)
