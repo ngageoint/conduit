@@ -84,6 +84,7 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 	}).catch( function() {
 		$scope.user = {}
 		$scope.user.given_name = "Unknown user"
+		$scope.user.teamName = "Unkown team"
 	});
 	
 	//Card Activation

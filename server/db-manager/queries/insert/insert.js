@@ -225,13 +225,13 @@ module.exports = {
                 return reject ('Missing required parameters');
             }
 
-            if(!comment.user || (!comment.user.id || !comment.user.team)) {
+            if(!comment.user || (!comment.user.id || !comment.user.teamId)) {
                 console.log('no user info found');
                 return resolve([]);
             }
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'INSERT_COMMENT.sql')),
-                values: [articleId, comment.user.id, comment.date, comment.text, comment.user.team]
+                values: [articleId, comment.user.id, comment.date, comment.text, comment.user.teamId]
             }
             module.exports.query(query, function(err, res) {
                 if(err) {

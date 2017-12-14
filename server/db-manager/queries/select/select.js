@@ -469,7 +469,8 @@ module.exports = {
                 if(res && res.rows && res.rows[0]) {
                     var user = {
                         id: res.rows[0].id,
-                        team: res.rows[0].team_id,
+                        teamId: res.rows[0].team_id,
+                        teamName: res.rows[0].name,
                         given_name: res.rows[0].name_preferred
                     }
                     

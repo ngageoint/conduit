@@ -1,5 +1,7 @@
 @import "colors";
 
+$tMargin: 10px;
+
 .stream {
 	width: 100%;
 	position: absolute;
@@ -87,11 +89,13 @@
 }
 
 
+		$feedActionBtnsHeight: 72px;
+
 /*Feed*/
     .fluid-container {
         width: auto;
         position: absolute;
-        top: 82px;
+        top: $feedActionBtnsHeight + $tMargin;
         bottom: 0px;
         left: 0px;
         right: -20px;
@@ -103,17 +107,23 @@
     }
 
 /*Book*/	
+
+	$bookRMargin: 10px;
+	$bookActionW: 48px;
+	$bookActionBtnsHeight: 56px;
+	$bookActionInfoHeight: 24px;
+
 	.book {
 		width: auto;
-		top: 66px;
+		top: $tMargin + $bookActionBtnsHeight + $bookActionInfoHeight;
 		bottom: 0px;
 		left: -15px;
 		right: 0px;
 		float: right;
 	}
 
-	$bookRMargin: 10px;
-	$bookActionW: 48px;
+	
+	
 
 	#book-action-wrapper {
 		position: absolute;
@@ -121,7 +131,7 @@
         left: -5px;
         right: $bookRMargin;
 		width: auto;
-		height: 56px;
+		height: $bookActionBtnsHeight + $bookActionInfoHeight;
 		display: inline-block;
 
 		border-radius: 2px 2px 0 0;
@@ -187,5 +197,20 @@
 			height: 100%;
 			border-radius: 0 2px 0 0;
 			box-shadow: none;
+		}
+
+		#team-info {
+			background: #757575 !important;
+			position: relative;
+			top: $bookActionBtnsHeight;
+			height: $bookActionInfoHeight;
+			padding: 0px !important;
+			border-radius: 0 !important;
+			z-index: 99;
+
+			text-align: center;
+			color: #fff;
+			font-size: 12px;
+			line-height: $bookActionInfoHeight;
 		}
 	}

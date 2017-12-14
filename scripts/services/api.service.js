@@ -168,7 +168,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						var data = {
 							articleId: articleId,
 							userId: user.id,
-							teamId: user.team,
+							teamId: user.teamId,
 							isRead: isRead
 						}
 
@@ -186,7 +186,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						var data = {
 							articleId: articleId,
 							userId: user.id,
-							teamId: user.team,
+							teamId: user.teamId,
 							isRemoved: isRemoved
 						}
 
