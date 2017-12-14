@@ -91,13 +91,13 @@ module.exports = {
             if(userId) {
                 if(articleId === 'dddce74e1ea730b1402e6510abdef4f9b057a735')
                     console.log('Checking article read status');
-                promises.push(module.exports.mostRecentArticleEdit(articleId, userId, teamId || 1)); //TODO: update team info
+                promises.push(module.exports.mostRecentArticleEdit(articleId, userId, teamId));
                 promises.push(module.exports.articleStatusReadByIds(articleId, userId));
             } else {
-                promises.push(module.exports.mostRecentArticleEdit(articleId, 1, teamId || 1)); //TODO: update team info
+                promises.push(module.exports.mostRecentArticleEdit(articleId, 1, teamId));
             }
             if(teamId) {
-                promises.push(module.exports.articleStatusRemovedByTeam(articleId, teamId || 1));//TODO: update team info
+                promises.push(module.exports.articleStatusRemovedByTeam(articleId, teamId));
             }
 
 

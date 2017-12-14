@@ -216,9 +216,6 @@ module.exports = {
             }
         });
     },
-    //TODO: Once front end tracks comments by user id, userId param can be removed.
-    //teamId should still be tracked separate bc there's no reason to attach team id to every
-    //comment in the front end
     comment: function(articleId, comment) {
         return new Promise(function(resolve, reject) {
             if(!comment && comment.length == 0) {
