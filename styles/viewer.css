@@ -55,29 +55,30 @@
 /* line 56, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text.edit-field {
   padding: 15px;
-  height: 50vh;
+  height: 24em;
+  margin-top: 5em;
 }
 
-/* line 61, D:/work/dat/conduit/sass/viewer.scss */
+/* line 62, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper {
   position: relative;
   margin-top: 8px;
   margin: 0 15px;
 }
 
-/* line 68, D:/work/dat/conduit/sass/viewer.scss */
+/* line 69, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .title {
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 73, D:/work/dat/conduit/sass/viewer.scss */
+/* line 74, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper .edit-field {
   line-height: 1.813em;
   height: 6em;
 }
 
-/* line 78, D:/work/dat/conduit/sass/viewer.scss */
+/* line 79, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper {
   position: relative;
   width: 100%;
@@ -89,7 +90,7 @@
   clear: both;
 }
 
-/* line 88, D:/work/dat/conduit/sass/viewer.scss */
+/* line 89, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-right {
   position: absolute;
   top: 50%;
@@ -98,7 +99,7 @@
   z-index: 100;
 }
 
-/* line 95, D:/work/dat/conduit/sass/viewer.scss */
+/* line 96, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-left {
   position: absolute;
   top: 50%;
@@ -107,7 +108,7 @@
   z-index: 100;
 }
 
-/* line 104, D:/work/dat/conduit/sass/viewer.scss */
+/* line 105, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper::before {
   content: '';
   display: inline-block;
@@ -116,7 +117,7 @@
   margin-right: -0.25em;
 }
 
-/* line 112, D:/work/dat/conduit/sass/viewer.scss */
+/* line 113, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow {
   background-color: #009688;
   width: 2.5em;
@@ -132,7 +133,7 @@
   vertical-align: middle;
 }
 
-/* line 132, D:/work/dat/conduit/sass/viewer.scss */
+/* line 133, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow:hover {
   cursor: pointer;
   background-color: #00796b;
@@ -140,12 +141,12 @@
   transition: box-shadow .25s ease-in-out;
 }
 
-/* line 139, D:/work/dat/conduit/sass/viewer.scss */
+/* line 140, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper .greyout {
   visibility: hidden;
 }
 
-/* line 143, D:/work/dat/conduit/sass/viewer.scss */
+/* line 144, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image {
   display: inline-block;
   margin: auto;
@@ -153,26 +154,26 @@
   text-align: center;
 }
 
-/* line 150, D:/work/dat/conduit/sass/viewer.scss */
+/* line 151, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image .image {
   width: 100%;
   max-height: 50vh;
   vertical-align: middle;
 }
 
-/* line 156, D:/work/dat/conduit/sass/viewer.scss */
+/* line 157, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-load-error {
   color: #ff5252;
 }
 
-/* line 160, D:/work/dat/conduit/sass/viewer.scss */
+/* line 161, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text-wrapper {
   margin: 0 15px 15px 15px;
   position: relative;
   top: 30px;
 }
 
-/* line 166, D:/work/dat/conduit/sass/viewer.scss */
+/* line 167, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text {
   display: block;
   font-size: 1.125em;
@@ -181,19 +182,19 @@
   white-space: pre-line;
 }
 
-/* line 174, D:/work/dat/conduit/sass/viewer.scss */
+/* line 175, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .edit-field {
   padding: 0 1vw;
   width: 100%;
 }
 
-/* line 179, D:/work/dat/conduit/sass/viewer.scss */
+/* line 180, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .editable-buttons {
   float: right;
   margin: 5px 0 75px 0;
 }
 
-/* line 184, D:/work/dat/conduit/sass/viewer.scss */
+/* line 185, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #id {
   color: #bdbdbd;
   font-size: 14px;
@@ -203,12 +204,12 @@
   bottom: 15px;
 }
 
-/* line 191, D:/work/dat/conduit/sass/viewer.scss */
+/* line 192, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #id a {
   color: #bdbdbd;
 }
 
-/* line 198, D:/work/dat/conduit/sass/viewer.scss */
+/* line 199, D:/work/dat/conduit/sass/viewer.scss */
 #action-area {
   position: absolute;
   right: 0;
@@ -220,7 +221,7 @@
   display: inline-block;
 }
 
-/* line 211, D:/work/dat/conduit/sass/viewer.scss */
+/* line 212, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn {
   height: 36px;
   background: transparent;
@@ -230,23 +231,23 @@
   font-weight: 700;
 }
 
-/* line 221, D:/work/dat/conduit/sass/viewer.scss */
+/* line 222, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-default {
   color: #212121;
 }
 
-/* line 225, D:/work/dat/conduit/sass/viewer.scss */
+/* line 226, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-default:hover,
 #action-area .btn-default:focus {
   background: rgba(33, 33, 33, 0.12);
 }
 
-/* line 230, D:/work/dat/conduit/sass/viewer.scss */
+/* line 231, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-primary {
   color: #009688;
 }
 
-/* line 234, D:/work/dat/conduit/sass/viewer.scss */
+/* line 235, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-primary:hover,
 #action-area .btn-primary:focus,
 #action-area .btn-primary:active,
@@ -255,7 +256,7 @@
   box-shadow: none;
 }
 
-/* line 242, D:/work/dat/conduit/sass/viewer.scss */
+/* line 243, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .dropdown-menu.open {
   position: relative;
   top: -350%;
@@ -271,7 +272,7 @@
   z-index: 101;
 }
 
-/* line 257, D:/work/dat/conduit/sass/viewer.scss */
+/* line 258, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-group.open .dropdown-toggle {
   width: 100% !important;
   min-width: initial !important;
@@ -297,7 +298,7 @@
 #overflow-menu:hover {
 	background: lighten($colorGrey, 20%);
 }*/
-/* line 282, D:/work/dat/conduit/sass/viewer.scss */
+/* line 283, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-btn {
   position: absolute;
   top: 10px;
@@ -314,12 +315,12 @@
   vertical-align: middle;
 }
 
-/* line 298, D:/work/dat/conduit/sass/viewer.scss */
+/* line 299, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .caret {
   visibility: hidden;
 }
 
-/* line 302, D:/work/dat/conduit/sass/viewer.scss */
+/* line 303, D:/work/dat/conduit/sass/viewer.scss */
 #content-wrapper .form-control {
   box-shadow: none;
   -webkit-box-shadow: none;
@@ -329,19 +330,19 @@
   right: 0;
 }
 
-/* line 311, D:/work/dat/conduit/sass/viewer.scss */
+/* line 312, D:/work/dat/conduit/sass/viewer.scss */
 #content-wrapper .edit-field.form-control {
   width: 100% !important;
 }
 
-/* line 315, D:/work/dat/conduit/sass/viewer.scss */
+/* line 316, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:after {
   font-family: "Glyphicons Halflings";
   content: '\e235';
   margin-left: -.25em;
 }
 
-/* line 321, D:/work/dat/conduit/sass/viewer.scss */
+/* line 322, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle {
   position: absolute;
   top: 10px;
@@ -361,20 +362,20 @@
   box-shadow: none;
 }
 
-/* line 341, D:/work/dat/conduit/sass/viewer.scss */
+/* line 342, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:hover {
   cursor: pointer;
   background-color: #f0f0f0;
 }
 
-/* line 346, D:/work/dat/conduit/sass/viewer.scss */
+/* line 347, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:active,
 #overflow-menu .btn.btn-default.dropdown-toggle:focus {
   cursor: pointer;
   background-color: #e3e3e3;
 }
 
-/* line 352, D:/work/dat/conduit/sass/viewer.scss */
+/* line 353, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .dropdown-menu.open {
   position: relative;
   top: 30px;
@@ -390,7 +391,7 @@
   z-index: 101;
 }
 
-/* line 367, D:/work/dat/conduit/sass/viewer.scss */
+/* line 368, D:/work/dat/conduit/sass/viewer.scss */
 #righoverflow-menut .nya-bs-select.btn-group .dropdown-menu {
   width: 100% !important;
   min-width: initial !important;

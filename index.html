@@ -150,6 +150,7 @@
                                     editable-textarea="articles[currentIndex].title"
                                     onbeforesave="cacheOldValues()"
                                     onaftersave="submitEdit()"
+                                    buttons="no"
                                     blur="submit">
                                 {{articles[currentIndex].title}}
                             </div>
@@ -204,6 +205,7 @@
                                     e-class="text edit-field"
                                     e-form="articleEdit"
                                     editable-textarea="articles[currentIndex].text"
+                                    buttons="no"
                                     blur="submit">
                                <!-- <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
                                     <span class="glyphicon glyphicon-pencil"></span>
@@ -220,36 +222,52 @@
                             </a>
                             {{' - ' + (articles[currentIndex].isEdit ? 'Edited' : 'Original')}}
                         </div>
-                        <ol class="btn btn-primary nya-bs-select dropup col-xl-4"
-                            id="toolbox-books"
-                            multiple
-                            data-selected-text-format="count>2"
-                            ng-model="articles[currentIndex].books"
-                            ng-attr-title="ADD">
-                            <li nya-bs-option="book in ::books">
-                                <a>
-                                    {{::book.name}}
-                                    <span class="glyphicon glyphicon-ok check-mark"></span>
-                                </a>
-                            </li>
-                        </ol>
-                        <button class="btn btn-default"
-                                ng-click="articleEdit.$show()"
-                                title="EDIT">
-                            <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
-                            <div class="ico-text-1">EDIT</div>
-                        </button>
-                        <button uib-popover-template="'templates/comments-popover.html'"
-                                popover-title="DISCUSS"
-                                type="button"
-                                class="btn btn-default"
-                                popover-trigger="'outsideClick'"
-                                title="DISCUSS">
-                                <!--<span class="glyphicon glyphicon-comment">&nbsp;</span>-->
-                                <div class="ico-text-1">
-                                    DISCUSS<span ng-if="articles[currentIndex].comments.length > 0" class="badge" style="margin-left:4px">{{articles[currentIndex].comments.length}}</span>
-                                </div>
-                        </button>
+                        <div id="default-action-buttons" ng-show="!articleEdit.$visible">
+                            <ol class="btn btn-primary nya-bs-select dropup col-xl-4"
+                                id="toolbox-books"
+                                multiple
+                                data-selected-text-format="count>2"
+                                ng-model="articles[currentIndex].books"
+                                ng-attr-title="ADD">
+                                <li nya-bs-option="book in ::books">
+                                    <a>
+                                        {{::book.name}}
+                                        <span class="glyphicon glyphicon-ok check-mark"></span>
+                                    </a>
+                                </li>
+                            </ol>
+                            <button class="btn btn-default"
+                                    ng-click="articleEdit.$show()"
+                                    title="EDIT">
+                                <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                                <div class="ico-text-1">EDIT</div>
+                            </button>
+                            <button uib-popover-template="'templates/comments-popover.html'"
+                                    popover-title="DISCUSS"
+                                    type="button"
+                                    class="btn btn-default"
+                                    popover-trigger="'outsideClick'"
+                                    title="DISCUSS">
+                                    <!--<span class="glyphicon glyphicon-comment">&nbsp;</span>-->
+                                    <div class="ico-text-1">
+                                        DISCUSS<span ng-if="articles[currentIndex].comments.length > 0" class="badge" style="margin-left:4px">{{articles[currentIndex].comments.length}}</span>
+                                    </div>
+                            </button>
+                        </div>
+                        <div id="edit-action-buttons" ng-show="articleEdit.$visible">
+                            <button class="btn btn-primary"
+                                    type="submit"
+                                    title="SUBMIT">
+                                <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                                <div class="ico-text-1">SUBMIT</div>
+                            </button>
+                            <button class="btn btn-default"
+                                    ng-click="articleEdit.$cancel()"
+                                    title="CANCEL">
+                                <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                                <div class="ico-text-1">CANCEL</div>
+                            </button>
+                        </div>
                         
                     </div>
                         <!--<div id="fab">
