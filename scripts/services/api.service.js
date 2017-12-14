@@ -11,10 +11,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 									'&date=' + date + 
 									(user.teamId ? '&teamId=' + user.teamId : '');
 
-						console.log(query);
-
 						$http.get(query).then(function(response) {
-							console.log(response.data);
 							return resolve(response.data);
 						}).catch(function(err) {
 							return reject(err);
@@ -34,7 +31,6 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 									(startingId ? '&startingId=' + startingId : '');
 
 						$http.get(query).then(function(response) {
-							console.log(response.data);
 							return resolve(response.data);
 						}).catch(function(err) {
 							return reject(err);
@@ -99,8 +95,6 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 				});
 			},
 			articleFull: function(article) {
-				console.log("article full");
-				console.log(article);
 				return new Promise(function(resolve, reject) {
 					return UserService.getUser().then(function(user) {
 						var data = {
@@ -162,7 +156,6 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					}
 
 					$http.post('/update/articleBase', data).then(function(response) {
-						console.log("successfully updated article base");
 						return resolve(response);
 					}).catch(function(err) {
 						return reject(err);
@@ -263,7 +256,6 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					}
 
 					$http.post('/export', data).then(function(response) {
-						console.log(response.data);
 						$window.open('/download?fileName=' + response.data);
 						return resolve(response.data);
 					}).catch(function(err) {
@@ -298,8 +290,6 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					}
 
 					$http.post('/exportZip', data).then(function(response) {
-						console.log("got return");
-						console.log(response.data);
 						$window.open('/download?fileName=' + response.data);
 						return resolve(response.data);
 					}).catch(function(err) {

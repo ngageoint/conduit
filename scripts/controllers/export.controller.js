@@ -116,7 +116,7 @@ angular.module('conduit.controllers').controller('ExportCtrl', function($q, $sco
 				}
 			}
 			ApiService.exportBook($scope.selectedBook, articlesInBook).then(function(res) {
-				console.log("zip success");
+
 			});
 		}
 

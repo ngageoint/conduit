@@ -3,10 +3,7 @@ angular.module('conduit.services').factory('BooksService', function($http, UserS
 	
 	var books = UserService.getUser().then(function(user) {
 		var query = '/select/booksByTeam?teamId=' + user.teamId;
-		console.log(user);
-		console.log(query);
 		return $http.get(query).then(function(response) {
-			console.log(response.data);
 			return response.data;
 		});
 	});

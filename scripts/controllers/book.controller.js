@@ -67,9 +67,7 @@ angular.module('conduit.controllers').controller('BookCtrl', function($scope, $r
 				$scope.articles[index].books = ArrayTools.removeElement($scope.articles[index].books, i);
 
 		//Upate on server
-		ApiService.delete.bookStatus($scope.selectedBook.id, id).then(function(res) {
-			console.log(res);
-		})
+		ApiService.delete.bookStatus($scope.selectedBook.id, id).then();
 		
 		//Update the view
 		$scope.updateBook();

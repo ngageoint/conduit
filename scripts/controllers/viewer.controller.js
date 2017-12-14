@@ -14,17 +14,13 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			var addedBooks = JSON.parse(JSON.stringify(newBooks));
 			addedBooks = ArrayTools.diff(addedBooks, sameBooks);
 			if(addedBooks.length > 0) {
-				ApiService.insert.bookStatus(addedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {
-					console.log(res);
-				});
+				ApiService.insert.bookStatus(addedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {});
 			}
 
 			var removedBooks = JSON.parse(JSON.stringify(oldBooks));
 			removedBooks = ArrayTools.diff(removedBooks, sameBooks);
 			if(removedBooks.length > 0) {
-				ApiService.delete.bookStatus(removedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {
-					console.log(res);
-				})
+				ApiService.delete.bookStatus(removedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {})
 			};
 		}
 
@@ -112,10 +108,7 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 				ApiService.insert.articleEdit(	$scope.articles[$scope.currentIndex].id,
 												$scope.articles[$scope.currentIndex].title, 
 												$scope.articles[$scope.currentIndex].text)
-									.then(function(res) {
-										console.log("Edit post success");
-										console.log(res);
-									}).catch(function(err) {
+									.then(function(res){}).catch(function(err) {
 										console.log(err);
 									})
 			}

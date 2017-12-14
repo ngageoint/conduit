@@ -105,7 +105,6 @@ app.post('/exportZip', function(req, res, next) {
 	if(req.body.articles && req.body.tpltId) {
 		res.status(200);
 		moe.generateZip(req.body.articles, req.body.tpltId).then(function(filename) {
-			console.log(filename);
 			res.send(filename);
 		});
 	} else {
@@ -200,9 +199,7 @@ app.get('/select/articlesByUserFromDate', function(req, res, next) {
 		res.send('Missing parameters. userId and date required');
 		return;
 	}
-	console.log(req.query);
 	db.select.articlesByUserFromDate(req.query.userId, req.query.date, req.query.teamId).then(function(article) {
-		//console.log(article);
 		res.status(200);
     	res.json(article);
   	});
@@ -370,7 +367,6 @@ app.post('/insert/articleFull', function(req, res, next) {
 		return;
 	}
 	db.insert.articleFull(req.body.article, req.body.userId, req.body.teamId).then(function(result) {
-		//console.log(result);
 		res.status(200);
     	res.json(result);
   	});
@@ -397,7 +393,6 @@ app.post('/insert/articleStatusRead', function(req, res, next) {
 		return;
 	}
 	db.insert.articleStatusRead(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRead).then(function(result) {
-		console.log(result);
 		res.status(200);
     	res.json(result);
   	});

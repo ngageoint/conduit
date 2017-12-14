@@ -179,13 +179,10 @@ var generateZip = function(articles, tpltId) {
                     jszip3x = niv.require('jszip@3.1.4');
                 }
 
-                console.log(jszip3x);
-
                 zip = new jszip3x() || new JSZip();
 
                 return glob(fileName + '*', function(err, files) {
                     for(var i = 0; i < files.length; i++) {
-                        console.log(path.extname(files[i]));
                         if(path.extname(files[i]) === '.docx') {
                             zip.file(files[i].substring(files[i].indexOf(id) + id.length + 1), fs.readFileSync(files[i])); 
                         }       

@@ -89,8 +89,6 @@ module.exports = {
             promises.push(module.exports.commentsByArticle(articleId, teamId));
             promises.push(module.exports.tagsByArticle(articleId));
             if(userId) {
-                if(articleId === 'dddce74e1ea730b1402e6510abdef4f9b057a735')
-                    console.log('Checking article read status');
                 promises.push(module.exports.mostRecentArticleEdit(articleId, userId, teamId));
                 promises.push(module.exports.articleStatusReadByIds(articleId, userId));
             } else {
@@ -117,7 +115,6 @@ module.exports = {
                     if(!article.edits) {
                         article.edits = []
                     }
-                    console.log(res[6]);
                     article.edits.push({
                         title: res[6].title,
                         text: res[6].text
@@ -200,7 +197,6 @@ module.exports = {
                     return reject(err);
                 }
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].read !== "undefined") {
-                    console.log("Matching status found");
                     return resolve(res.rows[0].read);
                 } else {
                     //console.log('No results for articleStatusReadByIds where articleId='+ articleId + " and userId=" + userId)
@@ -220,10 +216,9 @@ module.exports = {
                     return reject(err);
                 }
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].removed !== "undefined") {
-                    console.log("Successful team removed found");
                     return resolve(res.rows[0].removed);
                 } else {
-                    //console.log('No results for articconsole.log('No results for articleStatusRemovedByTeam where articleId='+ articleId + " and teamId=" + teamId);
+                    //console.log('No results for articleStatusRemovedByTeam where articleId='+ articleId + " and teamId=" + teamId);
                     return resolve(false);
                 }
             });

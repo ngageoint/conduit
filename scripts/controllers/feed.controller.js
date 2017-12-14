@@ -97,7 +97,7 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 		
 		//Update view properties
 		$scope.articles[index].removed = true;
-		ApiService.update.articleStatusRemoved($scope.articles[index].id, true).then(function(res){console.log(res)});
+		ApiService.update.articleStatusRemoved($scope.articles[index].id, true).then(function(res){});
 		$scope.articles[index].read = true;
 		ApiService.update.articleStatusRead($scope.articles[index].id, true).then(function(res){});
 		$scope.articles[index].inFeed = false;
@@ -118,7 +118,7 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 		
 		//Update the view properties
 		$scope.articles[index].removed = false;
-		ApiService.update.articleStatusRemoved($scope.articles[index].id, false).then(function(res){console.log(res)});
+		ApiService.update.articleStatusRemoved($scope.articles[index].id, false).then(function(res){});
 		$scope.articles[index].active = false;
 		
 		//Refresh view

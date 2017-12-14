@@ -42,10 +42,6 @@ module.exports = {
                         promises.push(module.exports.comment(article.comments, article.id));
                         promises.push(module.exports.tag(article.tags, article.id));
 
-                        if(article.tags.length <= 0) {
-                            console.log('article ' + article.id + 'has no tags');
-                        }
-
                         if(userId) {
                             promises.push(module.exports.articleStatusRead(article.id, userId));
                             if(teamId) {
