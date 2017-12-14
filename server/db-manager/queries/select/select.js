@@ -86,7 +86,7 @@ module.exports = {
             promises.push(module.exports.booksByArticle(articleId, teamId));
             promises.push(module.exports.imagesByArticle(articleId));
             promises.push(module.exports.imageStatusByIds(articleId, teamId || 1));
-            promises.push(module.exports.commentsByArticle(articleId));
+            promises.push(module.exports.commentsByArticle(articleId, teamId));
             promises.push(module.exports.tagsByArticle(articleId));
             if(userId) {
                 if(articleId === 'dddce74e1ea730b1402e6510abdef4f9b057a735')
@@ -390,11 +390,11 @@ module.exports = {
             });
         });
     },
-    commentsByArticle: function(id) {
+    commentsByArticle: function(id, teamId) {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_COMMENTS_BY_ARTICLE.sql')),
-                values: [id],
+                values: [id, teamId],
             }
             module.exports.query(query, function(err, res) {
                 if(err) {

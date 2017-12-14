@@ -10,4 +10,4 @@ INNER JOIN
 	ON
 		"USERS"."id" = "COMMENTS"."user_id"
 WHERE
-	"COMMENTS"."article_id" = $1;
+	"COMMENTS"."article_id" = $1 AND "COMMENTS"."team_id" = $2;

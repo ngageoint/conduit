@@ -255,13 +255,13 @@ app.get('/select/booksByTeam', function(req, res, next) {
 });
 
 app.get('/select/commentsByArticle', function(req, res, next) {
-	if(!req.query.id) {
+	if(!req.query.id || !req.query.teamId) {
 		console.log('Missing params');
 		res.status(400);
 		res.send('Missing parameters. id required.');
 		return;
 	}
-	db.select.commentsByArticle(req.query.id).then(function(comments) {
+	db.select.commentsByArticle(req.query.id, req.query.teamId).then(function(comments) {
 		res.status(200);
     	res.json(comments);
   	});
