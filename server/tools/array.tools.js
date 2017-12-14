@@ -1,4 +1,11 @@
 module.exports = {
+    /**
+     * Identifies the difference between two arrays, returning the unique values of the first given array
+     * 
+     * @param {array} a The array on which to identify unique values
+     * @param {int} b The array to compare against
+     * @return {array} The values in array a that were not found in array b
+     */
     diff: function(a, b) {
         for(var i = 0; i < b.length; i++) {
             for(var j = 0; j < a.length; j++) {
@@ -13,6 +20,13 @@ module.exports = {
     same: function(a, b) {
         return a.filter(function(i) {return b.indexOf(i) >= 0;});
     },
+    /**
+     * Removes duplicate values in an array, given a function identifying a key
+     * 
+     * @param {array} a The array on which the action will be performed
+     * @param {function} key A function that returns the key (from each object) that will be used to check for duplication
+     * @return {array} The array with duplicate elements removed
+     */
     removeDuplicates: function(a, key) {
         var seen = {};
         return a.filter(function(item) {
@@ -21,7 +35,7 @@ module.exports = {
         })
     },
     /**
-     * This function removes and element at a specified index from the array, adusting all other elements accordingly.
+     * This function removes an element at a specified index from the array, adusting all other elements accordingly.
      * 
      * @param {array} array The array on which the action will be performed
      * @param {int} index The index at which the element will be removed

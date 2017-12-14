@@ -10,8 +10,15 @@ const path = require('path');
 const uuid = require('uuid/v1'); //Timestamp-based uuid
 const glob = require('glob');
 
-var tpltId = 1
+var tpltId = 1//TODO: This will eventually be identified by the team, or even by the user at export
 
+/**
+ * Async download an image from a given url and write it to the server
+ * 
+ * @param {string} uri The uri of the image
+ * @param {string} id An id to uniquely identify this image; this id should be inherited from the document id to allow garbage cleanup
+ * @return {string} The filepath to the downloaded image
+ */
 var downloadImage = function(uri, id) {
     return new Promise(function(resolve, reject) {
         var filePath = path.resolve(__dirname, 'temp', (id || uuid()) + path.extname(uri));
@@ -32,19 +39,39 @@ var downloadImage = function(uri, id) {
     });
 }
 
+/**
+ * Given an article and template, generate a formatted word document and save it to the server. Async.
+ * 
+ * @param {object} article The article to export
+ * @param {string} tpltId The id of the requested template
+ * @param {string} id A uuid to uniquely identify the files while they reside on the server
+ * @return {string} The filepath to the Word document
+ */
 var generateWordDoc = function(article, tpltId, id) {
     return new Promise(function(resolve, reject) {
-        var generateDoc = function(dat, id) {
+
+        /**
+         * Given processed article data and a template, generate a formatted word document and save it to the server. Async.
+         * 
+         * @param {object} data The key/value pairs to be injected into the document
+         * @param {string} id A uuid to uniquely identify the files while they reside on the server; this id should be inherited to allow garbage cleanup
+         * @return {string} The filepath to the Word document
+         */
+        //IF ERR: data was typoed as dat; corrected, but have not verified everything doesn't fall to pieces.
+        var generateDoc = function(data, id) {
             return new Promise(function(resolve, reject) {
-                //Load the docx file as a binary
-                if(!tpltId)
-                tpltId = 1;
                 
+                if(!tpltId) {
+                    tpltId = 1;
+                }
+                
+                //Load the docx file as a binary
                 var content = fs
                     .readFileSync(path.resolve(__dirname, 'templates', 'tplt-id-' + tpltId + '.docx'), 'binary');
 
                 var zip = new JSZip(content);
 
+                //Set image options
                 var opts = {}
                 opts.centered = false;
                 opts.getImage=function(tagValue, tagName) {
@@ -62,6 +89,7 @@ var generateWordDoc = function(article, tpltId, id) {
                 
                 var imageModule=new ImageModule(opts);
 
+                //Attach modules and load data
                 var doc = new Docxtemplater()
                     .attachModule(imageModule)
                     .loadZip(zip)
@@ -90,15 +118,16 @@ var generateWordDoc = function(article, tpltId, id) {
 
                 var filename = path.resolve(__dirname, 'temp',  (id || uuid()) + '.docx')
 
-                // buf is a nodejs buffer, you can either write it to a file or do anything else with it.
+                // buf is a nodejs buffer; here we write it to a file in the temp folder on the server.
                 fs.writeFileSync(filename, buf);
                 
                 return resolve(path.basename(filename));
             });
         }
     
-
+        //If the article has an image
         if(article.imageUri) {
+            //Download the image, add it to the data object, and call generateDoc()
             return downloadImage(article.imageUri, id).then(function(imagePath) {
                 data = {
                     "title":    article.title,
@@ -113,6 +142,7 @@ var generateWordDoc = function(article, tpltId, id) {
                     return reject(err);
                 })
             }).catch(function(err) {
+                //If the image could not be loaded, generate the doc without the image
                 console.log(err);
 
                 data = {
@@ -128,6 +158,7 @@ var generateWordDoc = function(article, tpltId, id) {
                 })
             });
         } else {
+            //If there is no image, generate the doc
             data = {
                 "title":    article.title,
                 "text":     article.text,
@@ -143,6 +174,12 @@ var generateWordDoc = function(article, tpltId, id) {
     });
 }
 
+/**
+ * Delete all files of a given filename, regardless of extension. In the export logic, all resource files for a given export will have the same name,
+ * and only be unique through their extension.
+ * 
+ * @param {array} file The filepath to the file to be deleted
+ */
 var deleteTemporaryFiles = function (fileName) {
     glob(fileName.replace(/\.[^/.]+$/, "") + '*', function(err, files) {
         for(var i = 0; i < files.length; i++) {
@@ -153,14 +190,19 @@ var deleteTemporaryFiles = function (fileName) {
     })    
 }
 
+/**
+ * Given an array of articles, create a .zip file on the server with formatted word documents of every article. Async.
+ * 
+ * @param {array} a An array of articles
+ * @param {string} tpltId The id for the requested export template
+ * @return {string} The filepath to the .zip file
+ */
 var generateZip = function(articles, tpltId) {
     return new Promise(function(resolve, reject) {
         var promises = [];//An array to store all of the promises before putting them in $q
         var promiseNames = [];//The names associated with each docx boject
 
         var id = uuid();
-
-        
 
         for(var i = 0; i < articles.length; i++) {
             promises.push(generateWordDoc(articles[i], tpltId, id + '.' + articles[i].title));
@@ -173,6 +215,8 @@ var generateZip = function(articles, tpltId) {
 
                 var zip = {}
                 
+                //The version of jszip required by docxtemplater does not support blobs
+                //But blobs are needed to export a zip
                 var jszip3x = undefined;
                 if(!JSZip.support.blob) {
                     niv.install('jszip@3.1.4');
@@ -181,6 +225,7 @@ var generateZip = function(articles, tpltId) {
 
                 zip = new jszip3x() || new JSZip();
 
+                //Read all of the .docx files with the specified id
                 return glob(fileName + '*', function(err, files) {
                     for(var i = 0; i < files.length; i++) {
                         if(path.extname(files[i]) === '.docx') {
@@ -190,6 +235,7 @@ var generateZip = function(articles, tpltId) {
 
                     fileName = path.resolve(__dirname, 'temp', id + '.zip');
 
+                    //Zip 'em up!
                      zip.generateAsync({type : "nodebuffer"}).then(function(buf) {
                         fs.writeFileSync(fileName, buf)
                         return resolve(fileName);
