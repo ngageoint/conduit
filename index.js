@@ -19,10 +19,10 @@ const ArticleReader = require('./server/article-reader/article-reader.js');
 const SourceService = require('./server/tools/sources.service.server.js');
 
 
-ArticleReader.readSource(SourceService.sources[1]).then(function(res) {
+/*ArticleReader.readSource(SourceService.sources[1]).then(function(res) {
 	db.insert.articleFull(res);
 	//db.insert.articleBase(res);
-});
+});*/
 
 
 //Load local environment variable file (.env)
@@ -436,7 +436,7 @@ app.post('/insert/bookStatus', function(req, res, next) {
 		res.send('Missing parameters. bookId and articleId are required');
 		return;
 	}
-	db.insert.bookStatus(req.body.bookId, req.body.articleId).then(function(result) {
+	db.insert.bookStatus(req.body.bookId, req.body.articleId, req.body.teamId, req.body.userId).then(function(result) {
 		res.status(200);
     	res.json(result);
   	});

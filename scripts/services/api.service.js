@@ -9,7 +9,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						var query = '/select/articlesByUserFromDate?' +
 									'userId=' + user.id + 
 									'&date=' + date + 
-									(user.team ? '&teamId=' + user.team : '');
+									(user.teamId ? '&teamId=' + user.teamId : '');
 
 						console.log(query);
 
@@ -28,7 +28,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					return UserService.getUser().then(function(user) {
 						var query = '/select/articleBlock?' +
 									'userId=' + user.id + 
-									'&teamId=' + (user.team ? user.team : 1) +
+									'&teamId=' + (user.teamId ? user.teamId : 1) +
 									'&fromDate=' + fromDate + 
 									'&numArticles=' + (numArticles ? numArticles : __config.MIN_RENDERED_CARDS) +
 									(startingId ? '&startingId=' + startingId : '');
@@ -44,17 +44,18 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 			},
 			articleOriginal: function(article) {
 				return new Promise(function(resolve, reject) {
-					
 					return UserService.getUser().then(function(user) {
-						var data = {
-							article: article,
-							userId: user.id,
-							teamId: user.team
-						}
-						$http.post('/select/articleOriginal', data).then(function(response) {
-							return resolve(response.data);
-						}).catch(function(err) {
-							return reject(err);
+						return UserService.getUser().then(function(user) {
+							var data = {
+								article: article,
+								userId: user.id,
+								teamId: user.teamId
+							}
+							$http.post('/select/articleOriginal', data).then(function(response) {
+								return resolve(response.data);
+							}).catch(function(err) {
+								return reject(err);
+							});
 						});
 					});
 				});
@@ -65,7 +66,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						var data = {
 							article: article,
 							userId: user.id,
-							teamId: user.team
+							teamId: user.teamId
 						}
 
 						$http.post('/select/mostRecentArticleEdit', data).then(function(response) {
@@ -84,7 +85,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						var data = {
 							articleId: articleId,
 							userId: user.id,
-							teamId: user.team,
+							teamId: user.teamId,
 							title: title,
 							text: text
 						}
@@ -104,8 +105,8 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					return UserService.getUser().then(function(user) {
 						var data = {
 							article: article,
-							userId: user.id || 1,
-							teamId: user.team || 1
+							userId: user.id,
+							teamId: user.teamId
 						}
 
 						$http.post('/insert/articleFull', data).then(function(response) {
@@ -118,31 +119,37 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 			},
 			comment: function(comment, articleId) {
 				return new Promise(function(resolve, reject) {
-					var data = {
-						comment: comment,
-						articleId: articleId,
-						userId: comment.user.id,
-						teamId: comment.user.team
-					}
+					return UserService.getUser().then(function(user) {
+						var data = {
+							comment: comment,
+							articleId: articleId,
+							userId: comment.user.id,
+							teamId: comment.user.teamId
+						}
 
-					$http.post('/insert/comment', data).then(function(response) {
-						return resolve(response);
-					}).catch(function(err) {
-						return reject(err);
+						$http.post('/insert/comment', data).then(function(response) {
+							return resolve(response);
+						}).catch(function(err) {
+							return reject(err);
+						});
 					});
 				});
 			},
 			bookStatus: function(bookId, articleId) {
 				return new Promise(function(resolve, reject) {
-					var data = {
-						bookId: bookId,
-						articleId: articleId
-					}
+					return UserService.getUser().then(function(user) {
+						var data = {
+							bookId: bookId,
+							articleId: articleId,
+							userId: user.id,
+							teamId: user.teamId
+						}
 
-					$http.post('/insert/bookStatus', data).then(function(response) {
-						return resolve(response);
-					}).catch(function(err) {
-						return reject(err);
+						$http.post('/insert/bookStatus', data).then(function(response) {
+							return resolve(response);
+						}).catch(function(err) {
+							return reject(err);
+						});
 					});
 				});
 			}
@@ -202,15 +209,19 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 		delete : {
 			bookStatus: function(bookId, articleId) {
 				return new Promise(function(resolve, reject) {
-					var data = {
-						bookId: bookId,
-						articleId: articleId
-					}
+					return UserService.getUser().then(function(user) {
+						var data = {
+							bookId: bookId,
+							articleId: articleId,
+							userId: user.id,
+							teamId: user.teamId
+						}
 
-					$http.post('/delete/bookStatus', data).then(function(response) {
-						return resolve(response);
-					}).catch(function(err) {
-						return reject(err);
+						$http.post('/delete/bookStatus', data).then(function(response) {
+							return resolve(response);
+						}).catch(function(err) {
+							return reject(err);
+						});
 					});
 				});
 			}
