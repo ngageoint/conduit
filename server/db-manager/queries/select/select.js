@@ -83,7 +83,7 @@ module.exports = {
             var promises = [];
 
             promises.push(module.exports.articleBase(articleId));
-            promises.push(module.exports.booksByArticle(articleId));
+            promises.push(module.exports.booksByArticle(articleId, teamId));
             promises.push(module.exports.imagesByArticle(articleId));
             promises.push(module.exports.imageStatusByIds(articleId, teamId || 1));
             promises.push(module.exports.commentsByArticle(articleId));
@@ -264,11 +264,11 @@ module.exports = {
             });
         });
     },
-    booksByArticle: function(id) {
+    booksByArticle: function(id, teamId) {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_BOOKS_BY_ARTICLE.sql')),
-                values: [id],
+                values: [id, teamId],
             }
             module.exports.query(query, function(err, res) {
                 if(err) {
@@ -282,11 +282,11 @@ module.exports = {
             });
         });
     },
-    bookStatusByIds: function(bookId, articleId) {
+    bookStatusByIds: function(bookId, articleId, teamId) {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_BOOK_STATUS_BY_IDS.sql')),
-                values: [bookId, articleId],
+                values: [bookId, articleId, teamId],
             }
             module.exports.query(query, function(err, res) {
                 if(err) {

@@ -229,13 +229,13 @@ app.get('/select/imagesByArticle', function(req, res, next) {
 });
 
 app.get('/select/booksByArticle', function(req, res, next) {
-	if(!req.query.id) {
+	if(!req.query.id || !req.query.teamId) {
 		console.log('Missing params');
 		res.status(400);
-		res.send('Missing parameters. id required.');
+		res.send('Missing parameters. id and teamId required.');
 		return;
 	}
-	db.select.booksByArticle(req.query.id).then(function(books) {
+	db.select.booksByArticle(req.query.id, req.query.teamId).then(function(books) {
 		res.status(200);
     	res.json(books);
   	});
@@ -436,7 +436,7 @@ app.post('/insert/bookStatus', function(req, res, next) {
 		res.send('Missing parameters. bookId and articleId are required');
 		return;
 	}
-	db.insert.bookStatus(req.body.bookId, req.body.articleId, req.body.teamId, req.body.userId).then(function(result) {
+	db.insert.bookStatus(req.body.bookId, req.body.articleId, req.body.userId, req.body.teamId).then(function(result) {
 		res.status(200);
     	res.json(result);
   	});
@@ -573,7 +573,7 @@ app.post('/delete/bookStatus', function(req, res, next) {
 		res.send('Missing parameters. bookId and articleId are required');
 		return;
 	}
-	db.delete.bookStatus(req.body.bookId, req.body.articleId).then(function(result) {
+	db.delete.bookStatus(req.body.bookId, req.body.articleId, req.body.teamId).then(function(result) {
 		res.status(200);
     	res.json(result);
   	});

@@ -188,7 +188,7 @@ module.exports = {
                             if(thisId.id) {
                                 thisId = thisId.id
                             }
-                            select.bookStatusByIds(thisId, articleId).then(function(statuses) {
+                            select.bookStatusByIds(thisId, articleId, teamId).then(function(statuses) {
                                 if(!statuses[0]) {
                                     promises.push(module.exports.bookStatus(thisId, articleId, userId, teamId));
                                 }

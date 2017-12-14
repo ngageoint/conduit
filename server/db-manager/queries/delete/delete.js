@@ -7,7 +7,7 @@ module.exports = {
     setQueryManager: function(query) {
         this.query = query;
     },
-    bookStatus: function(bookId, articleId) {
+    bookStatus: function(bookId, articleId, teamId) {
         return new Promise(function(resolve, reject) {
             if(bookId instanceof Array) {
                 var promises = [];
@@ -17,9 +17,9 @@ module.exports = {
                             if(thisId.id) {
                                 thisId = thisId.id
                             }
-                            select.bookStatusByIds(thisId, articleId).then(function(statuses) {
+                            select.bookStatusByIds(thisId, articleId, teamId).then(function(statuses) {
                                 if(statuses[0]) {
-                                    promises.push(module.exports.bookStatus(thisId, articleId));
+                                    promises.push(module.exports.bookStatus(thisId, articleId, teamId));
                                 }
                             });  
                         }(bookId[i]));   
@@ -33,7 +33,7 @@ module.exports = {
             } else {
                 const query = {
                     text: tools.readQueryFile(path.join(__dirname, 'DELETE_BOOK_STATUS.sql')),
-                    values: [bookId, articleId]
+                    values: [bookId, articleId, teamId]
                 }
                 module.exports.query(query, function(err, res) {
                     if(err) {
