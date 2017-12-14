@@ -147,6 +147,9 @@ ApiService, BooksService, DataSourceService, FilterService, RssLiteService, Arra
 		//Set fields created by conduit
 		if(typeof article.books == "undefined")
 			article.books = [];
+		if(typeof article.edits == "undefined")
+			article.edits = [];
+			
 		//Ensure articles with existing books are referencing the correct object
 		if(article.books.length > 0 && books) {
 			for(var i = 0; i < article.books.length; i++) {

@@ -111,6 +111,8 @@ module.exports = {
                 article.books = [];
             if(typeof article.comments == "undefined")
                 article.comments = [];
+            if(typeof article.edits == "undefined")
+                article.edits = [];
 
             //Set additional fields required by conduit
             if(typeof article.date == "undefined")

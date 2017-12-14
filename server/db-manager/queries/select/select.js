@@ -114,6 +114,16 @@ module.exports = {
                 
                 if(res[6].title) {
                     article.isEdit = true;
+                    if(!article.edits) {
+                        article.edits = []
+                    }
+                    console.log(res[6]);
+                    article.edits.push({
+                        title: res[6].title,
+                        text: res[6].text
+                    });
+                    //TODO: No need to set article.text; simply put logic in UI to pick the most recent edit
+                    //Don't forget to add new edits to the local array before pushing
                     article.title = res[6].title;
                     article.text = res[6].text;
                 }

@@ -252,6 +252,7 @@ module.exports = {
                 this.build = false,
                 this.comments = [],
                 this.date = {},
+                this.edits = [],
                 this.id = '',
                 this.images = [],
                 this.inBook = false,

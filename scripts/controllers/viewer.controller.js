@@ -34,8 +34,8 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 	$scope.imageIndex = 0;
 
 	$scope.hasEdits = function () {
-		if($scope.articles) {
-			return (typeof $scope.articles[$scope.currentIndex].isEdit !== "undefined");
+		if($scope.articles && $scope.articles[$scope.currentIndex] && $scope.articles[$scope.currentIndex].edits) {
+			return ($scope.articles[$scope.currentIndex].edits.length > 0);
 		} else {
 			return false;
 		}
@@ -101,6 +101,11 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 	}
 
 	$scope.submitEdit = function() {
+
+		$scope.articles[$scope.currentIndex].edits.push({
+			title: $scope.articles[$scope.currentIndex].title,
+			text: $scope.articles[$scope.currentIndex].text
+		})
 
 		if(!($scope.oldValues.title === $scope.articles[$scope.currentIndex].title && $scope.oldValues.text === $scope.articles[$scope.currentIndex].text)) {
 				$scope.articles[$scope.currentIndex].isEdit = true;
