@@ -361,7 +361,6 @@ module.exports = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_MOST_RECENT_ARTICLE_EDIT.sql')),
                 values: [
                     articleId instanceof Object ? articleId.id : articleId,
-                    userId,
                     teamId]
             }
             module.exports.query(query, function(err, res) {

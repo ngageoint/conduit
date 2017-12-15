@@ -19,10 +19,10 @@ const ArticleReader = require('./server/article-reader/article-reader.js');
 const SourceService = require('./server/tools/sources.service.server.js');
 
 
-/*ArticleReader.readSource(SourceService.sources[1]).then(function(res) {
+ArticleReader.readSource(SourceService.sources[1]).then(function(res) {
 	db.insert.articleFull(res);
 	//db.insert.articleBase(res);
-});*/
+});
 
 
 //Load local environment variable file (.env)
