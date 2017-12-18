@@ -31,7 +31,7 @@ try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
 var authEnabled = (process.env.VCAP_APPLICATION || process.env);
 authEnabled = false;
 
-/*app.use('/public',express.static(path.join(__dirname, '/public')));*/
+app.use(express.static('public'));
 app.use('/packages', express.static(path.join(__dirname, '/packages')));
 app.use('/scripts', express.static(path.join(__dirname, '/scripts')));
 app.use('/resources', express.static(path.join(__dirname, '/resources')));
