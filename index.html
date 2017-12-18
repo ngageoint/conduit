@@ -117,6 +117,11 @@
                                     ng-click="getMostRecentEdit()">
                                     View Latest Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-fast-forward pull-right"></span>
                                 </a>
+                                <a  href="#"
+                                    ng-show="hasEdits()"
+                                    ng-click="versionsView = true">
+                                    View All Versions&nbsp;&nbsp;<span class="glyphicon glyphicon-time pull-right"></span>
+                                </a>
                                 <a href"#" target="_blank" ng-click="articleEdit.$show()">
                                     Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil pull-right"></span>
                                 </a>
@@ -216,13 +221,28 @@
                         </div>
                     </div>
                     <div id="action-area">
-                        <div id="id">
+                        <div id="id" ng-show="!versionsView">
                             <a ng-href="{{articles[currentIndex].link}}" target="_blank">
                                 {{articles[currentIndex].id}}
                             </a>
                             {{' - ' + (articles[currentIndex].isEdit ? 'Edited' : 'Original')}}
                         </div>
-                        <div id="default-action-buttons" ng-show="!articleEdit.$visible">
+                        <div id="version-pagiation" ng-show="versionsView">
+                            <ul     uib-pagination 
+                                    total-items="articles[currentIndex].edits.length"
+                                    items-per-page="1" 
+                                    ng-model="selectedVersion" 
+                                    max-size="5" 
+                                    class="pagination-sm" 
+                                    boundary-links="true" 
+                                    first-text="Original"
+                                    last-text="Most Recent"
+                                    previous-text="&lsaquo;"
+                                    next-text="&rsaquo;"
+                                    num-pages="numPages">
+                            </ul>
+                        </div>
+                        <div id="default-action-buttons" ng-show="!articleEdit.$visible && !versionsView">
                             <ol class="btn btn-primary nya-bs-select dropup col-xl-4"
                                 id="toolbox-books"
                                 multiple
@@ -254,6 +274,7 @@
                                     </div>
                             </button>
                         </div>
+                        <!-- In edit view -->
                         <div id="edit-action-buttons" ng-show="articleEdit.$visible">
                             <button class="btn btn-primary"
                                     type="submit"
@@ -268,6 +289,37 @@
                                 <div class="ico-text-1">CANCEL</div>
                             </button>
                         </div>
+                        <!-- In versions view -->
+                        <div id="edit-action-buttons" ng-show="versionsView && !articleEdit.$visible">
+                            <button class="btn btn-primary"
+                                    ng-click="versionsView = false"
+                                    title="CLOSE">
+                                <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                                <div class="ico-text-1">CLOSE</div>
+                            </button>
+                            <button class="btn btn-default"
+                                    ng-click="articleEdit.$show(); versionsView = false"
+                                    title="EDIT">
+                                <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                                <div class="ico-text-1">EDIT</div>
+                            </button>
+                            <button class="btn btn-default"
+                                    ng-click="export(articles[currentIndex])"
+                                    title="EXPORT">
+                                <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                                <div class="ico-text-1">EXPORT</div>
+                            </button>
+                            <button class="btn btn-default"
+                                    ng-click=""
+                                    title="Revert to this version">
+                                <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                                <div class="ico-text-1">REVERT</div>
+                            </button>
+                            
+                        </div>
+                        <!--
+                            <ul uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></ul>
+                        -->
                         
                     </div>
                         <!--<div id="fab">
@@ -396,11 +448,6 @@
 </div>
                 </fe-fluid>
                 </div>
-                
-                <!--<div id="stream-footer" class="pull-right">
-                    Articles Shown:&nbsp;
-                       <span ng-if="articles.length > 0" class="badge">{{filter.count}}</span>
-                </div>-->
                 
             </div>
             
