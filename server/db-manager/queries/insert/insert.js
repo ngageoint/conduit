@@ -2,6 +2,7 @@ var query = undefined;
 const path = require('path')
 const tools = require(path.join(__dirname, '..','..','db-tools.js'));
 const select = require(path.join(__dirname, '..','select','select.js'));
+const DateTools = require(path.join('..', '..', '..', 'tools', 'date.tools.js'));
 
 module.exports = {
     setQueryManager: function(query) {
@@ -124,8 +125,9 @@ module.exports = {
                 if(err) {
                     return reject(err);
                 }
-                else
-                    return resolve(res);
+                else 
+                    console.log(DateTools.format.timestamptz(res.rows[0].timestamp));
+                    return resolve(DateTools.format.timestamptz(res.rows[0].timestamp));
             });
         });
     },

@@ -407,8 +407,14 @@ app.post('/insert/articleEdit', function(req, res, next) {
 		return;
 	}
 	db.insert.articleEdit(req.body.articleId, req.body.userId, req.body.teamId, req.body.title, req.body.text).then(function(result) {
+		
+		let edit = {
+			timestamp: result,
+			teamId: req.body.teamId
+		}
+		
 		res.status(200);
-    	res.json(result);
+    	res.json(edit);
   	});
 });
 

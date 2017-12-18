@@ -71,6 +71,26 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						});
 					});
 				});
+			},
+			editContent: function(articleId, editObject) {
+				return new Promise(function(resolve, reject) {
+					return UserService.getUser().then(function(user) {
+						return UserService.getUser().then(function(user) {
+							var query = '/select/editContent?' +
+										'articleId=' + articleId +
+										'&teamId=' + user.teamId + 
+										'&timestamp=' + editObject.timestamp;
+
+							console.log(query);
+
+							$http.get(query).then(function(response) {
+								return resolve(response.data);
+							}).catch(function(err) {
+								return reject(err);
+							});
+						});
+					});
+				});
 			}
 		},
 		insert : {
@@ -86,7 +106,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						}
 
 						$http.post('/insert/articleEdit', data).then(function(response) {
-							return resolve(response);
+							return resolve(response.data);
 						}).catch(function(err) {
 							return reject(err);
 						});

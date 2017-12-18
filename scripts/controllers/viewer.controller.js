@@ -52,6 +52,34 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			$scope.articles[$scope.currentIndex] = article;
 		});
 	}
+
+	$scope.lastVersionViewState = false;
+	$scope.versionsView = function(enabled) {
+		//If it is a boolean, change the state
+		if(typeof enabled === "boolean") {
+			$scope.lastVersionViewState = enabled;
+			if(enabled === true) {
+				$scope.selectedVersion = $scope.articles[$scope.currentIndex].edits.length + 1;
+			}
+		} else {
+			return $scope.lastVersionViewState;
+		}
+	}
+
+	$scope.getArticleVersion = function(selectedVersion) {
+		selectedVersion -= 2; //Pagination page starts at 1, and the original article is not represented in the edits array		
+
+		if(selectedVersion >= 0) {
+			ApiService.select.editContent(
+				$scope.articles[$scope.currentIndex].id,
+				$scope.articles[$scope.currentIndex].edits[selectedVersion]).then(function(version) {
+					$scope.articles[$scope.currentIndex].title = version.title;
+					$scope.articles[$scope.currentIndex].text = version.text;
+			});
+		} else {
+			$scope.getOriginalArticle();
+		}
+	}
 	
 	/**
 	 * Navigate the image index to the previous image, if it exists. Called by ng-click of navBefore element
@@ -102,17 +130,21 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 
 	$scope.submitEdit = function() {
 
+		/*
 		$scope.articles[$scope.currentIndex].edits.push({
 			title: $scope.articles[$scope.currentIndex].title,
 			text: $scope.articles[$scope.currentIndex].text
 		})
+		*/
 
 		if(!($scope.oldValues.title === $scope.articles[$scope.currentIndex].title && $scope.oldValues.text === $scope.articles[$scope.currentIndex].text)) {
 				$scope.articles[$scope.currentIndex].isEdit = true;
 				ApiService.insert.articleEdit(	$scope.articles[$scope.currentIndex].id,
 												$scope.articles[$scope.currentIndex].title, 
 												$scope.articles[$scope.currentIndex].text)
-									.then(function(res){}).catch(function(err) {
+									.then(function(edit){
+										$scope.articles[$scope.currentIndex].edits.push(edit);
+									}).catch(function(err) {
 										console.log(err);
 									})
 			}

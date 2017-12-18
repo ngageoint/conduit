@@ -1,2 +1,3 @@
 INSERT INTO "conduit_db"."ARTICLES_EDITS"
 VALUES ($1,$2,$3,$4,$5,DEFAULT)
+RETURNING timestamp;

@@ -108,18 +108,18 @@
                                     View Source&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window pull-right"></span>
                                 </a>
                                 <a  href="#"
-                                    ng-show="hasEdits() && articles[currentIndex].isEdit"
+                                    ng-show="hasEdits() && articles[currentIndex].isEdit && !versionsView()"
                                     ng-click="getOriginalArticle()">
                                     View Original&nbsp;&nbsp;<span class="glyphicon glyphicon-fast-backward pull-right"></span>
                                 </a>
                                 <a  href="#"
-                                    ng-show="hasEdits() && !articles[currentIndex].isEdit"
+                                    ng-show="hasEdits() && !articles[currentIndex].isEdit && !versionsView()"
                                     ng-click="getMostRecentEdit()">
                                     View Latest Edit&nbsp;&nbsp;<span class="glyphicon glyphicon-fast-forward pull-right"></span>
                                 </a>
                                 <a  href="#"
-                                    ng-show="hasEdits()"
-                                    ng-click="versionsView = true">
+                                    ng-show="hasEdits() && !versionsView()"
+                                    ng-click="versionsView(true)">
                                     View All Versions&nbsp;&nbsp;<span class="glyphicon glyphicon-time pull-right"></span>
                                 </a>
                                 <a href"#" target="_blank" ng-click="articleEdit.$show()">
@@ -221,27 +221,28 @@
                         </div>
                     </div>
                     <div id="action-area">
-                        <div id="id" ng-show="!versionsView">
+                        <div id="id" ng-show="!versionsView()">
                             <a ng-href="{{articles[currentIndex].link}}" target="_blank">
                                 {{articles[currentIndex].id}}
                             </a>
                             {{' - ' + (articles[currentIndex].isEdit ? 'Edited' : 'Original')}}
                         </div>
-                        <div id="version-pagniation" ng-show="versionsView">
+                        <div id="version-pagniation" ng-show="versionsView()">
                             <ul     uib-pagination 
-                                    total-items="articles[currentIndex].edits.length"
+                                    total-items="articles[currentIndex].edits.length + 1"
                                     items-per-page="1" 
                                     ng-model="selectedVersion" 
                                     max-size="5" 
-                                    class="pagination-sm" 
+                                    class="pagination-sm"
                                     boundary-links="true" 
                                     first-text="Original"
                                     last-text="Most Recent"
                                     template-url="./templates/pagination/override.html"
-                                    num-pages="numPages">
+                                    num-pages="numPages"
+                                    ng-change="getArticleVersion(selectedVersion)">
                             </ul>
                         </div>
-                        <div id="default-action-buttons" ng-show="!articleEdit.$visible && !versionsView">
+                        <div id="default-action-buttons" ng-show="!articleEdit.$visible && !versionsView()">
                             <ol class="btn btn-primary nya-bs-select dropup col-xl-4"
                                 id="toolbox-books"
                                 multiple
@@ -289,15 +290,15 @@
                             </button>
                         </div>
                         <!-- In versions view -->
-                        <div id="edit-action-buttons" ng-show="versionsView && !articleEdit.$visible">
+                        <div id="edit-action-buttons" ng-show="versionsView() && !articleEdit.$visible">
                             <button class="btn btn-primary"
-                                    ng-click="versionsView = false"
+                                    ng-click="versionsView(false)"
                                     title="CLOSE">
                                 <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
                                 <div class="ico-text-1">CLOSE</div>
                             </button>
                             <button class="btn btn-default"
-                                    ng-click="articleEdit.$show(); versionsView = false"
+                                    ng-click="articleEdit.$show(); versionsView(false)"
                                     title="EDIT">
                                 <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
                                 <div class="ico-text-1">EDIT</div>
