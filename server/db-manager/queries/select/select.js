@@ -1,6 +1,7 @@
 var query = undefined;
 const path = require('path')
 const tools = require(path.join(__dirname, '..','..','db-tools.js'));
+const DateTools = require(path.join('..', '..', '..', 'tools', 'date.tools.js'));
 
 module.exports = {
     setQueryManager: function(query) {
@@ -82,25 +83,25 @@ module.exports = {
         return new Promise(function(resolve, reject) {
             var promises = [];
 
-            promises.push(module.exports.articleBase(articleId));
-            promises.push(module.exports.booksByArticle(articleId, teamId));
-            promises.push(module.exports.imagesByArticle(articleId));
-            promises.push(module.exports.imageStatusByIds(articleId, teamId || 1));
-            promises.push(module.exports.commentsByArticle(articleId, teamId));
-            promises.push(module.exports.tagsByArticle(articleId));
+            promises.push(module.exports.articleBase(articleId));//0
+            promises.push(module.exports.booksByArticle(articleId, teamId));//1
+            promises.push(module.exports.imagesByArticle(articleId));//2
+            promises.push(module.exports.imageStatusByIds(articleId, teamId));//3
+            promises.push(module.exports.commentsByArticle(articleId, teamId));//4
+            promises.push(module.exports.tagsByArticle(articleId));//5
+            promises.push(module.exports.mostRecentArticleEdit(articleId, teamId));//6
+            promises.push(module.exports.allEditsForArticleByTeam(articleId, teamId));//7
             if(userId) {
-                promises.push(module.exports.mostRecentArticleEdit(articleId, userId, teamId));
-                promises.push(module.exports.articleStatusReadByIds(articleId, userId));
-            } else {
-                promises.push(module.exports.mostRecentArticleEdit(articleId, 1, teamId));
-            }
+                promises.push(module.exports.articleStatusReadByIds(articleId, userId));//opt: 8
+            } 
             if(teamId) {
-                promises.push(module.exports.articleStatusRemovedByTeam(articleId, teamId));
+                promises.push(module.exports.articleStatusRemovedByTeam(articleId, teamId));//opt: 8 or 9
             }
 
 
             /*promises in order:
-            0:base, 1:books[object], 2:images[string], 3:comments[object], 4:tags[string], 5:status[boolean], 6:edit
+            0:base, 1:books[object], 2:images[string], 3:selectedImage
+            4:comments[object],5:tags[string], 6:status[boolean], 6:edit
             */
             return Promise.all(promises).then(function(res) {
                 var article = res[0];
@@ -112,31 +113,27 @@ module.exports = {
                 
                 if(res[6].title) {
                     article.isEdit = true;
-                    if(!article.edits) {
-                        article.edits = []
-                    }
-                    article.edits.push({
-                        title: res[6].title,
-                        text: res[6].text
-                    });
+
                     //TODO: No need to set article.text; simply put logic in UI to pick the most recent edit
                     //Don't forget to add new edits to the local array before pushing
                     article.title = res[6].title;
                     article.text = res[6].text;
                 }
 
+                article.edits = res[7];
+
                 //If there are 8 results, both read and removed were promised
                 //In this case, 7 will be read, and 8 will be removed
-                if(res[8]) {
-                    article.read = res[7];
-                    article.removed = res[8];
+                if(res[9]) {
+                    article.read = res[8];
+                    article.removed = res[9];
                 } else {
                     //Otherwise, we have to check what the input was to determine
                     //what property res belongs to
                     if(userId) {
-                        article.read = res[7];
+                        article.read = res[8];
                     } else if (teamId) {
-                        article.removed = res[7];
+                        article.removed = res[8];
                     }
                 }
                 return resolve(article);
@@ -355,7 +352,7 @@ module.exports = {
                 });
         });
     },
-    mostRecentArticleEdit: function(articleId, userId, teamId) {
+    mostRecentArticleEdit: function(articleId, teamId) {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_MOST_RECENT_ARTICLE_EDIT.sql')),
@@ -380,6 +377,62 @@ module.exports = {
                 }
                 else {
                     return resolve(false);
+                }
+            });
+        });
+    },
+    allEditsForArticleByTeam: function(articleId, teamId) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_EDITS_BY_TEAM.sql')),
+                values: [
+                    articleId instanceof Object ? articleId.id : articleId,
+                    teamId]
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows) {
+                    var edits = [];
+                    for(var i = 0; i < res.rows.length; i++) {
+                        let edit = {
+                            teamId: teamId,
+                            timestamp: DateTools.format.timestamptz(res.rows[i].timestamp),
+                        }
+                        edits.push(edit);
+                    }
+                    return resolve(edits);
+                } else {
+                    return resolve([]);
+                }
+                return resolve(res.rows[0]);
+            });
+        });
+    },
+    editContent: function(articleId, teamId, timestamp) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_EDIT_CONTENT.sql')),
+                values: [
+                    articleId instanceof Object ? articleId.id : articleId,
+                    teamId,
+                    timestamp]
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows && res.rows[0]) {
+                        let edit = {
+                            userId: res.rows[0].user_id,
+                            timestamp: timestamp,
+                            title: res.rows[0].title,
+                            text: res.rows[0].text
+                        }
+                    return resolve(edit);
+                } else {
+                    return resolve({});
                 }
             });
         });

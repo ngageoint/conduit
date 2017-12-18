@@ -165,7 +165,21 @@ app.get('/userInfo', function(req, res, next) {
 /*=================
    SELECT Endpoint 
  ==================*/
-app.get('/select/articleFull', function(req, res, next) {
+
+ app.get('/select/allEditsForArticleByTeam', function(req, res, next) {
+	if(!req.query.articleId || !req.query.teamId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. articleId and teamId required');
+		return;
+	}
+	db.select.allEditsForArticleByTeam(req.query.articleId, req.query.teamId).then(function(edits) {
+		res.status(200);
+    	res.json(edits);
+	});
+});
+
+ app.get('/select/articleFull', function(req, res, next) {
 	if(!req.query.articleId) {
 		console.log('Missing params');
 		res.status(400);
@@ -265,16 +279,29 @@ app.get('/select/commentsByArticle', function(req, res, next) {
 });
 
 app.post('/select/mostRecentArticleEdit', function(req, res, next) {
-	if(!req.body.article && (!req.body.articleId || !req.body.userId || !req.body.teamId)) {
+	if(!req.body.article && (!req.body.articleId || !req.body.teamId)) {
 		console.log('Missing params');
 		res.status(400);
-		res.send('Missing parameters. articleId, userId, teamId required, or an article object is required.');
+		res.send('Missing parameters. articleId, teamId required, or an article object is required.');
 		return;
 	}
-	db.select.mostRecentArticleEdit(req.body.article || req.body.articleId, req.body.userId, req.body.teamId).then(function(edit) {
+	db.select.mostRecentArticleEdit(req.body.article || req.body.articleId, req.body.teamId).then(function(edit) {
 		res.status(200);
     	res.json(edit);
   	});
+});
+
+app.get('/select/editContent', function(req, res, next) {
+	if(!req.query.articleId || !req.query.teamId || !req.query.timestamp) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. articleId, teamId, and timestamp required');
+		return;
+	}
+	db.select.editContent(req.query.articleId, req.query.teamId, req.query.timestamp).then(function(edit) {
+		res.status(200);
+    	res.json(edit);
+	});
 });
 
 app.get('/select/tagsByArticle', function(req, res, next) {

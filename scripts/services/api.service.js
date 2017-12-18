@@ -61,7 +61,6 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					return UserService.getUser().then(function(user) {
 						var data = {
 							article: article,
-							userId: user.id,
 							teamId: user.teamId
 						}
 
