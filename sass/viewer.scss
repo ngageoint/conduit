@@ -261,6 +261,67 @@ $actPadding: 8px;
 	box-shadow: none;
 	background: rgba($colorPrimary, .12);
 }
+
+#action-area #version-pagniation {
+	position: absolute;
+	left: 15px;
+	bottom: 7px;
+	
+	.pagination {
+		margin: 0;
+	}
+
+	.pagination > .disabled > a {
+		color: $colorGrey;
+	}
+
+	.pagination-sm > li:first-child > a {
+		width: auto !important;
+		padding: 0px 5px !important;
+	}
+	.pagination-sm > li:first-child > a:hover {
+		border-radius: 2px;
+	}
+
+	.pagination-sm > li:last-child > a {
+		width: auto !important;
+		padding: 0px 5px !important;
+	}
+	.pagination-sm > li:last-child > a:hover {
+		border-radius: 2px;
+	}
+
+	$paginationSize: 2em;
+
+	.pagination>li>a {
+		width: $paginationSize;
+		height: $paginationSize;
+		line-height: $paginationSize;
+		
+		padding: 0;
+		border: none;
+		border-radius: 50%;
+		text-align: center;
+		margin-right: 3px;
+
+		color: $colorPrimary;
+	}
+
+	.pagination>.active>a {
+		
+		width: $paginationSize;
+		height: $paginationSize;
+		line-height: $paginationSize;
+
+		padding: 0;
+		border-radius: 50%;
+		text-align: center;
+
+		background-color: $colorPrimary;
+		color: $colorPrimaryContrast;
+	}
+}
+
 /*
 #overflow-menu {
 	position: absolute;

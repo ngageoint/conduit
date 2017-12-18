@@ -227,7 +227,7 @@
                             </a>
                             {{' - ' + (articles[currentIndex].isEdit ? 'Edited' : 'Original')}}
                         </div>
-                        <div id="version-pagiation" ng-show="versionsView">
+                        <div id="version-pagniation" ng-show="versionsView">
                             <ul     uib-pagination 
                                     total-items="articles[currentIndex].edits.length"
                                     items-per-page="1" 
@@ -237,8 +237,7 @@
                                     boundary-links="true" 
                                     first-text="Original"
                                     last-text="Most Recent"
-                                    previous-text="&lsaquo;"
-                                    next-text="&rsaquo;"
+                                    template-url="./templates/pagination/override.html"
                                     num-pages="numPages">
                             </ul>
                         </div>
