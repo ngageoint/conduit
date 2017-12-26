@@ -1,0 +1,24 @@
+language: node_js
+
+sudo: false
+
+script:
+  - npm test
+  - nvm install stable
+  - npm run lint
+  - npm run preversion
+  - nvm use $TRAVIS_NODE_VERSION
+
+node_js:
+  - "0.12"
+  - "0.10"
+  - "iojs"
+  - "4.0"
+  - "4.1"
+  - "4"
+  - "5.0"
+  - "5.1"
+  - "5.2"
+  - "5"
+  - "6"
+  - "7"
