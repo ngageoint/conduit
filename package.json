@@ -8,7 +8,7 @@
     "url": "git+https://github.com/ngageoint/conduit.git"
   },
   "engines": {
-    "node": "7.10.x"
+    "node": "9.3.x"
   },
   "author": "National Geospatial-Intelligence Agency",
   "license": "Unlicense",
