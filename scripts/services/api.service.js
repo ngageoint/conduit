@@ -3,6 +3,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 
 	return {
 	  	select: {
+			/*DEPRECIATED
 			articlesByUserFromDate: function(date) {
 				return new Promise(function(resolve, reject) {
 					return UserService.getUser().then(function(user) {
@@ -18,7 +19,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						});
 					});
 				});
-			},
+			},*/
 			articleBlock: function(fromDate, numArticles, startingId) {
 				//numArticles is required. For default, input 0
 				return new Promise(function(resolve, reject) {
@@ -112,7 +113,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						});
 					});
 				});
-			},
+			},/*DEPRECIATED
 			articleFull: function(article) {
 				return new Promise(function(resolve, reject) {
 					return UserService.getUser().then(function(user) {
@@ -129,7 +130,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						});
 					});
 				});
-			},
+			},*/
 			comment: function(comment, articleId) {
 				return new Promise(function(resolve, reject) {
 					return UserService.getUser().then(function(user) {

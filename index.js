@@ -1,7 +1,11 @@
+////////////////
+////REQUIRES////
+////////////////
 const express = require('express');
 const app = express();
 const path = require('path');
 const port = 8080;
+const cookieSession = require('cookie-session');
 
 var bodyParser = require('body-parser')
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -14,19 +18,30 @@ const hash = require('object-hash');
 const db = require('./server/db-manager/db-manager.js');
 const sso = require('./server/sso/sso.js');
 const moe = require('./server/export/export.js'); //Microsoft Office Export, MOE; export is a reserved word
+const rate = require('./server/tools/rate.profiles.js');
 
 const ArticleReader = require('./server/article-reader/article-reader.js');
 const SourceService = require('./server/tools/sources.service.server.js');
 
-
+////////////////
+////ARTICLES////
+////////////////
 ArticleReader.readSource(SourceService.sources[1]).then(function(res) {
 	db.insert.articleFull(res);
 	//db.insert.articleBase(res);
 });
 
-
+////////////////
+////ENV VARS////
+////////////////
 //Load local environment variable file (.env)
 try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
+
+//Detect environment
+var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : process.env;
+if(process.env.VCAP_SERVICES) {
+	//todo pull pcf secret
+}
 
 var authEnabled = (process.env.VCAP_APPLICATION || process.env);
 authEnabled = false;
@@ -39,10 +54,19 @@ app.use('/styles', express.static(path.join(__dirname, '/styles')));
 app.use('/templates', express.static(path.join(__dirname, '/templates')));
 app.use('/data', express.static(path.join(__dirname, '/data')));
 
+///////////////
+////SESSION////
+///////////////
+app.use(cookieSession({
+	name: 'session',
+	secret: environment.session_secret,
+	sameSite: true
+}))
+
 var users = {}
 
 /* GET home page. */
-app.get('/', function(req, res, next) {
+app.get('/', rate.restricted, function(req, res, next) {
 	if(!authEnabled)
 	{
 		res.sendFile(path.join(__dirname, './', '', 'index.html'));
@@ -55,6 +79,7 @@ app.get('/', function(req, res, next) {
 		res.redirect(sso.REDIRECT_URL());
 	else {
 		sso.authenticateUser(req.query.code).then(function(auth) {
+			//TODO set cookie 
 			sso.getUserInfo(auth.tokens.access_token).then(function(user) {
 				users[req.query.code] = user;
 				res.sendFile(path.join(__dirname, './', '', 'index.html'));
@@ -66,11 +91,11 @@ app.get('/', function(req, res, next) {
 	}
 });
 
-app.get('/unsupported', function(req, res, next) {
+app.get('/unsupported', rate.immediate, function(req, res, next) {
 	res.sendFile(path.join(__dirname, './', 'public', 'html', 'unsupported.html'));
 });
 
-app.post('/hash', function(req, res, next) {
+app.post('/hash', rate.frontloaded, function(req, res, next) {
 	
 	var article = req.body.article;
 	
@@ -84,7 +109,7 @@ app.post('/hash', function(req, res, next) {
 	}
 });
 
-app.post('/export', function(req, res, next) {
+app.post('/export', rate.immediateRestricted, function(req, res, next) {
 	
 	var article = req.body.article;
 
@@ -100,7 +125,7 @@ app.post('/export', function(req, res, next) {
 	}
 });
 
-app.post('/exportZip', function(req, res, next) {
+app.post('/exportZip', rate.immediateRestricted, function(req, res, next) {
 
 	if(req.body.articles && req.body.tpltId) {
 		res.status(200);
@@ -114,7 +139,7 @@ app.post('/exportZip', function(req, res, next) {
 	}
 });
 
-app.get('/download', function(req, res, next) {
+app.get('/download', rate.immediateRestricted, function(req, res, next) {
 
 	var fileName = req.query.fileName;
 
@@ -135,7 +160,7 @@ app.get('/download', function(req, res, next) {
 	}
 });
 
-app.get('/userInfo', function(req, res, next) {
+app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 	if(req.query.id) {
 		db.select.userById(req.query.id).then(function(user) {
 			res.status(200);
@@ -166,7 +191,7 @@ app.get('/userInfo', function(req, res, next) {
    SELECT Endpoint 
  ==================*/
 
- app.get('/select/allEditsForArticleByTeam', function(req, res, next) {
+ app.get('/select/allEditsForArticleByTeam', rate.immediateRestricted, function(req, res, next) {
 	if(!req.query.articleId || !req.query.teamId) {
 		console.log('Missing params');
 		res.status(400);
@@ -179,6 +204,7 @@ app.get('/userInfo', function(req, res, next) {
 	});
 });
 
+/*DEPRECIATED
  app.get('/select/articleFull', function(req, res, next) {
 	if(!req.query.articleId) {
 		console.log('Missing params');
@@ -190,9 +216,9 @@ app.get('/userInfo', function(req, res, next) {
 		res.status(200);
     	res.json(article);
   	});
-});
+});*/
 
-app.post('/select/articleOriginal', function(req, res, next) {
+app.post('/select/articleOriginal', rate.immediate, function(req, res, next) {
 	
 	if(!req.body.article) {
 		console.log('Missing params');
@@ -206,6 +232,7 @@ app.post('/select/articleOriginal', function(req, res, next) {
   	});
 });
 
+/*DEPRECIATED
 app.get('/select/articlesByUserFromDate', function(req, res, next) {
 	if(!req.query.userId || !req.query.date) {
 		console.log('Missing params');
@@ -217,15 +244,16 @@ app.get('/select/articlesByUserFromDate', function(req, res, next) {
 		res.status(200);
     	res.json(article);
   	});
-});
+});*/
 
-app.get('/select/attributes', function(req, res, next) {
+app.get('/select/attributes', rate.frontloadedRestricted, function(req, res, next) {
 	db.select.attributes().then(function(attributes) {
 		res.status(200);
     	res.json(attributes);
   	});
 });
 
+/*DEPRECIATED
 app.get('/select/imagesByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('Missing params');
@@ -237,8 +265,8 @@ app.get('/select/imagesByArticle', function(req, res, next) {
 		res.status(200);
     	res.json(images);
   	});
-});
-
+});*/
+/*DEPRECIATED
 app.get('/select/booksByArticle', function(req, res, next) {
 	if(!req.query.id || !req.query.teamId) {
 		console.log('Missing params');
@@ -250,9 +278,9 @@ app.get('/select/booksByArticle', function(req, res, next) {
 		res.status(200);
     	res.json(books);
   	});
-});
+});*/
 
-app.get('/select/booksByTeam', function(req, res, next) {
+app.get('/select/booksByTeam', rate.frontloadedRestricted, function(req, res, next) {
 	if(!req.query.teamId) {
 		console.log('Missing params');
 		res.status(400);
@@ -265,7 +293,7 @@ app.get('/select/booksByTeam', function(req, res, next) {
   	});
 });
 
-app.get('/select/commentsByArticle', function(req, res, next) {
+app.get('/select/commentsByArticle', rate.frontloaded, function(req, res, next) {
 	if(!req.query.id || !req.query.teamId) {
 		console.log('Missing params');
 		res.status(400);
@@ -278,7 +306,7 @@ app.get('/select/commentsByArticle', function(req, res, next) {
   	});
 });
 
-app.post('/select/mostRecentArticleEdit', function(req, res, next) {
+app.post('/select/mostRecentArticleEdit', rate.immediateRestricted, function(req, res, next) {
 	if(!req.body.article && (!req.body.articleId || !req.body.teamId)) {
 		console.log('Missing params');
 		res.status(400);
@@ -291,7 +319,7 @@ app.post('/select/mostRecentArticleEdit', function(req, res, next) {
   	});
 });
 
-app.get('/select/editContent', function(req, res, next) {
+app.get('/select/editContent', rate.immediate, function(req, res, next) {
 	if(!req.query.articleId || !req.query.teamId || !req.query.timestamp) {
 		console.log('Missing params');
 		res.status(400);
@@ -304,6 +332,7 @@ app.get('/select/editContent', function(req, res, next) {
 	});
 });
 
+/*DEPRECIATED
 app.get('/select/tagsByArticle', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('Missing params');
@@ -315,8 +344,8 @@ app.get('/select/tagsByArticle', function(req, res, next) {
 		res.status(200);
     	res.json(tags);
   	});
-});
-
+});*/
+/*DEPRECIATED
 app.get('/select/articleStatusReadByIds', function(req, res, next) {
 	if(!req.query.articleId || !req.query.userId) {
 		console.log('Missing params');
@@ -328,9 +357,9 @@ app.get('/select/articleStatusReadByIds', function(req, res, next) {
 		res.status(200);
     	res.json(status);
   	});
-});
+});*/
 
-app.get('/select/articleStatusRemovedByTeam', function(req, res, next) {
+app.get('/select/articleStatusRemovedByTeam', rate.immediateRestricted, function(req, res, next) {
 	if(!req.query.articleId || !req.query.teamId) {
 		console.log('Missing params');
 		res.status(400);
@@ -343,6 +372,7 @@ app.get('/select/articleStatusRemovedByTeam', function(req, res, next) {
   	});
 });
 
+/* DEPRECIATED
 app.get('/select/articleBase', function(req, res, next) {
 	if(!req.query.id) {
 		console.log('Missing params');
@@ -354,9 +384,9 @@ app.get('/select/articleBase', function(req, res, next) {
 		res.status(200);
     	res.json(article);
   	});
-});
+});*/
 
-app.get('/select/articleBlock', function(req, res, next) {
+app.get('/select/articleBlock', rate.frontloaded, function(req, res, next) {
 	if(!req.query.userId || !req.query.teamId || !req.query.fromDate || !req.query.numArticles) {
 		console.log('Missing params');
 		res.status(400);
@@ -373,6 +403,7 @@ app.get('/select/articleBlock', function(req, res, next) {
    INSRET Endpoint 
  ==================*/
  
+ /* DEPRECIATED
  app.post('/insert/articleBase', function(req, res, next) {
 	if(!req.body.article) {
 		console.log('Missing params');
@@ -384,8 +415,8 @@ app.get('/select/articleBlock', function(req, res, next) {
 		res.status(200);
     	res.json(result);
   	});
-});
-
+});*/
+/*DEPRECIATED
 app.post('/insert/articleFull', function(req, res, next) {
 	if(!req.body.article || !req.body.userId || !req.body.teamId) {
 		console.log('Missing params');
@@ -397,9 +428,9 @@ app.post('/insert/articleFull', function(req, res, next) {
 		res.status(200);
     	res.json(result);
   	});
-});
+});*/
 
-app.post('/insert/articleEdit', function(req, res, next) {
+app.post('/insert/articleEdit', rate.intermittent, function(req, res, next) {
 	if(!req.body.articleId || !req.body.userId || !req.body.teamId || !req.body.title || !req.body.text) {
 		console.log('Missing params');
 		res.status(400);
@@ -418,7 +449,7 @@ app.post('/insert/articleEdit', function(req, res, next) {
   	});
 });
 
-app.post('/insert/articleStatusRead', function(req, res, next) {
+app.post('/insert/articleStatusRead', rate.intermittent, function(req, res, next) {
 	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
 		console.log('Missing params');
 		res.status(400);
@@ -431,7 +462,7 @@ app.post('/insert/articleStatusRead', function(req, res, next) {
   	});
 });
 
-app.post('/insert/articleStatusRemoved', function(req, res, next) {
+app.post('/insert/articleStatusRemoved', rate.intermittent, function(req, res, next) {
 	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRemoved === "undefined")) {
 		console.log('Missing params');
 		res.status(400);
@@ -444,7 +475,7 @@ app.post('/insert/articleStatusRemoved', function(req, res, next) {
   	});
 });
  
- app.post('/insert/book', function(req, res, next) {
+ app.post('/insert/book', rate.restricted, function(req, res, next) {
 	if(!req.body.name) {
 		console.log('Missing params');
 		res.status(400);
@@ -457,7 +488,7 @@ app.post('/insert/articleStatusRemoved', function(req, res, next) {
   	});
 });
 
-app.post('/insert/bookStatus', function(req, res, next) {
+app.post('/insert/bookStatus', rate.intermittent, function(req, res, next) {
 	if(!req.body.bookId || !req.body.articleId) {
 		console.log('Missing params');
 		res.status(400);
@@ -470,7 +501,7 @@ app.post('/insert/bookStatus', function(req, res, next) {
   	});
 });
 
-app.post('/insert/comment', function(req, res, next) {
+app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next) {
 	if(	!req.body.articleId || !req.body.userId || !req.body.teamId || 
 		(!req.body.date && !req.body.comment.date) || 
 		(!req.body.text && !req.body.comment.text)) {
@@ -485,6 +516,7 @@ app.post('/insert/comment', function(req, res, next) {
   	});
 });
 
+/*DEPRECIATED
 //TODO: add sopport for image arrays
 app.post('/insert/image', function(req, res, next) {
 	if(!req.body.uri || !req.body.articleId) {
@@ -497,8 +529,9 @@ app.post('/insert/image', function(req, res, next) {
 		res.status(200);
     	res.json(result);
   	});
-});
+});*/
 
+/*DEPRECIATED
 //TODO: add support for tag arrays
 app.post('/insert/tag', function(req, res, next) {
 	if(!req.body.name || !req.body.articleId) {
@@ -511,9 +544,9 @@ app.post('/insert/tag', function(req, res, next) {
 		res.status(200);
     	res.json(result);
   	});
-});
+});*/
 
-app.post('/insert/team', function(req, res, next) {
+app.post('/insert/team', rate.restricted, function(req, res, next) {
 	if(!req.body.name) {
 		console.log('Missing params');
 		res.status(400);
@@ -526,7 +559,7 @@ app.post('/insert/team', function(req, res, next) {
   	});
 });
 
-app.post('/insert/user', function(req, res, next) {
+app.post('/insert/user', rate.restricted, function(req, res, next) {
 	if(!req.body.firstName || !req.body.lastName && !req.body.prefName || !req.body.teamId) {
 		console.log('Missing params');
 		res.status(400);
@@ -551,6 +584,7 @@ app.post('/insert/user', function(req, res, next) {
    UPDATE Endpoint 
  ==================*/
 
+ /*DEPRECIATED
  app.post('/update/articleBase', function(req, res, next) {
 	if(!req.body.article) {
 		console.log('Missing params');
@@ -562,9 +596,9 @@ app.post('/insert/user', function(req, res, next) {
 		res.status(200);
     	res.json(result);
   	});
-});
+});*/
 
-app.post('/update/articleStatusRead', function(req, res, next) {
+app.post('/update/articleStatusRead', rate.intermittent, function(req, res, next) {
 	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
 		console.log('Missing params');
 		res.status(400);
@@ -577,7 +611,7 @@ app.post('/update/articleStatusRead', function(req, res, next) {
   	});
 });
 
-app.post('/update/articleStatusRemoved', function(req, res, next) {
+app.post('/update/articleStatusRemoved', rate.intermittent, function(req, res, next) {
 	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRemoved === "undefined")) {
 		console.log('Missing params');
 		res.status(400);
@@ -594,7 +628,7 @@ app.post('/update/articleStatusRemoved', function(req, res, next) {
    DELETE Endpoint 
  ==================*/
 
-app.post('/delete/bookStatus', function(req, res, next) {
+app.post('/delete/bookStatus', rate.intermittent, function(req, res, next) {
 	if(!req.body.bookId || !req.body.articleId) {
 		console.log('Missing params');
 		res.status(400);
@@ -610,6 +644,7 @@ app.post('/delete/bookStatus', function(req, res, next) {
 /*=================
    CREATE Endpoint 
  ==================*/
+ /*Removed for security
  app.get('/create/tables', function(req, res, next) {
 	db.create.tables(req.query.articleId, req.query.userId, req.query.teamId).then(function(res) {
 		res.status(200);
@@ -618,7 +653,7 @@ app.post('/delete/bookStatus', function(req, res, next) {
 		res.status(500);
 		res.send(err);
 	});
-});
+});*/
 
 console.log("listening on " + port);
 
