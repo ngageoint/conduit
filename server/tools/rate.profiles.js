@@ -9,9 +9,9 @@ module.exports = {
     }),
     frontloaded:  new RateLimit({
         windowMs: 5 * 60 * 1000, //10 minutes
-        max: 150,
+        max: 500,
         delayMs: 250,
-        delayAfter: 50
+        delayAfter: 250
     }),
     frontloadedRestricted:  new RateLimit({
         windowMs: 5 * 60 * 1000, //10 minutes
