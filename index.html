@@ -49,6 +49,7 @@
 
     <!-- directives -->
     <script src="scripts/directives/card.directive.js"></script>
+    <script src="scripts/directives/scrollCenterOn.directive.js"></script>
     <script src="scripts/directives/feFluid.directive.js"></script>
     <script src="scripts/directives/feStateful.directive.js"></script>
     <script src="scripts/directives/fileOnChange.directive.js"></script>
@@ -63,6 +64,7 @@
     <script src="scripts/services/books.service.js"></script>
     <script src="scripts/services/data-source.service.js"></script>
     <script src="scripts/services/filter.service.js"></script>
+    <script src="scripts/services/keyboard.service.js"></script>
     <script src="scripts/services/user.service.js"></script>
     <script src="scripts/services/rss-lite.service.js"></script>
 
@@ -433,17 +435,19 @@
                 <fe-fluid 	id="article-stream"
                 			class="stream">
                     <div id="infinite-scroll" infinite-scroll="buildMoreCards()" infinite-scroll-parent="true" infinite-scroll-distance=".75">                         
-                	<card	class="card"
-                    				ng-repeat="article in articles track by article.id"
-                                    ng-if="article.build"
-                                    ng-show="article.inFeed"
-                                    ng-class="{	'card-extended-hover': hovering,
-                                    			'active-read': article.active && !article.activeInBook && article.read,
-                                                'active': article.active && !article.activeInBook,
-                                                'read': article.read }"
-                                    ng-click="activateCard('Feed', article.id)" 
-                                    ng-init="isStream = true"
-                                    ng-cloak>
+                    <card	class="card"
+                            id="{{'e' + article.id}}"
+                            scroll-center-on="article.active"
+                    		ng-repeat="article in articles track by article.id"
+                            ng-if="article.build"
+                            ng-show="article.inFeed"
+                            ng-class="{	'card-extended-hover': hovering,
+                               			'active-read': article.active && !article.activeInBook && article.read,
+                                        'active': article.active && !article.activeInBook,
+                                        'read': article.read }"
+                            ng-click="activateCard('Feed', article.id)" 
+                            ng-init="isStream = true"
+                            ng-cloak>
                     </card>
 </div>
                 </fe-fluid>

@@ -75,16 +75,18 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 	$scope.getArticleVersion = function(selectedVersion) {
 		selectedVersion -= 2; //Pagination page starts at 1, and the original article is not represented in the edits array		
 
-		if(selectedVersion >= 0) {
-			ApiService.select.editContent(
-				$scope.articles[$scope.currentIndex].id,
-				$scope.articles[$scope.currentIndex].edits[selectedVersion]).then(function(version) {
-					$scope.articles[$scope.currentIndex].title = version.title;
-					$scope.articles[$scope.currentIndex].text = version.text;
-			});
-		} else {
-			$scope.getOriginalArticle();
-		}
+		$timeout(function() {
+			if(selectedVersion >= 0) {
+				ApiService.select.editContent(
+					$scope.articles[$scope.currentIndex].id,
+					$scope.articles[$scope.currentIndex].edits[selectedVersion]).then(function(version) {
+						$scope.articles[$scope.currentIndex].title = version.title;
+						$scope.articles[$scope.currentIndex].text = version.text;
+				});
+			} else {
+				$scope.getOriginalArticle();
+			}
+		}, 100);
 	}
 	
 	/**

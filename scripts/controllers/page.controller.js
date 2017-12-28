@@ -1,5 +1,5 @@
 angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $filter,
-ApiService, ArticlesService, AttributesService, BooksService, DataSourceService, FilterService, UserService, ArrayTools, DateTools, __config) {
+ApiService, ArticlesService, AttributesService, BooksService, DataSourceService, FilterService, KeyboardService, UserService, ArrayTools, DateTools, __config) {
 	
 	/**
 	 * Wait for the articles promise to resolve; will be inherited by child scopes.
@@ -172,10 +172,20 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 					$scope.articles[index].activeInBook = true;
 					break;
 			}
-			
+
 			//Update trackers
 			$scope.currentParent = parent;
 			$scope.currentIndex = index;			
+		}
+
+		$scope.scrollTo = function(id) {
+			console.log(id);
+			let stream = angular.element(document.querySelector('#article-stream'));
+			let card = angular.element(document.querySelector('#e' + id))
+			console.log(card[0].offsetTop);
+			console.log(card[0]);
+			stream.scrollTop = card[0].offsetTop
+			console.log(stream.scrollTop);
 		}
 	
 		/**
@@ -202,4 +212,24 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 			
 			return false;
 		}
+
+	//////////////////////////
+	////KEYBOARD SHORTCUTS////
+	//////////////////////////
+
+	KeyboardService.bind('up', function() {
+		console.log('up detected');
+		if($scope.currentIndex > 0) {
+			$scope.activateCard($scope.currentParent, $scope.articles[$scope.currentIndex - 1].id)
+		}
+	});
+	KeyboardService.bind('down', function() {
+		console.log('down detected');
+		if($scope.currentIndex < $scope.articles.length - 1) {
+			$scope.activateCard($scope.currentParent,  $scope.articles[$scope.currentIndex + 1].id)
+		}
+	});
+	KeyboardService.bind('a', function() {
+		console.log('a detected');
+	});
 });

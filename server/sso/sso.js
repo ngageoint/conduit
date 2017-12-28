@@ -95,14 +95,8 @@ var authorizeSession = function(req, res, next) {
     if(req.session.auth_token) {
         next();
     } else {
-        //Attempt to auth
-        if(Math.random < .5) {
             req.session.auth_token = 'token';
             next();
-        } else {
-            res.status(403);
-            res.send("Access denied.");
-        }
     }   
 }
 
