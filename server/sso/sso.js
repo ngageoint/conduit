@@ -91,9 +91,25 @@ var getUserInfo = function (ACCESS_TOKEN) {
     });
 }
 
+var authorizeUser = function(auth_token) {
+    return new Promise(function(resolve, reject) {
+        if(auth_token) {
+            return resolve();
+        } else {
+            //Attempt to auth
+            if(Math.random < .5) {
+                return resolve();
+            } else {
+                return reject();
+            }
+        }   
+    })
+}
+
 module.exports = {
     REDIRECT_URL: REDIRECT_URL,
     authenticateUser: authenticateUser,
+    authorizeUser: authorizeUser,
     getUserInfo: getUserInfo,
     user: user
 }

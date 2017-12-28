@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = 8080;
-const cookieSession = require('cookie-session');
+const session = require('express-session');
 
 var bodyParser = require('body-parser')
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -57,16 +57,43 @@ app.use('/data', express.static(path.join(__dirname, '/data')));
 ///////////////
 ////SESSION////
 ///////////////
-app.use(cookieSession({
-	name: 'session',
+app.use(session({
+	store: new (require('connect-pg-simple')(session))({
+		pool: db.pool,
+		schemaName: 'conduit_db'
+	}),
 	secret: environment.session_secret,
-	sameSite: true
-}))
+	resave: false,
+	name: 'conduit',
+	saveUninitialized: false,
+	cookie: {
+		httpOnly: true,
+		secure: false,//environment.secure_cookies ? environment.secure_cookies : true, //Pull from environment or default to true
+		maxAge: 7 * 24 * 60 * 60 * 1000,
+		sameSite: true
+	}
+}));
 
 var users = {}
 
 /* GET home page. */
 app.get('/', rate.restricted, function(req, res, next) {
+	
+	console.log(req.session.id);
+
+	if(req.session.views) {
+		req.session.views++;
+	} else {
+		req.session.views = 1;
+	}
+
+	if(!req.session.auth_token) {
+		req.session.auth_token = 'token';
+	}
+
+	console.log(req.session.views);
+	console.log(req.session.auth_token);
+
 	if(!authEnabled)
 	{
 		res.sendFile(path.join(__dirname, './', '', 'index.html'));
@@ -96,37 +123,45 @@ app.get('/unsupported', rate.immediate, function(req, res, next) {
 });
 
 app.post('/hash', rate.frontloaded, function(req, res, next) {
-	
-	var article = req.body.article;
-	
-	if(article.title && article.text && article.images && article.source) {
-		res.status(200);
-		res.json({"hash": hash(article)})
-	} else {
-		res.status(401);
-		res.send('Missing hashable fields. title, text, images, and source are required');
-		return;
-	}
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		var article = req.body.article;
+		
+		if(article.title && article.text && article.images && article.source) {
+			res.status(200);
+			res.json({"hash": hash(article)})
+		} else {
+			res.status(401);
+			res.send('Missing hashable fields. title, text, images, and source are required');
+			return;
+		}
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 app.post('/export', rate.immediateRestricted, function(req, res, next) {
-	
-	var article = req.body.article;
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		var article = req.body.article;
 
-	if(article.title && article.text && article.date && req.body.tpltId) {
-		res.status(200);
-		moe.generateWordDoc(article, req.body.tpltId).then(function(filename) {
-			res.send(filename);
-		});
-	} else {
-		res.status(401);
-		res.send('Missing export fields. tpltId, title, text, date, and images are required');
-		return;
-	}
+		if(article.title && article.text && article.date && req.body.tpltId) {
+			res.status(200);
+			moe.generateWordDoc(article, req.body.tpltId).then(function(filename) {
+				res.send(filename);
+			});
+		} else {
+			res.status(401);
+			res.send('Missing export fields. tpltId, title, text, date, and images are required');
+			return;
+		}
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 app.post('/exportZip', rate.immediateRestricted, function(req, res, next) {
-
+	sso.authorizeUser(req.session.auth_token).then(function() {
 	if(req.body.articles && req.body.tpltId) {
 		res.status(200);
 		moe.generateZip(req.body.articles, req.body.tpltId).then(function(filename) {
@@ -137,54 +172,68 @@ app.post('/exportZip', rate.immediateRestricted, function(req, res, next) {
 		res.send('Missing export fields. articles and tpltId are required');
 		return;
 	}
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 app.get('/download', rate.immediateRestricted, function(req, res, next) {
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		var fileName = req.query.fileName;
 
-	var fileName = req.query.fileName;
-
-	if(fileName) {
-		res.status(200);
-		var filePath = path.resolve(__dirname, 'server', 'export', 'temp', fileName)
-		res.download(filePath, fileName, function(err) {
-			if(err) {
-				console.log(err);
-			} else {
-				moe.deleteTemporaryFiles(filePath);
-			}
-		});
-	} else {
-		res.status(401);
-		res.send('Missing fileName');
-		return;
-	}
+		if(fileName) {
+			res.status(200);
+			var filePath = path.resolve(__dirname, 'server', 'export', 'temp', fileName)
+			res.download(filePath, fileName, function(err) {
+				if(err) {
+					console.log(err);
+				} else {
+					moe.deleteTemporaryFiles(filePath);
+				}
+			});
+		} else {
+			res.status(401);
+			res.send('Missing fileName');
+			return;
+		}
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
-	if(req.query.id) {
-		db.select.userById(req.query.id).then(function(user) {
-			res.status(200);
-			res.json(user);
-		  });
-	}
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(req.query.id) {
+			db.select.userById(req.query.id).then(function(user) {
+				res.status(200);
+				res.json(user);
+			});
+		}
 
-	return;
+		return;
 
-	AUTH_CODE = req.query.code;
-	if(!AUTH_CODE)
-	{
-		res.status(400);
-		res.send('Authorization code required');
-		return;
-	}
-	if(!users[AUTH_CODE]);
-	{
-		res.status(401);
-		res.send('Authorization code not valid.');
-		return;
-	}
-	res.status(200);
-	res.json(users[AUTH_CODE].info);
+		AUTH_CODE = req.query.code;
+		if(!AUTH_CODE)
+		{
+			res.status(400);
+			res.send('Authorization code required');
+			return;
+		}
+		if(!users[AUTH_CODE]);
+		{
+			res.status(401);
+			res.send('Authorization code not valid.');
+			return;
+		}
+		res.status(200);
+		res.json(users[AUTH_CODE].info);
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
+
 })
 
 /*=================
@@ -192,16 +241,21 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
  ==================*/
 
  app.get('/select/allEditsForArticleByTeam', rate.immediateRestricted, function(req, res, next) {
-	if(!req.query.articleId || !req.query.teamId) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId and teamId required');
-		return;
-	}
-	db.select.allEditsForArticleByTeam(req.query.articleId, req.query.teamId).then(function(edits) {
-		res.status(200);
-    	res.json(edits);
-	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.query.articleId || !req.query.teamId) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. articleId and teamId required');
+			return;
+		}
+		db.select.allEditsForArticleByTeam(req.query.articleId, req.query.teamId).then(function(edits) {
+			res.status(200);
+			res.json(edits);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 /*DEPRECIATED
@@ -219,17 +273,21 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 });*/
 
 app.post('/select/articleOriginal', rate.immediate, function(req, res, next) {
-	
-	if(!req.body.article) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. article object required, userId and teamId optional');
-		return;
-	}
-	db.select.articleOriginal(req.body.article, req.body.userId, req.body.teamId).then(function(article) {
-		res.status(200);
-    	res.json(article);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.article) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. article object required, userId and teamId optional');
+			return;
+		}
+		db.select.articleOriginal(req.body.article, req.body.userId, req.body.teamId).then(function(article) {
+			res.status(200);
+			res.json(article);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 /*DEPRECIATED
@@ -247,10 +305,16 @@ app.get('/select/articlesByUserFromDate', function(req, res, next) {
 });*/
 
 app.get('/select/attributes', rate.frontloadedRestricted, function(req, res, next) {
-	db.select.attributes().then(function(attributes) {
-		res.status(200);
-    	res.json(attributes);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		db.select.attributes().then(function(attributes) {
+			res.status(200);
+			res.json(attributes);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
+	
 });
 
 /*DEPRECIATED
@@ -281,55 +345,75 @@ app.get('/select/booksByArticle', function(req, res, next) {
 });*/
 
 app.get('/select/booksByTeam', rate.frontloadedRestricted, function(req, res, next) {
-	if(!req.query.teamId) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. id required.');
-		return;
-	}
-	db.select.booksByTeam(req.query.teamId).then(function(books) {
-		res.status(200);
-    	res.json(books);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.query.teamId) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. id required.');
+			return;
+		}
+		db.select.booksByTeam(req.query.teamId).then(function(books) {
+			res.status(200);
+			res.json(books);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});
 });
 
 app.get('/select/commentsByArticle', rate.frontloaded, function(req, res, next) {
-	if(!req.query.id || !req.query.teamId) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. id required.');
-		return;
-	}
-	db.select.commentsByArticle(req.query.id, req.query.teamId).then(function(comments) {
-		res.status(200);
-    	res.json(comments);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.query.id || !req.query.teamId) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. id required.');
+			return;
+		}
+		db.select.commentsByArticle(req.query.id, req.query.teamId).then(function(comments) {
+			res.status(200);
+			res.json(comments);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 app.post('/select/mostRecentArticleEdit', rate.immediateRestricted, function(req, res, next) {
-	if(!req.body.article && (!req.body.articleId || !req.body.teamId)) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId, teamId required, or an article object is required.');
-		return;
-	}
-	db.select.mostRecentArticleEdit(req.body.article || req.body.articleId, req.body.teamId).then(function(edit) {
-		res.status(200);
-    	res.json(edit);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.article && (!req.body.articleId || !req.body.teamId)) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. articleId, teamId required, or an article object is required.');
+			return;
+		}
+		db.select.mostRecentArticleEdit(req.body.article || req.body.articleId, req.body.teamId).then(function(edit) {
+			res.status(200);
+			res.json(edit);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 app.get('/select/editContent', rate.immediate, function(req, res, next) {
-	if(!req.query.articleId || !req.query.teamId || !req.query.timestamp) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId, teamId, and timestamp required');
-		return;
-	}
-	db.select.editContent(req.query.articleId, req.query.teamId, req.query.timestamp).then(function(edit) {
-		res.status(200);
-    	res.json(edit);
-	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.query.articleId || !req.query.teamId || !req.query.timestamp) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. articleId, teamId, and timestamp required');
+			return;
+		}
+		db.select.editContent(req.query.articleId, req.query.teamId, req.query.timestamp).then(function(edit) {
+			res.status(200);
+			res.json(edit);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 /*DEPRECIATED
@@ -360,16 +444,21 @@ app.get('/select/articleStatusReadByIds', function(req, res, next) {
 });*/
 
 app.get('/select/articleStatusRemovedByTeam', rate.immediateRestricted, function(req, res, next) {
-	if(!req.query.articleId || !req.query.teamId) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId and userId required.');
-		return;
-	}
-	db.select.articleStatusRemovedByTeam(req.query.articleId, req.query.teamId).then(function(status) {
-		res.status(200);
-    	res.json(status);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.query.articleId || !req.query.teamId) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. articleId and userId required.');
+			return;
+		}
+		db.select.articleStatusRemovedByTeam(req.query.articleId, req.query.teamId).then(function(status) {
+			res.status(200);
+			res.json(status);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 /* DEPRECIATED
@@ -387,16 +476,22 @@ app.get('/select/articleBase', function(req, res, next) {
 });*/
 
 app.get('/select/articleBlock', rate.frontloaded, function(req, res, next) {
-	if(!req.query.userId || !req.query.teamId || !req.query.fromDate || !req.query.numArticles) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. userId, teamId, fromDate, and numArticles required.');
-		return;
-	}
-	db.select.articleBlock(req.query.userId, req.query.teamId, req.query.fromDate, req.query.numArticles, req.query.startingId).then(function(articles) {
-		res.status(200);
-    	res.json(articles);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.query.userId || !req.query.teamId || !req.query.fromDate || !req.query.numArticles) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. userId, teamId, fromDate, and numArticles required.');
+			return;
+		}
+		db.select.articleBlock(req.query.userId, req.query.teamId, req.query.fromDate, req.query.numArticles, req.query.startingId).then(function(articles) {
+			res.status(200);
+			res.json(articles);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
+	
 });
 
 /*=================
@@ -431,89 +526,121 @@ app.post('/insert/articleFull', function(req, res, next) {
 });*/
 
 app.post('/insert/articleEdit', rate.intermittent, function(req, res, next) {
-	if(!req.body.articleId || !req.body.userId || !req.body.teamId || !req.body.title || !req.body.text) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
-		return;
-	}
-	db.insert.articleEdit(req.body.articleId, req.body.userId, req.body.teamId, req.body.title, req.body.text).then(function(result) {
-		
-		let edit = {
-			timestamp: result,
-			teamId: req.body.teamId
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.articleId || !req.body.userId || !req.body.teamId || !req.body.title || !req.body.text) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
+			return;
 		}
-		
-		res.status(200);
-    	res.json(edit);
-  	});
+		db.insert.articleEdit(req.body.articleId, req.body.userId, req.body.teamId, req.body.title, req.body.text).then(function(result) {
+			
+			let edit = {
+				timestamp: result,
+				teamId: req.body.teamId
+			}
+			
+			res.status(200);
+			res.json(edit);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
+	
 });
 
 app.post('/insert/articleStatusRead', rate.intermittent, function(req, res, next) {
-	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
-		return;
-	}
-	db.insert.articleStatusRead(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRead).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
+			return;
+		}
+		db.insert.articleStatusRead(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRead).then(function(result) {
+			res.status(200);
+			res.json(result);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
+	
 });
 
 app.post('/insert/articleStatusRemoved', rate.intermittent, function(req, res, next) {
-	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRemoved === "undefined")) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId, userId, teamId, and isRemoved are required');
-		return;
-	}
-	db.insert.articleStatusRemoved(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRemoved).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRemoved === "undefined")) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. articleId, userId, teamId, and isRemoved are required');
+			return;
+		}
+		db.insert.articleStatusRemoved(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRemoved).then(function(result) {
+			res.status(200);
+			res.json(result);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});		
 });
  
  app.post('/insert/book', rate.restricted, function(req, res, next) {
-	if(!req.body.name) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. name is required, teamId is optional. NOTE: teamId is expected to be required in future versions');
-		return;
-	}
-	db.insert.book(req.body.name, req.body.teamId).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.name) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. name is required, teamId is optional. NOTE: teamId is expected to be required in future versions');
+			return;
+		}
+		db.insert.book(req.body.name, req.body.teamId).then(function(result) {
+			res.status(200);
+			res.json(result);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 app.post('/insert/bookStatus', rate.intermittent, function(req, res, next) {
-	if(!req.body.bookId || !req.body.articleId) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. bookId and articleId are required');
-		return;
-	}
-	db.insert.bookStatus(req.body.bookId, req.body.articleId, req.body.userId, req.body.teamId).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.bookId || !req.body.articleId) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. bookId and articleId are required');
+			return;
+		}
+		db.insert.bookStatus(req.body.bookId, req.body.articleId, req.body.userId, req.body.teamId).then(function(result) {
+			res.status(200);
+			res.json(result);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next) {
-	if(	!req.body.articleId || !req.body.userId || !req.body.teamId || 
-		(!req.body.date && !req.body.comment.date) || 
-		(!req.body.text && !req.body.comment.text)) {
-			console.log('Missing params');
-			res.status(400);
-			res.send('Missing parameters. articleId, userId, teamId, date, and text are required, or a comment object is required');
-			return;
-	}
-	db.insert.comment(req.body.articleId, req.body.comment, req.body.date, req.body.text).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(	!req.body.articleId || !req.body.userId || !req.body.teamId || 
+			(!req.body.date && !req.body.comment.date) || 
+			(!req.body.text && !req.body.comment.text)) {
+				console.log('Missing params');
+				res.status(400);
+				res.send('Missing parameters. articleId, userId, teamId, date, and text are required, or a comment object is required');
+				return;
+		}
+		db.insert.comment(req.body.articleId, req.body.comment, req.body.date, req.body.text).then(function(result) {
+			res.status(200);
+			res.json(result);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 /*DEPRECIATED
@@ -547,37 +674,48 @@ app.post('/insert/tag', function(req, res, next) {
 });*/
 
 app.post('/insert/team', rate.restricted, function(req, res, next) {
-	if(!req.body.name) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. name is required');
-		return;
-	}
-	db.insert.team(req.body.name).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.name) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. name is required');
+			return;
+		}
+		db.insert.team(req.body.name).then(function(result) {
+			res.status(200);
+			res.json(result);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 app.post('/insert/user', rate.restricted, function(req, res, next) {
-	if(!req.body.firstName || !req.body.lastName && !req.body.prefName || !req.body.teamId) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. firstName, lastName, prefName, and teamId are required. id is optional');
-		return;
-	}
-	if(req.body.id) {
-		db.insert.userWithId(req.body.id, req.body.firstName, req.body.lastName, req.body.prefName, req.body.teamId).then(function(result) {
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.firstName || !req.body.lastName && !req.body.prefName || !req.body.teamId) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. firstName, lastName, prefName, and teamId are required. id is optional');
+			return;
+		}
+		if(req.body.id) {
+			db.insert.userWithId(req.body.id, req.body.firstName, req.body.lastName, req.body.prefName, req.body.teamId).then(function(result) {
 
-			res.status(200);
-			res.json(result);
-		});
-	} else {
-		db.insert.userNoId(req.body.firstName, req.body.lastName, req.body.prefName, req.body.teamId).then(function(result) {
-			res.status(200);
-			res.json(result);
-		});
-	}
+				res.status(200);
+				res.json(result);
+			});
+		} else {
+			db.insert.userNoId(req.body.firstName, req.body.lastName, req.body.prefName, req.body.teamId).then(function(result) {
+				res.status(200);
+				res.json(result);
+			});
+		}
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
+	
 });
 
 /*=================
@@ -599,29 +737,40 @@ app.post('/insert/user', rate.restricted, function(req, res, next) {
 });*/
 
 app.post('/update/articleStatusRead', rate.intermittent, function(req, res, next) {
-	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
-		return;
-	}
-	db.update.articleStatusRead(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRead).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
+			return;
+		}
+		db.update.articleStatusRead(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRead).then(function(result) {
+			res.status(200);
+			res.json(result);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
+
 });
 
 app.post('/update/articleStatusRemoved', rate.intermittent, function(req, res, next) {
-	if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRemoved === "undefined")) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId, userId, teamId, and isRemoved are required');
-		return;
-	}
-	db.update.articleStatusRemoved(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRemoved).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRemoved === "undefined")) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. articleId, userId, teamId, and isRemoved are required');
+			return;
+		}
+		db.update.articleStatusRemoved(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRemoved).then(function(result) {
+			res.status(200);
+			res.json(result);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 /*=================
@@ -629,16 +778,21 @@ app.post('/update/articleStatusRemoved', rate.intermittent, function(req, res, n
  ==================*/
 
 app.post('/delete/bookStatus', rate.intermittent, function(req, res, next) {
-	if(!req.body.bookId || !req.body.articleId) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. bookId and articleId are required');
-		return;
-	}
-	db.delete.bookStatus(req.body.bookId, req.body.articleId, req.body.teamId).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
+	sso.authorizeUser(req.session.auth_token).then(function() {
+		if(!req.body.bookId || !req.body.articleId) {
+			console.log('Missing params');
+			res.status(400);
+			res.send('Missing parameters. bookId and articleId are required');
+			return;
+		}
+		db.delete.bookStatus(req.body.bookId, req.body.articleId, req.body.teamId).then(function(result) {
+			res.status(200);
+			res.json(result);
+		});
+	}).catch(function() {
+		res.status(403);
+		res.send("Access denied.");
+	});	
 });
 
 /*=================

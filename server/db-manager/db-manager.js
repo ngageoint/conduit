@@ -44,6 +44,7 @@ update.setQueryManager(queryManager);
 del.setQueryManager(queryManager);
 
 module.exports = {
+  pool: pool,
   select: select,
   insert: insert,
   create: create,
