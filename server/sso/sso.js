@@ -91,25 +91,25 @@ var getUserInfo = function (ACCESS_TOKEN) {
     });
 }
 
-var authorizeUser = function(auth_token) {
-    return new Promise(function(resolve, reject) {
-        if(auth_token) {
-            return resolve();
+var authorizeSession = function(req, res, next) {
+    if(req.session.auth_token) {
+        next();
+    } else {
+        //Attempt to auth
+        if(Math.random < .5) {
+            req.session.auth_token = 'token';
+            next();
         } else {
-            //Attempt to auth
-            if(Math.random < .5) {
-                return resolve();
-            } else {
-                return reject();
-            }
-        }   
-    })
+            res.status(403);
+            res.send("Access denied.");
+        }
+    }   
 }
 
 module.exports = {
     REDIRECT_URL: REDIRECT_URL,
     authenticateUser: authenticateUser,
-    authorizeUser: authorizeUser,
+    authorizeSession: authorizeSession,
     getUserInfo: getUserInfo,
     user: user
 }
