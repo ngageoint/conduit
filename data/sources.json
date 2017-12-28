@@ -28,7 +28,7 @@
 	"type":"rss",
 	"binding":[{
 			"local":"date",
-			"source":"published"
+			"source":"sent"
 		},{
 			"local":"link",
 			"source":"link"

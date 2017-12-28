@@ -7,7 +7,7 @@ ApiService, BooksService, DataSourceService, FilterService, RssLiteService, Arra
 		
 		var queries = [];
 
-		queries.push(ApiService.select.articleBlock(DateTools.formatDate(new Date(), 'yyyy-MM-dd'), 0).then(function(response) {
+		queries.push(ApiService.select.articleBlock(DateTools.formatDate(new Date(new Date().setDate(new Date().getDate() - __config.MAX_DAYS_BACK)), 'yyyy-MM-dd'), 0).then(function(response) {
 				expectedCount = response.count
 				return response.articles;
 			})
