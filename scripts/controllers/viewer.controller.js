@@ -67,6 +67,10 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			return $scope.lastVersionViewState;
 		}
 	}
+	//Leave versions view if a new card is clicked
+	$scope.$watch('currentIndex', function() {
+        $scope.versionsView(false);
+    });
 
 	$scope.getArticleVersion = function(selectedVersion) {
 		selectedVersion -= 2; //Pagination page starts at 1, and the original article is not represented in the edits array		
