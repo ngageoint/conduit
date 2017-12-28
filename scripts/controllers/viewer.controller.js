@@ -60,6 +60,8 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			$scope.lastVersionViewState = enabled;
 			if(enabled === true) {
 				$scope.selectedVersion = $scope.articles[$scope.currentIndex].edits.length + 1;
+			} else {
+				$scope.getArticleVersion( $scope.articles[$scope.currentIndex].edits.length + 1);
 			}
 		} else {
 			return $scope.lastVersionViewState;
