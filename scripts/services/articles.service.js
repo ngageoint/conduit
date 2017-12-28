@@ -36,7 +36,7 @@ ApiService, BooksService, DataSourceService, FilterService, RssLiteService, Arra
 
 					var continueBlockRetrieval = function() {
 						ApiService.select.articleBlock(
-								DateTools.formatDate(new Date(), 'yyyy-MM-dd')
+							DateTools.formatDate(new Date(new Date().setDate(new Date().getDate() - __config.MAX_DAYS_BACK)), 'yyyy-MM-dd')
 							).then(function(response) {
 								articles = articles.concat(response.articles);
 								DataSourceService.getSources().then(function(sources) {
@@ -60,7 +60,7 @@ ApiService, BooksService, DataSourceService, FilterService, RssLiteService, Arra
 
 	var continueBlockRetrieval = function(articles) {
 			ApiService.select.articleBlock(
-				DateTools.formatDate(new Date(), 'yyyy-MM-dd')
+				DateTools.formatDate(new Date(new Date().setDate(new Date().getDate() - __config.MAX_DAYS_BACK)), 'yyyy-MM-dd')
 				).then(function(response) {
 					articles = articles.concat(response.articles);
 					DataSourceService.getSources().then(function(sources) {

@@ -18,7 +18,7 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 			var rand = Math.floor((Math.random() * (__config.MIN_RENDERED_CARDS * .75)) + (__config.MIN_RENDERED_CARDS * .75))
 			
 			ApiService.select.articleBlock(
-					DateTools.formatDate(new Date(), 'yyyy-MM-dd'),
+					DateTools.formatDate(new Date(new Date().setDate(new Date().getDate() - __config.MAX_DAYS_BACK)), 'yyyy-MM-dd'),
 					rand,
 					$scope.articles[$scope.articles.length-1].id
 				).then(function(response) {
