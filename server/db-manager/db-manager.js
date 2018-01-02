@@ -28,8 +28,8 @@ var dbConfig = {
 };
 
 const pool = new pg.Pool(dbConfig);
-pool.on('error', function (err, client) {
-  console.error('idle client error', err.message, err/stack);
+pool.on('error', function (err) {
+  console.error('idle client error', err.message, err.stack);
 });
 
 var queryManager = function (text, values, callback) {
