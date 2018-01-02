@@ -185,7 +185,7 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 
 	return;
 
-	let AUTH_CODE = req.query.code;
+	const AUTH_CODE = req.query.code;
 	if(!AUTH_CODE)
 	{
 		res.status(400);
