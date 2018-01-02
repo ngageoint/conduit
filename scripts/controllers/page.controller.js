@@ -180,8 +180,8 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 
 		$scope.scrollTo = function(id) {
 			console.log(id);
-			let stream = angular.element(document.querySelector('#article-stream'));
-			let card = angular.element(document.querySelector('#e' + id))
+			const stream = angular.element(document.querySelector('#article-stream'));
+			const card = angular.element(document.querySelector('#e' + id))
 			console.log(card[0].offsetTop);
 			console.log(card[0]);
 			stream.scrollTop = card[0].offsetTop
