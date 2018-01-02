@@ -395,7 +395,7 @@ module.exports = {
                 if(res && res.rows) {
                     var edits = [];
                     for(var i = 0; i < res.rows.length; i++) {
-                        let edit = {
+                        const edit = {
                             teamId: teamId,
                             timestamp: DateTools.format.timestamptz(res.rows[i].timestamp),
                         }
@@ -422,7 +422,7 @@ module.exports = {
                     return reject(err);
                 }
                 if(res && res.rows && res.rows[0]) {
-                        let edit = {
+                        const edit = {
                             userId: res.rows[0].user_id,
                             timestamp: timestamp,
                             title: res.rows[0].title,
