@@ -11,14 +11,14 @@ module.exports = {
         const query = {
             text: tools.readQueryFile(path.join(__dirname, 'CREATE_CONDUIT_DB.sql')),
         }
-        this.query(query, function(err, res) {
+        this.query(query, function(err) {
             if(err) {
                 return console.error('error creating db', err);
             }
             callback();
         });
     },
-    tables: function(callback) {
+    tables: function() {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'conduit_db.schema.backup.sql')),
