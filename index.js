@@ -79,7 +79,7 @@ app.use(session({
 
 app.use(sso.authorizeSession);
 
-var users = {}
+var users = {};
 
 /* GET home page. */
 app.get('/', rate.restricted, function(req, res, next) {
@@ -99,11 +99,11 @@ app.get('/', rate.restricted, function(req, res, next) {
 			sso.getUserInfo(auth.tokens.access_token).then(function(user) {
 				users[req.query.code] = user;
 				res.sendFile(path.join(__dirname, './', '', 'index.html'));
-			})
+			});
 		}).catch(function(res) {
 			res.status(403);
 			res.send("Access denied.");
-		})
+		});
 	}
 });
 
@@ -116,7 +116,7 @@ app.post('/hash', rate.frontloaded, function(req, res, next) {
 	
 	if(article.title && article.text && article.images && article.source) {
 		res.status(200);
-		res.json({"hash": hash(article)})
+		res.json({"hash": hash(article)});
 	} else {
 		res.status(401);
 		res.send('Missing hashable fields. title, text, images, and source are required');
@@ -160,7 +160,7 @@ app.get('/download', rate.immediateRestricted, function(req, res, next) {
 
 	if(fileName) {
 		res.status(200);
-		var filePath = path.resolve(__dirname, 'server', 'export', 'temp', fileName)
+		var filePath = path.resolve(__dirname, 'server', 'export', 'temp', fileName);
 		res.download(filePath, fileName, function(err) {
 			if(err) {
 				console.log(err);
