@@ -252,7 +252,7 @@ module.exports = {
                     return resolve(res.rows);
                 }
                 else
-                    return reject('No results for booksByArticle where id=' + id);
+                    return reject('No results for booksByTeam where teamId=' + teamId);
             });
         });
     },
