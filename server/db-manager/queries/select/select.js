@@ -142,7 +142,7 @@ module.exports = {
             });
         });
     },
-    articleOriginal: function(article, userId, teamId) {
+    articleOriginal: function(article) {
         return new Promise(function(resolve, reject) {
             return module.exports.articleBase(article.id).then(function(baseArticle) {
                 article.title = baseArticle.title;
@@ -215,7 +215,6 @@ module.exports = {
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].removed !== "undefined") {
                     return resolve(res.rows[0].removed);
                 } else {
-                    //console.log('No results for articleStatusRemovedByTeam where articleId='+ articleId + " and teamId=" + teamId);
                     return resolve(false);
                 }
             });
