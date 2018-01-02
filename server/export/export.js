@@ -184,7 +184,7 @@ var deleteTemporaryFiles = function (fileName) {
     glob(fileName.replace(/\.[^/.]+$/, "") + '*', function(err, files) {
         for(var i = 0; i < files.length; i++) {
             fs.unlink(files[i], function() {
-
+                /*no action needs to be taken*/
             })
         }
     })    
