@@ -54,7 +54,7 @@ module.exports = {
                     for(var i = 0; i < articles.length; i++) {
                         if(articles[i].id == startingId || !startingId) {
                             if(startingId) {
-                                i++;
+                                continue;
                             }
                             for(var j = i; j < articles.length && j < i + numArticles; j++) {
                                 (function(thisId) {
