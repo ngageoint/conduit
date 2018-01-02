@@ -115,7 +115,7 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 	$scope.post = function(newComment) {
 		if(newComment)
 		{										
-			dateStr = DateTools.formatDate(new Date,'yyyy\/MM\/dd HH:mm:ss');
+			let dateStr = DateTools.formatDate(new Date(),'yyyy\/MM\/dd HH:mm:ss');
 
 			//If no comments exist yet, create the array and add it to the current article
 			if(!$scope.articles[$scope.currentIndex].comments)
