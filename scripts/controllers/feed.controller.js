@@ -93,7 +93,7 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 	 */
 	$scope.remove = function (id) {
 		//Get the index of the article
-		index = ArrayTools.getIndex($scope.articles, id);
+		let index = ArrayTools.getIndex($scope.articles, id);
 		
 		//Update view properties
 		$scope.articles[index].removed = true;
