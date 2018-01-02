@@ -7,7 +7,10 @@ const update = require('./queries/update/update.js');
 const del = require('./queries/delete/delete.js');
 
 //Load local environment variable file (.env)
-try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
+try {
+    const dotenv = require('dotenv');
+    dotenv.load();
+} catch(e){}
 
 //Detect environment
 var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : process.env;
