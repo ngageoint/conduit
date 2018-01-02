@@ -328,7 +328,7 @@ module.exports = {
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'INSERT_IMAGE_STATUS.sql')),
-                values: [articleId, userId, selectedImageId]
+                values: [articleId, teamId, selectedImageId]
             }
             module.exports.query(query, function(err, res) {
                 if(err) {
