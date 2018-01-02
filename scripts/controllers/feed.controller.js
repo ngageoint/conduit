@@ -97,9 +97,9 @@ angular.module('conduit.controllers').controller('FeedCtrl', function(
 		
 		//Update view properties
 		$scope.articles[index].removed = true;
-		ApiService.update.articleStatusRemoved($scope.articles[index].id, true).then(function(res){});
+		ApiService.update.articleStatusRemoved($scope.articles[index].id, true).then(function(res){//no action needs to be taken});
 		$scope.articles[index].read = true;
-		ApiService.update.articleStatusRead($scope.articles[index].id, true).then(function(res){});
+		ApiService.update.articleStatusRead($scope.articles[index].id, true).then(function(res){//no action needs to be taken});
 		$scope.articles[index].inFeed = false;
 		
 		//Refresh view
