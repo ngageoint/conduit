@@ -406,7 +406,6 @@ module.exports = {
                 } else {
                     return resolve([]);
                 }
-                return resolve(res.rows[0]);
             });
         });
     },
