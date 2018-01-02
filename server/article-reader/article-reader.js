@@ -129,7 +129,7 @@ module.exports = {
     }
 }
 
-source = {
+let source = {
 	"tag":"NWS",
 	"name":"National Weather Service",
 	"link":"https://alerts.weather.gov/cap/us.php?x=1",
