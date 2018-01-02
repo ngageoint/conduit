@@ -60,7 +60,7 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 	AttributesService.getAttributes().then( function(data) {
 		$scope.attributes = data;
 	}).catch( function() {
-			
+			/*no action needs to be taken*/
 	});	
 	
 	/**
@@ -73,7 +73,7 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 		if($scope.books[0])
 			$scope.selectedBook = $scope.books[0];
 	}).catch( function() {
-			
+			/*no action needs to be taken*/
 	});
 
 	/**
@@ -114,7 +114,7 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 			//Set the old article to be inactive and read
 			$scope.articles[$scope.currentIndex].active = false;
 			$scope.articles[$scope.currentIndex].read = true;
-			ApiService.update.articleStatusRead($scope.articles[$scope.currentIndex].id, true).then(function(res){});
+			ApiService.update.articleStatusRead($scope.articles[$scope.currentIndex].id, true).then(function(res){/*no action needs to be taken*/});
 			
 			/*If no parent or index are given, pick the next card to be selected based on the last known selection
 				Order:
