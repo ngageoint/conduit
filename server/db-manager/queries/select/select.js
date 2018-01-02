@@ -1,5 +1,5 @@
-var query = undefined;
-const path = require('path')
+var query = {};
+const path = require('path');
 const tools = require(path.join(__dirname, '..','..','db-tools.js'));
 const DateTools = require(path.join('..', '..', '..', 'tools', 'date.tools.js'));
 
@@ -12,7 +12,7 @@ module.exports = {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_BASE.sql')),
                 values: [id],
-            }
+            };
 
             module.exports.query(query, function(err, res) {            
                 if(err) {
@@ -27,7 +27,7 @@ module.exports = {
                             }
                         }
                     }
-                    delete res.rows[0].custom_properties
+                    delete res.rows[0].custom_properties;
                     return resolve(res.rows[0]);
                 }
                 else {
@@ -41,7 +41,7 @@ module.exports = {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_IDS.sql')),
                 values: [fromDate],
-            }
+            };
             module.exports.query(query, function(err, res) {
                 if(err) {
                     return reject(err);
@@ -49,7 +49,7 @@ module.exports = {
                 if(res && res.rows && res.rows[0]) {
                     var articles = res.rows;
                     numArticles = parseInt(numArticles);
-                    var promises = []
+                    var promises = [];
                     //Find the starting point
                     for(var i = 0; i < articles.length; i++) {
                         if(articles[i].id == startingId || !startingId) {
@@ -68,7 +68,7 @@ module.exports = {
                         var data = {
                             count: articles.length,
                             articles: res
-                        }                  
+                        };             
                         return resolve(data);
                     }).catch(function(err) {
                         return reject(err);
@@ -151,7 +151,7 @@ module.exports = {
             }).catch(function(err) {
                 return reject(err);
             });
-        })
+        });
         
     },
     articlesByUserFromDate: function(userId, fromDate, teamId) {
@@ -159,13 +159,13 @@ module.exports = {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLES_BASE_FROM_DATE.sql')),
                 values: [fromDate],
-            }
+            };
             module.exports.query(query, function(err, res) {
                 if(err) {
                     return reject(err);
                 }
                 if(res && res.rows && res.rows[0]) {
-                    var promises = []
+                    var promises = [];
                     for(var i = 0; i < res.rows.length; i++) {
                         (function(thisId) {
                             promises.push(module.exports.articleFull(thisId, userId, teamId));
