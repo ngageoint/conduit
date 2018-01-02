@@ -330,7 +330,7 @@ app.post('/insert/articleEdit', rate.intermittent, function(req, res, next) {
 	}
 	db.insert.articleEdit(req.body.articleId, req.body.userId, req.body.teamId, req.body.title, req.body.text).then(function(result) {
 		
-		let edit = {
+		const edit = {
 			timestamp: result,
 			teamId: req.body.teamId
 		}
