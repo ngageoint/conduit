@@ -17,7 +17,7 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			addedBooks = ArrayTools.diff(addedBooks, sameBooks);
 			if(addedBooks.length > 0) {
 				//Push these added books to the server
-				ApiService.insert.bookStatus(addedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {});
+				ApiService.insert.bookStatus(addedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {/*no action needs to be taken*/});
 			}
 
 			let removedBooks = JSON.parse(JSON.stringify(oldBooks));
@@ -25,7 +25,7 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 			removedBooks = ArrayTools.diff(removedBooks, sameBooks);
 			if(removedBooks.length > 0) {
 				//Delete these books from the server
-				ApiService.delete.bookStatus(removedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {})
+				ApiService.delete.bookStatus(removedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {/*no action needs to be taken*/})
 			};
 		}
 		$rootScope.$broadcast('update-book');
