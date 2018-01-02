@@ -30,7 +30,7 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 						DataSourceService.getSources().then(function(sources) {
 							FilterService.build(sources, $scope.articles);
 							if($scope.articles.length < response.count) {
-								continueBlockRetrieval($scope.articles);
+								continueBlockRetrieval();
 							}
 						});
 					});
