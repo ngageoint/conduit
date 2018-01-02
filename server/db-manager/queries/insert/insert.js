@@ -263,7 +263,7 @@ module.exports = {
             }
         }
 
-        let baseCompare = new Article();
+        const baseCompare = new Article();
         var customProperties = {};
 
         var baseKeys = Object.keys(baseCompare);
