@@ -38,7 +38,7 @@ module.exports = {
                 var promises = [];
 
                 var completeFullArticle = function(article, userId, teamId) {
-                    module.exports.articleBase(article).then(function(res) {
+                    module.exports.articleBase(article).then(function() {
                         promises.push(module.exports.bookStatus(article.books, article.id, userId, teamId));
                         promises.push(module.exports.comment(article.comments, article.id));
                         promises.push(module.exports.tag(article.tags, article.id));
@@ -56,9 +56,9 @@ module.exports = {
                 }
 
                 //Load images first, then article bases, then all others (to support FK dependencies);
-                module.exports.image(article.images, article.id).then(function(res) {
+                module.exports.image(article.images, article.id).then(function() {
                     completeFullArticle(article, userId, teamId)
-                }).catch(function(err) {
+                }).catch(function() {
                     completeFullArticle(article, userId, teamId);
                 });
                 
@@ -81,7 +81,7 @@ module.exports = {
                                 if(!foundArticles[0]) {
                                     promises.push(module.exports.articleBase(thisArticle));
                                 }
-                            }).catch(function(err) {
+                            }).catch(function() {
                                 promises.push(module.exports.articleBase(thisArticle));
                             }); 
                         }(article[i]));   
@@ -106,7 +106,7 @@ module.exports = {
                     ],
                 }
     
-                module.exports.query(query, function(err, res) {
+                module.exports.query(query, function(err) {
                     if(err) {
                         return reject(err);
                     }
