@@ -45,6 +45,10 @@ angular.module('conduit').constant('__config', config);
 
 /*Configure 3rd party modules*/
 
+angular.module('conduit').config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+  }]);
+
 //Put a 10ms delay per card rendered in an infinite scroll event (which is MIN_RENDERED_CARDS / 2)
 angular.module('infinite-scroll').value("THROTTLE_MILLISECONDS", (__config.MIN_RENDERED_CARDS / 2) * 10);
 
