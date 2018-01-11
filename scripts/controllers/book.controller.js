@@ -55,7 +55,7 @@ angular.module('conduit.controllers').controller('BookCtrl', function($scope, $r
 			bookName = $scope.selectedBook.name;
 
 		//Find the article
-		index = ArrayTools.getIndex($scope.articles, id);
+		let index = ArrayTools.getIndex($scope.articles, id);
 		
 		//Set properties to remove from book
 		$scope.articles[index].inBook = false;

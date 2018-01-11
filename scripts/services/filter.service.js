@@ -50,7 +50,7 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
                                 {
                                     if(typeof boundProp === "string")
                                     {
-                                        value = {
+                                        var value = {
                                             data: boundProp,
                                             name: boundProp
                                         };

@@ -9,15 +9,15 @@ module.exports = {
         timestamptz: function(date) {
             //Format is YYYY-MM-DD HH24:MI:SS-TZ
 
-            let YYYY = date.getFullYear();
-            let MM = date.getMonth() + 1;
-            let DD = date.getDate();
+            const YYYY = date.getFullYear();
+            const MM = date.getMonth() + 1;
+            const DD = date.getDate();
 
-            let HH24 = date.getHours();
-            let MI = date.getMinutes();
-            let SS = date.getSeconds();
+            const HH24 = date.getHours();
+            const MI = date.getMinutes();
+            const SS = date.getSeconds();
 
-            let TZ = (date.getTimezoneOffset()/60).pad(2);
+            const TZ = (date.getTimezoneOffset()/60).pad(2);
 
             return  YYYY + '-' + MM + '-' + DD + ' ' +
                     HH24 + ':' + MI + ':' + SS + '-' +

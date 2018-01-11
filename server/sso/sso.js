@@ -40,7 +40,7 @@ var authenticateUser = function (AUTH_CODE) {
 
         var config = {
             headers: {
-                'Authorization':'Basic ' + new Buffer(sso.client_id + ':' + soo.client_secret).toString('base64')
+                'Authorization':'Basic ' + new Buffer(sso.client_id + ':' + sso.client_secret).toString('base64')
             },
             httpsAgent: agent
         }

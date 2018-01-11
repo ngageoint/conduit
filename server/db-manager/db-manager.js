@@ -7,7 +7,10 @@ const update = require('./queries/update/update.js');
 const del = require('./queries/delete/delete.js');
 
 //Load local environment variable file (.env)
-try {const dotenv = require('dotenv'); dotenv.load()}catch(e){}
+try {
+    const dotenv = require('dotenv');
+    dotenv.load();
+} catch(e){}
 
 //Detect environment
 var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : process.env;
@@ -25,8 +28,8 @@ var dbConfig = {
 };
 
 const pool = new pg.Pool(dbConfig);
-pool.on('error', function (err, client) {
-  console.error('idle client error', err.message, err/stack);
+pool.on('error', function (err) {
+  console.error('idle client error', err.message, err.stack);
 });
 
 var queryManager = function (text, values, callback) {

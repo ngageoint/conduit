@@ -1,5 +1,5 @@
-var query = undefined;
-const path = require('path')
+var query = {};
+const path = require('path');
 const tools = require(path.join(__dirname, '..','..','db-tools.js'));
 const DateTools = require(path.join('..', '..', '..', 'tools', 'date.tools.js'));
 
@@ -12,7 +12,7 @@ module.exports = {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_BASE.sql')),
                 values: [id],
-            }
+            };
 
             module.exports.query(query, function(err, res) {            
                 if(err) {
@@ -27,7 +27,7 @@ module.exports = {
                             }
                         }
                     }
-                    delete res.rows[0].custom_properties
+                    delete res.rows[0].custom_properties;
                     return resolve(res.rows[0]);
                 }
                 else {
@@ -41,7 +41,7 @@ module.exports = {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLE_IDS.sql')),
                 values: [fromDate],
-            }
+            };
             module.exports.query(query, function(err, res) {
                 if(err) {
                     return reject(err);
@@ -49,12 +49,12 @@ module.exports = {
                 if(res && res.rows && res.rows[0]) {
                     var articles = res.rows;
                     numArticles = parseInt(numArticles);
-                    var promises = []
+                    var promises = [];
                     //Find the starting point
                     for(var i = 0; i < articles.length; i++) {
                         if(articles[i].id == startingId || !startingId) {
                             if(startingId) {
-                                i++;
+                                continue;
                             }
                             for(var j = i; j < articles.length && j < i + numArticles; j++) {
                                 (function(thisId) {
@@ -68,7 +68,7 @@ module.exports = {
                         var data = {
                             count: articles.length,
                             articles: res
-                        }                  
+                        };             
                         return resolve(data);
                     }).catch(function(err) {
                         return reject(err);
@@ -114,7 +114,6 @@ module.exports = {
                 if(res[6].title) {
                     article.isEdit = true;
 
-                    //TODO: No need to set article.text; simply put logic in UI to pick the most recent edit
                     //Don't forget to add new edits to the local array before pushing
                     article.title = res[6].title;
                     article.text = res[6].text;
@@ -142,7 +141,7 @@ module.exports = {
             });
         });
     },
-    articleOriginal: function(article, userId, teamId) {
+    articleOriginal: function(article) {
         return new Promise(function(resolve, reject) {
             return module.exports.articleBase(article.id).then(function(baseArticle) {
                 article.title = baseArticle.title;
@@ -152,7 +151,7 @@ module.exports = {
             }).catch(function(err) {
                 return reject(err);
             });
-        })
+        });
         
     },
     articlesByUserFromDate: function(userId, fromDate, teamId) {
@@ -160,13 +159,13 @@ module.exports = {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_ARTICLES_BASE_FROM_DATE.sql')),
                 values: [fromDate],
-            }
+            };
             module.exports.query(query, function(err, res) {
                 if(err) {
                     return reject(err);
                 }
                 if(res && res.rows && res.rows[0]) {
-                    var promises = []
+                    var promises = [];
                     for(var i = 0; i < res.rows.length; i++) {
                         (function(thisId) {
                             promises.push(module.exports.articleFull(thisId, userId, teamId));
@@ -215,7 +214,6 @@ module.exports = {
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].removed !== "undefined") {
                     return resolve(res.rows[0].removed);
                 } else {
-                    //console.log('No results for articleStatusRemovedByTeam where articleId='+ articleId + " and teamId=" + teamId);
                     return resolve(false);
                 }
             });
@@ -252,7 +250,7 @@ module.exports = {
                     return resolve(res.rows);
                 }
                 else
-                    return reject('No results for booksByArticle where id=' + id);
+                    return reject('No results for booksByTeam where teamId=' + teamId);
             });
         });
     },
@@ -396,7 +394,7 @@ module.exports = {
                 if(res && res.rows) {
                     var edits = [];
                     for(var i = 0; i < res.rows.length; i++) {
-                        let edit = {
+                        const edit = {
                             teamId: teamId,
                             timestamp: DateTools.format.timestamptz(res.rows[i].timestamp),
                         }
@@ -406,7 +404,6 @@ module.exports = {
                 } else {
                     return resolve([]);
                 }
-                return resolve(res.rows[0]);
             });
         });
     },
@@ -424,7 +421,7 @@ module.exports = {
                     return reject(err);
                 }
                 if(res && res.rows && res.rows[0]) {
-                        let edit = {
+                        const edit = {
                             userId: res.rows[0].user_id,
                             timestamp: timestamp,
                             title: res.rows[0].title,
