@@ -228,6 +228,11 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 			$rootScope.$broadcast('update-book');
 		}
 
+		$scope.export = function(article) {
+			ApiService.exportFile(article).then(function(res) {
+			});
+		}
+
 	//////////////////////////
 	////KEYBOARD SHORTCUTS////
 	//////////////////////////
@@ -247,6 +252,9 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 	KeyboardService.bind('ctrl+b', function() {
 		console.log('ctrl + b detected');
 		$scope.addToBook($scope.articles[$scope.currentIndex], $scope.selectedBook);
-		//$rootScope.$broadcast('update-book');
+	});
+	KeyboardService.bind('ctrl+e', function() {
+		console.log('ctrl + e detected');
+		$scope.export($scope.articles[$scope.currentIndex]);
 	});
 });
