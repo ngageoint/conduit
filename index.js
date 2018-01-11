@@ -77,11 +77,8 @@ app.use(session({
 	}
 }));
 
-<<<<<<< HEAD
 app.use(sso.authorizeSession);
 
-var users = {};
-=======
 var users = {}
 >>>>>>> parent of b29836a... Moved auth into middleware
 
@@ -132,34 +129,16 @@ app.get('/unsupported', rate.immediate, function(req, res, next) {
 });
 
 app.post('/hash', rate.frontloaded, function(req, res, next) {
-<<<<<<< HEAD
 	var article = req.body.article;
 	
 	if(article.title && article.text && article.images && article.source) {
 		res.status(200);
-		res.json({"hash": hash(article)});
+		res.json({"hash": hash(article)})
 	} else {
 		res.status(401);
 		res.send('Missing hashable fields. title, text, images, and source are required');
 		return;
 	}
-=======
-	sso.authorizeUser(req.session.auth_token).then(function() {
-		var article = req.body.article;
-		
-		if(article.title && article.text && article.images && article.source) {
-			res.status(200);
-			res.json({"hash": hash(article)})
-		} else {
-			res.status(401);
-			res.send('Missing hashable fields. title, text, images, and source are required');
-			return;
-		}
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
->>>>>>> parent of b29836a... Moved auth into middleware
 });
 
 app.post('/export', rate.immediateRestricted, function(req, res, next) {
@@ -204,12 +183,11 @@ app.get('/download', rate.immediateRestricted, function(req, res, next) {
 	sso.authorizeUser(req.session.auth_token).then(function() {
 		var fileName = req.query.fileName;
 
-<<<<<<< HEAD
 	var fileName = req.query.fileName;
 
 	if(fileName) {
 		res.status(200);
-		var filePath = path.resolve(__dirname, 'server', 'export', 'temp', fileName);
+		var filePath = path.resolve(__dirname, 'server', 'export', 'temp', fileName)
 		res.download(filePath, fileName, function(err) {
 			if(err) {
 				console.log(err);
@@ -222,27 +200,6 @@ app.get('/download', rate.immediateRestricted, function(req, res, next) {
 		res.send('Missing fileName');
 		return;
 	}
-=======
-		if(fileName) {
-			res.status(200);
-			var filePath = path.resolve(__dirname, 'server', 'export', 'temp', fileName)
-			res.download(filePath, fileName, function(err) {
-				if(err) {
-					console.log(err);
-				} else {
-					moe.deleteTemporaryFiles(filePath);
-				}
-			});
-		} else {
-			res.status(401);
-			res.send('Missing fileName');
-			return;
-		}
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
->>>>>>> parent of b29836a... Moved auth into middleware
 });
 
 app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
@@ -254,14 +211,11 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 			});
 		}
 
-<<<<<<< HEAD
-	const AUTH_CODE = req.query.code;
+	AUTH_CODE = req.query.code;
 	if(!AUTH_CODE)
 	{
 		res.status(400);
 		res.send('Authorization code required');
-=======
->>>>>>> parent of b29836a... Moved auth into middleware
 		return;
 
 		AUTH_CODE = req.query.code;
@@ -556,17 +510,13 @@ app.get('/select/articleBlock', rate.frontloaded, function(req, res, next) {
 		res.send('Missing parameters. article is required');
 		return;
 	}
-<<<<<<< HEAD
 	db.insert.articleEdit(req.body.articleId, req.body.userId, req.body.teamId, req.body.title, req.body.text).then(function(result) {
 		
-		const edit = {
+		let edit = {
 			timestamp: result,
 			teamId: req.body.teamId
 		}
 		
-=======
-	db.insert.articleBase(req.body.article).then(function(result) {
->>>>>>> parent of b29836a... Moved auth into middleware
 		res.status(200);
     	res.json(result);
   	});
