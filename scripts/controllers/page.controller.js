@@ -1,4 +1,4 @@
-angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $filter,
+angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $rootScope, $filter,
 ApiService, ArticlesService, AttributesService, BooksService, DataSourceService, FilterService, KeyboardService, UserService, ArrayTools, DateTools, __config) {
 	
 	/**
@@ -213,6 +213,21 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 			return false;
 		}
 
+		$scope.addToBook = function(article, book) {
+			let articleBooks = article.books;
+			if(articleBooks.length > 0) {
+				for(let i = 0; i < articleBooks.length; i++) {
+					if(articleBooks[i].id === book.id) {
+						return;
+					}
+				}
+			}
+			
+			article.books.push(book);
+			ApiService.insert.bookStatus(book, article.id);
+			$rootScope.$broadcast('update-book');
+		}
+
 	//////////////////////////
 	////KEYBOARD SHORTCUTS////
 	//////////////////////////
@@ -229,7 +244,9 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 			$scope.activateCard($scope.currentParent,  $scope.articles[$scope.currentIndex + 1].id)
 		}
 	});
-	KeyboardService.bind('a', function() {
-		console.log('a detected');
+	KeyboardService.bind('ctrl+b', function() {
+		console.log('ctrl + b detected');
+		$scope.addToBook($scope.articles[$scope.currentIndex], $scope.selectedBook);
+		//$rootScope.$broadcast('update-book');
 	});
 });

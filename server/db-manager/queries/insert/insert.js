@@ -200,6 +200,9 @@ module.exports = {
                     return reject(err);
                 });
             } else {
+                if(isNaN(bookId) && bookId.id) {
+                    bookId = bookId.id;
+                }
                 const query = {
                     text: tools.readQueryFile(path.join(__dirname, 'INSERT_BOOK_STATUS.sql')),
                     values: [bookId, articleId, teamId, userId]
