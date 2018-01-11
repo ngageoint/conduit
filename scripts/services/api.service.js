@@ -31,7 +31,11 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 									'&numArticles=' + (numArticles ? numArticles : __config.MIN_RENDERED_CARDS) +
 									(startingId ? '&startingId=' + startingId : '');
 
-						$http.get(query).then(function(response) {
+						var config = {
+							ignoreLoadingBar: startingId ? true : false
+						}
+
+						$http.get(query, config).then(function(response) {
 							return resolve(response.data);
 						}).catch(function(err) {
 							return reject(err);
