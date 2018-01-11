@@ -231,6 +231,20 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 			$rootScope.$broadcast('update-book');
 		}
 
+		$scope.removeFromBook = function(article, book) {
+			let articleBooks = article.books;
+			if(articleBooks.length > 0) {
+				for(let i = 0; i < articleBooks.length; i++) {
+					if(articleBooks[i].id === book.id) {
+						ApiService.delete.bookStatus(book.id, article.id)
+						ArrayTools.removeElement(articleBooks, i);
+						$rootScope.$broadcast('update-book');
+						return;
+					}
+				}
+			}
+		}
+
 		$scope.export = function(article) {
 			ApiService.exportFile(article).then(function(res) {
 
@@ -268,6 +282,10 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 	KeyboardService.bind('ctrl+b', function() {
 		console.log('ctrl + b detected');
 		$scope.addToBook($scope.articles[$scope.currentIndex], $scope.selectedBook);
+	});
+	KeyboardService.bind('delete', function() {
+		console.log('del detected');
+		$scope.removeFromBook($scope.articles[$scope.currentIndex], $scope.selectedBook);
 	});
 	KeyboardService.bind('ctrl+e', function() {
 		console.log('ctrl + e detected');
