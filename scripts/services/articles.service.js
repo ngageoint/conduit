@@ -12,6 +12,51 @@ ApiService, BooksService, DataSourceService, FilterService, ArrayTools, ComplexP
 				return response.articles;
 			})
 		);
+		
+		//Request all promises from our queries array, concat them, and return
+		return $q.all(queries).then(function(results) {
+			var fullResponse = [];
+			for(var i = 0; i < results.length; i++) {
+				fullResponse = fullResponse.concat(results[i]);
+			}
+
+			return BooksService.getBooks().then(function(books) {
+				var articles = []
+				for(var i = 0; i < fullResponse.length; i++) {
+					(function(article) {
+						articles.push(forceArticleCompliance(article, books));
+					})(fullResponse[i]);
+				}
+				return $q.all(articles).then(function(articles) {
+					//Send articles to db
+					//ApiService.insert.articleFull(articles);
+					articles = ArrayTools.removeDuplicates(articles, function(thisArticle) {
+						return thisArticle.id;
+					});
+
+					var continueBlockRetrieval = function() {
+						ApiService.select.articleBlock(
+							DateTools.formatDate(new Date(new Date().setDate(new Date().getDate() - __config.MAX_DAYS_BACK)), 'yyyy-MM-dd')
+							).then(function(response) {
+								articles = articles.concat(response.articles);
+								DataSourceService.getSources().then(function(sources) {
+									FilterService.build(sources, articles);
+									if(articles.length < expectedCount) {
+										continueBlockRetrieval(articles);
+									}
+								})
+							})
+					}
+
+					//continueBlockRetrieval();
+
+					return articles;
+				});
+			}).catch(function(err) {
+				return fullResponse
+			});			
+		});			
+	});
 
         //Format rss sources into the accepted Conduit JSON format
 	var formatRss = function(feed, source)
@@ -118,50 +163,7 @@ ApiService, BooksService, DataSourceService, FilterService, ArrayTools, ComplexP
 		});
 	}
 
-		//Request all promises from our queries array, concat them, and return
-		return $q.all(queries).then(function(results) {
-			var fullResponse = [];
-			for(var i = 0; i < results.length; i++) {
-				fullResponse = fullResponse.concat(results[i]);
-			}
-
-			return BooksService.getBooks().then(function(books) {
-				var articles = []
-				for(var i = 0; i < fullResponse.length; i++) {
-					(function(article) {
-						articles.push(forceArticleCompliance(article, books));
-					})(fullResponse[i]);
-				}
-				return $q.all(articles).then(function(articles) {
-					//Send articles to db
-					//ApiService.insert.articleFull(articles);
-					articles = ArrayTools.removeDuplicates(articles, function(thisArticle) {
-						return thisArticle.id;
-					});
-
-					var continueBlockRetrieval = function() {
-						ApiService.select.articleBlock(
-							DateTools.formatDate(new Date(new Date().setDate(new Date().getDate() - __config.MAX_DAYS_BACK)), 'yyyy-MM-dd')
-							).then(function(response) {
-								articles = articles.concat(response.articles);
-								DataSourceService.getSources().then(function(sources) {
-									FilterService.build(sources, articles);
-									if(articles.length < expectedCount) {
-										continueBlockRetrieval(articles);
-									}
-								})
-							})
-					}
-
-					//continueBlockRetrieval();
-
-					return articles;
-				});
-			}).catch(function(err) {
-				return fullResponse
-			});			
-		});			
-	});
+		
 
 	var continueBlockRetrieval = function(articles) {
 			ApiService.select.articleBlock(
