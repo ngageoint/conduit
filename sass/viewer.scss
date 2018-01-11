@@ -361,19 +361,6 @@ $actPadding: 8px;
 	visibility: hidden;
 }
 
-#content-wrapper .form-control {
-	box-shadow: none;
-	-webkit-box-shadow: none;
-	width: auto;
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-
-#content-wrapper .edit-field.form-control {
-	width: 100% !important;
-}
-
 #overflow-menu .btn.btn-default.dropdown-toggle:after {
 	font-family: "Glyphicons Halflings";
 	content: '\e235';
@@ -426,8 +413,21 @@ $actPadding: 8px;
     z-index: 101;
 }
 
-#righoverflow-menut .nya-bs-select.btn-group .dropdown-menu {
+/*#righoverflow-menut .nya-bs-select.btn-group .dropdown-menu {
     width: 100% !important;
     min-width: initial !important;
+}*/
+
+#content-wrapper .form-control {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	width: auto;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#content-wrapper .edit-field.form-control {
+	width: 100% !important;
 }
 

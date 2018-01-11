@@ -83,21 +83,6 @@ var users = {};
 
 /* GET home page. */
 app.get('/', rate.restricted, function(req, res, next) {
-	
-	console.log(req.session.id);
-
-	if(req.session.views) {
-		req.session.views++;
-	} else {
-		req.session.views = 1;
-	}
-
-	if(!req.session.auth_token) {
-		req.session.auth_token = 'token';
-	}
-
-	console.log(req.session.views);
-	console.log(req.session.auth_token);
 
 	if(!authEnabled)
 	{
@@ -125,6 +110,11 @@ app.get('/', rate.restricted, function(req, res, next) {
 
 app.get('/unsupported', rate.immediate, function(req, res, next) {
 	res.sendFile(path.join(__dirname, './', 'public', 'html', 'unsupported.html'));
+});
+
+app.get('/logoff', rate.immediate, function(req, res, next) {
+	req.session.destroy();
+	res.sendFile(path.join(__dirname, './', 'public', 'html', 'logoff.html'));
 });
 
 app.post('/hash', rate.frontloaded, function(req, res, next) {
