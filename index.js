@@ -79,8 +79,7 @@ app.use(session({
 
 app.use(sso.authorizeSession);
 
-var users = {}
->>>>>>> parent of b29836a... Moved auth into middleware
+var users = {};
 
 /* GET home page. */
 app.get('/', rate.restricted, function(req, res, next) {
@@ -142,7 +141,6 @@ app.post('/hash', rate.frontloaded, function(req, res, next) {
 });
 
 app.post('/export', rate.immediateRestricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		var article = req.body.article;
 
 		if(article.title && article.text && article.date && req.body.tpltId) {
@@ -155,14 +153,9 @@ app.post('/export', rate.immediateRestricted, function(req, res, next) {
 			res.send('Missing export fields. tpltId, title, text, date, and images are required');
 			return;
 		}
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 app.post('/exportZip', rate.immediateRestricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 	if(req.body.articles && req.body.tpltId) {
 		res.status(200);
 		moe.generateZip(req.body.articles, req.body.tpltId).then(function(filename) {
@@ -173,15 +166,10 @@ app.post('/exportZip', rate.immediateRestricted, function(req, res, next) {
 		res.send('Missing export fields. articles and tpltId are required');
 		return;
 	}
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 app.get('/download', rate.immediateRestricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
-		var fileName = req.query.fileName;
+	var fileName = req.query.fileName;
 
 	var fileName = req.query.fileName;
 
@@ -203,13 +191,15 @@ app.get('/download', rate.immediateRestricted, function(req, res, next) {
 });
 
 app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
-		if(req.query.id) {
-			db.select.userById(req.query.id).then(function(user) {
-				res.status(200);
-				res.json(user);
-			});
-		}
+	
+	if(req.query.id) {
+		db.select.userById(req.query.id).then(function(user) {
+			res.status(200);
+			res.json(user);
+		});
+	}
+
+	return;
 
 	AUTH_CODE = req.query.code;
 	if(!AUTH_CODE)
@@ -233,11 +223,7 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 		}
 		res.status(200);
 		res.json(users[AUTH_CODE].info);
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
-
+	}
 })
 
 /*=================
@@ -245,7 +231,6 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
  ==================*/
 
  app.get('/select/allEditsForArticleByTeam', rate.immediateRestricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.query.articleId || !req.query.teamId) {
 			console.log('Missing params');
 			res.status(400);
@@ -256,10 +241,6 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 			res.status(200);
 			res.json(edits);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 /*DEPRECIATED
@@ -277,7 +258,6 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 });*/
 
 app.post('/select/articleOriginal', rate.immediate, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.article) {
 			console.log('Missing params');
 			res.status(400);
@@ -288,10 +268,6 @@ app.post('/select/articleOriginal', rate.immediate, function(req, res, next) {
 			res.status(200);
 			res.json(article);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 /*DEPRECIATED
@@ -309,16 +285,10 @@ app.get('/select/articlesByUserFromDate', function(req, res, next) {
 });*/
 
 app.get('/select/attributes', rate.frontloadedRestricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		db.select.attributes().then(function(attributes) {
 			res.status(200);
 			res.json(attributes);
-		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
-	
+		});	
 });
 
 /*DEPRECIATED
@@ -349,7 +319,6 @@ app.get('/select/booksByArticle', function(req, res, next) {
 });*/
 
 app.get('/select/booksByTeam', rate.frontloadedRestricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.query.teamId) {
 			console.log('Missing params');
 			res.status(400);
@@ -360,14 +329,9 @@ app.get('/select/booksByTeam', rate.frontloadedRestricted, function(req, res, ne
 			res.status(200);
 			res.json(books);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});
 });
 
 app.get('/select/commentsByArticle', rate.frontloaded, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.query.id || !req.query.teamId) {
 			console.log('Missing params');
 			res.status(400);
@@ -378,14 +342,9 @@ app.get('/select/commentsByArticle', rate.frontloaded, function(req, res, next) 
 			res.status(200);
 			res.json(comments);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 app.post('/select/mostRecentArticleEdit', rate.immediateRestricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.article && (!req.body.articleId || !req.body.teamId)) {
 			console.log('Missing params');
 			res.status(400);
@@ -396,14 +355,9 @@ app.post('/select/mostRecentArticleEdit', rate.immediateRestricted, function(req
 			res.status(200);
 			res.json(edit);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 app.get('/select/editContent', rate.immediate, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.query.articleId || !req.query.teamId || !req.query.timestamp) {
 			console.log('Missing params');
 			res.status(400);
@@ -414,10 +368,6 @@ app.get('/select/editContent', rate.immediate, function(req, res, next) {
 			res.status(200);
 			res.json(edit);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 /*DEPRECIATED
@@ -448,7 +398,6 @@ app.get('/select/articleStatusReadByIds', function(req, res, next) {
 });*/
 
 app.get('/select/articleStatusRemovedByTeam', rate.immediateRestricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.query.articleId || !req.query.teamId) {
 			console.log('Missing params');
 			res.status(400);
@@ -459,10 +408,6 @@ app.get('/select/articleStatusRemovedByTeam', rate.immediateRestricted, function
 			res.status(200);
 			res.json(status);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 /* DEPRECIATED
@@ -480,7 +425,6 @@ app.get('/select/articleBase', function(req, res, next) {
 });*/
 
 app.get('/select/articleBlock', rate.frontloaded, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.query.userId || !req.query.teamId || !req.query.fromDate || !req.query.numArticles) {
 			console.log('Missing params');
 			res.status(400);
@@ -490,12 +434,7 @@ app.get('/select/articleBlock', rate.frontloaded, function(req, res, next) {
 		db.select.articleBlock(req.query.userId, req.query.teamId, req.query.fromDate, req.query.numArticles, req.query.startingId).then(function(articles) {
 			res.status(200);
 			res.json(articles);
-		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
-	
+		});	
 });
 
 /*=================
@@ -536,7 +475,6 @@ app.post('/insert/articleFull', function(req, res, next) {
 });*/
 
 app.post('/insert/articleEdit', rate.intermittent, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.articleId || !req.body.userId || !req.body.teamId || !req.body.title || !req.body.text) {
 			console.log('Missing params');
 			res.status(400);
@@ -552,16 +490,10 @@ app.post('/insert/articleEdit', rate.intermittent, function(req, res, next) {
 			
 			res.status(200);
 			res.json(edit);
-		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
-	
+		});	
 });
 
 app.post('/insert/articleStatusRead', rate.intermittent, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
 			console.log('Missing params');
 			res.status(400);
@@ -572,15 +504,10 @@ app.post('/insert/articleStatusRead', rate.intermittent, function(req, res, next
 			res.status(200);
 			res.json(result);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 	
 });
 
 app.post('/insert/articleStatusRemoved', rate.intermittent, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRemoved === "undefined")) {
 			console.log('Missing params');
 			res.status(400);
@@ -590,15 +517,10 @@ app.post('/insert/articleStatusRemoved', rate.intermittent, function(req, res, n
 		db.insert.articleStatusRemoved(req.body.articleId, req.body.userId, req.body.teamId, req.body.isRemoved).then(function(result) {
 			res.status(200);
 			res.json(result);
-		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});		
+		});	
 });
  
  app.post('/insert/book', rate.restricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.name) {
 			console.log('Missing params');
 			res.status(400);
@@ -609,14 +531,9 @@ app.post('/insert/articleStatusRemoved', rate.intermittent, function(req, res, n
 			res.status(200);
 			res.json(result);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 app.post('/insert/bookStatus', rate.intermittent, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.bookId || !req.body.articleId) {
 			console.log('Missing params');
 			res.status(400);
@@ -627,14 +544,9 @@ app.post('/insert/bookStatus', rate.intermittent, function(req, res, next) {
 			res.status(200);
 			res.json(result);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(	!req.body.articleId || !req.body.userId || !req.body.teamId || 
 			(!req.body.date && !req.body.comment.date) || 
 			(!req.body.text && !req.body.comment.text)) {
@@ -647,10 +559,6 @@ app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next
 			res.status(200);
 			res.json(result);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 /*DEPRECIATED
@@ -684,7 +592,6 @@ app.post('/insert/tag', function(req, res, next) {
 });*/
 
 app.post('/insert/team', rate.restricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.name) {
 			console.log('Missing params');
 			res.status(400);
@@ -695,14 +602,9 @@ app.post('/insert/team', rate.restricted, function(req, res, next) {
 			res.status(200);
 			res.json(result);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 app.post('/insert/user', rate.restricted, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.firstName || !req.body.lastName && !req.body.prefName || !req.body.teamId) {
 			console.log('Missing params');
 			res.status(400);
@@ -720,12 +622,7 @@ app.post('/insert/user', rate.restricted, function(req, res, next) {
 				res.status(200);
 				res.json(result);
 			});
-		}
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
-	
+		}	
 });
 
 /*=================
@@ -747,7 +644,6 @@ app.post('/insert/user', rate.restricted, function(req, res, next) {
 });*/
 
 app.post('/update/articleStatusRead', rate.intermittent, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRead === "undefined")) {
 			console.log('Missing params');
 			res.status(400);
@@ -758,15 +654,9 @@ app.post('/update/articleStatusRead', rate.intermittent, function(req, res, next
 			res.status(200);
 			res.json(result);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
-
 });
 
 app.post('/update/articleStatusRemoved', rate.intermittent, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.articleId || !req.body.userId || !req.body.teamId || (typeof req.body.isRemoved === "undefined")) {
 			console.log('Missing params');
 			res.status(400);
@@ -777,10 +667,6 @@ app.post('/update/articleStatusRemoved', rate.intermittent, function(req, res, n
 			res.status(200);
 			res.json(result);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 /*=================
@@ -788,7 +674,6 @@ app.post('/update/articleStatusRemoved', rate.intermittent, function(req, res, n
  ==================*/
 
 app.post('/delete/bookStatus', rate.intermittent, function(req, res, next) {
-	sso.authorizeUser(req.session.auth_token).then(function() {
 		if(!req.body.bookId || !req.body.articleId) {
 			console.log('Missing params');
 			res.status(400);
@@ -799,10 +684,6 @@ app.post('/delete/bookStatus', rate.intermittent, function(req, res, next) {
 			res.status(200);
 			res.json(result);
 		});
-	}).catch(function() {
-		res.status(403);
-		res.send("Access denied.");
-	});	
 });
 
 /*=================

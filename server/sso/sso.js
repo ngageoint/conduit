@@ -95,15 +95,17 @@ var authorizeSession = function(req, res, next) {
     if(req.session.auth_token) {
         next();
     } else {
-            req.session.auth_token = 'token';
-            next();
+        res.status(403);
+        res.send("Access denied");
+            //req.session.auth_token = 'token';
+            //next();
     }   
 }
 
 module.exports = {
     REDIRECT_URL: REDIRECT_URL,
     authenticateUser: authenticateUser,
-    authorizeUser: authorizeUser,
+    authorizeSession: authorizeSession,
     getUserInfo: getUserInfo,
     user: user
 }
