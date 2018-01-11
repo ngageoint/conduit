@@ -21,7 +21,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 				});
 			},*/
 			articleBlock: function(fromDate, numArticles, startingId) {
-				//numArticles is required. For default, input 0
+				//numArticles is required. For default, input 0git 
 				return new Promise(function(resolve, reject) {
 					return UserService.getUser().then(function(user) {
 						var query = '/select/articleBlock?' +
