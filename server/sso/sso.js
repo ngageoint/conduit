@@ -103,7 +103,7 @@ var authorizeSession = function(req, res, next) {
 module.exports = {
     REDIRECT_URL: REDIRECT_URL,
     authenticateUser: authenticateUser,
-    authorizeSession: authorizeSession,
+    authorizeUser: authorizeUser,
     getUserInfo: getUserInfo,
     user: user
 }
