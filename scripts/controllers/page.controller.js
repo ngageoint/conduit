@@ -230,6 +230,19 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 
 		$scope.export = function(article) {
 			ApiService.exportFile(article).then(function(res) {
+
+			});
+		}
+		$scope.exportBook = function(book) {
+			let includedArticles = [];
+			for(let i = 0; i < $scope.articles.length; i++) {
+				for(let j = 0; j < $scope.articles[i].books.length; j++) {
+					if($scope.articles[i].books[j].id === book.id)
+						includedArticles.push($scope.articles[i]);
+				}
+			}
+			ApiService.exportBook(book, includedArticles).then(function(res) {
+
 			});
 		}
 
@@ -256,5 +269,9 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 	KeyboardService.bind('ctrl+e', function() {
 		console.log('ctrl + e detected');
 		$scope.export($scope.articles[$scope.currentIndex]);
+	});
+	KeyboardService.bind('ctrl+shift+e', function() {
+		console.log('ctrl + shift + e detected');
+		$scope.exportBook($scope.selectedBook);
 	});
 });
