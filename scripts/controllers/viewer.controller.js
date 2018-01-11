@@ -1,4 +1,4 @@
-angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $scope, $rootScope, $timeout, __config, ApiService, ArrayTools, DateTools) {
+angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $scope, $rootScope, $timeout, __config, ApiService, KeyboardService, ArrayTools, DateTools) {
 	
 	//If the current article has been added to or removed from a book, send out a broadcast to trigger a book update
 	$scope.$watch('articles[currentIndex].books', function(newBooks, oldBooks) {		

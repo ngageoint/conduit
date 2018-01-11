@@ -1,6 +1,9 @@
-angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $rootScope, $filter,
+angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $rootScope, $filter, $timeout,
 ApiService, ArticlesService, AttributesService, BooksService, DataSourceService, FilterService, KeyboardService, UserService, ArrayTools, DateTools, __config) {
 	
+
+	$scope.discussPopoverOpen = false;
+
 	/**
 	 * Wait for the articles promise to resolve; will be inherited by child scopes.
 	 */
@@ -274,4 +277,24 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 		console.log('ctrl + shift + e detected');
 		$scope.exportBook($scope.selectedBook);
 	});
+	KeyboardService.bind('ctrl+r', function() {
+		//var elem = angular.element(document.body).find('.editable');
+		//console.log(elem);
+		//console.log(elem.scope());
+		//elem.scope().$articleEdit.$show = !elem.scope().$articleEdit.$show;
+		//too hard rn
+	});
+	KeyboardService.bind('ctrl+d', function() {
+		console.log('ctrl + d detected');
+		$scope.discussPopoverOpen = !$scope.discussPopoverOpen;
+		console.log($scope.discussPopoverOpen);
+		if($scope.discussPopoverOpen) {
+			
+			//$timeout(function() {
+				$rootScope.$broadcast('discuss-opened');
+				$scope.$apply();
+			//}, 0);
+		}
+	});
+
 });
