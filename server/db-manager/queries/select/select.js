@@ -447,8 +447,13 @@ module.exports = {
                 if(res && res.rows)
                 {
                     var comments = [];
-                    for(var i = 0; i < res.rows.length; i++)
-                        comments.push(res.rows[i])
+                    for(var i = 0; i < res.rows.length; i++) {
+                        comments.push(res.rows[i]);
+                        comments[i].user = {
+                            id: comments[i].user_id,
+                            given_name: comments[i].name_preferred
+                        }
+                    }
                     return resolve(comments);
                 }
                 else
