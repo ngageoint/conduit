@@ -3,7 +3,7 @@ const Docxtemplater = require('docxtemplater');
 const ImageModule = require('docxtemplater-image-module')
 const request = require('request');
 const axios = require('axios');
-//const niv = require('npm-install-version');
+const niv = require('npm-install-version');
 
 const fs = require('fs');
 const path = require('path');
@@ -218,11 +218,11 @@ var generateZip = function(articles, tpltId) {
                 //The version of jszip required by docxtemplater does not support blobs
                 //But blobs are needed to export a zip
                 var jszip3x = undefined;
-/*                if(!JSZip.support.blob) {
+                if(!JSZip.support.blob) {
                     niv.install('jszip@3.1.4');
                     jszip3x = niv.require('jszip@3.1.4');
                 }
-*/
+
                 zip = new jszip3x() || new JSZip();
 
                 //Read all of the .docx files with the specified id

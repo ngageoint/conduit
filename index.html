@@ -487,16 +487,14 @@
                             </a>
                         </li>
                     </ol>   
-                    <div ng-controller="ExportCtrl">
-                        <button	type="button"
-                                id="export-book"
-                                class="btn btn-primary stream-action"
-                                ng-click="exportBook()"
-                                title="Export book">
-                                <span class="glyphicon glyphicon-save-file"></span> 
-                                <!--<div class="ico-text-3">&nbsp;Export book</div>-->
-                        </button>
-                    </div>
+                    <button	type="button"
+                            id="export-book"
+                            class="btn btn-primary stream-action"
+                            ng-click="exportBook(selectedBook)"
+                            title="Export book">
+                            <span class="glyphicon glyphicon-save-file"></span> 
+                            <!--<div class="ico-text-3">&nbsp;Export book</div>-->
+                    </button>
                     <div id="team-info">
                         {{user.teamName}}
                     </div>
