@@ -26,10 +26,10 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					return UserService.getUser().then(function(user) {
 						var query = '/select/articleBlock?' +
 									'userId=' + user.id + 
-									'&teamId=' + (user.teamId ? user.teamId : 1) +
+									'&teamId=' + user.teamId +
 									'&fromDate=' + fromDate + 
 									'&numArticles=' + (numArticles ? numArticles : __config.MIN_RENDERED_CARDS) +
-									(startingId ? '&startingId=' + startingId : '');
+									((typeof startingId === 'undefined') ? '' : '&startingId=' + startingId);
 
 						var config = {
 							ignoreLoadingBar: startingId ? true : false

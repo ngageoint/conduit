@@ -223,7 +223,7 @@ module.exports = {
                 return reject ('Missing required parameters');
             }
 
-            if(!comment.user || (!comment.user.id || !comment.user.teamId)) {
+            if(!comment.user || (typeof comment.user.id === 'undefined' || typeof comment.user.teamId === 'undefined')) {
                 console.log('no user info found');
                 return resolve([]);
             }
