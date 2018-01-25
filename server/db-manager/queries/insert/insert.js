@@ -3,6 +3,7 @@ const path = require('path')
 const tools = require(path.join(__dirname, '..','..','db-tools.js'));
 const select = require(path.join(__dirname, '..','select','select.js'));
 const DateTools = require(path.join('..', '..', '..', 'tools', 'date.tools.js'));
+const audit = require(path.join('..', '..', '..', 'tools', 'audit-log.service.js'));
 
 module.exports = {
     setQueryManager: function(query) {
@@ -108,8 +109,10 @@ module.exports = {
     
                 module.exports.query(query, function(err) {
                     if(err) {
+                        audit.INSERT(audit.FAILURE, audit.OBJECT, 'base article ' + article.id, audit.DATABASE, audit.SYSTEM);
                         return reject(err);
                     }
+                    audit.INSERT(audit.SUCCESS, audit.OBJECT, 'base article ' + article.id, audit.DATABASE, audit.SYSTEM);
                     return resolve(true);
                 });
             }
@@ -123,11 +126,13 @@ module.exports = {
             }
             module.exports.query(query, function(err, res) {
                 if(err) {
+                    audit.MODIFY(audit.FAILURE, audit.OBJECT, 'MODIFY article ' + articleId, userId);
                     return reject(err);
                 }
-                else 
-                    console.log(DateTools.format.timestamptz(res.rows[0].timestamp));
+                else {
+                    audit.MODIFY(audit.SUCCESS, audit.OBJECT, 'article ' + articleId, 'user ' + userId);
                     return resolve(DateTools.format.timestamptz(res.rows[0].timestamp));
+                }
             });
         });
     },
@@ -139,10 +144,13 @@ module.exports = {
             }
             module.exports.query(query, function(err, res) {
                 if(err) {
+                    audit.ACCESS(audit.FAILURE, audit.OBJECT, 'article ' + articleId, 'user ' + userId);
                     return reject(err);
                 }
-                else
+                else {
+                    audit.ACCESS(audit.SUCCESS, audit.OBJECT, 'article ' + articleId, 'user ' + userId);
                     return resolve(res);
+                }
             });
         });
     },
@@ -224,7 +232,6 @@ module.exports = {
             }
 
             if(!comment.user || (typeof comment.user.id === 'undefined' || typeof comment.user.teamId === 'undefined')) {
-                console.log('no user info found');
                 return resolve([]);
             }
             const query = {
@@ -233,10 +240,12 @@ module.exports = {
             }
             module.exports.query(query, function(err, res) {
                 if(err) {
+                    audit.INSERT(audit.FAILURE, audit.OBJECT, 'comment on ' + article.id, audit.DATABASE, 'user ' + comment.user.id);
                     return reject(err);
-                }
-                else
+                } else {
+                    audit.INSERT(audit.SUCCESS, audit.OBJECT, 'comment on ' + articleId, audit.DATABASE, 'user ' + comment.user.id);
                     return resolve(res);
+                }
             });
         });
     },

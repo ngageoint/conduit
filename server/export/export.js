@@ -10,6 +10,8 @@ const path = require('path');
 const uuid = require('uuid/v1'); //Timestamp-based uuid
 const glob = require('glob');
 
+const audit = require(path.join('..', 'tools', 'audit-log.service.js'));
+
 var tpltId = 1//TODO: This will eventually be identified by the team, or even by the user at export
 
 /**
@@ -26,9 +28,11 @@ var downloadImage = function(uri, id) {
         return axios.get(uri).then(function (response) {
             return request(uri).pipe(fs.createWriteStream(filePath))
                         .on('finish', function() {
+                            audit.CREATE(audit.SUCCESS, audit.FILE, id, filePath, audit.SYSTEM);
                             return resolve(filePath);
                         })
                         .on('error', function(err) {
+                            audit.CREATE(audit.FAILURE, audit.FILE, id, filePath, audit.SYSTEM);
                             return reject(err);
                         })
         }).catch(function(err) {
@@ -120,6 +124,11 @@ var generateWordDoc = function(article, tpltId, id) {
 
                 // buf is a nodejs buffer; here we write it to a file in the temp folder on the server.
                 fs.writeFileSync(filename, buf);
+                if(fs.existsSync(filename)) {
+                    audit.CREATE(audit.SUCCESS, audit.FILE, id, filename, audit.SYSTEM);
+                } else {
+                    audit.CREATE(audit.FAILURE, audit.FILE, id, fileName, audit.SYSTEM);
+                }
                 
                 return resolve(path.basename(filename));
             });
@@ -183,9 +192,15 @@ var generateWordDoc = function(article, tpltId, id) {
 var deleteTemporaryFiles = function (fileName) {
     glob(fileName.replace(/\.[^/.]+$/, "") + '*', function(err, files) {
         for(var i = 0; i < files.length; i++) {
-            fs.unlink(files[i], function() {
-                /*no action needs to be taken*/
-            })
+            (function(thisFile) {
+                fs.unlink(files[i], function(err) {
+                    if(err) {
+                        audit.DELETE(audit.FAILURE, audit.FILE, thisFile, audit.SYSTEM);
+                    } else {
+                        audit.DELETE(audit.SUCCESS, audit.FILE, thisFile, audit.SYSTEM);
+                    }
+                })
+            }(files[i]));
         }
     })    
 }
@@ -237,9 +252,15 @@ var generateZip = function(articles, tpltId) {
 
                     //Zip 'em up!
                      zip.generateAsync({type : "nodebuffer"}).then(function(buf) {
-                        fs.writeFileSync(fileName, buf)
+                        fs.writeFileSync(fileName, buf);
+                        if(fs.existsSync(fileName)) {
+                            audit.CREATE(audit.SUCCESS, audit.FILE, id, fileName, audit.SYSTEM);
+                        } else {
+                            audit.CREATE(audit.FAILURE, audit.FILE, id, fileName, audit.SYSTEM);
+                        }
                         return resolve(fileName);
                     }).catch(function(err) {
+                        audit.CREATE(audit.FAILURE, audit.FILE, id, fileName, audit.SYSTEM);
                         return reject(err);
                     });
                 });

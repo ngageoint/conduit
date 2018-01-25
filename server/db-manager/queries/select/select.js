@@ -2,6 +2,7 @@ var query = {};
 const path = require('path');
 const tools = require(path.join(__dirname, '..','..','db-tools.js'));
 const DateTools = require(path.join('..', '..', '..', 'tools', 'date.tools.js'));
+const audit = require(path.join('..', '..', '..', 'tools', 'audit-log.service.js'));
 
 module.exports = {
     setQueryManager: function(query) {

@@ -19,6 +19,7 @@ const db = require('./server/db-manager/db-manager.js');
 const sso = require('./server/sso/sso.js');
 const moe = require('./server/export/export.js'); //Microsoft Office Export, MOE; export is a reserved word
 const rate = require('./server/tools/rate.profiles.js');
+const audit = require('./server/tools/audit-log.service.js')
 
 const ArticleReader = require('./server/article-reader/article-reader.js');
 const SourceService = require('./server/tools/sources.service.server.js');
@@ -86,6 +87,14 @@ app.get('/', rate.restricted, function(req, res, next) {
 
 	if(!authEnabled)
 	{
+		if(req.query.id) {
+			db.select.userById(req.query.id).then(function(user) {
+				req.session.user = user;
+				audit.LOGIN(audit.SUCCESS, user);
+				res.status(200);
+				res.json(user);
+			});
+		}
 		res.sendFile(path.join(__dirname, './', '', 'index.html'));
 		return;
 	}
@@ -98,10 +107,12 @@ app.get('/', rate.restricted, function(req, res, next) {
 		sso.authenticateUser(req.query.code).then(function(auth) {
 			//TODO set cookie 
 			sso.getUserInfo(auth.tokens.access_token).then(function(user) {
-				users[req.query.code] = user;
+				req.session.user = user;
+				audit.LOGIN(audit.SUCCESS, user);
 				res.sendFile(path.join(__dirname, './', '', 'index.html'));
 			});
 		}).catch(function(res) {
+			audit.LOGIN(audit.FAILURE, user);
 			res.status(403);
 			res.send("Access denied.");
 		});
@@ -113,7 +124,15 @@ app.get('/unsupported', rate.immediate, function(req, res, next) {
 });
 
 app.get('/logoff', rate.immediate, function(req, res, next) {
-	req.session.destroy();
+	(function(user) {
+		req.session.destroy(function(err) {
+			if(err) {
+				audit.LOGOUT(audit.FAILURE, user);
+			} else {
+				audit.LOGOUT(audit.SUCCESS, user);
+			}
+		});
+	}(req.session.user));
 	res.sendFile(path.join(__dirname, './', 'public', 'html', 'logoff.html'));
 });
 
@@ -164,12 +183,14 @@ app.get('/download', rate.immediateRestricted, function(req, res, next) {
 	var fileName = req.query.fileName;
 
 	if(fileName) {
-		res.status(200);
 		var filePath = path.resolve(__dirname, 'server', 'export', 'temp', fileName)
+		res.status(200);
 		res.download(filePath, fileName, function(err) {
 			if(err) {
-				console.log(err);
+				audit.EXPORT(audit.FAILURE, req.session.user, filePath);
+				console.err(err);
 			} else {
+				audit.EXPORT(audit.SUCCESS, req.session.user, filePath);
 				moe.deleteTemporaryFiles(filePath);
 			}
 		});
@@ -184,6 +205,9 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 	
 	if(req.query.id) {
 		db.select.userById(req.query.id).then(function(user) {
+			if(!req.session.user) {
+				req.session.user = user;
+			}
 			res.status(200);
 			res.json(user);
 		});
@@ -255,8 +279,11 @@ app.post('/select/articleOriginal', rate.immediate, function(req, res, next) {
 			return;
 		}
 		db.select.articleOriginal(req.body.article, req.body.userId, req.body.teamId).then(function(article) {
+			audit.ACCESS(audit.SUCCESS, audit.OBJECT, 'article ' + article.id, req.session.user.id);
 			res.status(200);
 			res.json(article);
+		}).catch(function(err) {
+			audit.ACCESS(audit.FAILURE, audit.OBJECT, 'article ' + article.id, req.session.user.id);
 		});
 });
 
@@ -342,8 +369,11 @@ app.post('/select/mostRecentArticleEdit', rate.immediateRestricted, function(req
 			return;
 		}
 		db.select.mostRecentArticleEdit(req.body.article || req.body.articleId, req.body.teamId).then(function(edit) {
+			audit.ACCESS(audit.SUCCESS, audit.OBJECT, 'article ' + article.id, req.session.user.id);
 			res.status(200);
 			res.json(edit);
+		}).catch(function(err) {
+			audit.ACCESS(audit.FAILURE, audit.OBJECT, 'article' + article.id, req.session.user.id);
 		});
 });
 
