@@ -1,0 +1,121 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: 0px;
+	width: 100vw;
+	height: 100vh;
+	
+    font-size: 100%;
+	font-family: 'SourceSansPro', sans-serif;
+	
+	background-color: #f2f2f2;
+}
+
+.card {	
+	
+	margin-top: 20vh;
+	height: auto;
+
+	padding: 24px;
+
+	border-radius: 2px;
+	/*border: 1px solid $colorGrey;*/
+	background: #fff;
+	box-shadow: 0 0px 2px rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+}
+
+.card .primary-title {
+	font-size: 24px;
+	padding-bottom: 16px;
+}
+
+.card .supporting-text {
+	font-size: 14px;
+	margin-bottom: 16px;
+}
+
+.card .action-area {
+	height: 36px;
+}
+
+.card .card-action {
+	height: 36px;
+	margin: 8px;
+	font-size: 16px;
+	padding: 10px;
+	background: transparent;
+	border: none;
+	border-radius: 2px !important;
+	float: right;
+	font-weight: 500;
+	text-decoration: none;
+}
+.card .card-action:hover {
+	cursor: pointer;
+}
+
+.card .default {
+	color: #212121;
+}
+
+.card .default:hover {
+	background: rgba(33, 33, 33, 0.12);
+}
+
+.card .primary {
+	color: #009688;
+}
+
+.card .primary:hover {
+	background: rgba(0, 150, 136, 0.12);
+}
+
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+	.card {
+		width: 80vw;
+		margin-left: 10vw;
+	}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+	.card {	
+		width: 60vw;
+		margin-left: 20vw;
+	}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+	.card {	
+		width: 50vw;
+		margin-left: 25vw;
+	}
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+	.card {	
+		width: 30vw;
+		margin-left: 35vw;
+	}
+}
+
+/* Wide Screens, HD */
+@media only screen and (min-width : 1600px) {
+	.card {	
+		width: 20vw;
+		margin-left: 40vw;
+	}
+}
