@@ -55,7 +55,7 @@ body {
 	height: 36px;
 	margin: 8px;
 	font-size: 14px;
-	padding: 10px 16px;
+	padding: 11px 16px;
 	background: transparent;
 	border: none;
 	border-radius: 2px !important;
@@ -68,7 +68,7 @@ body {
 }
 
 .card .default {
-	color: #212121;
+	color: $colorFont;
 }
 
 .card .default:hover {
@@ -76,7 +76,7 @@ body {
 }
 
 .card .primary {
-	color: #009688;
+	color: $colorPrimary;
 }
 
 .card .primary:hover {
