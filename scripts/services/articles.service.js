@@ -186,6 +186,6 @@ ApiService, BooksService, DataSourceService, FilterService, ArrayTools, ComplexP
 	return {
 	  	getArticles: getArticles,
 		formatRss: formatRss,
-		forceArticleCompliance, forceArticleCompliance
+		forceArticleCompliance: forceArticleCompliance
 	};		
 });

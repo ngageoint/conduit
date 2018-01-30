@@ -11,13 +11,6 @@ angular.module('conduit.directives').directive('scrollCenterOn', function() {
 			scope.$watch(attrs.scrollCenterOn, function(newVal, oldVal) {
 				console.log(newVal);
 				if(newVal) {
-					let parent = elem.parent()[0];
-					console.log(parent.scrollTop);
-					console.log(elem[0].offsetTop);
-
-
-					let scrollTop = elem[0].offsetTop;
-
 					console.log(parent.scrollTop);
 				}
 			});
