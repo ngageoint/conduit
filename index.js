@@ -92,30 +92,28 @@ app.get('/', rate.restricted, function(req, res, next) {
 				req.session.user = user;
 				audit.LOGIN(audit.SUCCESS, user);
 				res.status(200);
-				res.json(user);
-			});
-		}
-		res.sendFile(path.join(__dirname, './', '', 'index.html'));
-		return;
-	}
-
-	//Authentication
-	//Check for SSO code
-	if(typeof req.query.code === 'undefined')
-		res.redirect(sso.REDIRECT_URL());
-	else {
-		sso.authenticateUser(req.query.code).then(function(auth) {
-			//TODO set cookie 
-			sso.getUserInfo(auth.tokens.access_token).then(function(user) {
-				req.session.user = user;
-				audit.LOGIN(audit.SUCCESS, user);
 				res.sendFile(path.join(__dirname, './', '', 'index.html'));
 			});
-		}).catch(function(res) {
-			audit.LOGIN(audit.FAILURE, undefined);
-			res.status(403);
-			res.send("Access denied.");
-		});
+		}
+	} else {
+		//Authentication
+		//Check for SSO code
+		if(typeof req.query.code === 'undefined')
+			res.redirect(sso.REDIRECT_URL());
+		else {
+			sso.authenticateUser(req.query.code).then(function(auth) {
+				//TODO set cookie 
+				sso.getUserInfo(auth.tokens.access_token).then(function(user) {
+					req.session.user = user;
+					audit.LOGIN(audit.SUCCESS, user);
+					res.sendFile(path.join(__dirname, './', '', 'index.html'));
+				});
+			}).catch(function(res) {
+				audit.LOGIN(audit.FAILURE, undefined);
+				res.status(403);
+				res.send("Access denied.");
+			});
+		}
 	}
 });
 
