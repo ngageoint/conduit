@@ -13,7 +13,7 @@ body {
     right: 0;
     top: 0;
     bottom: 0;
-    margin: 0px;
+    margin: 0;
     width: 100vw;
     height: 100vh;
     
@@ -23,21 +23,20 @@ body {
     background-color: $color-background;
 }
 
-$tbPadding: 24px;
-$lrPadding: 24px;
+$tb-padding: 24px;
+$lr-padding: 24px;
 
 .card {	
     
+    @include material-shadow(1);
+
     margin-top: 20vh;
     height: auto;
 
-    padding: $tbPadding $lrPadding;
+    padding: $tb-padding $lr-padding;
 
     border-radius: 2px;
-    /*border: 1px solid $color-grey;*/
     background: $color-card-background;
-    //box-shadow: 0 0px 2px rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
-    @include material-shadow(1);
 }
 
 .card .primary-title {
@@ -52,7 +51,7 @@ $lrPadding: 24px;
 
 .card .action-area {
     height: 52px;
-    margin: 0 (-$lrPadding) (-$tbPadding) (-$lrPadding);
+    margin: 0 (-$lr-padding) (-$tb-padding) (-$lr-padding);
 }
 
 .card .card-action {
@@ -88,7 +87,7 @@ $lrPadding: 24px;
 }
 
 
-/* Extra Small Devices, Phones */ 
+// Extra Small Devices, Phones 
 @media only screen and (min-width : 480px) {
     .card {
         width: 80vw;
@@ -96,7 +95,7 @@ $lrPadding: 24px;
     }
 }
 
-/* Small Devices, Tablets */
+// Small Devices, Tablets
 @media only screen and (min-width : 768px) {
     .card {	
         width: 60vw;
@@ -104,7 +103,7 @@ $lrPadding: 24px;
     }
 }
 
-/* Medium Devices, Desktops */
+// Medium Devices, Desktops
 @media only screen and (min-width : 992px) {
     .card {	
         width: 50vw;
@@ -112,7 +111,7 @@ $lrPadding: 24px;
     }
 }
 
-/* Large Devices, Wide Screens */
+// Large Devices, Wide Screens
 @media only screen and (min-width : 1200px) {
     .card {	
         width: 30vw;
@@ -120,7 +119,7 @@ $lrPadding: 24px;
     }
 }
 
-/* Wide Screens, HD */
+// Wide Screens, HD
 @media only screen and (min-width : 1600px) {
     .card {	
         width: 20vw;

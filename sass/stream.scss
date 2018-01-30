@@ -1,16 +1,16 @@
 @import 'colors';
 @import 'material-shadow.scss';
 
-$tMargin: 10px;
+$t-margin: 10px;
 
 .stream {
     width: 100%;
     position: absolute;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
+    bottom: 0;
+    right: 0;
+    left: 0;
     top: 12px;
-    margin-top: 0px;
+    margin-top: 0;
     padding: 0 8px 100px 10px;
     height: auto;
     max-height: inherit;
@@ -31,7 +31,7 @@ $tMargin: 10px;
 
 
 
-/*Buttons at bottom of a stream*/
+//Buttons at bottom of a stream
 
     .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
         border-top-right-radius: 0 !important;
@@ -45,6 +45,8 @@ $tMargin: 10px;
     }
 
 .stream-action {
+    @include material-shadow(3);
+    
     width: 100%;
     position: absolute;
     height: 72px;
@@ -53,9 +55,7 @@ $tMargin: 10px;
     right: 10px;
 
     border: none;
-    border-radius: 2px 2px 0 0;
-    //box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
-    @include material-shadow(3);
+    border-radius: 2px 2px 0 0;    
     background-color: $color-primary;
 
     .btn-primary {
@@ -90,16 +90,15 @@ $tMargin: 10px;
   height: 100%;	
 }
 
+    $feed-action-btns-height: 72px;
 
-        $feedActionBtnsHeight: 72px;
-
-/*Feed*/
+//Feed
     .fluid-container {
         width: auto;
         position: absolute;
-        top: $feedActionBtnsHeight + $tMargin;
-        bottom: 0px;
-        left: 0px;
+        top: $feed-action-btns-height + $t-margin;
+        bottom: 0;
+        left: 0;
         right: -20px;
         padding: 0;
         max-height: inherit;
@@ -108,19 +107,19 @@ $tMargin: 10px;
         display: inline-block;
     }
 
-/*Book*/	
+//Book	
 
-    $bookRMargin: 10px;
-    $bookActionW: 48px;
-    $bookActionBtnsHeight: 56px;
-    $bookActionInfoHeight: 24px;
+    $book-r-margin: 10px;
+    $book-action-w: 48px;
+    $book-action-btns-height: 56px;
+    $book-action-info-height: 24px;
 
     .book {
         width: auto;
-        top: $tMargin + $bookActionBtnsHeight + $bookActionInfoHeight;
-        bottom: 0px;
+        top: $t-margin + $book-action-btns-height + $book-action-info-height;
+        bottom: 0;
         left: -15px;
-        right: 0px;
+        right: 0;
         float: right;
     }
 
@@ -128,19 +127,16 @@ $tMargin: 10px;
     
 
     #book-action-wrapper {
+        @include material-shadow(3);
         position: absolute;
         top: 10px;
         left: -5px;
-        right: $bookRMargin;
+        right: $book-r-margin;
         width: auto;
-        height: $bookActionBtnsHeight + $bookActionInfoHeight;
+        height: $book-action-btns-height + $book-action-info-height;
         display: inline-block;
 
         border-radius: 2px 2px 0 0;
-
-        //box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
-        @include material-shadow(3);
-
         z-index: 100;
     
         .btn-primary {
@@ -163,11 +159,10 @@ $tMargin: 10px;
             box-shadow: none;
         }
 
-        .nya-bs-select
-        {
+        .nya-bs-select {
             position: absolute;
             left: 0;
-            right: $bookActionW;
+            right: $book-action-w;
             height: 100%;
             width: auto;
 
@@ -192,7 +187,7 @@ $tMargin: 10px;
         
         .stream-action {
             position: absolute;
-            width: $bookActionW;
+            width: $book-action-w;
             top: 0 !important;
             right: 0;
             bottom: 0;
@@ -205,16 +200,16 @@ $tMargin: 10px;
         #team-info {
             background: #757575 !important;
             position: relative;
-            top: $bookActionBtnsHeight;
-            height: $bookActionInfoHeight;
-            padding: 0px !important;
+            top: $book-action-btns-height;
+            height: $book-action-info-height;
+            padding: 0 !important;
             border-radius: 0 !important;
             z-index: 99;
 
             text-align: center;
             color: #fff;
             font-size: 12px;
-            line-height: $bookActionInfoHeight;
+            line-height: $book-action-info-height;
         }
     }
     

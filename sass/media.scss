@@ -8,24 +8,21 @@
     display: inline;
 }
 
-@media screen and (max-width: 1200px)
-{
+@media screen and (max-width: 1200px) {
     .ico-text-1 {
         display: none;
         visibility: hidden;
     }
 }
 
-@media screen and (max-width: 1100px)
-{
+@media screen and (max-width: 1100px) {
     .ico-text-2 {
         display: none;
         visibility: hidden;
     }
 }
 
-@media screen and (max-width: 800px)
-{
+@media screen and (max-width: 800px) {
     .ico-text-3 {
         display: none;
         visibility: hidden;

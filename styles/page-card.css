@@ -10,7 +10,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  margin: 0px;
+  margin: 0;
   width: 100vw;
   height: 100vh;
   font-size: 100%;
@@ -19,13 +19,12 @@ body {
 }
 
 .card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   margin-top: 20vh;
   height: auto;
   padding: 24px 24px;
   border-radius: 2px;
-  /*border: 1px solid $color-grey;*/
   background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .card .primary-title {
@@ -76,7 +75,6 @@ body {
   background: rgba(0, 150, 136, 0.12);
 }
 
-/* Extra Small Devices, Phones */
 @media only screen and (min-width: 480px) {
   .card {
     width: 80vw;
@@ -84,7 +82,6 @@ body {
   }
 }
 
-/* Small Devices, Tablets */
 @media only screen and (min-width: 768px) {
   .card {
     width: 60vw;
@@ -92,7 +89,6 @@ body {
   }
 }
 
-/* Medium Devices, Desktops */
 @media only screen and (min-width: 992px) {
   .card {
     width: 50vw;
@@ -100,7 +96,6 @@ body {
   }
 }
 
-/* Large Devices, Wide Screens */
 @media only screen and (min-width: 1200px) {
   .card {
     width: 30vw;
@@ -108,7 +103,6 @@ body {
   }
 }
 
-/* Wide Screens, HD */
 @media only screen and (min-width: 1600px) {
   .card {
     width: 20vw;

@@ -1,5 +1,5 @@
 @charset 'utf-8';
-/* CSS Document */
+//CSS Document
 
 @import 'fonts';
 @import 'colors';
@@ -14,10 +14,6 @@
 @import 'media.scss';
 @import 'book-selector';
 @import 'fab';
-
-* {
-/*	border-radius: 2px !important;*/
-}
 
 .title {
     color: $color-font;
@@ -42,10 +38,9 @@
 }
 
 ::-webkit-scrollbar {
-    width: 2px;  /* remove scrollbar space */
-    /*background: transparent;  /* optional: just make scrollbar invisible */
+    width: 2px;  // remove scrollbar space
 }
-/* optional: show position indicator in accent color */
+// optional: show position indicator in accent color
 ::-webkit-scrollbar-thumb {
     background: $color-accent;
 }

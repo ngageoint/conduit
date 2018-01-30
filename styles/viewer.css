@@ -1,6 +1,5 @@
-/*Article View*/
-/*does not apply to all elements*/
 .article-view {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   position: absolute;
   top: 10px;
   left: 20px;
@@ -9,9 +8,7 @@
   max-height: inherit;
   overflow: hidden;
   border-radius: 2px;
-  /*border: 1px solid $color-grey;*/
   background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 #content-wrapper {
@@ -103,11 +100,11 @@
 }
 
 #image-wrapper .nav-arrow {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: #009688;
   width: 2.5em;
   height: 2.5em;
   border-radius: 1.25em;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: box-shadow .25s ease-in-out;
   font-size: 0.75em;
   color: #fff;
@@ -118,9 +115,9 @@
 }
 
 #image-wrapper .nav-arrow:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   cursor: pointer;
   background-color: #00796b;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: box-shadow .25s ease-in-out;
 }
 
@@ -224,6 +221,7 @@
 }
 
 #action-area .dropdown-menu.open {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   position: relative;
   top: -350%;
   right: 0;
@@ -234,7 +232,6 @@
   background-color: #fff;
   border: none;
   border-radius: 2px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   z-index: 101;
 }
 
@@ -261,7 +258,7 @@
 
 #action-area #version-pagniation .pagination-sm > li:first-child > a {
   width: auto !important;
-  padding: 0px 5px !important;
+  padding: 0 5px !important;
 }
 
 #action-area #version-pagniation .pagination-sm > li:first-child > a:hover {
@@ -270,7 +267,7 @@
 
 #action-area #version-pagniation .pagination-sm > li:last-child > a {
   width: auto !important;
-  padding: 0px 5px !important;
+  padding: 0 5px !important;
 }
 
 #action-area #version-pagniation .pagination-sm > li:last-child > a:hover {
@@ -300,24 +297,6 @@
   color: #fff;
 }
 
-/*
-#overflow-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    height: 30px;
-    font-size: 18px;
-    padding-top: 3px;
-    width: 30px;
-    color: #bdbdbd;
-    border-radius: 50%;
-    text-align: center;
-    display: block;
-}
-
-#overflow-menu:hover {
-    background: lighten($color-grey, 20%);
-}*/
 #overflow-btn {
   position: absolute;
   top: 10px;
@@ -375,6 +354,7 @@
 }
 
 #overflow-menu .dropdown-menu.open {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   position: relative;
   top: 30px;
   left: -35%;
@@ -385,14 +365,9 @@
   background-color: #fff;
   border: none;
   border-radius: 2px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   z-index: 101;
 }
 
-/*#righoverflow-menut .nya-bs-select.btn-group .dropdown-menu {
-    width: 100% !important;
-    min-width: initial !important;
-}*/
 #content-wrapper .form-control {
   box-shadow: none;
   -webkit-box-shadow: none;

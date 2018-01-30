@@ -1,14 +1,14 @@
-/*Layout*/
+//Layout*/
 
 @import 'colors.scss';
 @import 'material-shadow.scss';
 
-$leftWidth: 25vw;
-$rightWidth: 20vw;
-$centerWidth: (100vw - ($leftWidth + $rightWidth));
+$left-width: 25vw;
+$right-width: 20vw;
+$center-width: (100vw - ($left-width + $right-width));
 
-$headerHeight: 48px;
-$headerPadding: 5px;
+$header-height: 48px;
+$header-padding: 5px;
 
 * {
   -webkit-box-sizing: border-box;
@@ -22,14 +22,14 @@ html {
 }
 
 body {
-    min-width: 750px;      	/* 2x (LC fullwidth +
-                                  CC padding) + RC fullwidth */
+    min-width: 750px;      	// 2x (LC fullwidth +
+                            //     CC padding) + RC fullwidth */
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    margin: 0px;
+    margin: 0;
     width: 100vw;
     height: 100vh;
     
@@ -41,11 +41,11 @@ body {
         
 #container {
     position: fixed;	
-    padding-left: $leftWidth;   	/* LC fullwidth */
-    padding-right: $rightWidth;  	/* RC fullwidth + CC padding */
+    padding-left: $left-width;   	// LC fullwidth */
+    padding-right: $right-width;  	// RC fullwidth + CC padding */
     height: auto;
-    bottom: 0px;
-    top: $headerHeight;
+    bottom: 0;
+    top: $header-height;
     background: transparent;
 }
 
@@ -57,16 +57,16 @@ body {
 }
 
 #center {
-    padding: 0;    	/* CC padding */
-    width: $centerWidth;
+    padding: 0;    	// CC padding */
+    width: $center-width;
     background: $color-background;
-    float:left;
+    float: left;
 }
 
 #left {
-    width: $leftWidth;          /* LC width */
-    padding: 0;   /* LC padding */
-    right: $leftWidth;          /* LC fullwidth + CC padding */
+    width: $left-width;          // LC width */
+    padding: 0;   // LC padding */
+    right: $left-width;          // LC fullwidth + CC padding */
     margin-left: -100%;
     
     max-height: 100%;		
@@ -75,33 +75,32 @@ body {
 }
     
 #right {
-    width: $rightWidth;          /* RC width */
-    padding: 0;    /* RC padding */
-    margin-right: -($rightWidth);  /* RC fullwidth + CC padding */
+    width: $right-width;          // RC width */
+    padding: 0;    // RC padding */
+    margin-right: -($right-width);  // RC fullwidth + CC padding */
     background: $color-background;
     float: left;
-    margin-left: 0px;
+    margin-left: 0;
     max-height: 100%;
     overflow-x: visible;
 }
 
 #header {
-    /*DISPLAY*/
+    @include material-shadow(3);
+
+    //DISPLAY*/
     float: left;
     width: 100%;
-    height: $headerHeight;
-    padding: $headerPadding;
+    height: $header-height;
+    padding: $header-padding;
             
-    /*COLORS*/
+    //COLORS*/
     background: ($color-primary);
     color: ($color-primary-contrast);
     
-    /*FONTS*/
+    //FONTS*/
     font-size: 1.5em;
-    font-family: 'Montserrat', sans-serif;
-
-    //box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);	
-    @include material-shadow(3);								
+    font-family: 'Montserrat', sans-serif;								
 }
 
     #header-content-wrapper:before {
@@ -125,9 +124,8 @@ body {
             vertical-align: middle;
         }
         
-        /*** IE Fix ***/
         * html #left {
-            left: 390px;           /* RC fullwidth */
+            left: 390px;
         }
 
 #menu .caret {
@@ -140,7 +138,7 @@ body {
 
 #menu .btn.btn-default.dropdown-toggle:after {
     font-family: 'Glyphicons Halflings';
-    content:'\e236';
+    content: '\e236';
     margin-left: -.25em;
 
     position: absolute;
@@ -154,8 +152,8 @@ body {
     left: 10px;
     z-index: 100;
     background-color: #009688;
-    width: $headerHeight - ($headerPadding * 2);
-    height: $headerHeight - ($headerPadding * 2);
+    width: $header-height - ($header-padding * 2);
+    height: $header-height - ($header-padding * 2);
     padding: 0;
     font-size: 1em;
     color: #fff;
@@ -180,6 +178,8 @@ body {
     }
 
 #menu .dropdown-menu.open {
+    @include material-shadow(2);
+    
     position: relative;
     top: 30px;
     left: 15%;
@@ -190,8 +190,6 @@ body {
     background-color: #fff;
     border: none;
     border-radius: 2px;
-    //box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
-    @include material-shadow(2);
     z-index: 101;
 }
 
@@ -201,8 +199,8 @@ body {
 }
 
 #header-content-wrapper .form-control {
-    box-shadow: none;
     -webkit-box-shadow: none;
+    box-shadow: none;
     width: auto;
     position: absolute;
     left: 0;

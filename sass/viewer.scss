@@ -1,15 +1,18 @@
-/*Article View*/
+//Article View
 
 @import 'colors.scss';
 @import 'material-shadow.scss';
 
-$lrpadding: 15px; /*does not apply to all elements*/
+$lr-padding: 15px; //does not apply to all elements
 
-$actBtnHeight: 36px;
-$actPadding: 8px;
+$act-btn-height: 36px;
+$act-padding: 8px;
+
+$pagination-size: 2em;
 
 .article-view {
-            
+    @include material-shadow(1);
+
     position: absolute;
     top: 10px;
     left: 20px;
@@ -19,17 +22,14 @@ $actPadding: 8px;
     overflow: hidden;
 
     border-radius: 2px;
-    /*border: 1px solid $color-grey;*/
     background: $color-card-background;
-    //box-shadow: 0 0px 2px rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
-    @include material-shadow(1);
 }
 
 #content-wrapper {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: $actBtnHeight + ($actPadding * 2);
+    bottom: $act-btn-height + ($act-padding * 2);
     left: 0;
     overflow-y: auto;
 }
@@ -56,7 +56,7 @@ $actPadding: 8px;
 }
 
 .article-view .text.edit-field {
-    padding: $lrpadding;
+    padding: $lr-padding;
     height: 24em;
     margin-top: 5em;;
 }
@@ -64,7 +64,7 @@ $actPadding: 8px;
 .article-view #title-wrapper {
     position: relative;
     margin-top: 8px;
-    margin: 0 $lrpadding;
+    margin: 0 $lr-padding;
 }
 
 
@@ -113,31 +113,31 @@ $actPadding: 8px;
     }
         
 #image-wrapper .nav-arrow{
-        $nav-icon-size: .75em;
-        $nav-circle-size: 2.5em;
+    @include material-shadow(2);
+    
+    $nav-icon-size: .75em;
+    $nav-circle-size: 2.5em;
 
-        background-color: $color-primary;
-        
-        width: $nav-circle-size;
-        height: $nav-circle-size;
-        border-radius: $nav-circle-size / 2;
-        //box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
-        @include material-shadow(2);
-        transition: box-shadow .25s ease-in-out;
+    background-color: $color-primary;
+    
+    width: $nav-circle-size;
+    height: $nav-circle-size;
+    border-radius: $nav-circle-size / 2;
+    transition: box-shadow .25s ease-in-out;
 
-        font-size: $nav-icon-size;
-        color: #fff;
+    font-size: $nav-icon-size;
+    color: #fff;
 
-        padding: (($nav-circle-size - $nav-icon-size) / 2) - .1em;
-        text-align: center;
-        justify-content: center;
-        vertical-align: middle;
+    padding: (($nav-circle-size - $nav-icon-size) / 2) - .1em;
+    text-align: center;
+    justify-content: center;
+    vertical-align: middle;
 }
     #image-wrapper .nav-arrow:hover{
+        @include material-shadow(2);
+
         cursor: pointer;
         background-color: $color-primary-700;	
-        //box-shadow: 0 0 4px 0 rgba(0,0,0,0.12), 0 4px 4px 0 rgba(0,0,0,0.24);
-        @include material-shadow(2);
         transition: box-shadow .25s ease-in-out;
     }
 
@@ -163,7 +163,7 @@ $actPadding: 8px;
 }
         
 .article-view .text-wrapper {
-    margin: 0 $lrpadding $lrpadding $lrpadding;
+    margin: 0 $lr-padding $lr-padding $lr-padding;
     position: relative;
     top: 30px;
 }
@@ -201,20 +201,20 @@ $actPadding: 8px;
 
 
 #action-area {
-    position:absolute;
+    position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
     
-    height: $actBtnHeight + ($actPadding * 2);
-    padding: $actPadding;
+    height: $act-btn-height + ($act-padding * 2);
+    padding: $act-padding;
 
     border-top: 1px solid $color-grey;
     display: inline-block;
 }
 
 #action-area .btn {
-    height: $actBtnHeight;
+    height: $act-btn-height;
     background: transparent;
     border: none;
     border-radius: 2px !important;
@@ -245,6 +245,8 @@ $actPadding: 8px;
 }
 
 #action-area .dropdown-menu.open {
+    @include material-shadow(2);
+    
     position: relative;
     top: -350%;
     right: 0;
@@ -255,8 +257,6 @@ $actPadding: 8px;
     background-color: #fff;
     border: none;
     border-radius: 2px;
-    //box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
-    @include material-shadow(2);
     z-index: 101;
 }
 
@@ -282,7 +282,7 @@ $actPadding: 8px;
 
     .pagination-sm > li:first-child > a {
         width: auto !important;
-        padding: 0px 5px !important;
+        padding: 0 5px !important;
     }
     .pagination-sm > li:first-child > a:hover {
         border-radius: 2px;
@@ -290,18 +290,16 @@ $actPadding: 8px;
 
     .pagination-sm > li:last-child > a {
         width: auto !important;
-        padding: 0px 5px !important;
+        padding: 0 5px !important;
     }
     .pagination-sm > li:last-child > a:hover {
         border-radius: 2px;
     }
 
-    $paginationSize: 2em;
-
     .pagination>li>a {
-        width: $paginationSize;
-        height: $paginationSize;
-        line-height: $paginationSize;
+        width: $pagination-size;
+        height: $pagination-size;
+        line-height: $pagination-size;
         
         padding: 0;
         border: none;
@@ -314,9 +312,9 @@ $actPadding: 8px;
 
     .pagination>.active>a {
         
-        width: $paginationSize;
-        height: $paginationSize;
-        line-height: $paginationSize;
+        width: $pagination-size;
+        height: $pagination-size;
+        line-height: $pagination-size;
 
         padding: 0;
         border-radius: 50%;
@@ -326,25 +324,6 @@ $actPadding: 8px;
         color: $color-primary-contrast;
     }
 }
-
-/*
-#overflow-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    height: 30px;
-    font-size: 18px;
-    padding-top: 3px;
-    width: 30px;
-    color: #bdbdbd;
-    border-radius: 50%;
-    text-align: center;
-    display: block;
-}
-
-#overflow-menu:hover {
-    background: lighten($color-grey, 20%);
-}*/
 
 #overflow-btn{
     position: absolute;
@@ -404,6 +383,8 @@ $actPadding: 8px;
     }
 
 #overflow-menu .dropdown-menu.open {
+    @include material-shadow(2);
+    
     position: relative;
     top: 30px;
     left: -35%;
@@ -414,15 +395,8 @@ $actPadding: 8px;
     background-color: #fff;
     border: none;
     border-radius: 2px;
-    //box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
-    @include material-shadow(2);
     z-index: 101;
 }
-
-/*#righoverflow-menut .nya-bs-select.btn-group .dropdown-menu {
-    width: 100% !important;
-    min-width: initial !important;
-}*/
 
 #content-wrapper .form-control {
     box-shadow: none;

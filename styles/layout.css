@@ -1,4 +1,3 @@
-/*Layout*/
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -12,14 +11,12 @@ html {
 
 body {
   min-width: 750px;
-  /* 2x (LC fullwidth +
-                                  CC padding) + RC fullwidth */
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  margin: 0px;
+  margin: 0;
   width: 100vw;
   height: 100vh;
   font-size: 100%;
@@ -30,11 +27,9 @@ body {
 #container {
   position: fixed;
   padding-left: 25vw;
-  /* LC fullwidth */
   padding-right: 20vw;
-  /* RC fullwidth + CC padding */
   height: auto;
-  bottom: 0px;
+  bottom: 0;
   top: 48px;
   background: transparent;
 }
@@ -48,7 +43,6 @@ body {
 
 #center {
   padding: 0;
-  /* CC padding */
   width: 55vw;
   background: #f2f2f2;
   float: left;
@@ -56,11 +50,8 @@ body {
 
 #left {
   width: 25vw;
-  /* LC width */
   padding: 0;
-  /* LC padding */
   right: 25vw;
-  /* LC fullwidth + CC padding */
   margin-left: -100%;
   max-height: 100%;
   background: #f2f2f2;
@@ -69,31 +60,25 @@ body {
 
 #right {
   width: 20vw;
-  /* RC width */
   padding: 0;
-  /* RC padding */
   margin-right: -20vw;
-  /* RC fullwidth + CC padding */
   background: #f2f2f2;
   float: left;
-  margin-left: 0px;
+  margin-left: 0;
   max-height: 100%;
   overflow-x: visible;
 }
 
 #header {
-  /*DISPLAY*/
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   float: left;
   width: 100%;
   height: 48px;
   padding: 5px;
-  /*COLORS*/
   background: #009688;
   color: #fff;
-  /*FONTS*/
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 #header-content-wrapper:before {
@@ -117,10 +102,8 @@ body {
   vertical-align: middle;
 }
 
-/*** IE Fix ***/
 * html #left {
   left: 390px;
-  /* RC fullwidth */
 }
 
 #menu .caret {
@@ -170,6 +153,7 @@ body {
 }
 
 #menu .dropdown-menu.open {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   position: relative;
   top: 30px;
   left: 15%;
@@ -180,7 +164,6 @@ body {
   background-color: #fff;
   border: none;
   border-radius: 2px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   z-index: 101;
 }
 
@@ -190,8 +173,8 @@ body {
 }
 
 #header-content-wrapper .form-control {
-  box-shadow: none;
   -webkit-box-shadow: none;
+  box-shadow: none;
   width: auto;
   position: absolute;
   left: 0;

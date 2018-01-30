@@ -12,18 +12,19 @@ $tag-line-height:   .938em;
 $card-padding:      .625em;
 $card-spacing:      .313em;
 
+$height:    $header-height +
+            $title-line-height +
+            ($text-line-height * $text-lines) +
+            $tag-line-height +
+            ($card-spacing * 2) +
+            ($card-padding * 2);
+
 
 
 .card {
 
     @include material-shadow(1);
-    $height:    $header-height +
-                $title-line-height +
-                ($text-line-height * $text-lines) +
-                $tag-line-height +
-                ($card-spacing * 2) +
-                ($card-padding * 2);
-
+    
     min-height: $height;
     max-height: $height;
     height: $height;
