@@ -2,15 +2,13 @@
 angular.module('conduit.services').factory('ArticlesService', function($q, $http, $timeout,
 ApiService, BooksService, DataSourceService, FilterService, ArrayTools, ComplexPropertyTools, DateTools, __config) { 
 
-	var expectedCount = 0;
 	var articles = 	DataSourceService.getSources().then(function(sources) {
 		
 		var queries = [];
 
 		queries.push(ApiService.select.articleBlock(DateTools.formatDate(new Date(new Date().setDate(new Date().getDate() - __config.MAX_DAYS_BACK)), 'yyyy-MM-dd'), 0).then(function(response) {
-				expectedCount = response.count
 				return response.articles;
-			})
+			});
 		);
 		
 		//Request all promises from our queries array, concat them, and return
