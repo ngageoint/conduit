@@ -34,22 +34,6 @@ ApiService, BooksService, DataSourceService, FilterService, ArrayTools, ComplexP
 						return thisArticle.id;
 					});
 
-					var continueBlockRetrieval = function() {
-						ApiService.select.articleBlock(
-							DateTools.formatDate(new Date(new Date().setDate(new Date().getDate() - __config.MAX_DAYS_BACK)), 'yyyy-MM-dd')
-							).then(function(response) {
-								articles = articles.concat(response.articles);
-								DataSourceService.getSources().then(function(sources) {
-									FilterService.build(sources, articles);
-									if(articles.length < expectedCount) {
-										continueBlockRetrieval(articles);
-									}
-								})
-							})
-					}
-
-					//continueBlockRetrieval();
-
 					return articles;
 				});
 			}).catch(function(err) {
@@ -57,29 +41,6 @@ ApiService, BooksService, DataSourceService, FilterService, ArrayTools, ComplexP
 			});			
 		});			
 	});
-
-        //Format rss sources into the accepted Conduit JSON format
-	var formatRss = function(feed, source)
-	{
-		var articles = [];
-		for(var i = 0; i < feed.length; i++)
-		{
-			var temp = {};
-			for(var j = 0; j < source.binding.length; j++)
-				temp[source.binding[j].local] = feed[i][source.binding[j].source];
-			temp.source = source.name
-			articles.push(forceArticleCompliance(temp));
-		}
-
-			for(var i = 0; i < articles.length; i++)
-			{
-				articles[i].tags.push(source.tag);
-				for(var j = 0; j < source.tags.length; j++)
-					if(source.tags[j])
-						articles[i].tags.push(ComplexPropertyTools.getComplexProperty(articles[i], source.tags[j]));
-			}
-			return articles;
-	}
 	
 	var completeCompliance = function (article, books) {
 		//Set booleans
@@ -162,22 +123,6 @@ ApiService, BooksService, DataSourceService, FilterService, ArrayTools, ComplexP
 				return v.toString(16);
 		});
 	}
-
-		
-
-	var continueBlockRetrieval = function(articles) {
-			ApiService.select.articleBlock(
-				DateTools.formatDate(new Date(new Date().setDate(new Date().getDate() - __config.MAX_DAYS_BACK)), 'yyyy-MM-dd')
-				).then(function(response) {
-					articles = articles.concat(response.articles);
-					DataSourceService.getSources().then(function(sources) {
-						FilterService.build(sources, articles);
-						if(articles.length < expectedCount) {
-							continueBlockRetrieval(articles);
-						}
-					})
-				})
-	}
 	
   	var getArticles = function() {
 		return articles;
@@ -185,7 +130,6 @@ ApiService, BooksService, DataSourceService, FilterService, ArrayTools, ComplexP
 	
 	return {
 	  	getArticles: getArticles,
-		formatRss: formatRss,
 		forceArticleCompliance: forceArticleCompliance
 	};		
 });

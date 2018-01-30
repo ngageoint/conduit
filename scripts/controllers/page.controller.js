@@ -41,7 +41,7 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 		}
 
 		continueBlockRetrieval();
-		
+
 		//Add the first (__config.MIN_RENDERED_CARDS * 2) cards to the DOM so the user has something to start with.
 		//Enough cards must be added to ensure that scrolling is possible so the infinite scroll event will be triggered
 		for(var i = 0; i < __config.MIN_RENDERED_CARDS * 2 && i < $scope.articles.length; i++)
