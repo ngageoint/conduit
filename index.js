@@ -230,20 +230,6 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 		});
 });
 
-/*DEPRECIATED
- app.get('/select/articleFull', function(req, res, next) {
-	if(!req.query.articleId) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId required, userId and teamId optional');
-		return;
-	}
-	db.select.articleFull(req.query.articleId, req.query.userId, req.query.teamId).then(function(article) {
-		res.status(200);
-    	res.json(article);
-  	});
-});*/
-
 app.post('/select/articleOriginal', rate.immediate, function(req, res, next) {
 		if(!req.body.article) {
 			console.log('Missing params');
@@ -260,53 +246,12 @@ app.post('/select/articleOriginal', rate.immediate, function(req, res, next) {
 		});
 });
 
-/*DEPRECIATED
-app.get('/select/articlesByUserFromDate', function(req, res, next) {
-	if(!req.query.userId || !req.query.date) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. userId and date required');
-		return;
-	}
-	db.select.articlesByUserFromDate(req.query.userId, req.query.date, req.query.teamId).then(function(article) {
-		res.status(200);
-    	res.json(article);
-  	});
-});*/
-
 app.get('/select/attributes', rate.frontloadedRestricted, function(req, res, next) {
 		db.select.attributes().then(function(attributes) {
 			res.status(200);
 			res.json(attributes);
 		});	
 });
-
-/*DEPRECIATED
-app.get('/select/imagesByArticle', function(req, res, next) {
-	if(!req.query.id) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. id required.');
-		return;
-	}
-	db.select.imagesByArticle(req.query.id).then(function(images) {
-		res.status(200);
-    	res.json(images);
-  	});
-});*/
-/*DEPRECIATED
-app.get('/select/booksByArticle', function(req, res, next) {
-	if(!req.query.id || !req.query.teamId) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. id and teamId required.');
-		return;
-	}
-	db.select.booksByArticle(req.query.id, req.query.teamId).then(function(books) {
-		res.status(200);
-    	res.json(books);
-  	});
-});*/
 
 app.get('/select/booksByTeam', rate.frontloadedRestricted, function(req, res, next) {
 		if(typeof req.query.teamId === 'undefined') {
@@ -363,33 +308,6 @@ app.get('/select/editContent', rate.immediate, function(req, res, next) {
 		});
 });
 
-/*DEPRECIATED
-app.get('/select/tagsByArticle', function(req, res, next) {
-	if(!req.query.id) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. id required.');
-		return;
-	}
-	db.select.tagsByArticle(req.query.id).then(function(tags) {
-		res.status(200);
-    	res.json(tags);
-  	});
-});*/
-/*DEPRECIATED
-app.get('/select/articleStatusReadByIds', function(req, res, next) {
-	if(!req.query.articleId || !req.query.userId) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. articleId and userId required.');
-		return;
-	}
-	db.select.articleStatusReadByIds(req.query.articleId, req.query.userId).then(function(status) {
-		res.status(200);
-    	res.json(status);
-  	});
-});*/
-
 app.get('/select/articleStatusRemovedByTeam', rate.immediateRestricted, function(req, res, next) {
 		if(typeof req.query.articleId === 'undefined' || typeof req.query.teamId === 'undefined') {
 			console.log('Missing params');
@@ -402,20 +320,6 @@ app.get('/select/articleStatusRemovedByTeam', rate.immediateRestricted, function
 			res.json(status);
 		});
 });
-
-/* DEPRECIATED
-app.get('/select/articleBase', function(req, res, next) {
-	if(!req.query.id) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. id required.');
-		return;
-	}
-	db.select.articleBase(req.query.id).then(function(article) {
-		res.status(200);
-    	res.json(article);
-  	});
-});*/
 
 app.get('/select/articleBlock', rate.frontloaded, function(req, res, next) {
 		if(typeof req.query.userId === 'undefined' || typeof req.query.teamId === 'undefined' || !req.query.fromDate || !req.query.numArticles) {
@@ -433,39 +337,6 @@ app.get('/select/articleBlock', rate.frontloaded, function(req, res, next) {
 /*=================
    INSRET Endpoint 
  ==================*/
- 
- /* DEPRECIATED
- app.post('/insert/articleBase', function(req, res, next) {
-	if(!req.body.article) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. article is required');
-		return;
-	}
-	db.insert.articleEdit(req.body.articleId, req.body.userId, req.body.teamId, req.body.title, req.body.text).then(function(result) {
-		
-		let edit = {
-			timestamp: result,
-			teamId: req.body.teamId
-		}
-		
-		res.status(200);
-    	res.json(result);
-  	});
-});*/
-/*DEPRECIATED
-app.post('/insert/articleFull', function(req, res, next) {
-	if(!req.body.article || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined') {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. article, userId, and teamId are required');
-		return;
-	}
-	db.insert.articleFull(req.body.article, req.body.userId, req.body.teamId).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
-});*/
 
 app.post('/insert/articleEdit', rate.intermittent, function(req, res, next) {
 		if(typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined' || !req.body.title || !req.body.text) {
@@ -554,36 +425,6 @@ app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next
 		});
 });
 
-/*DEPRECIATED
-//TODO: add sopport for image arrays
-app.post('/insert/image', function(req, res, next) {
-	if(!req.body.uri || typeof req.body.articleId === 'undefined') {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. uri and articleId are required');
-		return;
-	}
-	db.insert.image(req.body.uri, req.body.articleId).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
-});*/
-
-/*DEPRECIATED
-//TODO: add support for tag arrays
-app.post('/insert/tag', function(req, res, next) {
-	if(!req.body.name || typeof req.body.articleId === 'undefined') {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. name and articleId are required');
-		return;
-	}
-	db.insert.tag(req.body.name, req.body.articleId).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
-});*/
-
 app.post('/insert/team', rate.restricted, function(req, res, next) {
 		if(!req.body.name) {
 			console.log('Missing params');
@@ -621,20 +462,6 @@ app.post('/insert/user', rate.restricted, function(req, res, next) {
 /*=================
    UPDATE Endpoint 
  ==================*/
-
- /*DEPRECIATED
- app.post('/update/articleBase', function(req, res, next) {
-	if(!req.body.article) {
-		console.log('Missing params');
-		res.status(400);
-		res.send('Missing parameters. article is required');
-		return;
-	}
-	db.update.articleBase(req.body.article).then(function(result) {
-		res.status(200);
-    	res.json(result);
-  	});
-});*/
 
 app.post('/update/articleStatusRead', rate.intermittent, function(req, res, next) {
 		if(typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined' || (typeof req.body.isRead === 'undefined')) {
