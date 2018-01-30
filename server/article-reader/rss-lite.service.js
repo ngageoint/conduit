@@ -45,7 +45,7 @@ module.exports = {
                     parsed.push(temp);
                 }
 
-                if(typeof parsed === "undefined") {
+                if(parsed.length <= 0) {
                     return reject();
                 } else {
                     return resolve(parsed);

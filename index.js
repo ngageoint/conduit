@@ -287,11 +287,11 @@ app.post('/select/mostRecentArticleEdit', rate.immediateRestricted, function(req
 			return;
 		}
 		db.select.mostRecentArticleEdit(req.body.article || req.body.articleId, req.body.teamId).then(function(edit) {
-			audit.ACCESS(audit.SUCCESS, audit.OBJECT, 'article ' + article.id, req.session.user.id);
+			audit.ACCESS(audit.SUCCESS, audit.OBJECT, 'article ' + req.body.article.id, req.session.user.id);
 			res.status(200);
 			res.json(edit);
 		}).catch(function(err) {
-			audit.ACCESS(audit.FAILURE, audit.OBJECT, 'article' + article.id, req.session.user.id);
+			audit.ACCESS(audit.FAILURE, audit.OBJECT, 'article' + req.body.article.id, req.session.user.id);
 		});
 });
 
