@@ -45,10 +45,10 @@ module.exports = {
                     parsed.push(temp);
                 }
 
-                if(parsed) {
-                    return resolve(parsed);
-                } else {
+                if(typeof parsed === "undefined") {
                     return reject();
+                } else {
+                    return resolve(parsed);
                 }
             }).catch(function(err) {
                 console.error(err);

@@ -240,7 +240,7 @@ module.exports = {
             }
             module.exports.query(query, function(err, res) {
                 if(err) {
-                    audit.INSERT(audit.FAILURE, audit.OBJECT, 'comment on ' + article.id, audit.DATABASE, 'user ' + comment.user.id);
+                    audit.INSERT(audit.FAILURE, audit.OBJECT, 'comment on ' + articleId, audit.DATABASE, 'user ' + comment.user.id);
                     return reject(err);
                 } else {
                     audit.INSERT(audit.SUCCESS, audit.OBJECT, 'comment on ' + articleId, audit.DATABASE, 'user ' + comment.user.id);

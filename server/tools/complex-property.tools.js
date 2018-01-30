@@ -25,7 +25,7 @@ module.exports = {
         
         var _index = prop.indexOf(delimiter);
         if(_index > -1)
-            return getComplexProperty(obj[prop.substring(0, _index)], prop.substr(_index + 1), delimiter)
+            return module.exports.getComplexProperty(obj[prop.substring(0, _index)], prop.substr(_index + 1), delimiter)
         return obj[prop];
     }
 };

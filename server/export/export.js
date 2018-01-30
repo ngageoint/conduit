@@ -115,7 +115,6 @@ var generateWordDoc = function(article, tpltId, id) {
                     console.log(JSON.stringify({error: e}));
                     // The error thrown here contains additional information when logged with JSON.stringify (it contains a property object).
                     return reject(error);
-                    throw error;
                 }
 
                 var buf = doc.getZip().generate({type: 'nodebuffer'});
@@ -127,7 +126,7 @@ var generateWordDoc = function(article, tpltId, id) {
                 if(fs.existsSync(filename)) {
                     audit.CREATE(audit.SUCCESS, audit.FILE, id, filename, audit.SYSTEM);
                 } else {
-                    audit.CREATE(audit.FAILURE, audit.FILE, id, fileName, audit.SYSTEM);
+                    audit.CREATE(audit.FAILURE, audit.FILE, id, filename, audit.SYSTEM);
                 }
                 
                 return resolve(path.basename(filename));
