@@ -3,28 +3,28 @@
 @import "colors.scss";
 
 a:link {
-	text-decoration: none;
-	color: $color-accent;
+    text-decoration: none;
+    color: $color-accent;
 }
-		
+        
 a:hover {
-	text-decoration: underline;
-	color: darken($color-accent, 10%);
+    text-decoration: underline;
+    color: darken($color-accent, 10%);
 }
-		
+        
 a:active {
-	outline: 0;
-	outline: none;
+    outline: 0;
+    outline: none;
 }
-		
+        
 a:visited {
-	outline: 0;
-	outline: none;
-	color: $color-primary;
+    outline: 0;
+    outline: none;
+    color: $color-primary;
 }
-		
+        
 a:focus {
-	outline: 0;
-	outline: none;
-	text-decoration: underline;	
+    outline: 0;
+    outline: none;
+    text-decoration: underline;	
 }

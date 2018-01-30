@@ -8,7 +8,7 @@ ApiService, BooksService, DataSourceService, FilterService, ArrayTools, ComplexP
 
 		queries.push(ApiService.select.articleBlock(DateTools.formatDate(new Date(new Date().setDate(new Date().getDate() - __config.MAX_DAYS_BACK)), 'yyyy-MM-dd'), 0).then(function(response) {
 				return response.articles;
-			});
+			})
 		);
 		
 		//Request all promises from our queries array, concat them, and return

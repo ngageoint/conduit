@@ -4,86 +4,86 @@
 $tMargin: 10px;
 
 .stream {
-	width: 100%;
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	top: 12px;
-	margin-top: 0px;
-	padding: 0 8px 100px 10px;
-	height: auto;
-	max-height: inherit;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	display: inline-block;
-	background: transparent;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    top: 12px;
+    margin-top: 0px;
+    padding: 0 8px 100px 10px;
+    height: auto;
+    max-height: inherit;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: inline-block;
+    background: transparent;
 
-	.card:last-child {
+    .card:last-child {
     border-radius: 0 0 2px 2px;
 }
-	
+    
 }
 
 #article-stream {
-	top: 0px;
+    top: 0px;
 }
 
 
 
 /*Buttons at bottom of a stream*/
 
-	.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
-		border-top-right-radius: 0 !important;
-		border-bottom-right-radius: 0 !important;
-		border-bottom-left-radius: 0 !important;
-	}
-	.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
-		border-top-left-radius: 0 !important;
-		border-bottom-right-radius: 0 !important;
-		border-bottom-left-radius: 0 !important;
-	}
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+    .btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
+        border-top-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
 
 .stream-action {
-	width: 100%;
-	position: absolute;
-	height: 72px;
-	top: 10px;
-	left: 10px;
-	right: 10px;
+    width: 100%;
+    position: absolute;
+    height: 72px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
 
-	border: none;
-	border-radius: 2px 2px 0 0;
-	//box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
-	@include material-shadow(3);
-	background-color: $color-primary;
+    border: none;
+    border-radius: 2px 2px 0 0;
+    //box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
+    @include material-shadow(3);
+    background-color: $color-primary;
 
-	.btn-primary {
-		border: none;
-		border-bottom: 2px solid $color-primary;
-		color: rgba($color-primary-contrast, .7);
-		border-radius: 0;
-		box-shadow: none;
-	}
+    .btn-primary {
+        border: none;
+        border-bottom: 2px solid $color-primary;
+        color: rgba($color-primary-contrast, .7);
+        border-radius: 0;
+        box-shadow: none;
+    }
 
-	.btn-primary:active,
-	.btn-primary.active {
-		color: $color-primary-contrast;
-	}
+    .btn-primary:active,
+    .btn-primary.active {
+        color: $color-primary-contrast;
+    }
 
-	.btn-primary:active,
-	.btn-primary.active,
-	.btn-primary:focus,
-	.btn-primary.focus,
-	.btn-primary:hover,
-	.btn-primary:active:focus,
-	.btn-primary.active:focus,
-	.btn-primary:active:hover,
-	.btn-primary.active:hover {
-		background-color: $color-primary;
-		border-bottom: 2px solid $color-accent;
-		box-shadow: none;
-	}
+    .btn-primary:active,
+    .btn-primary.active,
+    .btn-primary:focus,
+    .btn-primary.focus,
+    .btn-primary:hover,
+    .btn-primary:active:focus,
+    .btn-primary.active:focus,
+    .btn-primary:active:hover,
+    .btn-primary.active:hover {
+        background-color: $color-primary;
+        border-bottom: 2px solid $color-accent;
+        box-shadow: none;
+    }
 }
 
 .stream-action .btn {
@@ -91,7 +91,7 @@ $tMargin: 10px;
 }
 
 
-		$feedActionBtnsHeight: 72px;
+        $feedActionBtnsHeight: 72px;
 
 /*Feed*/
     .fluid-container {
@@ -110,110 +110,110 @@ $tMargin: 10px;
 
 /*Book*/	
 
-	$bookRMargin: 10px;
-	$bookActionW: 48px;
-	$bookActionBtnsHeight: 56px;
-	$bookActionInfoHeight: 24px;
+    $bookRMargin: 10px;
+    $bookActionW: 48px;
+    $bookActionBtnsHeight: 56px;
+    $bookActionInfoHeight: 24px;
 
-	.book {
-		width: auto;
-		top: $tMargin + $bookActionBtnsHeight + $bookActionInfoHeight;
-		bottom: 0px;
-		left: -15px;
-		right: 0px;
-		float: right;
-	}
+    .book {
+        width: auto;
+        top: $tMargin + $bookActionBtnsHeight + $bookActionInfoHeight;
+        bottom: 0px;
+        left: -15px;
+        right: 0px;
+        float: right;
+    }
 
-	
-	
+    
+    
 
-	#book-action-wrapper {
-		position: absolute;
+    #book-action-wrapper {
+        position: absolute;
         top: 10px;
         left: -5px;
         right: $bookRMargin;
-		width: auto;
-		height: $bookActionBtnsHeight + $bookActionInfoHeight;
-		display: inline-block;
+        width: auto;
+        height: $bookActionBtnsHeight + $bookActionInfoHeight;
+        display: inline-block;
 
-		border-radius: 2px 2px 0 0;
+        border-radius: 2px 2px 0 0;
 
-		//box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
-		@include material-shadow(3);
+        //box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
+        @include material-shadow(3);
 
-		z-index: 100;
-	
-		.btn-primary {
-			border: none;
-			border-bottom: 2px solid $color-primary;
-			box-shadow: none;
-		}
+        z-index: 100;
+    
+        .btn-primary {
+            border: none;
+            border-bottom: 2px solid $color-primary;
+            box-shadow: none;
+        }
 
-		.btn-primary:active,
-		.btn-primary.active,
-		.btn-primary:focus,
-		.btn-primary.focus,
-		.btn-primary:hover,
-		.btn-primary:active:focus,
-		.btn-primary.active:focus,
-		.btn-primary:active:hover,
-		.btn-primary.active:hover {
-			background-color: $color-primary;
-			border-bottom: 2px solid $color-accent;
-			box-shadow: none;
-		}
+        .btn-primary:active,
+        .btn-primary.active,
+        .btn-primary:focus,
+        .btn-primary.focus,
+        .btn-primary:hover,
+        .btn-primary:active:focus,
+        .btn-primary.active:focus,
+        .btn-primary:active:hover,
+        .btn-primary.active:hover {
+            background-color: $color-primary;
+            border-bottom: 2px solid $color-accent;
+            box-shadow: none;
+        }
 
-		.nya-bs-select
-		{
-			position: absolute;
-			left: 0;
-			right: $bookActionW;
-			height: 100%;
-			width: auto;
+        .nya-bs-select
+        {
+            position: absolute;
+            left: 0;
+            right: $bookActionW;
+            height: 100%;
+            width: auto;
 
-			border-radius: 2px 0 0 0;
-			border-bottom: 2px solid $color-primary;
-			box-shadow: none;
-		}
+            border-radius: 2px 0 0 0;
+            border-bottom: 2px solid $color-primary;
+            box-shadow: none;
+        }
 
-			nya-bs-select:active,
-			nya-bs-select.active,
-			nya-bs-select:focus,
-			nya-bs-select.focus,
-			nya-bs-select:hover,
-			nya-bs-select:active:focus,
-			nya-bs-select.active:focus,
-			nya-bs-select:active:hover,
-			nya-bs-select.active:hover {
-				background-color: $color-primary;
-				border-bottom: 2px solid $color-accent;
-				box-shadow: none;
-			}
-		
-		.stream-action {
-			position: absolute;
-			width: $bookActionW;
-			top: 0 !important;
-			right: 0;
-			bottom: 0;
-			left: auto;
-			height: 100%;
-			border-radius: 0 2px 0 0;
-			box-shadow: none;
-		}
+            nya-bs-select:active,
+            nya-bs-select.active,
+            nya-bs-select:focus,
+            nya-bs-select.focus,
+            nya-bs-select:hover,
+            nya-bs-select:active:focus,
+            nya-bs-select.active:focus,
+            nya-bs-select:active:hover,
+            nya-bs-select.active:hover {
+                background-color: $color-primary;
+                border-bottom: 2px solid $color-accent;
+                box-shadow: none;
+            }
+        
+        .stream-action {
+            position: absolute;
+            width: $bookActionW;
+            top: 0 !important;
+            right: 0;
+            bottom: 0;
+            left: auto;
+            height: 100%;
+            border-radius: 0 2px 0 0;
+            box-shadow: none;
+        }
 
-		#team-info {
-			background: #757575 !important;
-			position: relative;
-			top: $bookActionBtnsHeight;
-			height: $bookActionInfoHeight;
-			padding: 0px !important;
-			border-radius: 0 !important;
-			z-index: 99;
+        #team-info {
+            background: #757575 !important;
+            position: relative;
+            top: $bookActionBtnsHeight;
+            height: $bookActionInfoHeight;
+            padding: 0px !important;
+            border-radius: 0 !important;
+            z-index: 99;
 
-			text-align: center;
-			color: #fff;
-			font-size: 12px;
-			line-height: $bookActionInfoHeight;
-		}
-	}
+            text-align: center;
+            color: #fff;
+            font-size: 12px;
+            line-height: $bookActionInfoHeight;
+        }
+    }

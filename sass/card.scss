@@ -17,25 +17,25 @@ $card-spacing:      .313em;
 .card {
 
     @include material-shadow(1);
-	$height:    $header-height +
+    $height:    $header-height +
                 $title-line-height +
                 ($text-line-height * $text-lines) +
                 $tag-line-height +
                 ($card-spacing * 2) +
                 ($card-padding * 2);
-    
+
     min-height: $height;
-	max-height: $height;
-	height: $height;
-			
-	padding: $card-padding;
-	margin: 0;
-			
-	width: 100%;
-	border-bottom: 	1px solid $color-grey;
-	overflow: hidden;
-	position: relative;
-	background: $color-card-background;
+    max-height: $height;
+    height: $height;
+
+    padding: $card-padding;
+    margin: 0;
+            
+    width: 100%;
+    border-bottom: 	1px solid $color-grey;
+    overflow: hidden;
+    position: relative;
+    background: $color-card-background;
 
     display: block;
 
@@ -56,40 +56,40 @@ $card-spacing:      .313em;
             text-align: center;
             font-size: .75em;
         }
-		
+
     .card:hover {
         @include material-shadow(2);
-	    background: darken($color-card-background, 5%);
+        background: darken($color-card-background, 5%);
         transition: box-shadow .25s ease-in-out;
-        
+
         z-index: 98;
-		cursor: pointer;
-	}			
-		
+        cursor: pointer;
+    }			
+
         .card:hover .card-btn {
             visibility: visible;
-        }		
-		
-	.card .title{					
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
+        }
 
-		font-size: 1.25em;
-		line-height: 1.5em;
-	}
-		
-	.card .text{
+    .card .title{					
         overflow: hidden;
-		white-space: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        font-size: 1.25em;
+        line-height: 1.5em;
+    }
+
+    .card .text{
+        overflow: hidden;
+        white-space: normal;
 
         min-height: $text-line-height * 2;
-		height: $text-line-height * 2;		
-			
-		font-size: .875em;
-		line-height: $text-line-height;
-	}
+        height: $text-line-height * 2;		
 
+        font-size: .875em;
+        line-height: $text-line-height;
+    }
+    
     .card .tag {
         font-size: .75em;
         line-height: $tag-line-height;
@@ -100,7 +100,7 @@ $card-spacing:      .313em;
         margin-right: 5px;
         border: none;
     }
-		
+        
         .card #tag-wrapper {
             width: 70%;
             margin: $card-spacing 0 0 0;
@@ -140,17 +140,17 @@ $card-spacing:      .313em;
         overflow: hidden;
         float: right;
     }
-		
-	.card .card-btn{
-		visibility: hidden;
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		font-size: 1em;
-		
-		opacity: .4;
+        
+    .card .card-btn{
+        visibility: hidden;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1em;
+        
+        opacity: .4;
         filter: alpha(opacity=40); // For IE8 and earlier */
-	}
+    }
 
         .card .card-btn:hover{
             opacity: 1;
@@ -158,25 +158,25 @@ $card-spacing:      .313em;
             transition: opacity .2s ease-in-out;
         }
 
-    .card.active {    
-        @include material-shadow(3);    
+    .card.active {
+        @include material-shadow(3);
         background: darken($color-card-background, 15%);
         transition: box-shadow .25s ease-in-out;
         transition: margin .25s ease-in-out;
         margin: 10px -5px 10px -5px;
         width: auto;
         z-index: 99;
-	}		
-	    .card.active:hover {
-			background: darken($color-card-background, 20%);
+    }		
+        .card.active:hover {
+            background: darken($color-card-background, 20%);
             transition: margin .25s ease-in-out;
-		}
+        }
 
     .card.active .tag {
         color: $color-font;
     }
-		
-	.read {
+        
+    .read {
         .title {
             color: $color-grey;
         }
@@ -189,7 +189,7 @@ $card-spacing:      .313em;
         }
     }
 
-	.active-read {
+    .active-read {
         .title {
             color: darken($color-grey, 30%);
         }

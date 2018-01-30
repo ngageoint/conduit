@@ -4,71 +4,71 @@
 $filterHeaderHeight: 24px;
 
 .category-wrapper {
-	display: inline-block;
-	width: 100%;
-	overflow: visible;
-	clear: both;
+    display: inline-block;
+    width: 100%;
+    overflow: visible;
+    clear: both;
 }
-	
+    
 .category-wrapper .dropdown {
-	width: 45% !important;
-	min-width: 200px !important;
-	margin: 0 10px 10px 0 !important;
-	clear: none !important;
-	float: left !important;
+    width: 45% !important;
+    min-width: 200px !important;
+    margin: 0 10px 10px 0 !important;
+    clear: none !important;
+    float: left !important;
 }
 
 .accordion-wrapper {
-	position: absolute;
-	z-index: 100;
+    position: absolute;
+    z-index: 100;
     width: auto;
-	top: 0px;
-	left: 10px;
-	right: 10px;
+    top: 0px;
+    left: 10px;
+    right: 10px;
 
-	//box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
-	@include material-shadow(3);
+    //box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
+    @include material-shadow(3);
 
-	.panel-group {
-		margin-bottom: 0px;
-	}
+    .panel-group {
+        margin-bottom: 0px;
+    }
 
-	.panel {
-		box-shadow: none;
-	}
+    .panel {
+        box-shadow: none;
+    }
 
-	.panel-default {
-		border: none !important;
-		border-radius: 0 !important;
-	}
-	.panel-heading {
-		background: #757575 !important;
-		height: $filterHeaderHeight !important;
-		padding: 0px !important;
-		border-radius: 0 !important;
-		z-index: 99;
-	}
-		.panel-open .panel-heading {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			border-radius: 0px 0px 2px 2px;
-		}
-	.panel-title {
-		color: #fff !important;
-		text-align: center !important;
-		font-size: 14px !important;
-		padding: 5px 0;
-	}
-		.panel-title a {
-			color: #fff;
-		}
+    .panel-default {
+        border: none !important;
+        border-radius: 0 !important;
+    }
+    .panel-heading {
+        background: #757575 !important;
+        height: $filterHeaderHeight !important;
+        padding: 0px !important;
+        border-radius: 0 !important;
+        z-index: 99;
+    }
+        .panel-open .panel-heading {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-radius: 0px 0px 2px 2px;
+        }
+    .panel-title {
+        color: #fff !important;
+        text-align: center !important;
+        font-size: 14px !important;
+        padding: 5px 0;
+    }
+        .panel-title a {
+            color: #fff;
+        }
 
-	.panel-body {
-		max-height: 40vh;
-		overflow-y: scroll;
-		padding: 15px 15px (15px + $filterHeaderHeight) 15px;
-	}
-	
+    .panel-body {
+        max-height: 40vh;
+        overflow-y: scroll;
+        padding: 15px 15px (15px + $filterHeaderHeight) 15px;
+    }
+    
 }

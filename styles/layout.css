@@ -1,6 +1,4 @@
 /*Layout*/
-/*Light*/
-/*Dark*/
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -15,7 +13,7 @@ html {
 body {
   min-width: 750px;
   /* 2x (LC fullwidth +
-                          		CC padding) + RC fullwidth */
+                                  CC padding) + RC fullwidth */
   position: fixed;
   left: 0;
   right: 0;

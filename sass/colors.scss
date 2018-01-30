@@ -1,4 +1,4 @@
-		
+        
 $dark: false;
 
 //*Light*/
@@ -16,16 +16,16 @@ $dark: false;
     $color-background:			    #f2f2f2             !default;
     $color-card-background:         #fff                !default;
 
-		
+        
 //*Dark*/
 @if $dark == true {
-	$color-primary: 				#999;
-	$color-primary-contrast: 		#444;
-		
-	$color-accent:			        #aaa;
-	$color-accent-contrast:	        #444;
+    $color-primary: 				#999;
+    $color-primary-contrast: 		#444;
+        
+    $color-accent:			        #aaa;
+    $color-accent-contrast:	        #444;
 
-	$color-font:					#aaa;
-	$color-grey:				    #888;
-	$color-background:			    #222;
+    $color-font:					#aaa;
+    $color-grey:				    #888;
+    $color-background:			    #222;
 }

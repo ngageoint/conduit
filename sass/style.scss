@@ -20,25 +20,25 @@
 }
 
 .title {
-	color: $color-font;
+    color: $color-font;
 }
-		
+        
 .text {
-	color: $color-font;
+    color: $color-font;
 }
 
 .tag {
-	color: $color-grey;
-	font-family: 'Montserrat', sans-serif;
+    color: $color-grey;
+    font-family: 'Montserrat', sans-serif;
 }
-		 
-	#action {
-			float: left;
-			padding-top: .1em;
-	}
+         
+    #action {
+            float: left;
+            padding-top: .1em;
+    }
 
 .pointer-on-hover:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {

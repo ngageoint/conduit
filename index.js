@@ -409,9 +409,9 @@ app.post('/insert/bookStatus', rate.intermittent, function(req, res, next) {
 
 app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next) {
 
-		let noMeta = typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined';
-		let noDate = !req.body.date && !req.body.comment.date;
-		let noText = !req.body.text && !req.body.comment.text;
+		const noMeta = typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined';
+		const noDate = !req.body.date && !req.body.comment.date;
+		const noText = !req.body.text && !req.body.comment.text;
 		
 		if(noMeta, noDate, noText) {
 				console.log('Missing params');

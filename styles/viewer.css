@@ -1,6 +1,4 @@
 /*Article View*/
-/*Light*/
-/*Dark*/
 /*does not apply to all elements*/
 .article-view {
   position: absolute;
@@ -304,8 +302,8 @@
 
 /*
 #overflow-menu {
-	position: absolute;
-	top: 20px;
+    position: absolute;
+    top: 20px;
     right: 20px;
     height: 30px;
     font-size: 18px;
@@ -318,7 +316,7 @@
 }
 
 #overflow-menu:hover {
-	background: lighten($color-grey, 20%);
+    background: lighten($color-grey, 20%);
 }*/
 #overflow-btn {
   position: absolute;

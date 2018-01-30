@@ -1,37 +1,37 @@
 /*Fonts*/
 
 @font-face {
-	font-family: 'Montserrat';
-	src: 	local('Montserrat-Regular.ttf')
-			url('../resources/fonts/montserrat/Montserrat-Regular.ttf')		
-			format('truetype');
+    font-family: 'Montserrat';
+    src: 	local('Montserrat-Regular.ttf')
+            url('../resources/fonts/montserrat/Montserrat-Regular.ttf')		
+            format('truetype');
 }
-		
+        
 @font-face {
-	font-family: 'Montserrat-Light';
-	src: 	local('Montserrat-Light.ttf')
-			url('../resources/fonts/montserrat/Montserrat-Light.ttf')
-			format('truetype');
+    font-family: 'Montserrat-Light';
+    src: 	local('Montserrat-Light.ttf')
+            url('../resources/fonts/montserrat/Montserrat-Light.ttf')
+            format('truetype');
 }
-		
+        
 @font-face {
-	font-family: 'SourceSansPro';
-	src: 	local('SourceSansPro-Regular.ttf')
-			url('../resources/fonts/sourcesanspro/SourceSansPro-Regular.ttf')
-			format('truetype');
-}
-
-@font-face {
-	font-family: 'SourceSerifPro';
-	src: 	local('SourceSerifPro-Regular.ttf')
-			url('../resources/fonts/sourceserifpro/SourceSerifPro-Regular.ttf')
-			format('truetype');
+    font-family: 'SourceSansPro';
+    src: 	local('SourceSansPro-Regular.ttf')
+            url('../resources/fonts/sourcesanspro/SourceSansPro-Regular.ttf')
+            format('truetype');
 }
 
 @font-face {
-	font-family: 'Glyphicons-Halflings-Regular';
-	src: 	url('../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2')	format("embedded-opentype"),
-			url('../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2')	format("woff2"),
-			url('../packages/bootstrap/fonts/glyphicons-halflings-regular.woff')	format("woff"),
-			url('../packages/bootstrap/fonts/glyphicons-halflings-regular.ttf')		format('truetype');
+    font-family: 'SourceSerifPro';
+    src: 	local('SourceSerifPro-Regular.ttf')
+            url('../resources/fonts/sourceserifpro/SourceSerifPro-Regular.ttf')
+            format('truetype');
+}
+
+@font-face {
+    font-family: 'Glyphicons-Halflings-Regular';
+    src: 	url('../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2')	format("embedded-opentype"),
+            url('../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2')	format("woff2"),
+            url('../packages/bootstrap/fonts/glyphicons-halflings-regular.woff')	format("woff"),
+            url('../packages/bootstrap/fonts/glyphicons-halflings-regular.ttf')		format('truetype');
 }
