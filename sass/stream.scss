@@ -56,19 +56,19 @@ $tMargin: 10px;
 	border-radius: 2px 2px 0 0;
 	//box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
 	@include material-shadow(3);
-	background-color: $colorPrimary;
+	background-color: $color-primary;
 
 	.btn-primary {
 		border: none;
-		border-bottom: 2px solid $colorPrimary;
-		color: rgba($colorPrimaryContrast, .7);
+		border-bottom: 2px solid $color-primary;
+		color: rgba($color-primary-contrast, .7);
 		border-radius: 0;
 		box-shadow: none;
 	}
 
 	.btn-primary:active,
 	.btn-primary.active {
-		color: $colorPrimaryContrast;
+		color: $color-primary-contrast;
 	}
 
 	.btn-primary:active,
@@ -80,8 +80,8 @@ $tMargin: 10px;
 	.btn-primary.active:focus,
 	.btn-primary:active:hover,
 	.btn-primary.active:hover {
-		background-color: $colorPrimary;
-		border-bottom: 2px solid $colorAccent;
+		background-color: $color-primary;
+		border-bottom: 2px solid $color-accent;
 		box-shadow: none;
 	}
 }
@@ -145,7 +145,7 @@ $tMargin: 10px;
 	
 		.btn-primary {
 			border: none;
-			border-bottom: 2px solid $colorPrimary;
+			border-bottom: 2px solid $color-primary;
 			box-shadow: none;
 		}
 
@@ -158,8 +158,8 @@ $tMargin: 10px;
 		.btn-primary.active:focus,
 		.btn-primary:active:hover,
 		.btn-primary.active:hover {
-			background-color: $colorPrimary;
-			border-bottom: 2px solid $colorAccent;
+			background-color: $color-primary;
+			border-bottom: 2px solid $color-accent;
 			box-shadow: none;
 		}
 
@@ -172,7 +172,7 @@ $tMargin: 10px;
 			width: auto;
 
 			border-radius: 2px 0 0 0;
-			border-bottom: 2px solid $colorPrimary;
+			border-bottom: 2px solid $color-primary;
 			box-shadow: none;
 		}
 
@@ -185,8 +185,8 @@ $tMargin: 10px;
 			nya-bs-select.active:focus,
 			nya-bs-select:active:hover,
 			nya-bs-select.active:hover {
-				background-color: $colorPrimary;
-				border-bottom: 2px solid $colorAccent;
+				background-color: $color-primary;
+				border-bottom: 2px solid $color-accent;
 				box-shadow: none;
 			}
 		

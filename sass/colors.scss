@@ -1,31 +1,31 @@
 		
 $dark: false;
 
-/*Light*/
+//*Light*/
 
-    $colorPrimary: 				#009688             !default;
-    $colorPrimary500: 			#009688             !default;
-    $colorPrimary700:           rgba(0,121,107,1)   !default;
-    $colorPrimaryContrast: 		#fff                !default;
+    $color-primary: 				#009688             !default;
+    $color-primary-500: 			#009688             !default;
+    $color-primary-700:             rgba(0,121,107,1)   !default;
+    $color-primary-contrast: 		#fff                !default;
             
-    $colorAccent:			    #ff5252             !default;
-    $colorAccentContrast:	    #fff                !default;
+    $color-accent:			        #ff5252             !default;
+    $color-accent-contrast:	        #fff                !default;
 
-    $colorFont:					#212121             !default;
-    $colorGrey: 				#bdbdbd             !default;
-    $colorBackground:			#f2f2f2             !default;
-    $colorCardBackground:       #fff                !default;
+    $color-font:					    #212121             !default;
+    $color-grey: 				    #bdbdbd             !default;
+    $color-background:			    #f2f2f2             !default;
+    $color-card-background:         #fff                !default;
 
 		
-/*Dark*/
+//*Dark*/
 @if $dark == true {
-	$colorPrimary: 				#999;
-	$colorPrimaryContrast: 		#444;
-			
-	$colorAccent:			#aaa;
-	$colorAccentContrast:	#444;
-	
-	$colorFont:					#aaa;
-	$colorGrey: 				#888;
-	$colorBackground:			#222;
+	$color-primary: 				#999;
+	$color-primary-contrast: 		#444;
+		
+	$color-accent:			        #aaa;
+	$color-accent-contrast:	        #444;
+
+	$color-font:					#aaa;
+	$color-grey:				    #888;
+	$color-background:			    #222;
 }

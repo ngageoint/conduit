@@ -36,7 +36,7 @@ body {
     font-size: 100%;
 	font-family: 'SourceSansPro', sans-serif;
 
-  background-color: $colorBackground;
+  background-color: $color-background;
 }		
 		
 #container {
@@ -59,7 +59,7 @@ body {
 #center {
 	padding: 0;    	/* CC padding */
 	width: $centerWidth;
-	background: $colorBackground;
+	background: $color-background;
 	float:left;
 }
 
@@ -70,7 +70,7 @@ body {
 	margin-left: -100%;
 	
 	max-height: 100%;		
-	background: $colorBackground;
+	background: $color-background;
 	display: inline-block;
 }
 	
@@ -78,7 +78,7 @@ body {
 	width: $rightWidth;          /* RC width */
 	padding: 0;    /* RC padding */
 	margin-right: -($rightWidth);  /* RC fullwidth + CC padding */
-	background: $colorBackground;
+	background: $color-background;
 	float: left;
 	margin-left: 0px;
 	max-height: 100%;
@@ -93,8 +93,8 @@ body {
 	padding: $headerPadding;
 			
 	/*COLORS*/
-	background: ($colorPrimary);
-	color: ($colorPrimaryContrast);
+	background: ($color-primary);
+	color: ($color-primary-contrast);
 	
 	/*FONTS*/
 	font-size: 1.5em;
@@ -168,7 +168,7 @@ body {
 
 	#menu .btn.btn-default.dropdown-toggle:hover {
 		cursor: pointer;
-		background-color: darken($colorPrimary, 5%);
+		background-color: darken($color-primary, 5%);
 	}
 
 	
@@ -176,7 +176,7 @@ body {
 	#menu .btn.btn-default.dropdown-toggle:active,
 	#menu .btn.btn-default.dropdown-toggle:focus {
 		cursor: pointer;
-		background-color: darken($colorPrimary, 10%);
+		background-color: darken($color-primary, 10%);
 	}
 
 #menu .dropdown-menu.open {
@@ -197,7 +197,7 @@ body {
 
 #menu .dropdown-menu>li>div {
 	padding: 3px 20px;
-	color: $colorGrey;
+	color: $color-grey;
 }
 
 #header-content-wrapper .form-control {

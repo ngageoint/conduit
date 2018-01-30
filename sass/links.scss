@@ -4,12 +4,12 @@
 
 a:link {
 	text-decoration: none;
-	color: $colorAccent;
+	color: $color-accent;
 }
 		
 a:hover {
 	text-decoration: underline;
-	color: darken($colorAccent, 10%);
+	color: darken($color-accent, 10%);
 }
 		
 a:active {
@@ -20,7 +20,7 @@ a:active {
 a:visited {
 	outline: 0;
 	outline: none;
-	color: $colorPrimary;
+	color: $color-primary;
 }
 		
 a:focus {

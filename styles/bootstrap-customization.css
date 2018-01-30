@@ -65,7 +65,6 @@ fieldset[disabled] .btn-default.focus {
   background-color: #333;
 }
 
-/*Primary buttons*/
 .btn-primary {
   color: #fff;
   background-color: #009688;
@@ -130,7 +129,6 @@ fieldset[disabled] .btn-primary.focus {
   background-color: #fff;
 }
 
-/*Navbar*/
 .navbar-default {
   background-color: #e5e5e5;
   border-color: #bdbdbd;
@@ -246,7 +244,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 
-/* Panels */
 .panel {
   background-color: #e5e5e5;
   border: 1px solid #bdbdbd;
@@ -321,42 +318,22 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   border-bottom-color: #bdbdbd;
 }
 
-/*FOcus color*/
-a:focus {
-  /*outline: 2px auto $colorAccent;
-  outline-offset: -2px;*/
-}
-
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
+input[type='file']:focus,
+input[type='radio']:focus,
+input[type='checkbox']:focus {
   outline: 5px auto #ff5252;
   outline-offset: -2px;
-}
-
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn.active.focus {
-  /*outline: 5px auto $colorAccent;
-  outline-offset: -2px;*/
 }
 
 .form-control:focus {
   border-bottom: 2px solid #ff5252;
   outline: 0;
-  /*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);*/
 }
 
-/* Loading Bar*/
 #loading-bar .bar {
   background: #ff5252;
 }
 
-/* Fancy blur effect */
 #loading-bar .peg {
   -moz-box-shadow: #ff5252 1px 0 6px 1px;
   -ms-box-shadow: #ff5252 1px 0 6px 1px;

@@ -25,7 +25,7 @@ body {
   height: auto;
   padding: 24px 24px;
   border-radius: 2px;
-  /*border: 1px solid $colorGrey;*/
+  /*border: 1px solid $color-grey;*/
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }

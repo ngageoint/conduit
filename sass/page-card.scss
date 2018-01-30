@@ -20,7 +20,7 @@ body {
     font-size: 100%;
 	font-family: 'SourceSansPro', sans-serif;
 	
-	background-color: $colorBackground;
+	background-color: $color-background;
 }
 
 $tbPadding: 24px;
@@ -34,8 +34,8 @@ $lrPadding: 24px;
 	padding: $tbPadding $lrPadding;
 
 	border-radius: 2px;
-	/*border: 1px solid $colorGrey;*/
-	background: $colorCardBackground;
+	/*border: 1px solid $color-grey;*/
+	background: $color-card-background;
 	//box-shadow: 0 0px 2px rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
 	@include material-shadow(1);
 }
@@ -72,19 +72,19 @@ $lrPadding: 24px;
 }
 
 .card .default {
-	color: $colorFont;
+	color: $color-font;
 }
 
 .card .default:hover {
-	background: rgba($colorFont, .12);
+	background: rgba($color-font, .12);
 }
 
 .card .primary {
-	color: $colorPrimary;
+	color: $color-primary;
 }
 
 .card .primary:hover {
-	background: rgba($colorPrimary, .12);
+	background: rgba($color-primary, .12);
 }
 
 

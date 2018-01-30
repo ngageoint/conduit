@@ -408,10 +408,6 @@ app.post('/insert/bookStatus', rate.intermittent, function(req, res, next) {
 });
 
 app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next) {
-		
-	/*if(	typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined' || 
-			(!req.body.date && !req.body.comment.date) || 
-			(!req.body.text && !req.body.comment.text)) {*/
 
 		let noMeta = typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined';
 		let noDate = !req.body.date && !req.body.comment.date;

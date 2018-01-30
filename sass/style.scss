@@ -20,15 +20,15 @@
 }
 
 .title {
-	color: $colorFont;
+	color: $color-font;
 }
 		
 .text {
-	color: $colorFont;
+	color: $color-font;
 }
 
 .tag {
-	color: $colorGrey;
+	color: $color-grey;
 	font-family: 'Montserrat', sans-serif;
 }
 		 
@@ -47,5 +47,5 @@
 }
 /* optional: show position indicator in accent color */
 ::-webkit-scrollbar-thumb {
-    background: $colorAccent;
+    background: $color-accent;
 }

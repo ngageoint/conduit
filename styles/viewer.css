@@ -11,7 +11,7 @@
   max-height: inherit;
   overflow: hidden;
   border-radius: 2px;
-  /*border: 1px solid $colorGrey;*/
+  /*border: 1px solid $color-grey;*/
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
@@ -318,7 +318,7 @@
 }
 
 #overflow-menu:hover {
-	background: lighten($colorGrey, 20%);
+	background: lighten($color-grey, 20%);
 }*/
 #overflow-btn {
   position: absolute;

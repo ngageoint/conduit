@@ -530,10 +530,10 @@ body {
   padding: 15px 15px 39px 15px;
 }
 
-/*Article Card*/
 /*Light*/
 /*Dark*/
 .card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   min-height: 7.564em;
   max-height: 7.564em;
   height: 7.564em;
@@ -547,9 +547,7 @@ body {
   display: block;
   transition: all .25s ease-in-out !important;
   transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: margin .25s ease-in-out;
-  margin: 0;
 }
 
 .card-header {
@@ -566,9 +564,9 @@ body {
 }
 
 .card:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: #f2f2f2;
   transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   z-index: 98;
   cursor: pointer;
 }
@@ -650,22 +648,20 @@ body {
   top: 10px;
   right: 10px;
   font-size: 1em;
-  opacity: 0.4;
+  opacity: .4;
   filter: alpha(opacity=40);
-  /* For IE8 and earlier */
 }
 
 .card .card-btn:hover {
   opacity: 1;
   filter: alpha(opacity=100);
-  /* For IE8 and earlier */
   transition: opacity .2s ease-in-out;
 }
 
 .card.active {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   background: #d9d9d9;
   transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   transition: margin .25s ease-in-out;
   margin: 10px -5px 10px -5px;
   width: auto;
@@ -711,16 +707,13 @@ body {
 }
 
 .card.ng-hide:not(.ng-hide-animate) {
-  /* These are just alternative ways of hiding an element */
   display: block !important;
   transition: all .25s ease-in-out !important;
-  height: 0px !important;
-  max-height: 0px !important;
-  min-height: 0px !important;
-  padding: 0px !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
   border: none;
-  /*position: absolute;
-  top: -9999px;*/
 }
 
 /*Article View*/
@@ -736,7 +729,7 @@ body {
   max-height: inherit;
   overflow: hidden;
   border-radius: 2px;
-  /*border: 1px solid $colorGrey;*/
+  /*border: 1px solid $color-grey;*/
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
@@ -1043,7 +1036,7 @@ body {
 }
 
 #overflow-menu:hover {
-	background: lighten($colorGrey, 20%);
+	background: lighten($color-grey, 20%);
 }*/
 #overflow-btn {
   position: absolute;
@@ -1226,7 +1219,6 @@ fieldset[disabled] .btn-default.focus {
   background-color: #333;
 }
 
-/*Primary buttons*/
 .btn-primary {
   color: #fff;
   background-color: #009688;
@@ -1291,7 +1283,6 @@ fieldset[disabled] .btn-primary.focus {
   background-color: #fff;
 }
 
-/*Navbar*/
 .navbar-default {
   background-color: #e5e5e5;
   border-color: #bdbdbd;
@@ -1407,7 +1398,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 
-/* Panels */
 .panel {
   background-color: #e5e5e5;
   border: 1px solid #bdbdbd;
@@ -1482,42 +1472,22 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   border-bottom-color: #bdbdbd;
 }
 
-/*FOcus color*/
-a:focus {
-  /*outline: 2px auto $colorAccent;
-  outline-offset: -2px;*/
-}
-
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
+input[type='file']:focus,
+input[type='radio']:focus,
+input[type='checkbox']:focus {
   outline: 5px auto #ff5252;
   outline-offset: -2px;
-}
-
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn.active.focus {
-  /*outline: 5px auto $colorAccent;
-  outline-offset: -2px;*/
 }
 
 .form-control:focus {
   border-bottom: 2px solid #ff5252;
   outline: 0;
-  /*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);*/
 }
 
-/* Loading Bar*/
 #loading-bar .bar {
   background: #ff5252;
 }
 
-/* Fancy blur effect */
 #loading-bar .peg {
   -moz-box-shadow: #ff5252 1px 0 6px 1px;
   -ms-box-shadow: #ff5252 1px 0 6px 1px;
@@ -1598,18 +1568,17 @@ input[type="checkbox"]:focus {
 /*Dark*/
 #right .btn.btn-default.dropdown-toggle {
   background-color: #009688;
-  color: white;
+  color: #fff;
   height: 56px;
   border: none;
   border-radius: 2px 0 0 0;
-  color: white;
   font-size: 16px;
   line-height: 19px;
-  /*box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);*/
   z-index: 100;
 }
 
 #right .dropdown-menu.open {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   position: relative;
   top: -20px;
   left: 28%;
@@ -1620,7 +1589,6 @@ input[type="checkbox"]:focus {
   background-color: #fff;
   border: none;
   border-radius: 2px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   z-index: 101;
 }
 
