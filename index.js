@@ -29,7 +29,6 @@ const SourceService = require('./server/tools/sources.service.server.js');
 ////////////////
 ArticleReader.readSource(SourceService.sources[1]).then(function(res) {
 	db.insert.articleFull(res);
-	//db.insert.articleBase(res);
 });
 
 ////////////////
@@ -239,7 +238,7 @@ app.post('/select/articleOriginal', rate.immediate, function(req, res, next) {
 			audit.ACCESS(audit.SUCCESS, audit.OBJECT, 'article ' + article.id, req.session.user.id);
 			res.status(200);
 			res.json(article);
-		}).catch(function(err) {
+		}).catch(function() {
 			audit.ACCESS(audit.FAILURE, audit.OBJECT, 'article ' + req.body.article.id, req.session.user.id);
 		});
 });
@@ -288,7 +287,7 @@ app.post('/select/mostRecentArticleEdit', rate.immediateRestricted, function(req
 			audit.ACCESS(audit.SUCCESS, audit.OBJECT, 'article ' + req.body.article.id, req.session.user.id);
 			res.status(200);
 			res.json(edit);
-		}).catch(function(err) {
+		}).catch(function() {
 			audit.ACCESS(audit.FAILURE, audit.OBJECT, 'article' + req.body.article.id, req.session.user.id);
 		});
 });
@@ -345,7 +344,7 @@ app.post('/insert/articleEdit', rate.intermittent, function(req, res, next) {
 		}
 		db.insert.articleEdit(req.body.articleId, req.body.userId, req.body.teamId, req.body.title, req.body.text).then(function(result) {
 			
-			let edit = {
+			const edit = {
 				timestamp: result,
 				teamId: req.body.teamId
 			}
@@ -409,9 +408,16 @@ app.post('/insert/bookStatus', rate.intermittent, function(req, res, next) {
 });
 
 app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next) {
-		if(	typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined' || 
+		
+	/*if(	typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined' || 
 			(!req.body.date && !req.body.comment.date) || 
-			(!req.body.text && !req.body.comment.text)) {
+			(!req.body.text && !req.body.comment.text)) {*/
+
+		let noMeta = typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined';
+		let noDate = !req.body.date && !req.body.comment.date;
+		let noText = !req.body.text && !req.body.comment.text;
+		
+		if(noMeta, noDate, noText) {
 				console.log('Missing params');
 				res.status(400);
 				res.send('Missing parameters. articleId, userId, teamId, date, and text are required, or a comment object is required');
