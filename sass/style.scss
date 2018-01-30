@@ -1,19 +1,19 @@
-@charset "utf-8";
+@charset 'utf-8';
 /* CSS Document */
 
-@import "fonts";
-@import "colors";
-@import "links";
-@import "layout";
-@import "stream";
-@import "filter";
-@import "card";
-@import "viewer";
-@import "comments";
-@import "bootstrap-customization";
-@import "media.scss";
-@import "book-selector";
-@import "fab";
+@import 'fonts';
+@import 'colors';
+@import 'links';
+@import 'layout';
+@import 'stream';
+@import 'filter';
+@import 'card';
+@import 'viewer';
+@import 'comments';
+@import 'bootstrap-customization';
+@import 'media.scss';
+@import 'book-selector';
+@import 'fab';
 
 * {
 /*	border-radius: 2px !important;*/

@@ -1,7 +1,7 @@
 /*Layout*/
 
-@import "colors.scss";
-@import "material-shadow.scss";
+@import 'colors.scss';
+@import 'material-shadow.scss';
 
 $leftWidth: 25vw;
 $rightWidth: 20vw;
@@ -139,8 +139,8 @@ body {
 }
 
 #menu .btn.btn-default.dropdown-toggle:after {
-    font-family: "Glyphicons Halflings";
-    content:"\e236";
+    font-family: 'Glyphicons Halflings';
+    content:'\e236';
     margin-left: -.25em;
 
     position: absolute;

@@ -187,8 +187,8 @@ body {
 }
 
 #menu .btn.btn-default.dropdown-toggle:after {
-  font-family: "Glyphicons Halflings";
-  content: "\e236";
+  font-family: 'Glyphicons Halflings';
+  content: '\e236';
   margin-left: -.25em;
   position: absolute;
   left: 14px;
@@ -1045,7 +1045,7 @@ body {
 }
 
 #overflow-menu .btn.btn-default.dropdown-toggle:after {
-  font-family: "Glyphicons Halflings";
+  font-family: 'Glyphicons Halflings';
   content: '\e235';
   margin-left: -.25em;
 }
@@ -1542,7 +1542,7 @@ input[type='checkbox']:focus {
     left: 0;
     right: 0;
     font-family: 'Glyphicons-Halflings-Regular';
-    content: "\e043";
+    content: '\e043';
   }
 }
 

@@ -1,7 +1,7 @@
 /*Article View*/
 
-@import "colors.scss";
-@import "material-shadow.scss";
+@import 'colors.scss';
+@import 'material-shadow.scss';
 
 $lrpadding: 15px; /*does not apply to all elements*/
 
@@ -367,7 +367,7 @@ $actPadding: 8px;
 }
 
 #overflow-menu .btn.btn-default.dropdown-toggle:after {
-    font-family: "Glyphicons Halflings";
+    font-family: 'Glyphicons Halflings';
     content: '\e235';
     margin-left: -.25em;
 }
@@ -436,4 +436,3 @@ $actPadding: 8px;
 #content-wrapper .edit-field.form-control {
     width: 100% !important;
 }
-

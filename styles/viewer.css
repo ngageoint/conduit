@@ -339,7 +339,7 @@
 }
 
 #overflow-menu .btn.btn-default.dropdown-toggle:after {
-  font-family: "Glyphicons Halflings";
+  font-family: 'Glyphicons Halflings';
   content: '\e235';
   margin-left: -.25em;
 }

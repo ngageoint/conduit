@@ -132,8 +132,8 @@ body {
 }
 
 #menu .btn.btn-default.dropdown-toggle:after {
-  font-family: "Glyphicons Halflings";
-  content: "\e236";
+  font-family: 'Glyphicons Halflings';
+  content: '\e236';
   margin-left: -.25em;
   position: absolute;
   left: 14px;
