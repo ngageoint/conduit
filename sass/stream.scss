@@ -1,4 +1,5 @@
 @import "colors";
+@import "material-shadow.scss";
 
 $tMargin: 10px;
 
@@ -53,7 +54,8 @@ $tMargin: 10px;
 
 	border: none;
 	border-radius: 2px 2px 0 0;
-	box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
+	//box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
+	@include material-shadow(3);
 	background-color: $colorPrimary;
 
 	.btn-primary {
@@ -136,7 +138,8 @@ $tMargin: 10px;
 
 		border-radius: 2px 2px 0 0;
 
-		box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
+		//box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
+		@include material-shadow(3);
 
 		z-index: 100;
 	

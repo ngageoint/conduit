@@ -1,13 +1,13 @@
 /*Light*/
 /*Dark*/
-/* line 3, D:/work/dat/conduit/sass/page-card.scss */
+/* line 4, D:/work/dat/conduit/sass/page-card.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 9, D:/work/dat/conduit/sass/page-card.scss */
+/* line 10, D:/work/dat/conduit/sass/page-card.scss */
 body {
   position: fixed;
   left: 0;
@@ -22,36 +22,36 @@ body {
   background-color: #f2f2f2;
 }
 
-/* line 26, D:/work/dat/conduit/sass/page-card.scss */
+/* line 29, D:/work/dat/conduit/sass/page-card.scss */
 .card {
   margin-top: 20vh;
   height: auto;
-  padding: 24px 16px;
+  padding: 24px 24px;
   border-radius: 2px;
   /*border: 1px solid $colorGrey;*/
   background: #fff;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-/* line 39, D:/work/dat/conduit/sass/page-card.scss */
+/* line 43, D:/work/dat/conduit/sass/page-card.scss */
 .card .primary-title {
   font-size: 24px;
   padding-bottom: 16px;
 }
 
-/* line 44, D:/work/dat/conduit/sass/page-card.scss */
+/* line 48, D:/work/dat/conduit/sass/page-card.scss */
 .card .supporting-text {
   font-size: 14px;
   padding-bottom: 16px;
 }
 
-/* line 49, D:/work/dat/conduit/sass/page-card.scss */
+/* line 53, D:/work/dat/conduit/sass/page-card.scss */
 .card .action-area {
   height: 52px;
-  margin: 0 -16px -24px -16px;
+  margin: 0 -24px -24px -24px;
 }
 
-/* line 54, D:/work/dat/conduit/sass/page-card.scss */
+/* line 58, D:/work/dat/conduit/sass/page-card.scss */
 .card .card-action {
   height: 36px;
   margin: 8px;
@@ -65,34 +65,34 @@ body {
   text-decoration: none;
 }
 
-/* line 66, D:/work/dat/conduit/sass/page-card.scss */
+/* line 70, D:/work/dat/conduit/sass/page-card.scss */
 .card .card-action:hover {
   cursor: pointer;
 }
 
-/* line 70, D:/work/dat/conduit/sass/page-card.scss */
+/* line 74, D:/work/dat/conduit/sass/page-card.scss */
 .card .default {
   color: #212121;
 }
 
-/* line 74, D:/work/dat/conduit/sass/page-card.scss */
+/* line 78, D:/work/dat/conduit/sass/page-card.scss */
 .card .default:hover {
   background: rgba(33, 33, 33, 0.12);
 }
 
-/* line 78, D:/work/dat/conduit/sass/page-card.scss */
+/* line 82, D:/work/dat/conduit/sass/page-card.scss */
 .card .primary {
   color: #009688;
 }
 
-/* line 82, D:/work/dat/conduit/sass/page-card.scss */
+/* line 86, D:/work/dat/conduit/sass/page-card.scss */
 .card .primary:hover {
   background: rgba(0, 150, 136, 0.12);
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width: 480px) {
-  /* line 89, D:/work/dat/conduit/sass/page-card.scss */
+  /* line 93, D:/work/dat/conduit/sass/page-card.scss */
   .card {
     width: 80vw;
     margin-left: 10vw;
@@ -101,7 +101,7 @@ body {
 
 /* Small Devices, Tablets */
 @media only screen and (min-width: 768px) {
-  /* line 97, D:/work/dat/conduit/sass/page-card.scss */
+  /* line 101, D:/work/dat/conduit/sass/page-card.scss */
   .card {
     width: 60vw;
     margin-left: 20vw;
@@ -110,7 +110,7 @@ body {
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width: 992px) {
-  /* line 105, D:/work/dat/conduit/sass/page-card.scss */
+  /* line 109, D:/work/dat/conduit/sass/page-card.scss */
   .card {
     width: 50vw;
     margin-left: 25vw;
@@ -119,7 +119,7 @@ body {
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width: 1200px) {
-  /* line 113, D:/work/dat/conduit/sass/page-card.scss */
+  /* line 117, D:/work/dat/conduit/sass/page-card.scss */
   .card {
     width: 30vw;
     margin-left: 35vw;
@@ -128,7 +128,7 @@ body {
 
 /* Wide Screens, HD */
 @media only screen and (min-width: 1600px) {
-  /* line 121, D:/work/dat/conduit/sass/page-card.scss */
+  /* line 125, D:/work/dat/conduit/sass/page-card.scss */
   .card {
     width: 20vw;
     margin-left: 40vw;

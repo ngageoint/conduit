@@ -1,7 +1,7 @@
 /*Article Card*/
 /*Light*/
 /*Dark*/
-/* line 16, D:/work/dat/conduit/sass/card.scss */
+/* line 17, D:/work/dat/conduit/sass/card.scss */
 .card {
   min-height: 7.564em;
   max-height: 7.564em;
@@ -16,17 +16,17 @@
   display: block;
   transition: all .25s ease-in-out !important;
   transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: margin .25s ease-in-out;
   margin: 0;
 }
 
-/* line 46, D:/work/dat/conduit/sass/card.scss */
+/* line 48, D:/work/dat/conduit/sass/card.scss */
 .card-header {
   height: 1.25em;
 }
 
-/* line 50, D:/work/dat/conduit/sass/card.scss */
+/* line 52, D:/work/dat/conduit/sass/card.scss */
 .card .subject {
   color: #bdbdbd;
   position: absolute;
@@ -36,21 +36,21 @@
   font-size: .75em;
 }
 
-/* line 59, D:/work/dat/conduit/sass/card.scss */
+/* line 61, D:/work/dat/conduit/sass/card.scss */
 .card:hover {
   background: #f2f2f2;
   transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.12), 0 4px 4px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   z-index: 98;
   cursor: pointer;
 }
 
-/* line 67, D:/work/dat/conduit/sass/card.scss */
+/* line 70, D:/work/dat/conduit/sass/card.scss */
 .card:hover .card-btn {
   visibility: visible;
 }
 
-/* line 71, D:/work/dat/conduit/sass/card.scss */
+/* line 74, D:/work/dat/conduit/sass/card.scss */
 .card .title {
   overflow: hidden;
   white-space: nowrap;
@@ -59,7 +59,7 @@
   line-height: 1.5em;
 }
 
-/* line 80, D:/work/dat/conduit/sass/card.scss */
+/* line 83, D:/work/dat/conduit/sass/card.scss */
 .card .text {
   overflow: hidden;
   white-space: normal;
@@ -69,7 +69,7 @@
   line-height: 1em;
 }
 
-/* line 91, D:/work/dat/conduit/sass/card.scss */
+/* line 94, D:/work/dat/conduit/sass/card.scss */
 .card .tag {
   font-size: .75em;
   line-height: 0.938em;
@@ -80,7 +80,7 @@
   border: none;
 }
 
-/* line 102, D:/work/dat/conduit/sass/card.scss */
+/* line 105, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper {
   width: 70%;
   margin: 0.313em 0 0 0;
@@ -90,7 +90,7 @@
   float: left;
 }
 
-/* line 111, D:/work/dat/conduit/sass/card.scss */
+/* line 114, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper-action {
   width: 33%;
   float: left;
@@ -100,7 +100,7 @@
   background: inherit;
 }
 
-/* line 120, D:/work/dat/conduit/sass/card.scss */
+/* line 123, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper-action .action {
   background: none;
   border: none;
@@ -110,12 +110,12 @@
   color: #009688;
 }
 
-/* line 129, D:/work/dat/conduit/sass/card.scss */
+/* line 132, D:/work/dat/conduit/sass/card.scss */
 .card #icon {
   float: left;
 }
 
-/* line 133, D:/work/dat/conduit/sass/card.scss */
+/* line 136, D:/work/dat/conduit/sass/card.scss */
 .card #date {
   width: 30%;
   margin: 0.313em 0 0 0;
@@ -125,7 +125,7 @@
   float: right;
 }
 
-/* line 142, D:/work/dat/conduit/sass/card.scss */
+/* line 145, D:/work/dat/conduit/sass/card.scss */
 .card .card-btn {
   visibility: hidden;
   position: absolute;
@@ -137,7 +137,7 @@
   /* For IE8 and earlier */
 }
 
-/* line 153, D:/work/dat/conduit/sass/card.scss */
+/* line 156, D:/work/dat/conduit/sass/card.scss */
 .card .card-btn:hover {
   opacity: 1;
   filter: alpha(opacity=100);
@@ -145,66 +145,65 @@
   transition: opacity .2s ease-in-out;
 }
 
-/* line 159, D:/work/dat/conduit/sass/card.scss */
+/* line 162, D:/work/dat/conduit/sass/card.scss */
 .card.active {
   background: #d9d9d9;
   transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   transition: margin .25s ease-in-out;
   margin: 10px -5px 10px -5px;
   width: auto;
   z-index: 99;
 }
 
-/* line 168, D:/work/dat/conduit/sass/card.scss */
+/* line 172, D:/work/dat/conduit/sass/card.scss */
 .card.active:hover {
   background: #cccccc;
-  box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24);
   transition: margin .25s ease-in-out;
 }
 
-/* line 174, D:/work/dat/conduit/sass/card.scss */
+/* line 178, D:/work/dat/conduit/sass/card.scss */
 .card.active .tag {
   color: #212121;
 }
 
-/* line 179, D:/work/dat/conduit/sass/card.scss */
+/* line 183, D:/work/dat/conduit/sass/card.scss */
 .read .title {
   color: #bdbdbd;
 }
 
-/* line 182, D:/work/dat/conduit/sass/card.scss */
+/* line 186, D:/work/dat/conduit/sass/card.scss */
 .read .text {
   color: #bdbdbd;
 }
 
-/* line 185, D:/work/dat/conduit/sass/card.scss */
+/* line 189, D:/work/dat/conduit/sass/card.scss */
 .read .tag {
   background: transparent;
   color: #bdbdbd;
 }
 
-/* line 192, D:/work/dat/conduit/sass/card.scss */
+/* line 196, D:/work/dat/conduit/sass/card.scss */
 .active-read .title {
   color: #717171;
 }
 
-/* line 195, D:/work/dat/conduit/sass/card.scss */
+/* line 199, D:/work/dat/conduit/sass/card.scss */
 .active-read .text {
   color: #717171;
 }
 
-/* line 198, D:/work/dat/conduit/sass/card.scss */
+/* line 202, D:/work/dat/conduit/sass/card.scss */
 .active-read .tag {
   color: #717171;
 }
 
-/* line 201, D:/work/dat/conduit/sass/card.scss */
+/* line 205, D:/work/dat/conduit/sass/card.scss */
 .active-read .subject {
   color: #717171;
 }
 
-/* line 206, D:/work/dat/conduit/sass/card.scss */
+/* line 210, D:/work/dat/conduit/sass/card.scss */
 .card.ng-hide:not(.ng-hide-animate) {
   /* These are just alternative ways of hiding an element */
   display: block !important;
