@@ -30,32 +30,27 @@
 /*Links*/
 /*Light*/
 /*Dark*/
-/* line 5, D:/work/dat/conduit/sass/links.scss */
 a:link {
   text-decoration: none;
   color: #ff5252;
 }
 
-/* line 10, D:/work/dat/conduit/sass/links.scss */
 a:hover {
   text-decoration: underline;
   color: #ff1f1f;
 }
 
-/* line 15, D:/work/dat/conduit/sass/links.scss */
 a:active {
   outline: 0;
   outline: none;
 }
 
-/* line 20, D:/work/dat/conduit/sass/links.scss */
 a:visited {
   outline: 0;
   outline: none;
   color: #009688;
 }
 
-/* line 26, D:/work/dat/conduit/sass/links.scss */
 a:focus {
   outline: 0;
   outline: none;
@@ -65,20 +60,17 @@ a:focus {
 /*Layout*/
 /*Light*/
 /*Dark*/
-/* line 13, D:/work/dat/conduit/sass/layout.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 19, D:/work/dat/conduit/sass/layout.scss */
 html {
   font-size: 100% !important;
   font-family: 'SourceSansPro', sans-serif !important;
 }
 
-/* line 24, D:/work/dat/conduit/sass/layout.scss */
 body {
   min-width: 750px;
   /* 2x (LC fullwidth +
@@ -96,7 +88,6 @@ body {
   background-color: #f2f2f2;
 }
 
-/* line 42, D:/work/dat/conduit/sass/layout.scss */
 #container {
   position: fixed;
   padding-left: 25vw;
@@ -109,7 +100,6 @@ body {
   background: transparent;
 }
 
-/* line 52, D:/work/dat/conduit/sass/layout.scss */
 #container .column {
   position: relative;
   float: left;
@@ -117,7 +107,6 @@ body {
   background: inherit;
 }
 
-/* line 59, D:/work/dat/conduit/sass/layout.scss */
 #center {
   padding: 0;
   /* CC padding */
@@ -126,7 +115,6 @@ body {
   float: left;
 }
 
-/* line 66, D:/work/dat/conduit/sass/layout.scss */
 #left {
   width: 25vw;
   /* LC width */
@@ -140,7 +128,6 @@ body {
   display: inline-block;
 }
 
-/* line 77, D:/work/dat/conduit/sass/layout.scss */
 #right {
   width: 20vw;
   /* RC width */
@@ -155,7 +142,6 @@ body {
   overflow-x: visible;
 }
 
-/* line 88, D:/work/dat/conduit/sass/layout.scss */
 #header {
   /*DISPLAY*/
   float: left;
@@ -171,7 +157,6 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-/* line 107, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper:before {
   content: '';
   display: inline-block;
@@ -180,7 +165,6 @@ body {
   margin-right: -0.25em;
 }
 
-/* line 115, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -189,30 +173,25 @@ body {
   text-align: center;
 }
 
-/* line 123, D:/work/dat/conduit/sass/layout.scss */
 #header-content {
   display: inline-block;
   vertical-align: middle;
 }
 
 /*** IE Fix ***/
-/* line 129, D:/work/dat/conduit/sass/layout.scss */
 * html #left {
   left: 390px;
   /* RC fullwidth */
 }
 
-/* line 133, D:/work/dat/conduit/sass/layout.scss */
 #menu .caret {
   visibility: hidden;
 }
 
-/* line 137, D:/work/dat/conduit/sass/layout.scss */
 #menu .special-title {
   visibility: hidden;
 }
 
-/* line 141, D:/work/dat/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle:after {
   font-family: "Glyphicons Halflings";
   content: "\e236";
@@ -223,7 +202,6 @@ body {
   top: 3px;
 }
 
-/* line 152, D:/work/dat/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle {
   position: absolute;
   left: 10px;
@@ -241,20 +219,17 @@ body {
   box-shadow: none;
 }
 
-/* line 169, D:/work/dat/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle:hover {
   cursor: pointer;
   background-color: #007d71;
 }
 
-/* line 176, D:/work/dat/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle:active,
 #menu .btn.btn-default.dropdown-toggle:focus {
   cursor: pointer;
   background-color: #00635a;
 }
 
-/* line 182, D:/work/dat/conduit/sass/layout.scss */
 #menu .dropdown-menu.open {
   position: relative;
   top: 30px;
@@ -270,13 +245,11 @@ body {
   z-index: 101;
 }
 
-/* line 198, D:/work/dat/conduit/sass/layout.scss */
 #menu .dropdown-menu > li > div {
   padding: 3px 20px;
   color: #bdbdbd;
 }
 
-/* line 203, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper .form-control {
   box-shadow: none;
   -webkit-box-shadow: none;
@@ -286,7 +259,6 @@ body {
   background-color: transparent;
 }
 
-/* line 212, D:/work/dat/conduit/sass/layout.scss */
 #righoverflow-menut .nya-bs-select.btn-group .dropdown-menu {
   width: 100% !important;
   min-width: initial !important;
@@ -294,7 +266,6 @@ body {
 
 /*Light*/
 /*Dark*/
-/* line 6, D:/work/dat/conduit/sass/stream.scss */
 .stream {
   width: 100%;
   position: absolute;
@@ -312,32 +283,27 @@ body {
   background: transparent;
 }
 
-/* line 22, D:/work/dat/conduit/sass/stream.scss */
 .stream .card:last-child {
   border-radius: 0 0 2px 2px;
 }
 
-/* line 28, D:/work/dat/conduit/sass/stream.scss */
 #article-stream {
   top: 0px;
 }
 
 /*Buttons at bottom of a stream*/
-/* line 36, D:/work/dat/conduit/sass/stream.scss */
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 41, D:/work/dat/conduit/sass/stream.scss */
 .btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
   border-top-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 47, D:/work/dat/conduit/sass/stream.scss */
 .stream-action {
   width: 100%;
   position: absolute;
@@ -351,22 +317,19 @@ body {
   background-color: #009688;
 }
 
-/* line 61, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary {
   border: none;
   border-bottom: 2px solid #009688;
   color: rgba(255, 255, 255, 0.7);
-  border-radius: none;
+  border-radius: 0;
   box-shadow: none;
 }
 
-/* line 69, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active {
   color: #fff;
 }
 
-/* line 74, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active,
 .stream-action .btn-primary:focus,
@@ -381,13 +344,11 @@ body {
   box-shadow: none;
 }
 
-/* line 89, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn {
   height: 100%;
 }
 
 /*Feed*/
-/* line 97, D:/work/dat/conduit/sass/stream.scss */
 .fluid-container {
   width: auto;
   position: absolute;
@@ -403,7 +364,6 @@ body {
 }
 
 /*Book*/
-/* line 118, D:/work/dat/conduit/sass/stream.scss */
 .book {
   width: auto;
   top: 90px;
@@ -413,7 +373,6 @@ body {
   float: right;
 }
 
-/* line 130, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper {
   position: absolute;
   top: 10px;
@@ -427,14 +386,12 @@ body {
   z-index: 100;
 }
 
-/* line 146, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary {
   border: none;
   border-bottom: 2px solid #009688;
   box-shadow: none;
 }
 
-/* line 152, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary:active,
 #book-action-wrapper .btn-primary.active,
 #book-action-wrapper .btn-primary:focus,
@@ -449,7 +406,6 @@ body {
   box-shadow: none;
 }
 
-/* line 166, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .nya-bs-select {
   position: absolute;
   left: 0;
@@ -461,7 +417,6 @@ body {
   box-shadow: none;
 }
 
-/* line 179, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper nya-bs-select:active,
 #book-action-wrapper nya-bs-select.active,
 #book-action-wrapper nya-bs-select:focus,
@@ -476,7 +431,6 @@ body {
   box-shadow: none;
 }
 
-/* line 193, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .stream-action {
   position: absolute;
   width: 48px;
@@ -489,7 +443,6 @@ body {
   box-shadow: none;
 }
 
-/* line 205, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper #team-info {
   background: #757575 !important;
   position: relative;
@@ -506,15 +459,13 @@ body {
 
 /*Light*/
 /*Dark*/
-/* line 6, D:/work/dat/conduit/sass/filter.scss */
 .category-wrapper {
   display: inline-block;
   width: 100%;
-  overflow: show;
+  overflow: visible;
   clear: both;
 }
 
-/* line 13, D:/work/dat/conduit/sass/filter.scss */
 .category-wrapper .dropdown {
   width: 45% !important;
   min-width: 200px !important;
@@ -523,7 +474,6 @@ body {
   float: left !important;
 }
 
-/* line 21, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper {
   position: absolute;
   z-index: 100;
@@ -534,23 +484,19 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-/* line 32, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-group {
   margin-bottom: 0px;
 }
 
-/* line 36, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel {
   box-shadow: none;
 }
 
-/* line 40, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-default {
   border: none !important;
   border-radius: 0 !important;
 }
 
-/* line 44, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-heading {
   background: #757575 !important;
   height: 24px !important;
@@ -559,7 +505,6 @@ body {
   z-index: 99;
 }
 
-/* line 51, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-open .panel-heading {
   position: absolute;
   bottom: 0;
@@ -568,7 +513,6 @@ body {
   border-radius: 0px 0px 2px 2px;
 }
 
-/* line 58, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title {
   color: #fff !important;
   text-align: center !important;
@@ -576,12 +520,10 @@ body {
   padding: 5px 0;
 }
 
-/* line 64, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title a {
   color: #fff;
 }
 
-/* line 68, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-body {
   max-height: 40vh;
   overflow-y: scroll;
@@ -591,7 +533,6 @@ body {
 /*Article Card*/
 /*Light*/
 /*Dark*/
-/* line 17, D:/work/dat/conduit/sass/card.scss */
 .card {
   min-height: 7.564em;
   max-height: 7.564em;
@@ -611,12 +552,10 @@ body {
   margin: 0;
 }
 
-/* line 48, D:/work/dat/conduit/sass/card.scss */
 .card-header {
   height: 1.25em;
 }
 
-/* line 52, D:/work/dat/conduit/sass/card.scss */
 .card .subject {
   color: #bdbdbd;
   position: absolute;
@@ -626,7 +565,6 @@ body {
   font-size: .75em;
 }
 
-/* line 61, D:/work/dat/conduit/sass/card.scss */
 .card:hover {
   background: #f2f2f2;
   transition: box-shadow .25s ease-in-out;
@@ -635,12 +573,10 @@ body {
   cursor: pointer;
 }
 
-/* line 70, D:/work/dat/conduit/sass/card.scss */
 .card:hover .card-btn {
   visibility: visible;
 }
 
-/* line 74, D:/work/dat/conduit/sass/card.scss */
 .card .title {
   overflow: hidden;
   white-space: nowrap;
@@ -649,7 +585,6 @@ body {
   line-height: 1.5em;
 }
 
-/* line 83, D:/work/dat/conduit/sass/card.scss */
 .card .text {
   overflow: hidden;
   white-space: normal;
@@ -659,7 +594,6 @@ body {
   line-height: 1em;
 }
 
-/* line 94, D:/work/dat/conduit/sass/card.scss */
 .card .tag {
   font-size: .75em;
   line-height: 0.938em;
@@ -670,7 +604,6 @@ body {
   border: none;
 }
 
-/* line 105, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper {
   width: 70%;
   margin: 0.313em 0 0 0;
@@ -680,7 +613,6 @@ body {
   float: left;
 }
 
-/* line 114, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper-action {
   width: 33%;
   float: left;
@@ -690,7 +622,6 @@ body {
   background: inherit;
 }
 
-/* line 123, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper-action .action {
   background: none;
   border: none;
@@ -700,12 +631,10 @@ body {
   color: #009688;
 }
 
-/* line 132, D:/work/dat/conduit/sass/card.scss */
 .card #icon {
   float: left;
 }
 
-/* line 136, D:/work/dat/conduit/sass/card.scss */
 .card #date {
   width: 30%;
   margin: 0.313em 0 0 0;
@@ -715,7 +644,6 @@ body {
   float: right;
 }
 
-/* line 145, D:/work/dat/conduit/sass/card.scss */
 .card .card-btn {
   visibility: hidden;
   position: absolute;
@@ -727,7 +655,6 @@ body {
   /* For IE8 and earlier */
 }
 
-/* line 156, D:/work/dat/conduit/sass/card.scss */
 .card .card-btn:hover {
   opacity: 1;
   filter: alpha(opacity=100);
@@ -735,7 +662,6 @@ body {
   transition: opacity .2s ease-in-out;
 }
 
-/* line 162, D:/work/dat/conduit/sass/card.scss */
 .card.active {
   background: #d9d9d9;
   transition: box-shadow .25s ease-in-out;
@@ -746,54 +672,44 @@ body {
   z-index: 99;
 }
 
-/* line 172, D:/work/dat/conduit/sass/card.scss */
 .card.active:hover {
   background: #cccccc;
   transition: margin .25s ease-in-out;
 }
 
-/* line 178, D:/work/dat/conduit/sass/card.scss */
 .card.active .tag {
   color: #212121;
 }
 
-/* line 183, D:/work/dat/conduit/sass/card.scss */
 .read .title {
   color: #bdbdbd;
 }
 
-/* line 186, D:/work/dat/conduit/sass/card.scss */
 .read .text {
   color: #bdbdbd;
 }
 
-/* line 189, D:/work/dat/conduit/sass/card.scss */
 .read .tag {
   background: transparent;
   color: #bdbdbd;
 }
 
-/* line 196, D:/work/dat/conduit/sass/card.scss */
 .active-read .title {
   color: #717171;
 }
 
-/* line 199, D:/work/dat/conduit/sass/card.scss */
 .active-read .text {
   color: #717171;
 }
 
-/* line 202, D:/work/dat/conduit/sass/card.scss */
 .active-read .tag {
   color: #717171;
 }
 
-/* line 205, D:/work/dat/conduit/sass/card.scss */
 .active-read .subject {
   color: #717171;
 }
 
-/* line 210, D:/work/dat/conduit/sass/card.scss */
 .card.ng-hide:not(.ng-hide-animate) {
   /* These are just alternative ways of hiding an element */
   display: block !important;
@@ -811,7 +727,6 @@ body {
 /*Light*/
 /*Dark*/
 /*does not apply to all elements*/
-/* line 11, D:/work/dat/conduit/sass/viewer.scss */
 .article-view {
   position: absolute;
   top: 10px;
@@ -826,7 +741,6 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-/* line 28, D:/work/dat/conduit/sass/viewer.scss */
 #content-wrapper {
   position: absolute;
   top: 0;
@@ -836,7 +750,6 @@ body {
   overflow-y: auto;
 }
 
-/* line 37, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #subject {
   color: #bdbdbd;
   font-size: 12px;
@@ -847,7 +760,6 @@ body {
   text-align: center;
 }
 
-/* line 47, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit {
   visibility: visible;
   color: #212121;
@@ -856,38 +768,32 @@ body {
   clear: both;
 }
 
-/* line 54, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit:hover {
   background-color: #d1d1d1;
 }
 
-/* line 58, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text.edit-field {
   padding: 15px;
   height: 24em;
   margin-top: 5em;
 }
 
-/* line 64, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper {
   position: relative;
   margin-top: 8px;
   margin: 0 15px;
 }
 
-/* line 71, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .title {
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 76, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper .edit-field {
   line-height: 1.813em;
   height: 6em;
 }
 
-/* line 81, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper {
   position: relative;
   width: 100%;
@@ -899,7 +805,6 @@ body {
   clear: both;
 }
 
-/* line 91, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-right {
   position: absolute;
   top: 50%;
@@ -908,7 +813,6 @@ body {
   z-index: 100;
 }
 
-/* line 98, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-left {
   position: absolute;
   top: 50%;
@@ -917,7 +821,6 @@ body {
   z-index: 100;
 }
 
-/* line 107, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper::before {
   content: '';
   display: inline-block;
@@ -926,7 +829,6 @@ body {
   margin-right: -0.25em;
 }
 
-/* line 115, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow {
   background-color: #009688;
   width: 2.5em;
@@ -942,7 +844,6 @@ body {
   vertical-align: middle;
 }
 
-/* line 136, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow:hover {
   cursor: pointer;
   background-color: #00796b;
@@ -950,12 +851,10 @@ body {
   transition: box-shadow .25s ease-in-out;
 }
 
-/* line 144, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper .greyout {
   visibility: hidden;
 }
 
-/* line 148, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image {
   display: inline-block;
   margin: auto;
@@ -963,26 +862,22 @@ body {
   text-align: center;
 }
 
-/* line 155, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image .image {
   width: 100%;
   max-height: 50vh;
   vertical-align: middle;
 }
 
-/* line 161, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-load-error {
   color: #ff5252;
 }
 
-/* line 165, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text-wrapper {
   margin: 0 15px 15px 15px;
   position: relative;
   top: 30px;
 }
 
-/* line 171, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text {
   display: block;
   font-size: 1.125em;
@@ -991,19 +886,16 @@ body {
   white-space: pre-line;
 }
 
-/* line 179, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .edit-field {
   padding: 0 1vw;
   width: 100%;
 }
 
-/* line 184, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .editable-buttons {
   float: right;
   margin: 5px 0 75px 0;
 }
 
-/* line 189, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #id {
   color: #bdbdbd;
   font-size: 14px;
@@ -1013,12 +905,10 @@ body {
   bottom: 15px;
 }
 
-/* line 196, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #id a {
   color: #bdbdbd;
 }
 
-/* line 203, D:/work/dat/conduit/sass/viewer.scss */
 #action-area {
   position: absolute;
   right: 0;
@@ -1030,7 +920,6 @@ body {
   display: inline-block;
 }
 
-/* line 216, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn {
   height: 36px;
   background: transparent;
@@ -1040,23 +929,19 @@ body {
   font-weight: 700;
 }
 
-/* line 226, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-default {
   color: #212121;
 }
 
-/* line 230, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-default:hover,
 #action-area .btn-default:focus {
   background: rgba(33, 33, 33, 0.12);
 }
 
-/* line 235, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-primary {
   color: #009688;
 }
 
-/* line 239, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-primary:hover,
 #action-area .btn-primary:focus,
 #action-area .btn-primary:active,
@@ -1065,7 +950,6 @@ body {
   box-shadow: none;
 }
 
-/* line 247, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .dropdown-menu.open {
   position: relative;
   top: -350%;
@@ -1081,7 +965,6 @@ body {
   z-index: 101;
 }
 
-/* line 263, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-group.open .dropdown-toggle {
   width: 100% !important;
   min-width: initial !important;
@@ -1089,46 +972,38 @@ body {
   background: rgba(0, 150, 136, 0.12);
 }
 
-/* line 270, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation {
   position: absolute;
   left: 15px;
   bottom: 7px;
 }
 
-/* line 275, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination {
   margin: 0;
 }
 
-/* line 279, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination > .disabled > a {
   color: #bdbdbd;
 }
 
-/* line 283, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:first-child > a {
   width: auto !important;
   padding: 0px 5px !important;
 }
 
-/* line 287, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:first-child > a:hover {
   border-radius: 2px;
 }
 
-/* line 291, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:last-child > a {
   width: auto !important;
   padding: 0px 5px !important;
 }
 
-/* line 295, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:last-child > a:hover {
   border-radius: 2px;
 }
 
-/* line 301, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination > li > a {
   width: 2em;
   height: 2em;
@@ -1141,7 +1016,6 @@ body {
   color: #009688;
 }
 
-/* line 315, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination > .active > a {
   width: 2em;
   height: 2em;
@@ -1171,7 +1045,6 @@ body {
 #overflow-menu:hover {
 	background: lighten($colorGrey, 20%);
 }*/
-/* line 349, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-btn {
   position: absolute;
   top: 10px;
@@ -1188,19 +1061,16 @@ body {
   vertical-align: middle;
 }
 
-/* line 365, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .caret {
   visibility: hidden;
 }
 
-/* line 369, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:after {
   font-family: "Glyphicons Halflings";
   content: '\e235';
   margin-left: -.25em;
 }
 
-/* line 375, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle {
   position: absolute;
   top: 10px;
@@ -1220,20 +1090,17 @@ body {
   box-shadow: none;
 }
 
-/* line 395, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:hover {
   cursor: pointer;
   background-color: #f0f0f0;
 }
 
-/* line 400, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:active,
 #overflow-menu .btn.btn-default.dropdown-toggle:focus {
   cursor: pointer;
   background-color: #e3e3e3;
 }
 
-/* line 406, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .dropdown-menu.open {
   position: relative;
   top: 30px;
@@ -1253,7 +1120,6 @@ body {
     width: 100% !important;
     min-width: initial !important;
 }*/
-/* line 427, D:/work/dat/conduit/sass/viewer.scss */
 #content-wrapper .form-control {
   box-shadow: none;
   -webkit-box-shadow: none;
@@ -1263,37 +1129,31 @@ body {
   right: 0;
 }
 
-/* line 436, D:/work/dat/conduit/sass/viewer.scss */
 #content-wrapper .edit-field.form-control {
   width: 100% !important;
 }
 
 /*Light*/
 /*Dark*/
-/* line 3, D:/work/dat/conduit/sass/comments.scss */
 .all-comments-wrapper {
   max-height: 30vh;
   overflow-y: auto;
   margin-bottom: 10px;
 }
 
-/* line 8, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper {
   margin: 0 0 -10px 0;
 }
 
-/* line 12, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper .self {
   margin-right: 5px;
   text-align: right;
 }
 
-/* line 17, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper .info-wrapper .name {
   font-size: 1em;
 }
 
-/* line 22, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper .info-wrapper .time-stamp {
   font-size: .75em;
   color: #8f8f8f;
@@ -1301,14 +1161,12 @@ body {
 
 /*Light*/
 /*Dark*/
-/* line 3, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
 }
 
-/* line 8, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default:focus,
 .btn-default.focus {
   color: #333;
@@ -1316,14 +1174,12 @@ body {
   border-color: #8c8c8c;
 }
 
-/* line 14, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default:hover {
   color: #333;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
 
-/* line 19, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
@@ -1332,7 +1188,6 @@ body {
   border-color: #adadad;
 }
 
-/* line 26, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default:active:hover,
 .btn-default.active:hover,
 .open > .dropdown-toggle.btn-default:hover,
@@ -1347,14 +1202,12 @@ body {
   border-color: #8c8c8c;
 }
 
-/* line 39, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
   background-image: none;
 }
 
-/* line 44, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default.disabled:hover,
 .btn-default[disabled]:hover,
 fieldset[disabled] .btn-default:hover,
@@ -1368,21 +1221,18 @@ fieldset[disabled] .btn-default.focus {
   border-color: #ccc;
 }
 
-/* line 56, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default .badge {
   color: #fff;
   background-color: #333;
 }
 
 /*Primary buttons*/
-/* line 63, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary {
   color: #fff;
   background-color: #009688;
   border-color: #007d71;
 }
 
-/* line 68, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
@@ -1390,14 +1240,12 @@ fieldset[disabled] .btn-default.focus {
   border-color: #00635a;
 }
 
-/* line 74, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary:hover {
   color: #fff;
   background-color: #007d71;
   border-color: #00635a;
 }
 
-/* line 79, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
@@ -1405,7 +1253,6 @@ fieldset[disabled] .btn-default.focus {
   border-color: #004a43;
 }
 
-/* line 85, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary:active:hover,
 .btn-primary.active:hover,
 .open > .dropdown-toggle.btn-primary:hover,
@@ -1420,14 +1267,12 @@ fieldset[disabled] .btn-default.focus {
   border-color: #00302c;
 }
 
-/* line 98, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   background-image: none;
 }
 
-/* line 103, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary.disabled:hover,
 .btn-primary[disabled]:hover,
 fieldset[disabled] .btn-primary:hover,
@@ -1441,49 +1286,41 @@ fieldset[disabled] .btn-primary.focus {
   border-color: #00b09f;
 }
 
-/* line 115, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary .badge {
   color: #009688;
   background-color: #fff;
 }
 
 /*Navbar*/
-/* line 122, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default {
   background-color: #e5e5e5;
   border-color: #bdbdbd;
 }
 
-/* line 126, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-brand {
   color: #777;
 }
 
-/* line 129, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
   color: #5e5e5e;
   background-color: transparent;
 }
 
-/* line 134, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-text {
   color: #212121;
 }
 
-/* line 137, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > li > a {
   color: #777;
 }
 
-/* line 140, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #333;
   background-color: transparent;
 }
 
-/* line 145, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
@@ -1491,7 +1328,6 @@ fieldset[disabled] .btn-primary.focus {
   background-color: #e5e5e5;
 }
 
-/* line 151, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
 .navbar-default .navbar-nav > .disabled > a:focus {
@@ -1499,29 +1335,24 @@ fieldset[disabled] .btn-primary.focus {
   background-color: transparent;
 }
 
-/* line 157, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-toggle {
   border-color: #ddd;
 }
 
-/* line 160, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
   background-color: #ddd;
 }
 
-/* line 164, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #888;
 }
 
-/* line 167, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
   border-color: #e7e7e7;
 }
 
-/* line 171, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
@@ -1530,24 +1361,20 @@ fieldset[disabled] .btn-primary.focus {
 }
 
 @media (max-width: 767px) {
-  /* line 178, D:/work/dat/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #777;
   }
-  /* line 181, D:/work/dat/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #333;
     background-color: transparent;
   }
-  /* line 186, D:/work/dat/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555;
     background-color: #e7e7e7;
   }
-  /* line 192, D:/work/dat/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
@@ -1556,28 +1383,23 @@ fieldset[disabled] .btn-primary.focus {
   }
 }
 
-/* line 199, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-link {
   color: #777;
 }
 
-/* line 202, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-link:hover {
   color: #333;
 }
 
-/* line 205, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .btn-link {
   color: #777;
 }
 
-/* line 208, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .btn-link:hover,
 .navbar-default .btn-link:focus {
   color: #333;
 }
 
-/* line 212, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .btn-link[disabled]:hover,
 fieldset[disabled] .navbar-default .btn-link:hover,
 .navbar-default .btn-link[disabled]:focus,
@@ -1586,44 +1408,36 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 
 /* Panels */
-/* line 221, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel {
   background-color: #e5e5e5;
   border: 1px solid #bdbdbd;
 }
 
-/* line 225, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel a {
   color: #212121;
 }
 
-/* line 229, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-body {
   background-color: #f2f2f2;
 }
 
-/* line 232, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-heading {
   border-bottom: 1px solid transparent;
 }
 
-/* line 235, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-heading > .dropdown .dropdown-toggle {
   color: #212121;
 }
 
-/* line 238, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-title {
   color: #212121;
 }
 
-/* line 241, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-footer {
   background-color: #e5e5e5;
   border-top: 1px solid #bdbdbd;
 }
 
-/* line 245, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel > .panel-body + .table,
 .panel > .panel-body + .table-responsive,
 .panel > .table + .panel-body,
@@ -1631,59 +1445,49 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   border-top: 1px solid #bdbdbd;
 }
 
-/* line 251, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-group .panel-heading + .panel-collapse > .panel-body,
 .panel-group .panel-heading + .panel-collapse > .list-group {
   border-top: 1px solid #bdbdbd;
 }
 
-/* line 255, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-group .panel-footer {
   border-top: 0;
 }
 
-/* line 258, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-group .panel-footer + .panel-collapse .panel-body {
   border-bottom: 1px solid #bdbdbd;
 }
 
-/* line 261, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-default {
   color: #212121;
   border-color: #bdbdbd;
 }
 
-/* line 265, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-heading {
   color: #212121;
   background-color: #e5e5e5;
   border-color: #bdbdbd;
 }
 
-/* line 270, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #bdbdbd;
 }
 
-/* line 273, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-heading .badge {
   color: #f5f5f5;
   background-color: #333333;
 }
 
-/* line 277, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #bdbdbd;
 }
 
 /*FOcus color*/
-/* line 282, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 a:focus {
   /*outline: 2px auto $colorAccent;
   outline-offset: -2px;*/
 }
 
-/* line 287, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
@@ -1691,7 +1495,6 @@ input[type="checkbox"]:focus {
   outline-offset: -2px;
 }
 
-/* line 294, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus,
@@ -1702,7 +1505,6 @@ input[type="checkbox"]:focus {
   outline-offset: -2px;*/
 }
 
-/* line 304, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .form-control:focus {
   border-bottom: 2px solid #ff5252;
   outline: 0;
@@ -1711,13 +1513,11 @@ input[type="checkbox"]:focus {
 }
 
 /* Loading Bar*/
-/* line 312, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 #loading-bar .bar {
   background: #ff5252;
 }
 
 /* Fancy blur effect */
-/* line 317, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 #loading-bar .peg {
   -moz-box-shadow: #ff5252 1px 0 6px 1px;
   -ms-box-shadow: #ff5252 1px 0 6px 1px;
@@ -1725,29 +1525,24 @@ input[type="checkbox"]:focus {
   box-shadow: #ff5252 1px 0 6px 1px;
 }
 
-/* line 324, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 #loading-bar-spinner .spinner-icon {
   border-top-color: #ff5252;
   border-left-color: #ff5252;
 }
 
-/* line 1, D:/work/dat/conduit/sass/media.scss */
 .ico-text-1 {
   display: inline;
 }
 
-/* line 4, D:/work/dat/conduit/sass/media.scss */
 .ico-text-2 {
   display: inline;
 }
 
-/* line 7, D:/work/dat/conduit/sass/media.scss */
 .ico-text-3 {
   display: inline;
 }
 
 @media screen and (max-width: 1200px) {
-  /* line 13, D:/work/dat/conduit/sass/media.scss */
   .ico-text-1 {
     display: none;
     visibility: hidden;
@@ -1755,7 +1550,6 @@ input[type="checkbox"]:focus {
 }
 
 @media screen and (max-width: 1100px) {
-  /* line 21, D:/work/dat/conduit/sass/media.scss */
   .ico-text-2 {
     display: none;
     visibility: hidden;
@@ -1763,42 +1557,33 @@ input[type="checkbox"]:focus {
 }
 
 @media screen and (max-width: 800px) {
-  /* line 29, D:/work/dat/conduit/sass/media.scss */
   .ico-text-3 {
     display: none;
     visibility: hidden;
   }
-  /* line 34, D:/work/dat/conduit/sass/media.scss */
   .panel-title {
     text-align: center;
   }
-  /* line 39, D:/work/dat/conduit/sass/media.scss */
   .toolbox .nya-bs-select {
     width: 42px;
   }
-  /* line 41, D:/work/dat/conduit/sass/media.scss */
   .toolbox .nya-bs-select .dropdown-toggle {
     height: 36px;
   }
-  /* line 44, D:/work/dat/conduit/sass/media.scss */
   .toolbox .nya-bs-select .caret {
     display: none;
     visibility: hidden;
   }
-  /* line 51, D:/work/dat/conduit/sass/media.scss */
   .nya-bs-select {
     text-align: center;
   }
-  /* line 53, D:/work/dat/conduit/sass/media.scss */
   .nya-bs-select .dropdown-toggle {
     padding-right: 0px;
   }
-  /* line 56, D:/work/dat/conduit/sass/media.scss */
   .nya-bs-select .special-title, .nya-bs-select .filter-option {
     display: none;
     visibility: hidden;
   }
-  /* line 62, D:/work/dat/conduit/sass/media.scss */
   .special-title:before, .filter-option:before {
     visibility: visible;
     display: inline;
@@ -1811,7 +1596,6 @@ input[type="checkbox"]:focus {
 
 /*Light*/
 /*Dark*/
-/* line 5, D:/work/dat/conduit/sass/book-selector.scss */
 #right .btn.btn-default.dropdown-toggle {
   background-color: #009688;
   color: white;
@@ -1825,7 +1609,6 @@ input[type="checkbox"]:focus {
   z-index: 100;
 }
 
-/* line 23, D:/work/dat/conduit/sass/book-selector.scss */
 #right .dropdown-menu.open {
   position: relative;
   top: -20px;
@@ -1841,7 +1624,6 @@ input[type="checkbox"]:focus {
   z-index: 101;
 }
 
-/* line 39, D:/work/dat/conduit/sass/book-selector.scss */
 #right .nya-bs-select.btn-group .dropdown-menu {
   width: 100% !important;
   min-width: initial !important;
@@ -1849,7 +1631,6 @@ input[type="checkbox"]:focus {
 
 /*Light*/
 /*Dark*/
-/* line 5, D:/work/dat/conduit/sass/fab.scss */
 #fab {
   position: absolute;
   bottom: 15px;
@@ -1866,46 +1647,38 @@ input[type="checkbox"]:focus {
   padding: 16px;
 }
 
-/* line 25, D:/work/dat/conduit/sass/fab.scss */
 #fab:hover {
   transition: box-shadow .25s ease-in-out;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.12), 0 12px 12px 0 rgba(0, 0, 0, 0.24);
   cursor: pointer;
 }
 
-/* line 18, D:/work/dat/conduit/sass/style.scss */
 * {
   /*	border-radius: 2px !important;*/
 }
 
-/* line 22, D:/work/dat/conduit/sass/style.scss */
 .title {
   color: #212121;
 }
 
-/* line 26, D:/work/dat/conduit/sass/style.scss */
 .text {
   color: #212121;
 }
 
-/* line 30, D:/work/dat/conduit/sass/style.scss */
 .tag {
   color: #bdbdbd;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 35, D:/work/dat/conduit/sass/style.scss */
 #action {
   float: left;
   padding-top: .1em;
 }
 
-/* line 40, D:/work/dat/conduit/sass/style.scss */
 .pointer-on-hover:hover {
   cursor: pointer;
 }
 
-/* line 44, D:/work/dat/conduit/sass/style.scss */
 ::-webkit-scrollbar {
   width: 2px;
   /* remove scrollbar space */
@@ -1913,9 +1686,6 @@ input[type="checkbox"]:focus {
 }
 
 /* optional: show position indicator in accent color */
-/* line 49, D:/work/dat/conduit/sass/style.scss */
 ::-webkit-scrollbar-thumb {
   background: #ff5252;
 }
-
-/*# sourceMappingURL=../styles/style.map */

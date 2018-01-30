@@ -1,7 +1,6 @@
 /*Article Card*/
 /*Light*/
 /*Dark*/
-/* line 17, D:/work/dat/conduit/sass/card.scss */
 .card {
   min-height: 7.564em;
   max-height: 7.564em;
@@ -21,12 +20,10 @@
   margin: 0;
 }
 
-/* line 48, D:/work/dat/conduit/sass/card.scss */
 .card-header {
   height: 1.25em;
 }
 
-/* line 52, D:/work/dat/conduit/sass/card.scss */
 .card .subject {
   color: #bdbdbd;
   position: absolute;
@@ -36,7 +33,6 @@
   font-size: .75em;
 }
 
-/* line 61, D:/work/dat/conduit/sass/card.scss */
 .card:hover {
   background: #f2f2f2;
   transition: box-shadow .25s ease-in-out;
@@ -45,12 +41,10 @@
   cursor: pointer;
 }
 
-/* line 70, D:/work/dat/conduit/sass/card.scss */
 .card:hover .card-btn {
   visibility: visible;
 }
 
-/* line 74, D:/work/dat/conduit/sass/card.scss */
 .card .title {
   overflow: hidden;
   white-space: nowrap;
@@ -59,7 +53,6 @@
   line-height: 1.5em;
 }
 
-/* line 83, D:/work/dat/conduit/sass/card.scss */
 .card .text {
   overflow: hidden;
   white-space: normal;
@@ -69,7 +62,6 @@
   line-height: 1em;
 }
 
-/* line 94, D:/work/dat/conduit/sass/card.scss */
 .card .tag {
   font-size: .75em;
   line-height: 0.938em;
@@ -80,7 +72,6 @@
   border: none;
 }
 
-/* line 105, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper {
   width: 70%;
   margin: 0.313em 0 0 0;
@@ -90,7 +81,6 @@
   float: left;
 }
 
-/* line 114, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper-action {
   width: 33%;
   float: left;
@@ -100,7 +90,6 @@
   background: inherit;
 }
 
-/* line 123, D:/work/dat/conduit/sass/card.scss */
 .card #tag-wrapper-action .action {
   background: none;
   border: none;
@@ -110,12 +99,10 @@
   color: #009688;
 }
 
-/* line 132, D:/work/dat/conduit/sass/card.scss */
 .card #icon {
   float: left;
 }
 
-/* line 136, D:/work/dat/conduit/sass/card.scss */
 .card #date {
   width: 30%;
   margin: 0.313em 0 0 0;
@@ -125,7 +112,6 @@
   float: right;
 }
 
-/* line 145, D:/work/dat/conduit/sass/card.scss */
 .card .card-btn {
   visibility: hidden;
   position: absolute;
@@ -137,7 +123,6 @@
   /* For IE8 and earlier */
 }
 
-/* line 156, D:/work/dat/conduit/sass/card.scss */
 .card .card-btn:hover {
   opacity: 1;
   filter: alpha(opacity=100);
@@ -145,7 +130,6 @@
   transition: opacity .2s ease-in-out;
 }
 
-/* line 162, D:/work/dat/conduit/sass/card.scss */
 .card.active {
   background: #d9d9d9;
   transition: box-shadow .25s ease-in-out;
@@ -156,54 +140,44 @@
   z-index: 99;
 }
 
-/* line 172, D:/work/dat/conduit/sass/card.scss */
 .card.active:hover {
   background: #cccccc;
   transition: margin .25s ease-in-out;
 }
 
-/* line 178, D:/work/dat/conduit/sass/card.scss */
 .card.active .tag {
   color: #212121;
 }
 
-/* line 183, D:/work/dat/conduit/sass/card.scss */
 .read .title {
   color: #bdbdbd;
 }
 
-/* line 186, D:/work/dat/conduit/sass/card.scss */
 .read .text {
   color: #bdbdbd;
 }
 
-/* line 189, D:/work/dat/conduit/sass/card.scss */
 .read .tag {
   background: transparent;
   color: #bdbdbd;
 }
 
-/* line 196, D:/work/dat/conduit/sass/card.scss */
 .active-read .title {
   color: #717171;
 }
 
-/* line 199, D:/work/dat/conduit/sass/card.scss */
 .active-read .text {
   color: #717171;
 }
 
-/* line 202, D:/work/dat/conduit/sass/card.scss */
 .active-read .tag {
   color: #717171;
 }
 
-/* line 205, D:/work/dat/conduit/sass/card.scss */
 .active-read .subject {
   color: #717171;
 }
 
-/* line 210, D:/work/dat/conduit/sass/card.scss */
 .card.ng-hide:not(.ng-hide-animate) {
   /* These are just alternative ways of hiding an element */
   display: block !important;
@@ -216,5 +190,3 @@
   /*position: absolute;
   top: -9999px;*/
 }
-
-/*# sourceMappingURL=../styles/card.map */

@@ -2,7 +2,6 @@
 /*Light*/
 /*Dark*/
 /*does not apply to all elements*/
-/* line 11, D:/work/dat/conduit/sass/viewer.scss */
 .article-view {
   position: absolute;
   top: 10px;
@@ -17,7 +16,6 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-/* line 28, D:/work/dat/conduit/sass/viewer.scss */
 #content-wrapper {
   position: absolute;
   top: 0;
@@ -27,7 +25,6 @@
   overflow-y: auto;
 }
 
-/* line 37, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #subject {
   color: #bdbdbd;
   font-size: 12px;
@@ -38,7 +35,6 @@
   text-align: center;
 }
 
-/* line 47, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit {
   visibility: visible;
   color: #212121;
@@ -47,38 +43,32 @@
   clear: both;
 }
 
-/* line 54, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit:hover {
   background-color: #d1d1d1;
 }
 
-/* line 58, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text.edit-field {
   padding: 15px;
   height: 24em;
   margin-top: 5em;
 }
 
-/* line 64, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper {
   position: relative;
   margin-top: 8px;
   margin: 0 15px;
 }
 
-/* line 71, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .title {
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 76, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper .edit-field {
   line-height: 1.813em;
   height: 6em;
 }
 
-/* line 81, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper {
   position: relative;
   width: 100%;
@@ -90,7 +80,6 @@
   clear: both;
 }
 
-/* line 91, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-right {
   position: absolute;
   top: 50%;
@@ -99,7 +88,6 @@
   z-index: 100;
 }
 
-/* line 98, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-left {
   position: absolute;
   top: 50%;
@@ -108,7 +96,6 @@
   z-index: 100;
 }
 
-/* line 107, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper::before {
   content: '';
   display: inline-block;
@@ -117,7 +104,6 @@
   margin-right: -0.25em;
 }
 
-/* line 115, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow {
   background-color: #009688;
   width: 2.5em;
@@ -133,7 +119,6 @@
   vertical-align: middle;
 }
 
-/* line 136, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow:hover {
   cursor: pointer;
   background-color: #00796b;
@@ -141,12 +126,10 @@
   transition: box-shadow .25s ease-in-out;
 }
 
-/* line 144, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper .greyout {
   visibility: hidden;
 }
 
-/* line 148, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image {
   display: inline-block;
   margin: auto;
@@ -154,26 +137,22 @@
   text-align: center;
 }
 
-/* line 155, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image .image {
   width: 100%;
   max-height: 50vh;
   vertical-align: middle;
 }
 
-/* line 161, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-load-error {
   color: #ff5252;
 }
 
-/* line 165, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text-wrapper {
   margin: 0 15px 15px 15px;
   position: relative;
   top: 30px;
 }
 
-/* line 171, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text {
   display: block;
   font-size: 1.125em;
@@ -182,19 +161,16 @@
   white-space: pre-line;
 }
 
-/* line 179, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .edit-field {
   padding: 0 1vw;
   width: 100%;
 }
 
-/* line 184, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .editable-buttons {
   float: right;
   margin: 5px 0 75px 0;
 }
 
-/* line 189, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #id {
   color: #bdbdbd;
   font-size: 14px;
@@ -204,12 +180,10 @@
   bottom: 15px;
 }
 
-/* line 196, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #id a {
   color: #bdbdbd;
 }
 
-/* line 203, D:/work/dat/conduit/sass/viewer.scss */
 #action-area {
   position: absolute;
   right: 0;
@@ -221,7 +195,6 @@
   display: inline-block;
 }
 
-/* line 216, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn {
   height: 36px;
   background: transparent;
@@ -231,23 +204,19 @@
   font-weight: 700;
 }
 
-/* line 226, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-default {
   color: #212121;
 }
 
-/* line 230, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-default:hover,
 #action-area .btn-default:focus {
   background: rgba(33, 33, 33, 0.12);
 }
 
-/* line 235, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-primary {
   color: #009688;
 }
 
-/* line 239, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-primary:hover,
 #action-area .btn-primary:focus,
 #action-area .btn-primary:active,
@@ -256,7 +225,6 @@
   box-shadow: none;
 }
 
-/* line 247, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .dropdown-menu.open {
   position: relative;
   top: -350%;
@@ -272,7 +240,6 @@
   z-index: 101;
 }
 
-/* line 263, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-group.open .dropdown-toggle {
   width: 100% !important;
   min-width: initial !important;
@@ -280,46 +247,38 @@
   background: rgba(0, 150, 136, 0.12);
 }
 
-/* line 270, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation {
   position: absolute;
   left: 15px;
   bottom: 7px;
 }
 
-/* line 275, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination {
   margin: 0;
 }
 
-/* line 279, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination > .disabled > a {
   color: #bdbdbd;
 }
 
-/* line 283, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:first-child > a {
   width: auto !important;
   padding: 0px 5px !important;
 }
 
-/* line 287, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:first-child > a:hover {
   border-radius: 2px;
 }
 
-/* line 291, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:last-child > a {
   width: auto !important;
   padding: 0px 5px !important;
 }
 
-/* line 295, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:last-child > a:hover {
   border-radius: 2px;
 }
 
-/* line 301, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination > li > a {
   width: 2em;
   height: 2em;
@@ -332,7 +291,6 @@
   color: #009688;
 }
 
-/* line 315, D:/work/dat/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination > .active > a {
   width: 2em;
   height: 2em;
@@ -362,7 +320,6 @@
 #overflow-menu:hover {
 	background: lighten($colorGrey, 20%);
 }*/
-/* line 349, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-btn {
   position: absolute;
   top: 10px;
@@ -379,19 +336,16 @@
   vertical-align: middle;
 }
 
-/* line 365, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .caret {
   visibility: hidden;
 }
 
-/* line 369, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:after {
   font-family: "Glyphicons Halflings";
   content: '\e235';
   margin-left: -.25em;
 }
 
-/* line 375, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle {
   position: absolute;
   top: 10px;
@@ -411,20 +365,17 @@
   box-shadow: none;
 }
 
-/* line 395, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:hover {
   cursor: pointer;
   background-color: #f0f0f0;
 }
 
-/* line 400, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:active,
 #overflow-menu .btn.btn-default.dropdown-toggle:focus {
   cursor: pointer;
   background-color: #e3e3e3;
 }
 
-/* line 406, D:/work/dat/conduit/sass/viewer.scss */
 #overflow-menu .dropdown-menu.open {
   position: relative;
   top: 30px;
@@ -444,7 +395,6 @@
     width: 100% !important;
     min-width: initial !important;
 }*/
-/* line 427, D:/work/dat/conduit/sass/viewer.scss */
 #content-wrapper .form-control {
   box-shadow: none;
   -webkit-box-shadow: none;
@@ -454,9 +404,6 @@
   right: 0;
 }
 
-/* line 436, D:/work/dat/conduit/sass/viewer.scss */
 #content-wrapper .edit-field.form-control {
   width: 100% !important;
 }
-
-/*# sourceMappingURL=../styles/viewer.map */

@@ -1,20 +1,17 @@
 /*Layout*/
 /*Light*/
 /*Dark*/
-/* line 13, D:/work/dat/conduit/sass/layout.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 19, D:/work/dat/conduit/sass/layout.scss */
 html {
   font-size: 100% !important;
   font-family: 'SourceSansPro', sans-serif !important;
 }
 
-/* line 24, D:/work/dat/conduit/sass/layout.scss */
 body {
   min-width: 750px;
   /* 2x (LC fullwidth +
@@ -32,7 +29,6 @@ body {
   background-color: #f2f2f2;
 }
 
-/* line 42, D:/work/dat/conduit/sass/layout.scss */
 #container {
   position: fixed;
   padding-left: 25vw;
@@ -45,7 +41,6 @@ body {
   background: transparent;
 }
 
-/* line 52, D:/work/dat/conduit/sass/layout.scss */
 #container .column {
   position: relative;
   float: left;
@@ -53,7 +48,6 @@ body {
   background: inherit;
 }
 
-/* line 59, D:/work/dat/conduit/sass/layout.scss */
 #center {
   padding: 0;
   /* CC padding */
@@ -62,7 +56,6 @@ body {
   float: left;
 }
 
-/* line 66, D:/work/dat/conduit/sass/layout.scss */
 #left {
   width: 25vw;
   /* LC width */
@@ -76,7 +69,6 @@ body {
   display: inline-block;
 }
 
-/* line 77, D:/work/dat/conduit/sass/layout.scss */
 #right {
   width: 20vw;
   /* RC width */
@@ -91,7 +83,6 @@ body {
   overflow-x: visible;
 }
 
-/* line 88, D:/work/dat/conduit/sass/layout.scss */
 #header {
   /*DISPLAY*/
   float: left;
@@ -107,7 +98,6 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-/* line 107, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper:before {
   content: '';
   display: inline-block;
@@ -116,7 +106,6 @@ body {
   margin-right: -0.25em;
 }
 
-/* line 115, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -125,30 +114,25 @@ body {
   text-align: center;
 }
 
-/* line 123, D:/work/dat/conduit/sass/layout.scss */
 #header-content {
   display: inline-block;
   vertical-align: middle;
 }
 
 /*** IE Fix ***/
-/* line 129, D:/work/dat/conduit/sass/layout.scss */
 * html #left {
   left: 390px;
   /* RC fullwidth */
 }
 
-/* line 133, D:/work/dat/conduit/sass/layout.scss */
 #menu .caret {
   visibility: hidden;
 }
 
-/* line 137, D:/work/dat/conduit/sass/layout.scss */
 #menu .special-title {
   visibility: hidden;
 }
 
-/* line 141, D:/work/dat/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle:after {
   font-family: "Glyphicons Halflings";
   content: "\e236";
@@ -159,7 +143,6 @@ body {
   top: 3px;
 }
 
-/* line 152, D:/work/dat/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle {
   position: absolute;
   left: 10px;
@@ -177,20 +160,17 @@ body {
   box-shadow: none;
 }
 
-/* line 169, D:/work/dat/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle:hover {
   cursor: pointer;
   background-color: #007d71;
 }
 
-/* line 176, D:/work/dat/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle:active,
 #menu .btn.btn-default.dropdown-toggle:focus {
   cursor: pointer;
   background-color: #00635a;
 }
 
-/* line 182, D:/work/dat/conduit/sass/layout.scss */
 #menu .dropdown-menu.open {
   position: relative;
   top: 30px;
@@ -206,13 +186,11 @@ body {
   z-index: 101;
 }
 
-/* line 198, D:/work/dat/conduit/sass/layout.scss */
 #menu .dropdown-menu > li > div {
   padding: 3px 20px;
   color: #bdbdbd;
 }
 
-/* line 203, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper .form-control {
   box-shadow: none;
   -webkit-box-shadow: none;
@@ -222,10 +200,7 @@ body {
   background-color: transparent;
 }
 
-/* line 212, D:/work/dat/conduit/sass/layout.scss */
 #righoverflow-menut .nya-bs-select.btn-group .dropdown-menu {
   width: 100% !important;
   min-width: initial !important;
 }
-
-/*# sourceMappingURL=../styles/layout.map */

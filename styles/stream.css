@@ -1,6 +1,5 @@
 /*Light*/
 /*Dark*/
-/* line 6, D:/work/dat/conduit/sass/stream.scss */
 .stream {
   width: 100%;
   position: absolute;
@@ -18,32 +17,27 @@
   background: transparent;
 }
 
-/* line 22, D:/work/dat/conduit/sass/stream.scss */
 .stream .card:last-child {
   border-radius: 0 0 2px 2px;
 }
 
-/* line 28, D:/work/dat/conduit/sass/stream.scss */
 #article-stream {
   top: 0px;
 }
 
 /*Buttons at bottom of a stream*/
-/* line 36, D:/work/dat/conduit/sass/stream.scss */
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 41, D:/work/dat/conduit/sass/stream.scss */
 .btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
   border-top-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 47, D:/work/dat/conduit/sass/stream.scss */
 .stream-action {
   width: 100%;
   position: absolute;
@@ -57,22 +51,19 @@
   background-color: #009688;
 }
 
-/* line 61, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary {
   border: none;
   border-bottom: 2px solid #009688;
   color: rgba(255, 255, 255, 0.7);
-  border-radius: none;
+  border-radius: 0;
   box-shadow: none;
 }
 
-/* line 69, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active {
   color: #fff;
 }
 
-/* line 74, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active,
 .stream-action .btn-primary:focus,
@@ -87,13 +78,11 @@
   box-shadow: none;
 }
 
-/* line 89, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn {
   height: 100%;
 }
 
 /*Feed*/
-/* line 97, D:/work/dat/conduit/sass/stream.scss */
 .fluid-container {
   width: auto;
   position: absolute;
@@ -109,7 +98,6 @@
 }
 
 /*Book*/
-/* line 118, D:/work/dat/conduit/sass/stream.scss */
 .book {
   width: auto;
   top: 90px;
@@ -119,7 +107,6 @@
   float: right;
 }
 
-/* line 130, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper {
   position: absolute;
   top: 10px;
@@ -133,14 +120,12 @@
   z-index: 100;
 }
 
-/* line 146, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary {
   border: none;
   border-bottom: 2px solid #009688;
   box-shadow: none;
 }
 
-/* line 152, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary:active,
 #book-action-wrapper .btn-primary.active,
 #book-action-wrapper .btn-primary:focus,
@@ -155,7 +140,6 @@
   box-shadow: none;
 }
 
-/* line 166, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .nya-bs-select {
   position: absolute;
   left: 0;
@@ -167,7 +151,6 @@
   box-shadow: none;
 }
 
-/* line 179, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper nya-bs-select:active,
 #book-action-wrapper nya-bs-select.active,
 #book-action-wrapper nya-bs-select:focus,
@@ -182,7 +165,6 @@
   box-shadow: none;
 }
 
-/* line 193, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .stream-action {
   position: absolute;
   width: 48px;
@@ -195,7 +177,6 @@
   box-shadow: none;
 }
 
-/* line 205, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper #team-info {
   background: #757575 !important;
   position: relative;
@@ -209,5 +190,3 @@
   font-size: 12px;
   line-height: 24px;
 }
-
-/*# sourceMappingURL=../styles/stream.map */
