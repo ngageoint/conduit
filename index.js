@@ -112,7 +112,7 @@ app.get('/', rate.restricted, function(req, res, next) {
 				res.sendFile(path.join(__dirname, './', '', 'index.html'));
 			});
 		}).catch(function(res) {
-			audit.LOGIN(audit.FAILURE, user);
+			audit.LOGIN(audit.FAILURE, undefined);
 			res.status(403);
 			res.send("Access denied.");
 		});
@@ -180,8 +180,6 @@ app.post('/exportZip', rate.immediateRestricted, function(req, res, next) {
 app.get('/download', rate.immediateRestricted, function(req, res, next) {
 	var fileName = req.query.fileName;
 
-	var fileName = req.query.fileName;
-
 	if(fileName) {
 		var filePath = path.resolve(__dirname, 'server', 'export', 'temp', fileName)
 		res.status(200);
@@ -212,32 +210,7 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 			res.json(user);
 		});
 	}
-
-	return;
-
-	AUTH_CODE = req.query.code;
-	if(!AUTH_CODE)
-	{
-		res.status(400);
-		res.send('Authorization code required');
-		return;
-
-		AUTH_CODE = req.query.code;
-		if(!AUTH_CODE)
-		{
-			res.status(400);
-			res.send('Authorization code required');
-			return;
-		}
-		if(!users[AUTH_CODE]);
-		{
-			res.status(401);
-			res.send('Authorization code not valid.');
-			return;
-		}
-		res.status(200);
-		res.json(users[AUTH_CODE].info);
-	}
+	//This is where we'd use AUTH_CODE to get user info
 })
 
 /*=================
@@ -283,7 +256,7 @@ app.post('/select/articleOriginal', rate.immediate, function(req, res, next) {
 			res.status(200);
 			res.json(article);
 		}).catch(function(err) {
-			audit.ACCESS(audit.FAILURE, audit.OBJECT, 'article ' + article.id, req.session.user.id);
+			audit.ACCESS(audit.FAILURE, audit.OBJECT, 'article ' + req.body.article.id, req.session.user.id);
 		});
 });
 
