@@ -527,7 +527,7 @@ module.exports = {
                     return resolve(user);
                 }
                 else
-                    return reject('No results for user where id=' + id);
+                    return resolve(false);
             });
         });
     }

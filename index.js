@@ -200,11 +200,18 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 	
 	if(req.query.id) {
 		db.select.userById(req.query.id).then(function(user) {
-			if(!req.session.user) {
+			if(user === false) {
+				res.status(500);
+				res.json(undefined);
+				return;
+			} else {
 				req.session.user = user;
+				res.status(200);
+				res.json(user);
 			}
-			res.status(200);
-			res.json(user);
+		}).catch(function() {
+			res.status(500);
+			res.json(undefined);
 		});
 	}
 	//This is where we'd use AUTH_CODE to get user info

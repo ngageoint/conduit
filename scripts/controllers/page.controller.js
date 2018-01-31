@@ -1,6 +1,18 @@
-angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $rootScope, $filter, $timeout,
+angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $rootScope, $filter, $location, $timeout,
 ApiService, ArticlesService, AttributesService, BooksService, DataSourceService, FilterService, KeyboardService, UserService, ArrayTools, DateTools, __config) {
 	
+
+	/**
+	 * Wait for the user promise to resolve; will be inherited by child scopes.
+	 */
+	UserService.getUser().then( function(data) {
+		$scope.user = data;
+		if(typeof $scope.user.id === 'undefined') {
+			$location.path('create-account');
+		}
+	}).catch( function() {
+		$location.path('create-account');
+	});
 
 	$scope.discussPopoverOpen = false;
 
@@ -77,17 +89,6 @@ ApiService, ArticlesService, AttributesService, BooksService, DataSourceService,
 			$scope.selectedBook = $scope.books[0];
 	}).catch( function() {
 			/*no action needs to be taken*/
-	});
-
-	/**
-	 * Wait for the user promise to resolve; will be inherited by child scopes.
-	 */
-	UserService.getUser().then( function(data) {
-		$scope.user = data;
-	}).catch( function() {
-		$scope.user = {}
-		$scope.user.given_name = "Unknown user"
-		$scope.user.teamName = "Unkown team"
 	});
 	
 	//Card Activation
