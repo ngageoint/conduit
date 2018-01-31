@@ -41,7 +41,6 @@ $height:    $header-height +
     display: block;
 
     transition: all .25s ease-in-out !important;
-    transition: box-shadow .25s ease-in-out;
     transition: margin .25s ease-in-out;
 }
 
@@ -61,7 +60,6 @@ $height:    $header-height +
     .card:hover {
         @include material-shadow(2);
         background: darken($color-card-background, 5%);
-        transition: box-shadow .25s ease-in-out;
 
         z-index: 98;
         cursor: pointer;
@@ -162,7 +160,6 @@ $height:    $header-height +
     .card.active {
         @include material-shadow(3);
         background: darken($color-card-background, 15%);
-        transition: box-shadow .25s ease-in-out;
         transition: margin .25s ease-in-out;
         margin: 10px -5px 10px -5px;
         width: auto;

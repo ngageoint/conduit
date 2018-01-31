@@ -1,5 +1,16 @@
-/*Light*/
-/*Dark*/
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger,
+.btn-group {
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 .btn-default {
   color: #333;
   background-color: #fff;
