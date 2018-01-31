@@ -46,7 +46,7 @@
     text-align: center;
   }
   .nya-bs-select .dropdown-toggle {
-    padding-right: 0px;
+    padding-right: 0;
   }
   .nya-bs-select .special-title, .nya-bs-select .filter-option {
     display: none;
