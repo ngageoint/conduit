@@ -91,6 +91,7 @@
 
 .material-form.form-group .text-field input:active,
 .material-form.form-group .text-field input:focus {
+  padding: 0 0 7px 0;
   border-bottom: 2px solid #009688;
 }
 
