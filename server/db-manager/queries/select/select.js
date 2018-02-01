@@ -488,7 +488,6 @@ module.exports = {
         });
     },
     tagsByNameAndArticleId: function(name, articleId) {
-        
         return new Promise(function(resolve, reject) {
             const query = {
                 text: tools.readQueryFile(path.join(__dirname, 'SELECT_TAGS_BY_NAME_AND_ARTICLE_ID.sql')),
@@ -503,6 +502,23 @@ module.exports = {
                 }
                 else
                     return reject('No results for tagsByNameAndArticleId where name=' + name + " and articleId=" + articleId);
+            });
+        });
+    },
+    teams: function() {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'SELECT_TEAMS.sql'))
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                if(res && res.rows) {
+                    return resolve(res.rows);
+                }
+                else
+                    return resolve(false);
             });
         });
     },

@@ -1,0 +1,177 @@
+@import 'colors.scss';
+
+$card-padding: 16px;
+
+$input-padding-bottom: 8px;
+$input-margin-bottom: 8px;
+$input-font-size: 16px;
+
+$label-font-size: 12px;
+$label-margin-bottom: 12px;
+
+.material-form .dropdown-toggle {
+    width: 100%;
+
+    text-align: left;
+
+    .caret {
+        float: right;
+        margin-top: 8px;
+    }
+}
+
+.material-form .dropdown-toggle.btn {
+    border-radius: 0;
+    border-bottom: 	1px solid $color-grey;
+
+    font-size: $input-font-size;
+    color: $color-grey;
+    
+    padding-left: 0;
+    padding-right: 0; 
+}
+
+.material-form .dropdown-toggle.btn:active,
+.material-form .dropdown-toggle.btn:focus {
+    border-bottom: 	2px solid $color-primary;
+}
+
+
+
+.material-form .dropdown {
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 2px;
+
+    .item-selected {
+        color: $color-font;
+    }
+
+    label {
+        visibility: hidden;
+
+        height: $label-font-size;
+        font-size: $label-font-size;
+
+        position: absolute;
+        top: 0;
+
+        transition: all .25s ease-in-out;
+    }
+}
+
+.material-form .dropdown-menu {
+    right: 0;
+    left: 0;
+    border-radius: 2px;
+}
+
+.material-form  .btn,
+                .btn:active,
+                .btn:hover,
+                .btn:focus,
+                .btn-primary,
+                .btn-primary:active,
+                .btn-primary:hover,
+                .btn-primary:focus,
+                .btn-primary:active:hover,
+                .btn-primary:active.focus,
+                .open>.dropdown-toggle.btn-primary,
+                .open>.dropdown-toggle.btn-primary:hover,
+                .open>.dropdown-toggle.btn-primary:focus {
+    background: transparent;
+    color: $color-font;
+    border: none;
+    box-shadow: none;
+
+    font-size: $input-font-size;
+
+    height: $input-font-size + $input-padding-bottom;
+    margin: 0 0 $input-margin-bottom 0;
+    padding: 0 0 $input-padding-bottom 0;
+
+}
+
+.material-form.form-group .form-control {
+    border: none;
+    border-bottom: 	1px solid $color-grey;
+    border-radius: 0;
+    box-shadow: none;
+
+    font-size: $input-font-size;
+
+    height: $input-font-size + $input-padding-bottom;
+    margin: 0 0 $input-margin-bottom 0;
+    padding: 0 0 $input-padding-bottom 0;
+}
+
+.material-form.form-group .text-field {
+    margin-right: $card-padding;
+    margin-left: $card-padding;
+    margin-bottom: 16px;
+
+    position: relative;
+    padding-top: $label-margin-bottom + $label-font-size;
+
+    input:active,
+    input:focus {
+        border-bottom: 	2px solid $color-primary;
+    }
+}
+
+.text-field label {
+    position: absolute;
+    left: 0;
+    top: $label-margin-bottom + $label-font-size;
+    font-size: $input-font-size;
+    font-weight: normal;
+    color: $color-grey;
+
+    transition: all .25s ease-in-out;
+
+    pointer-events: none;     
+}
+
+.text-field label.with-text,
+.dropdown-label,
+.dropdown-label.with-text {
+    height: $label-font-size;
+    font-size: $label-font-size;
+
+    position: absolute;
+    top: 0;
+
+    transition: all .25s ease-in-out;
+}
+
+.dropdown-label {
+    visibility: hidden;
+}
+
+.dropdown-label.with-text {
+    visibility: visible;
+}
+
+.text-field input:active + label,
+.text-field input:focus + label,
+.text-field button:active + label,
+.text-field button:focus + label, {
+    color: $color-primary;
+    height: $label-font-size;
+    font-size: $label-font-size;
+
+    position: absolute;
+    top: 0;
+
+    transition: all .25s ease-in-out;
+}
+
+.hide {
+    opacity: 0;
+    transition: opacity .25s linear;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity .25s linear;
+}

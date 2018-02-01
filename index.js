@@ -338,6 +338,19 @@ app.get('/select/articleBlock', rate.frontloaded, function(req, res, next) {
 		});	
 });
 
+app.get('/select/teams', rate.frontloaded, function(req, res, next) {
+	db.select.teams().then(function(teams) {
+		if(teams === false) {
+			res.status(204).send();
+		} else {
+			res.status(200);
+			res.json(teams);
+		}
+	}).catch(function() {
+		res.status(500);
+	});
+});
+
 /*=================
    INSRET Endpoint 
  ==================*/

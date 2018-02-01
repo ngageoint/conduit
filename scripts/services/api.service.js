@@ -96,6 +96,12 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						});
 					});
 				});
+			},
+			teams: function() {
+				var query = '/select/teams'
+				return $http.get(query).then(function(res) {
+					return res.data;
+				})
 			}
 		},
 		insert : {
