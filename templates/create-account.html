@@ -3,7 +3,7 @@
 
     <div class="supporting-text">It looks like you haven't been here before. Let's get some info to get started.</div>
 
-    <div class="material-form form-group">
+    <form class="material-form form-group" ng-submit="createAccount()">
         <div class="row">
             <div class="material-input-field">
                 <input type="text" id="first" ng-model="first">
@@ -35,10 +35,10 @@
                 <label for="team-dropdown" class="with-text" ng-class="{'hide': !itemSelected, 'fade-in': itemSelected, active: teamDropdownFocus}">Team</label>
             </div>
         </div> 
-    </div>
+    </form>
 
     <div class="action-area">
-        <button type="button" class="material-btn flat primary" ng-class="{'disabled': !formComplete()}">
+        <button type="button" class="material-btn flat primary" ng-class="{'disabled': !formComplete()}" ng-click="createAccount()">
             CREATE ACCOUNT
         </button>
     </div>

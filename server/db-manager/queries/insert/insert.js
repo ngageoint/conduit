@@ -412,7 +412,7 @@ module.exports = {
                     return reject(err);
                 }
                 else
-                    return resolve(res);
+                    return resolve({id: res.rows[0].id});
             });
         });
     },

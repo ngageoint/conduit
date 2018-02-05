@@ -1,6 +1,13 @@
-angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $rootScope, $filter, $location, $timeout,
-ApiService, ArticlesService, AttributesService, BooksService, DataSourceService, FilterService, KeyboardService, UserService, ArrayTools, DateTools, __config) {
-	
+angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $rootScope, $route, $filter, $location, $timeout, $window,
+Reload, ApiService, ArticlesService, AttributesService, BooksService, DataSourceService, FilterService, KeyboardService, UserService, ArrayTools, DateTools, __config) {
+
+	//Reload.checkAndRun();
+
+	if(Reload.enabled()) {
+		Reload.setEnabled(false);
+		$window.location.reload();
+		$scope.$apply();
+	}
 
 	/**
 	 * Wait for the user promise to resolve; will be inherited by child scopes.

@@ -123,24 +123,7 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						});
 					});
 				});
-			},/*DEPRECIATED
-			articleFull: function(article) {
-				return new Promise(function(resolve, reject) {
-					return UserService.getUser().then(function(user) {
-						var data = {
-							article: article,
-							userId: user.id,
-							teamId: user.teamId
-						}
-
-						$http.post('/insert/articleFull', data).then(function(response) {
-							return resolve(response);
-						}).catch(function(err) {
-							return reject(err);
-						});
-					});
-				});
-			},*/
+			},
 			comment: function(comment, articleId) {
 				return new Promise(function(resolve, reject) {
 					return UserService.getUser().then(function(user) {
@@ -174,6 +157,22 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 						}).catch(function(err) {
 							return reject(err);
 						});
+					});
+				});
+			},
+			user: function(first, last, preferred, teamId) {
+				return new Promise(function(resolve, reject) {
+					var data = {
+						firstName: first,
+						lastName: last,
+						prefName: preferred,
+						teamId: teamId
+					}
+
+					$http.post('/insert/user', data).then(function(response) {
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
 					});
 				});
 			}
