@@ -13,7 +13,10 @@
 @import 'bootstrap-customization';
 @import 'media.scss';
 @import 'book-selector';
-@import 'fab';
+@import 'material-card';
+@import 'material-shadow';
+@import 'material-form';
+@import 'material-btn';
 
 .title {
     color: $color-font;

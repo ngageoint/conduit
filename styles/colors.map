@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "../sass/colors.css",
+	"sources": [
+		"../sass/colors.scss"
+	],
+	"sourcesContent": [
+		"        \n$dark: false;\n\n//*Light*/\n\n    $color-primary: \t\t\t\t#009688             !default;\n    $color-primary-500: \t\t\t#009688             !default;\n    $color-primary-700:             rgba(0,121,107,1)   !default;\n    $color-primary-contrast: \t\t#fff                !default;\n            \n    $color-accent:\t\t\t        #ff5252             !default;\n    $color-accent-contrast:\t        #fff                !default;\n\n    $color-font:\t\t\t\t\t    #212121             !default;\n    $color-grey: \t\t\t\t    #bdbdbd             !default;\n    $color-background:\t\t\t    #f2f2f2             !default;\n    $color-card-background:         #fff                !default;\n\n        \n//*Dark*/\n@if $dark == true {\n    $color-primary: \t\t\t\t#999;\n    $color-primary-contrast: \t\t#444;\n        \n    $color-accent:\t\t\t        #aaa;\n    $color-accent-contrast:\t        #444;\n\n    $color-font:\t\t\t\t\t#aaa;\n    $color-grey:\t\t\t\t    #888;\n    $color-background:\t\t\t    #222;\n}\n"
+	],
+	"mappings": "",
+	"names": []
+}

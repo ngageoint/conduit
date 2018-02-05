@@ -1,3 +1,4 @@
+/* line 6, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .category-wrapper {
   display: inline-block;
   width: 100%;
@@ -5,6 +6,7 @@
   clear: both;
 }
 
+/* line 13, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .category-wrapper .dropdown {
   width: 45% !important;
   min-width: 200px !important;
@@ -13,6 +15,7 @@
   float: left !important;
 }
 
+/* line 21, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -27,19 +30,23 @@
   right: 10px;
 }
 
+/* line 32, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-group {
   margin-bottom: 0;
 }
 
+/* line 36, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel {
   box-shadow: none;
 }
 
+/* line 40, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-default {
   border: none !important;
   border-radius: 0 !important;
 }
 
+/* line 44, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-heading {
   background: #757575 !important;
   height: 24px !important;
@@ -48,6 +55,7 @@
   z-index: 99;
 }
 
+/* line 51, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-open .panel-heading {
   position: absolute;
   bottom: 0;
@@ -56,6 +64,7 @@
   border-radius: 0 0 2px 2px;
 }
 
+/* line 58, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title {
   color: #fff !important;
   text-align: center !important;
@@ -63,12 +72,16 @@
   padding: 5px 0;
 }
 
+/* line 64, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title a {
   color: #fff;
 }
 
+/* line 68, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-body {
   max-height: 40vh;
   overflow-y: scroll;
   padding: 15px 15px 39px 15px;
 }
+
+/*# sourceMappingURL=../styles/filter.map */

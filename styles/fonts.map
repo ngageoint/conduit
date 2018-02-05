@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "../sass/fonts.css",
+	"sources": [
+		"../sass/fonts.scss"
+	],
+	"sourcesContent": [
+		"//Fonts\n\n@font-face {\n    font-family: 'Montserrat';\n    src: \tlocal('Montserrat-Regular.ttf')\n            url('../resources/fonts/montserrat/Montserrat-Regular.ttf')\t\t\n            format('truetype');\n}\n        \n@font-face {\n    font-family: 'Montserrat-Light';\n    src: \tlocal('Montserrat-Light.ttf')\n            url('../resources/fonts/montserrat/Montserrat-Light.ttf')\n            format('truetype');\n}\n        \n@font-face {\n    font-family: 'SourceSansPro';\n    src: \tlocal('SourceSansPro-Regular.ttf')\n            url('../resources/fonts/sourcesanspro/SourceSansPro-Regular.ttf')\n            format('truetype');\n}\n\n@font-face {\n    font-family: 'SourceSerifPro';\n    src: \tlocal('SourceSerifPro-Regular.ttf')\n            url('../resources/fonts/sourceserifpro/SourceSerifPro-Regular.ttf')\n            format('truetype');\n}\n\n@font-face {\n    font-family: 'Glyphicons-Halflings-Regular';\n    src: \turl('../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2')\tformat('embedded-opentype'),\n            url('../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2')\tformat('woff2'),\n            url('../packages/bootstrap/fonts/glyphicons-halflings-regular.woff')\tformat('woff'),\n            url('../packages/bootstrap/fonts/glyphicons-halflings-regular.ttf')\t\tformat('truetype');\n}\n"
+	],
+	"mappings": "AAEA,UAAU;EACN,WAAW,EAAE,YAAa;EAC1B,GAAG,EAAG,+BAAK,CACH,2DAAG,CACH,kBAAM;;;AAGlB,UAAU;EACN,WAAW,EAAE,kBAAmB;EAChC,GAAG,EAAG,6BAAK,CACH,yDAAG,CACH,kBAAM;;;AAGlB,UAAU;EACN,WAAW,EAAE,eAAgB;EAC7B,GAAG,EAAG,kCAAK,CACH,iEAAG,CACH,kBAAM;;;AAGlB,UAAU;EACN,WAAW,EAAE,gBAAiB;EAC9B,GAAG,EAAG,mCAAK,CACH,mEAAG,CACH,kBAAM;;;AAGlB,UAAU;EACN,WAAW,EAAE,8BAA+B;EAC5C,GAAG,EAAG,qEAAG,CAAmE,2BAAM,EAC1E,qEAAG,CAAmE,eAAM,EAC5E,oEAAG,CAAkE,cAAM,EAC3E,mEAAG,CAAkE,kBAAM",
+	"names": []
+}

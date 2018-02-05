@@ -5,21 +5,26 @@
 
     <div class="material-form form-group">
         <div class="row">
-            <div class="text-field">
-                <input type="text" class="form-control" id="first" ng-model="first">
+            <div class="material-input-field">
+                <input type="text" id="first" ng-model="first">
                 <label for="first" ng-class="{'with-text': first.length > 0}">First Name</label>
             </div>
         </div>
         <div class="row">
-                <div class="text-field">
-                    <input type="text" class="form-control" id="last" ng-model="last">
+                <div class="material-input-field">
+                    <input type="text" id="last" ng-model="last">
                     <label for="last" ng-class="{'with-text': last.length > 0}">Last Name</label>
                 </div>
             </div>
         <div class="row">
-            <div class="text-field">
-                <div class="btn-group col-xs-12" uib-dropdown keyboard-nav>
-                    <button id="team-dropdown" type="button" class="btn btn-primary" uib-dropdown-toggle ng-model="dropdownLabel" ng-class="{'item-selected': itemSelected}">
+            <div class="material-input-field">
+                <div class="btn-group" uib-dropdown keyboard-nav>
+                    <button     id="team-dropdown"
+                                type="button" class="btn btn-primary"
+                                uib-dropdown-toggle ng-model="dropdownLabel"
+                                ng-class="{'item-selected': itemSelected}"
+                                ng-focus="teamDropdownFocus = true"
+                                ng-blur="teamDropdownFocus = false">
                         {{dropdownLabel}}
                         <span class="caret"></span>
                     </button>
@@ -27,13 +32,14 @@
                         <li ng-repeat="team in teams" ng-click="teamSelected(team)" role="menuitem"><a href="">{{team.name}}</a></li>
                     </ul>
                 </div>
-                <label for="team-dropdown" class="with-text" ng-class="{'hide': !itemSelected, 'fade-in': itemSelected}">Team</label>
+                <label for="team-dropdown" class="with-text" ng-class="{'hide': !itemSelected, 'fade-in': itemSelected, active: teamDropdownFocus}">Team</label>
+            </div>
         </div> 
     </div>
 
     <div class="action-area">
-        <a href="/" class="card-action primary">
+        <button type="button" class="material-btn flat primary" ng-class="{'disabled': !formComplete()}">
             CREATE ACCOUNT
-        </a>
+        </button>
     </div>
 </div>

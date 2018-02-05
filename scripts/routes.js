@@ -1,4 +1,4 @@
-angular.module('conduit').config(function($routeProvider) {
+angular.module('conduit').config(function($routeProvider, $locationProvider) {
     $routeProvider
     .when("/", {
         templateUrl : "../templates/conduit.html"
@@ -6,4 +6,6 @@ angular.module('conduit').config(function($routeProvider) {
     .when("/create-account", {
         templateUrl : "../templates/create-account.html"
     });
+
+    $locationProvider.html5Mode(true);
 });

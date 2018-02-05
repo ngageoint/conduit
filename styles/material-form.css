@@ -1,13 +1,17 @@
+/* line 15, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle {
   width: 100%;
   text-align: left;
 }
 
+/* line 20, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle .caret {
   float: right;
   margin-top: 8px;
+  margin-right: 8px;
 }
 
+/* line 27, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle.btn {
   border-radius: 0;
   border-bottom: 1px solid #bdbdbd;
@@ -17,21 +21,28 @@
   padding-right: 0;
 }
 
+/* line 38, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle.btn:active,
 .material-form .dropdown-toggle.btn:focus {
   border-bottom: 2px solid #009688;
 }
 
+/* line 45, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown {
   padding-right: 0;
   padding-left: 0;
-  border-radius: 2px;
+  border-radius: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
+/* line 53, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown .item-selected {
   color: #212121;
 }
 
+/* line 57, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown label {
   visibility: hidden;
   height: 12px;
@@ -41,61 +52,71 @@
   transition: all .25s ease-in-out;
 }
 
+/* line 70, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown-menu {
-  right: 0;
-  left: 0;
+  right: -4px;
+  left: -4px;
+  top: 0;
   border-radius: 2px;
 }
 
+/* line 77, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .btn,
-.btn:active,
-.btn:hover,
-.btn:focus,
-.btn-primary,
-.btn-primary:active,
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active:hover,
-.btn-primary:active.focus,
-.open > .dropdown-toggle.btn-primary,
-.open > .dropdown-toggle.btn-primary:hover,
-.open > .dropdown-toggle.btn-primary:focus {
+.material-form .btn:active,
+.material-form .btn:hover,
+.material-form .btn:focus,
+.material-form .btn-primary,
+.material-form .btn-primary:active,
+.material-form .btn-primary:hover,
+.material-form .btn-primary:focus,
+.material-form .btn-primary:active:hover,
+.material-form .btn-primary:active.focus,
+.material-form .open > .dropdown-toggle.btn-primary,
+.material-form .open > .dropdown-toggle.btn-primary:hover,
+.material-form .open > .dropdown-toggle.btn-primary:focus {
   background: transparent;
   color: #212121;
   border: none;
   box-shadow: none;
   font-size: 16px;
-  height: 24px;
+  height: 28px;
   margin: 0 0 8px 0;
-  padding: 0 0 8px 0;
+  padding: 0 0 12px 0;
 }
 
-.material-form.form-group .form-control {
+/* line 103, /Users/scott/Documents/work/conduit/sass/material-form.scss */
+.material-form.form-group input {
   border: none;
   border-bottom: 1px solid #bdbdbd;
   border-radius: 0;
   box-shadow: none;
+  outline: none;
   font-size: 16px;
   height: 24px;
   margin: 0 0 8px 0;
   padding: 0 0 8px 0;
+  width: 100%;
 }
 
-.material-form.form-group .text-field {
+/* line 119, /Users/scott/Documents/work/conduit/sass/material-form.scss */
+.material-form.form-group .material-input-field {
   margin-right: 16px;
   margin-left: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   position: relative;
   padding-top: 24px;
+  height: 64px;
 }
 
-.material-form.form-group .text-field input:active,
-.material-form.form-group .text-field input:focus {
+/* line 129, /Users/scott/Documents/work/conduit/sass/material-form.scss */
+.material-form.form-group .material-input-field input:active,
+.material-form.form-group .material-input-field input:focus {
   padding: 0 0 7px 0;
   border-bottom: 2px solid #009688;
 }
 
-.text-field label {
+/* line 136, /Users/scott/Documents/work/conduit/sass/material-form.scss */
+.material-input-field label {
   position: absolute;
   left: 0;
   top: 24px;
@@ -106,7 +127,8 @@
   pointer-events: none;
 }
 
-.text-field label.with-text,
+/* line 149, /Users/scott/Documents/work/conduit/sass/material-form.scss */
+.material-input-field label.with-text,
 .dropdown-label,
 .dropdown-label.with-text {
   height: 12px;
@@ -116,18 +138,24 @@
   transition: all .25s ease-in-out;
 }
 
+/* line 161, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .dropdown-label {
   visibility: hidden;
 }
 
+/* line 165, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .dropdown-label.with-text {
   visibility: visible;
 }
 
-.text-field input:active + label,
-.text-field input:focus + label,
-.text-field button:active + label,
-.text-field button:focus + label {
+/* line 169, /Users/scott/Documents/work/conduit/sass/material-form.scss */
+.material-input-field input:active + label,
+.material-input-field input:focus + label,
+.material-input-field button:active + label,
+.material-input-field button:focus + label,
+.material-form .dropdown-toggle.btn:active + label,
+.material-form .dropdown-toggle.btn:focus + label,
+.material-form .dropdown.open + label {
   color: #009688;
   height: 12px;
   font-size: 12px;
@@ -136,12 +164,21 @@
   transition: all .25s ease-in-out;
 }
 
-.hide {
+/* line 186, /Users/scott/Documents/work/conduit/sass/material-form.scss */
+.material-form label.hide {
   opacity: 0;
   transition: opacity .25s linear;
 }
 
-.fade-in {
+/* line 191, /Users/scott/Documents/work/conduit/sass/material-form.scss */
+.material-form label.fade-in {
   opacity: 1;
   transition: opacity .25s linear;
 }
+
+/* line 196, /Users/scott/Documents/work/conduit/sass/material-form.scss */
+label.active {
+  color: #009688;
+}
+
+/*# sourceMappingURL=../styles/material-form.map */

@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "../sass/material-shadow.css",
+	"sources": [
+		"../sass/material-shadow.scss"
+	],
+	"sourcesContent": [
+		"@mixin material-shadow ($elevation) {\n    @if $elevation == 1 {\n        -moz-box-shadow:        0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);\n        -ms-box-shadow:         0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);\n        -webkit-box-shadow:     0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);\n        box-shadow:             0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);\n    } @else if $elevation == 2 {\n        -moz-box-shadow:        0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);\n        -ms-box-shadow:         0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);\n        -webkit-box-shadow:     0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);\n        box-shadow:             0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);\n    } @else if $elevation == 3 {\n        -moz-box-shadow:        0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);\n        -ms-box-shadow:         0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);\n        -webkit-box-shadow:     0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);\n        box-shadow:             0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);\n    } @else if $elevation == 4 {\n        -moz-box-shadow:        0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);\n        -ms-box-shadow:         0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);\n        -webkit-box-shadow:     0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);\n        box-shadow:             0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);\n    } @else if $elevation == 5 {\n        -moz-box-shadow:        0 19px 38px rgba(0,0,0,.3), 0 15px 12px rgba(0,0,0,.22);\n        -ms-box-shadow:         0 19px 38px rgba(0,0,0,.3), 0 15px 12px rgba(0,0,0,.22);\n        -webkit-box-shadow:     0 19px 38px rgba(0,0,0,.3), 0 15px 12px rgba(0,0,0,.22);\n        box-shadow:             0 19px 38px rgba(0,0,0,.3), 0 15px 12px rgba(0,0,0,.22);\n    } @else {\n        -moz-box-shadow: none;\n        -ms-box-shadow: none;\n        -webkit-box-shadow: none;\n        box-shadow: none;\n    }\n\n    transition: box-shadow .25s ease-in-out;\n}\n"
+	],
+	"mappings": "",
+	"names": []
+}

@@ -1,0 +1,55 @@
+@import 'colors.scss';
+@import 'material-shadow.scss';
+
+.material-btn.flat {
+    outline: none;
+    height: 36px;
+    margin: 8px;
+    font-size: 14px;
+    padding: 9px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 2px !important;
+    float: right;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.material-btn.flat:hover {
+    cursor: pointer;
+}
+
+.material-btn.flat.primary {
+    color: $color-primary
+}
+.material-btn.flat.primary:hover,
+.material-btn.flat.primary:focus {
+    background: rgba($color-primary, .12);
+}
+.material-btn.flat.primary:active {
+    background: rgba($color-primary, .40);
+}
+
+.material-btn.flat.default {
+    color: $color-font;
+}
+
+.material-btn.flat.default:hover,
+.material-btn.flat.default:focus {
+    background: rgba($color-font, .12);
+}
+.material-btn.flat.default:active {
+    background: rgba($color-font, .40);
+}
+
+.material-btn.flat.disabled {
+    color: rgba($color-font, .26);
+}
+.material-btn.flat.disabled:hover,
+.material-btn.flat.disabled:focus {
+    background: transparent;
+     cursor: auto;
+}
+.material-btn.flat.disabled:active {
+    background: transparent;
+}

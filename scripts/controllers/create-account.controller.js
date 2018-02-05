@@ -3,6 +3,7 @@ the subject line will require a bit of processing to enforce compliance. This pr
 is different for each network, so this makes it easy to manage*/
 
 angular.module('conduit.controllers').controller('CreateAccountCtrl', function($scope, ApiService) {			
+
 	$scope.teams = [{id: 2, name: "Sample Team", $$hashKey: "object:26"}];
 	
 	$scope.first = ''
@@ -10,8 +11,9 @@ angular.module('conduit.controllers').controller('CreateAccountCtrl', function($
 
 	$scope.selectedTeam = undefined;
 	$scope.itemSelected = false;
+	$scope.teamDropdownFocus = false;
 	if(typeof selectedTeam == 'undefined') {
-		$scope.dropdownLabel = 'Select a team to join'
+		$scope.dropdownLabel = 'Select a Team'
 	}
 
 	ApiService.select.teams().then(function(teams) {
@@ -22,5 +24,9 @@ angular.module('conduit.controllers').controller('CreateAccountCtrl', function($
 		$scope.selectedTeam = team;
 		$scope.dropdownLabel = team.name;
 		$scope.itemSelected = true;
+	}
+
+	$scope.formComplete = function() {
+		return (!(typeof $scope.first === 'undefined') && !(typeof $scope.first === 'undefined') && $scope.itemSelected)
 	}
 });

@@ -1,26 +1,33 @@
+/* line 5, /Users/scott/Documents/work/conduit/sass/links.scss */
 a:link {
   text-decoration: none;
   color: #ff5252;
 }
 
+/* line 10, /Users/scott/Documents/work/conduit/sass/links.scss */
 a:hover {
   text-decoration: underline;
   color: #ff1f1f;
 }
 
+/* line 15, /Users/scott/Documents/work/conduit/sass/links.scss */
 a:active {
   outline: 0;
   outline: none;
 }
 
+/* line 20, /Users/scott/Documents/work/conduit/sass/links.scss */
 a:visited {
   outline: 0;
   outline: none;
   color: #009688;
 }
 
+/* line 26, /Users/scott/Documents/work/conduit/sass/links.scss */
 a:focus {
   outline: 0;
   outline: none;
   text-decoration: underline;
 }
+
+/*# sourceMappingURL=../styles/links.map */
