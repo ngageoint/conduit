@@ -1,11 +1,9 @@
-/* line 4, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 10, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 body.material {
   position: fixed;
   left: 0;
@@ -20,7 +18,6 @@ body.material {
   background-color: #f2f2f2;
 }
 
-/* line 29, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 .material.card {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -34,19 +31,17 @@ body.material {
   background: #fff;
 }
 
-/* line 42, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 .material.card .primary-title {
   font-size: 24px;
   padding-bottom: 16px;
 }
 
-/* line 47, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 .material.card .supporting-text {
   font-size: 14px;
+  line-height: 20px;
   padding-bottom: 16px;
 }
 
-/* line 52, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 .material.card .action-area {
   height: 52px;
   margin: 0 -24px -24px -24px;
@@ -85,7 +80,6 @@ body.material {
     background: rgba($color-primary, .12);
 }*/
 @media only screen and (min-width: 480px) {
-  /* line 92, /Users/scott/Documents/work/conduit/sass/material-card.scss */
   .material.card {
     width: 80vw;
     margin-left: 10vw;
@@ -93,7 +87,6 @@ body.material {
 }
 
 @media only screen and (min-width: 768px) {
-  /* line 100, /Users/scott/Documents/work/conduit/sass/material-card.scss */
   .material.card {
     width: 60vw;
     margin-left: 20vw;
@@ -101,7 +94,6 @@ body.material {
 }
 
 @media only screen and (min-width: 992px) {
-  /* line 108, /Users/scott/Documents/work/conduit/sass/material-card.scss */
   .material.card {
     width: 50vw;
     margin-left: 25vw;
@@ -109,7 +101,6 @@ body.material {
 }
 
 @media only screen and (min-width: 1200px) {
-  /* line 116, /Users/scott/Documents/work/conduit/sass/material-card.scss */
   .material.card {
     width: 30vw;
     margin-left: 35vw;
@@ -117,11 +108,8 @@ body.material {
 }
 
 @media only screen and (min-width: 1600px) {
-  /* line 124, /Users/scott/Documents/work/conduit/sass/material-card.scss */
   .material.card {
     width: 20vw;
     margin-left: 40vw;
   }
 }
-
-/*# sourceMappingURL=../styles/material-card.map */

@@ -81,9 +81,7 @@ app.use(sso.authorizeSession);
 
 var users = {};
 
-/* GET home page. */
-app.get('/', rate.restricted, function(req, res, next) {
-
+var serveDefault = function(req, res, next) {
 	if(!authEnabled)
 	{
 		if(req.query.id) {
@@ -110,10 +108,22 @@ app.get('/', rate.restricted, function(req, res, next) {
 			}).catch(function(res) {
 				audit.LOGIN(audit.FAILURE, undefined);
 				res.status(403);
-				res.send("Access denied.");
+				res.sendFile(path.join(__dirname, './', 'public', 'html', 'unauthorized.html'));
 			});
 		}
 	}
+}
+
+/* GET home page. */
+app.get('/', rate.restricted, serveDefault, function(req, res, next) {
+
+});
+app.get('/create-account', rate.restricted, serveDefault, function(req, res, next) {
+
+});
+
+app.get('/unauthorized', rate.immediate, function(req, res, next) {
+	res.sendFile(path.join(__dirname, './', 'public', 'html', 'unauthorized.html'));
 });
 
 app.get('/unsupported', rate.immediate, function(req, res, next) {
