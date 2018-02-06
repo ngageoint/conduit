@@ -23,52 +23,44 @@
   src: url("../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2") format("embedded-opentype"), url("../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../packages/bootstrap/fonts/glyphicons-halflings-regular.woff") format("woff"), url("../packages/bootstrap/fonts/glyphicons-halflings-regular.ttf") format("truetype");
 }
 
-/* line 5, /Users/scott/Documents/work/conduit/sass/links.scss */
 a:link {
   text-decoration: none;
   color: #ff5252;
 }
 
-/* line 10, /Users/scott/Documents/work/conduit/sass/links.scss */
 a:hover {
   text-decoration: underline;
   color: #ff1f1f;
 }
 
-/* line 15, /Users/scott/Documents/work/conduit/sass/links.scss */
 a:active {
   outline: 0;
   outline: none;
 }
 
-/* line 20, /Users/scott/Documents/work/conduit/sass/links.scss */
 a:visited {
   outline: 0;
   outline: none;
   color: #009688;
 }
 
-/* line 26, /Users/scott/Documents/work/conduit/sass/links.scss */
 a:focus {
   outline: 0;
   outline: none;
   text-decoration: underline;
 }
 
-/* line 13, /Users/scott/Documents/work/conduit/sass/layout.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 19, /Users/scott/Documents/work/conduit/sass/layout.scss */
 html {
   font-size: 100% !important;
   font-family: 'SourceSansPro', sans-serif !important;
 }
 
-/* line 24, /Users/scott/Documents/work/conduit/sass/layout.scss */
 body {
   min-width: 750px;
   position: fixed;
@@ -84,7 +76,6 @@ body {
   background-color: #f2f2f2;
 }
 
-/* line 42, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #container {
   position: fixed;
   padding-left: 25vw;
@@ -95,7 +86,6 @@ body {
   background: transparent;
 }
 
-/* line 52, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #container .column {
   position: relative;
   float: left;
@@ -103,7 +93,6 @@ body {
   background: inherit;
 }
 
-/* line 59, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #center {
   padding: 0;
   width: 55vw;
@@ -111,7 +100,6 @@ body {
   float: left;
 }
 
-/* line 66, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #left {
   width: 25vw;
   padding: 0;
@@ -122,7 +110,6 @@ body {
   display: inline-block;
 }
 
-/* line 77, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #right {
   width: 20vw;
   padding: 0;
@@ -134,7 +121,6 @@ body {
   overflow-x: visible;
 }
 
-/* line 88, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #header {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -151,7 +137,6 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 106, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #header-content-wrapper:before {
   content: '';
   display: inline-block;
@@ -160,7 +145,6 @@ body {
   margin-right: -0.25em;
 }
 
-/* line 114, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #header-content-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -169,28 +153,23 @@ body {
   text-align: center;
 }
 
-/* line 122, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #header-content {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 127, /Users/scott/Documents/work/conduit/sass/layout.scss */
 * html #left {
   left: 390px;
 }
 
-/* line 131, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #menu .caret {
   visibility: hidden;
 }
 
-/* line 135, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #menu .special-title {
   visibility: hidden;
 }
 
-/* line 139, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle:after {
   font-family: 'Glyphicons Halflings';
   content: '\e236';
@@ -201,7 +180,6 @@ body {
   top: 3px;
 }
 
-/* line 150, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle {
   position: absolute;
   left: 10px;
@@ -216,20 +194,17 @@ body {
   border: none;
 }
 
-/* line 164, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle:hover {
   cursor: pointer;
   background-color: #007d71;
 }
 
-/* line 171, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #menu .btn.btn-default.dropdown-toggle:active,
 #menu .btn.btn-default.dropdown-toggle:focus {
   cursor: pointer;
   background-color: #00635a;
 }
 
-/* line 177, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #menu .dropdown-menu.open {
   -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -249,13 +224,11 @@ body {
   z-index: 101;
 }
 
-/* line 193, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #menu .dropdown-menu > li > div {
   padding: 3px 20px;
   color: #bdbdbd;
 }
 
-/* line 198, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #header-content-wrapper .form-control {
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -265,13 +238,11 @@ body {
   background-color: transparent;
 }
 
-/* line 207, /Users/scott/Documents/work/conduit/sass/layout.scss */
 #righoverflow-menut .nya-bs-select.btn-group .dropdown-menu {
   width: 100% !important;
   min-width: initial !important;
 }
 
-/* line 6, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .stream {
   width: 100%;
   position: absolute;
@@ -288,31 +259,26 @@ body {
   background: transparent;
 }
 
-/* line 22, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .stream .card:last-child {
   border-radius: 0 0 2px 2px;
 }
 
-/* line 28, /Users/scott/Documents/work/conduit/sass/stream.scss */
 #article-stream {
   top: 0px;
 }
 
-/* line 36, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 41, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
   border-top-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 47, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .stream-action {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -330,7 +296,6 @@ body {
   background-color: #009688;
 }
 
-/* line 61, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .stream-action .btn-primary {
   border: none;
   border-bottom: 2px solid #009688;
@@ -339,13 +304,11 @@ body {
   box-shadow: none;
 }
 
-/* line 69, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active {
   color: #fff;
 }
 
-/* line 74, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active,
 .stream-action .btn-primary:focus,
@@ -360,12 +323,10 @@ body {
   box-shadow: none;
 }
 
-/* line 89, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .stream-action .btn {
   height: 100%;
 }
 
-/* line 96, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .fluid-container {
   width: auto;
   position: absolute;
@@ -380,7 +341,6 @@ body {
   display: inline-block;
 }
 
-/* line 117, /Users/scott/Documents/work/conduit/sass/stream.scss */
 .book {
   width: auto;
   top: 90px;
@@ -390,7 +350,6 @@ body {
   float: right;
 }
 
-/* line 129, /Users/scott/Documents/work/conduit/sass/stream.scss */
 #book-action-wrapper {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -408,14 +367,12 @@ body {
   z-index: 100;
 }
 
-/* line 142, /Users/scott/Documents/work/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary {
   border: none;
   border-bottom: 2px solid #009688;
   box-shadow: none;
 }
 
-/* line 148, /Users/scott/Documents/work/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary:active,
 #book-action-wrapper .btn-primary.active,
 #book-action-wrapper .btn-primary:focus,
@@ -430,7 +387,6 @@ body {
   box-shadow: none;
 }
 
-/* line 162, /Users/scott/Documents/work/conduit/sass/stream.scss */
 #book-action-wrapper .nya-bs-select {
   position: absolute;
   left: 0;
@@ -442,7 +398,6 @@ body {
   box-shadow: none;
 }
 
-/* line 174, /Users/scott/Documents/work/conduit/sass/stream.scss */
 #book-action-wrapper nya-bs-select:active,
 #book-action-wrapper nya-bs-select.active,
 #book-action-wrapper nya-bs-select:focus,
@@ -457,7 +412,6 @@ body {
   box-shadow: none;
 }
 
-/* line 188, /Users/scott/Documents/work/conduit/sass/stream.scss */
 #book-action-wrapper .stream-action {
   position: absolute;
   width: 48px;
@@ -470,7 +424,6 @@ body {
   box-shadow: none;
 }
 
-/* line 200, /Users/scott/Documents/work/conduit/sass/stream.scss */
 #book-action-wrapper #team-info {
   background: #757575 !important;
   position: relative;
@@ -485,7 +438,6 @@ body {
   line-height: 24px;
 }
 
-/* line 6, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .category-wrapper {
   display: inline-block;
   width: 100%;
@@ -493,7 +445,6 @@ body {
   clear: both;
 }
 
-/* line 13, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .category-wrapper .dropdown {
   width: 45% !important;
   min-width: 200px !important;
@@ -502,7 +453,6 @@ body {
   float: left !important;
 }
 
-/* line 21, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -517,23 +467,19 @@ body {
   right: 10px;
 }
 
-/* line 32, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-group {
   margin-bottom: 0;
 }
 
-/* line 36, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel {
   box-shadow: none;
 }
 
-/* line 40, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-default {
   border: none !important;
   border-radius: 0 !important;
 }
 
-/* line 44, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-heading {
   background: #757575 !important;
   height: 24px !important;
@@ -542,7 +488,6 @@ body {
   z-index: 99;
 }
 
-/* line 51, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-open .panel-heading {
   position: absolute;
   bottom: 0;
@@ -551,7 +496,6 @@ body {
   border-radius: 0 0 2px 2px;
 }
 
-/* line 58, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title {
   color: #fff !important;
   text-align: center !important;
@@ -559,19 +503,16 @@ body {
   padding: 5px 0;
 }
 
-/* line 64, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title a {
   color: #fff;
 }
 
-/* line 68, /Users/scott/Documents/work/conduit/sass/filter.scss */
 .accordion-wrapper .panel-body {
   max-height: 40vh;
   overflow-y: scroll;
   padding: 15px 15px 39px 15px;
 }
 
-/* line 24, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -593,12 +534,10 @@ body {
   transition: margin .25s ease-in-out;
 }
 
-/* line 47, /Users/scott/Documents/work/conduit/sass/card.scss */
 .card-header {
   height: 1.25em;
 }
 
-/* line 51, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card .subject {
   color: #bdbdbd;
   position: absolute;
@@ -608,7 +547,6 @@ body {
   font-size: .75em;
 }
 
-/* line 60, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card:hover {
   -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -620,12 +558,10 @@ body {
   cursor: pointer;
 }
 
-/* line 68, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card:hover .card-btn {
   visibility: visible;
 }
 
-/* line 72, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card .title {
   overflow: hidden;
   white-space: nowrap;
@@ -634,7 +570,6 @@ body {
   line-height: 1.5em;
 }
 
-/* line 81, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card .text {
   overflow: hidden;
   white-space: normal;
@@ -644,7 +579,6 @@ body {
   line-height: 1em;
 }
 
-/* line 92, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card .tag {
   font-size: .75em;
   line-height: 0.938em;
@@ -655,7 +589,6 @@ body {
   border: none;
 }
 
-/* line 103, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card #tag-wrapper {
   width: 70%;
   margin: 0.313em 0 0 0;
@@ -665,7 +598,6 @@ body {
   float: left;
 }
 
-/* line 112, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card #tag-wrapper-action {
   width: 33%;
   float: left;
@@ -675,7 +607,6 @@ body {
   background: inherit;
 }
 
-/* line 121, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card #tag-wrapper-action .action {
   background: none;
   border: none;
@@ -685,12 +616,10 @@ body {
   color: #009688;
 }
 
-/* line 130, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card #icon {
   float: left;
 }
 
-/* line 134, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card #date {
   width: 30%;
   margin: 0.313em 0 0 0;
@@ -700,7 +629,6 @@ body {
   float: right;
 }
 
-/* line 143, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card .card-btn {
   visibility: hidden;
   position: absolute;
@@ -711,14 +639,12 @@ body {
   filter: alpha(opacity=40);
 }
 
-/* line 154, /Users/scott/Documents/work/conduit/sass/card.scss */
 .stream.card .card-btn:hover {
   opacity: 1;
   filter: alpha(opacity=100);
   transition: opacity .2s ease-in-out;
 }
 
-/* line 160, /Users/scott/Documents/work/conduit/sass/card.scss */
 .card.active {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -732,54 +658,44 @@ body {
   z-index: 99;
 }
 
-/* line 168, /Users/scott/Documents/work/conduit/sass/card.scss */
 .card.active:hover {
   background: #cccccc;
   transition: margin .25s ease-in-out;
 }
 
-/* line 173, /Users/scott/Documents/work/conduit/sass/card.scss */
 .card.active .tag {
   color: #212121;
 }
 
-/* line 178, /Users/scott/Documents/work/conduit/sass/card.scss */
 .read .title {
   color: #bdbdbd;
 }
 
-/* line 181, /Users/scott/Documents/work/conduit/sass/card.scss */
 .read .text {
   color: #bdbdbd;
 }
 
-/* line 184, /Users/scott/Documents/work/conduit/sass/card.scss */
 .read .tag {
   background: transparent;
   color: #bdbdbd;
 }
 
-/* line 191, /Users/scott/Documents/work/conduit/sass/card.scss */
 .active-read .title {
   color: #717171;
 }
 
-/* line 194, /Users/scott/Documents/work/conduit/sass/card.scss */
 .active-read .text {
   color: #717171;
 }
 
-/* line 197, /Users/scott/Documents/work/conduit/sass/card.scss */
 .active-read .tag {
   color: #717171;
 }
 
-/* line 200, /Users/scott/Documents/work/conduit/sass/card.scss */
 .active-read .subject {
   color: #717171;
 }
 
-/* line 205, /Users/scott/Documents/work/conduit/sass/card.scss */
 .card.ng-hide:not(.ng-hide-animate) {
   display: block !important;
   transition: all .25s ease-in-out !important;
@@ -790,7 +706,6 @@ body {
   border: none;
 }
 
-/* line 13, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -808,7 +723,6 @@ body {
   background: #fff;
 }
 
-/* line 28, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #content-wrapper {
   position: absolute;
   top: 0;
@@ -818,7 +732,6 @@ body {
   overflow-y: auto;
 }
 
-/* line 37, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #subject {
   color: #bdbdbd;
   font-size: 12px;
@@ -829,7 +742,6 @@ body {
   text-align: center;
 }
 
-/* line 47, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .btn-edit {
   visibility: visible;
   color: #212121;
@@ -838,38 +750,32 @@ body {
   clear: both;
 }
 
-/* line 54, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .btn-edit:hover {
   background-color: #d1d1d1;
 }
 
-/* line 58, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .text.edit-field {
   padding: 15px;
   height: 24em;
   margin-top: 5em;
 }
 
-/* line 64, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #title-wrapper {
   position: relative;
   margin-top: 8px;
   margin: 0 15px;
 }
 
-/* line 71, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .title {
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 76, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #title-wrapper .edit-field {
   line-height: 1.813em;
   height: 6em;
 }
 
-/* line 81, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-wrapper {
   position: relative;
   width: 100%;
@@ -881,7 +787,6 @@ body {
   clear: both;
 }
 
-/* line 91, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-right {
   position: absolute;
   top: 50%;
@@ -890,7 +795,6 @@ body {
   z-index: 100;
 }
 
-/* line 98, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-left {
   position: absolute;
   top: 50%;
@@ -899,7 +803,6 @@ body {
   z-index: 100;
 }
 
-/* line 107, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-wrapper::before {
   content: '';
   display: inline-block;
@@ -908,7 +811,6 @@ body {
   margin-right: -0.25em;
 }
 
-/* line 115, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow {
   -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -928,7 +830,6 @@ body {
   vertical-align: middle;
 }
 
-/* line 136, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow:hover {
   -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -940,12 +841,10 @@ body {
   transition: box-shadow .25s ease-in-out;
 }
 
-/* line 144, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-wrapper .greyout {
   visibility: hidden;
 }
 
-/* line 148, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .article-image {
   display: inline-block;
   margin: auto;
@@ -953,26 +852,22 @@ body {
   text-align: center;
 }
 
-/* line 155, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .article-image .image {
   width: 100%;
   max-height: 50vh;
   vertical-align: middle;
 }
 
-/* line 161, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #image-load-error {
   color: #ff5252;
 }
 
-/* line 165, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .text-wrapper {
   margin: 0 15px 15px 15px;
   position: relative;
   top: 30px;
 }
 
-/* line 171, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .text {
   display: block;
   font-size: 1.125em;
@@ -981,19 +876,16 @@ body {
   white-space: pre-line;
 }
 
-/* line 179, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .edit-field {
   padding: 0 1vw;
   width: 100%;
 }
 
-/* line 184, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view .editable-buttons {
   float: right;
   margin: 5px 0 75px 0;
 }
 
-/* line 189, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #id {
   color: #bdbdbd;
   font-size: 14px;
@@ -1003,12 +895,10 @@ body {
   bottom: 15px;
 }
 
-/* line 196, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 .article-view #id a {
   color: #bdbdbd;
 }
 
-/* line 203, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area {
   position: absolute;
   right: 0;
@@ -1020,7 +910,6 @@ body {
   display: inline-block;
 }
 
-/* line 216, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn {
   height: 36px;
   background: transparent;
@@ -1030,23 +919,19 @@ body {
   font-weight: 700;
 }
 
-/* line 226, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn-default {
   color: #212121;
 }
 
-/* line 230, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn-default:hover,
 #action-area .btn-default:focus {
   background: rgba(33, 33, 33, 0.12);
 }
 
-/* line 235, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn-primary {
   color: #009688;
 }
 
-/* line 239, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn-primary:hover,
 #action-area .btn-primary:focus,
 #action-area .btn-primary:active,
@@ -1055,7 +940,6 @@ body {
   box-shadow: none;
 }
 
-/* line 247, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .dropdown-menu.open {
   -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -1075,7 +959,6 @@ body {
   z-index: 101;
 }
 
-/* line 263, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area .btn-group.open .dropdown-toggle {
   width: 100% !important;
   min-width: initial !important;
@@ -1083,46 +966,38 @@ body {
   background: rgba(0, 150, 136, 0.12);
 }
 
-/* line 270, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area #version-pagniation {
   position: absolute;
   left: 15px;
   bottom: 7px;
 }
 
-/* line 275, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination {
   margin: 0;
 }
 
-/* line 279, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination > .disabled > a {
   color: #bdbdbd;
 }
 
-/* line 283, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:first-child > a {
   width: auto !important;
   padding: 0 5px !important;
 }
 
-/* line 287, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:first-child > a:hover {
   border-radius: 2px;
 }
 
-/* line 291, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:last-child > a {
   width: auto !important;
   padding: 0 5px !important;
 }
 
-/* line 295, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination-sm > li:last-child > a:hover {
   border-radius: 2px;
 }
 
-/* line 299, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination > li > a {
   width: 2em;
   height: 2em;
@@ -1135,7 +1010,6 @@ body {
   color: #009688;
 }
 
-/* line 313, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #action-area #version-pagniation .pagination > .active > a {
   width: 2em;
   height: 2em;
@@ -1147,7 +1021,6 @@ body {
   color: #fff;
 }
 
-/* line 328, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-btn {
   position: absolute;
   top: 10px;
@@ -1164,19 +1037,16 @@ body {
   vertical-align: middle;
 }
 
-/* line 344, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .caret {
   visibility: hidden;
 }
 
-/* line 348, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:after {
   font-family: 'Glyphicons Halflings';
   content: '\e235';
   margin-left: -.25em;
 }
 
-/* line 354, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle {
   position: absolute;
   top: 10px;
@@ -1196,20 +1066,17 @@ body {
   box-shadow: none;
 }
 
-/* line 374, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:hover {
   cursor: pointer;
   background-color: #f0f0f0;
 }
 
-/* line 379, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .btn.btn-default.dropdown-toggle:active,
 #overflow-menu .btn.btn-default.dropdown-toggle:focus {
   cursor: pointer;
   background-color: #e3e3e3;
 }
 
-/* line 385, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #overflow-menu .dropdown-menu.open {
   -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -1229,7 +1096,6 @@ body {
   z-index: 101;
 }
 
-/* line 401, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #content-wrapper .form-control {
   box-shadow: none;
   -webkit-box-shadow: none;
@@ -1239,41 +1105,34 @@ body {
   right: 0;
 }
 
-/* line 410, /Users/scott/Documents/work/conduit/sass/viewer.scss */
 #content-wrapper .edit-field.form-control {
   width: 100% !important;
 }
 
-/* line 3, /Users/scott/Documents/work/conduit/sass/comments.scss */
 .all-comments-wrapper {
   max-height: 30vh;
   overflow-y: auto;
   margin-bottom: 10px;
 }
 
-/* line 8, /Users/scott/Documents/work/conduit/sass/comments.scss */
 .comments-wrapper {
   margin: 0 0 -10px 0;
 }
 
-/* line 12, /Users/scott/Documents/work/conduit/sass/comments.scss */
 .comments-wrapper .self {
   margin-right: 5px;
   text-align: right;
 }
 
-/* line 17, /Users/scott/Documents/work/conduit/sass/comments.scss */
 .comments-wrapper .info-wrapper .name {
   font-size: 1em;
 }
 
-/* line 22, /Users/scott/Documents/work/conduit/sass/comments.scss */
 .comments-wrapper .info-wrapper .time-stamp {
   font-size: .75em;
   color: #8f8f8f;
 }
 
-/* line 3, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-default,
 .btn-primary,
 .btn-success,
@@ -1287,14 +1146,12 @@ body {
   box-shadow: none;
 }
 
-/* line 16, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-default {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
 }
 
-/* line 21, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-default:focus,
 .btn-default.focus {
   color: #333;
@@ -1302,14 +1159,12 @@ body {
   border-color: #8c8c8c;
 }
 
-/* line 27, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-default:hover {
   color: #333;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
 
-/* line 32, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
@@ -1318,7 +1173,6 @@ body {
   border-color: #adadad;
 }
 
-/* line 39, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-default:active:hover,
 .btn-default.active:hover,
 .open > .dropdown-toggle.btn-default:hover,
@@ -1333,14 +1187,12 @@ body {
   border-color: #8c8c8c;
 }
 
-/* line 52, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
   background-image: none;
 }
 
-/* line 57, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-default.disabled:hover,
 .btn-default[disabled]:hover,
 fieldset[disabled] .btn-default:hover,
@@ -1354,20 +1206,17 @@ fieldset[disabled] .btn-default.focus {
   border-color: #ccc;
 }
 
-/* line 69, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-default .badge {
   color: #fff;
   background-color: #333;
 }
 
-/* line 76, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-primary {
   color: #fff;
   background-color: #009688;
   border-color: #007d71;
 }
 
-/* line 81, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
@@ -1375,14 +1224,12 @@ fieldset[disabled] .btn-default.focus {
   border-color: #00635a;
 }
 
-/* line 87, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-primary:hover {
   color: #fff;
   background-color: #007d71;
   border-color: #00635a;
 }
 
-/* line 92, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
@@ -1390,7 +1237,6 @@ fieldset[disabled] .btn-default.focus {
   border-color: #004a43;
 }
 
-/* line 98, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-primary:active:hover,
 .btn-primary.active:hover,
 .open > .dropdown-toggle.btn-primary:hover,
@@ -1405,14 +1251,12 @@ fieldset[disabled] .btn-default.focus {
   border-color: #00302c;
 }
 
-/* line 111, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   background-image: none;
 }
 
-/* line 116, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-primary.disabled:hover,
 .btn-primary[disabled]:hover,
 fieldset[disabled] .btn-primary:hover,
@@ -1426,48 +1270,40 @@ fieldset[disabled] .btn-primary.focus {
   border-color: #00b09f;
 }
 
-/* line 128, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .btn-primary .badge {
   color: #009688;
   background-color: #fff;
 }
 
-/* line 135, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default {
   background-color: #e5e5e5;
   border-color: #bdbdbd;
 }
 
-/* line 139, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-brand {
   color: #777;
 }
 
-/* line 142, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
   color: #5e5e5e;
   background-color: transparent;
 }
 
-/* line 147, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-text {
   color: #212121;
 }
 
-/* line 150, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > li > a {
   color: #777;
 }
 
-/* line 153, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #333;
   background-color: transparent;
 }
 
-/* line 158, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
@@ -1475,7 +1311,6 @@ fieldset[disabled] .btn-primary.focus {
   background-color: #e5e5e5;
 }
 
-/* line 164, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
 .navbar-default .navbar-nav > .disabled > a:focus {
@@ -1483,29 +1318,24 @@ fieldset[disabled] .btn-primary.focus {
   background-color: transparent;
 }
 
-/* line 170, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-toggle {
   border-color: #ddd;
 }
 
-/* line 173, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
   background-color: #ddd;
 }
 
-/* line 177, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #888;
 }
 
-/* line 180, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
   border-color: #e7e7e7;
 }
 
-/* line 184, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
@@ -1514,24 +1344,20 @@ fieldset[disabled] .btn-primary.focus {
 }
 
 @media (max-width: 767px) {
-  /* line 191, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #777;
   }
-  /* line 194, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #333;
     background-color: transparent;
   }
-  /* line 199, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555;
     background-color: #e7e7e7;
   }
-  /* line 205, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
@@ -1540,28 +1366,23 @@ fieldset[disabled] .btn-primary.focus {
   }
 }
 
-/* line 212, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-link {
   color: #777;
 }
 
-/* line 215, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-link:hover {
   color: #333;
 }
 
-/* line 218, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .btn-link {
   color: #777;
 }
 
-/* line 221, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .btn-link:hover,
 .navbar-default .btn-link:focus {
   color: #333;
 }
 
-/* line 225, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .navbar-default .btn-link[disabled]:hover,
 fieldset[disabled] .navbar-default .btn-link:hover,
 .navbar-default .btn-link[disabled]:focus,
@@ -1569,44 +1390,36 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 
-/* line 234, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel {
   background-color: #e5e5e5;
   border: 1px solid #bdbdbd;
 }
 
-/* line 238, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel a {
   color: #212121;
 }
 
-/* line 242, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-body {
   background-color: #f2f2f2;
 }
 
-/* line 245, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-heading {
   border-bottom: 1px solid transparent;
 }
 
-/* line 248, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-heading > .dropdown .dropdown-toggle {
   color: #212121;
 }
 
-/* line 251, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-title {
   color: #212121;
 }
 
-/* line 254, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-footer {
   background-color: #e5e5e5;
   border-top: 1px solid #bdbdbd;
 }
 
-/* line 258, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel > .panel-body + .table,
 .panel > .panel-body + .table-responsive,
 .panel > .table + .panel-body,
@@ -1614,52 +1427,43 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   border-top: 1px solid #bdbdbd;
 }
 
-/* line 264, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-group .panel-heading + .panel-collapse > .panel-body,
 .panel-group .panel-heading + .panel-collapse > .list-group {
   border-top: 1px solid #bdbdbd;
 }
 
-/* line 268, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-group .panel-footer {
   border-top: 0;
 }
 
-/* line 271, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-group .panel-footer + .panel-collapse .panel-body {
   border-bottom: 1px solid #bdbdbd;
 }
 
-/* line 274, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-default {
   color: #212121;
   border-color: #bdbdbd;
 }
 
-/* line 278, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-heading {
   color: #212121;
   background-color: #e5e5e5;
   border-color: #bdbdbd;
 }
 
-/* line 283, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #bdbdbd;
 }
 
-/* line 286, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-heading .badge {
   color: #f5f5f5;
   background-color: #333333;
 }
 
-/* line 290, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #bdbdbd;
 }
 
-/* line 296, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 input[type='file']:focus,
 input[type='radio']:focus,
 input[type='checkbox']:focus {
@@ -1667,18 +1471,15 @@ input[type='checkbox']:focus {
   outline-offset: -2px;
 }
 
-/* line 303, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 .form-control:focus {
   border-bottom: 2px solid #ff5252;
   outline: 0;
 }
 
-/* line 309, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 #loading-bar .bar {
   background: #ff5252;
 }
 
-/* line 314, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 #loading-bar .peg {
   -moz-box-shadow: #ff5252 1px 0 6px 1px;
   -ms-box-shadow: #ff5252 1px 0 6px 1px;
@@ -1686,29 +1487,24 @@ input[type='checkbox']:focus {
   box-shadow: #ff5252 1px 0 6px 1px;
 }
 
-/* line 321, /Users/scott/Documents/work/conduit/sass/bootstrap-customization.scss */
 #loading-bar-spinner .spinner-icon {
   border-top-color: #ff5252;
   border-left-color: #ff5252;
 }
 
-/* line 1, /Users/scott/Documents/work/conduit/sass/media.scss */
 .ico-text-1 {
   display: inline;
 }
 
-/* line 4, /Users/scott/Documents/work/conduit/sass/media.scss */
 .ico-text-2 {
   display: inline;
 }
 
-/* line 7, /Users/scott/Documents/work/conduit/sass/media.scss */
 .ico-text-3 {
   display: inline;
 }
 
 @media screen and (max-width: 1200px) {
-  /* line 12, /Users/scott/Documents/work/conduit/sass/media.scss */
   .ico-text-1 {
     display: none;
     visibility: hidden;
@@ -1716,7 +1512,6 @@ input[type='checkbox']:focus {
 }
 
 @media screen and (max-width: 1100px) {
-  /* line 19, /Users/scott/Documents/work/conduit/sass/media.scss */
   .ico-text-2 {
     display: none;
     visibility: hidden;
@@ -1724,42 +1519,33 @@ input[type='checkbox']:focus {
 }
 
 @media screen and (max-width: 800px) {
-  /* line 26, /Users/scott/Documents/work/conduit/sass/media.scss */
   .ico-text-3 {
     display: none;
     visibility: hidden;
   }
-  /* line 31, /Users/scott/Documents/work/conduit/sass/media.scss */
   .panel-title {
     text-align: center;
   }
-  /* line 36, /Users/scott/Documents/work/conduit/sass/media.scss */
   .toolbox .nya-bs-select {
     width: 42px;
   }
-  /* line 38, /Users/scott/Documents/work/conduit/sass/media.scss */
   .toolbox .nya-bs-select .dropdown-toggle {
     height: 36px;
   }
-  /* line 41, /Users/scott/Documents/work/conduit/sass/media.scss */
   .toolbox .nya-bs-select .caret {
     display: none;
     visibility: hidden;
   }
-  /* line 48, /Users/scott/Documents/work/conduit/sass/media.scss */
   .nya-bs-select {
     text-align: center;
   }
-  /* line 50, /Users/scott/Documents/work/conduit/sass/media.scss */
   .nya-bs-select .dropdown-toggle {
     padding-right: 0;
   }
-  /* line 53, /Users/scott/Documents/work/conduit/sass/media.scss */
   .nya-bs-select .special-title, .nya-bs-select .filter-option {
     display: none;
     visibility: hidden;
   }
-  /* line 59, /Users/scott/Documents/work/conduit/sass/media.scss */
   .special-title:before, .filter-option:before {
     visibility: visible;
     display: inline;
@@ -1770,7 +1556,6 @@ input[type='checkbox']:focus {
   }
 }
 
-/* line 5, /Users/scott/Documents/work/conduit/sass/book-selector.scss */
 #right .btn.btn-default.dropdown-toggle {
   background-color: #009688;
   color: #fff;
@@ -1782,7 +1567,6 @@ input[type='checkbox']:focus {
   z-index: 100;
 }
 
-/* line 18, /Users/scott/Documents/work/conduit/sass/book-selector.scss */
 #right .dropdown-menu.open {
   -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -1802,20 +1586,17 @@ input[type='checkbox']:focus {
   z-index: 101;
 }
 
-/* line 34, /Users/scott/Documents/work/conduit/sass/book-selector.scss */
 #right .nya-bs-select.btn-group .dropdown-menu {
   width: 100% !important;
   min-width: initial !important;
 }
 
-/* line 4, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 10, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 body.material {
   position: fixed;
   left: 0;
@@ -1830,7 +1611,6 @@ body.material {
   background-color: #f2f2f2;
 }
 
-/* line 29, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 .material.card {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -1844,22 +1624,38 @@ body.material {
   background: #fff;
 }
 
-/* line 42, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 .material.card .primary-title {
   font-size: 24px;
   padding-bottom: 16px;
 }
 
-/* line 47, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 .material.card .supporting-text {
   font-size: 14px;
+  line-height: 20px;
   padding-bottom: 16px;
 }
 
-/* line 52, /Users/scott/Documents/work/conduit/sass/material-card.scss */
 .material.card .action-area {
   height: 52px;
   margin: 0 -24px -24px -24px;
+}
+
+.divider.full-bleed {
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #bdbdbd;
+}
+
+.divider.inset {
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(33, 33, 33, 0.12);
+}
+
+.material-card .expand-area {
+  padding-top: 16px;
 }
 
 /*
@@ -1895,7 +1691,6 @@ body.material {
     background: rgba($color-primary, .12);
 }*/
 @media only screen and (min-width: 480px) {
-  /* line 92, /Users/scott/Documents/work/conduit/sass/material-card.scss */
   .material.card {
     width: 80vw;
     margin-left: 10vw;
@@ -1903,7 +1698,6 @@ body.material {
 }
 
 @media only screen and (min-width: 768px) {
-  /* line 100, /Users/scott/Documents/work/conduit/sass/material-card.scss */
   .material.card {
     width: 60vw;
     margin-left: 20vw;
@@ -1911,7 +1705,6 @@ body.material {
 }
 
 @media only screen and (min-width: 992px) {
-  /* line 108, /Users/scott/Documents/work/conduit/sass/material-card.scss */
   .material.card {
     width: 50vw;
     margin-left: 25vw;
@@ -1919,7 +1712,6 @@ body.material {
 }
 
 @media only screen and (min-width: 1200px) {
-  /* line 116, /Users/scott/Documents/work/conduit/sass/material-card.scss */
   .material.card {
     width: 30vw;
     margin-left: 35vw;
@@ -1927,27 +1719,23 @@ body.material {
 }
 
 @media only screen and (min-width: 1600px) {
-  /* line 124, /Users/scott/Documents/work/conduit/sass/material-card.scss */
   .material.card {
     width: 20vw;
     margin-left: 40vw;
   }
 }
 
-/* line 15, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle {
   width: 100%;
   text-align: left;
 }
 
-/* line 20, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle .caret {
   float: right;
   margin-top: 8px;
   margin-right: 8px;
 }
 
-/* line 27, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle.btn {
   border-radius: 0;
   border-bottom: 1px solid #bdbdbd;
@@ -1957,13 +1745,11 @@ body.material {
   padding-right: 0;
 }
 
-/* line 38, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle.btn:active,
 .material-form .dropdown-toggle.btn:focus {
   border-bottom: 2px solid #009688;
 }
 
-/* line 45, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown {
   padding-right: 0;
   padding-left: 0;
@@ -1973,12 +1759,10 @@ body.material {
   right: 0;
 }
 
-/* line 53, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown .item-selected {
   color: #212121;
 }
 
-/* line 57, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown label {
   visibility: hidden;
   height: 12px;
@@ -1988,7 +1772,6 @@ body.material {
   transition: all .25s ease-in-out;
 }
 
-/* line 70, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .dropdown-menu {
   right: -4px;
   left: -4px;
@@ -1996,7 +1779,6 @@ body.material {
   border-radius: 2px;
 }
 
-/* line 77, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form .btn,
 .material-form .btn:active,
 .material-form .btn:hover,
@@ -2020,7 +1802,6 @@ body.material {
   padding: 0 0 12px 0;
 }
 
-/* line 103, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form.form-group input {
   border: none;
   border-bottom: 1px solid #bdbdbd;
@@ -2034,7 +1815,6 @@ body.material {
   width: 100%;
 }
 
-/* line 119, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form.form-group .material-input-field {
   margin-right: 16px;
   margin-left: 16px;
@@ -2044,14 +1824,12 @@ body.material {
   height: 64px;
 }
 
-/* line 129, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form.form-group .material-input-field input:active,
 .material-form.form-group .material-input-field input:focus {
   padding: 0 0 7px 0;
   border-bottom: 2px solid #009688;
 }
 
-/* line 136, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-input-field label {
   position: absolute;
   left: 0;
@@ -2063,7 +1841,6 @@ body.material {
   pointer-events: none;
 }
 
-/* line 149, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-input-field label.with-text,
 .dropdown-label,
 .dropdown-label.with-text {
@@ -2074,17 +1851,14 @@ body.material {
   transition: all .25s ease-in-out;
 }
 
-/* line 161, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .dropdown-label {
   visibility: hidden;
 }
 
-/* line 165, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .dropdown-label.with-text {
   visibility: visible;
 }
 
-/* line 169, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-input-field input:active + label,
 .material-input-field input:focus + label,
 .material-input-field button:active + label,
@@ -2100,24 +1874,20 @@ body.material {
   transition: all .25s ease-in-out;
 }
 
-/* line 186, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form label.hide {
   opacity: 0;
   transition: opacity .25s linear;
 }
 
-/* line 191, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 .material-form label.fade-in {
   opacity: 1;
   transition: opacity .25s linear;
 }
 
-/* line 196, /Users/scott/Documents/work/conduit/sass/material-form.scss */
 label.active {
   color: #009688;
 }
 
-/* line 4, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat {
   outline: none;
   height: 36px;
@@ -2132,95 +1902,76 @@ label.active {
   text-decoration: none;
 }
 
-/* line 18, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat:hover {
   cursor: pointer;
 }
 
-/* line 22, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat.primary {
   color: #009688;
 }
 
-/* line 25, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat.primary:hover,
 .material-btn.flat.primary:focus {
   background: rgba(0, 150, 136, 0.12);
 }
 
-/* line 29, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat.primary:active {
   background: rgba(0, 150, 136, 0.4);
 }
 
-/* line 33, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat.default {
   color: #212121;
 }
 
-/* line 37, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat.default:hover,
 .material-btn.flat.default:focus {
   background: rgba(33, 33, 33, 0.12);
 }
 
-/* line 41, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat.default:active {
   background: rgba(33, 33, 33, 0.4);
 }
 
-/* line 45, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat.disabled {
   color: rgba(33, 33, 33, 0.26);
 }
 
-/* line 48, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat.disabled:hover,
 .material-btn.flat.disabled:focus {
   background: transparent;
   cursor: auto;
 }
 
-/* line 53, /Users/scott/Documents/work/conduit/sass/material-btn.scss */
 .material-btn.flat.disabled:active {
   background: transparent;
 }
 
-/* line 21, /Users/scott/Documents/work/conduit/sass/style.scss */
 .title {
   color: #212121;
 }
 
-/* line 25, /Users/scott/Documents/work/conduit/sass/style.scss */
 .text {
   color: #212121;
 }
 
-/* line 29, /Users/scott/Documents/work/conduit/sass/style.scss */
 .tag {
   color: #bdbdbd;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 34, /Users/scott/Documents/work/conduit/sass/style.scss */
 #action {
   float: left;
   padding-top: .1em;
 }
 
-/* line 39, /Users/scott/Documents/work/conduit/sass/style.scss */
 .pointer-on-hover:hover {
   cursor: pointer;
 }
 
-/* line 43, /Users/scott/Documents/work/conduit/sass/style.scss */
 ::-webkit-scrollbar {
   width: 2px;
 }
 
-/* line 47, /Users/scott/Documents/work/conduit/sass/style.scss */
 ::-webkit-scrollbar-thumb {
   background: #ff5252;
 }
-
-/*# sourceMappingURL=../styles/style.map */

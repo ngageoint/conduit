@@ -47,6 +47,24 @@ body.material {
   margin: 0 -24px -24px -24px;
 }
 
+.divider.full-bleed {
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #bdbdbd;
+}
+
+.divider.inset {
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(33, 33, 33, 0.12);
+}
+
+.material-card .expand-area {
+  padding-top: 16px;
+}
+
 /*
 .material.card .card-action {
     height: 36px;

@@ -6,9 +6,11 @@ angular.module('conduit.controllers').controller('CreateAccountCtrl', function($
 
 	$scope.teams = [{id: 2, name: "Sample Team", $$hashKey: "object:26"}];
 	
-	$scope.first = ''
+	$scope.first = '';
 	$scope.last = '';
+	$scope.teamName = '';
 
+	$scope.createTeam = false;
 	$scope.selectedTeam = undefined;
 	$scope.itemSelected = false;
 	$scope.teamDropdownFocus = false;
@@ -21,25 +23,53 @@ angular.module('conduit.controllers').controller('CreateAccountCtrl', function($
 	});
 
 	$scope.teamSelected = function(team) {
+		$scope.createTeam = false;
 		$scope.selectedTeam = team;
 		$scope.dropdownLabel = team.name;
 		$scope.itemSelected = true;
 	}
 
+	$scope.enableCreateTeam = function (enabled) {
+		$scope.createTeam = enabled;
+		$scope.itemSelected = true;
+		if(enabled) {
+			$scope.dropdownLabel = 'Create New Team';
+		} else {
+			$scope.dropdownLabel = 'Select a Team'
+		}
+	}
+
 	$scope.formComplete = function() {
-		return (!(typeof $scope.first === 'undefined') && !(typeof $scope.last === 'undefined') && $scope.itemSelected)
+		if($scope.createTeam && $scope.teamName.length <= 0) {
+			return false;
+		} else {
+			return (($scope.first.length > 0) && ($scope.last.length > 0) && $scope.itemSelected);
+		}
 	}
 
 	$scope.createAccount = function() {
 		console.log('submit event');
 		if($scope.formComplete()) {
-			ApiService.insert.user($scope.first, $scope.last, $scope.first, $scope.selectedTeam.id).then(function(res) {
-				$location.$$search.id = res.data.id;
-				$timeout(function () {
-					Reload.setEnabled(true);
-					$location.path('/');
-				});
-			})
+			if($scope.createTeam) {
+				ApiService.insert.team($scope.teamName).then(function(team) {
+					ApiService.insert.user($scope.first, $scope.last, $scope.first, team.data.id).then(function(res) {
+						$location.$$search.id = res.data.id;
+						$timeout(function () {
+							Reload.setEnabled(true);
+							$location.path('/');
+						});
+					})
+				})
+			} else {
+				ApiService.insert.user($scope.first, $scope.last, $scope.first, $scope.selectedTeam.id).then(function(res) {
+					$location.$$search.id = res.data.id;
+					$timeout(function () {
+						Reload.setEnabled(true);
+						$location.path('/');
+					});
+				})
+			}
+			
 		}
 	}
 });

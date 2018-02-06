@@ -160,6 +160,19 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					});
 				});
 			},
+			team: function(name) {
+				return new Promise(function(resolve, reject) {
+					var data = {
+						name: name
+					}
+
+					$http.post('/insert/team', data).then(function(response) {
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				});
+			},
 			user: function(first, last, preferred, teamId) {
 				return new Promise(function(resolve, reject) {
 					var data = {

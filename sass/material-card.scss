@@ -54,6 +54,24 @@ $lr-padding: 24px;
     height: 52px;
     margin: 0 (-$lr-padding) (-$tb-padding) (-$lr-padding);
 }
+
+.divider.full-bleed {
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: $color-grey;
+}
+
+.divider.inset {
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba($color-font, .12);
+}
+
+.material-card .expand-area {
+    padding-top: 16px;
+}
 /*
 .material.card .card-action {
     height: 36px;

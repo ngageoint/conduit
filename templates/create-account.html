@@ -30,11 +30,21 @@
                     </button>
                     <ul uib-dropdown-menu role="menu" aria-labelledby="team-dropdown">
                         <li ng-repeat="team in teams" ng-click="teamSelected(team)" role="menuitem"><a href="">{{team.name}}</a></li>
+                        <li class="divider"></li>
+                        <li ng-click="enableCreateTeam(true)" role="menuitem"><a href="">Create New Team</a></li>
                     </ul>
                 </div>
                 <label for="team-dropdown" class="with-text" ng-class="{'hide': !itemSelected, 'fade-in': itemSelected, active: teamDropdownFocus}">Team</label>
             </div>
-        </div> 
+        </div>
+        <div class="row">
+            <div class="expand-area" ng-show="createTeam">
+                <div class="material-input-field">
+                    <input type="text" id="team-name" ng-model="teamName">
+                    <label for="team-name" ng-class="{'with-text': teamName.length > 0}">Team Name</label>
+                </div>
+            </div>
+        </div>
     </form>
 
     <div class="action-area">
