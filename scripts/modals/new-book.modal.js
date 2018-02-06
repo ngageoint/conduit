@@ -2,40 +2,44 @@
 the subject line will require a bit of processing to enforce compliance. This processing
 is different for each network, so this makes it easy to manage*/
 
-angular.module('conduit.modals').controller('NewBookModalCtrl', function($scope, $uibModal) {			
+angular.module('conduit.modals').controller('NewBookModalCtrl', function($scope, $uibModal, ApiService) {			
 
 	$scope.showForm = function () {
 		$scope.message = "Show Form Button Clicked";
 		console.log($scope.message);
 
-		var modalInstance = $uibModal.open({
+		var uibModalInstance = $uibModal.open({
 			templateUrl: '../templates/modals/new-book.modal.htm',
 			controller: ModalInstanceCtrl,
 			scope: $scope,
+			size: 'sm',
 			resolve: {
-				userForm: function () {
-					return $scope.userForm;
+				name: function () {
+					return $scope.name;
 				}
 			}
 		});
 
-		uibModalInstance.result.then(function (selectedItem) {
-			$scope.selected = selectedItem;
+		uibModalInstance.result.then(function (name) {
+			console.log('result')
+			console.log(name)
+			ApiService.insert.book(name).then(function(book) {
+				$scope.books.push({	id: book.data.id,
+									name: name});
+			});
 		}, function () {
 
 		});
 	};
 });
 
-var ModalInstanceCtrl = function ($scope, $uibModalInstance, userForm) {
-    $scope.form = {}
-    $scope.submitForm = function () {
-        if ($scope.form.userForm.$valid) {
-            console.log('user form is in scope');
-            $modalInstance.close('closed');
-        } else {
-            console.log('userform is not in scope');
-        }
+var ModalInstanceCtrl = function ($scope, $uibModalInstance, name) {
+	console.log('in modal instance controller');
+	$scope.addBook = function (name) {
+		//console.log('in add book');
+		//console.log(name);
+		
+		$uibModalInstance.close(name);
     };
 
     $scope.cancel = function () {

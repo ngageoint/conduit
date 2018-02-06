@@ -11,11 +11,11 @@
             </div>
         </div>
         <div class="row">
-                <div class="material-input-field">
-                    <input type="text" id="last" ng-model="last">
-                    <label for="last" ng-class="{'with-text': last.length > 0}">Last Name</label>
-                </div>
+            <div class="material-input-field">
+                <input type="text" id="last" ng-model="last">
+                <label for="last" ng-class="{'with-text': last.length > 0}">Last Name</label>
             </div>
+        </div>
         <div class="row">
             <div class="material-input-field">
                 <div class="btn-group" uib-dropdown keyboard-nav>
@@ -48,7 +48,7 @@
     </form>
 
     <div class="action-area">
-        <button type="button" class="material-btn flat primary" ng-class="{'disabled': !formComplete()}" ng-click="createAccount()">
+        <button type="submit" class="material-btn flat primary" ng-class="{'disabled': !formComplete()}" ng-click="createAccount()">
             CREATE ACCOUNT
         </button>
     </div>

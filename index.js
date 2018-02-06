@@ -460,6 +460,19 @@ app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next
 });
 
 app.post('/insert/team', rate.restricted, function(req, res, next) {
+	if(!req.body.name && !req.body.teamId) {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. name and teamId are required');
+		return;
+	}
+	db.insert.book(req.body.name, req.body.teamId).then(function(result) {
+		res.status(200);
+		res.json(result);
+	});
+});
+
+app.post('/insert/team', rate.restricted, function(req, res, next) {
 		if(!req.body.name) {
 			console.log('Missing params');
 			res.status(400);

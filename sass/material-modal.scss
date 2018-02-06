@@ -1,0 +1,57 @@
+@import 'colors.scss';
+@import 'material-shadow.scss';
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+$tb-padding: 24px;
+$lr-padding: 24px;
+
+.modal-content {	
+    
+    @include material-shadow(5);
+
+    margin-top: 15vh;
+
+    padding: $tb-padding $lr-padding;
+
+    border-radius: 2px;
+    background: $color-card-background;
+}
+
+.material-modal .primary-title {
+    font-size: 24px;
+    padding-bottom: 16px;
+}
+
+.material-modal .supporting-text {
+    font-size: 14px;
+    line-height: 20px;
+    padding-bottom: 16px;
+}
+
+.material-modal .action-area {
+    height: 52px;
+    margin: 0 (-$lr-padding) (-$tb-padding) (-$lr-padding);
+}
+
+.divider.full-bleed {
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: $color-grey;
+}
+
+.divider.inset {
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba($color-font, .12);
+}
+
+.material-modal .expand-area {
+    padding-top: 16px;
+}

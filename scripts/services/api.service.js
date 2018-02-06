@@ -124,6 +124,22 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 					});
 				});
 			},
+			book: function(name) {
+				return new Promise(function(resolve, reject) {
+					return UserService.getUser().then(function(user) {
+						var data = {
+							name: name,
+							teamId: user.teamId
+						}
+
+						$http.post('/insert/book', data).then(function(response) {
+							return resolve(response);
+						}).catch(function(err) {
+							return reject(err);
+						});
+					});
+				});
+			},
 			comment: function(comment, articleId) {
 				return new Promise(function(resolve, reject) {
 					return UserService.getUser().then(function(user) {
