@@ -18,6 +18,16 @@
   padding-right: 0;
 }
 
+.material-form .dropdown-toggle.btn:hover {
+  border-bottom: 2px solid rgba(33, 33, 33, 0.87);
+  color: rgba(33, 33, 33, 0.54);
+  transition: all .25s ease-in-out;
+}
+
+.material-form .dropdown .item-selected:hover {
+  color: #212121;
+}
+
 .material-form .dropdown-toggle.btn:active,
 .material-form .dropdown-toggle.btn:focus {
   border-bottom: 2px solid #009688;
@@ -97,6 +107,11 @@
   height: 64px;
 }
 
+.material-form.form-group .material-input-field input:hover {
+  border-bottom: 2px solid rgba(33, 33, 33, 0.87);
+  transition: all .25s ease-in-out;
+}
+
 .material-form.form-group .material-input-field input:active,
 .material-form.form-group .material-input-field input:focus {
   padding: 0 0 7px 0;
@@ -130,6 +145,11 @@
 
 .dropdown-label.with-text {
   visibility: visible;
+}
+
+.material-input-field input:hover + label {
+  color: rgba(33, 33, 33, 0.54);
+  transition: all .25s ease-in-out;
 }
 
 .material-input-field input:active + label,

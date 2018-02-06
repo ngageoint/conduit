@@ -35,12 +35,20 @@ $input-spacing-margin-bottom: 8px;
     padding-right: 0; 
 }
 
+.material-form .dropdown-toggle.btn:hover {
+    border-bottom: 	2px solid rgba($color-font, .87);
+    color: rgba($color-font, .54);
+    transition: all .25s ease-in-out;
+}
+
+.material-form .dropdown .item-selected:hover {
+    color: $color-font;   
+}
+
 .material-form .dropdown-toggle.btn:active,
 .material-form .dropdown-toggle.btn:focus {
     border-bottom: 	2px solid $color-primary;
 }
-
-
 
 .material-form .dropdown {
     padding-right: 0;
@@ -126,6 +134,11 @@ $input-spacing-margin-bottom: 8px;
 
     height: $input-spacing-padding-top + $input-font-size + $input-padding-bottom + $input-margin-bottom + $input-spacing-margin-bottom;
 
+    input:hover {
+        border-bottom: 	2px solid rgba($color-font, .87);
+        transition: all .25s ease-in-out;
+    }
+
     input:active,
     input:focus {
         padding: 0 0 ($input-padding-bottom - 1) 0;
@@ -164,6 +177,12 @@ $input-spacing-margin-bottom: 8px;
 
 .dropdown-label.with-text {
     visibility: visible;
+}
+
+
+.material-input-field input:hover + label {
+    color: rgba($color-font, .54);
+    transition: all .25s ease-in-out;
 }
 
 .material-input-field input:active + label,
