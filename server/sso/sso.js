@@ -95,8 +95,6 @@ var authorizeSession = function(req, res, next) {
     if(req.session.auth_token) {
         next();
     } else {
-       //res.status(403);
-       //res.send("Access denied");
        req.session.auth_token = 'token';
        next();
     }   

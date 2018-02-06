@@ -216,11 +216,18 @@
                                     DISCUSS<span ng-if="articles[currentIndex].comments.length > 0" class="badge" style="margin-left:4px">{{articles[currentIndex].comments.length}}</span>
                                 </div>
                         </button>
+                        <div ng-controller="NewBookModalCtrl">
+                            <button class="btn btn-default"
+                                    ng-click="showForm()"
+                                    title="MODAL">
+                                    <div class="ico-text-1">MODAL</div>
+                            </button>
+                        </div>
                         <button class="btn btn-default"
                                 ng-click="export(articles[currentIndex])"
                                 title="EXPORT">
                                 <div class="ico-text-1">EXPORT</div>
-                            </a>
+                        </button>
                     </div>
                     <!-- In edit view -->
                     <div id="edit-action-buttons" ng-show="articleEdit.$visible">

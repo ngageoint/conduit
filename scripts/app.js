@@ -34,7 +34,7 @@ if(typeof Promise == "undefined")
 
 angular.module('conduit', [
     /*custom modules*/
-    'conduit.directives', 'conduit.services', 'conduit.controllers', 'conduit.tools',
+    'conduit.directives', 'conduit.services', 'conduit.controllers', 'conduit.tools', 'conduit.modals',
     
     /*vendor modules*/
     'ngRoute', 'xeditable', 'ui.bootstrap','nya.bootstrap.select', 'angular-loading-bar', 'ngAnimate',

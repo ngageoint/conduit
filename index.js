@@ -90,7 +90,11 @@ var serveDefault = function(req, res, next) {
 				audit.LOGIN(audit.SUCCESS, user);
 				res.status(200);
 				res.sendFile(path.join(__dirname, './', '', 'index.html'));
+				return;
 			});
+		} else {
+			res.status(200);
+			res.sendFile(path.join(__dirname, './', '', 'index.html'));
 		}
 	} else {
 		//Authentication
