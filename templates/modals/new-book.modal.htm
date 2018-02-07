@@ -3,7 +3,7 @@
     <div class="primary-title">
         Add a Book
     </div>
-    <form class="material-form form-group" ng-submit="createAccount()">
+    <form class="material-form form-group" ng-submit="addBook(name)">
         <div class="row">
             <div class="material-input-field">
                 <input type="text" id="name" ng-model="name">
@@ -16,7 +16,7 @@
         <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 -->
     <div class="action-area">
-        <button type="button" class="material-btn flat primary" ng-class="{'disabled': false}" ng-click="addBook(name)">
+        <button type="button" class="material-btn flat primary" ng-class="{'disabled': name.length <= 0}" ng-click="addBook(name)">
             ADD BOOK
         </button>
         <button type="button" class="material-btn flat default" ng-click="cancel()">

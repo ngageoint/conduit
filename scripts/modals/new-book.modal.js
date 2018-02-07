@@ -2,7 +2,7 @@
 the subject line will require a bit of processing to enforce compliance. This processing
 is different for each network, so this makes it easy to manage*/
 
-angular.module('conduit.modals').controller('NewBookModalCtrl', function($scope, $uibModal, ApiService) {			
+angular.module('conduit.modals').controller('NewBookModalCtrl', function($scope, $uibModal, ApiService, BooksService) {			
 
 	$scope.showForm = function () {
 		$scope.message = "Show Form Button Clicked";
@@ -25,7 +25,7 @@ angular.module('conduit.modals').controller('NewBookModalCtrl', function($scope,
 			console.log(name)
 			ApiService.insert.book(name).then(function(book) {
 				$scope.books.push({	id: book.data.id,
-									name: name});
+							name: name});
 			});
 		}, function () {
 
@@ -34,13 +34,12 @@ angular.module('conduit.modals').controller('NewBookModalCtrl', function($scope,
 });
 
 var ModalInstanceCtrl = function ($scope, $uibModalInstance, name) {
-	console.log('in modal instance controller');
+	$scope.name = '';
 	$scope.addBook = function (name) {
-		//console.log('in add book');
-		//console.log(name);
-		
-		$uibModalInstance.close(name);
-    };
+		if($scope.name.length > 0) {
+			$uibModalInstance.close(name);
+		}
+	};
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');

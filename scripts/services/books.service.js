@@ -13,6 +13,6 @@ angular.module('conduit.services').factory('BooksService', function($http, UserS
 	};
 	
 	return {
-	  getBooks: getBooks
+		getBooks: getBooks
 	};
 });

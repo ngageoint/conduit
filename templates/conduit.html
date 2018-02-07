@@ -191,7 +191,7 @@
                             data-selected-text-format="count>2"
                             ng-model="articles[currentIndex].books"
                             ng-attr-title="ADD">
-                            <li nya-bs-option="book in ::books">
+                            <li nya-bs-option="book in books">
                                 <a>
                                     {{::book.name}}
                                     <span class="glyphicon glyphicon-ok check-mark"></span>
@@ -216,13 +216,6 @@
                                     DISCUSS<span ng-if="articles[currentIndex].comments.length > 0" class="badge" style="margin-left:4px">{{articles[currentIndex].comments.length}}</span>
                                 </div>
                         </button>
-                        <div ng-controller="NewBookModalCtrl">
-                            <button class="btn btn-default"
-                                    ng-click="showForm()"
-                                    title="MODAL">
-                                    <div class="ico-text-1">MODAL</div>
-                            </button>
-                        </div>
                         <button class="btn btn-default"
                                 ng-click="export(articles[currentIndex])"
                                 title="EXPORT">
@@ -413,14 +406,18 @@
                 <ol class="nya-bs-select dropdown form-control"
                     ng-model="selectedBook"
                     title="Choose a book...">
-                    <li nya-bs-option="book in ::books" title="{{::book.name}}">
+                    <li nya-bs-option="book in books" title="{{::book.name}}">
                         <a>
                             {{::book.name}}&nbsp;
                             <span ng-if="book.count" class="badge">{{book.count}}</span>
                             <span class="glyphicon glyphicon-ok check-mark"></span>
                         </a>
                     </li>
-                </ol>   
+                    <li class="divider"></li>
+                    <li ng-controller="NewBookModalCtrl" ng-click="showForm()" title="Add new book">
+                        <a><div class="ico-text-1">Add new book</div></a>
+                    </li>
+                </ol>
                 <button	type="button"
                         id="export-book"
                         class="btn btn-primary stream-action"
