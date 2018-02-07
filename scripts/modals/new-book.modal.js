@@ -42,6 +42,6 @@ var ModalInstanceCtrl = function ($scope, $uibModalInstance, name) {
 	};
 
     $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
+        $uibModalInstance.dismiss('cancel');
     };
 };
