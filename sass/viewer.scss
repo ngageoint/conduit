@@ -212,7 +212,7 @@ $pagination-size: 2em;
     border-top: 1px solid $color-grey;
     display: inline-block;
 }
-
+/*
 #action-area .btn {
     height: $act-btn-height;
     background: transparent;
@@ -242,8 +242,8 @@ $pagination-size: 2em;
 #action-area .btn-primary.open{
     background: rgba($color-primary, .12);
     box-shadow: none;
-}
-
+}*/
+/*
 #action-area .dropdown-menu.open {
     @include material-shadow(2);
     
@@ -258,6 +258,11 @@ $pagination-size: 2em;
     border: none;
     border-radius: 2px;
     z-index: 101;
+}*/
+
+#action-area .material-btn {
+    margin: 0;
+    font-weight: 700;
 }
 
 #action-area .btn-group.open .dropdown-toggle {
