@@ -537,7 +537,9 @@ module.exports = {
                         id: res.rows[0].id,
                         teamId: res.rows[0].team_id,
                         teamName: res.rows[0].name,
-                        given_name: res.rows[0].name_preferred
+                        given_name: res.rows[0].name_preferred,
+                        first_name: res.rows[0].name_first,
+                        last_name: res.rows[0].name_last,
                     }
                     
                     return resolve(user);

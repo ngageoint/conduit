@@ -48,3 +48,24 @@
 ::-webkit-scrollbar-thumb {
     background: $color-accent;
 }
+
+// Required if parent position is not absolute
+.center-parent {
+    position: relative;
+}
+
+.center-xy {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center-y {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}

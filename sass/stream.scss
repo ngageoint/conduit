@@ -211,5 +211,9 @@ $t-margin: 10px;
             font-size: 12px;
             line-height: $book-action-info-height;
         }
+
+        #export-book {
+            height: $book-action-btns-height;
+        }
     }
     

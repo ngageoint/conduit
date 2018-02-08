@@ -1,7 +1,7 @@
 .material-btn.flat {
   outline: none;
   height: 36px;
-  margin: 8px;
+  margin: 8px 8px 8px 0;
   font-size: 14px;
   padding: 9px 16px;
   background: transparent;

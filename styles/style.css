@@ -163,87 +163,6 @@ body {
   left: 390px;
 }
 
-/*
-#menu .caret {
-    visibility: hidden;
-}
-
-#menu .special-title {
-    visibility: hidden;
-}
-
-#menu .btn.btn-default.dropdown-toggle:after {
-    font-family: 'Glyphicons Halflings';
-    content: '\e236';
-    margin-left: -.25em;
-
-    position: absolute;
-    left: 14px;
-    font-size: 24px;
-    top: 3px;
-}
-
-#menu .btn.btn-default.dropdown-toggle {
-    position: absolute;
-    left: 10px;
-    z-index: 100;
-    background-color: #009688;
-    width: $header-height - ($header-padding * 2);
-    height: $header-height - ($header-padding * 2);
-    padding: 0;
-    font-size: 1em;
-    color: #fff;
-    text-align: center;
-    border: none;
-}
-
-    #menu .btn.btn-default.dropdown-toggle:hover {
-        cursor: pointer;
-        background-color: darken($color-primary, 5%);
-    }
-
-    
-
-    #menu .btn.btn-default.dropdown-toggle:active,
-    #menu .btn.btn-default.dropdown-toggle:focus {
-        cursor: pointer;
-        background-color: darken($color-primary, 10%);
-    }
-
-#menu .dropdown-menu.open {
-    @include material-shadow(2);
-    
-    position: relative;
-    top: 30px;
-    left: 15%;
-    height: auto;
-    width: 120%;
-    max-height: 25vh;
-    transition: max-height .25s ease-in-out;
-    background-color: #fff;
-    border: none;
-    border-radius: 2px;
-    z-index: 101;
-}
-
-#menu .dropdown-menu>li>div {
-    padding: 3px 20px;
-    color: $color-grey;
-}
-
-#header-content-wrapper .form-control {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    width: auto;
-    position: absolute;
-    left: 0;
-    background-color: transparent;
-}
-
-#righoverflow-menu .nya-bs-select.btn-group .dropdown-menu {
-    width: 100% !important;
-    min-width: initial !important;
-}*/
 #header .btn-group.dropdown,
 #header .btn-group.dropdown:active,
 #header .btn-group.dropdown:focus {
@@ -485,6 +404,10 @@ body {
   color: #fff;
   font-size: 12px;
   line-height: 24px;
+}
+
+#book-action-wrapper #export-book {
+  height: 56px;
 }
 
 .category-wrapper {
@@ -1960,7 +1883,7 @@ label.active {
 .material-btn.flat {
   outline: none;
   height: 36px;
-  margin: 8px;
+  margin: 8px 8px 8px 0;
   font-size: 14px;
   padding: 9px 16px;
   background: transparent;
@@ -2067,6 +1990,10 @@ label.active {
   padding-top: 16px;
 }
 
+.material-modal .material-btn.flat {
+  font-weight: bold;
+}
+
 .title {
   color: #212121;
 }
@@ -2095,4 +2022,24 @@ label.active {
 
 ::-webkit-scrollbar-thumb {
   background: #ff5252;
+}
+
+.center-parent {
+  position: relative;
+}
+
+.center-xy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.center-y {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }

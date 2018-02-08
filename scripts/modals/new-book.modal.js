@@ -12,7 +12,7 @@ angular.module('conduit.modals').controller('NewBookModalCtrl', function($scope,
 			templateUrl: '../templates/modals/new-book.modal.htm',
 			controller: ModalInstanceCtrl,
 			scope: $scope,
-			size: 'sm',
+			size: 'md',
 			resolve: {
 				name: function () {
 					return $scope.name;

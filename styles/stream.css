@@ -192,3 +192,7 @@
   font-size: 12px;
   line-height: 24px;
 }
+
+#book-action-wrapper #export-book {
+  height: 56px;
+}

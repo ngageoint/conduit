@@ -8,7 +8,7 @@
                     <button     id="profile-dropdown"
                                 type="button" class="menu-btn"
                                 uib-dropdown-toggle>
-                        {{user.given_name}}
+                        {{user.given_name + ' ' + user.last_name}}
                         <span class="caret"></span>
                     </button>
                     <ul uib-dropdown-menu role="menu" aria-labelledby="profile-dropdown">
@@ -424,7 +424,7 @@
                         class="btn btn-primary stream-action"
                         ng-click="exportBook(selectedBook)"
                         title="Export book">
-                        <span class="glyphicon glyphicon-save-file"></span> 
+                        <span class="glyphicon glyphicon-save-file center-xy"></span> 
                         <!--<div class="ico-text-3">&nbsp;Export book</div>-->
                 </button>
                 <div id="team-info">
