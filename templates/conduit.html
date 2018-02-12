@@ -199,18 +199,21 @@
                                 </a>
                             </li>
                         </ol>-->
-                        <div class="btn-group material-dropdown dropup pull-right" uib-dropdown keyboard-nav>
+                        <div    class="btn-group material-dropdown dropup pull-right" uib-dropdown keyboard-nav 
+                                ng-controller="MultiSelectCtrl"
+                                ng-click="verifySelected()"
+                                ng-dblclick="itemSelected(selectedBook)">
                             <button     id="profile-dropdown"
                                         type="button" class="material-btn flat primary bold"
                                         uib-dropdown-toggle>
-                                {{'ADD'}}
+                                {{label}}
                                 <span class="caret"></span>
                             </button>
-                            <ul uib-dropdown-menu role="menu">
+                            <ul uib-dropdown-menu role="menu" ng-click="$event.stopPropagation()">
                                 <li role="menuitem" ng-repeat="book in books">
-                                    <a href="">
+                                    <a href="" ng-click="itemSelected(book)">
                                         {{::book.name}}&nbsp;&nbsp;&nbsp;
-                                        <span class="glyphicon glyphicon-ok pull-right"></span>
+                                        <span class="glyphicon glyphicon-ok pull-right" ng-show="book.selected"></span>
                                     </a>
                                 </li>
                             </ul>

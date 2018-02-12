@@ -1,35 +1,6 @@
 angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $scope, $rootScope, $timeout, __config, ApiService, KeyboardService, ArrayTools, DateTools) {
 	
-	//If the current article has been added to or removed from a book, send out a broadcast to trigger a book update
-	$scope.$watch('articles[currentIndex].books', function(newBooks, oldBooks) {		
-		//Identify all of the books that existed before the $watch was triggered and still exist; add them to sameBooks
-		if(newBooks && oldBooks) {
-			var sameBooks = [];
-			for(var i = 0; i < newBooks.length; i++) {
-				for(var j = 0; j < oldBooks.length; j++) {
-					if(newBooks[i].id === oldBooks[j].id)
-						sameBooks.push(newBooks[i]);
-				}
-			}
-			//.parse/stringify() is added to protect from reference errors that would overwrite the article's books
-			let addedBooks = JSON.parse(JSON.stringify(newBooks));
-			//Find the difference between new(added)Books and the books that existed before the $watch and still exist
-			addedBooks = ArrayTools.diff(addedBooks, sameBooks);
-			if(addedBooks.length > 0) {
-				//Push these added books to the server
-				ApiService.insert.bookStatus(addedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {/*no action needs to be taken*/});
-			}
-
-			let removedBooks = JSON.parse(JSON.stringify(oldBooks));
-			//Find the difference between old(removed)Books and the books that existed before the $watch and still exist
-			removedBooks = ArrayTools.diff(removedBooks, sameBooks);
-			if(removedBooks.length > 0) {
-				//Delete these books from the server
-				ApiService.delete.bookStatus(removedBooks, $scope.articles[$scope.currentIndex].id).then(function(res) {/*no action needs to be taken*/})
-			};
-		}
-		$rootScope.$broadcast('update-book');
-	});
+	
 	
 	$scope.imageIndex = 0;
 
