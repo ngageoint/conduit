@@ -7,6 +7,7 @@ angular.module('conduit.controllers').controller('MultiSelectCtrl', function($sc
 	var model = [];
 	ArticlesService.getArticles().then(function() {
 		model = $scope.articles[$scope.currentIndex].books;
+		updateBook();
 		updateLabel();
 	});
 
@@ -60,7 +61,7 @@ angular.module('conduit.controllers').controller('MultiSelectCtrl', function($sc
 	$scope.$watch('articles[currentIndex].books', function (newVal, oldVal) {
 		model = $scope.articles[$scope.currentIndex].books;
 		updateLabel();
-	});
+	}, true);
 
 	$scope.itemSelected = function(book) {
 		let index = model.indexOf(book);
