@@ -202,16 +202,37 @@ $input-spacing-margin-bottom: 8px;
     transition: all .25s ease-in-out;
 }
 
-.material-form label.hide {
+.material-form label.hide,
+.material-input-field .counter.hide {
     opacity: 0;
     transition: opacity .25s linear;
 }
 
-.material-form label.fade-in {
+.material-form label.fade-in,
+.material-input-field .counter.fade-in {
     opacity: 1;
     transition: opacity .25s linear;
 }
 
 label.active {
     color: $color-primary;
+}
+
+.material-form label.error,
+.material-input-field .counter.error, {
+    color: red !important;
+    transition: all .25s ease-in-out;
+}
+
+.material-form.form-group input.error {
+    border-bottom-color: red !important;
+}
+
+.material-input-field .counter {
+    color: $color-grey;
+    height: $label-font-size;
+    font-size: $label-font-size;
+    float: right;
+
+    transition: all .25s ease-in-out;
 }

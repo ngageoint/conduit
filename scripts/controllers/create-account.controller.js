@@ -10,6 +10,10 @@ angular.module('conduit.controllers').controller('CreateAccountCtrl', function($
 	$scope.last = '';
 	$scope.teamName = '';
 
+	$scope.fieldLimit = 64;
+	$scope.showCounterAt = $scope.fieldLimit * .75;
+	console.log($scope.showCounterAt);
+
 	$scope.createTeam = false;
 	$scope.selectedTeam = undefined;
 	$scope.itemSelected = false;

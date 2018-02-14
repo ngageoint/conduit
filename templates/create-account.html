@@ -6,14 +6,20 @@
     <form class="material-form form-group" ng-submit="createAccount()">
         <div class="row">
             <div class="material-input-field">
-                <input type="text" id="first" ng-model="first">
-                <label for="first" ng-class="{'with-text': first.length > 0}">First Name</label>
+                <input type="text" id="first" ng-model="first" ng-class="{'error': first.length > fieldLimit}">
+                <label for="first" ng-class="{'with-text': first.length > 0, 'error': first.length > fieldLimit}">First Name</label>
+                <div class="counter" ng-class="{'hide': first.length < showCounterAt, 'fade-in': first.length >= showCounterAt, 'error': first.length > fieldLimit}">
+                    {{first.length + '/' + fieldLimit}}
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="material-input-field">
-                <input type="text" id="last" ng-model="last">
-                <label for="last" ng-class="{'with-text': last.length > 0}">Last Name</label>
+                <input type="text" id="last" ng-model="last" ng-class="{'error': last.length > fieldLimit}">
+                <label for="last" ng-class="{'with-text': last.length > 0, 'error': last.length > fieldLimit}">Last Name</label>
+                <div class="counter" ng-class="{'hide': last.length < showCounterAt, 'fade-in': last.length >= showCounterAt, 'error': last.length > fieldLimit}">
+                    {{last.length + '/' + fieldLimit}}
+                </div>
             </div>
         </div>
         <div class="row">
@@ -40,8 +46,11 @@
         <div class="row">
             <div class="expand-area" ng-show="createTeam">
                 <div class="material-input-field">
-                    <input type="text" id="team-name" ng-model="teamName">
-                    <label for="team-name" ng-class="{'with-text': teamName.length > 0}">Team Name</label>
+                    <input type="text" id="team-name" ng-model="teamName" ng-class="{'error': teamName.length > fieldLimit}">
+                    <label for="team-name" ng-class="{'with-text': teamName.length > 0, 'error': teamName.length > fieldLimit}">Team Name</label>
+                    <div class="counter" ng-class="{'hide': teamName.length < showCounterAt, 'fade-in': teamName.length >= showCounterAt, 'error': teamName.length > fieldLimit}">
+                        {{teamName.length + '/' + fieldLimit}}
+                    </div>
                 </div>
             </div>
         </div>
