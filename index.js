@@ -459,6 +459,7 @@ app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next
 		});
 });
 
+/*
 app.post('/insert/team', rate.restricted, function(req, res, next) {
 	if(!req.body.name && !req.body.teamId) {
 		console.log('Missing params');
@@ -470,7 +471,7 @@ app.post('/insert/team', rate.restricted, function(req, res, next) {
 		res.status(200);
 		res.json(result);
 	});
-});
+});*/
 
 app.post('/insert/team', rate.restricted, function(req, res, next) {
 		if(!req.body.name) {
