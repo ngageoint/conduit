@@ -2009,6 +2009,19 @@ label.active {
   z-index: 101;
 }
 
+.material-dropdown .dropdown-menu a {
+  display: inline-block;
+  width: 100%;
+}
+
+.material-dropdown .dropdown-menu a .item {
+  display: inline;
+}
+
+.material-dropdown .dropdown-menu a .glyphicon {
+  float: right;
+}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

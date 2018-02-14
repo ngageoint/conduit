@@ -8,3 +8,15 @@
     border-radius: 2px;
     z-index: 101;
 }
+
+.material-dropdown .dropdown-menu a {
+    display: inline-block;
+    width: 100%;
+}
+
+.material-dropdown .dropdown-menu a .item {
+    display: inline;
+}
+.material-dropdown .dropdown-menu a .glyphicon {
+    float: right;
+}

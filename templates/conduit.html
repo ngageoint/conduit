@@ -199,8 +199,8 @@
                             <ul uib-dropdown-menu role="menu" ng-click="$event.stopPropagation()">
                                 <li role="menuitem" ng-repeat="book in books">
                                     <a href="" ng-click="itemSelected(book)">
-                                        {{::book.name}}&nbsp;&nbsp;&nbsp;
-                                        <span class="glyphicon glyphicon-ok pull-right" ng-show="book.selected"></span>
+                                        <div class='item'>{{::book.name}}</div>
+                                        <span class="glyphicon glyphicon-ok" ng-show="book.selected"></span>
                                     </a>
                                 </li>
                             </ul>
