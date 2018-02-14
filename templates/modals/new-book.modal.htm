@@ -1,26 +1,32 @@
 
 <div class="material-modal">
     <div class="primary-title">
-        Add a Book
+        Manage Books
     </div>
-    <form class="material-form form-group" ng-submit="addBook(name)">
-        <div class="row">
-            <div class="material-input-field">
-                <input type="text" id="name" ng-model="name">
-                <label for="name" ng-class="{'with-text': name.length > 0}">Name</label>
+
+    <div class="material table">
+        <div ng-repeat="book in books" class="row">
+            <div class="row-content">
+                <div class="definition">{{book.name}}</div>
+                <div class="definition">
+                        <span class="glyphicon glyphicon-trash" ng-click="deleteBook(book.id)"></span>
+                    </div>
             </div>
         </div>
-    </form>
-<!--
-    <button type="submit" class="btn btn-primary" ng-disabled="form.userForm.$invalid">OK</button>
-        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
--->
+        <form class="material-form form-group row add" ng-submit="addBook(name)">
+            <div class="row-content">
+                <div class="definition">
+                        <input type="text" id="name" ng-model="name" placeholder="New book">
+                </div>
+                <div class="definition">
+                        <span class="glyphicon glyphicon-plus" ng-click="addBook(name)"></span>
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="action-area">
-        <button type="button" class="material-btn flat primary" ng-class="{'disabled': name.length <= 0}" ng-click="addBook(name)">
-            ADD BOOK
-        </button>
         <button type="button" class="material-btn flat default" ng-click="cancel()">
-            CANCEL
+            CLOSE
         </button>
     </div>
 </div>

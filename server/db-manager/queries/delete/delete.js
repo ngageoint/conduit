@@ -7,6 +7,21 @@ module.exports = {
     setQueryManager: function(query) {
         this.query = query;
     },
+    book: function(bookId) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'DELETE_BOOK.sql')),
+                values: [bookId]
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve();
+            });
+        });
+    },
     bookStatus: function(bookId, articleId, teamId) {
         return new Promise(function(resolve, reject) {
             if(bookId instanceof Array) {

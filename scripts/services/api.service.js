@@ -3,23 +3,6 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 
 	return {
 	  	select: {
-			/*DEPRECIATED
-			articlesByUserFromDate: function(date) {
-				return new Promise(function(resolve, reject) {
-					return UserService.getUser().then(function(user) {
-						var query = '/select/articlesByUserFromDate?' +
-									'userId=' + user.id + 
-									'&date=' + date + 
-									(user.teamId ? '&teamId=' + user.teamId : '');
-
-						$http.get(query).then(function(response) {
-							return resolve(response.data);
-						}).catch(function(err) {
-							return reject(err);
-						});
-					});
-				});
-			},*/
 			articleBlock: function(fromDate, numArticles, startingId) {
 				//numArticles is required. For default, input 0git 
 				return new Promise(function(resolve, reject) {
@@ -258,6 +241,19 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 			}
 		},
 		delete : {
+			book: function(bookId) {
+				return new Promise(function(resolve, reject) {
+					var data = {
+						bookId: bookId
+					}
+
+					$http.post('/delete/book', data).then(function(response) {
+						return resolve(response);
+					}).catch(function(err) {
+						return reject(err);
+					});
+				});
+			},
 			bookStatus: function(bookId, articleId) {
 				return new Promise(function(resolve, reject) {
 					return UserService.getUser().then(function(user) {

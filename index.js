@@ -553,6 +553,19 @@ app.post('/delete/bookStatus', rate.intermittent, function(req, res, next) {
 		});
 });
 
+app.post('/delete/book', rate.intermittent, function(req, res, next) {
+	if(typeof req.body.bookId === 'undefined') {
+		console.log('Missing params');
+		res.status(400);
+		res.send('Missing parameters. bookId required');
+		return;
+	}
+	db.delete.book(req.body.bookId).then(function(result) {
+		res.status(200);
+		res.json(result);
+	});
+});
+
 /*=================
    CREATE Endpoint 
  ==================*/

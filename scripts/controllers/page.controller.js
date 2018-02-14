@@ -291,10 +291,11 @@ Reload, ApiService, ArticlesService, AttributesService, BooksService, DataSource
 		console.log('ctrl + b detected');
 		$scope.addToBook($scope.articles[$scope.currentIndex], $scope.selectedBook);
 	});
+	/*
 	KeyboardService.bind('delete', function() {
 		console.log('del detected');
 		$scope.removeFromBook($scope.articles[$scope.currentIndex], $scope.selectedBook);
-	});
+	});*/
 	KeyboardService.bind('ctrl+e', function() {
 		console.log('ctrl + e detected');
 		$scope.export($scope.articles[$scope.currentIndex]);

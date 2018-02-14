@@ -1,0 +1,76 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.material.table .row,
+.material .table .row {
+  height: 48px;
+  font-size: 13px;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+
+.material.table .row.add input,
+.material .table .row.add input {
+  background: transparent;
+  padding: 0px;
+  margin: 0px;
+  height: auto;
+  border: none;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material.table .row.add .glyphicon:hover,
+.material.table .row.add .icon:hover {
+  color: #009688;
+}
+
+.material.table .row.add .row-content > .definition {
+  width: 80%;
+}
+
+.material.table .row.add .row-content > .definition ~ .definition {
+  width: auto;
+}
+
+.material.table .row:hover,
+.material .table .row:hover
+.material.table .row:focus,
+.material .table .row:focus {
+  background-color: #eee;
+}
+
+.material.table .row-content,
+.material .table .row-content {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.material.table .row-content > .definition {
+  float: left;
+  margin-left: 0;
+}
+
+.material.table .row-content > .definition ~ .definition {
+  float: right;
+  margin-left: 56px;
+}
+
+.material.table .definition .glyphicon,
+.material.table .definition .icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material.table .definition .glyphicon:hover,
+.material.table .definition .icon:hover {
+  color: #212121;
+  cursor: pointer;
+}
