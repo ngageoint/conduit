@@ -186,19 +186,6 @@
                         </ul>
                     </div>
                     <div id="default-action-buttons" ng-show="!articleEdit.$visible && !versionsView()">
-                        <!--<ol class="btn btn-primary nya-bs-select dropup col-xl-4"
-                            id="toolbox-books"
-                            multiple
-                            data-selected-text-format="count>2"
-                            ng-model="articles[currentIndex].books"
-                            ng-attr-title="ADD">
-                            <li nya-bs-option="book in books">
-                                <a>
-                                    {{::book.name}}
-                                    <span class="glyphicon glyphicon-ok check-mark"></span>
-                                </a>
-                            </li>
-                        </ol>-->
                         <div    class="btn-group material-dropdown dropup pull-right" uib-dropdown keyboard-nav 
                                 ng-controller="MultiSelectCtrl"
                                 ng-click="verifySelected()"
@@ -224,18 +211,20 @@
                             <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
                             <div class="ico-text-1">EDIT</div>
                         </button>
-                        <button uib-popover-template="'templates/comments-popover.html'"
-                                popover-title="DISCUSS"
-                                type="button"
-                                class="material-btn flat default"
-                                popover-trigger="'outsideClick'"
-                                popover-is-open="discussPopoverOpen"
-                                title="DISCUSS">
-                                <!--<span class="glyphicon glyphicon-comment">&nbsp;</span>-->
-                                <div class="ico-text-1">
-                                    DISCUSS<span ng-if="articles[currentIndex].comments.length > 0" class="badge" style="margin-left:4px">{{articles[currentIndex].comments.length}}</span>
-                                </div>
-                        </button>
+                        <div class="material-popover">
+                            <button uib-popover-template="'templates/comments-popover.html'"
+                                    popover-title="DISCUSS"
+                                    type="button"
+                                    class="material-btn flat default"
+                                    popover-trigger="'outsideClick'"
+                                    popover-is-open="discussPopoverOpen"
+                                    title="DISCUSS">
+                                    <!--<span class="glyphicon glyphicon-comment">&nbsp;</span>-->
+                                    <div class="ico-text-1">
+                                        DISCUSS<span ng-if="articles[currentIndex].comments.length > 0" class="badge" style="margin-left:4px">{{articles[currentIndex].comments.length}}</span>
+                                    </div>
+                            </button>
+                        </div>
                         <button class="material-btn flat default"
                                 ng-click="export(articles[currentIndex])"
                                 title="EXPORT">

@@ -1,0 +1,22 @@
+.material-popover .popover {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
+  border-radius: 2px;
+  border: none;
+  background-color: #fff;
+  padding: 0;
+  max-width: 40%;
+  width: 40%;
+  right: 5%;
+  left: auto !important;
+}
+
+.material-popover .popover-title {
+  border-radius: 2px 2px 0 0;
+  border: none;
+  padding: 14px;
+  background-color: rgba(33, 33, 33, 0.12);
+}
