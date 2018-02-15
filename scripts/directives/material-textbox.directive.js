@@ -14,39 +14,69 @@ angular.module('conduit.directives').directive('materialTextbox', function($comp
 				characterLimit: '=',
 				label: '@',
 				noDuplicatesOn: '=',
-				duplicatesKey: '@'
+				duplicatesKey: '@',
+				boundError: '&error'
 			},
 			link: function($scope, elem, attr, ctrl) {
-				$scope.showMsg = (typeof $scope.characterLimit !== 'undefined') || (typeof $scope.noDuplicatesOn !== 'undefined');
-				$scope.error = function() {
+
+				$scope.showMsg = false;
+				$scope.msg = '';
+				$scope.error = false;
+
+				var checkForErrors = function() {
 					$scope.showMsg = false;
-					if(typeof $scope.characterLimit !== 'undefined' && $scope.model.length > $scope.characterLimit * .75) {
-						$scope.showMsg = true;
-						$scope.msg = $scope.model.length + '/' + $scope.characterLimit;
-						if($scope.model.length > $scope.characterLimit) {
-							return true;
-						}
+					$scope.error = false;
+
+					if(typeof $scope.characterLimit !== 'undefined' && $scope.model.length > $scope.characterLimit) {
+						$scope.error = true;
+						return;
 					}
 					if(typeof $scope.noDuplicatesOn !== 'undefined' && $scope.model.length > 0) {
 						
 						let filter = undefined;
 						if(typeof $scope.duplicatesKey !== 'undefined') {
 							filter = function (el) {
-										return (el[$scope.duplicatesKey] === $scope.model);
+								return (el[$scope.duplicatesKey] === $scope.model);
 							}
 						} else {
 							filter = function (el) {
 								return (el === $scope.model);
 							}
 						}
+
 						if($scope.noDuplicatesOn.filter(filter).length > 0) {
-							$scope.showMsg = true;
 							$scope.msg = 'That value already exists';
-							return true;
+							$scope.error = true;
+							return;
 						}
-						return false;
 					}
+					if(typeof $scope.boundError === 'function') {
+						$scope.error = $scope.boundError();
+						return;
+					} else if (typeof $scope.boundError === 'boolean') {
+						$scope.error = $scope.boundError;
+						return;
+					}
+					$scope.error = false;
 				}
+
+				var updateMsg = function() {
+					if($scope.error) {
+						$scope.showMsg = true;
+					} else if (typeof $scope.model !== 'undefined' && $scope.model.length > $scope.characterLimit * .75) {
+						$scope.msg = $scope.model.length + '/' + $scope.characterLimit;
+						$scope.showMsg = true;
+					} else {
+						$scope.showMsg = false;
+					}
+					
+
+				}
+
+				$scope.$watch('model', function() {
+					checkForErrors();
+					updateMsg();
+				});
 			}
 		};
 	});
