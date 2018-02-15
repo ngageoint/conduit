@@ -41,6 +41,11 @@ var ModalInstanceCtrl = function ($scope, $uibModalInstance, name, ApiService) {
 				$scope.books.push({	id: book.data.id,
 							name: name});
 				$scope.name = '';
+
+				//If no book has been selected yet, select the new book
+				if(typeof $scope.selectedBook === 'undefined') {
+					$scope.selectedBook = $scope.books[$scope.books.length - 1];
+				}
 			});
 		}
 	};
@@ -52,6 +57,13 @@ var ModalInstanceCtrl = function ($scope, $uibModalInstance, name, ApiService) {
 					if($scope.books[i].id == id) {
 						$scope.books.splice(i, 1);
 						console.log('match found');
+					}
+				}
+				if($scope.selectedBook.id == id) {
+					if(typeof $scope.books[0] !== 'undefined') {
+						$scope.selectedBook = $scope.books[0];
+					} else {
+						$scope.selectedBook = undefined;
 					}
 				}
 				console.log('deleted');
