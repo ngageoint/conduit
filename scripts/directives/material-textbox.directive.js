@@ -12,12 +12,40 @@ angular.module('conduit.directives').directive('materialTextbox', function($comp
 			scope: {
 				model: '=ngModel',
 				characterLimit: '=',
-				label: '='
+				label: '@',
+				noDuplicatesOn: '=',
+				duplicatesKey: '@'
 			},
 			link: function($scope, elem, attr, ctrl) {
-				$scope.showCounter = (typeof $scope.characterLimit !== 'undefined')
-				if($scope.showCounter) {
-					$scope.showCounterAt = $scope.characterLimit * .75;
+				$scope.showMsg = (typeof $scope.characterLimit !== 'undefined') || (typeof $scope.noDuplicatesOn !== 'undefined');
+				$scope.error = function() {
+					$scope.showMsg = false;
+					if(typeof $scope.characterLimit !== 'undefined' && $scope.model.length > $scope.characterLimit * .75) {
+						$scope.showMsg = true;
+						$scope.msg = $scope.model.length + '/' + $scope.characterLimit;
+						if($scope.model.length > $scope.characterLimit) {
+							return true;
+						}
+					}
+					if(typeof $scope.noDuplicatesOn !== 'undefined' && $scope.model.length > 0) {
+						
+						let filter = undefined;
+						if(typeof $scope.duplicatesKey !== 'undefined') {
+							filter = function (el) {
+										return (el[$scope.duplicatesKey] === $scope.model);
+							}
+						} else {
+							filter = function (el) {
+								return (el === $scope.model);
+							}
+						}
+						if($scope.noDuplicatesOn.filter(filter).length > 0) {
+							$scope.showMsg = true;
+							$scope.msg = 'That value already exists';
+							return true;
+						}
+						return false;
+					}
 				}
 			}
 		};

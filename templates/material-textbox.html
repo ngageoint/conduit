@@ -1,7 +1,7 @@
 <div class="material-input-field">
-    <input type="text" id="input" ng-model="model" ng-class="{'error': model.length > characterLimit}">
-    <label for="input" ng-class="{'with-text': model.length > 0, 'error': model.length > characterLimit}">{{label}}</label>
-    <div class="counter" ng-if="::showCounter" ng-class="{'hide': model.length < showCounterAt, 'fade-in': model.length >= showCounterAt, 'error': model.length > characterLimit}">
-        {{model.length + '/' + characterLimit}}
+    <input type="text" id="input" ng-model="model" ng-class="{'error': error()}">
+    <label for="input" ng-class="{'with-text': model.length > 0, 'error': error()}">{{label}}</label>
+    <div class="counter fade" ng-show="showMsg" ng-class="{'error': error()}">
+        {{msg}}
     </div>
 </div>

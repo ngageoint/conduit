@@ -5,10 +5,10 @@
 
     <form class="material-form form-group" ng-submit="createAccount()">
         <div class="row">
-            <material-textbox ng-model="first" character-limit="fieldLimit" label="'First Name'"></material-textbox>
+            <material-textbox ng-model="first" character-limit="fieldLimit" label="First Name"></material-textbox>
         </div>
         <div class="row">
-            <material-textbox ng-model="last" character-limit="fieldLimit" label="'Last Name'"></material-textbox>
+            <material-textbox ng-model="last" character-limit="fieldLimit" label="Last Name"></material-textbox>
         </div>
         <div class="row">
             <div class="material-input-field">
@@ -33,7 +33,7 @@
         </div>
         <div class="row">
             <div class="expand-area" ng-show="createTeam">
-                <material-textbox ng-model="teamName" character-limit="fieldLimit" label="'Team Name'" ></material-textbox>
+                <material-textbox ng-model="teamName" character-limit="fieldLimit" label="Team Name" no-duplicates-on="teams" duplicates-key="name"></material-textbox>
             </div>
         </div>
     </form>

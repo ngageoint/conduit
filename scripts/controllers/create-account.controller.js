@@ -47,7 +47,7 @@ angular.module('conduit.controllers').controller('CreateAccountCtrl', function($
 		if($scope.createTeam && $scope.teamName.length <= 0) {
 			return false;
 		} else {
-			return (($scope.first.length > 0) && ($scope.last.length > 0) && $scope.itemSelected);
+			return (($scope.first.length > 0 && $scope.first.length <= $scope.fieldLimit) && ($scope.last.length > 0 && $scope.last.length <= $scope.fieldLimit) && $scope.itemSelected);
 		}
 	}
 
