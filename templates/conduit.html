@@ -427,6 +427,10 @@
                                 <span class="glyphicon glyphicon-ok" ng-show="book.selected"></span>
                             </a>
                         </li>
+                        <li class="divider"></li>
+                        <li ng-controller="NewBookModalCtrl" ng-click="showForm()" title="Manage books">
+                            <a><div class="ico-text-1">Manage books</div></a>
+                        </li>
                     </ul>
                 </div>
                 <!--<ol class="nya-bs-select dropdown form-control"

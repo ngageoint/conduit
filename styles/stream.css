@@ -156,7 +156,9 @@
   right: 0;
   bottom: 0;
   left: 0;
-  width: 100%;
+  min-width: 80%;
+  width: auto;
+  max-width: 120%;
   text-align: left;
   height: auto;
 }
