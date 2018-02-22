@@ -105,6 +105,91 @@
   float: right;
 }
 
+.stream-header {
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  right: 10px;
+  left: 9px;
+  right: 24px;
+  width: auto;
+  height: 80px;
+  display: inline-block;
+  border-radius: 2px 2px 0 0;
+  z-index: 100;
+  background-color: transparent;
+}
+
+.stream-header .stream-action {
+  color: #fff;
+  box-shadow: none;
+  top: 0;
+  bottom: 24px;
+  width: auto;
+  height: auto;
+}
+
+.stream-header .stream-action:hover,
+.stream-header .stream-action:focus,
+.stream-header .stream-action:active {
+  cursor: pointer;
+  border-bottom: 2px solid #ff5252;
+}
+
+.stream-header .stream-action.dropdown {
+  position: absolute;
+  left: 0;
+  right: 15%;
+  border-radius: 2px 0 0 0;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown {
+  position: absolute;
+  color: #fff;
+  background: transparent;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  height: auto;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown .dropdown-menu {
+  width: 80%;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown:active,
+.stream-header .stream-action.dropdown #profile-dropdown:focus {
+  box-shadow: none;
+}
+
+.stream-header .stream-action.small {
+  right: 0;
+  left: 85%;
+  border-radius: 0 2px 0 0;
+}
+
+.stream-header .info-bar {
+  background: #757575 !important;
+  position: relative;
+  top: 56px;
+  height: 24px;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  z-index: 99;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  line-height: 24px;
+}
+
 #book-action-wrapper {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -177,20 +262,6 @@
   height: 100%;
   border-radius: 0 2px 0 0;
   box-shadow: none;
-}
-
-#book-action-wrapper #team-info {
-  background: #757575 !important;
-  position: relative;
-  top: 56px;
-  height: 24px;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  z-index: 99;
-  text-align: center;
-  color: #fff;
-  font-size: 12px;
-  line-height: 24px;
 }
 
 #book-action-wrapper #export-book {

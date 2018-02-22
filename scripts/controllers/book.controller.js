@@ -1,7 +1,9 @@
 angular.module('conduit.controllers').controller('BookCtrl', function($scope, $rootScope, ApiService, BooksService, ArrayTools) {
 	
 	//Watch the selectedBook variable (bound to the dropdown); if changed, update the articles displayed in the book
-	$scope.$watch('selectedBook', function() {
+	$scope.$watch('selectedBook', function(newVal, oldVal) {
+		oldVal.selected = false;
+		newVal.selected = true;
 		$scope.updateBook();
 	});
 	
@@ -73,4 +75,14 @@ angular.module('conduit.controllers').controller('BookCtrl', function($scope, $r
 		$scope.updateBook();
 		$scope.activateCard('Feed', id);
 	}	
+
+	/**
+	 * 
+	 * Updates the value of the selected book to be the book that is passed to the function
+	 * 
+	 * @param book The new selected book
+	 */
+	$scope.changeSelectedBookTo = function(book) {
+		$scope.selectedBook = book;
+	}
 });

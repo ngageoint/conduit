@@ -411,8 +411,25 @@
         </div>
         
         <div id="right" class="column" ng-controller="BookCtrl">
-            <div id="book-action-wrapper">
-                <ol class="nya-bs-select dropdown form-control"
+            <div class="stream-header row">
+                <div    class="btn-group material-dropdown stream-action dropdown col-xs-9" uib-dropdown keyboard-nav>
+                    <button     id="profile-dropdown"
+                                type="button" class="material-btn flat primary bold"
+                                uib-dropdown-toggle>
+                        {{selectedBook.name}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul uib-dropdown-menu role="menu">
+                        <li role="menuitem" ng-repeat="book in books">
+                            <a href="" ng-click="changeSelectedBookTo(book)">
+                                <div class='item'>{{::book.name}}</div>
+                                <span ng-if="book.count" class="badge">{{book.count}}</span>
+                                <span class="glyphicon glyphicon-ok" ng-show="book.selected"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--<ol class="nya-bs-select dropdown form-control"
                     ng-model="selectedBook"
                     title="Choose a book...">
                     <li nya-bs-option="book in books" title="{{::book.name}}">
@@ -426,16 +443,14 @@
                     <li ng-controller="NewBookModalCtrl" ng-click="showForm()" title="Manage books">
                         <a><div class="ico-text-1">Manage books</div></a>
                     </li>
-                </ol>
-                <button	type="button"
-                        id="export-book"
-                        class="btn btn-primary stream-action"
+                </ol>-->
+                <div    class="stream-action small"
                         ng-click="exportBook(selectedBook)"
                         title="Export book">
                         <span class="glyphicon glyphicon-save-file center-xy"></span> 
                         <!--<div class="ico-text-3">&nbsp;Export book</div>-->
-                </button>
-                <div id="team-info">
+            </div>
+                <div class="info-bar">
                     {{user.teamName}}
                 </div>
             </div>

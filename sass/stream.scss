@@ -124,6 +124,97 @@ $t-margin: 10px;
     }
 
     
+    .stream-header {
+        @include material-shadow(3);
+        position: absolute;
+        top: 10px;
+        left: -5px;
+        right: $book-r-margin;
+
+        left: 9px;
+        right: 24px;
+
+        width: auto;
+        height: $book-action-btns-height + $book-action-info-height;
+        display: inline-block;
+
+        border-radius: 2px 2px 0 0;
+        z-index: 100;
+
+        background-color: transparent;//$color-primary;
+
+        .stream-action {
+            color: $color-primary-contrast;
+            box-shadow: none;
+
+            top: 0;
+            bottom: $book-action-info-height;
+            width: auto;
+            height:auto;
+        }
+
+        .stream-action:hover,
+        .stream-action:focus,
+        .stream-action:active {
+            cursor: pointer;
+            border-bottom: 2px solid $color-accent;
+        }
+
+        
+
+        .stream-action.dropdown {
+            position: absolute;
+            left: 0;
+            right: 15%;
+            
+            border-radius: 2px 0 0 0;
+
+            #profile-dropdown {
+                position: absolute;
+                color: $color-primary-contrast;
+                background: transparent;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                text-align: left;
+                height: auto;
+
+                .dropdown-menu {
+                    width: 80%;
+                }
+            }
+
+            #profile-dropdown:active,
+            #profile-dropdown:focus {
+                box-shadow: none;
+            }
+        }
+
+        .stream-action.small {
+
+            right: 0;
+            left: 85%;
+
+            border-radius: 0 2px 0 0;
+        }
+
+        .info-bar {
+            background: #757575 !important;
+            position: relative;
+            top: $book-action-btns-height;
+            height: $book-action-info-height;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            z-index: 99;
+
+            text-align: center;
+            color: #fff;
+            font-size: 12px;
+            line-height: $book-action-info-height;
+        }
+    }
     
 
     #book-action-wrapper {
@@ -195,21 +286,6 @@ $t-margin: 10px;
             height: 100%;
             border-radius: 0 2px 0 0;
             box-shadow: none;
-        }
-
-        #team-info {
-            background: #757575 !important;
-            position: relative;
-            top: $book-action-btns-height;
-            height: $book-action-info-height;
-            padding: 0 !important;
-            border-radius: 0 !important;
-            z-index: 99;
-
-            text-align: center;
-            color: #fff;
-            font-size: 12px;
-            line-height: $book-action-info-height;
         }
 
         #export-book {
