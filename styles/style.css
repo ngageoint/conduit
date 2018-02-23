@@ -345,11 +345,13 @@ body {
   bottom: 24px;
   width: auto;
   height: auto;
+  border-bottom: 2px solid #009688;
 }
 
 .stream-header .stream-action:hover,
 .stream-header .stream-action:focus,
-.stream-header .stream-action:active {
+.stream-header .stream-action:active,
+.stream-header .stream-action.open {
   cursor: pointer;
   border-bottom: 2px solid #ff5252;
 }
@@ -369,20 +371,22 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+  text-align: left;
+  height: auto;
+  width: 100%;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown,
+.stream-header .stream-action.dropdown #profile-dropdown:active,
+.stream-header .stream-action.dropdown #profile-dropdown:focus,
+.stream-header .stream-action.dropdown #profile-dropdown:link {
+  box-shadow: none;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown + .dropdown-menu {
   min-width: 80%;
   width: auto;
   max-width: 120%;
-  text-align: left;
-  height: auto;
-}
-
-.stream-header .stream-action.dropdown #profile-dropdown .dropdown-menu {
-  width: 80%;
-}
-
-.stream-header .stream-action.dropdown #profile-dropdown:active,
-.stream-header .stream-action.dropdown #profile-dropdown:focus {
-  box-shadow: none;
 }
 
 .stream-header .stream-action.small {
