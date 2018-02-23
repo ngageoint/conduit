@@ -1,0 +1,17 @@
+<div    class="btn-group material-dropdown dropdown" uib-dropdown keyboard-nav>
+    <button     id="profile-dropdown"
+                type="button" class="material-btn flat primary bold"
+                uib-dropdown-toggle>
+        {{label}}
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" class="inner" ng-click="$event.stopPropagation()">
+        <ng-transclude></ng-transclude>
+        <!--<li role="menuitem" ng-repeat="li in list">
+            <a href="" ng-click="itemSelected(li)">
+                <div class='item'>{{::li}}</div>
+                <span class="glyphicon glyphicon-ok" ng-show="book.selected"></span>
+            </a>
+        </li>-->
+    </ul>
+</div>
