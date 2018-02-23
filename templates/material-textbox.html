@@ -1,5 +1,5 @@
 <div class="material-input-field">
-    <input type="text" id="input" ng-model="model" ng-class="{'error': error}">
+    <input type="text" id="input" ng-model="model" ng-class="{'error': error}" focus-on="focusOn">
     <label for="input" ng-class="{'with-text': model.length > 0, 'error': error}">{{label}}</label>
     <div class="counter fade" ng-show="showMsg" ng-class="{'error': error}">
         {{msg}}

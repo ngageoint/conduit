@@ -1,27 +1,4 @@
 [{
-	"tag":"Example",
-	"name":"Example Source",
-	"link":"www.example.com",
-	"type":"custom",
-	"checked":true,
-	"filter":[{
-		"name":"Topic",
-		"binding": {
-			"property":"topics"
-		},
-		"values":[],
-		"checked":false
-	},{
-		"name":"Region",
-		"binding": {
-			"property":"region",
-			"data":"abrv",
-			"name":"name"
-		},
-		"values":[],
-		"checked":false
-	}]
-},{
 	"tag":"NWS",
 	"name":"National Weather Service",
 	"link":"https://alerts.weather.gov/cap/us.php?x=1",

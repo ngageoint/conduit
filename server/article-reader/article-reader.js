@@ -13,7 +13,7 @@ module.exports = {
         return new Promise(function(resolve, reject) {
 
             //Test for RSS and process if true
-            if(source.type.toLowerCase() === 'rss') {
+            if(source && source.type && source.type.toLowerCase() === 'rss') {
                 module.exports.readRss(source).then(function(articles) {
                     return resolve(articles);
                 }).catch(function(err) {
