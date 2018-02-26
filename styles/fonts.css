@@ -22,3 +22,5 @@
   font-family: 'Glyphicons-Halflings-Regular';
   src: url("../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2") format("embedded-opentype"), url("../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../packages/bootstrap/fonts/glyphicons-halflings-regular.woff") format("woff"), url("../packages/bootstrap/fonts/glyphicons-halflings-regular.ttf") format("truetype");
 }
+
+/*# sourceMappingURL=../styles/fonts.map */

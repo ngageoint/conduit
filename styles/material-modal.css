@@ -1,9 +1,11 @@
+/* line 4, D:/work/dat/conduit/sass/material-modal.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
+/* line 13, D:/work/dat/conduit/sass/material-modal.scss */
 .modal-content {
   -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   -ms-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -16,22 +18,26 @@
   background: #fff;
 }
 
+/* line 25, D:/work/dat/conduit/sass/material-modal.scss */
 .material-modal .primary-title {
   font-size: 24px;
   padding-bottom: 16px;
 }
 
+/* line 30, D:/work/dat/conduit/sass/material-modal.scss */
 .material-modal .supporting-text {
   font-size: 14px;
   line-height: 20px;
   padding-bottom: 16px;
 }
 
+/* line 36, D:/work/dat/conduit/sass/material-modal.scss */
 .material-modal .action-area {
   height: 52px;
   margin: 0 -24px -24px -24px;
 }
 
+/* line 41, D:/work/dat/conduit/sass/material-modal.scss */
 .divider.full-bleed {
   left: 0;
   right: 0;
@@ -39,6 +45,7 @@
   background-color: #bdbdbd;
 }
 
+/* line 48, D:/work/dat/conduit/sass/material-modal.scss */
 .divider.inset {
   left: 0;
   right: 0;
@@ -46,10 +53,14 @@
   background-color: rgba(33, 33, 33, 0.12);
 }
 
+/* line 55, D:/work/dat/conduit/sass/material-modal.scss */
 .material-modal .expand-area {
   padding-top: 16px;
 }
 
+/* line 59, D:/work/dat/conduit/sass/material-modal.scss */
 .material-modal .material-btn.flat {
   font-weight: bold;
 }
+
+/*# sourceMappingURL=../styles/material-modal.map */

@@ -1,3 +1,4 @@
+/* line 6, D:/work/dat/conduit/sass/filter.scss */
 .category-wrapper {
   display: inline-block;
   width: 100%;
@@ -5,14 +6,20 @@
   clear: both;
 }
 
+/* line 13, D:/work/dat/conduit/sass/filter.scss */
 .category-wrapper .dropdown {
-  width: 45% !important;
   min-width: 200px !important;
   margin: 0 10px 10px 0 !important;
   clear: none !important;
   float: left !important;
 }
 
+/* line 19, D:/work/dat/conduit/sass/filter.scss */
+.category-wrapper .dropdown .dropdown-menu {
+  width: 85%;
+}
+
+/* line 24, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -27,19 +34,23 @@
   right: 10px;
 }
 
+/* line 35, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-group {
   margin-bottom: 0;
 }
 
+/* line 39, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel {
   box-shadow: none;
 }
 
+/* line 43, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-default {
   border: none !important;
   border-radius: 0 !important;
 }
 
+/* line 47, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-heading {
   background: #757575 !important;
   height: 24px !important;
@@ -48,6 +59,7 @@
   z-index: 99;
 }
 
+/* line 54, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-open .panel-heading {
   position: absolute;
   bottom: 0;
@@ -56,6 +68,7 @@
   border-radius: 0 0 2px 2px;
 }
 
+/* line 61, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title {
   color: #fff !important;
   text-align: center !important;
@@ -63,12 +76,16 @@
   padding: 5px 0;
 }
 
+/* line 67, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title a {
   color: #fff;
 }
 
+/* line 71, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-body {
   max-height: 40vh;
   overflow-y: scroll;
   padding: 15px 15px 39px 15px;
 }
+
+/*# sourceMappingURL=../styles/filter.map */

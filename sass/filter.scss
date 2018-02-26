@@ -11,11 +11,14 @@ $filter-header-height: 24px;
 }
     
 .category-wrapper .dropdown {
-    width: 45% !important;
     min-width: 200px !important;
     margin: 0 10px 10px 0 !important;
     clear: none !important;
     float: left !important;
+
+    .dropdown-menu {
+        width: 85%;
+    }
 }
 
 .accordion-wrapper {

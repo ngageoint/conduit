@@ -58,6 +58,8 @@ $input-spacing-margin-bottom: 8px;
     left: 0;
     right: 0;
 
+    width: 100%;
+
     .item-selected {
         color: $color-font;
     }
@@ -162,7 +164,7 @@ $input-spacing-margin-bottom: 8px;
 }
 
 .material-dropdown .dropdown-menu.bump-menu-for-search {
-    top: -($input-spacing-padding-top - 2px);
+    top: -($input-spacing-padding-top + $input-font-size);
     left: -8px;
 }
 
