@@ -1,23 +1,26 @@
-<div    class="btn-group material-dropdown dropdown" uib-dropdown keyboard-nav on-toggle="searchQuery = ''">
-    <button     id="profile-dropdown"
-                type="button" class="material-btn flat primary bold"
-                uib-dropdown-toggle>
-        {{label}}
-        <span class="caret"></span>
-    </button>
-    <ul uib-dropdown-menu role="menu" class="inner" ng-class="{'bump-menu-for-search': search}" ng-click="$event.stopPropagation()">
-        <div class="menu-search" ng-show="search">
-            <form class="material-form form-group">
-                <div class="row">
-                    <material-textbox ng-model="searchQuery" label="{{label}}" mi-tb-focus-on="focusSearch"></material-textbox>
-                </div>
-            </form>
-        </div>
-        <li role="menuitem" ng-repeat="li in list">
-            <a href="" ng-click="itemSelected(li)">
-                <div class='item'>{{::li.name}}</div>
-                <span class="glyphicon glyphicon-ok" ng-show="li.selected"></span>
-            </a>
-        </li>
-    </ul>
+<div>
+    <div class="btn-group material-dropdown dropdown" uib-dropdown keyboard-nav on-toggle="searchQuery = ''">
+        <button     id="profile-dropdown"
+                    type="button" class="material-btn flat primary bold"
+                    uib-dropdown-toggle>
+            {{label}}
+            <span class="caret"></span>
+        </button>
+        <ul uib-dropdown-menu id="{{::label}}" role="menu" class="inner" ng-class="{'bump-menu-for-search': search}" ng-click="$event.stopPropagation()">
+            <div class="menu-search" ng-show="search">
+                <form class="material-form form-group">
+                    <div class="row">
+                        <material-textbox ng-model="searchQuery" label="{{::label}}" mi-tb-focus-on="focusSearch"></material-textbox>
+                    </div>
+                </form>
+            </div>
+            <li role="menuitem" ng-repeat="li in list" ng-show="li.show">
+                <a href="" ng-click="itemSelected(li)">
+                    <div class='item'>{{::li.name}}</div>
+                    <span class="glyphicon glyphicon-ok" ng-show="li.selected"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <label for="{{::label}}" class="with-text" ng-class="{'hide': !itemSelected, 'fade-in': itemSelected, active: teamDropdownFocus}">{{::label}}</label>
 </div>

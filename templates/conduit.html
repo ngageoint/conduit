@@ -353,12 +353,12 @@
                                             <form class="material-form form-group">
                                                 <div    ng-show="src['checked']" id="{{::category.name+'-category'}}" ng-repeat="category in ::src.filter" class="row">
                                                     <div class="material-input-field">
-                                                        <material-dropdown  ng-model="category.selectedValues" 
+                                                        <material-dropdown  ng-model="category.selectedValues"
                                                                             ng-disabled="showAll"
                                                                             ng-click="updateFilterOptions(src.name, category.name)"
                                                                             mi-dd-list="category.values" 
-                                                                            mi-dd-label="{{category.name}}">
-
+                                                                            mi-dd-label="{{category.name}}"
+                                                                            mi-dd-on-item-click="refreshFeed()">
                                                         </material-dropdown>
                                                     </div>
                                                 </div>

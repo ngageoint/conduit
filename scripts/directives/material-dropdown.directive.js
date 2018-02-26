@@ -15,7 +15,9 @@ angular.module('conduit.directives').directive('materialDropdown', function($com
 				list: '=miDdList',
 				search: '&miDdSearch',
 				multi: '&miDdMuliselect',
-				list: "=miDdList"
+				list: "=miDdList",
+				onUpdate: "&miDdOnUpdate",
+				onItemClick: "&miDdOnItemClick"
 			},
 			link: function($scope, elem, attr, ctrl) {
 				
@@ -51,11 +53,18 @@ angular.module('conduit.directives').directive('materialDropdown', function($com
 						$scope.model.push(data);
 						item.selected = true;
 					}
-					//updateLabel();
+					if(typeof $scope.onItemClick === 'function') {
+						$scope.onItemClick();
+					}
+					updateLabel();
 				}
 
 				$scope.debug = function() {
 					console.log(open);
+				}
+
+				if(typeof $scope.onUpdate === 'function') {
+					$scope.$watch('model', $scope.onUpdate, true);
 				}
 			}
 		};
