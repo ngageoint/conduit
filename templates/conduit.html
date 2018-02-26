@@ -350,26 +350,19 @@
                                             <label class="cbx-label" ng-class="{'disabled': showAll}" for="{{::'cbx-'+src.name}}">{{::src.tag}}</label>
                                         </div>
                                         <div class="category-wrapper">
-                                            <div ng-show="src['checked']" id="{{::category.name+'-category'}}" ng-repeat="category in ::src.filter">
-                                                <ol 	
-                                                        class="nya-bs-select dropdown"
-                                                        title="{{category.name}}"
-                                                        data-selected-text-format="count>2"
-                                                        ng-model="category.selectedValues"
-                                                        ng-disabled="showAll"
-                                                        actions-box="true"
-                                                        data-live-search="true"
-                                                        data-size="10"
-                                                        multiple
-                                                        ng-click="updateFilterOptions(src.name, category.name)">
-                                                    <li nya-bs-option="value in category.values" ng-show="value.show" data-value="value.data">
-                                                        <a>
-                                                            {{value.name}}
-                                                            <span class="glyphicon glyphicon-ok check-mark"></span>
-                                                        </a>
-                                                    </li>
-                                                </ol> 
-                                            </div>                          
+                                            <form class="material-form form-group">
+                                                <div    ng-show="src['checked']" id="{{::category.name+'-category'}}" ng-repeat="category in ::src.filter" class="row">
+                                                    <div class="material-input-field">
+                                                        <material-dropdown  ng-model="category.selectedValues"
+                                                                            ng-disabled="showAll"
+                                                                            ng-click="updateFilterOptions(src.name, category.name)"
+                                                                            mi-dd-list="category.values" 
+                                                                            mi-dd-label="{{category.name}}"
+                                                                            mi-dd-on-item-click="refreshFeed()">
+                                                        </material-dropdown>
+                                                    </div>
+                                                </div>
+                                            </form>                          
                                         </div>  
                                     </div>
                                 
@@ -379,6 +372,7 @@
                                             <label class="checkbox-label" for="{{::'cbx-'+attr.name}}">                                        
                                                 <div alt="{{::attr.alt}}" title="{{::attr.alt}}">
                                                     <span ng-if="::attr.glyphicon" class="glyphicon glyphicon-{{::attr.glyphicon}}"></span>
+                                                    {{attr.name}}
                                                 </div>
                                             </label>
                                         </div>            
