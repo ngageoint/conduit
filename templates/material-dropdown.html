@@ -17,7 +17,7 @@
                     </div>
                 </form>
             </div>
-            <li role="menuitem" ng-repeat="li in list" ng-show="li.show">
+            <li role="menuitem" ng-repeat="li in list  | filter:{ name: searchQuery }" ng-show="li.show">
                 <a href="" ng-click="itemSelected(li)">
                     <div class='item'>{{::li.name}}</div>
                     <span class="glyphicon glyphicon-ok" ng-show="li.selected"></span>
