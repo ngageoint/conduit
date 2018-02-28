@@ -257,32 +257,6 @@ $t-margin: 10px;
             border-bottom: 2px solid $color-accent;
             box-shadow: none;
         }
-
-        .nya-bs-select {
-            position: absolute;
-            left: 0;
-            right: $book-action-w;
-            height: 100%;
-            width: auto;
-
-            border-radius: 2px 0 0 0;
-            border-bottom: 2px solid $color-primary;
-            box-shadow: none;
-        }
-
-            nya-bs-select:active,
-            nya-bs-select.active,
-            nya-bs-select:focus,
-            nya-bs-select.focus,
-            nya-bs-select:hover,
-            nya-bs-select:active:focus,
-            nya-bs-select.active:focus,
-            nya-bs-select:active:hover,
-            nya-bs-select.active:hover {
-                background-color: $color-primary;
-                border-bottom: 2px solid $color-accent;
-                box-shadow: none;
-            }
         
         .stream-action {
             position: absolute;

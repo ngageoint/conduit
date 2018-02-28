@@ -233,31 +233,6 @@
   box-shadow: none;
 }
 
-#book-action-wrapper .nya-bs-select {
-  position: absolute;
-  left: 0;
-  right: 48px;
-  height: 100%;
-  width: auto;
-  border-radius: 2px 0 0 0;
-  border-bottom: 2px solid #009688;
-  box-shadow: none;
-}
-
-#book-action-wrapper nya-bs-select:active,
-#book-action-wrapper nya-bs-select.active,
-#book-action-wrapper nya-bs-select:focus,
-#book-action-wrapper nya-bs-select.focus,
-#book-action-wrapper nya-bs-select:hover,
-#book-action-wrapper nya-bs-select:active:focus,
-#book-action-wrapper nya-bs-select.active:focus,
-#book-action-wrapper nya-bs-select:active:hover,
-#book-action-wrapper nya-bs-select.active:hover {
-  background-color: #009688;
-  border-bottom: 2px solid #ff5252;
-  box-shadow: none;
-}
-
 #book-action-wrapper .stream-action {
   position: absolute;
   width: 48px;

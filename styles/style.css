@@ -446,31 +446,6 @@ body {
   box-shadow: none;
 }
 
-#book-action-wrapper .nya-bs-select {
-  position: absolute;
-  left: 0;
-  right: 48px;
-  height: 100%;
-  width: auto;
-  border-radius: 2px 0 0 0;
-  border-bottom: 2px solid #009688;
-  box-shadow: none;
-}
-
-#book-action-wrapper nya-bs-select:active,
-#book-action-wrapper nya-bs-select.active,
-#book-action-wrapper nya-bs-select:focus,
-#book-action-wrapper nya-bs-select.focus,
-#book-action-wrapper nya-bs-select:hover,
-#book-action-wrapper nya-bs-select:active:focus,
-#book-action-wrapper nya-bs-select.active:focus,
-#book-action-wrapper nya-bs-select:active:hover,
-#book-action-wrapper nya-bs-select.active:hover {
-  background-color: #009688;
-  border-bottom: 2px solid #ff5252;
-  box-shadow: none;
-}
-
 #book-action-wrapper .stream-action {
   position: absolute;
   width: 48px;
@@ -1597,26 +1572,6 @@ input[type='checkbox']:focus {
   .panel-title {
     text-align: center;
   }
-  .toolbox .nya-bs-select {
-    width: 42px;
-  }
-  .toolbox .nya-bs-select .dropdown-toggle {
-    height: 36px;
-  }
-  .toolbox .nya-bs-select .caret {
-    display: none;
-    visibility: hidden;
-  }
-  .nya-bs-select {
-    text-align: center;
-  }
-  .nya-bs-select .dropdown-toggle {
-    padding-right: 0;
-  }
-  .nya-bs-select .special-title, .nya-bs-select .filter-option {
-    display: none;
-    visibility: hidden;
-  }
   .special-title:before, .filter-option:before {
     visibility: visible;
     display: inline;
@@ -1655,11 +1610,6 @@ input[type='checkbox']:focus {
   border: none;
   border-radius: 2px;
   z-index: 101;
-}
-
-#right .nya-bs-select.btn-group .dropdown-menu {
-  width: 100% !important;
-  min-width: initial !important;
 }
 
 * {

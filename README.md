@@ -18,7 +18,6 @@ Conduit is a curation tool that allows anyone to collect articles of interest fr
 * Docxtemplater image module
 * Jszip
 * Ng-infinite-scroll
-* Nya-bootstrap-select
 
 ### Origin
 

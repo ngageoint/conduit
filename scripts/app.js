@@ -37,7 +37,7 @@ angular.module('conduit', [
     'conduit.directives', 'conduit.services', 'conduit.controllers', 'conduit.tools', 'conduit.modals',
     
     /*vendor modules*/
-    'ngRoute', 'xeditable', 'ui.bootstrap','nya.bootstrap.select', 'angular-loading-bar', 'ngAnimate',
+    'ngRoute', 'xeditable', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate',
     'infinite-scroll', 'tw.directives.clickOutside', 'cfp.loadingBar'
     ]);
 
