@@ -76,13 +76,43 @@ body {
   background-color: #f2f2f2;
 }
 
+.classification {
+  height: 20px;
+  float: left;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.classification.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.classification.u {
+  background-color: #00b400;
+  color: #fff;
+}
+
+.classification.s {
+  background-color: red;
+  color: #fff;
+}
+
+.classification.ts {
+  background-color: yellow;
+  color: #000;
+}
+
 #container {
   position: fixed;
   padding-left: 25vw;
   padding-right: 20vw;
   height: auto;
-  bottom: 0;
-  top: 48px;
+  bottom: 20px;
+  top: 68px;
   background: transparent;
 }
 
