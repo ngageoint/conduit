@@ -1,11 +1,9 @@
-/* line 4, D:/work/dat/conduit/sass/material-table.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 16, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .row,
 .material .table .row {
   height: 48px;
@@ -16,7 +14,6 @@
   position: relative;
 }
 
-/* line 28, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .row.add input,
 .material .table .row.add input {
   background: transparent;
@@ -28,23 +25,19 @@
   color: rgba(0, 0, 0, 0.54);
 }
 
-/* line 39, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .row.add .glyphicon:hover,
 .material.table .row.add .icon:hover {
   color: #009688;
 }
 
-/* line 44, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .row.add .row-content > .definition {
   width: 85%;
 }
 
-/* line 48, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .row.add .row-content > .definition ~ .definition {
   width: auto;
 }
 
-/* line 52, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .row:hover,
 .material .table .row:hover
 .material.table .row:focus,
@@ -52,7 +45,6 @@
   background-color: #eee;
 }
 
-/* line 59, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .row-content,
 .material .table .row-content {
   position: absolute;
@@ -62,29 +54,23 @@
   transform: translateY(-50%);
 }
 
-/* line 68, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .row-content > .definition {
   float: left;
   margin-left: 0;
 }
 
-/* line 73, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .row-content > .definition ~ .definition {
   float: right;
   margin-left: 56px;
 }
 
-/* line 78, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .definition .glyphicon,
 .material.table .definition .icon {
   color: rgba(0, 0, 0, 0.54);
 }
 
-/* line 83, D:/work/dat/conduit/sass/material-table.scss */
 .material.table .definition .glyphicon:hover,
 .material.table .definition .icon:hover {
   color: #212121;
   cursor: pointer;
 }
-
-/*# sourceMappingURL=../styles/material-table.map */

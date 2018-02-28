@@ -28,7 +28,7 @@ const SourceService = require('./server/tools/sources.service.server.js');
 ////ARTICLES////
 ////////////////
 ArticleReader.readSource(SourceService.sources[0]).then(function(res) {
-	db.insert.articleFull(res);
+	//db.insert.articleFull(res);
 });
 
 ////////////////

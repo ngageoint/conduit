@@ -1,17 +1,14 @@
-/* line 13, D:/work/dat/conduit/sass/layout.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 19, D:/work/dat/conduit/sass/layout.scss */
 html {
   font-size: 100% !important;
   font-family: 'SourceSansPro', sans-serif !important;
 }
 
-/* line 24, D:/work/dat/conduit/sass/layout.scss */
 body {
   min-width: 750px;
   position: fixed;
@@ -27,7 +24,6 @@ body {
   background-color: #f2f2f2;
 }
 
-/* line 42, D:/work/dat/conduit/sass/layout.scss */
 #container {
   position: fixed;
   padding-left: 25vw;
@@ -38,7 +34,6 @@ body {
   background: transparent;
 }
 
-/* line 52, D:/work/dat/conduit/sass/layout.scss */
 #container .column {
   position: relative;
   float: left;
@@ -46,7 +41,6 @@ body {
   background: inherit;
 }
 
-/* line 59, D:/work/dat/conduit/sass/layout.scss */
 #center {
   padding: 0;
   width: 55vw;
@@ -54,7 +48,6 @@ body {
   float: left;
 }
 
-/* line 66, D:/work/dat/conduit/sass/layout.scss */
 #left {
   width: 25vw;
   padding: 0;
@@ -65,7 +58,6 @@ body {
   display: inline-block;
 }
 
-/* line 77, D:/work/dat/conduit/sass/layout.scss */
 #right {
   width: 20vw;
   padding: 0;
@@ -77,7 +69,6 @@ body {
   overflow-x: visible;
 }
 
-/* line 88, D:/work/dat/conduit/sass/layout.scss */
 #header {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -94,7 +85,6 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 106, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper:before {
   content: '';
   display: inline-block;
@@ -103,7 +93,6 @@ body {
   margin-right: -0.25em;
 }
 
-/* line 114, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -113,18 +102,15 @@ body {
   position: relative;
 }
 
-/* line 123, D:/work/dat/conduit/sass/layout.scss */
 #header-content {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 128, D:/work/dat/conduit/sass/layout.scss */
 * html #left {
   left: 390px;
 }
 
-/* line 132, D:/work/dat/conduit/sass/layout.scss */
 #header .btn-group.dropdown,
 #header .btn-group.dropdown:active,
 #header .btn-group.dropdown:focus {
@@ -138,7 +124,6 @@ body {
   box-shadow: none;
 }
 
-/* line 147, D:/work/dat/conduit/sass/layout.scss */
 #header .btn-group.dropdown:hover,
 #header .btn-group.dropdown:active,
 #header .btn-group.dropdown:focus,
@@ -148,7 +133,6 @@ body {
   text-decoration: underline;
 }
 
-/* line 157, D:/work/dat/conduit/sass/layout.scss */
 #header .dropdown #profile-dropdown {
   background: transparent;
   border: none;
@@ -156,7 +140,6 @@ body {
   height: 100%;
 }
 
-/* line 164, D:/work/dat/conduit/sass/layout.scss */
 #header .dropdown-menu {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -170,11 +153,8 @@ body {
   margin-top: -10px;
 }
 
-/* line 173, D:/work/dat/conduit/sass/layout.scss */
 #header .dropdown-menu .disabled {
   padding: 3px 20px;
   color: #bdbdbd;
   cursor: default;
 }
-
-/*# sourceMappingURL=../styles/layout.map */

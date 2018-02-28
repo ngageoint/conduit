@@ -1,17 +1,14 @@
-/* line 15, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle {
   width: 100%;
   text-align: left;
 }
 
-/* line 20, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle .caret {
   float: right;
   margin-top: 8px;
   margin-right: 8px;
 }
 
-/* line 27, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle.btn {
   border-radius: 0;
   border-bottom: 1px solid #bdbdbd;
@@ -21,25 +18,21 @@
   padding-right: 0;
 }
 
-/* line 38, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle.btn:hover {
   border-bottom: 2px solid rgba(33, 33, 33, 0.87);
   color: rgba(33, 33, 33, 0.54);
   transition: all .25s ease-in-out;
 }
 
-/* line 44, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .dropdown .item-selected:hover {
   color: #212121;
 }
 
-/* line 48, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .dropdown-toggle.btn:active,
 .material-form .dropdown-toggle.btn:focus {
   border-bottom: 2px solid #009688;
 }
 
-/* line 53, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .dropdown {
   padding-right: 0;
   padding-left: 0;
@@ -50,12 +43,10 @@
   width: 100%;
 }
 
-/* line 63, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .dropdown .item-selected {
   color: #212121;
 }
 
-/* line 67, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .dropdown label {
   visibility: hidden;
   height: 12px;
@@ -65,7 +56,6 @@
   transition: all .25s ease-in-out;
 }
 
-/* line 80, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .dropdown-menu {
   right: -4px;
   left: -4px;
@@ -73,7 +63,6 @@
   border-radius: 2px;
 }
 
-/* line 87, D:/work/dat/conduit/sass/material-form.scss */
 .material-form .btn,
 .material-form .btn:active,
 .material-form .btn:hover,
@@ -97,7 +86,6 @@
   padding: 0 0 12px 0;
 }
 
-/* line 113, D:/work/dat/conduit/sass/material-form.scss */
 .material-form.form-group input,
 .material-form.form-group .menu-search input {
   border: none;
@@ -112,7 +100,6 @@
   width: 100%;
 }
 
-/* line 130, D:/work/dat/conduit/sass/material-form.scss */
 .material-form.form-group .material-input-field,
 .material-form.form-group .menu-search .material-input-field {
   margin-right: 16px;
@@ -123,14 +110,12 @@
   height: 64px;
 }
 
-/* line 141, D:/work/dat/conduit/sass/material-form.scss */
 .material-form.form-group .material-input-field input:hover,
 .material-form.form-group .menu-search .material-input-field input:hover {
   border-bottom: 2px solid rgba(33, 33, 33, 0.87);
   transition: all .25s ease-in-out;
 }
 
-/* line 146, D:/work/dat/conduit/sass/material-form.scss */
 .material-form.form-group .material-input-field input:active,
 .material-form.form-group .material-input-field input:focus,
 .material-form.form-group .menu-search .material-input-field input:active,
@@ -139,7 +124,6 @@
   border-bottom: 2px solid #009688;
 }
 
-/* line 153, D:/work/dat/conduit/sass/material-form.scss */
 .material-form.form-group .menu-search .material-input-field {
   margin-right: 32px;
   margin-left: 32px;
@@ -148,19 +132,16 @@
   height: 40px;
 }
 
-/* line 160, D:/work/dat/conduit/sass/material-form.scss */
 .material-form.form-group .menu-search .material-input-field input {
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
-/* line 166, D:/work/dat/conduit/sass/material-form.scss */
 .material-dropdown .dropdown-menu.bump-menu-for-search {
   top: -40px;
   left: -8px;
 }
 
-/* line 171, D:/work/dat/conduit/sass/material-form.scss */
 .material-input-field label,
 .menu-search .material-input-field label {
   visibility: visible;
@@ -174,7 +155,6 @@
   pointer-events: none;
 }
 
-/* line 187, D:/work/dat/conduit/sass/material-form.scss */
 .material-input-field label.with-text,
 .dropdown-label,
 .dropdown-label.with-text {
@@ -185,23 +165,19 @@
   transition: all .25s ease-in-out;
 }
 
-/* line 199, D:/work/dat/conduit/sass/material-form.scss */
 .dropdown-label {
   visibility: hidden;
 }
 
-/* line 203, D:/work/dat/conduit/sass/material-form.scss */
 .dropdown-label.with-text {
   visibility: visible;
 }
 
-/* line 208, D:/work/dat/conduit/sass/material-form.scss */
 .material-input-field input:hover + label {
   color: rgba(33, 33, 33, 0.54);
   transition: all .25s ease-in-out;
 }
 
-/* line 213, D:/work/dat/conduit/sass/material-form.scss */
 .material-input-field input:active + label,
 .material-input-field input:focus + label,
 .material-input-field button:active + label,
@@ -217,35 +193,29 @@
   transition: all .25s ease-in-out;
 }
 
-/* line 230, D:/work/dat/conduit/sass/material-form.scss */
 .fade {
   transition: all linear .25s;
   opacity: 1;
 }
 
-/* line 235, D:/work/dat/conduit/sass/material-form.scss */
 .fade.ng-hide {
   opacity: 0;
 }
 
-/* line 239, D:/work/dat/conduit/sass/material-form.scss */
 label.active {
   color: #009688;
 }
 
-/* line 243, D:/work/dat/conduit/sass/material-form.scss */
 .material-form label.error,
 .material-input-field .counter.error {
   color: red !important;
   transition: all .25s ease-in-out;
 }
 
-/* line 249, D:/work/dat/conduit/sass/material-form.scss */
 .material-form.form-group input.error {
   border-bottom-color: red !important;
 }
 
-/* line 253, D:/work/dat/conduit/sass/material-form.scss */
 .material-input-field .counter {
   color: #bdbdbd;
   height: 12px;
@@ -253,5 +223,3 @@ label.active {
   float: right;
   transition: all .25s ease-in-out;
 }
-
-/*# sourceMappingURL=../styles/material-form.map */

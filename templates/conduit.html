@@ -41,10 +41,28 @@
                 <div id="content-wrapper">
                     <subject id="subject" class="subject" ng-controller="SubjectCtrl">
                     </subject>
+                    <div id="edit-menu">
+                        <div ng-show="hasEdits() && articles[currentIndex].isEdit && !versionsView()">
+                            <div class="primary-text">Edited</div>
+                            <a  href="#"
+                                ng-click="getOriginalArticle()">
+                                    <div class="supporting-text">View Original</div>
+                            </a>
+                        </div>
+                        <div ng-show="hasEdits() && !articles[currentIndex].isEdit && !versionsView()">
+                            <div class="primary-text">Original</div>
+                            <a  href="#"
+                                
+                                ng-click="getMostRecentEdit()">
+                                    <div class="supporting-text">View Latest Edit</div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--
                     <ol id="overflow-menu" class="nya-bs-select dropdown form-control" ng-model="books">
                         <li>
                             
-                            <a href="{{articles[currentIndex].link}}" target="_blank">
+                            <!--<a href="{{articles[currentIndex].link}}" target="_blank">
                                 View Source&nbsp;&nbsp;<span class="glyphicon glyphicon-new-window pull-right"></span>
                             </a>
                             <a  href="#"
@@ -72,25 +90,10 @@
                                 ng-click="export(articles[currentIndex])">
                                 Export&nbsp;&nbsp;<span class="glyphicon glyphicon-save-file pull-right"></span>
                             </a>
-                        -->
+                        
                         </li>
-                    </ol>   
-
-                    <!--
-                    <a href="#" id="overflow-btn" ng-click="overflowOpen = !overflowOpen">
-                        <i class="glyphicon glyphicon-option-vertical"></i>
-                    </a>
-
-                    <div id="overflow-menu" ng-show="overflowOpen">
-                        <a href="{{articles[currentIndex].link}}" target="_blank">
-                            View Original
-                        </a>
-                        <a href="{{articles[currentIndex].link}}" target="_blank">
-                            Edit
-                        </a>
-                    </div>
+                    </ol>
                 -->
-
                     <div id="title-wrapper">
                         <div 	class="title"
                                 e-class="title edit-field"
@@ -102,10 +105,6 @@
                                 blur="submit">
                             {{articles[currentIndex].title}}
                         </div>
-                        <!--<button id="btn-title" class="btn btn-edit" ng-click="titleEdit.$show()" ng-hide="titleEdit.$visible">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            <div class="ico-text-2">Edit</div>
-                        </button>-->
                     </div>
                     <div id="image-wrapper" ng-if="!articles[currentIndex].images.length == 0">
                         
@@ -155,19 +154,17 @@
                                 editable-textarea="articles[currentIndex].text"
                                 buttons="no"
                                 blur="submit">
-                           <!-- <button id="btn-text" class="btn btn-edit" ng-click="textEdit.$show()" ng-hide="textEdit.$visible">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                <div class="ico-text-2">Edit</div>
-                            </button>-->
                             {{articles[currentIndex].text}}
                         </div>
                     </div>
                 </div>
                 <div id="action-area">
                     <div id="id" ng-show="!versionsView()">
-                        <a ng-href="{{articles[currentIndex].link}}" target="_blank">
-                            {{articles[currentIndex].id}}
+                        <a ng-href="{{articles[currentIndex].link}}" target="_blank" title="View source" alt="View source">
+                            {{articles[currentIndex].id}}&nbsp;
+                            <span class="glyphicon glyphicon-new-window"></span>
                         </a>
+                        
                         {{' - ' + (articles[currentIndex].isEdit ? 'Edited' : 'Original')}}
                     </div>
                     <div id="version-pagniation" ng-show="versionsView()">
@@ -274,14 +271,7 @@
                         </button>
                         
                     </div>
-                    <!--
-                        <ul uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></ul>
-                    -->
-                    
                 </div>
-                    <!--<div id="fab">
-                        <span class="glyphicon glyphicon-align-justify"></span> 
-                    </div>-->
             </div>  
         </div>
         
@@ -384,21 +374,21 @@
             <fe-fluid 	id="article-stream"
                         class="stream">
                 <div id="infinite-scroll" infinite-scroll="buildMoreCards()" infinite-scroll-parent="true" infinite-scroll-distance=".75">                         
-                <card	class="stream card"
-                        id="{{'e' + article.id}}"
-                        scroll-center-on="article.active"
-                        ng-repeat="article in articles track by article.id"
-                        ng-if="article.build"
-                        ng-show="article.inFeed"
-                        ng-class="{	'card-extended-hover': hovering,
-                                       'active-read': article.active && !article.activeInBook && article.read,
-                                    'active': article.active && !article.activeInBook,
-                                    'read': article.read }"
-                        ng-click="activateCard('Feed', article.id)" 
-                        ng-init="isStream = true"
-                        ng-cloak>
-                </card>
-</div>
+                    <card	class="stream card"
+                            id="{{'e' + article.id}}"
+                            scroll-center-on="article.active"
+                            ng-repeat="article in articles track by article.id"
+                            ng-if="article.build"
+                            ng-show="article.inFeed"
+                            ng-class="{	'card-extended-hover': hovering,
+                                        'active-read': article.active && !article.activeInBook && article.read,
+                                        'active': article.active && !article.activeInBook,
+                                        'read': article.read }"
+                            ng-click="activateCard('Feed', article.id)" 
+                            ng-init="isStream = true"
+                            ng-cloak>
+                    </card>
+                </div>
             </fe-fluid>
             </div>
             
@@ -427,21 +417,6 @@
                         </li>
                     </ul>
                 </div>
-                <!--<ol class="nya-bs-select dropdown form-control"
-                    ng-model="selectedBook"
-                    title="Choose a book...">
-                    <li nya-bs-option="book in books" title="{{::book.name}}">
-                        <a>
-                            {{::book.name}}&nbsp;
-                            <span ng-if="book.count" class="badge">{{book.count}}</span>
-                            <span class="glyphicon glyphicon-ok check-mark"></span>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li ng-controller="NewBookModalCtrl" ng-click="showForm()" title="Manage books">
-                        <a><div class="ico-text-1">Manage books</div></a>
-                    </li>
-                </ol>-->
                 <div    class="stream-action small"
                         ng-click="exportBook(selectedBook)"
                         title="Export book">

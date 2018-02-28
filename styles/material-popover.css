@@ -1,4 +1,3 @@
-/* line 4, D:/work/dat/conduit/sass/material-popover.scss */
 .material-popover .popover {
   -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -15,12 +14,9 @@
   left: auto !important;
 }
 
-/* line 18, D:/work/dat/conduit/sass/material-popover.scss */
 .material-popover .popover-title {
   border-radius: 2px 2px 0 0;
   border: none;
   padding: 14px;
   background-color: rgba(33, 33, 33, 0.12);
 }
-
-/*# sourceMappingURL=../styles/material-popover.map */
