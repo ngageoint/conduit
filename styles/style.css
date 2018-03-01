@@ -93,7 +93,7 @@ body {
 
 .classification.u {
   background-color: #00b400;
-  color: #fff;
+  color: #000;
 }
 
 .classification.s {
@@ -108,8 +108,8 @@ body {
 
 #container {
   position: fixed;
-  padding-left: 25vw;
-  padding-right: 20vw;
+  padding-left: 23vw;
+  padding-right: 23vw;
   height: auto;
   bottom: 20px;
   top: 68px;
@@ -125,15 +125,15 @@ body {
 
 #center {
   padding: 0;
-  width: 55vw;
+  width: 54vw;
   background: #f2f2f2;
   float: left;
 }
 
 #left {
-  width: 25vw;
+  width: 23vw;
   padding: 0;
-  right: 25vw;
+  right: 23vw;
   margin-left: -100%;
   max-height: 100%;
   background: #f2f2f2;
@@ -141,9 +141,9 @@ body {
 }
 
 #right {
-  width: 20vw;
+  width: 23vw;
   padding: 0;
-  margin-right: -20vw;
+  margin-right: -23vw;
   background: #f2f2f2;
   float: left;
   margin-left: 0;

@@ -2,13 +2,14 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.7
--- Dumped by pg_dump version 9.5.7
+-- Dumped from database version 9.5.10
+-- Dumped by pg_dump version 10.1
 
--- Started on 2018-01-23 17:39:29
+-- Started on 2018-02-28 12:49:22
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -25,6 +26,23 @@ CREATE SCHEMA conduit_db;
 
 ALTER SCHEMA conduit_db OWNER TO postgres;
 
+--
+-- TOC entry 1 (class 3079 OID 12355)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2238 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
 SET search_path = conduit_db, pg_catalog;
 
 SET default_tablespace = '';
@@ -32,7 +50,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 189 (class 1259 OID 16436)
+-- TOC entry 182 (class 1259 OID 16395)
 -- Name: ARTICLES; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -50,7 +68,7 @@ CREATE TABLE "ARTICLES" (
 ALTER TABLE "ARTICLES" OWNER TO postgres;
 
 --
--- TOC entry 197 (class 1259 OID 24603)
+-- TOC entry 183 (class 1259 OID 16401)
 -- Name: ARTICLES_EDITS; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -67,7 +85,7 @@ CREATE TABLE "ARTICLES_EDITS" (
 ALTER TABLE "ARTICLES_EDITS" OWNER TO postgres;
 
 --
--- TOC entry 188 (class 1259 OID 16419)
+-- TOC entry 184 (class 1259 OID 16408)
 -- Name: ARTICLES_STATUS; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -84,7 +102,7 @@ CREATE TABLE "ARTICLES_STATUS" (
 ALTER TABLE "ARTICLES_STATUS" OWNER TO postgres;
 
 --
--- TOC entry 200 (class 1259 OID 24678)
+-- TOC entry 185 (class 1259 OID 16412)
 -- Name: ATTRIBUTES; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -104,7 +122,7 @@ CREATE TABLE "ATTRIBUTES" (
 ALTER TABLE "ATTRIBUTES" OWNER TO postgres;
 
 --
--- TOC entry 199 (class 1259 OID 24676)
+-- TOC entry 186 (class 1259 OID 16419)
 -- Name: ATTRIBUTES_id_seq; Type: SEQUENCE; Schema: conduit_db; Owner: postgres
 --
 
@@ -119,8 +137,8 @@ CREATE SEQUENCE "ATTRIBUTES_id_seq"
 ALTER TABLE "ATTRIBUTES_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 2241 (class 0 OID 0)
--- Dependencies: 199
+-- TOC entry 2239 (class 0 OID 0)
+-- Dependencies: 186
 -- Name: ATTRIBUTES_id_seq; Type: SEQUENCE OWNED BY; Schema: conduit_db; Owner: postgres
 --
 
@@ -128,45 +146,7 @@ ALTER SEQUENCE "ATTRIBUTES_id_seq" OWNED BY "ATTRIBUTES".id;
 
 
 --
--- TOC entry 196 (class 1259 OID 16505)
--- Name: BOOKS; Type: TABLE; Schema: conduit_db; Owner: postgres
---
-
-CREATE TABLE "BOOKS" (
-    id integer NOT NULL,
-    name character varying(64) NOT NULL,
-    team_id integer
-);
-
-
-ALTER TABLE "BOOKS" OWNER TO postgres;
-
---
--- TOC entry 195 (class 1259 OID 16503)
--- Name: BOOKS_BOOK_ID_seq; Type: SEQUENCE; Schema: conduit_db; Owner: postgres
---
-
-CREATE SEQUENCE "BOOKS_BOOK_ID_seq"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE "BOOKS_BOOK_ID_seq" OWNER TO postgres;
-
---
--- TOC entry 2242 (class 0 OID 0)
--- Dependencies: 195
--- Name: BOOKS_BOOK_ID_seq; Type: SEQUENCE OWNED BY; Schema: conduit_db; Owner: postgres
---
-
-ALTER SEQUENCE "BOOKS_BOOK_ID_seq" OWNED BY "BOOKS".id;
-
-
---
--- TOC entry 183 (class 1259 OID 16397)
+-- TOC entry 188 (class 1259 OID 16426)
 -- Name: BOOKS_STATUS; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -181,8 +161,8 @@ CREATE TABLE "BOOKS_STATUS" (
 ALTER TABLE "BOOKS_STATUS" OWNER TO postgres;
 
 --
--- TOC entry 2243 (class 0 OID 0)
--- Dependencies: 183
+-- TOC entry 2240 (class 0 OID 0)
+-- Dependencies: 188
 -- Name: COLUMN "BOOKS_STATUS"."USER_ID"; Type: COMMENT; Schema: conduit_db; Owner: postgres
 --
 
@@ -191,7 +171,45 @@ COMMENT ON COLUMN "BOOKS_STATUS"."USER_ID" IS '
 
 
 --
--- TOC entry 190 (class 1259 OID 16445)
+-- TOC entry 195 (class 1259 OID 16453)
+-- Name: books_id_seq; Type: SEQUENCE; Schema: conduit_db; Owner: postgres
+--
+
+CREATE SEQUENCE books_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE books_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2241 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: books_id_seq; Type: SEQUENCE OWNED BY; Schema: conduit_db; Owner: postgres
+--
+
+ALTER SEQUENCE books_id_seq OWNED BY "BOOKS_STATUS"."BOOK_ID";
+
+
+--
+-- TOC entry 187 (class 1259 OID 16421)
+-- Name: BOOKS; Type: TABLE; Schema: conduit_db; Owner: postgres
+--
+
+CREATE TABLE "BOOKS" (
+    id integer DEFAULT nextval('books_id_seq'::regclass) NOT NULL,
+    name character varying(64) NOT NULL,
+    team_id integer
+);
+
+
+ALTER TABLE "BOOKS" OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 16429)
 -- Name: COMMENTS; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -207,7 +225,7 @@ CREATE TABLE "COMMENTS" (
 ALTER TABLE "COMMENTS" OWNER TO postgres;
 
 --
--- TOC entry 194 (class 1259 OID 16485)
+-- TOC entry 190 (class 1259 OID 16435)
 -- Name: IMAGES; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -221,7 +239,7 @@ CREATE TABLE "IMAGES" (
 ALTER TABLE "IMAGES" OWNER TO postgres;
 
 --
--- TOC entry 198 (class 1259 OID 24645)
+-- TOC entry 191 (class 1259 OID 16441)
 -- Name: IMAGES_STATUS; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -235,7 +253,7 @@ CREATE TABLE "IMAGES_STATUS" (
 ALTER TABLE "IMAGES_STATUS" OWNER TO postgres;
 
 --
--- TOC entry 192 (class 1259 OID 16453)
+-- TOC entry 192 (class 1259 OID 16444)
 -- Name: TAGS; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -249,7 +267,7 @@ CREATE TABLE "TAGS" (
 ALTER TABLE "TAGS" OWNER TO postgres;
 
 --
--- TOC entry 187 (class 1259 OID 16413)
+-- TOC entry 193 (class 1259 OID 16447)
 -- Name: TEAMS; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -262,7 +280,7 @@ CREATE TABLE "TEAMS" (
 ALTER TABLE "TEAMS" OWNER TO postgres;
 
 --
--- TOC entry 185 (class 1259 OID 16405)
+-- TOC entry 194 (class 1259 OID 16450)
 -- Name: USERS; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -278,31 +296,7 @@ CREATE TABLE "USERS" (
 ALTER TABLE "USERS" OWNER TO postgres;
 
 --
--- TOC entry 182 (class 1259 OID 16395)
--- Name: books_id_seq; Type: SEQUENCE; Schema: conduit_db; Owner: postgres
---
-
-CREATE SEQUENCE books_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE books_id_seq OWNER TO postgres;
-
---
--- TOC entry 2244 (class 0 OID 0)
--- Dependencies: 182
--- Name: books_id_seq; Type: SEQUENCE OWNED BY; Schema: conduit_db; Owner: postgres
---
-
-ALTER SEQUENCE books_id_seq OWNED BY "BOOKS_STATUS"."BOOK_ID";
-
-
---
--- TOC entry 193 (class 1259 OID 16483)
+-- TOC entry 196 (class 1259 OID 16455)
 -- Name: images_id_seq; Type: SEQUENCE; Schema: conduit_db; Owner: postgres
 --
 
@@ -317,8 +311,8 @@ CREATE SEQUENCE images_id_seq
 ALTER TABLE images_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2245 (class 0 OID 0)
--- Dependencies: 193
+-- TOC entry 2242 (class 0 OID 0)
+-- Dependencies: 196
 -- Name: images_id_seq; Type: SEQUENCE OWNED BY; Schema: conduit_db; Owner: postgres
 --
 
@@ -326,7 +320,7 @@ ALTER SEQUENCE images_id_seq OWNED BY "IMAGES".id;
 
 
 --
--- TOC entry 202 (class 1259 OID 49496)
+-- TOC entry 197 (class 1259 OID 16457)
 -- Name: session; Type: TABLE; Schema: conduit_db; Owner: postgres
 --
 
@@ -340,7 +334,7 @@ CREATE TABLE session (
 ALTER TABLE session OWNER TO postgres;
 
 --
--- TOC entry 191 (class 1259 OID 16451)
+-- TOC entry 198 (class 1259 OID 16463)
 -- Name: tags_id_seq; Type: SEQUENCE; Schema: conduit_db; Owner: postgres
 --
 
@@ -355,8 +349,8 @@ CREATE SEQUENCE tags_id_seq
 ALTER TABLE tags_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2246 (class 0 OID 0)
--- Dependencies: 191
+-- TOC entry 2243 (class 0 OID 0)
+-- Dependencies: 198
 -- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: conduit_db; Owner: postgres
 --
 
@@ -364,7 +358,7 @@ ALTER SEQUENCE tags_id_seq OWNED BY "TAGS".id;
 
 
 --
--- TOC entry 186 (class 1259 OID 16411)
+-- TOC entry 199 (class 1259 OID 16465)
 -- Name: teams_id_seq; Type: SEQUENCE; Schema: conduit_db; Owner: postgres
 --
 
@@ -379,8 +373,8 @@ CREATE SEQUENCE teams_id_seq
 ALTER TABLE teams_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2247 (class 0 OID 0)
--- Dependencies: 186
+-- TOC entry 2244 (class 0 OID 0)
+-- Dependencies: 199
 -- Name: teams_id_seq; Type: SEQUENCE OWNED BY; Schema: conduit_db; Owner: postgres
 --
 
@@ -388,7 +382,7 @@ ALTER SEQUENCE teams_id_seq OWNED BY "TEAMS".id;
 
 
 --
--- TOC entry 184 (class 1259 OID 16403)
+-- TOC entry 200 (class 1259 OID 16467)
 -- Name: users_id_seq; Type: SEQUENCE; Schema: conduit_db; Owner: postgres
 --
 
@@ -403,8 +397,8 @@ CREATE SEQUENCE users_id_seq
 ALTER TABLE users_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2248 (class 0 OID 0)
--- Dependencies: 184
+-- TOC entry 2245 (class 0 OID 0)
+-- Dependencies: 200
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: conduit_db; Owner: postgres
 --
 
@@ -412,64 +406,56 @@ ALTER SEQUENCE users_id_seq OWNED BY "USERS".id;
 
 
 --
--- TOC entry 2059 (class 2604 OID 24681)
--- Name: id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2051 (class 2604 OID 16469)
+-- Name: ATTRIBUTES id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "ATTRIBUTES" ALTER COLUMN id SET DEFAULT nextval('"ATTRIBUTES_id_seq"'::regclass);
 
 
 --
--- TOC entry 2057 (class 2604 OID 16508)
--- Name: id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
---
-
-ALTER TABLE ONLY "BOOKS" ALTER COLUMN id SET DEFAULT nextval('"BOOKS_BOOK_ID_seq"'::regclass);
-
-
---
--- TOC entry 2051 (class 2604 OID 16400)
--- Name: BOOK_ID; Type: DEFAULT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2053 (class 2604 OID 16471)
+-- Name: BOOKS_STATUS BOOK_ID; Type: DEFAULT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "BOOKS_STATUS" ALTER COLUMN "BOOK_ID" SET DEFAULT nextval('books_id_seq'::regclass);
 
 
 --
--- TOC entry 2056 (class 2604 OID 16488)
--- Name: id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2054 (class 2604 OID 16472)
+-- Name: IMAGES id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "IMAGES" ALTER COLUMN id SET DEFAULT nextval('images_id_seq'::regclass);
 
 
 --
--- TOC entry 2055 (class 2604 OID 16456)
--- Name: id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2055 (class 2604 OID 16473)
+-- Name: TAGS id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "TAGS" ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
 
 
 --
--- TOC entry 2053 (class 2604 OID 16416)
--- Name: id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2056 (class 2604 OID 16474)
+-- Name: TEAMS id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "TEAMS" ALTER COLUMN id SET DEFAULT nextval('teams_id_seq'::regclass);
 
 
 --
--- TOC entry 2052 (class 2604 OID 16408)
--- Name: id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2057 (class 2604 OID 16475)
+-- Name: USERS id; Type: DEFAULT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "USERS" ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
--- TOC entry 2092 (class 2606 OID 16510)
--- Name: BOOK_ID; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2071 (class 2606 OID 16477)
+-- Name: BOOKS BOOK_ID; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "BOOKS"
@@ -477,8 +463,8 @@ ALTER TABLE ONLY "BOOKS"
 
 
 --
--- TOC entry 2096 (class 2606 OID 24624)
--- Name: PK__ARICLES_EDITS; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2063 (class 2606 OID 16479)
+-- Name: ARTICLES_EDITS PK__ARICLES_EDITS; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "ARTICLES_EDITS"
@@ -486,8 +472,8 @@ ALTER TABLE ONLY "ARTICLES_EDITS"
 
 
 --
--- TOC entry 2102 (class 2606 OID 24687)
--- Name: PK__ATTRIBUTES; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2069 (class 2606 OID 16481)
+-- Name: ATTRIBUTES PK__ATTRIBUTES; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "ATTRIBUTES"
@@ -495,8 +481,8 @@ ALTER TABLE ONLY "ATTRIBUTES"
 
 
 --
--- TOC entry 2069 (class 2606 OID 49431)
--- Name: PK__BOOKS_STATUS; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2077 (class 2606 OID 16483)
+-- Name: BOOKS_STATUS PK__BOOKS_STATUS; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "BOOKS_STATUS"
@@ -504,8 +490,8 @@ ALTER TABLE ONLY "BOOKS_STATUS"
 
 
 --
--- TOC entry 2100 (class 2606 OID 24649)
--- Name: PK__IMAGES_STATUS; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2088 (class 2606 OID 16485)
+-- Name: IMAGES_STATUS PK__IMAGES_STATUS; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "IMAGES_STATUS"
@@ -513,8 +499,8 @@ ALTER TABLE ONLY "IMAGES_STATUS"
 
 
 --
--- TOC entry 2080 (class 2606 OID 16444)
--- Name: article_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2059 (class 2606 OID 16487)
+-- Name: ARTICLES article_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "ARTICLES"
@@ -522,8 +508,8 @@ ALTER TABLE ONLY "ARTICLES"
 
 
 --
--- TOC entry 2083 (class 2606 OID 49433)
--- Name: comment_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2080 (class 2606 OID 16489)
+-- Name: COMMENTS comment_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "COMMENTS"
@@ -531,8 +517,8 @@ ALTER TABLE ONLY "COMMENTS"
 
 
 --
--- TOC entry 2090 (class 2606 OID 16490)
--- Name: image_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2084 (class 2606 OID 16491)
+-- Name: IMAGES image_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "IMAGES"
@@ -540,8 +526,8 @@ ALTER TABLE ONLY "IMAGES"
 
 
 --
--- TOC entry 2104 (class 2606 OID 49503)
--- Name: session_pkey; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2098 (class 2606 OID 16493)
+-- Name: session session_pkey; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY session
@@ -549,8 +535,8 @@ ALTER TABLE ONLY session
 
 
 --
--- TOC entry 2078 (class 2606 OID 16423)
--- Name: status_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2067 (class 2606 OID 16495)
+-- Name: ARTICLES_STATUS status_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "ARTICLES_STATUS"
@@ -558,8 +544,8 @@ ALTER TABLE ONLY "ARTICLES_STATUS"
 
 
 --
--- TOC entry 2087 (class 2606 OID 16476)
--- Name: tags_pkey; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2091 (class 2606 OID 16497)
+-- Name: TAGS tags_pkey; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "TAGS"
@@ -567,8 +553,8 @@ ALTER TABLE ONLY "TAGS"
 
 
 --
--- TOC entry 2074 (class 2606 OID 16418)
--- Name: team_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2093 (class 2606 OID 16499)
+-- Name: TEAMS team_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "TEAMS"
@@ -576,8 +562,8 @@ ALTER TABLE ONLY "TEAMS"
 
 
 --
--- TOC entry 2072 (class 2606 OID 16410)
--- Name: user_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2096 (class 2606 OID 16501)
+-- Name: USERS user_id; Type: CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "USERS"
@@ -585,7 +571,7 @@ ALTER TABLE ONLY "USERS"
 
 
 --
--- TOC entry 2064 (class 1259 OID 16502)
+-- TOC entry 2072 (class 1259 OID 16502)
 -- Name: FKI__ARTICLES__BOOKS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -593,7 +579,7 @@ CREATE INDEX "FKI__ARTICLES__BOOKS" ON "BOOKS_STATUS" USING btree ("ARTICLE_ID")
 
 
 --
--- TOC entry 2065 (class 1259 OID 24602)
+-- TOC entry 2073 (class 1259 OID 16503)
 -- Name: FKI__ARTICLES__BOOKS_STATUS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -601,7 +587,7 @@ CREATE INDEX "FKI__ARTICLES__BOOKS_STATUS" ON "BOOKS_STATUS" USING btree ("ARTIC
 
 
 --
--- TOC entry 2088 (class 1259 OID 24675)
+-- TOC entry 2082 (class 1259 OID 16504)
 -- Name: FKI__ARTICLES__IMAGES; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -609,7 +595,7 @@ CREATE INDEX "FKI__ARTICLES__IMAGES" ON "IMAGES" USING btree (article_id);
 
 
 --
--- TOC entry 2097 (class 1259 OID 24655)
+-- TOC entry 2085 (class 1259 OID 16505)
 -- Name: FKI__ARTICLES__IMAGES_STATUS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -617,7 +603,7 @@ CREATE INDEX "FKI__ARTICLES__IMAGES_STATUS" ON "IMAGES_STATUS" USING btree (arti
 
 
 --
--- TOC entry 2085 (class 1259 OID 16482)
+-- TOC entry 2089 (class 1259 OID 16506)
 -- Name: FKI__ARTICLES__TAGS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -625,7 +611,7 @@ CREATE INDEX "FKI__ARTICLES__TAGS" ON "TAGS" USING btree (article_id);
 
 
 --
--- TOC entry 2098 (class 1259 OID 24661)
+-- TOC entry 2086 (class 1259 OID 16507)
 -- Name: FKI__IMAGES__IMAGES_STATUS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -633,7 +619,7 @@ CREATE INDEX "FKI__IMAGES__IMAGES_STATUS" ON "IMAGES_STATUS" USING btree (image_
 
 
 --
--- TOC entry 2093 (class 1259 OID 24641)
+-- TOC entry 2060 (class 1259 OID 16508)
 -- Name: FKI__TEAMS__ARTICLES_EDITS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -641,7 +627,7 @@ CREATE INDEX "FKI__TEAMS__ARTICLES_EDITS" ON "ARTICLES_EDITS" USING btree (team_
 
 
 --
--- TOC entry 2066 (class 1259 OID 49423)
+-- TOC entry 2074 (class 1259 OID 16509)
 -- Name: FKI__TEAMS__BOOKS_STATUS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -649,7 +635,7 @@ CREATE INDEX "FKI__TEAMS__BOOKS_STATUS" ON "BOOKS_STATUS" USING btree ("TEAM_ID"
 
 
 --
--- TOC entry 2081 (class 1259 OID 24594)
+-- TOC entry 2078 (class 1259 OID 16510)
 -- Name: FKI__TEAMS__COMMENTS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -657,7 +643,7 @@ CREATE INDEX "FKI__TEAMS__COMMENTS" ON "COMMENTS" USING btree (team_id);
 
 
 --
--- TOC entry 2070 (class 1259 OID 24581)
+-- TOC entry 2094 (class 1259 OID 16511)
 -- Name: FKI__TEAMS__USERS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -665,7 +651,7 @@ CREATE INDEX "FKI__TEAMS__USERS" ON "USERS" USING btree (team_id);
 
 
 --
--- TOC entry 2094 (class 1259 OID 24635)
+-- TOC entry 2061 (class 1259 OID 16512)
 -- Name: FKI__USERS__ARTICLES_EDITS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -673,7 +659,7 @@ CREATE INDEX "FKI__USERS__ARTICLES_EDITS" ON "ARTICLES_EDITS" USING btree (user_
 
 
 --
--- TOC entry 2067 (class 1259 OID 49429)
+-- TOC entry 2075 (class 1259 OID 16513)
 -- Name: FKI__USERS__BOOKS_STATUS; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -681,7 +667,7 @@ CREATE INDEX "FKI__USERS__BOOKS_STATUS" ON "BOOKS_STATUS" USING btree ("USER_ID"
 
 
 --
--- TOC entry 2084 (class 1259 OID 16474)
+-- TOC entry 2081 (class 1259 OID 16514)
 -- Name: fki_comment_user_id; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -689,7 +675,7 @@ CREATE INDEX fki_comment_user_id ON "COMMENTS" USING btree (user_id);
 
 
 --
--- TOC entry 2075 (class 1259 OID 16435)
+-- TOC entry 2064 (class 1259 OID 16515)
 -- Name: fki_team_id; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -697,7 +683,7 @@ CREATE INDEX fki_team_id ON "ARTICLES_STATUS" USING btree (team_id);
 
 
 --
--- TOC entry 2076 (class 1259 OID 16429)
+-- TOC entry 2065 (class 1259 OID 16516)
 -- Name: fki_user_id; Type: INDEX; Schema: conduit_db; Owner: postgres
 --
 
@@ -705,8 +691,8 @@ CREATE INDEX fki_user_id ON "ARTICLES_STATUS" USING btree (user_id);
 
 
 --
--- TOC entry 2117 (class 2606 OID 24625)
--- Name: FK__ARTICLES__ARTICLES_EDITS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2099 (class 2606 OID 16517)
+-- Name: ARTICLES_EDITS FK__ARTICLES__ARTICLES_EDITS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "ARTICLES_EDITS"
@@ -714,8 +700,8 @@ ALTER TABLE ONLY "ARTICLES_EDITS"
 
 
 --
--- TOC entry 2106 (class 2606 OID 24597)
--- Name: FK__ARTICLES__BOOKS_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2104 (class 2606 OID 16522)
+-- Name: BOOKS_STATUS FK__ARTICLES__BOOKS_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "BOOKS_STATUS"
@@ -723,8 +709,8 @@ ALTER TABLE ONLY "BOOKS_STATUS"
 
 
 --
--- TOC entry 2112 (class 2606 OID 16459)
--- Name: FK__ARTICLES__COMMENTS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2108 (class 2606 OID 16527)
+-- Name: COMMENTS FK__ARTICLES__COMMENTS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "COMMENTS"
@@ -732,8 +718,8 @@ ALTER TABLE ONLY "COMMENTS"
 
 
 --
--- TOC entry 2116 (class 2606 OID 24670)
--- Name: FK__ARTICLES__IMAGES; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2111 (class 2606 OID 16532)
+-- Name: IMAGES FK__ARTICLES__IMAGES; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "IMAGES"
@@ -741,8 +727,8 @@ ALTER TABLE ONLY "IMAGES"
 
 
 --
--- TOC entry 2120 (class 2606 OID 24650)
--- Name: FK__ARTICLES__IMAGES_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2112 (class 2606 OID 16537)
+-- Name: IMAGES_STATUS FK__ARTICLES__IMAGES_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "IMAGES_STATUS"
@@ -750,8 +736,8 @@ ALTER TABLE ONLY "IMAGES_STATUS"
 
 
 --
--- TOC entry 2115 (class 2606 OID 16477)
--- Name: FK__ARTICLES__TAGS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2115 (class 2606 OID 16542)
+-- Name: TAGS FK__ARTICLES__TAGS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "TAGS"
@@ -759,8 +745,8 @@ ALTER TABLE ONLY "TAGS"
 
 
 --
--- TOC entry 2105 (class 2606 OID 16516)
--- Name: FK__BOOKS__BOOKS_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2105 (class 2606 OID 16547)
+-- Name: BOOKS_STATUS FK__BOOKS__BOOKS_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "BOOKS_STATUS"
@@ -768,8 +754,8 @@ ALTER TABLE ONLY "BOOKS_STATUS"
 
 
 --
--- TOC entry 2121 (class 2606 OID 24656)
--- Name: FK__IMAGES__IMAGES_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2113 (class 2606 OID 16552)
+-- Name: IMAGES_STATUS FK__IMAGES__IMAGES_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "IMAGES_STATUS"
@@ -777,8 +763,8 @@ ALTER TABLE ONLY "IMAGES_STATUS"
 
 
 --
--- TOC entry 2119 (class 2606 OID 24636)
--- Name: FK__TEAMS__ARTICLES_EDITS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2100 (class 2606 OID 16557)
+-- Name: ARTICLES_EDITS FK__TEAMS__ARTICLES_EDITS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "ARTICLES_EDITS"
@@ -786,8 +772,8 @@ ALTER TABLE ONLY "ARTICLES_EDITS"
 
 
 --
--- TOC entry 2110 (class 2606 OID 16430)
--- Name: FK__TEAMS__ARTICLES_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2102 (class 2606 OID 16562)
+-- Name: ARTICLES_STATUS FK__TEAMS__ARTICLES_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "ARTICLES_STATUS"
@@ -795,8 +781,8 @@ ALTER TABLE ONLY "ARTICLES_STATUS"
 
 
 --
--- TOC entry 2107 (class 2606 OID 49418)
--- Name: FK__TEAMS__BOOKS_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2106 (class 2606 OID 16567)
+-- Name: BOOKS_STATUS FK__TEAMS__BOOKS_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "BOOKS_STATUS"
@@ -804,8 +790,8 @@ ALTER TABLE ONLY "BOOKS_STATUS"
 
 
 --
--- TOC entry 2114 (class 2606 OID 24589)
--- Name: FK__TEAMS__COMMENTS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2109 (class 2606 OID 16572)
+-- Name: COMMENTS FK__TEAMS__COMMENTS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "COMMENTS"
@@ -813,8 +799,8 @@ ALTER TABLE ONLY "COMMENTS"
 
 
 --
--- TOC entry 2122 (class 2606 OID 24662)
--- Name: FK__TEAMS__IMAGES_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2114 (class 2606 OID 16577)
+-- Name: IMAGES_STATUS FK__TEAMS__IMAGES_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "IMAGES_STATUS"
@@ -822,8 +808,8 @@ ALTER TABLE ONLY "IMAGES_STATUS"
 
 
 --
--- TOC entry 2109 (class 2606 OID 24576)
--- Name: FK__TEAMS__USERS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2116 (class 2606 OID 16582)
+-- Name: USERS FK__TEAMS__USERS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "USERS"
@@ -831,8 +817,8 @@ ALTER TABLE ONLY "USERS"
 
 
 --
--- TOC entry 2118 (class 2606 OID 24630)
--- Name: FK__USERS__ARTICLES_EDITS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2101 (class 2606 OID 16587)
+-- Name: ARTICLES_EDITS FK__USERS__ARTICLES_EDITS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "ARTICLES_EDITS"
@@ -840,8 +826,8 @@ ALTER TABLE ONLY "ARTICLES_EDITS"
 
 
 --
--- TOC entry 2111 (class 2606 OID 16424)
--- Name: FK__USERS__ARTICLES_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2103 (class 2606 OID 16592)
+-- Name: ARTICLES_STATUS FK__USERS__ARTICLES_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "ARTICLES_STATUS"
@@ -849,8 +835,8 @@ ALTER TABLE ONLY "ARTICLES_STATUS"
 
 
 --
--- TOC entry 2108 (class 2606 OID 49424)
--- Name: FK__USERS__BOOKS_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2107 (class 2606 OID 16597)
+-- Name: BOOKS_STATUS FK__USERS__BOOKS_STATUS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "BOOKS_STATUS"
@@ -858,15 +844,27 @@ ALTER TABLE ONLY "BOOKS_STATUS"
 
 
 --
--- TOC entry 2113 (class 2606 OID 16469)
--- Name: FK__USERS__COMMENTS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
+-- TOC entry 2110 (class 2606 OID 16602)
+-- Name: COMMENTS FK__USERS__COMMENTS; Type: FK CONSTRAINT; Schema: conduit_db; Owner: postgres
 --
 
 ALTER TABLE ONLY "COMMENTS"
     ADD CONSTRAINT "FK__USERS__COMMENTS" FOREIGN KEY (user_id) REFERENCES "USERS"(id);
 
 
--- Completed on 2018-01-23 17:39:29
+--
+-- TOC entry 2237 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2018-02-28 12:49:23
 
 --
 -- PostgreSQL database dump complete

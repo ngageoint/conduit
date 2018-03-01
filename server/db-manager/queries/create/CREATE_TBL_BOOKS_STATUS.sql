@@ -1,0 +1,55 @@
+CREATE TABLE conduit_db."BOOKS_STATUS"
+(
+    "BOOK_ID" integer NOT NULL DEFAULT nextval('conduit_db.books_id_seq'::regclass),
+    "ARTICLE_ID" character varying(64) COLLATE pg_catalog."default" NOT NULL,
+    "TEAM_ID" integer NOT NULL,
+    "USER_ID" integer,
+    CONSTRAINT "PK__BOOKS_STATUS" PRIMARY KEY ("BOOK_ID", "ARTICLE_ID", "TEAM_ID"),
+    CONSTRAINT "FK__ARTICLES__BOOKS_STATUS" FOREIGN KEY ("ARTICLE_ID")
+        REFERENCES conduit_db."ARTICLES" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT "FK__BOOKS__BOOKS_STATUS" FOREIGN KEY ("BOOK_ID")
+        REFERENCES conduit_db."BOOKS" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT "FK__TEAMS__BOOKS_STATUS" FOREIGN KEY ("TEAM_ID")
+        REFERENCES conduit_db."TEAMS" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT "FK__USERS__BOOKS_STATUS" FOREIGN KEY ("USER_ID")
+        REFERENCES conduit_db."USERS" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE conduit_db."BOOKS_STATUS"
+    OWNER to postgres;
+
+COMMENT ON COLUMN conduit_db."BOOKS_STATUS"."USER_ID"
+    IS '
+';
+
+CREATE INDEX "FKI__ARTICLES__BOOKS"
+    ON conduit_db."BOOKS_STATUS" USING btree
+    ("ARTICLE_ID" COLLATE pg_catalog."default")
+    TABLESPACE pg_default;
+
+CREATE INDEX "FKI__ARTICLES__BOOKS_STATUS"
+    ON conduit_db."BOOKS_STATUS" USING btree
+    ("ARTICLE_ID" COLLATE pg_catalog."default")
+    TABLESPACE pg_default;
+
+CREATE INDEX "FKI__TEAMS__BOOKS_STATUS"
+    ON conduit_db."BOOKS_STATUS" USING btree
+    ("TEAM_ID")
+    TABLESPACE pg_default;
+
+CREATE INDEX "FKI__USERS__BOOKS_STATUS"
+    ON conduit_db."BOOKS_STATUS" USING btree
+    ("USER_ID")
+    TABLESPACE pg_default;

@@ -1,12 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 9.5.7
--- Dumped by pg_dump version 9.5.7
-
--- Started on 2017-09-28 07:45:11
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -15,13 +6,13 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- TOC entry 8 (class 2615 OID 16394)
--- Name: conduit_db; Type: SCHEMA; Schema: -; Owner: -
---
-
 CREATE SCHEMA conduit_db;
 
+ALTER SCHEMA conduit_db OWNER TO postgres;
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 SET search_path = conduit_db, pg_catalog;
 

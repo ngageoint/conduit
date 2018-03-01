@@ -3,8 +3,8 @@
 @import 'colors.scss';
 @import 'material-shadow.scss';
 
-$left-width: 25vw;
-$right-width: 20vw;
+$left-width: 23vw;
+$right-width: 23vw;
 $center-width: (100vw - ($left-width + $right-width));
 
 $header-height: 48px;
@@ -59,7 +59,7 @@ body {
 
 .classification.u {
     background-color: rgb(0,180,0);
-    color: #fff;
+    color: #000;
 }
 
 .classification.s {

@@ -24,12 +24,18 @@ const audit = require('./server/tools/audit-log.service.js')
 const ArticleReader = require('./server/article-reader/article-reader.js');
 const SourceService = require('./server/tools/sources.service.server.js');
 
+//ON BUILD
+db.create.conduitDb();
+
 ////////////////
 ////ARTICLES////
 ////////////////
-ArticleReader.readSource(SourceService.sources[0]).then(function(res) {
-	//db.insert.articleFull(res);
-});
+//(function getAllArticles() {
+	ArticleReader.readSource(SourceService.sources[0]).then(function(res) {
+		db.insert.articleFull(res);
+	});
+//	setTimeout(getAllArticles(), 1000 * 60)
+//})();
 
 ////////////////
 ////ENV VARS////
@@ -93,8 +99,13 @@ var serveDefault = function(req, res, next) {
 				return;
 			});
 		} else {
-			res.status(200);
-			res.sendFile(path.join(__dirname, './', '', 'index.html'));
+			//res.status(200);
+			//res.sendFile(path.join(__dirname, './', '', 'index.html'));
+			response.writeHead(301, {
+				Location: 'http://whateverhostthiswillbe:8675/'+newRoom
+			});
+			res.redirect('/?id=null');
+			return;
 		}
 	} else {
 		//Authentication
