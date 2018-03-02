@@ -51,6 +51,15 @@ var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVIC
 if(process.env.VCAP_SERVICES) {
 	//todo pull pcf secret
 }
+if(process.env.session_secret) {
+	environment.session_secret = process.env.session_secret
+}
+
+
+console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+console.log(process.env);
+console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+console.log(process.env.session_secret);
 
 var authEnabled = (process.env.VCAP_APPLICATION || process.env);
 authEnabled = false;
@@ -71,7 +80,7 @@ app.use(session({
 		pool: db.pool,
 		schemaName: 'conduit_db'
 	}),
-	secret: environment.session_secret,
+	secret: environment.session_secret || process.env.session_secret,
 	resave: false,
 	name: 'conduit',
 	saveUninitialized: false,
