@@ -24,7 +24,7 @@ SET row_security = off;
 CREATE SCHEMA conduit_db;
 
 
-ALTER SCHEMA conduit_db OWNER TO postgres;
+ALTER SCHEMA conduit_db OWNER TO db_user;
 
 --
 -- TOC entry 1 (class 3079 OID 12355)
@@ -65,7 +65,7 @@ CREATE TABLE "ARTICLES" (
 );
 
 
-ALTER TABLE "ARTICLES" OWNER TO postgres;
+ALTER TABLE "ARTICLES" OWNER TO db_user;
 
 --
 -- TOC entry 183 (class 1259 OID 16401)
@@ -82,7 +82,7 @@ CREATE TABLE "ARTICLES_EDITS" (
 );
 
 
-ALTER TABLE "ARTICLES_EDITS" OWNER TO postgres;
+ALTER TABLE "ARTICLES_EDITS" OWNER TO db_user;
 
 --
 -- TOC entry 184 (class 1259 OID 16408)
@@ -99,7 +99,7 @@ CREATE TABLE "ARTICLES_STATUS" (
 );
 
 
-ALTER TABLE "ARTICLES_STATUS" OWNER TO postgres;
+ALTER TABLE "ARTICLES_STATUS" OWNER TO db_user;
 
 --
 -- TOC entry 185 (class 1259 OID 16412)
@@ -119,7 +119,7 @@ CREATE TABLE "ATTRIBUTES" (
 );
 
 
-ALTER TABLE "ATTRIBUTES" OWNER TO postgres;
+ALTER TABLE "ATTRIBUTES" OWNER TO db_user;
 
 --
 -- TOC entry 186 (class 1259 OID 16419)
@@ -134,7 +134,7 @@ CREATE SEQUENCE "ATTRIBUTES_id_seq"
     CACHE 1;
 
 
-ALTER TABLE "ATTRIBUTES_id_seq" OWNER TO postgres;
+ALTER TABLE "ATTRIBUTES_id_seq" OWNER TO db_user;
 
 --
 -- TOC entry 2239 (class 0 OID 0)
@@ -158,7 +158,7 @@ CREATE TABLE "BOOKS_STATUS" (
 );
 
 
-ALTER TABLE "BOOKS_STATUS" OWNER TO postgres;
+ALTER TABLE "BOOKS_STATUS" OWNER TO db_user;
 
 --
 -- TOC entry 2240 (class 0 OID 0)
@@ -183,7 +183,7 @@ CREATE SEQUENCE books_id_seq
     CACHE 1;
 
 
-ALTER TABLE books_id_seq OWNER TO postgres;
+ALTER TABLE books_id_seq OWNER TO db_user;
 
 --
 -- TOC entry 2241 (class 0 OID 0)
@@ -206,7 +206,7 @@ CREATE TABLE "BOOKS" (
 );
 
 
-ALTER TABLE "BOOKS" OWNER TO postgres;
+ALTER TABLE "BOOKS" OWNER TO db_user;
 
 --
 -- TOC entry 189 (class 1259 OID 16429)
@@ -222,7 +222,7 @@ CREATE TABLE "COMMENTS" (
 );
 
 
-ALTER TABLE "COMMENTS" OWNER TO postgres;
+ALTER TABLE "COMMENTS" OWNER TO db_user;
 
 --
 -- TOC entry 190 (class 1259 OID 16435)
@@ -236,7 +236,7 @@ CREATE TABLE "IMAGES" (
 );
 
 
-ALTER TABLE "IMAGES" OWNER TO postgres;
+ALTER TABLE "IMAGES" OWNER TO db_user;
 
 --
 -- TOC entry 191 (class 1259 OID 16441)
@@ -250,7 +250,7 @@ CREATE TABLE "IMAGES_STATUS" (
 );
 
 
-ALTER TABLE "IMAGES_STATUS" OWNER TO postgres;
+ALTER TABLE "IMAGES_STATUS" OWNER TO db_user;
 
 --
 -- TOC entry 192 (class 1259 OID 16444)
@@ -264,7 +264,7 @@ CREATE TABLE "TAGS" (
 );
 
 
-ALTER TABLE "TAGS" OWNER TO postgres;
+ALTER TABLE "TAGS" OWNER TO db_user;
 
 --
 -- TOC entry 193 (class 1259 OID 16447)
@@ -277,7 +277,7 @@ CREATE TABLE "TEAMS" (
 );
 
 
-ALTER TABLE "TEAMS" OWNER TO postgres;
+ALTER TABLE "TEAMS" OWNER TO db_user;
 
 --
 -- TOC entry 194 (class 1259 OID 16450)
@@ -293,7 +293,7 @@ CREATE TABLE "USERS" (
 );
 
 
-ALTER TABLE "USERS" OWNER TO postgres;
+ALTER TABLE "USERS" OWNER TO db_user;
 
 --
 -- TOC entry 196 (class 1259 OID 16455)
@@ -308,7 +308,7 @@ CREATE SEQUENCE images_id_seq
     CACHE 1;
 
 
-ALTER TABLE images_id_seq OWNER TO postgres;
+ALTER TABLE images_id_seq OWNER TO db_user;
 
 --
 -- TOC entry 2242 (class 0 OID 0)
@@ -331,7 +331,7 @@ CREATE TABLE session (
 );
 
 
-ALTER TABLE session OWNER TO postgres;
+ALTER TABLE session OWNER TO db_user;
 
 --
 -- TOC entry 198 (class 1259 OID 16463)
@@ -346,7 +346,7 @@ CREATE SEQUENCE tags_id_seq
     CACHE 1;
 
 
-ALTER TABLE tags_id_seq OWNER TO postgres;
+ALTER TABLE tags_id_seq OWNER TO db_user;
 
 --
 -- TOC entry 2243 (class 0 OID 0)
@@ -370,7 +370,7 @@ CREATE SEQUENCE teams_id_seq
     CACHE 1;
 
 
-ALTER TABLE teams_id_seq OWNER TO postgres;
+ALTER TABLE teams_id_seq OWNER TO db_user;
 
 --
 -- TOC entry 2244 (class 0 OID 0)
@@ -394,7 +394,7 @@ CREATE SEQUENCE users_id_seq
     CACHE 1;
 
 
-ALTER TABLE users_id_seq OWNER TO postgres;
+ALTER TABLE users_id_seq OWNER TO db_user;
 
 --
 -- TOC entry 2245 (class 0 OID 0)

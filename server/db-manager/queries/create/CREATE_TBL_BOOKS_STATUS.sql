@@ -28,7 +28,7 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE conduit_db."BOOKS_STATUS"
-    OWNER to postgres;
+    OWNER TO db_user;
 
 COMMENT ON COLUMN conduit_db."BOOKS_STATUS"."USER_ID"
     IS '

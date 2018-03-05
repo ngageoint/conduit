@@ -21,6 +21,21 @@ $filter-header-height: 24px;
     }
 }
 
+#attr-wrapper {
+    display: inline-block;
+    padding-top: 16px;
+}
+
+.cbx-wrapper {
+    float: left;
+    padding-right: 16px;
+    font-weight: normal;
+
+    .checkbox-label {
+        font-weight: normal;
+    }
+}
+
 .accordion-wrapper {
     
     @include material-shadow(3);

@@ -15,6 +15,3 @@ WITH (
     OIDS = FALSE
 )
 TABLESPACE pg_default;
-
-ALTER TABLE conduit_db."ATTRIBUTES"
-    OWNER to postgres;

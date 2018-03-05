@@ -10,4 +10,4 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE conduit_db."TEAMS"
-    OWNER to postgres;
+    OWNER TO db_user;

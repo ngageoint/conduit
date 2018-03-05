@@ -16,6 +16,21 @@
   width: 85%;
 }
 
+#attr-wrapper {
+  display: inline-block;
+  padding-top: 16px;
+}
+
+.cbx-wrapper {
+  float: left;
+  padding-right: 16px;
+  font-weight: normal;
+}
+
+.cbx-wrapper .checkbox-label {
+  font-weight: normal;
+}
+
 .accordion-wrapper {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);

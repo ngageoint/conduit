@@ -6,4 +6,4 @@ CREATE SEQUENCE conduit_db.books_id_seq
     CACHE 1;
 
 ALTER SEQUENCE conduit_db.books_id_seq
-    OWNER TO postgres;
+    OWNER TO db_user;

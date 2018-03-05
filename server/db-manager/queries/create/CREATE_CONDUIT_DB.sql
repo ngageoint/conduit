@@ -6,13 +6,9 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-CREATE SCHEMA conduit_db;
+CREATE SCHEMA conduit_db AUTHORIZATION db_user;
 
-ALTER SCHEMA conduit_db OWNER TO postgres;
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+ALTER SCHEMA conduit_db OWNER TO db_user;
 
 SET search_path = conduit_db, pg_catalog;
 

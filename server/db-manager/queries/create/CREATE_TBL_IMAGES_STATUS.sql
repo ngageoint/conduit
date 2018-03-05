@@ -23,7 +23,7 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE conduit_db."IMAGES_STATUS"
-    OWNER to postgres;
+    OWNER TO db_user;
 
 CREATE INDEX "FKI__ARTICLES__IMAGES_STATUS"
     ON conduit_db."IMAGES_STATUS" USING btree

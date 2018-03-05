@@ -25,7 +25,7 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE conduit_db."COMMENTS"
-    OWNER to postgres;
+    OWNER TO db_user;
 
 CREATE INDEX "FKI__TEAMS__COMMENTS"
     ON conduit_db."COMMENTS" USING btree

@@ -27,7 +27,7 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE conduit_db."ARTICLES_EDITS"
-    OWNER to postgres;
+    OWNER TO db_user;
 
 CREATE INDEX "FKI__TEAMS__ARTICLES_EDITS"
     ON conduit_db."ARTICLES_EDITS" USING btree

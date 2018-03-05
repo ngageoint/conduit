@@ -15,4 +15,4 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE conduit_db."ARTICLES"
-    OWNER to postgres;
+    OWNER TO db_user;

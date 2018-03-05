@@ -64,9 +64,13 @@ module.exports = {
         console.log(files);
 
         (function next(query) {
+            var file =files.shift();
             //var statement = statements.shift();
+            if(typeof file === 'undefined') {
+                return;
+            }
             const statement = {
-                text: tools.readQueryFile(path.join(__dirname, files.shift())),
+                text: tools.readQueryFile(path.join(__dirname, file)),
             }
             console.log(statement.text);
             if (statement) {
@@ -75,7 +79,7 @@ module.exports = {
                     console.log('ERR');
                     console.log(err);
                     console.log('-------------');
-                    return;
+                    next(query);
                 }
                 console.log('SUCCESS');
                 console.log(response);

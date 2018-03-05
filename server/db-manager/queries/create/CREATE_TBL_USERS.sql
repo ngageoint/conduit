@@ -17,7 +17,7 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE conduit_db."USERS"
-    OWNER to postgres;
+    OWNER TO db_user;
 
 CREATE INDEX "FKI__TEAMS__USERS"
     ON conduit_db."USERS" USING btree
