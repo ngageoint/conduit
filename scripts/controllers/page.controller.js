@@ -2,6 +2,7 @@ angular.module('conduit.controllers').controller('PageCtrl', function ($scope, $
 Reload, ApiService, ArticlesService, AttributesService, BooksService, DataSourceService, FilterService, KeyboardService, UserService, ArrayTools, DateTools, __config) {
 
 	//Reload.checkAndRun();
+	$scope.__config = __config;
 
 	if(Reload.enabled()) {
 		Reload.setEnabled(false);

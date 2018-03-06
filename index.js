@@ -25,7 +25,7 @@ const ArticleReader = require('./server/article-reader/article-reader.js');
 const SourceService = require('./server/tools/sources.service.server.js');
 
 //ON BUILD
-db.create.conduitDb();
+//db.create.conduitDb();
 
 ////////////////
 ////ARTICLES////

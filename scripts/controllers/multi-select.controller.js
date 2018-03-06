@@ -58,7 +58,7 @@ angular.module('conduit.controllers').controller('MultiSelectCtrl', function($sc
 		updateLabel();
 	}
 
-	$scope.$watch('articles[currentIndex].books', function (newVal, oldVal) {
+	$scope.$watch('currentIndex', function (newVal, oldVal) {
 		model = $scope.articles[$scope.currentIndex].books;
 		updateLabel();
 	}, true);
@@ -71,6 +71,7 @@ angular.module('conduit.controllers').controller('MultiSelectCtrl', function($sc
 		} else {
 			model.push(book);
 		}
+		$scope.articles[$scope.currentIndex].books = model.slice();
 		updateBook(model, old);
 	}
 
