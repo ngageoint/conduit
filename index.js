@@ -111,11 +111,6 @@ var serveDefault = function(req, res, next) {
 				return;
 			});
 		} else {
-			//res.status(200);
-			//res.sendFile(path.join(__dirname, './', '', 'index.html'));
-			response.writeHead(301, {
-				Location: 'http://whateverhostthiswillbe:8675/'+newRoom
-			});
 			res.redirect('/?id=null');
 			return;
 		}

@@ -34,7 +34,7 @@ angular.module('conduit.directives').directive('materialTextbox', function($comp
 					}
 					if(typeof $scope.noDuplicatesOn !== 'undefined' && $scope.model.length > 0) {
 						
-						let filter = undefined;
+						var filter = undefined;
 						if(typeof $scope.duplicatesKey !== 'undefined') {
 							filter = function (el) {
 								return (el[$scope.duplicatesKey] === $scope.model);

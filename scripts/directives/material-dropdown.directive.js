@@ -15,7 +15,6 @@ angular.module('conduit.directives').directive('materialDropdown', function($com
 				list: '=miDdList',
 				search: '&miDdSearch',
 				multi: '&miDdMuliselect',
-				list: "=miDdList",
 				onUpdate: "&miDdOnUpdate",
 				onItemClick: "&miDdOnItemClick"
 			},
