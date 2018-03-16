@@ -16,7 +16,6 @@ angular.module('conduit.directives').directive('materialTextbox', function($comp
 				noDuplicatesOn: '=',
 				duplicatesKey: '@',
 				boundError: '&error',
-				focusOn: '&miTbFocusOn'
 			},
 			link: function($scope, elem, attr, ctrl) {
 

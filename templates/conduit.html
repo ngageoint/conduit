@@ -339,7 +339,6 @@
                 <div id="infinite-scroll" infinite-scroll="buildMoreCards()" infinite-scroll-parent="true" infinite-scroll-distance=".75">                         
                     <card	class="stream card"
                             id="{{'e' + article.id}}"
-                            scroll-center-on="article.active"
                             ng-repeat="article in articles track by article.id"
                             ng-if="article.build"
                             ng-show="article.inFeed"
