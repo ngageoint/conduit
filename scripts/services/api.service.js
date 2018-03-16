@@ -69,8 +69,6 @@ angular.module('conduit.services').factory('ApiService', function($http, $locati
 										'&teamId=' + user.teamId + 
 										'&timestamp=' + editObject.timestamp;
 
-							console.log(query);
-
 							$http.get(query).then(function(response) {
 								return resolve(response.data);
 							}).catch(function(err) {

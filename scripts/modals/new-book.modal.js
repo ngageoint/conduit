@@ -5,9 +5,6 @@ is different for each network, so this makes it easy to manage*/
 angular.module('conduit.modals').controller('NewBookModalCtrl', function($scope, $uibModal, ApiService, BooksService) {			
 
 	$scope.showForm = function () {
-		$scope.message = "Show Form Button Clicked";
-		console.log($scope.message);
-
 		var uibModalInstance = $uibModal.open({
 			templateUrl: '../templates/modals/new-book.modal.htm',
 			controller: ModalInstanceCtrl,
@@ -21,8 +18,6 @@ angular.module('conduit.modals').controller('NewBookModalCtrl', function($scope,
 		});
 
 		uibModalInstance.result.then(function (name) {
-			console.log('result')
-			console.log(name)
 			/*ApiService.insert.book(name).then(function(book) {
 				$scope.books.push({	id: book.data.id,
 							name: name});
@@ -56,7 +51,6 @@ var ModalInstanceCtrl = function ($scope, $uibModalInstance, name, ApiService) {
 				for(let i = 0; i < $scope.books.length; i++) {
 					if($scope.books[i].id == id) {
 						$scope.books.splice(i, 1);
-						console.log('match found');
 					}
 				}
 				if($scope.selectedBook.id == id) {
@@ -66,7 +60,6 @@ var ModalInstanceCtrl = function ($scope, $uibModalInstance, name, ApiService) {
 						$scope.selectedBook = undefined;
 					}
 				}
-				console.log('deleted');
 		});
 	})(bookId)
 	}

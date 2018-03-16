@@ -61,8 +61,6 @@ module.exports = {
             'CREATE_DATA_ATTRIBUTES.sql'
         ]
 
-        console.log(files);
-
         (function next(query) {
             var file =files.shift();
             //var statement = statements.shift();
@@ -72,23 +70,16 @@ module.exports = {
             const statement = {
                 text: tools.readQueryFile(path.join(__dirname, file)),
             }
-            console.log(statement.text);
             if (statement) {
               query(statement, function(err, response) {
                 if (err) {
-                    console.log('ERR');
                     console.log(err);
-                    console.log('-------------');
                     next(query);
                 }
-                console.log('SUCCESS');
-                console.log(response);
-                console.log('-------------');
                 next(query);
               });
             }
             else
-              console.log('no statement');
               return;
           })(this.query);
     }

@@ -196,7 +196,7 @@ module.exports = {
                 if(res && res.rows && res.rows[0] && typeof res.rows[0].read !== "undefined") {
                     return resolve(res.rows[0].read);
                 } else {
-                    //console.log('No results for articleStatusReadByIds where articleId='+ articleId + " and userId=" + userId)
+
                     return resolve(false);
                 }
             });

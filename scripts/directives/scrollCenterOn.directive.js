@@ -7,12 +7,8 @@ angular.module('conduit.directives').directive('scrollCenterOn', function() {
 	return {
 		restrict: 'A',
 		link: function (scope, elem, attrs) {
-			console.log('scroll center on created, default ' + attrs.scrollCenterOn)
 			scope.$watch(attrs.scrollCenterOn, function(newVal, oldVal) {
-				console.log(newVal);
-				if(newVal) {
-					console.log(parent.scrollTop);
-				}
+				
 			});
 		}
 	};

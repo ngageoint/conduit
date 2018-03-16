@@ -12,15 +12,11 @@ try {
     dotenv.load();
 } catch(e){}
 
-console.log('IN DB MGR ***********************');
 
 //Detect environment
 var environment = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : process.env;
 if(process.env.VCAP_SERVICES)
   environment = environment['crunchy-postgresql-9.5-on-demand'][0].credentials;
-
-  console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
-  console.log(environment);
 
 var dbConfig = {
   user: environment.db_username || environment.username,
@@ -31,9 +27,6 @@ var dbConfig = {
   max: 10, // max number of clients in the pool
   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 };
-
-console.log('///////////////////////////////////////');
-console.log(dbConfig);
 
 const pool = new pg.Pool(dbConfig);
 pool.on('error', function (err) {

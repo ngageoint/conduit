@@ -12,7 +12,6 @@ angular.module('conduit.controllers').controller('CreateAccountCtrl', function($
 
 	$scope.fieldLimit = 64;
 	$scope.showCounterAt = $scope.fieldLimit * .75;
-	console.log($scope.showCounterAt);
 
 	$scope.createTeam = false;
 	$scope.selectedTeam = undefined;
@@ -52,7 +51,6 @@ angular.module('conduit.controllers').controller('CreateAccountCtrl', function($
 	}
 
 	$scope.createAccount = function() {
-		console.log('submit event');
 		if($scope.formComplete()) {
 			if($scope.createTeam) {
 				ApiService.insert.team($scope.teamName).then(function(team) {

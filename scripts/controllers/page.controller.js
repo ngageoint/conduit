@@ -189,16 +189,6 @@ Reload, ApiService, ArticlesService, AttributesService, BooksService, DataSource
 			$scope.currentParent = parent;
 			$scope.currentIndex = index;			
 		}
-
-		$scope.scrollTo = function(id) {
-			console.log(id);
-			const stream = angular.element(document.querySelector('#article-stream'));
-			const card = angular.element(document.querySelector('#e' + id))
-			console.log(card[0].offsetTop);
-			console.log(card[0]);
-			stream.scrollTop = card[0].offsetTop
-			console.log(stream.scrollTop);
-		}
 	
 		/**
 		 * Given an article and an attribute, determine whether or not the attribute icon should be shown for that article.
@@ -276,46 +266,36 @@ Reload, ApiService, ArticlesService, AttributesService, BooksService, DataSource
 	////KEYBOARD SHORTCUTS////
 	//////////////////////////
 
+	/*
 	KeyboardService.bind('up', function() {
-		console.log('up detected');
 		if($scope.currentIndex > 0) {
 			$scope.activateCard($scope.currentParent, $scope.articles[$scope.currentIndex - 1].id)
 		}
 	});
 	KeyboardService.bind('down', function() {
-		console.log('down detected');
 		if($scope.currentIndex < $scope.articles.length - 1) {
 			$scope.activateCard($scope.currentParent,  $scope.articles[$scope.currentIndex + 1].id)
 		}
 	});
 	KeyboardService.bind('ctrl+b', function() {
-		console.log('ctrl + b detected');
 		$scope.addToBook($scope.articles[$scope.currentIndex], $scope.selectedBook);
 	});
-	/*
 	KeyboardService.bind('delete', function() {
-		console.log('del detected');
+
 		$scope.removeFromBook($scope.articles[$scope.currentIndex], $scope.selectedBook);
-	});*/
+	});
 	KeyboardService.bind('ctrl+e', function() {
-		console.log('ctrl + e detected');
 		$scope.export($scope.articles[$scope.currentIndex]);
 	});
 	KeyboardService.bind('ctrl+shift+e', function() {
-		console.log('ctrl + shift + e detected');
 		$scope.exportBook($scope.selectedBook);
 	});
 	KeyboardService.bind('ctrl+r', function() {
 		//var elem = angular.element(document.body).find('.editable');
-		//console.log(elem);
-		//console.log(elem.scope());
 		//elem.scope().$articleEdit.$show = !elem.scope().$articleEdit.$show;
 		//too hard rn
 	});
 	KeyboardService.bind('ctrl+d', function() {
-		console.log('ctrl + d detected');
-		$scope.discussPopoverOpen = !$scope.discussPopoverOpen;
-		console.log($scope.discussPopoverOpen);
 		if($scope.discussPopoverOpen) {
 			
 			//$timeout(function() {
@@ -323,6 +303,6 @@ Reload, ApiService, ArticlesService, AttributesService, BooksService, DataSource
 				$scope.$apply();
 			//}, 0);
 		}
-	});
+	});*/
 
 });

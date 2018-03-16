@@ -64,12 +64,6 @@ if(process.env.session_secret) {
 	environment.session_secret = process.env.session_secret
 }
 
-
-console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-console.log(process.env);
-console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-console.log(process.env.session_secret);
-
 var authEnabled = (process.env.VCAP_APPLICATION || process.env);
 authEnabled = false;
 
@@ -266,7 +260,7 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 
  app.get('/select/allEditsForArticleByTeam', rate.immediateRestricted, function(req, res, next) {
 		if(typeof req.query.articleId === 'undefined' || typeof req.query.teamId === 'undefined') {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. articleId and teamId required');
 			return;
@@ -279,7 +273,7 @@ app.get('/userInfo', rate.frontloadedRestricted, function(req, res, next) {
 
 app.post('/select/articleOriginal', rate.immediate, function(req, res, next) {
 		if(!req.body.article) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. article object required, userId and teamId optional');
 			return;
@@ -302,7 +296,7 @@ app.get('/select/attributes', rate.frontloadedRestricted, function(req, res, nex
 
 app.get('/select/booksByTeam', rate.frontloadedRestricted, function(req, res, next) {
 		if(typeof req.query.teamId === 'undefined') {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. id required.');
 			return;
@@ -315,7 +309,7 @@ app.get('/select/booksByTeam', rate.frontloadedRestricted, function(req, res, ne
 
 app.get('/select/commentsByArticle', rate.frontloaded, function(req, res, next) {
 		if(typeof req.query.id === 'undefined' || typeof req.query.teamId ==='undefined') {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. id required.');
 			return;
@@ -328,7 +322,7 @@ app.get('/select/commentsByArticle', rate.frontloaded, function(req, res, next) 
 
 app.post('/select/mostRecentArticleEdit', rate.immediateRestricted, function(req, res, next) {
 		if(!req.body.article && (typeof req.body.articleId === 'undefined' || typeof req.body.teamId === 'undefined')) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. articleId, teamId required, or an article object is required.');
 			return;
@@ -344,7 +338,7 @@ app.post('/select/mostRecentArticleEdit', rate.immediateRestricted, function(req
 
 app.get('/select/editContent', rate.immediate, function(req, res, next) {
 		if(typeof req.query.articleId === 'undefined' || typeof req.query.teamId === 'undefined' || !req.query.timestamp) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. articleId, teamId, and timestamp required');
 			return;
@@ -357,7 +351,7 @@ app.get('/select/editContent', rate.immediate, function(req, res, next) {
 
 app.get('/select/articleStatusRemovedByTeam', rate.immediateRestricted, function(req, res, next) {
 		if(typeof req.query.articleId === 'undefined' || typeof req.query.teamId === 'undefined') {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. articleId and userId required.');
 			return;
@@ -370,7 +364,7 @@ app.get('/select/articleStatusRemovedByTeam', rate.immediateRestricted, function
 
 app.get('/select/articleBlock', rate.frontloaded, function(req, res, next) {
 		if(typeof req.query.userId === 'undefined' || typeof req.query.teamId === 'undefined' || !req.query.fromDate || !req.query.numArticles) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. userId, teamId, fromDate, and numArticles required.');
 			return;
@@ -400,7 +394,7 @@ app.get('/select/teams', rate.frontloaded, function(req, res, next) {
 
 app.post('/insert/articleEdit', rate.intermittent, function(req, res, next) {
 		if(typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined' || !req.body.title || !req.body.text) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
 			return;
@@ -419,7 +413,7 @@ app.post('/insert/articleEdit', rate.intermittent, function(req, res, next) {
 
 app.post('/insert/articleStatusRead', rate.intermittent, function(req, res, next) {
 		if(typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined' || (typeof req.body.isRead === "undefined")) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
 			return;
@@ -433,7 +427,7 @@ app.post('/insert/articleStatusRead', rate.intermittent, function(req, res, next
 
 app.post('/insert/articleStatusRemoved', rate.intermittent, function(req, res, next) {
 		if(typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined' || (typeof req.body.isRemoved === "undefined")) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. articleId, userId, teamId, and isRemoved are required');
 			return;
@@ -446,7 +440,7 @@ app.post('/insert/articleStatusRemoved', rate.intermittent, function(req, res, n
  
  app.post('/insert/book', rate.restricted, function(req, res, next) {
 		if(!req.body.name) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. name is required, teamId is optional. NOTE: teamId is expected to be required in future versions');
 			return;
@@ -459,7 +453,7 @@ app.post('/insert/articleStatusRemoved', rate.intermittent, function(req, res, n
 
 app.post('/insert/bookStatus', rate.intermittent, function(req, res, next) {
 		if(typeof req.body.bookId === 'undefined' || typeof req.body.articleId === 'undefined') {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. bookId and articleId are required');
 			return;
@@ -477,7 +471,7 @@ app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next
 		const noText = !req.body.text && !req.body.comment.text;
 		
 		if(noMeta, noDate, noText) {
-				console.log('Missing params');
+				
 				res.status(400);
 				res.send('Missing parameters. articleId, userId, teamId, date, and text are required, or a comment object is required');
 				return;
@@ -491,7 +485,7 @@ app.post('/insert/comment', rate.intermittentRestricted, function(req, res, next
 /*
 app.post('/insert/team', rate.restricted, function(req, res, next) {
 	if(!req.body.name && !req.body.teamId) {
-		console.log('Missing params');
+		
 		res.status(400);
 		res.send('Missing parameters. name and teamId are required');
 		return;
@@ -504,7 +498,7 @@ app.post('/insert/team', rate.restricted, function(req, res, next) {
 
 app.post('/insert/team', rate.restricted, function(req, res, next) {
 		if(!req.body.name) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. name is required');
 			return;
@@ -517,7 +511,7 @@ app.post('/insert/team', rate.restricted, function(req, res, next) {
 
 app.post('/insert/user', rate.restricted, function(req, res, next) {
 		if(!req.body.firstName || !req.body.lastName && !req.body.prefName || typeof req.body.teamId === 'undefined') {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. firstName, lastName, prefName, and teamId are required. id is optional');
 			return;
@@ -542,7 +536,7 @@ app.post('/insert/user', rate.restricted, function(req, res, next) {
 
 app.post('/update/articleStatusRead', rate.intermittent, function(req, res, next) {
 		if(typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined' || (typeof req.body.isRead === 'undefined')) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. articleId, userId, teamId, and isRead are required');
 			return;
@@ -555,7 +549,7 @@ app.post('/update/articleStatusRead', rate.intermittent, function(req, res, next
 
 app.post('/update/articleStatusRemoved', rate.intermittent, function(req, res, next) {
 		if(typeof req.body.articleId === 'undefined' || typeof req.body.userId === 'undefined' || typeof req.body.teamId === 'undefined' || (typeof req.body.isRemoved === "undefined")) {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. articleId, userId, teamId, and isRemoved are required');
 			return;
@@ -572,7 +566,7 @@ app.post('/update/articleStatusRemoved', rate.intermittent, function(req, res, n
 
 app.post('/delete/bookStatus', rate.intermittent, function(req, res, next) {
 		if(typeof req.body.bookId === 'undefined' || typeof req.body.articleId === 'undefined') {
-			console.log('Missing params');
+			
 			res.status(400);
 			res.send('Missing parameters. bookId and articleId are required');
 			return;
@@ -585,7 +579,7 @@ app.post('/delete/bookStatus', rate.intermittent, function(req, res, next) {
 
 app.post('/delete/book', rate.intermittent, function(req, res, next) {
 	if(typeof req.body.bookId === 'undefined') {
-		console.log('Missing params');
+		
 		res.status(400);
 		res.send('Missing parameters. bookId required');
 		return;
