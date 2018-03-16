@@ -30,12 +30,21 @@ const SourceService = require('./server/tools/sources.service.server.js');
 ////////////////
 ////ARTICLES////
 ////////////////
-//(function getAllArticles() {
+(function getAllArticles() {
 	ArticleReader.readSource(SourceService.sources[0]).then(function(res) {
 		db.insert.articleFull(res);
 	});
-//	setTimeout(getAllArticles(), 1000 * 60)
-//})();
+	setTimeout(getAllArticles, 1000 * 60 * 60 * 12);
+})();
+
+(function pruneArticles() {
+	let pruneDate = new Date();
+	pruneDate.setDate(pruneDate.getDate() - 30);
+
+	db.delete.articlesBeforeDate(pruneDate);
+
+	setTimeout(pruneArticles, 1000 * 60 * 60 * 24);
+})();
 
 ////////////////
 ////ENV VARS////

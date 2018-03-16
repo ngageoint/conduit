@@ -7,6 +7,21 @@ module.exports = {
     setQueryManager: function(query) {
         this.query = query;
     },
+    articlesBeforeDate: function(date) {
+        return new Promise(function(resolve, reject) {
+            const query = {
+                text: tools.readQueryFile(path.join(__dirname, 'DELETE_ARTICLES_BEFORE_DATE.sql')),
+                values: [date]
+            }
+            module.exports.query(query, function(err, res) {
+                if(err) {
+                    return reject(err);
+                }
+                else
+                    return resolve();
+            });
+        });
+    },
     book: function(bookId) {
         return new Promise(function(resolve, reject) {
             const query = {
