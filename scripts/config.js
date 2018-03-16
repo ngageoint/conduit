@@ -3,7 +3,7 @@
 (function (window) {
 	window.__config = window.__config || {};
 
-	window.__config.version = '1.0.1';
+	window.__config.version = '1.0.2';
 	
 	window.__config.articlesUrl = './data/sample-data.json';
 	window.__config.exportTpltUrl = './templates/export-tplt.docx'

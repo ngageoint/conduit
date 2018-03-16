@@ -2,8 +2,12 @@ angular.module('conduit.controllers').controller('BookCtrl', function($scope, $r
 	
 	//Watch the selectedBook variable (bound to the dropdown); if changed, update the articles displayed in the book
 	$scope.$watch('selectedBook', function(newVal, oldVal) {
-		oldVal.selected = false;
-		newVal.selected = true;
+		if(typeof oldVal !== "undefined") {
+			oldVal.selected = false;
+		}
+		if(typeof newVal !== "undefined") {
+			newVal.selected = true;
+		}
 		$scope.updateBook();
 	});
 	

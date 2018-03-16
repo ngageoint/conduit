@@ -59,8 +59,10 @@ angular.module('conduit.controllers').controller('MultiSelectCtrl', function($sc
 	}
 
 	$scope.$watch('currentIndex', function (newVal, oldVal) {
-		model = $scope.articles[$scope.currentIndex].books;
-		updateLabel();
+		if($scope.articles && typeof $scope.articles[$scope.currentIndex] !== "undefined" && $scope.articles[$scope.currentIndex].books != "undefined") {
+			model = $scope.articles[$scope.currentIndex].books;
+			updateLabel();
+		}
 	}, true);
 
 	$scope.itemSelected = function(book) {

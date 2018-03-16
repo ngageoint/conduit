@@ -27,12 +27,14 @@ angular.module('conduit.controllers').controller('ViewerCtrl', function($q, $sco
 	$scope.lastVersionViewState = false;
 	$scope.versionsView = function(enabled) {
 		//If it is a boolean, change the state
-		if(typeof enabled === "boolean") {
-			$scope.lastVersionViewState = enabled;
-			if(enabled === true) {
-				$scope.selectedVersion = $scope.articles[$scope.currentIndex].edits.length + 1;
-			} else {
-				$scope.getArticleVersion( $scope.articles[$scope.currentIndex].edits.length + 1);
+		if($scope.articles && typeof $scope.articles[$scope.currentIndex] !== "undefined" && $scope.articles[$scope.currentIndex].edits !== "undefined") {
+			if(typeof enabled === "boolean") {
+				$scope.lastVersionViewState = enabled;
+				if(enabled === true) {
+					$scope.selectedVersion = $scope.articles[$scope.currentIndex].edits.length + 1;
+				} else {
+					$scope.getArticleVersion( $scope.articles[$scope.currentIndex].edits.length + 1);
+				}
 			}
 		} else {
 			return $scope.lastVersionViewState;
