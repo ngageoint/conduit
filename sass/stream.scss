@@ -1,99 +1,104 @@
-@import "colors";
+@import 'colors';
+@import 'material-shadow.scss';
+
+$t-margin: 10px;
 
 .stream {
-	width: 100%;
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	top: 12px;
-	margin-top: 0px;
-	padding: 0 8px 100px 10px;
-	height: auto;
-	max-height: inherit;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	display: inline-block;
-	background: transparent;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    //top: 12px;
+    margin-top: 0;
+    padding: 0 8px 100px 10px;
+    height: auto;
+    max-height: inherit;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: inline-block;
+    background: transparent;
 
-	.card:last-child {
+    .card:last-child {
     border-radius: 0 0 2px 2px;
 }
-	
+    
 }
 
 #article-stream {
-	top: 0px;
+    top: 0px;
 }
 
 
 
-/*Buttons at bottom of a stream*/
+//Buttons at bottom of a stream
 
-	.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
-		border-top-right-radius: 0 !important;
-		border-bottom-right-radius: 0 !important;
-		border-bottom-left-radius: 0 !important;
-	}
-	.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
-		border-top-left-radius: 0 !important;
-		border-bottom-right-radius: 0 !important;
-		border-bottom-left-radius: 0 !important;
-	}
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+    .btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
+        border-top-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
 
 .stream-action {
-	width: 100%;
-	position: absolute;
-	height: 72px;
-	top: 10px;
-	left: 10px;
-	right: 10px;
+    @include material-shadow(3);
+    
+    width: 100%;
+    position: absolute;
+    height: 72px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
 
-	border: none;
-	border-radius: 2px 2px 0 0;
-	box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
-	background-color: $colorPrimary;
+    border: none;
+    border-radius: 2px 2px 0 0;    
+    background-color: $color-primary;
 
-	.btn-primary {
-		border: none;
-		border-bottom: 2px solid $colorPrimary;
-		color: rgba($colorPrimaryContrast, .7);
-		border-radius: none;
-		box-shadow: none;
-	}
+    .btn-primary {
+        border: none;
+        border-bottom: 2px solid $color-primary;
+        color: rgba($color-primary-contrast, .7);
+        border-radius: 0;
+        box-shadow: none;
+    }
 
-	.btn-primary:active,
-	.btn-primary.active {
-		color: $colorPrimaryContrast;
-	}
+    .btn-primary:active,
+    .btn-primary.active {
+        color: $color-primary-contrast;
+    }
 
-	.btn-primary:active,
-	.btn-primary.active,
-	.btn-primary:focus,
-	.btn-primary.focus,
-	.btn-primary:hover,
-	.btn-primary:active:focus,
-	.btn-primary.active:focus,
-	.btn-primary:active:hover,
-	.btn-primary.active:hover {
-		background-color: $colorPrimary;
-		border-bottom: 2px solid $colorAccent;
-		box-shadow: none;
-	}
+    .btn-primary:active,
+    .btn-primary.active,
+    .btn-primary:focus,
+    .btn-primary.focus,
+    .btn-primary:hover,
+    .btn-primary:active:focus,
+    .btn-primary.active:focus,
+    .btn-primary:active:hover,
+    .btn-primary.active:hover {
+        background-color: $color-primary;
+        border-bottom: 2px solid $color-accent;
+        box-shadow: none;
+    }
 }
 
 .stream-action .btn {
   height: 100%;	
 }
 
+    $feed-action-btns-height: 72px;
 
-/*Feed*/
+//Feed
     .fluid-container {
         width: auto;
         position: absolute;
-        top: 82px;
-        bottom: 0px;
-        left: 0px;
+        top: $feed-action-btns-height + $t-margin;
+        bottom: 0;
+        left: 0;
         right: -20px;
         padding: 0;
         max-height: inherit;
@@ -102,90 +107,171 @@
         display: inline-block;
     }
 
-/*Book*/	
-	.book {
-		width: auto;
-		top: 66px;
-		bottom: 0px;
-		left: -15px;
-		right: 0px;
-		float: right;
-	}
+//Book	
 
-	$bookRMargin: 10px;
-	$bookActionW: 48px;
+    $book-r-margin: 10px;
+    $book-action-w: 48px;
+    $book-action-btns-height: 56px;
+    $book-action-info-height: 24px;
 
-	#book-action-wrapper {
-		position: absolute;
+    .book {
+        width: auto;
+        top: $t-margin + $book-action-btns-height + $book-action-info-height;
+        bottom: 0;
+        left: -15px;
+        right: 0;
+        float: right;
+    }
+
+    
+    .stream-header {
+        @include material-shadow(3);
+        position: absolute;
         top: 10px;
         left: -5px;
-        right: $bookRMargin;
-		width: auto;
-		height: 56px;
-		display: inline-block;
+        right: $book-r-margin;
 
-		border-radius: 2px 2px 0 0;
+        left: 9px;
+        right: 24px;
 
-		box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);
+        width: auto;
+        height: $book-action-btns-height + $book-action-info-height;
+        display: inline-block;
 
-		z-index: 100;
-	
-		.btn-primary {
-			border: none;
-			border-bottom: 2px solid $colorPrimary;
-			box-shadow: none;
-		}
+        border-radius: 2px 2px 0 0;
+        z-index: 100;
 
-		.btn-primary:active,
-		.btn-primary.active,
-		.btn-primary:focus,
-		.btn-primary.focus,
-		.btn-primary:hover,
-		.btn-primary:active:focus,
-		.btn-primary.active:focus,
-		.btn-primary:active:hover,
-		.btn-primary.active:hover {
-			background-color: $colorPrimary;
-			border-bottom: 2px solid $colorAccent;
-			box-shadow: none;
-		}
+        background-color: transparent;//$color-primary;
 
-		.nya-bs-select
-		{
-			position: absolute;
-			left: 0;
-			right: $bookActionW;
-			height: 100%;
-			width: auto;
+        .stream-action {
+            color: $color-primary-contrast;
+            box-shadow: none;
 
-			border-radius: 2px 0 0 0;
-			border-bottom: 2px solid $colorPrimary;
-			box-shadow: none;
-		}
+            top: 0;
+            bottom: $book-action-info-height;
+            width: auto;
+            height:auto;
 
-			nya-bs-select:active,
-			nya-bs-select.active,
-			nya-bs-select:focus,
-			nya-bs-select.focus,
-			nya-bs-select:hover,
-			nya-bs-select:active:focus,
-			nya-bs-select.active:focus,
-			nya-bs-select:active:hover,
-			nya-bs-select.active:hover {
-				background-color: $colorPrimary;
-				border-bottom: 2px solid $colorAccent;
-				box-shadow: none;
-			}
-		
-		.stream-action {
-			position: absolute;
-			width: $bookActionW;
-			top: 0 !important;
-			right: 0;
-			bottom: 0;
-			left: auto;
-			height: 100%;
-			border-radius: 0 2px 0 0;
-			box-shadow: none;
-		}
-	}
+            border-bottom: 2px solid $color-primary;
+        }
+
+        .stream-action:hover,
+        .stream-action:focus,
+        .stream-action:active,
+        .stream-action.open {
+            cursor: pointer;
+            border-bottom: 2px solid $color-accent;
+        }
+
+        
+
+        .stream-action.dropdown {
+            position: absolute;
+            left: 0;
+            right: 15%;
+            
+            border-radius: 2px 0 0 0;
+
+            #profile-dropdown {
+                position: absolute;
+                color: $color-primary-contrast;
+                background: transparent;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                
+                text-align: left;
+                height: auto;
+                width: 100%;
+            }
+
+            #profile-dropdown,
+            #profile-dropdown:active,
+            #profile-dropdown:focus,
+            #profile-dropdown:link {
+                box-shadow: none;
+            }
+
+            #profile-dropdown + .dropdown-menu {
+                min-width: 80%;
+                width: auto;
+                max-width: 120%;
+            }
+        }
+
+        .stream-action.small {
+
+            right: 0;
+            left: 85%;
+
+            border-radius: 0 2px 0 0;
+        }
+
+        .info-bar {
+            background: #757575 !important;
+            position: relative;
+            top: $book-action-btns-height;
+            height: $book-action-info-height;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            z-index: 99;
+
+            text-align: center;
+            color: #fff;
+            font-size: 12px;
+            line-height: $book-action-info-height;
+        }
+    }
+    
+
+    #book-action-wrapper {
+        @include material-shadow(3);
+        position: absolute;
+        top: 10px;
+        left: -5px;
+        right: $book-r-margin;
+        width: auto;
+        height: $book-action-btns-height + $book-action-info-height;
+        display: inline-block;
+
+        border-radius: 2px 2px 0 0;
+        z-index: 100;
+    
+        .btn-primary {
+            border: none;
+            border-bottom: 2px solid $color-primary;
+            box-shadow: none;
+        }
+
+        .btn-primary:active,
+        .btn-primary.active,
+        .btn-primary:focus,
+        .btn-primary.focus,
+        .btn-primary:hover,
+        .btn-primary:active:focus,
+        .btn-primary.active:focus,
+        .btn-primary:active:hover,
+        .btn-primary.active:hover {
+            background-color: $color-primary;
+            border-bottom: 2px solid $color-accent;
+            box-shadow: none;
+        }
+        
+        .stream-action {
+            position: absolute;
+            width: $book-action-w;
+            top: 0 !important;
+            right: 0;
+            bottom: 0;
+            left: auto;
+            height: 100%;
+            border-radius: 0 2px 0 0;
+            box-shadow: none;
+        }
+
+        #export-book {
+            height: $book-action-btns-height;
+        }
+    }
+    

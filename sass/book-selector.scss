@@ -1,25 +1,23 @@
 
-@import "colors.scss";
+@import 'colors.scss';
+@import 'material-shadow.scss';
 
 #right .btn.btn-default.dropdown-toggle {
-    background-color: $colorPrimary500;
-    color: white;
+    background-color: $color-primary-500;
+    color: $color-card-background;
     height: 56px;
     border: none;
     border-radius: 2px 0 0 0;
 
-    color: white;
     font-size: 16px;
     line-height: 19px;
-    
-    /*box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);*/
-
-
 
     z-index: 100;
 }
 
 #right .dropdown-menu.open {
+    @include material-shadow(2);
+    
     position: relative;
     top: -20px;
     left: 28%;
@@ -27,14 +25,8 @@
     max-height: 25vh;
     transition: max-height .25s ease-in-out;
     max-width: 70%;
-    background-color: #fff;
+    background-color: $color-card-background;
     border: none;
     border-radius: 2px;
-    box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
     z-index: 101;
-}
-
-#right .nya-bs-select.btn-group .dropdown-menu {
-    width: 100% !important;
-    min-width: initial !important;
 }

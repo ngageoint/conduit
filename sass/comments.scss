@@ -1,25 +1,25 @@
-@import "colors";
+@import 'colors';
 
 .all-comments-wrapper {
-	max-height: 30vh;
-	overflow-y: auto;
-	margin-bottom: 10px;
+    max-height: 30vh;
+    overflow-y: auto;
+    margin-bottom: 10px;
 }
 .comments-wrapper {
-	margin: 0 0 -10px 0;
+    margin: 0 0 -10px 0;
 }
 
 .comments-wrapper .self{
   margin-right: 5px;
-	text-align: right;
+    text-align: right;
 }
 
 .comments-wrapper .info-wrapper .name {
-	font-size: 1em;
-	
+    font-size: 1em;
+    
 }
 
 .comments-wrapper .info-wrapper .time-stamp {
-	font-size: .75em;
-	color: darken($colorGrey, 18%);
+    font-size: .75em;
+    color: darken($color-grey, 18%);
 }

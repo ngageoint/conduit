@@ -1,0 +1,32 @@
+
+<div class="material-modal">
+    <div class="primary-title">
+        Manage Books
+    </div>
+
+    <div class="material table">
+        <div ng-repeat="book in books" class="row">
+            <div class="row-content">
+                <div class="definition">{{book.name}}</div>
+                <div class="definition">
+                        <span class="glyphicon glyphicon-trash" ng-click="deleteBook(book.id)"></span>
+                    </div>
+            </div>
+        </div>
+        <form class="material-form form-group row add" ng-submit="addBook(name)">
+            <div class="row-content">
+                <div class="definition">
+                        <input type="text" id="name" ng-model="name" placeholder="Add new book...">
+                </div>
+                <div class="definition">
+                        <span class="glyphicon glyphicon-plus" ng-click="addBook(name)"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="action-area">
+        <button type="button" class="material-btn flat default" ng-click="cancel()">
+            CLOSE
+        </button>
+    </div>
+</div>

@@ -19,7 +19,6 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
             trash: 0
         },
         build: function (sources, articles){
-            
             var buildValue = function(value) {
                 //Values in the filter are JSON objects with the topic name and a field to track whether or not it is checked; this is bound to the dropdowns.
                 value.checked = false;
@@ -51,7 +50,7 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
                                 {
                                     if(typeof boundProp === "string")
                                     {
-                                        value = {
+                                        var value = {
                                             data: boundProp,
                                             name: boundProp
                                         };
@@ -186,12 +185,18 @@ angular.module('conduit.services').factory('FilterService', function(DateTools, 
                     //For all of the article binding elements, as long as we haven't found a match yet
                     var boundProp = ComplexPropertyTools.getComplexProperty(article, sources[s].filter[f].binding.property)
                     
+                    //If the article does not have the complex property, default to show
+                    if(!boundProp) {
+                        return true;
+                    }
+                    //If it is a string, match that string directly
                     if(typeof boundProp === "string")
                     {
                         for(var v = 0; v < sources[s].filter[f].selectedValues.length && !hasMatch; v++)
                                 if(sources[s].filter[f].selectedValues[v] && ~boundProp.indexOf(sources[s].filter[f].selectedValues[v]))
                                     hasMatch = true;
                     }
+                    //If it is an object, look for the bound data
                     else
                     {
                         for(var p = 0; p < boundProp.length && !hasMatch; p++)

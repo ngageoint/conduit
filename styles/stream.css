@@ -1,14 +1,10 @@
-/*Light*/
-/*Dark*/
-/* line 3, D:/work/dat/conduit/sass/stream.scss */
 .stream {
   width: 100%;
   position: absolute;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
-  top: 12px;
-  margin-top: 0px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-top: 0;
   padding: 0 8px 100px 10px;
   height: auto;
   max-height: inherit;
@@ -18,33 +14,32 @@
   background: transparent;
 }
 
-/* line 19, D:/work/dat/conduit/sass/stream.scss */
 .stream .card:last-child {
   border-radius: 0 0 2px 2px;
 }
 
-/* line 25, D:/work/dat/conduit/sass/stream.scss */
 #article-stream {
   top: 0px;
 }
 
-/*Buttons at bottom of a stream*/
-/* line 33, D:/work/dat/conduit/sass/stream.scss */
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 38, D:/work/dat/conduit/sass/stream.scss */
 .btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
   border-top-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 44, D:/work/dat/conduit/sass/stream.scss */
 .stream-action {
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   width: 100%;
   position: absolute;
   height: 72px;
@@ -53,26 +48,22 @@
   right: 10px;
   border: none;
   border-radius: 2px 2px 0 0;
-  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
   background-color: #009688;
 }
 
-/* line 57, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary {
   border: none;
   border-bottom: 2px solid #009688;
   color: rgba(255, 255, 255, 0.7);
-  border-radius: none;
+  border-radius: 0;
   box-shadow: none;
 }
 
-/* line 65, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active {
   color: #fff;
 }
 
-/* line 70, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active,
 .stream-action .btn-primary:focus,
@@ -87,19 +78,16 @@
   box-shadow: none;
 }
 
-/* line 85, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn {
   height: 100%;
 }
 
-/*Feed*/
-/* line 91, D:/work/dat/conduit/sass/stream.scss */
 .fluid-container {
   width: auto;
   position: absolute;
   top: 82px;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
+  left: 0;
   right: -20px;
   padding: 0;
   max-height: inherit;
@@ -108,39 +96,129 @@
   display: inline-block;
 }
 
-/*Book*/
-/* line 106, D:/work/dat/conduit/sass/stream.scss */
 .book {
   width: auto;
-  top: 66px;
-  bottom: 0px;
+  top: 90px;
+  bottom: 0;
   left: -15px;
-  right: 0px;
+  right: 0;
   float: right;
 }
 
-/* line 118, D:/work/dat/conduit/sass/stream.scss */
+.stream-header {
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  right: 10px;
+  left: 9px;
+  right: 24px;
+  width: auto;
+  height: 80px;
+  display: inline-block;
+  border-radius: 2px 2px 0 0;
+  z-index: 100;
+  background-color: transparent;
+}
+
+.stream-header .stream-action {
+  color: #fff;
+  box-shadow: none;
+  top: 0;
+  bottom: 24px;
+  width: auto;
+  height: auto;
+  border-bottom: 2px solid #009688;
+}
+
+.stream-header .stream-action:hover,
+.stream-header .stream-action:focus,
+.stream-header .stream-action:active,
+.stream-header .stream-action.open {
+  cursor: pointer;
+  border-bottom: 2px solid #ff5252;
+}
+
+.stream-header .stream-action.dropdown {
+  position: absolute;
+  left: 0;
+  right: 15%;
+  border-radius: 2px 0 0 0;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown {
+  position: absolute;
+  color: #fff;
+  background: transparent;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  height: auto;
+  width: 100%;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown,
+.stream-header .stream-action.dropdown #profile-dropdown:active,
+.stream-header .stream-action.dropdown #profile-dropdown:focus,
+.stream-header .stream-action.dropdown #profile-dropdown:link {
+  box-shadow: none;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown + .dropdown-menu {
+  min-width: 80%;
+  width: auto;
+  max-width: 120%;
+}
+
+.stream-header .stream-action.small {
+  right: 0;
+  left: 85%;
+  border-radius: 0 2px 0 0;
+}
+
+.stream-header .info-bar {
+  background: #757575 !important;
+  position: relative;
+  top: 56px;
+  height: 24px;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  z-index: 99;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  line-height: 24px;
+}
+
 #book-action-wrapper {
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   position: absolute;
   top: 10px;
   left: -5px;
   right: 10px;
   width: auto;
-  height: 56px;
+  height: 80px;
   display: inline-block;
   border-radius: 2px 2px 0 0;
-  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
   z-index: 100;
 }
 
-/* line 133, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary {
   border: none;
   border-bottom: 2px solid #009688;
   box-shadow: none;
 }
 
-/* line 139, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary:active,
 #book-action-wrapper .btn-primary.active,
 #book-action-wrapper .btn-primary:focus,
@@ -155,34 +233,6 @@
   box-shadow: none;
 }
 
-/* line 153, D:/work/dat/conduit/sass/stream.scss */
-#book-action-wrapper .nya-bs-select {
-  position: absolute;
-  left: 0;
-  right: 48px;
-  height: 100%;
-  width: auto;
-  border-radius: 2px 0 0 0;
-  border-bottom: 2px solid #009688;
-  box-shadow: none;
-}
-
-/* line 166, D:/work/dat/conduit/sass/stream.scss */
-#book-action-wrapper nya-bs-select:active,
-#book-action-wrapper nya-bs-select.active,
-#book-action-wrapper nya-bs-select:focus,
-#book-action-wrapper nya-bs-select.focus,
-#book-action-wrapper nya-bs-select:hover,
-#book-action-wrapper nya-bs-select:active:focus,
-#book-action-wrapper nya-bs-select.active:focus,
-#book-action-wrapper nya-bs-select:active:hover,
-#book-action-wrapper nya-bs-select.active:hover {
-  background-color: #009688;
-  border-bottom: 2px solid #ff5252;
-  box-shadow: none;
-}
-
-/* line 180, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .stream-action {
   position: absolute;
   width: 48px;
@@ -195,4 +245,6 @@
   box-shadow: none;
 }
 
-/*# sourceMappingURL=../styles/stream.map */
+#book-action-wrapper #export-book {
+  height: 56px;
+}

@@ -1,21 +1,20 @@
-/*Light*/
-/*Dark*/
-/* line 4, D:/work/dat/conduit/sass/book-selector.scss */
 #right .btn.btn-default.dropdown-toggle {
   background-color: #009688;
-  color: white;
+  color: #fff;
   height: 56px;
   border: none;
   border-radius: 2px 0 0 0;
-  color: white;
   font-size: 16px;
   line-height: 19px;
-  /*box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);*/
   z-index: 100;
 }
 
-/* line 22, D:/work/dat/conduit/sass/book-selector.scss */
 #right .dropdown-menu.open {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   position: relative;
   top: -20px;
   left: 28%;
@@ -26,14 +25,5 @@
   background-color: #fff;
   border: none;
   border-radius: 2px;
-  box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
   z-index: 101;
 }
-
-/* line 37, D:/work/dat/conduit/sass/book-selector.scss */
-#right .nya-bs-select.btn-group .dropdown-menu {
-  width: 100% !important;
-  min-width: initial !important;
-}
-
-/*# sourceMappingURL=../styles/book-selector.map */

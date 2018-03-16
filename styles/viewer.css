@@ -1,9 +1,9 @@
-/*Article View*/
-/*Light*/
-/*Dark*/
-/*does not apply to all elements*/
-/* line 10, D:/work/dat/conduit/sass/viewer.scss */
 .article-view {
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: box-shadow .25s ease-in-out;
   position: absolute;
   top: 10px;
   left: 20px;
@@ -12,12 +12,9 @@
   max-height: inherit;
   overflow: hidden;
   border-radius: 2px;
-  /*border: 1px solid $colorGrey;*/
   background: #fff;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
 }
 
-/* line 26, D:/work/dat/conduit/sass/viewer.scss */
 #content-wrapper {
   position: absolute;
   top: 0;
@@ -27,17 +24,32 @@
   overflow-y: auto;
 }
 
-/* line 35, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #subject {
   color: #bdbdbd;
   font-size: 12px;
   line-height: 15px;
   margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
   text-align: center;
 }
 
-/* line 44, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #edit-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 12px;
+  text-align: right;
+}
+
+.article-view #edit-menu .primary-text {
+  color: #212121;
+}
+
+.article-view #edit-menu a {
+  color: #bdbdbd;
+}
+
 .btn-edit {
   visibility: visible;
   color: #212121;
@@ -46,37 +58,32 @@
   clear: both;
 }
 
-/* line 51, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit:hover {
   background-color: #d1d1d1;
 }
 
-/* line 55, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text.edit-field {
-  margin: 0 15px;
-  height: 50vh;
+  padding: 15px;
+  height: 24em;
+  margin-top: 5em;
 }
 
-/* line 60, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper {
   position: relative;
   margin-top: 8px;
   margin: 0 15px;
 }
 
-/* line 67, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .title {
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 72, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper .edit-field {
   line-height: 1.813em;
   height: 6em;
 }
 
-/* line 77, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper {
   position: relative;
   width: 100%;
@@ -88,7 +95,6 @@
   clear: both;
 }
 
-/* line 87, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-right {
   position: absolute;
   top: 50%;
@@ -97,7 +103,6 @@
   z-index: 100;
 }
 
-/* line 94, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-left {
   position: absolute;
   top: 50%;
@@ -106,7 +111,6 @@
   z-index: 100;
 }
 
-/* line 103, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper::before {
   content: '';
   display: inline-block;
@@ -115,13 +119,16 @@
   margin-right: -0.25em;
 }
 
-/* line 111, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   background-color: #009688;
   width: 2.5em;
   height: 2.5em;
   border-radius: 1.25em;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
   transition: box-shadow .25s ease-in-out;
   font-size: 0.75em;
   color: #fff;
@@ -131,20 +138,21 @@
   vertical-align: middle;
 }
 
-/* line 131, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow:hover {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   cursor: pointer;
   background-color: #00796b;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.12), 0 4px 4px 0 rgba(0, 0, 0, 0.24);
   transition: box-shadow .25s ease-in-out;
 }
 
-/* line 138, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper .greyout {
   visibility: hidden;
 }
 
-/* line 142, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image {
   display: inline-block;
   margin: auto;
@@ -152,21 +160,22 @@
   text-align: center;
 }
 
-/* line 149, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image .image {
   width: 100%;
   max-height: 50vh;
   vertical-align: middle;
 }
 
-/* line 155, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #image-load-error {
+  color: #ff5252;
+}
+
 .article-view .text-wrapper {
-  margin: 0 15px;
+  margin: 0 15px 15px 15px;
   position: relative;
   top: 30px;
 }
 
-/* line 161, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text {
   display: block;
   font-size: 1.125em;
@@ -175,20 +184,17 @@
   white-space: pre-line;
 }
 
-/* line 169, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .edit-field {
   padding: 0 1vw;
-  width: 50vw;
+  width: 100%;
 }
 
-/* line 174, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .editable-buttons {
   float: right;
   margin: 5px 0 75px 0;
 }
 
-/* line 179, D:/work/dat/conduit/sass/viewer.scss */
-.article-view #date {
+.article-view #id {
   color: #bdbdbd;
   font-size: 14px;
   line-height: 18px;
@@ -197,7 +203,10 @@
   bottom: 15px;
 }
 
-/* line 190, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #id a {
+  color: #bdbdbd;
+}
+
 #action-area {
   position: absolute;
   right: 0;
@@ -209,58 +218,58 @@
   display: inline-block;
 }
 
-/* line 203, D:/work/dat/conduit/sass/viewer.scss */
+/*
 #action-area .btn {
-  height: 36px;
-  background: transparent;
-  border: none;
-  border-radius: 2px !important;
-  float: right;
-  font-weight: 700;
+    height: $act-btn-height;
+    background: transparent;
+    border: none;
+    border-radius: 2px !important;
+    
+    float: right;
+    font-weight: 700;
 }
 
-/* line 213, D:/work/dat/conduit/sass/viewer.scss */
-#action-area .btn-default {
-  color: #212121;
+#action-area .btn-default{
+    color: $color-font;
 }
 
-/* line 217, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-default:hover,
-#action-area .btn-default:focus {
-  background: rgba(33, 33, 33, 0.12);
+#action-area .btn-default:focus{
+    background: rgba($color-font, .12);
 }
 
-/* line 222, D:/work/dat/conduit/sass/viewer.scss */
-#action-area .btn-primary {
-  color: #009688;
+#action-area .btn-primary{
+    color: $color-primary;
 }
 
-/* line 226, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-primary:hover,
 #action-area .btn-primary:focus,
 #action-area .btn-primary:active,
-#action-area .btn-primary.open {
-  background: rgba(0, 150, 136, 0.12);
-  box-shadow: none;
-}
-
-/* line 234, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-primary.open{
+    background: rgba($color-primary, .12);
+    box-shadow: none;
+}*/
+/*
 #action-area .dropdown-menu.open {
-  position: relative;
-  top: -350%;
-  right: 0;
-  height: auto;
-  max-height: 25vh;
-  transition: max-height .25s ease-in-out;
-  max-width: 70%;
-  background-color: #fff;
-  border: none;
-  border-radius: 2px;
-  box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
-  z-index: 101;
+    @include material-shadow(2);
+    
+    position: relative;
+    top: -350%;
+    right: 0;
+    height: auto;
+    max-height: 25vh;
+    transition: max-height .25s ease-in-out;
+    max-width: 70%;
+    background-color: #fff;
+    border: none;
+    border-radius: 2px;
+    z-index: 101;
+}*/
+#action-area .material-btn {
+  margin: 0;
+  font-weight: 700;
 }
 
-/* line 249, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-group.open .dropdown-toggle {
   width: 100% !important;
   min-width: initial !important;
@@ -268,4 +277,145 @@
   background: rgba(0, 150, 136, 0.12);
 }
 
-/*# sourceMappingURL=../styles/viewer.map */
+#action-area #version-pagniation {
+  position: absolute;
+  left: 15px;
+  bottom: 7px;
+}
+
+#action-area #version-pagniation .pagination {
+  margin: 0;
+}
+
+#action-area #version-pagniation .pagination > .disabled > a {
+  color: #bdbdbd;
+}
+
+#action-area #version-pagniation .pagination-sm > li:first-child > a {
+  width: auto !important;
+  padding: 0 5px !important;
+}
+
+#action-area #version-pagniation .pagination-sm > li:first-child > a:hover {
+  border-radius: 2px;
+}
+
+#action-area #version-pagniation .pagination-sm > li:last-child > a {
+  width: auto !important;
+  padding: 0 5px !important;
+}
+
+#action-area #version-pagniation .pagination-sm > li:last-child > a:hover {
+  border-radius: 2px;
+}
+
+#action-area #version-pagniation .pagination > li > a {
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 3px;
+  color: #009688;
+}
+
+#action-area #version-pagniation .pagination > .active > a {
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  padding: 0;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #009688;
+  color: #fff;
+}
+
+#overflow-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  background-color: transparent;
+  width: 2.5em;
+  height: 2.5em;
+  font-size: 1em;
+  color: #bdbdbd;
+  padding-top: 0.65em;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+#overflow-menu .caret {
+  visibility: hidden;
+}
+
+#overflow-menu .btn.btn-default.dropdown-toggle:after {
+  font-family: 'Glyphicons Halflings';
+  content: '\e235';
+  margin-left: -.25em;
+}
+
+#overflow-menu .btn.btn-default.dropdown-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  background-color: white;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 1.25em;
+  font-size: 1em;
+  color: #bdbdbd;
+  padding-top: 0.45em;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+  border: none;
+  box-shadow: none;
+}
+
+#overflow-menu .btn.btn-default.dropdown-toggle:hover {
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+#overflow-menu .btn.btn-default.dropdown-toggle:active,
+#overflow-menu .btn.btn-default.dropdown-toggle:focus {
+  cursor: pointer;
+  background-color: #e3e3e3;
+}
+
+#overflow-menu .dropdown-menu.open {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
+  position: relative;
+  top: 30px;
+  left: -35%;
+  height: auto;
+  width: 120%;
+  max-height: 25vh;
+  transition: max-height .25s ease-in-out;
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+  z-index: 101;
+}
+
+#content-wrapper .form-control {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  width: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#content-wrapper .edit-field.form-control {
+  width: 100% !important;
+}

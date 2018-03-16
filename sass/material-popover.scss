@@ -1,0 +1,24 @@
+@import 'colors.scss';
+@import 'material-shadow.scss';
+
+.material-popover .popover {
+    @include material-shadow(2);
+
+    border-radius: 2px;
+    border: none;
+    background-color: $color-card-background;
+    padding: 0;
+
+    max-width: 40%;
+    width: 40%;
+    right: 5%;
+    left: auto !important;
+}
+
+.material-popover .popover-title {
+    border-radius: 2px 2px 0 0;
+    border: none;
+    padding: 14px;
+
+    background-color: rgba($color-font, .12);
+}

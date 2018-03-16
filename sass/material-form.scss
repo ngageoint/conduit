@@ -1,0 +1,260 @@
+@import 'colors.scss';
+
+$card-padding: 16px;
+
+$input-padding-bottom: 8px;
+$input-margin-bottom: 8px;
+$input-font-size: 16px;
+
+$label-font-size: 12px;
+$label-margin-bottom: 12px;
+
+$input-spacing-padding-top: $label-font-size + $label-margin-bottom;
+$input-spacing-margin-bottom: 8px;
+
+.material-form .dropdown-toggle {
+    width: 100%;
+
+    text-align: left;
+
+    .caret {
+        float: right;
+        margin-top: 8px;
+        margin-right: 8px;
+    }
+}
+
+.material-form .dropdown-toggle.btn {
+    border-radius: 0;
+    border-bottom: 	1px solid $color-grey;
+
+    font-size: $input-font-size;
+    color: $color-grey;
+    
+    padding-left: 0;
+    padding-right: 0; 
+}
+
+.material-form .dropdown-toggle.btn:hover {
+    border-bottom: 	2px solid rgba($color-font, .87);
+    color: rgba($color-font, .54);
+    transition: all .25s ease-in-out;
+}
+
+.material-form .dropdown .item-selected:hover {
+    color: $color-font;   
+}
+
+.material-form .dropdown-toggle.btn:active,
+.material-form .dropdown-toggle.btn:focus {
+    border-bottom: 	2px solid $color-primary;
+}
+
+.material-form .dropdown {
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+
+    .item-selected {
+        color: $color-font;
+    }
+
+    label {
+        visibility: hidden;
+
+        height: $label-font-size;
+        font-size: $label-font-size;
+
+        position: absolute;
+        top: 0;
+
+        transition: all .25s ease-in-out;
+    }
+}
+
+.material-form .dropdown-menu {
+    right: -4px;
+    left: -4px;
+    top: 0;
+    border-radius: 2px;
+}
+
+.material-form  .btn,
+.material-form  .btn:active,
+.material-form  .btn:hover,
+.material-form  .btn:focus,
+.material-form  .btn-primary,
+.material-form  .btn-primary:active,
+.material-form  .btn-primary:hover,
+.material-form  .btn-primary:focus,
+.material-form  .btn-primary:active:hover,
+.material-form  .btn-primary:active.focus,
+.material-form  .open>.dropdown-toggle.btn-primary,
+.material-form  .open>.dropdown-toggle.btn-primary:hover,
+.material-form  .open>.dropdown-toggle.btn-primary:focus {
+    background: transparent;
+    color: $color-font;
+    border: none;
+    box-shadow: none;
+
+    font-size: $input-font-size;
+
+    height: $input-font-size + $input-padding-bottom + 4;
+    margin: 0 0 $input-margin-bottom 0;
+    padding: 0 0 ($input-padding-bottom + 4) 0;
+
+}
+
+.material-form.form-group input,
+.material-form.form-group .menu-search input {
+    border: none;
+    border-bottom: 	1px solid $color-grey;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+
+    font-size: $input-font-size;
+
+    height: $input-font-size + $input-padding-bottom;
+    margin: 0 0 $input-margin-bottom 0;
+    padding: 0 0 $input-padding-bottom 0;
+
+    width: 100%;
+}
+
+.material-form.form-group .material-input-field,
+.material-form.form-group .menu-search .material-input-field {
+    margin-right: $card-padding;
+    margin-left: $card-padding;
+    margin-bottom: $input-spacing-margin-bottom;
+
+    position: relative;
+    padding-top: $input-spacing-padding-top;
+
+    height: $input-spacing-padding-top + $input-font-size + $input-padding-bottom + $input-margin-bottom + $input-spacing-margin-bottom;
+
+    input:hover {
+        border-bottom: 	2px solid rgba($color-font, .87);
+        transition: all .25s ease-in-out;
+    }
+
+    input:active,
+    input:focus {
+        padding: 0 0 ($input-padding-bottom - 1) 0;
+        border-bottom: 	2px solid $color-primary;
+    }
+}
+
+.material-form.form-group .menu-search .material-input-field {
+    margin-right: $card-padding * 2;
+    margin-left: $card-padding * 2;
+    margin-top: 8px;
+    margin-bottom: 0;
+    height: $input-font-size + $input-spacing-padding-top;
+
+    input {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+}
+
+.material-dropdown .dropdown-menu.bump-menu-for-search {
+    top: -($input-spacing-padding-top + $input-font-size);
+    left: -8px;
+}
+
+.material-input-field label,
+.menu-search .material-input-field label {
+    visibility: visible;
+
+    position: absolute;
+    left: 0;
+    top: $label-margin-bottom + $label-font-size;
+    font-size: $input-font-size;
+    font-weight: normal;
+    color: $color-grey;
+
+    transition: all .25s ease-in-out;
+
+    pointer-events: none;     
+}
+
+.material-input-field label.with-text,
+.dropdown-label,
+.dropdown-label.with-text {
+    height: $label-font-size;
+    font-size: $label-font-size;
+
+    position: absolute;
+    top: 0;
+
+    transition: all .25s ease-in-out;
+}
+
+.dropdown-label {
+    visibility: hidden;
+}
+
+.dropdown-label.with-text {
+    visibility: visible;
+}
+
+
+.material-input-field input:hover + label {
+    color: rgba($color-font, .54);
+    transition: all .25s ease-in-out;
+}
+
+.material-input-field input:active + label,
+.material-input-field input:focus + label,
+.material-input-field button:active + label,
+.material-input-field button:focus + label,
+.material-form .dropdown-toggle.btn:active + label,
+.material-form .dropdown-toggle.btn:focus + label,
+.material-form .dropdown.open + label {
+    color: $color-primary;
+    height: $label-font-size;
+    font-size: $label-font-size;
+
+    position: absolute;
+    top: 0;
+
+    transition: all .25s ease-in-out;
+}
+
+.fade {
+    transition: all linear .25s;
+    opacity: 1;
+}
+
+.fade.ng-hide {
+    opacity: 0;
+}
+
+label.active {
+    color: $color-primary;
+}
+
+.material-form label.error,
+.material-input-field .counter.error, {
+    color: red !important;
+    transition: all .25s ease-in-out;
+}
+
+.material-form.form-group input.error {
+    border-bottom-color: red !important;
+}
+
+.material-input-field .counter {
+    color: $color-grey;
+    height: $label-font-size;
+    font-size: $label-font-size;
+    float: right;
+
+    transition: all .25s ease-in-out;
+}

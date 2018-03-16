@@ -1,2 +1,6 @@
-node_modules/
+.env
+.vscode/
+server/export/temp
 documents/
+test/
+node_modules/

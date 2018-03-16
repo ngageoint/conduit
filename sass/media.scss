@@ -1,70 +1,43 @@
 .ico-text-1 {
-	display: inline;
+    display: inline;
 }
 .ico-text-2 {
-	display: inline;
+    display: inline;
 }
 .ico-text-3 {
-	display: inline;
+    display: inline;
 }
 
-@media screen and (max-width: 1200px)
-{
-	.ico-text-1 {
-		display: none;
-		visibility: hidden;
-	}
+@media screen and (max-width: 1200px) {
+    .ico-text-1 {
+        display: none;
+        visibility: hidden;
+    }
 }
 
-@media screen and (max-width: 1100px)
-{
-	.ico-text-2 {
-		display: none;
-		visibility: hidden;
-	}
+@media screen and (max-width: 1100px) {
+    .ico-text-2 {
+        display: none;
+        visibility: hidden;
+    }
 }
 
-@media screen and (max-width: 800px)
-{
-	.ico-text-3 {
-		display: none;
-		visibility: hidden;
-	}
+@media screen and (max-width: 800px) {
+    .ico-text-3 {
+        display: none;
+        visibility: hidden;
+    }
 
-	.panel-title {
-		text-align: center;
-	}
+    .panel-title {
+        text-align: center;
+    }
 
-	.toolbox {
-		.nya-bs-select {
-			width: 42px;
-			.dropdown-toggle {
-				height: 36px;
-			}
-			.caret {
-				display: none;
-				visibility: hidden;
-			}
-		}
-	}
-
-	.nya-bs-select {
-		text-align: center;
-		.dropdown-toggle {
-			padding-right: 0px;
-		}
-		.special-title, .filter-option {
-			display: none;
-			visibility: hidden;
-		}
-	}
-
-	.special-title:before, .filter-option:before {
-		visibility: visible;
-		display: inline;
-		left: 0;
-		right: 0;
-		font-family: 'Glyphicons-Halflings-Regular';
-		content: "\e043";
-	}
+    .special-title:before, .filter-option:before {
+        visibility: visible;
+        display: inline;
+        left: 0;
+        right: 0;
+        font-family: 'Glyphicons-Halflings-Regular';
+        content: '\e043';
+    }
 }

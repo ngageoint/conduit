@@ -1,5 +1,3 @@
-/* CSS Document */
-/*Fonts*/
 @font-face {
   font-family: 'Montserrat';
   src: local("Montserrat-Regular.ttf") url("../resources/fonts/montserrat/Montserrat-Regular.ttf") format("truetype");
@@ -25,70 +23,52 @@
   src: url("../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2") format("embedded-opentype"), url("../packages/bootstrap/fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../packages/bootstrap/fonts/glyphicons-halflings-regular.woff") format("woff"), url("../packages/bootstrap/fonts/glyphicons-halflings-regular.ttf") format("truetype");
 }
 
-/*Light*/
-/*Dark*/
-/*Links*/
-/*Light*/
-/*Dark*/
-/* line 5, D:/work/dat/conduit/sass/links.scss */
 a:link {
   text-decoration: none;
   color: #ff5252;
 }
 
-/* line 10, D:/work/dat/conduit/sass/links.scss */
 a:hover {
   text-decoration: underline;
   color: #ff1f1f;
 }
 
-/* line 15, D:/work/dat/conduit/sass/links.scss */
 a:active {
   outline: 0;
   outline: none;
 }
 
-/* line 20, D:/work/dat/conduit/sass/links.scss */
 a:visited {
   outline: 0;
   outline: none;
   color: #009688;
 }
 
-/* line 26, D:/work/dat/conduit/sass/links.scss */
 a:focus {
   outline: 0;
   outline: none;
   text-decoration: underline;
 }
 
-/*Layout*/
-/*Light*/
-/*Dark*/
-/* line 11, D:/work/dat/conduit/sass/layout.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 17, D:/work/dat/conduit/sass/layout.scss */
 html {
   font-size: 100% !important;
   font-family: 'SourceSansPro', sans-serif !important;
 }
 
-/* line 22, D:/work/dat/conduit/sass/layout.scss */
 body {
   min-width: 750px;
-  /* 2x (LC fullwidth +
-                          		CC padding) + RC fullwidth */
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  margin: 0px;
+  margin: 0;
   width: 100vw;
   height: 100vh;
   font-size: 100%;
@@ -96,20 +76,46 @@ body {
   background-color: #f2f2f2;
 }
 
-/* line 40, D:/work/dat/conduit/sass/layout.scss */
+.classification {
+  height: 20px;
+  float: left;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.classification.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.classification.u {
+  background-color: #00b400;
+  color: #000;
+}
+
+.classification.s {
+  background-color: red;
+  color: #fff;
+}
+
+.classification.ts {
+  background-color: yellow;
+  color: #000;
+}
+
 #container {
   position: fixed;
-  padding-left: 25vw;
-  /* LC fullwidth */
-  padding-right: 20vw;
-  /* RC fullwidth + CC padding */
+  padding-left: 23vw;
+  padding-right: 23vw;
   height: auto;
-  bottom: 0px;
-  top: 48px;
+  bottom: 20px;
+  top: 68px;
   background: transparent;
 }
 
-/* line 50, D:/work/dat/conduit/sass/layout.scss */
 #container .column {
   position: relative;
   float: left;
@@ -117,61 +123,50 @@ body {
   background: inherit;
 }
 
-/* line 57, D:/work/dat/conduit/sass/layout.scss */
 #center {
   padding: 0;
-  /* CC padding */
-  width: 55vw;
+  width: 54vw;
   background: #f2f2f2;
   float: left;
 }
 
-/* line 64, D:/work/dat/conduit/sass/layout.scss */
 #left {
-  width: 25vw;
-  /* LC width */
+  width: 23vw;
   padding: 0;
-  /* LC padding */
-  right: 25vw;
-  /* LC fullwidth + CC padding */
+  right: 23vw;
   margin-left: -100%;
   max-height: 100%;
   background: #f2f2f2;
   display: inline-block;
 }
 
-/* line 75, D:/work/dat/conduit/sass/layout.scss */
 #right {
-  width: 20vw;
-  /* RC width */
+  width: 23vw;
   padding: 0;
-  /* RC padding */
-  margin-right: -20vw;
-  /* RC fullwidth + CC padding */
+  margin-right: -23vw;
   background: #f2f2f2;
   float: left;
-  margin-left: 0px;
+  margin-left: 0;
   max-height: 100%;
   overflow-x: visible;
 }
 
-/* line 86, D:/work/dat/conduit/sass/layout.scss */
 #header {
-  /*DISPLAY*/
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   float: left;
   width: 100%;
   height: 48px;
   padding: 5px;
-  /*COLORS*/
   background: #009688;
   color: #fff;
-  /*FONTS*/
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
-  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
 }
 
-/* line 104, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper:before {
   content: '';
   display: inline-block;
@@ -180,39 +175,79 @@ body {
   margin-right: -0.25em;
 }
 
-/* line 112, D:/work/dat/conduit/sass/layout.scss */
 #header-content-wrapper {
   display: inline-block;
   vertical-align: middle;
   height: 100%;
   width: 100%;
   text-align: center;
+  position: relative;
 }
 
-/* line 120, D:/work/dat/conduit/sass/layout.scss */
 #header-content {
   display: inline-block;
   vertical-align: middle;
 }
 
-/*** IE Fix ***/
-/* line 126, D:/work/dat/conduit/sass/layout.scss */
 * html #left {
   left: 390px;
-  /* RC fullwidth */
 }
 
-/*Light*/
-/*Dark*/
-/* line 3, D:/work/dat/conduit/sass/stream.scss */
+#header .btn-group.dropdown,
+#header .btn-group.dropdown:active,
+#header .btn-group.dropdown:focus {
+  position: absolute;
+  right: 0;
+  margin-right: 8px;
+  height: 100%;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+#header .btn-group.dropdown:hover,
+#header .btn-group.dropdown:active,
+#header .btn-group.dropdown:focus,
+#header .dropdown #profile-dropdown:hover,
+#header .dropdown #profile-dropdown:active,
+#header .dropdown #profile-dropdown:focus {
+  text-decoration: underline;
+}
+
+#header .dropdown #profile-dropdown {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  height: 100%;
+}
+
+#header .dropdown-menu {
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
+  border-radius: 2px;
+  right: 0;
+  left: auto;
+  min-width: 200px;
+  margin-top: -10px;
+}
+
+#header .dropdown-menu .disabled {
+  padding: 3px 20px;
+  color: #bdbdbd;
+  cursor: default;
+}
+
 .stream {
   width: 100%;
   position: absolute;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
-  top: 12px;
-  margin-top: 0px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-top: 0;
   padding: 0 8px 100px 10px;
   height: auto;
   max-height: inherit;
@@ -222,33 +257,32 @@ body {
   background: transparent;
 }
 
-/* line 19, D:/work/dat/conduit/sass/stream.scss */
 .stream .card:last-child {
   border-radius: 0 0 2px 2px;
 }
 
-/* line 25, D:/work/dat/conduit/sass/stream.scss */
 #article-stream {
   top: 0px;
 }
 
-/*Buttons at bottom of a stream*/
-/* line 33, D:/work/dat/conduit/sass/stream.scss */
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 38, D:/work/dat/conduit/sass/stream.scss */
 .btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
   border-top-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
-/* line 44, D:/work/dat/conduit/sass/stream.scss */
 .stream-action {
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   width: 100%;
   position: absolute;
   height: 72px;
@@ -257,26 +291,22 @@ body {
   right: 10px;
   border: none;
   border-radius: 2px 2px 0 0;
-  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
   background-color: #009688;
 }
 
-/* line 57, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary {
   border: none;
   border-bottom: 2px solid #009688;
   color: rgba(255, 255, 255, 0.7);
-  border-radius: none;
+  border-radius: 0;
   box-shadow: none;
 }
 
-/* line 65, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active {
   color: #fff;
 }
 
-/* line 70, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn-primary:active,
 .stream-action .btn-primary.active,
 .stream-action .btn-primary:focus,
@@ -291,19 +321,16 @@ body {
   box-shadow: none;
 }
 
-/* line 85, D:/work/dat/conduit/sass/stream.scss */
 .stream-action .btn {
   height: 100%;
 }
 
-/*Feed*/
-/* line 91, D:/work/dat/conduit/sass/stream.scss */
 .fluid-container {
   width: auto;
   position: absolute;
   top: 82px;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
+  left: 0;
   right: -20px;
   padding: 0;
   max-height: inherit;
@@ -312,39 +339,129 @@ body {
   display: inline-block;
 }
 
-/*Book*/
-/* line 106, D:/work/dat/conduit/sass/stream.scss */
 .book {
   width: auto;
-  top: 66px;
-  bottom: 0px;
+  top: 90px;
+  bottom: 0;
   left: -15px;
-  right: 0px;
+  right: 0;
   float: right;
 }
 
-/* line 118, D:/work/dat/conduit/sass/stream.scss */
+.stream-header {
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  right: 10px;
+  left: 9px;
+  right: 24px;
+  width: auto;
+  height: 80px;
+  display: inline-block;
+  border-radius: 2px 2px 0 0;
+  z-index: 100;
+  background-color: transparent;
+}
+
+.stream-header .stream-action {
+  color: #fff;
+  box-shadow: none;
+  top: 0;
+  bottom: 24px;
+  width: auto;
+  height: auto;
+  border-bottom: 2px solid #009688;
+}
+
+.stream-header .stream-action:hover,
+.stream-header .stream-action:focus,
+.stream-header .stream-action:active,
+.stream-header .stream-action.open {
+  cursor: pointer;
+  border-bottom: 2px solid #ff5252;
+}
+
+.stream-header .stream-action.dropdown {
+  position: absolute;
+  left: 0;
+  right: 15%;
+  border-radius: 2px 0 0 0;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown {
+  position: absolute;
+  color: #fff;
+  background: transparent;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  height: auto;
+  width: 100%;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown,
+.stream-header .stream-action.dropdown #profile-dropdown:active,
+.stream-header .stream-action.dropdown #profile-dropdown:focus,
+.stream-header .stream-action.dropdown #profile-dropdown:link {
+  box-shadow: none;
+}
+
+.stream-header .stream-action.dropdown #profile-dropdown + .dropdown-menu {
+  min-width: 80%;
+  width: auto;
+  max-width: 120%;
+}
+
+.stream-header .stream-action.small {
+  right: 0;
+  left: 85%;
+  border-radius: 0 2px 0 0;
+}
+
+.stream-header .info-bar {
+  background: #757575 !important;
+  position: relative;
+  top: 56px;
+  height: 24px;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  z-index: 99;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  line-height: 24px;
+}
+
 #book-action-wrapper {
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   position: absolute;
   top: 10px;
   left: -5px;
   right: 10px;
   width: auto;
-  height: 56px;
+  height: 80px;
   display: inline-block;
   border-radius: 2px 2px 0 0;
-  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
   z-index: 100;
 }
 
-/* line 133, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary {
   border: none;
   border-bottom: 2px solid #009688;
   box-shadow: none;
 }
 
-/* line 139, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .btn-primary:active,
 #book-action-wrapper .btn-primary.active,
 #book-action-wrapper .btn-primary:focus,
@@ -359,34 +476,6 @@ body {
   box-shadow: none;
 }
 
-/* line 153, D:/work/dat/conduit/sass/stream.scss */
-#book-action-wrapper .nya-bs-select {
-  position: absolute;
-  left: 0;
-  right: 48px;
-  height: 100%;
-  width: auto;
-  border-radius: 2px 0 0 0;
-  border-bottom: 2px solid #009688;
-  box-shadow: none;
-}
-
-/* line 166, D:/work/dat/conduit/sass/stream.scss */
-#book-action-wrapper nya-bs-select:active,
-#book-action-wrapper nya-bs-select.active,
-#book-action-wrapper nya-bs-select:focus,
-#book-action-wrapper nya-bs-select.focus,
-#book-action-wrapper nya-bs-select:hover,
-#book-action-wrapper nya-bs-select:active:focus,
-#book-action-wrapper nya-bs-select.active:focus,
-#book-action-wrapper nya-bs-select:active:hover,
-#book-action-wrapper nya-bs-select.active:hover {
-  background-color: #009688;
-  border-bottom: 2px solid #ff5252;
-  box-shadow: none;
-}
-
-/* line 180, D:/work/dat/conduit/sass/stream.scss */
 #book-action-wrapper .stream-action {
   position: absolute;
   width: 48px;
@@ -399,71 +488,86 @@ body {
   box-shadow: none;
 }
 
-/*Light*/
-/*Dark*/
-/* line 5, D:/work/dat/conduit/sass/filter.scss */
+#book-action-wrapper #export-book {
+  height: 56px;
+}
+
 .category-wrapper {
   display: inline-block;
   width: 100%;
-  overflow: show;
+  overflow: visible;
   clear: both;
 }
 
-/* line 12, D:/work/dat/conduit/sass/filter.scss */
 .category-wrapper .dropdown {
-  width: 45% !important;
   min-width: 200px !important;
   margin: 0 10px 10px 0 !important;
   clear: none !important;
   float: left !important;
 }
 
-/* line 20, D:/work/dat/conduit/sass/filter.scss */
+.category-wrapper .dropdown .dropdown-menu {
+  width: 85%;
+}
+
+#attr-wrapper {
+  display: inline-block;
+  padding-top: 16px;
+}
+
+.cbx-wrapper {
+  float: left;
+  padding-right: 16px;
+  font-weight: normal;
+}
+
+.cbx-wrapper .checkbox-label {
+  font-weight: normal;
+}
+
 .accordion-wrapper {
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   position: absolute;
   z-index: 100;
   width: auto;
-  top: 0px;
+  top: 0;
   left: 10px;
   right: 10px;
-  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
 }
 
-/* line 30, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-group {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
-/* line 34, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel {
   box-shadow: none;
 }
 
-/* line 38, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-default {
   border: none !important;
   border-radius: 0 !important;
 }
 
-/* line 42, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-heading {
   background: #757575 !important;
   height: 24px !important;
-  padding: 0px !important;
+  padding: 0 !important;
   border-radius: 0 !important;
   z-index: 99;
 }
 
-/* line 49, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-open .panel-heading {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  border-radius: 0px 0px 2px 2px;
+  border-radius: 0 0 2px 2px;
 }
 
-/* line 56, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title {
   color: #fff !important;
   text-align: center !important;
@@ -471,23 +575,22 @@ body {
   padding: 5px 0;
 }
 
-/* line 62, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-title a {
   color: #fff;
 }
 
-/* line 66, D:/work/dat/conduit/sass/filter.scss */
 .accordion-wrapper .panel-body {
   max-height: 40vh;
   overflow-y: scroll;
   padding: 15px 15px 39px 15px;
 }
 
-/*Article Card*/
-/*Light*/
-/*Dark*/
-/* line 16, D:/work/dat/conduit/sass/card.scss */
-.card {
+.stream.card {
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: box-shadow .25s ease-in-out;
   min-height: 7.564em;
   max-height: 7.564em;
   height: 7.564em;
@@ -500,19 +603,14 @@ body {
   background: #fff;
   display: block;
   transition: all .25s ease-in-out !important;
-  transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
   transition: margin .25s ease-in-out;
-  margin: 0;
 }
 
-/* line 46, D:/work/dat/conduit/sass/card.scss */
 .card-header {
   height: 1.25em;
 }
 
-/* line 50, D:/work/dat/conduit/sass/card.scss */
-.card .subject {
+.stream.card .subject {
   color: #bdbdbd;
   position: absolute;
   left: 0;
@@ -521,22 +619,22 @@ body {
   font-size: .75em;
 }
 
-/* line 59, D:/work/dat/conduit/sass/card.scss */
-.card:hover {
-  background: #f2f2f2;
+.stream.card:hover {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.12), 0 4px 4px 0 rgba(0, 0, 0, 0.24);
+  background: #f2f2f2;
   z-index: 98;
   cursor: pointer;
 }
 
-/* line 67, D:/work/dat/conduit/sass/card.scss */
-.card:hover .card-btn {
+.stream.card:hover .card-btn {
   visibility: visible;
 }
 
-/* line 71, D:/work/dat/conduit/sass/card.scss */
-.card .title {
+.stream.card .title {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -544,8 +642,7 @@ body {
   line-height: 1.5em;
 }
 
-/* line 80, D:/work/dat/conduit/sass/card.scss */
-.card .text {
+.stream.card .text {
   overflow: hidden;
   white-space: normal;
   min-height: 2em;
@@ -554,8 +651,7 @@ body {
   line-height: 1em;
 }
 
-/* line 91, D:/work/dat/conduit/sass/card.scss */
-.card .tag {
+.stream.card .tag {
   font-size: .75em;
   line-height: 0.938em;
   font-style: italic;
@@ -565,8 +661,7 @@ body {
   border: none;
 }
 
-/* line 102, D:/work/dat/conduit/sass/card.scss */
-.card #tag-wrapper {
+.stream.card #tag-wrapper {
   width: 70%;
   margin: 0.313em 0 0 0;
   height: 1.438em em;
@@ -575,8 +670,7 @@ body {
   float: left;
 }
 
-/* line 111, D:/work/dat/conduit/sass/card.scss */
-.card #tag-wrapper-action {
+.stream.card #tag-wrapper-action {
   width: 33%;
   float: left;
   text-align: left;
@@ -585,8 +679,7 @@ body {
   background: inherit;
 }
 
-/* line 120, D:/work/dat/conduit/sass/card.scss */
-.card #tag-wrapper-action .action {
+.stream.card #tag-wrapper-action .action {
   background: none;
   border: none;
   float: left;
@@ -595,13 +688,11 @@ body {
   color: #009688;
 }
 
-/* line 129, D:/work/dat/conduit/sass/card.scss */
-.card #icon {
+.stream.card #icon {
   float: left;
 }
 
-/* line 133, D:/work/dat/conduit/sass/card.scss */
-.card #date {
+.stream.card #date {
   width: 30%;
   margin: 0.313em 0 0 0;
   height: 1.438em em;
@@ -610,105 +701,89 @@ body {
   float: right;
 }
 
-/* line 142, D:/work/dat/conduit/sass/card.scss */
-.card .card-btn {
+.stream.card .card-btn {
   visibility: hidden;
   position: absolute;
   top: 10px;
   right: 10px;
   font-size: 1em;
-  opacity: 0.4;
+  opacity: .4;
   filter: alpha(opacity=40);
-  /* For IE8 and earlier */
 }
 
-/* line 153, D:/work/dat/conduit/sass/card.scss */
-.card .card-btn:hover {
+.stream.card .card-btn:hover {
   opacity: 1;
   filter: alpha(opacity=100);
-  /* For IE8 and earlier */
   transition: opacity .2s ease-in-out;
 }
 
-/* line 159, D:/work/dat/conduit/sass/card.scss */
 .card.active {
-  background: #d9d9d9;
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24);
+  background: #d9d9d9;
   transition: margin .25s ease-in-out;
   margin: 10px -5px 10px -5px;
   width: auto;
   z-index: 99;
 }
 
-/* line 168, D:/work/dat/conduit/sass/card.scss */
 .card.active:hover {
   background: #cccccc;
-  box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24);
   transition: margin .25s ease-in-out;
 }
 
-/* line 174, D:/work/dat/conduit/sass/card.scss */
 .card.active .tag {
   color: #212121;
 }
 
-/* line 179, D:/work/dat/conduit/sass/card.scss */
 .read .title {
   color: #bdbdbd;
 }
 
-/* line 182, D:/work/dat/conduit/sass/card.scss */
 .read .text {
   color: #bdbdbd;
 }
 
-/* line 185, D:/work/dat/conduit/sass/card.scss */
 .read .tag {
   background: transparent;
   color: #bdbdbd;
 }
 
-/* line 192, D:/work/dat/conduit/sass/card.scss */
 .active-read .title {
   color: #717171;
 }
 
-/* line 195, D:/work/dat/conduit/sass/card.scss */
 .active-read .text {
   color: #717171;
 }
 
-/* line 198, D:/work/dat/conduit/sass/card.scss */
 .active-read .tag {
   color: #717171;
 }
 
-/* line 201, D:/work/dat/conduit/sass/card.scss */
 .active-read .subject {
   color: #717171;
 }
 
-/* line 206, D:/work/dat/conduit/sass/card.scss */
 .card.ng-hide:not(.ng-hide-animate) {
-  /* These are just alternative ways of hiding an element */
   display: block !important;
   transition: all .25s ease-in-out !important;
-  height: 0px !important;
-  max-height: 0px !important;
-  min-height: 0px !important;
-  padding: 0px !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
   border: none;
-  /*position: absolute;
-  top: -9999px;*/
 }
 
-/*Article View*/
-/*Light*/
-/*Dark*/
-/*does not apply to all elements*/
-/* line 10, D:/work/dat/conduit/sass/viewer.scss */
 .article-view {
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: box-shadow .25s ease-in-out;
   position: absolute;
   top: 10px;
   left: 20px;
@@ -717,12 +792,9 @@ body {
   max-height: inherit;
   overflow: hidden;
   border-radius: 2px;
-  /*border: 1px solid $colorGrey;*/
   background: #fff;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
 }
 
-/* line 26, D:/work/dat/conduit/sass/viewer.scss */
 #content-wrapper {
   position: absolute;
   top: 0;
@@ -732,17 +804,32 @@ body {
   overflow-y: auto;
 }
 
-/* line 35, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #subject {
   color: #bdbdbd;
   font-size: 12px;
   line-height: 15px;
   margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
   text-align: center;
 }
 
-/* line 44, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #edit-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 12px;
+  text-align: right;
+}
+
+.article-view #edit-menu .primary-text {
+  color: #212121;
+}
+
+.article-view #edit-menu a {
+  color: #bdbdbd;
+}
+
 .btn-edit {
   visibility: visible;
   color: #212121;
@@ -751,37 +838,32 @@ body {
   clear: both;
 }
 
-/* line 51, D:/work/dat/conduit/sass/viewer.scss */
 .btn-edit:hover {
   background-color: #d1d1d1;
 }
 
-/* line 55, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text.edit-field {
-  margin: 0 15px;
-  height: 50vh;
+  padding: 15px;
+  height: 24em;
+  margin-top: 5em;
 }
 
-/* line 60, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper {
   position: relative;
   margin-top: 8px;
   margin: 0 15px;
 }
 
-/* line 67, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .title {
   font-size: 1.5em;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 72, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #title-wrapper .edit-field {
   line-height: 1.813em;
   height: 6em;
 }
 
-/* line 77, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper {
   position: relative;
   width: 100%;
@@ -793,7 +875,6 @@ body {
   clear: both;
 }
 
-/* line 87, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-right {
   position: absolute;
   top: 50%;
@@ -802,7 +883,6 @@ body {
   z-index: 100;
 }
 
-/* line 94, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper #nav-left {
   position: absolute;
   top: 50%;
@@ -811,7 +891,6 @@ body {
   z-index: 100;
 }
 
-/* line 103, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper::before {
   content: '';
   display: inline-block;
@@ -820,13 +899,16 @@ body {
   margin-right: -0.25em;
 }
 
-/* line 111, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   background-color: #009688;
   width: 2.5em;
   height: 2.5em;
   border-radius: 1.25em;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
   transition: box-shadow .25s ease-in-out;
   font-size: 0.75em;
   color: #fff;
@@ -836,20 +918,21 @@ body {
   vertical-align: middle;
 }
 
-/* line 131, D:/work/dat/conduit/sass/viewer.scss */
 #image-wrapper .nav-arrow:hover {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   cursor: pointer;
   background-color: #00796b;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.12), 0 4px 4px 0 rgba(0, 0, 0, 0.24);
   transition: box-shadow .25s ease-in-out;
 }
 
-/* line 138, D:/work/dat/conduit/sass/viewer.scss */
 .article-view #image-wrapper .greyout {
   visibility: hidden;
 }
 
-/* line 142, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image {
   display: inline-block;
   margin: auto;
@@ -857,21 +940,22 @@ body {
   text-align: center;
 }
 
-/* line 149, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .article-image .image {
   width: 100%;
   max-height: 50vh;
   vertical-align: middle;
 }
 
-/* line 155, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #image-load-error {
+  color: #ff5252;
+}
+
 .article-view .text-wrapper {
-  margin: 0 15px;
+  margin: 0 15px 15px 15px;
   position: relative;
   top: 30px;
 }
 
-/* line 161, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .text {
   display: block;
   font-size: 1.125em;
@@ -880,20 +964,17 @@ body {
   white-space: pre-line;
 }
 
-/* line 169, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .edit-field {
   padding: 0 1vw;
-  width: 50vw;
+  width: 100%;
 }
 
-/* line 174, D:/work/dat/conduit/sass/viewer.scss */
 .article-view .editable-buttons {
   float: right;
   margin: 5px 0 75px 0;
 }
 
-/* line 179, D:/work/dat/conduit/sass/viewer.scss */
-.article-view #date {
+.article-view #id {
   color: #bdbdbd;
   font-size: 14px;
   line-height: 18px;
@@ -902,7 +983,10 @@ body {
   bottom: 15px;
 }
 
-/* line 190, D:/work/dat/conduit/sass/viewer.scss */
+.article-view #id a {
+  color: #bdbdbd;
+}
+
 #action-area {
   position: absolute;
   right: 0;
@@ -914,58 +998,58 @@ body {
   display: inline-block;
 }
 
-/* line 203, D:/work/dat/conduit/sass/viewer.scss */
+/*
 #action-area .btn {
-  height: 36px;
-  background: transparent;
-  border: none;
-  border-radius: 2px !important;
-  float: right;
-  font-weight: 700;
+    height: $act-btn-height;
+    background: transparent;
+    border: none;
+    border-radius: 2px !important;
+    
+    float: right;
+    font-weight: 700;
 }
 
-/* line 213, D:/work/dat/conduit/sass/viewer.scss */
-#action-area .btn-default {
-  color: #212121;
+#action-area .btn-default{
+    color: $color-font;
 }
 
-/* line 217, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-default:hover,
-#action-area .btn-default:focus {
-  background: rgba(33, 33, 33, 0.12);
+#action-area .btn-default:focus{
+    background: rgba($color-font, .12);
 }
 
-/* line 222, D:/work/dat/conduit/sass/viewer.scss */
-#action-area .btn-primary {
-  color: #009688;
+#action-area .btn-primary{
+    color: $color-primary;
 }
 
-/* line 226, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-primary:hover,
 #action-area .btn-primary:focus,
 #action-area .btn-primary:active,
-#action-area .btn-primary.open {
-  background: rgba(0, 150, 136, 0.12);
-  box-shadow: none;
-}
-
-/* line 234, D:/work/dat/conduit/sass/viewer.scss */
+#action-area .btn-primary.open{
+    background: rgba($color-primary, .12);
+    box-shadow: none;
+}*/
+/*
 #action-area .dropdown-menu.open {
-  position: relative;
-  top: -350%;
-  right: 0;
-  height: auto;
-  max-height: 25vh;
-  transition: max-height .25s ease-in-out;
-  max-width: 70%;
-  background-color: #fff;
-  border: none;
-  border-radius: 2px;
-  box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
-  z-index: 101;
+    @include material-shadow(2);
+    
+    position: relative;
+    top: -350%;
+    right: 0;
+    height: auto;
+    max-height: 25vh;
+    transition: max-height .25s ease-in-out;
+    max-width: 70%;
+    background-color: #fff;
+    border: none;
+    border-radius: 2px;
+    z-index: 101;
+}*/
+#action-area .material-btn {
+  margin: 0;
+  font-weight: 700;
 }
 
-/* line 249, D:/work/dat/conduit/sass/viewer.scss */
 #action-area .btn-group.open .dropdown-toggle {
   width: 100% !important;
   min-width: initial !important;
@@ -973,47 +1057,192 @@ body {
   background: rgba(0, 150, 136, 0.12);
 }
 
-/*Light*/
-/*Dark*/
-/* line 3, D:/work/dat/conduit/sass/comments.scss */
+#action-area #version-pagniation {
+  position: absolute;
+  left: 15px;
+  bottom: 7px;
+}
+
+#action-area #version-pagniation .pagination {
+  margin: 0;
+}
+
+#action-area #version-pagniation .pagination > .disabled > a {
+  color: #bdbdbd;
+}
+
+#action-area #version-pagniation .pagination-sm > li:first-child > a {
+  width: auto !important;
+  padding: 0 5px !important;
+}
+
+#action-area #version-pagniation .pagination-sm > li:first-child > a:hover {
+  border-radius: 2px;
+}
+
+#action-area #version-pagniation .pagination-sm > li:last-child > a {
+  width: auto !important;
+  padding: 0 5px !important;
+}
+
+#action-area #version-pagniation .pagination-sm > li:last-child > a:hover {
+  border-radius: 2px;
+}
+
+#action-area #version-pagniation .pagination > li > a {
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 3px;
+  color: #009688;
+}
+
+#action-area #version-pagniation .pagination > .active > a {
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  padding: 0;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #009688;
+  color: #fff;
+}
+
+#overflow-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  background-color: transparent;
+  width: 2.5em;
+  height: 2.5em;
+  font-size: 1em;
+  color: #bdbdbd;
+  padding-top: 0.65em;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+#overflow-menu .caret {
+  visibility: hidden;
+}
+
+#overflow-menu .btn.btn-default.dropdown-toggle:after {
+  font-family: 'Glyphicons Halflings';
+  content: '\e235';
+  margin-left: -.25em;
+}
+
+#overflow-menu .btn.btn-default.dropdown-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  background-color: white;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 1.25em;
+  font-size: 1em;
+  color: #bdbdbd;
+  padding-top: 0.45em;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+  border: none;
+  box-shadow: none;
+}
+
+#overflow-menu .btn.btn-default.dropdown-toggle:hover {
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+#overflow-menu .btn.btn-default.dropdown-toggle:active,
+#overflow-menu .btn.btn-default.dropdown-toggle:focus {
+  cursor: pointer;
+  background-color: #e3e3e3;
+}
+
+#overflow-menu .dropdown-menu.open {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
+  position: relative;
+  top: 30px;
+  left: -35%;
+  height: auto;
+  width: 120%;
+  max-height: 25vh;
+  transition: max-height .25s ease-in-out;
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+  z-index: 101;
+}
+
+#content-wrapper .form-control {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  width: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#content-wrapper .edit-field.form-control {
+  width: 100% !important;
+}
+
 .all-comments-wrapper {
   max-height: 30vh;
   overflow-y: auto;
   margin-bottom: 10px;
 }
 
-/* line 8, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper {
   margin: 0 0 -10px 0;
 }
 
-/* line 12, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper .self {
   margin-right: 5px;
   text-align: right;
 }
 
-/* line 17, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper .info-wrapper .name {
   font-size: 1em;
 }
 
-/* line 22, D:/work/dat/conduit/sass/comments.scss */
 .comments-wrapper .info-wrapper .time-stamp {
   font-size: .75em;
   color: #8f8f8f;
 }
 
-/*Light*/
-/*Dark*/
-/* line 3, D:/work/dat/conduit/sass/bootstrap-customization.scss */
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger,
+.btn-group {
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 .btn-default {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
 }
 
-/* line 8, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default:focus,
 .btn-default.focus {
   color: #333;
@@ -1021,14 +1250,12 @@ body {
   border-color: #8c8c8c;
 }
 
-/* line 14, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default:hover {
   color: #333;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
 
-/* line 19, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
@@ -1037,7 +1264,6 @@ body {
   border-color: #adadad;
 }
 
-/* line 26, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default:active:hover,
 .btn-default.active:hover,
 .open > .dropdown-toggle.btn-default:hover,
@@ -1052,14 +1278,12 @@ body {
   border-color: #8c8c8c;
 }
 
-/* line 39, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
   background-image: none;
 }
 
-/* line 44, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default.disabled:hover,
 .btn-default[disabled]:hover,
 fieldset[disabled] .btn-default:hover,
@@ -1073,21 +1297,17 @@ fieldset[disabled] .btn-default.focus {
   border-color: #ccc;
 }
 
-/* line 56, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-default .badge {
   color: #fff;
   background-color: #333;
 }
 
-/*Primary buttons*/
-/* line 63, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary {
   color: #fff;
   background-color: #009688;
   border-color: #007d71;
 }
 
-/* line 68, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
@@ -1095,14 +1315,12 @@ fieldset[disabled] .btn-default.focus {
   border-color: #00635a;
 }
 
-/* line 74, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary:hover {
   color: #fff;
   background-color: #007d71;
   border-color: #00635a;
 }
 
-/* line 79, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
@@ -1110,7 +1328,6 @@ fieldset[disabled] .btn-default.focus {
   border-color: #004a43;
 }
 
-/* line 85, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary:active:hover,
 .btn-primary.active:hover,
 .open > .dropdown-toggle.btn-primary:hover,
@@ -1125,14 +1342,12 @@ fieldset[disabled] .btn-default.focus {
   border-color: #00302c;
 }
 
-/* line 98, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   background-image: none;
 }
 
-/* line 103, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary.disabled:hover,
 .btn-primary[disabled]:hover,
 fieldset[disabled] .btn-primary:hover,
@@ -1146,49 +1361,40 @@ fieldset[disabled] .btn-primary.focus {
   border-color: #00b09f;
 }
 
-/* line 115, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .btn-primary .badge {
   color: #009688;
   background-color: #fff;
 }
 
-/*Navbar*/
-/* line 122, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default {
   background-color: #e5e5e5;
   border-color: #bdbdbd;
 }
 
-/* line 126, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-brand {
   color: #777;
 }
 
-/* line 129, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
   color: #5e5e5e;
   background-color: transparent;
 }
 
-/* line 134, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-text {
   color: #212121;
 }
 
-/* line 137, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > li > a {
   color: #777;
 }
 
-/* line 140, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #333;
   background-color: transparent;
 }
 
-/* line 145, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
@@ -1196,7 +1402,6 @@ fieldset[disabled] .btn-primary.focus {
   background-color: #e5e5e5;
 }
 
-/* line 151, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
 .navbar-default .navbar-nav > .disabled > a:focus {
@@ -1204,29 +1409,24 @@ fieldset[disabled] .btn-primary.focus {
   background-color: transparent;
 }
 
-/* line 157, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-toggle {
   border-color: #ddd;
 }
 
-/* line 160, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
   background-color: #ddd;
 }
 
-/* line 164, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #888;
 }
 
-/* line 167, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
   border-color: #e7e7e7;
 }
 
-/* line 171, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
@@ -1235,24 +1435,20 @@ fieldset[disabled] .btn-primary.focus {
 }
 
 @media (max-width: 767px) {
-  /* line 178, D:/work/dat/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #777;
   }
-  /* line 181, D:/work/dat/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #333;
     background-color: transparent;
   }
-  /* line 186, D:/work/dat/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555;
     background-color: #e7e7e7;
   }
-  /* line 192, D:/work/dat/conduit/sass/bootstrap-customization.scss */
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
@@ -1261,28 +1457,23 @@ fieldset[disabled] .btn-primary.focus {
   }
 }
 
-/* line 199, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-link {
   color: #777;
 }
 
-/* line 202, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .navbar-link:hover {
   color: #333;
 }
 
-/* line 205, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .btn-link {
   color: #777;
 }
 
-/* line 208, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .btn-link:hover,
 .navbar-default .btn-link:focus {
   color: #333;
 }
 
-/* line 212, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .navbar-default .btn-link[disabled]:hover,
 fieldset[disabled] .navbar-default .btn-link:hover,
 .navbar-default .btn-link[disabled]:focus,
@@ -1290,45 +1481,36 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 
-/* Panels */
-/* line 221, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel {
   background-color: #e5e5e5;
   border: 1px solid #bdbdbd;
 }
 
-/* line 225, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel a {
   color: #212121;
 }
 
-/* line 229, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-body {
   background-color: #f2f2f2;
 }
 
-/* line 232, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-heading {
   border-bottom: 1px solid transparent;
 }
 
-/* line 235, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-heading > .dropdown .dropdown-toggle {
   color: #212121;
 }
 
-/* line 238, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-title {
   color: #212121;
 }
 
-/* line 241, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-footer {
   background-color: #e5e5e5;
   border-top: 1px solid #bdbdbd;
 }
 
-/* line 245, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel > .panel-body + .table,
 .panel > .panel-body + .table-responsive,
 .panel > .table + .panel-body,
@@ -1336,93 +1518,59 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   border-top: 1px solid #bdbdbd;
 }
 
-/* line 251, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-group .panel-heading + .panel-collapse > .panel-body,
 .panel-group .panel-heading + .panel-collapse > .list-group {
   border-top: 1px solid #bdbdbd;
 }
 
-/* line 255, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-group .panel-footer {
   border-top: 0;
 }
 
-/* line 258, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-group .panel-footer + .panel-collapse .panel-body {
   border-bottom: 1px solid #bdbdbd;
 }
 
-/* line 261, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-default {
   color: #212121;
   border-color: #bdbdbd;
 }
 
-/* line 265, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-heading {
   color: #212121;
   background-color: #e5e5e5;
   border-color: #bdbdbd;
 }
 
-/* line 270, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #bdbdbd;
 }
 
-/* line 273, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-heading .badge {
   color: #f5f5f5;
   background-color: #333333;
 }
 
-/* line 277, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #bdbdbd;
 }
 
-/*FOcus color*/
-/* line 282, D:/work/dat/conduit/sass/bootstrap-customization.scss */
-a:focus {
-  /*outline: 2px auto $colorAccent;
-  outline-offset: -2px;*/
-}
-
-/* line 287, D:/work/dat/conduit/sass/bootstrap-customization.scss */
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
+input[type='file']:focus,
+input[type='radio']:focus,
+input[type='checkbox']:focus {
   outline: 5px auto #ff5252;
   outline-offset: -2px;
 }
 
-/* line 294, D:/work/dat/conduit/sass/bootstrap-customization.scss */
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn.active.focus {
-  /*outline: 5px auto $colorAccent;
-  outline-offset: -2px;*/
-}
-
-/* line 304, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 .form-control:focus {
   border-bottom: 2px solid #ff5252;
   outline: 0;
-  /*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($colorAccent, 0.6);*/
 }
 
-/* Loading Bar*/
-/* line 312, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 #loading-bar .bar {
   background: #ff5252;
 }
 
-/* Fancy blur effect */
-/* line 317, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 #loading-bar .peg {
   -moz-box-shadow: #ff5252 1px 0 6px 1px;
   -ms-box-shadow: #ff5252 1px 0 6px 1px;
@@ -1430,29 +1578,24 @@ input[type="checkbox"]:focus {
   box-shadow: #ff5252 1px 0 6px 1px;
 }
 
-/* line 324, D:/work/dat/conduit/sass/bootstrap-customization.scss */
 #loading-bar-spinner .spinner-icon {
   border-top-color: #ff5252;
   border-left-color: #ff5252;
 }
 
-/* line 1, D:/work/dat/conduit/sass/media.scss */
 .ico-text-1 {
   display: inline;
 }
 
-/* line 4, D:/work/dat/conduit/sass/media.scss */
 .ico-text-2 {
   display: inline;
 }
 
-/* line 7, D:/work/dat/conduit/sass/media.scss */
 .ico-text-3 {
   display: inline;
 }
 
 @media screen and (max-width: 1200px) {
-  /* line 13, D:/work/dat/conduit/sass/media.scss */
   .ico-text-1 {
     display: none;
     visibility: hidden;
@@ -1460,7 +1603,6 @@ input[type="checkbox"]:focus {
 }
 
 @media screen and (max-width: 1100px) {
-  /* line 21, D:/work/dat/conduit/sass/media.scss */
   .ico-text-2 {
     display: none;
     visibility: hidden;
@@ -1468,70 +1610,40 @@ input[type="checkbox"]:focus {
 }
 
 @media screen and (max-width: 800px) {
-  /* line 29, D:/work/dat/conduit/sass/media.scss */
   .ico-text-3 {
     display: none;
     visibility: hidden;
   }
-  /* line 34, D:/work/dat/conduit/sass/media.scss */
   .panel-title {
     text-align: center;
   }
-  /* line 39, D:/work/dat/conduit/sass/media.scss */
-  .toolbox .nya-bs-select {
-    width: 42px;
-  }
-  /* line 41, D:/work/dat/conduit/sass/media.scss */
-  .toolbox .nya-bs-select .dropdown-toggle {
-    height: 36px;
-  }
-  /* line 44, D:/work/dat/conduit/sass/media.scss */
-  .toolbox .nya-bs-select .caret {
-    display: none;
-    visibility: hidden;
-  }
-  /* line 51, D:/work/dat/conduit/sass/media.scss */
-  .nya-bs-select {
-    text-align: center;
-  }
-  /* line 53, D:/work/dat/conduit/sass/media.scss */
-  .nya-bs-select .dropdown-toggle {
-    padding-right: 0px;
-  }
-  /* line 56, D:/work/dat/conduit/sass/media.scss */
-  .nya-bs-select .special-title, .nya-bs-select .filter-option {
-    display: none;
-    visibility: hidden;
-  }
-  /* line 62, D:/work/dat/conduit/sass/media.scss */
   .special-title:before, .filter-option:before {
     visibility: visible;
     display: inline;
     left: 0;
     right: 0;
     font-family: 'Glyphicons-Halflings-Regular';
-    content: "\e043";
+    content: '\e043';
   }
 }
 
-/*Light*/
-/*Dark*/
-/* line 4, D:/work/dat/conduit/sass/book-selector.scss */
 #right .btn.btn-default.dropdown-toggle {
   background-color: #009688;
-  color: white;
+  color: #fff;
   height: 56px;
   border: none;
   border-radius: 2px 0 0 0;
-  color: white;
   font-size: 16px;
   line-height: 19px;
-  /*box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);*/
   z-index: 100;
 }
 
-/* line 22, D:/work/dat/conduit/sass/book-selector.scss */
 #right .dropdown-menu.open {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
   position: relative;
   top: -20px;
   left: 28%;
@@ -1542,85 +1654,632 @@ input[type="checkbox"]:focus {
   background-color: #fff;
   border: none;
   border-radius: 2px;
-  box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
   z-index: 101;
 }
 
-/* line 37, D:/work/dat/conduit/sass/book-selector.scss */
-#right .nya-bs-select.btn-group .dropdown-menu {
-  width: 100% !important;
-  min-width: initial !important;
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/*Light*/
-/*Dark*/
-/* line 5, D:/work/dat/conduit/sass/fab.scss */
-#fab {
+body.material {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-size: 100%;
+  font-family: 'SourceSansPro', sans-serif;
+  background-color: #f2f2f2;
+}
+
+.material.card {
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: box-shadow .25s ease-in-out;
+  margin-top: 20vh;
+  height: auto;
+  padding: 24px 24px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.material.card .primary-title {
+  font-size: 24px;
+  padding-bottom: 16px;
+}
+
+.material.card .supporting-text {
+  font-size: 14px;
+  line-height: 20px;
+  padding-bottom: 16px;
+}
+
+.material.card .action-area {
+  height: 52px;
+  margin: 0 -24px -24px -24px;
+}
+
+.divider.full-bleed {
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #bdbdbd;
+}
+
+.divider.inset {
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(33, 33, 33, 0.12);
+}
+
+.material-card .expand-area {
+  padding-top: 16px;
+}
+
+/*
+.material.card .card-action {
+    height: 36px;
+    margin: 8px;
+    font-size: 14px;
+    padding: 9px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 2px !important;
+    float: right;
+    font-weight: 500;
+    text-decoration: none;
+}
+.material.card .card-action:hover {
+    cursor: pointer;
+}
+
+.material.card .default {
+    color: $color-font;
+}
+
+.material.card .default:hover {
+    background: rgba($color-font, .12);
+}
+
+.material.card .primary {
+    color: $color-primary;
+}
+
+.material.card .primary:hover {
+    background: rgba($color-primary, .12);
+}*/
+@media only screen and (min-width: 480px) {
+  .material.card {
+    width: 80vw;
+    margin-left: 10vw;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .material.card {
+    width: 60vw;
+    margin-left: 20vw;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .material.card {
+    width: 50vw;
+    margin-left: 25vw;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .material.card {
+    width: 30vw;
+    margin-left: 35vw;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .material.card {
+    width: 20vw;
+    margin-left: 40vw;
+  }
+}
+
+.material-form .dropdown-toggle {
+  width: 100%;
+  text-align: left;
+}
+
+.material-form .dropdown-toggle .caret {
+  float: right;
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
+.material-form .dropdown-toggle.btn {
+  border-radius: 0;
+  border-bottom: 1px solid #bdbdbd;
+  font-size: 16px;
+  color: #bdbdbd;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.material-form .dropdown-toggle.btn:hover {
+  border-bottom: 2px solid rgba(33, 33, 33, 0.87);
+  color: rgba(33, 33, 33, 0.54);
+  transition: all .25s ease-in-out;
+}
+
+.material-form .dropdown .item-selected:hover {
+  color: #212121;
+}
+
+.material-form .dropdown-toggle.btn:active,
+.material-form .dropdown-toggle.btn:focus {
+  border-bottom: 2px solid #009688;
+}
+
+.material-form .dropdown {
+  padding-right: 0;
+  padding-left: 0;
+  border-radius: 0;
   position: absolute;
-  bottom: 15px;
-  right: 15px;
-  height: 55px;
-  width: 55px;
-  border-radius: 27.5px;
-  background-color: #ff5252;
-  color: #fff;
-  transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12), 0 8px 8px 0 rgba(0, 0, 0, 0.24);
-  font-size: 18px;
-  text-align: center;
-  padding: 16px;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
-/* line 25, D:/work/dat/conduit/sass/fab.scss */
-#fab:hover {
-  transition: box-shadow .25s ease-in-out;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.12), 0 12px 12px 0 rgba(0, 0, 0, 0.24);
+.material-form .dropdown .item-selected {
+  color: #212121;
+}
+
+.material-form .dropdown label {
+  visibility: hidden;
+  height: 12px;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  transition: all .25s ease-in-out;
+}
+
+.material-form .dropdown-menu {
+  right: -4px;
+  left: -4px;
+  top: 0;
+  border-radius: 2px;
+}
+
+.material-form .btn,
+.material-form .btn:active,
+.material-form .btn:hover,
+.material-form .btn:focus,
+.material-form .btn-primary,
+.material-form .btn-primary:active,
+.material-form .btn-primary:hover,
+.material-form .btn-primary:focus,
+.material-form .btn-primary:active:hover,
+.material-form .btn-primary:active.focus,
+.material-form .open > .dropdown-toggle.btn-primary,
+.material-form .open > .dropdown-toggle.btn-primary:hover,
+.material-form .open > .dropdown-toggle.btn-primary:focus {
+  background: transparent;
+  color: #212121;
+  border: none;
+  box-shadow: none;
+  font-size: 16px;
+  height: 28px;
+  margin: 0 0 8px 0;
+  padding: 0 0 12px 0;
+}
+
+.material-form.form-group input,
+.material-form.form-group .menu-search input {
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  font-size: 16px;
+  height: 24px;
+  margin: 0 0 8px 0;
+  padding: 0 0 8px 0;
+  width: 100%;
+}
+
+.material-form.form-group .material-input-field,
+.material-form.form-group .menu-search .material-input-field {
+  margin-right: 16px;
+  margin-left: 16px;
+  margin-bottom: 8px;
+  position: relative;
+  padding-top: 24px;
+  height: 64px;
+}
+
+.material-form.form-group .material-input-field input:hover,
+.material-form.form-group .menu-search .material-input-field input:hover {
+  border-bottom: 2px solid rgba(33, 33, 33, 0.87);
+  transition: all .25s ease-in-out;
+}
+
+.material-form.form-group .material-input-field input:active,
+.material-form.form-group .material-input-field input:focus,
+.material-form.form-group .menu-search .material-input-field input:active,
+.material-form.form-group .menu-search .material-input-field input:focus {
+  padding: 0 0 7px 0;
+  border-bottom: 2px solid #009688;
+}
+
+.material-form.form-group .menu-search .material-input-field {
+  margin-right: 32px;
+  margin-left: 32px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  height: 40px;
+}
+
+.material-form.form-group .menu-search .material-input-field input {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.material-dropdown .dropdown-menu.bump-menu-for-search {
+  top: -40px;
+  left: -8px;
+}
+
+.material-input-field label,
+.menu-search .material-input-field label {
+  visibility: visible;
+  position: absolute;
+  left: 0;
+  top: 24px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #bdbdbd;
+  transition: all .25s ease-in-out;
+  pointer-events: none;
+}
+
+.material-input-field label.with-text,
+.dropdown-label,
+.dropdown-label.with-text {
+  height: 12px;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  transition: all .25s ease-in-out;
+}
+
+.dropdown-label {
+  visibility: hidden;
+}
+
+.dropdown-label.with-text {
+  visibility: visible;
+}
+
+.material-input-field input:hover + label {
+  color: rgba(33, 33, 33, 0.54);
+  transition: all .25s ease-in-out;
+}
+
+.material-input-field input:active + label,
+.material-input-field input:focus + label,
+.material-input-field button:active + label,
+.material-input-field button:focus + label,
+.material-form .dropdown-toggle.btn:active + label,
+.material-form .dropdown-toggle.btn:focus + label,
+.material-form .dropdown.open + label {
+  color: #009688;
+  height: 12px;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  transition: all .25s ease-in-out;
+}
+
+.fade {
+  transition: all linear .25s;
+  opacity: 1;
+}
+
+.fade.ng-hide {
+  opacity: 0;
+}
+
+label.active {
+  color: #009688;
+}
+
+.material-form label.error,
+.material-input-field .counter.error {
+  color: red !important;
+  transition: all .25s ease-in-out;
+}
+
+.material-form.form-group input.error {
+  border-bottom-color: red !important;
+}
+
+.material-input-field .counter {
+  color: #bdbdbd;
+  height: 12px;
+  font-size: 12px;
+  float: right;
+  transition: all .25s ease-in-out;
+}
+
+.material-btn.flat {
+  outline: none;
+  height: 36px;
+  margin: 8px 8px 8px 0;
+  font-size: 14px;
+  padding: 9px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 2px !important;
+  float: right;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.material-btn.flat:hover {
   cursor: pointer;
 }
 
-/* line 18, D:/work/dat/conduit/sass/style.scss */
-* {
-  /*	border-radius: 2px !important;*/
+.material-btn.flat.primary {
+  color: #009688;
 }
 
-/* line 22, D:/work/dat/conduit/sass/style.scss */
+.material-btn.flat.primary:hover,
+.material-btn.flat.primary:focus {
+  background: rgba(0, 150, 136, 0.12);
+}
+
+.material-btn.flat.primary:active {
+  background: rgba(0, 150, 136, 0.4);
+}
+
+.material-btn.flat.default {
+  color: #212121;
+}
+
+.material-btn.flat.default:hover,
+.material-btn.flat.default:focus {
+  background: rgba(33, 33, 33, 0.12);
+}
+
+.material-btn.flat.default:active {
+  background: rgba(33, 33, 33, 0.4);
+}
+
+.material-btn.flat.disabled {
+  color: rgba(33, 33, 33, 0.26);
+}
+
+.material-btn.flat.disabled:hover,
+.material-btn.flat.disabled:focus {
+  background: transparent;
+  cursor: auto;
+}
+
+.material-btn.flat.disabled:active {
+  background: transparent;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  -ms-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  transition: box-shadow .25s ease-in-out;
+  margin-top: 15vh;
+  padding: 24px 24px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.material-modal .primary-title {
+  font-size: 24px;
+  padding-bottom: 16px;
+}
+
+.material-modal .supporting-text {
+  font-size: 14px;
+  line-height: 20px;
+  padding-bottom: 16px;
+}
+
+.material-modal .action-area {
+  height: 52px;
+  margin: 0 -24px -24px -24px;
+}
+
+.divider.full-bleed {
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #bdbdbd;
+}
+
+.divider.inset {
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(33, 33, 33, 0.12);
+}
+
+.material-modal .expand-area {
+  padding-top: 16px;
+}
+
+.material-modal .material-btn.flat {
+  font-weight: bold;
+}
+
+.material-dropdown .dropdown-menu {
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: box-shadow .25s ease-in-out;
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+  z-index: 101;
+}
+
+.material-dropdown .dropdown-menu a {
+  display: inline-block;
+  width: 100%;
+}
+
+.material-dropdown .dropdown-menu a .item {
+  display: inline;
+}
+
+.material-dropdown .dropdown-menu a .glyphicon {
+  float: right;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.material.table .row,
+.material .table .row {
+  height: 48px;
+  font-size: 13px;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+
+.material.table .row.add input,
+.material .table .row.add input {
+  background: transparent;
+  padding: 0px;
+  margin: 0px;
+  height: auto;
+  border: none;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material.table .row.add .glyphicon:hover,
+.material.table .row.add .icon:hover {
+  color: #009688;
+}
+
+.material.table .row.add .row-content > .definition {
+  width: 85%;
+}
+
+.material.table .row.add .row-content > .definition ~ .definition {
+  width: auto;
+}
+
+.material.table .row:hover,
+.material .table .row:hover
+.material.table .row:focus,
+.material .table .row:focus {
+  background-color: #eee;
+}
+
+.material.table .row-content,
+.material .table .row-content {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.material.table .row-content > .definition {
+  float: left;
+  margin-left: 0;
+}
+
+.material.table .row-content > .definition ~ .definition {
+  float: right;
+  margin-left: 56px;
+}
+
+.material.table .definition .glyphicon,
+.material.table .definition .icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material.table .definition .glyphicon:hover,
+.material.table .definition .icon:hover {
+  color: #212121;
+  cursor: pointer;
+}
+
 .title {
   color: #212121;
 }
 
-/* line 26, D:/work/dat/conduit/sass/style.scss */
 .text {
   color: #212121;
 }
 
-/* line 30, D:/work/dat/conduit/sass/style.scss */
 .tag {
   color: #bdbdbd;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 35, D:/work/dat/conduit/sass/style.scss */
 #action {
   float: left;
   padding-top: .1em;
 }
 
-/* line 40, D:/work/dat/conduit/sass/style.scss */
 .pointer-on-hover:hover {
   cursor: pointer;
 }
 
-/* line 44, D:/work/dat/conduit/sass/style.scss */
 ::-webkit-scrollbar {
   width: 2px;
-  /* remove scrollbar space */
-  /*background: transparent;  /* optional: just make scrollbar invisible */
 }
 
-/* optional: show position indicator in accent color */
-/* line 49, D:/work/dat/conduit/sass/style.scss */
 ::-webkit-scrollbar-thumb {
   background: #ff5252;
 }
 
-/*# sourceMappingURL=../styles/style.map */
+.center-parent {
+  position: relative;
+}
+
+.center-xy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.center-y {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -1,0 +1,22 @@
+@import 'colors.scss';
+@import 'material-shadow.scss';
+
+.material-dropdown .dropdown-menu {
+    @include material-shadow(2);
+    background-color: $color-card-background;
+    border: none;
+    border-radius: 2px;
+    z-index: 101;
+}
+
+.material-dropdown .dropdown-menu a {
+    display: inline-block;
+    width: 100%;
+}
+
+.material-dropdown .dropdown-menu a .item {
+    display: inline;
+}
+.material-dropdown .dropdown-menu a .glyphicon {
+    float: right;
+}

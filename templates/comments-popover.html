@@ -1,20 +1,30 @@
 <div>
 	<div class="all-comments-wrapper">
-        <div ng-repeat="comment in articles[currentIndex].comments track by comment.dateTime" class="comments-wrapper">
-            <div class="info-wrapper" ng-class="{'self': comment.user == username}">
-                <div class="name">{{comment.user}}</div>
-                <div class="time-stamp">{{comment.dateTime}}</div>
+        <div ng-repeat="comment in articles[currentIndex].comments | orderBy : 'date'" class="comments-wrapper">
+            <div class="info-wrapper" ng-class="{'self': comment.user.id == user.id}">
+                <div class="name">{{comment.user.given_name || comment.user.id}}</div>
+                <div class="time-stamp">{{comment.date}}</div>
             </div>
-            <div class="well well-sm" ng-class="{'self': comment.user == username}">{{comment.text}}</div>	
+            <div class="well well-sm" ng-class="{'self': comment.user.id == user.id}">{{comment.text}}</div>	
         </div>
     </div>
     <form>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Type comment..." ng-model="newComment">
+            <input type="text" class="form-control" placeholder="Type comment..." ng-model="newComment" focus-on="discuss-opened">
                 <span class="input-group-btn">
                     <button class="btn btn-primary" ng-click="post(newComment); newComment = ''">Post</button>
                 </span>
             </input>
         </div>
     </form>
+    <!--
+    <form class="material-form form-group" ng-submit="post(newComment)">
+            <div class="row">
+                <div class="material-input-field">
+                    <input type="text" id="newComment" ng-model="newComment" focus-on="discuss-opened">
+                    <label for="newComment" ng-class="{'with-text': newComment.length > 0}">Comment</label>
+                </div>
+            </div>
+        </form>
+    -->
 </div>

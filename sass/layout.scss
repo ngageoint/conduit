@@ -1,12 +1,16 @@
-/*Layout*/
+//Layout*/
 
-@import "colors.scss";
+@import 'colors.scss';
+@import 'material-shadow.scss';
 
-$leftWidth: 25vw;
-$rightWidth: 20vw;
-$centerWidth: (100vw - ($leftWidth + $rightWidth));
+$left-width: 23vw;
+$right-width: 23vw;
+$center-width: (100vw - ($left-width + $right-width));
 
-$headerHeight: 48px;
+$header-height: 48px;
+$header-padding: 5px;
+
+$classification-height: 20px;
 
 * {
   -webkit-box-sizing: border-box;
@@ -15,114 +19,192 @@ $headerHeight: 48px;
 }
 
 html {
-	font-size: 100% !important;
-	font-family: 'SourceSansPro', sans-serif !important;
+    font-size: 100% !important;
+    font-family: 'SourceSansPro', sans-serif !important;
 }
 
 body {
-	min-width: 750px;      	/* 2x (LC fullwidth +
-                          		CC padding) + RC fullwidth */
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: 0px;
-	width: 100vw;
-	height: 100vh;
-	
+    min-width: 750px;      	// 2x (LC fullwidth +
+                            //     CC padding) + RC fullwidth */
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    
     font-size: 100%;
-	font-family: 'SourceSansPro', sans-serif;
+    font-family: 'SourceSansPro', sans-serif;
 
-  background-color: $colorBackground;
-}		
-		
+  background-color: $color-background;
+}
+
+.classification {
+    height: $classification-height;
+    float: left;
+    width: 100%;
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: $classification-height;
+}
+
+.classification.footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.classification.u {
+    background-color: rgb(0,180,0);
+    color: #000;
+}
+
+.classification.s {
+    background-color: rgb(255,0,0);
+    color: #fff;
+}
+
+.classification.ts {
+    background-color: rgb(255,255,0);
+    color: #000;
+}
+        
 #container {
-	position: fixed;	
-	padding-left: $leftWidth;   	/* LC fullwidth */
-	padding-right: $rightWidth;  	/* RC fullwidth + CC padding */
+    position: fixed;	
+    padding-left: $left-width;   	// LC fullwidth */
+    padding-right: $right-width;  	// RC fullwidth + CC padding */
     height: auto;
-	bottom: 0px;
-	top: $headerHeight;
-	background: transparent;
+    bottom: $classification-height;
+    top: $header-height + $classification-height;
+    background: transparent;
 }
 
 #container .column {
-	position: relative;
-	float: left;
-	height: 100%;
-	background: inherit;
+    position: relative;
+    float: left;
+    height: 100%;
+    background: inherit;
 }
 
 #center {
-	padding: 0;    	/* CC padding */
-	width: $centerWidth;
-	background: $colorBackground;
-	float:left;
+    padding: 0;    	// CC padding */
+    width: $center-width;
+    background: $color-background;
+    float: left;
 }
 
 #left {
-	width: $leftWidth;          /* LC width */
-	padding: 0;   /* LC padding */
-	right: $leftWidth;          /* LC fullwidth + CC padding */
-	margin-left: -100%;
-	
-	max-height: 100%;		
-	background: $colorBackground;
-	display: inline-block;
+    width: $left-width;          // LC width */
+    padding: 0;   // LC padding */
+    right: $left-width;          // LC fullwidth + CC padding */
+    margin-left: -100%;
+    
+    max-height: 100%;		
+    background: $color-background;
+    display: inline-block;
 }
-	
+    
 #right {
-	width: $rightWidth;          /* RC width */
-	padding: 0;    /* RC padding */
-	margin-right: -($rightWidth);  /* RC fullwidth + CC padding */
-	background: $colorBackground;
-	float: left;
-	margin-left: 0px;
-	max-height: 100%;
-	overflow-x: visible;
+    width: $right-width;          // RC width */
+    padding: 0;    // RC padding */
+    margin-right: -($right-width);  // RC fullwidth + CC padding */
+    background: $color-background;
+    float: left;
+    margin-left: 0;
+    max-height: 100%;
+    overflow-x: visible;
 }
 
 #header {
-	/*DISPLAY*/
-	float: left;
-	width: 100%;
-	height: $headerHeight;
-	padding: 5px;
-			
-	/*COLORS*/
-	background: ($colorPrimary);
-	color: ($colorPrimaryContrast);
-	
-	/*FONTS*/
-	font-size: 1.5em;
-	font-family: 'Montserrat', sans-serif;
+    @include material-shadow(3);
 
-	box-shadow: 0 0px 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.24);									
+    //DISPLAY*/
+    float: left;
+    width: 100%;
+    height: $header-height;
+    padding: $header-padding;
+            
+    //COLORS*/
+    background: ($color-primary);
+    color: ($color-primary-contrast);
+    
+    //FONTS*/
+    font-size: 1.5em;
+    font-family: 'Montserrat', sans-serif;								
 }
 
     #header-content-wrapper:before {
-  	    content: '';
-		display: inline-block;
-		vertical-align: middle;
-		height: 100%;
-		margin-right: -0.25em;
+          content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+        margin-right: -0.25em;
     }
 
     #header-content-wrapper {
-	    display: inline-block;
-	    vertical-align: middle;
-	    height: 100%;
-	    width: 100%;
-	    text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        position: relative;
     }
 
-	#header-content {
-			display: inline-block;
-			vertical-align: middle;
-		}
-		
-		/*** IE Fix ***/
-		* html #left {
-			left: 390px;           /* RC fullwidth */
-		}
+    #header-content {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        * html #left {
+            left: 390px;
+        }
+
+#header .btn-group.dropdown,
+#header .btn-group.dropdown:active,
+#header .btn-group.dropdown:focus {
+    position: absolute;
+    right: 0;
+    margin-right: 8px;
+    height: 100%;
+
+    font-size: 14px;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+#header .btn-group.dropdown:hover,
+#header .btn-group.dropdown:active,
+#header .btn-group.dropdown:focus,
+#header .dropdown #profile-dropdown:hover,
+#header .dropdown #profile-dropdown:active,
+#header .dropdown #profile-dropdown:focus
+ {
+   text-decoration: underline;
+}
+
+#header .dropdown #profile-dropdown {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    height: 100%;
+}
+
+#header .dropdown-menu {
+    @include material-shadow(3);
+    border-radius: 2px;
+    right: 0;
+    left: auto;
+    min-width: 200px;
+    margin-top: -10px;
+}
+
+#header .dropdown-menu .disabled {
+    padding: 3px 20px;
+    color: $color-grey;
+    cursor: default;
+}

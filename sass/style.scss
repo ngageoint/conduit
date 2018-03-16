@@ -1,51 +1,75 @@
-@charset "utf-8";
-/* CSS Document */
+@charset 'utf-8';
+//CSS Document
 
-@import "fonts";
-@import "colors";
-@import "links";
-@import "layout";
-@import "stream";
-@import "filter";
-@import "card";
-@import "viewer";
-@import "comments";
-@import "bootstrap-customization";
-@import "media.scss";
-@import "book-selector";
-@import "fab";
-
-* {
-/*	border-radius: 2px !important;*/
-}
+@import 'fonts';
+@import 'colors';
+@import 'links';
+@import 'layout';
+@import 'stream';
+@import 'filter';
+@import 'card';
+@import 'viewer';
+@import 'comments';
+@import 'bootstrap-customization';
+@import 'media.scss';
+@import 'book-selector';
+@import 'material-card';
+@import 'material-shadow';
+@import 'material-form';
+@import 'material-btn';
+@import 'material-modal';
+@import 'material-menu';
+@import 'material-table';
+//@import 'material-popover';
 
 .title {
-	color: $colorFont;
+    color: $color-font;
 }
-		
+        
 .text {
-	color: $colorFont;
+    color: $color-font;
 }
 
 .tag {
-	color: $colorGrey;
-	font-family: 'Montserrat', sans-serif;
+    color: $color-grey;
+    font-family: 'Montserrat', sans-serif;
 }
-		 
-	#action {
-			float: left;
-			padding-top: .1em;
-	}
+         
+    #action {
+            float: left;
+            padding-top: .1em;
+    }
 
 .pointer-on-hover:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {
-    width: 2px;  /* remove scrollbar space */
-    /*background: transparent;  /* optional: just make scrollbar invisible */
+    width: 2px;  // remove scrollbar space
 }
-/* optional: show position indicator in accent color */
+// optional: show position indicator in accent color
 ::-webkit-scrollbar-thumb {
-    background: $colorAccent;
+    background: $color-accent;
+}
+
+// Required if parent position is not absolute
+.center-parent {
+    position: relative;
+}
+
+.center-xy {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.center-y {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }

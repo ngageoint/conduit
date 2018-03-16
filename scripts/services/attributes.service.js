@@ -1,7 +1,6 @@
 /* The AttributesService makes all of the attributes available in a global, editable promise. */
 angular.module('conduit.services').factory('AttributesService', function($http) { 
-	var attributes = $http.get('data/attributes.json').then(function(response) {
-			//console.log(response.data);
+	var attributes = $http.get('select/attributes').then(function(response) {
 			return response.data;
 	});
 	

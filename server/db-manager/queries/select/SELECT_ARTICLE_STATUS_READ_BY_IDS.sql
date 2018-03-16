@@ -1,0 +1,6 @@
+﻿SELECT
+	"ARTICLES_STATUS"."read"
+FROM
+	"conduit_db"."ARTICLES_STATUS"
+WHERE
+	"ARTICLES_STATUS"."article_id" = $1 AND "ARTICLES_STATUS"."user_id" = $2;

@@ -1,0 +1,406 @@
+<div id="wrapper" ng-controller="PageCtrl">        
+    <div id="header">
+        <div id="header-content-wrapper">
+            <div id="header-content">
+                Conduit Beta
+            </div>
+            <div class="btn-group" uib-dropdown keyboard-nav>
+                <button     id="profile-dropdown"
+                            type="button" class="menu-btn"
+                            uib-dropdown-toggle>
+                    {{user.given_name + ' ' + user.last_name}}
+                    <span class="caret"></span>
+                </button>
+                <ul uib-dropdown-menu role="menu" aria-labelledby="profile-dropdown">
+                    <li role="menuitem">
+                        <a href="mailto:conduit@nga.mil">
+                            Send Feedback&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-bullhorn pull-right"></span>
+                        </a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/logoff">
+                            Log Off&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-log-out pull-right"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="disabled">
+                            {{'Version ' + __config.version}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<div>
+    <div id="container">
+        <div id="center" class="column" ng-controller="ViewerCtrl" ng-cloak>
+            <div class="article-view"  ng-model="article" data-scroll-to-top="articles[currentIndex]">
+                <div id="content-wrapper">
+                    <subject id="subject" class="subject" ng-controller="SubjectCtrl">
+                    </subject>
+                    <div id="edit-menu">
+                        <div ng-show="hasEdits() && articles[currentIndex].isEdit && !versionsView()">
+                            <div class="primary-text">Edited</div>
+                            <a  href="#"
+                                ng-click="getOriginalArticle()">
+                                    <div class="supporting-text">View Original</div>
+                            </a>
+                        </div>
+                        <div ng-show="hasEdits() && !articles[currentIndex].isEdit && !versionsView()">
+                            <div class="primary-text">Original</div>
+                            <a  href="#"
+                                
+                                ng-click="getMostRecentEdit()">
+                                    <div class="supporting-text">View Latest Edit</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="title-wrapper">
+                        <div 	class="title"
+                                e-class="title edit-field"
+                                e-form="articleEdit"
+                                editable-textarea="articles[currentIndex].title"
+                                onbeforesave="cacheOldValues()"
+                                onaftersave="submitEdit()"
+                                buttons="no"
+                                blur="submit">
+                            {{articles[currentIndex].title}}
+                        </div>
+                    </div>
+                    <div id="image-wrapper" ng-if="!articles[currentIndex].images.length == 0">
+                        
+                        <span 
+                            id="nav-left"
+                            class="glyphicon glyphicon-menu-left nav-arrow"
+                            ng-class="{'greyout': !(articles[currentIndex].images.length > 1 && articles[currentIndex].selectedImage > 0)}"
+                            ng-click="navBefore()"
+                            alt="Navitage to previous image"
+                            title="Navigate to previous image">
+                            
+                        </span>
+                        
+                        <a class="article-image" ng-href="{{articles[currentIndex].images[articles[currentIndex].selectedImage]}}" target="_blank">
+                            <img	ng-show="articles[currentIndex].images[articles[currentIndex].selectedImage]"
+                                    ng-src="{{articles[currentIndex].images[articles[currentIndex].selectedImage]}}"
+                                    alt=""
+                                    title=""
+                                    class="image"
+                                    image-load-error/>                                    
+                        </a>
+
+                        <div id="image-load-error"
+                                class="pointer-on-hover"
+                                ng-show="inErrorState"
+                                ng-click="forceReload()">
+                                <span class="glyphicon glyphicon-repeat"></span>&nbsp;{{reloadMsg}}
+                        </div>
+                                            
+                        <span 
+                            id="nav-right"
+                            class="glyphicon glyphicon-menu-right nav-arrow"
+                            ng-class="{'greyout': !(articles[currentIndex].images.length > 1 && articles[currentIndex].selectedImage < articles[currentIndex].images.length -1)}"
+                            ng-click="navNext()"
+                            alt="Navigate to next image"
+                            title="Navigate to next image">
+                            
+                        </span> 
+                    </div>
+                    
+                    <div ng-if="articles[currentIndex].images.length == 0" style="text-align:center"><strong>No image to show.</strong></div>
+                    
+                    <div class="text-wrapper">
+                        <div 	class="text" 
+                                e-class="text edit-field"
+                                e-form="articleEdit"
+                                editable-textarea="articles[currentIndex].text"
+                                buttons="no"
+                                blur="submit">
+                            {{articles[currentIndex].text}}
+                        </div>
+                    </div>
+                </div>
+                <div id="action-area">
+                    <div id="id" ng-show="!versionsView()">
+                        <a ng-href="{{articles[currentIndex].link}}" target="_blank" title="View source" alt="View source">
+                            {{articles[currentIndex].id}}&nbsp;
+                            <span class="glyphicon glyphicon-new-window"></span>
+                        </a>
+                    </div>
+                    <div id="version-pagniation" ng-show="versionsView()">
+                        <ul     uib-pagination 
+                                total-items="articles[currentIndex].edits.length + 1"
+                                items-per-page="1" 
+                                ng-model="selectedVersion" 
+                                max-size="5" 
+                                class="pagination-sm"
+                                boundary-links="true" 
+                                first-text="Original"
+                                last-text="Most Recent"
+                                template-url="./templates/pagination/override.html"
+                                num-pages="numPages"
+                                ng-change="getArticleVersion(selectedVersion)">
+                        </ul>
+                    </div>
+                    <div id="default-action-buttons" ng-show="!articleEdit.$visible && !versionsView()">
+                        <div    class="btn-group material-dropdown dropup pull-right" uib-dropdown keyboard-nav 
+                                ng-controller="MultiSelectCtrl"
+                                ng-click="verifySelected()"
+                                ng-dblclick="itemSelected(selectedBook)">
+                            <button     id="profile-dropdown"
+                                        type="button" class="material-btn flat primary bold"
+                                        uib-dropdown-toggle>
+                                {{label}}
+                                <span class="caret"></span>
+                            </button>
+                            <ul uib-dropdown-menu role="menu" ng-click="$event.stopPropagation()">
+                                <li role="menuitem" ng-repeat="book in books">
+                                    <a href="" ng-click="itemSelected(book)">
+                                        <div class='item'>{{::book.name}}</div>
+                                        <span class="glyphicon glyphicon-ok" ng-show="book.selected"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="material-btn flat default"
+                                ng-click="articleEdit.$show()"
+                                title="EDIT">
+                            <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                            <div class="ico-text-1">EDIT</div>
+                        </button>
+                        <div class="material-popover">
+                            <button uib-popover-template="'templates/comments-popover.html'"
+                                    popover-title="DISCUSS"
+                                    type="button"
+                                    class="material-btn flat default"
+                                    popover-trigger="'outsideClick'"
+                                    popover-is-open="discussPopoverOpen"
+                                    title="DISCUSS">
+                                    <!--<span class="glyphicon glyphicon-comment">&nbsp;</span>-->
+                                    <div class="ico-text-1">
+                                        DISCUSS<span ng-if="articles[currentIndex].comments.length > 0" class="badge" style="margin-left:4px">{{articles[currentIndex].comments.length}}</span>
+                                    </div>
+                            </button>
+                        </div>
+                        <button class="material-btn flat default"
+                                ng-click="export(articles[currentIndex])"
+                                title="EXPORT">
+                                <div class="ico-text-1">EXPORT</div>
+                        </button>
+                    </div>
+                    <!-- In edit view -->
+                    <div id="edit-action-buttons" ng-show="articleEdit.$visible">
+                        <button class="material-btn flat primary"
+                                type="submit"
+                                title="SUBMIT">
+                            <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                            <div class="ico-text-1">SUBMIT</div>
+                        </button>
+                        <button class="material-btn flat default"
+                                ng-click="articleEdit.$cancel()"
+                                title="CANCEL">
+                            <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                            <div class="ico-text-1">CANCEL</div>
+                        </button>
+                    </div>
+                    <!-- In versions view -->
+                    <div id="edit-action-buttons" ng-show="versionsView() && !articleEdit.$visible">
+                        <button class="btn btn-primary"
+                                ng-click="versionsView(false)"
+                                title="CLOSE">
+                            <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                            <div class="ico-text-1">CLOSE</div>
+                        </button>
+                        <button class="btn btn-default"
+                                ng-click="articleEdit.$show(); versionsView(false)"
+                                title="EDIT">
+                            <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                            <div class="ico-text-1">EDIT</div>
+                        </button>
+                        <button class="btn btn-default"
+                                ng-click="export(articles[currentIndex])"
+                                title="EXPORT">
+                            <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                            <div class="ico-text-1">EXPORT</div>
+                        </button>
+                        <button class="btn btn-default"
+                                ng-click=""
+                                title="Revert to this version">
+                            <!--<span class="glyphicon glyphicon-save-file">&nbsp;</span>-->
+                            <div class="ico-text-1">REVERT</div>
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>  
+        </div>
+        
+        <div id="left" class="column" ng-controller="FeedCtrl" >
+                <div class="btn-group stream-action" id="trash" ng-init="cbxTrash = 0">
+                    <button 	type="button"
+                                style="width: 50%;"
+                                class="btn btn-primary"
+                                ng-model="filter.trash"
+                                uib-btn-radio="0"
+                                ng-click="refreshFeed()"
+                                title="Feed">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        <div class="ico-text-2">&nbsp;Feed&nbsp;
+                            <span ng-if="filter.trash == 0 && articles.length > 0" class="badge">{{filter.count}}</span>
+                        </div>
+                    </button>
+                    <button 	type="button"
+                                style="width: 50%;"
+                                class="btn btn-primary"
+                                ng-model="filter.trash"
+                                uib-btn-radio="1"
+                                ng-click="refreshFeed()"
+                                title="Deleted items">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <div class="ico-text-2">
+                            &nbsp;Deleted Items&nbsp;
+                            <span ng-if="filter.trash == 1 && articles.length > 0" class="badge">{{filter.count}}</span>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="fluid-container">
+                    <fe-stateful class="accordion-wrapper">
+                        <uib-accordion close-others="true">
+                            <div 	uib-accordion-group 
+                                    class="panel-default"
+                                    is-open="status.open"
+                                    
+                                    >
+                                <uib-accordion-heading  ng-click="status.open = !status.open"
+                                                        class="pointer-on-hover"
+                                                        title="Filter options">
+                                    <div>
+                                        <em class="glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></em>
+                                    </div>
+                                </uib-accordion-heading>
+                                
+                                <div ng-click="refreshFeed()">
+                                   
+                                    <label>Days back (up to {{filter.MAX_DAYS_BACK}})</label>
+                                    <div class="input-group col-md-5">
+                                        <input class="form-control" type="text" ng-model="filter.daysBack" ng-change="refreshFeed()"/>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" type="button" title="Reduce by 1" ng-click="filter.daysBack = filter.daysBack - 1">
+                                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                            </button>
+                                            <button class="btn btn-default" type="button" title="Increase by 1" ng-click="filter.daysBack = filter.daysBack + 1">
+                                                <span class="glyphicon glyphicon-chevron-up"></span>
+                                        </div>
+                                    </div>
+                                   
+                                    <div id="attr-wrapper" ng-click="refreshFeed()">
+                                        <div ng-if="::attr.filter" ng-repeat="attr in ::attributes" ng-show="true" class="cbx-wrapper" id="attrs">
+                                            <input type="checkbox" id="{{::'cbx-'+attr.name}}" ng-model="attr.checked" ng-checked="attr.checked" ng-disabled="showAll" ng-click="refreshFeed()" class="pointer-on-hover"/>
+                                            <label class="checkbox-label pointer-on-hover" for="{{::'cbx-'+attr.name}}">                                        
+                                                <div alt="{{::attr.alt}}" title="{{::attr.alt}}">
+                                                    <span ng-if="::attr.glyphicon" class="glyphicon glyphicon-{{::attr.glyphicon}}"></span>
+                                                    {{attr.name}}
+                                                </div>
+                                            </label>
+                                        </div>            
+                                    </div>
+
+                                    <div id="data-src-wrapper" ng-repeat="src in ::sources">
+                                        <div class="cbx-wrapper-header" id="{{::src.name}}">
+                                            <input type="checkbox" id="{{::'cbx-'+src.name}}" ng-model="src['checked']" ng-checked="src['checked']" ng-disabled="showAll"/>
+                                            <label class="cbx-label" ng-class="{'disabled': showAll}" for="{{::'cbx-'+src.name}}">{{::src.tag}}</label>
+                                        </div>
+                                        <div class="category-wrapper">
+                                            <form class="material-form form-group">
+                                                <div    ng-show="src['checked']" id="{{::category.name+'-category'}}" ng-repeat="category in ::src.filter" class="row">
+                                                    <div class="material-input-field">
+                                                        <material-dropdown  ng-model="category.selectedValues"
+                                                                            ng-disabled="showAll"
+                                                                            ng-click="updateFilterOptions(src.name, category.name)"
+                                                                            mi-dd-list="category.values" 
+                                                                            mi-dd-label="{{category.name}}"
+                                                                            mi-dd-on-item-click="refreshFeed()">
+                                                        </material-dropdown>
+                                                    </div>
+                                                </div>
+                                            </form>                          
+                                        </div>  
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </uib-accordion>
+                    </fe-stateful>
+            <fe-fluid 	id="article-stream"
+                        class="stream">
+                <div id="infinite-scroll" infinite-scroll="buildMoreCards()" infinite-scroll-parent="true" infinite-scroll-distance=".75">                         
+                    <card	class="stream card"
+                            id="{{'e' + article.id}}"
+                            ng-repeat="article in articles track by article.id"
+                            ng-if="article.build"
+                            ng-show="article.inFeed"
+                            ng-class="{	'card-extended-hover': hovering,
+                                        'active-read': article.active && !article.activeInBook && article.read,
+                                        'active': article.active && !article.activeInBook,
+                                        'read': article.read }"
+                            ng-click="activateCard('Feed', article.id)" 
+                            ng-init="isStream = true"
+                            ng-cloak>
+                    </card>
+                </div>
+            </fe-fluid>
+            </div>
+            
+        </div>
+        
+        <div id="right" class="column" ng-controller="BookCtrl">
+            <div class="stream-header row">
+                <div    class="btn-group material-dropdown stream-action dropdown col-xs-9" uib-dropdown keyboard-nav>
+                    <button     id="profile-dropdown"
+                                type="button" class="material-btn flat primary bold"
+                                uib-dropdown-toggle>
+                        {{selectedBook.name}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul uib-dropdown-menu role="menu">
+                        <li role="menuitem" ng-repeat="book in books">
+                            <a href="" ng-click="changeSelectedBookTo(book)">
+                                <div class='item'>{{::book.name}}</div>
+                                <span ng-if="book.count" class="badge">{{book.count}}</span>
+                                <span class="glyphicon glyphicon-ok" ng-show="book.selected"></span>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li ng-controller="NewBookModalCtrl" ng-click="showForm()" title="Manage books">
+                            <a><div class="ico-text-1">Manage books</div></a>
+                        </li>
+                    </ul>
+                </div>
+                <div    class="stream-action small"
+                        ng-click="exportBook(selectedBook)"
+                        title="Export book">
+                        <span class="glyphicon glyphicon-save-file center-xy"></span> 
+                        <!--<div class="ico-text-3">&nbsp;Export book</div>-->
+            </div>
+                <div class="info-bar">
+                    {{user.teamName}}
+                </div>
+            </div>
+            <div id="article-book" class="stream book">
+                <card	class="stream card"
+                                ng-repeat="article in articles track by article.id"
+                                ng-if="article.inBook"
+                                ng-class="{	'card-extended-hover': hovering,
+                                            'active': article.active && article.activeInBook }"
+                                ng-click="activateCard('Book', article.id)"
+                                ng-init="isStream = false">
+                </card>
+               </div>
+        </div>
+    
+    </div>
+</div>
+</div>

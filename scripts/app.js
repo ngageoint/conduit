@@ -1,3 +1,5 @@
+/*Create config variable in window*/
+
 var config = {}
 if(window) {
 	
@@ -26,25 +28,26 @@ if(window) {
 	Object.assign(config, window.__config);
 }
 
+/*Polyfill to support IE*/
+if(typeof Promise == "undefined")
+	location.href = location.origin + '/' + 'unsupported';
+
 angular.module('conduit', [
     /*custom modules*/
-    'conduit.directives', 'conduit.services', 'conduit.controllers', 'conduit.tools',
+    'conduit.directives', 'conduit.services', 'conduit.controllers', 'conduit.tools', 'conduit.modals',
     
     /*vendor modules*/
-    'xeditable', 'ui.bootstrap','nya.bootstrap.select', 'angular-loading-bar', 'ngAnimate',
+    'ngRoute', 'xeditable', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate',
     'infinite-scroll', 'tw.directives.clickOutside', 'cfp.loadingBar'
     ]);
 
 angular.module('conduit').constant('__config', config);
 
-/*Add custom modules
-angular.module('conduit.directives');
-angular.module('conduit.services');
-angular.module('conduit.controllers');
-angular.module('conduit.tools');*/
+/*Configure 3rd party modules*/
 
-
-/*Add 3rd party modules*/
+angular.module('conduit').config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+  }]);
 
 //Put a 10ms delay per card rendered in an infinite scroll event (which is MIN_RENDERED_CARDS / 2)
 angular.module('infinite-scroll').value("THROTTLE_MILLISECONDS", (__config.MIN_RENDERED_CARDS / 2) * 10);
